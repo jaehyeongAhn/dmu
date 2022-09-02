@@ -174,7 +174,7 @@
 	src="https://maps.googleapis.com/maps-api-v3/api/js/50/2/util.js"></script>
 <body>
 	<div id="app">
-		<div id="contents">
+		<div id="">
 			<header class="transparent">
 				<div class="header-web">
 					<div class="header-side">
