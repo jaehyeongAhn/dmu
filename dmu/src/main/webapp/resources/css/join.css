@@ -1,4 +1,8 @@
 
+body {
+	margin : 0;
+	padding : 0;
+}
 /****************** /join/terms ************************/
 	form[name="join_termsForm"] {
 		width : 626px;
@@ -240,7 +244,7 @@ div.loginDetail div input:not(div.loginDetail li:first-child input) {
 	width: 100%;
 }
 
-div.loginDetail div input::placeholder, input#name::placeholder {
+div.loginDetail div input::placeholder, input#dname::placeholder {
 	color: #999999;
 	vertical-align: center;
 	font-weight: 400;
@@ -285,7 +289,7 @@ fieldset.individualInformation {
 	box-sizing: border-box;
 }
 
-input#name, div.joinDetail input:not(input[type="radio"]):not(div.addrSimple input){
+input#dname, div.joinDetail input:not(input[type="radio"]):not(div.addrSimple input){
 	height: 100%;
 	border: 0.5px solid #dcdcdc;
 	font-size: 15px;
@@ -296,7 +300,7 @@ input#name, div.joinDetail input:not(input[type="radio"]):not(div.addrSimple inp
 	width: 30%;
 }
 
-input#name {
+input#dname {
 	width: 100%;
 }
 
@@ -324,6 +328,10 @@ div.emailTable input::placeholder {
 
 div.emailTable input#email2 {
 	margin-right: 20px;
+}
+
+div.emailTable input#email2:read-only {
+	background-color : #ededed;
 }
 
 select#email3 {
@@ -452,11 +460,11 @@ div.customerTable {
 	margin-top: 15px;
 }
 /** radio 커스텀 **/
-input[name="customerType"], input[name="gender"] {
+input[name="nationality"], input[name="gender"] {
 	display: none;
 }
 
-input[name="customerType"]+label, input[name="gender"]+label {
+input[name="nationality"]+label, input[name="gender"]+label {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
@@ -465,7 +473,7 @@ input[name="customerType"]+label, input[name="gender"]+label {
 	margin-right: 15px;
 }
 
-input[name="customerType"]+label::before, input[name="gender"]+label::before
+input[name="nationality"]+label::before, input[name="gender"]+label::before
 	{
 	content: "";
 	border: 0.5px solid #888888;
@@ -478,12 +486,12 @@ input[name="customerType"]+label::before, input[name="gender"]+label::before
 	margin-right: 5px;
 }
 
-input[name="customerType"]:checked+label, input[name="gender"]:checked+label
+input[name="nationality"]:checked+label, input[name="gender"]:checked+label
 	{
 	color: black;
 }
 
-input[name="customerType"]:checked+label::before, input[name="gender"]:checked+label::before
+input[name="nationality"]:checked+label::before, input[name="gender"]:checked+label::before
 	{
 	content: "";
 	border: 0.5px solid black;
@@ -496,7 +504,7 @@ input[name="customerType"]:checked+label::before, input[name="gender"]:checked+l
 	margin-right: 5px;
 }
 
-input[name="customerType"]:checked+label::after, input[name="gender"]:checked+label::after
+input[name="nationality"]:checked+label::after, input[name="gender"]:checked+label::after
 	{
 	content: "";
 	border: 0.5px solid #dcdcdc;
@@ -537,6 +545,8 @@ div.joinContainer {
 	background-color: rgba(0, 0, 0, 0.7);
 	opacity: 0;
 	z-index: -1;
+	top : 0;
+	left : 0;
 }
 
 .window_join {
@@ -587,4 +597,67 @@ div.joinContainer {
 	z-index: 10;
 	transform: translate(-50%, -50%);
 	transition: all 0.3s;
+}
+
+/************** 전체 페이지 ****************/
+.join {
+	position : relative;
+	min-width : 1200px;
+	margin-top : 50px;
+	/* width : 100vw; */
+	/* top : 160px; */
+}
+
+
+/************** header ****************/
+iframe.header {
+	position : relative;
+	top : 0;
+	left : 0;
+}
+
+/************** footer ****************/
+iframe.footer {
+	position : absolute;
+	bottom : 0;
+	left : 0;
+}
+
+/************************* join_ok **************************/
+div.content {
+	text-align : center;
+}
+div.commentary {
+	margin-bottom : 55px;
+}
+div.commentary p {
+	color : #888888;
+	font-weight: 400;
+    letter-spacing: -0.02rem;
+    margin : 5px 0;
+}
+div.joinContainer div img {
+	width : 150px;
+}
+button#loginGo {
+	width : 100%;
+	height : 60px;
+	color : white;
+	font-weight : 400;
+	font-size : 17px;
+	border : 0.5px solid black;
+	background-color : black;
+	letter-spacing : -0.08rem;
+	cursor : pointer;
+}
+button#loginGo:hover {
+	width : 100%;
+	height : 60px;
+	color : black;
+	border : 0.5px solid black;
+	font-weight : 400;
+	font-size : 17px;
+	background-color : white;
+	letter-spacing : -0.08rem;
+	cursor : pointer;
 }

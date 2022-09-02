@@ -12,6 +12,14 @@ import com.museum.vo.DmuMemberVO;
 @Controller
 public class JoinController {
 	/*
+	 * join_ok.do : 회원 가입 성공 페이지
+	 */
+	@RequestMapping(value = "/join_ok.do", method = RequestMethod.GET)
+	public String join_ok() {
+		return "/join/join_ok";
+	}
+	
+	/*
 	 * joinController.do : 회원 가입 성공
 	 */
 	@RequestMapping(value = "/joinController.do", method = RequestMethod.POST)
@@ -20,7 +28,11 @@ public class JoinController {
 		
 		DmuMemberDAO dao = new DmuMemberDAO();
 		int result = dao.insert(vo);
-		
+		if(result == 1) {
+			mv.setViewName("/join/join_ok");
+		}else {
+			mv.setViewName("error_page");
+		}
 		return mv;
 	}
 	
@@ -40,6 +52,19 @@ public class JoinController {
 	@RequestMapping(value = "/join_terms.do", method = RequestMethod.GET)
 	public String join_terms() {
 		return "/join/terms";
+	}
+	
+	/*
+	 * join_terms_ok.do : 약관 동의 체크
+	 */
+	@RequestMapping(value = "/join_terms_ok.do", method = RequestMethod.POST)
+	public ModelAndView join_terms_ok(DmuMemberVO vo) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("vo", vo);
+		mv.setViewName("/join/join");
+		
+		return mv;
 	}
 	
 	/*
