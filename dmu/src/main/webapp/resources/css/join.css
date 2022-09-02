@@ -1,0 +1,590 @@
+
+/****************** /join/terms ************************/
+	form[name="join_termsForm"] {
+		width : 626px;
+	}
+	form[name="join_termsForm"] fieldset {
+		border : none;
+	}
+	form[name="join_termsForm"] legend {
+		font-size : 24px;
+		letter-spacing : -0.12rem;
+		font-weight : 500;
+		margin-bottom : 30px;
+	}
+	div.checkList:not(#all_checkList) {
+		display : flex;
+		align-items : center;
+		justify-content : space-between;
+    	margin: 10px 0;
+	}
+	div#all_checkList {
+		padding : 0 0 15px 0;
+		border-bottom : 1px solid #ddd;
+	}
+	div.termsList {
+		padding : 10px 0;
+		border-bottom : 1px solid #ddd;
+	}
+	input#all_check + label, input.terms + label {
+		display: flex;
+    	align-items: center;
+    	letter-spacing : -0.09rem;
+    	cursor : pointer;
+	}
+	input#all_check + label {
+	    color : #111;
+	    font-weight : 400;
+	    font-size : 17px;
+	} 
+	input.terms + label {
+	    color : #686868;
+	    font-weight : 400;
+	    font-size : 17px;
+	}
+	input.terms:checked + label {
+	    color : #111;
+	    font-weight : 400;
+	    font-size : 17px;
+	}
+	input#all_check, input.terms {
+		display : none;
+	}
+	input#all_check:checked + label::before, input.terms:checked + label::before {
+	    content: "";
+	    width: 22px;
+	    height: 22px;
+	    border: 0.5px solid #ddd;
+	    display: inline-flex;
+	    align-items: center;
+	    color : white;
+	    justify-content : center;
+	    align-items : center;
+	    margin-right : 10px;
+	    background-image : url("http://localhost:9000/dmu/resources/images/check.png");
+	    background-repeat : no-repaet;
+	    background-size : cover;
+	    cursor : pointer;
+	}
+	input#all_check + label::before, input.terms + label::before {
+	    content: "";
+	    width: 22px;
+	    height: 22px;
+	    border: 0.5px solid #ddd;
+	    display: inline-flex;
+	    align-items: center;
+	    background : white;
+	    justify-content : center;
+	    margin-right : 10px;
+	    cursor : pointer;
+	}
+	div.nextJoin {
+		padding : 60px 0;
+		display : flex;
+		justify-content : space-between;
+	}
+	button.backHome {
+		border : 0.5px solid black;
+		background : white;
+		letter-spacing : -0.08rem;
+		width : 47%;
+		height : 60px;
+		font-size : 16px;
+		color : #484848;
+		font-weight : 400;
+	}
+	button.backHome:hover {
+		border : 0.5px solid #888888;
+		background : #888888;
+		color : white;
+		cursor : pointer;
+	}
+	button#nextJoinPage {
+		border : 0.5px solid black;
+		background : black;
+		color : white;
+		letter-spacing : -0.08rem;
+		width : 47%;
+		height : 60px;
+		font-size : 16px;
+		font-weight : 400;
+		cursor : pointer;
+	}
+	button#nextJoinPage:hover {
+		border : 0.5px solid #111;
+		background : white;
+		color : #111;
+	}
+	button#nextJoinPage:disabled {
+		border : 0.5px solid #dcdcdc;
+		background : #dcdcdc;
+		color : #888888;
+		cursor : default;
+	}
+	
+	/*********** 전문보기 *************/
+	div.checkList > span {
+		font-weight : 400;
+		letter-spacing: -0.08rem;
+		cursor : pointer;
+	}
+	div.checkList > span::after {
+		content : "";
+		display : inline-flex;
+		width : 0.75rem;
+		height : 0.75rem;
+		background-image : url("http://localhost:9000/dmu/resources/images/details.png");
+		background-size : cover;
+		background-repeat : no-repeat;
+		margin-left : 10px;
+	}
+
+/****************** /join/join *************************/
+div.container h3 {
+	font-size: 3rem !important;
+	text-align: center;
+	line-height: 3.2rem;
+	letter-spacing: -0.08em;
+	font-weight: 500;
+}
+
+div.join_style {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+form[name="joinFrom"] {
+	width: 626px;
+}
+
+fieldset.loginInformation, fieldset.individualInformation {
+	border: none;
+}
+
+fieldset.loginInformation span.checkpoint::before, fieldset.individualInformation span.checkpoint::before
+	{
+	content: "*";
+	display: inline-block;
+	color: #da2a21;
+	font-size: 15px;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+fieldset.loginInformation>legend, fieldset.individualInformation>legend
+	{
+	float: left;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.42;
+	letter-spacing: -0.2rem;
+	margin-bottom: 20px;
+}
+
+fieldset.loginInformation>span, fieldset.individualInformation>span {
+	float: right;
+	font-size: 16px;
+	color: #484848;
+	font-weight: 500;
+	letter-spacing: -0.08em;
+	align-items: center;
+}
+
+div.loginDetail, div.joinDetail {
+	clear: both;
+}
+
+div.loginDetail ul, div.joinDetail ul {
+	list-style: none;
+	padding: 0;
+}
+
+div.loginDetail ul li, div.joinDetail ul li {
+	margin-top: 30px;
+}
+
+div.loginDetail ul li>label, div.joinDetail ul li>label {
+	display: block;
+	font-size: 0.8975rem;
+	color: #666;
+	letter-spacing: -0.075rem;
+}
+
+div.loginDetail ul li>label.checkpoint::after, div.joinDetail ul li>label.checkpoint::after {
+	content: "*";
+	display: inline-block;
+	color: #da2a21;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 2px;
+	margin-left: 5px;
+}
+
+div.loginDetail li:first-child div, div.loginDetail li>div {
+	display: flex;
+	justify-content: space-between;
+	height: 60px;
+}
+
+div.loginDetail div input {
+	border: 0.5px solid #dcdcdc;
+	width: 23.5rem;
+	padding: 16px;
+	font-size: 15px;
+	color: black;
+	font-weight: 400;
+}
+
+div.loginDetail div input:not(div.loginDetail li:first-child input) {
+	width: 100%;
+}
+
+div.loginDetail div input::placeholder, input#name::placeholder {
+	color: #999999;
+	vertical-align: center;
+	font-weight: 400;
+}
+
+div.loginDetail div {
+	margin-top: 5px;
+}
+
+button#idCheck {
+	background-color: black;
+	color: white;
+	width: 10.675rem;
+	font-size: 15px;
+	font-weight: 300;
+	letter-spacing: -0.08rem;
+}
+
+button#idCheck:hover {
+	border: 0.5px solid black;
+	background: white;
+	color: black;
+	cursor: pointer;
+}
+
+button#idCheck:disabled {
+	background : #eeeeee;
+	border : 0.5px solid #eeeeee;
+	color : #c4c4c4;
+}
+
+button#idCheck:disabled:hover {
+	background : #eeeeee;
+	border : 0.5px solid #eeeeee;
+	color : #c4c4c4;
+}
+
+/******************** 개인정보 ***********************/
+fieldset.individualInformation {
+	margin: 20px 0 0 0;
+	width: 626px;
+	box-sizing: border-box;
+}
+
+input#name, div.joinDetail input:not(input[type="radio"]):not(div.addrSimple input){
+	height: 100%;
+	border: 0.5px solid #dcdcdc;
+	font-size: 15px;
+	color: black;
+	padding: 0 16px;
+	box-sizing: border-box;
+	font-weight: 400;
+	width: 30%;
+}
+
+input#name {
+	width: 100%;
+}
+
+div.emailTable, div.phoneTable, div.birthTable {
+	display: flex;
+	height: 60px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+div.emailTable, div.phoneTable, div.birthTable, div.addrTable, div.nameTable,
+	div.genderTable {
+	margin-top: 10px;
+}
+
+div.nameTable {
+	height: 60px;
+}
+
+div.emailTable input::placeholder {
+	color: #999999;
+	vertical-align: center;
+	font-weight: 400;
+}
+
+div.emailTable input#email2 {
+	margin-right: 20px;
+}
+
+select#email3 {
+	width: 30%;
+	height: inherit;
+	font-size: 15px;
+	padding: 0 16px;
+	font-weight : 400;
+}
+
+div.joinDetail select {
+	width: 30%;
+	height: inherit;
+	font-weight: 400;
+	font-size: 15px;
+	border: 0.5px solid #dcdcdc;
+	padding: 0 16px;
+}
+
+div.addrTable {
+	height: 40px;
+	display: flex;
+	justify-content: space-between;
+}
+
+div.addrTable input {
+	width: 155px;
+}
+
+div.addrTable input::placeholder {
+	font-weight: 400;
+	font-size: 12px;
+	color: #999999;
+}
+
+div.addrTable>input {
+	margin-right: 20px;
+	width: 150px;
+}
+
+div.addrSimple {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	height: 40px;
+}
+
+div.addrSimple input {
+	height: 100%;
+	border: 0.5px solid #dcdcdc;
+	font-size: 15px;
+	color: black;
+	padding: 0 16px;
+	box-sizing: border-box;
+	font-weight: 400;
+	width: 72%;
+}
+
+button#addressCheck {
+	width: 100px;
+	background: black;
+	color: white;
+	border: 0.5px solid black;
+	font-size: 14px;
+	letter-spacing: -0.08rem;
+}
+
+button#addressCheck:hover {
+	background: white;
+	color: black;
+	border: 0.5px solid black;
+	cursor: pointer;
+}
+
+input#addr2 {
+	width: 100%;
+	height: 40px;
+	margin-top: 10px;
+}
+
+input#addr2::placeholder {
+	color: #999999;
+	font-size: 14px;
+}
+
+div.checkBtnList {
+	display: flex;
+	justify-content: space-between;
+}
+
+div.checkBtnList button {
+	width: 47%;
+	height: 60px;
+	font-size: 16px;
+	margin-bottom: 15vh;
+	margin-top: 5vh;
+}
+
+button#cancle {
+	background: white;
+	border: 0.5px solid black;
+}
+
+button#cancle:hover {
+	background: #888888;
+	border: 0.5px solid #888888;
+	color: white;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+button#joinOk {
+	background: black;
+	border: 0.5px solid black;
+	color: white;
+	cursor: pointer;
+}
+
+button#joinOk:hover {
+	background: white;
+	border: 0.5px solid black;
+	color: black;
+}
+
+div.customerTable {
+	margin-top: 15px;
+}
+/** radio 커스텀 **/
+input[name="customerType"], input[name="gender"] {
+	display: none;
+}
+
+input[name="customerType"]+label, input[name="gender"]+label {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	color: #888888;
+	margin-right: 15px;
+}
+
+input[name="customerType"]+label::before, input[name="gender"]+label::before
+	{
+	content: "";
+	border: 0.5px solid #888888;
+	background: white;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	display: inline-block;
+	box-sizing: border-box;
+	margin-right: 5px;
+}
+
+input[name="customerType"]:checked+label, input[name="gender"]:checked+label
+	{
+	color: black;
+}
+
+input[name="customerType"]:checked+label::before, input[name="gender"]:checked+label::before
+	{
+	content: "";
+	border: 0.5px solid black;
+	background: white;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	display: inline-block;
+	box-sizing: border-box;
+	margin-right: 5px;
+}
+
+input[name="customerType"]:checked+label::after, input[name="gender"]:checked+label::after
+	{
+	content: "";
+	border: 0.5px solid #dcdcdc;
+	background: black;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	position: absolute;
+	top: 12.5px;
+	left: 12px;
+	transform: translate(-50%, -50%);
+	margin-right: 5px;
+}
+input#email2 {
+	background : white;
+}
+input#email2:disabled {
+	background : #eeeeee;
+}
+/******************** 전체 화면 설정 ***********************/
+
+main.join div.section {
+	position: relative;
+	min-width: 1200px;
+}
+
+div.joinContainer {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+/******************** Popup SetUp***********************/
+.background_join {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.7);
+	opacity: 0;
+	z-index: -1;
+}
+
+.window_join {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	top: 0;
+	left: 0;
+	min-width: 1200px;
+}
+
+.popup_join {
+	width: 400px;
+	height: 170px;
+	background: white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -30%);
+	text-align: center;
+	z-index: -1;
+}
+
+#popup_joinGuide {
+	margin: 2rem 0;
+	letter-spacing: -0.08rem;
+	color: #4b4b4b;
+}
+
+#popup_joinOk {
+	width: 85%;
+	height: 50px;
+	border: none;
+	background: black;
+	color: white;
+	font-size: 14px;
+	letter-spacing: -0.085rem;
+	font-weight: 500;
+}
+
+.show_join {
+	opacity: 1;
+	z-index: 10;
+	transition: all 0.3s;
+}
+
+.show_join .popup_join {
+	z-index: 10;
+	transform: translate(-50%, -50%);
+	transition: all 0.3s;
+}
