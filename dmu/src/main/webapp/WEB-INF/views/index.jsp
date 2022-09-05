@@ -233,7 +233,7 @@
                                 <a href="/faq/all?refresh=true" class=""> FAQ </a>
                             </li>
                             <li>
-                                <a href="https://daelimculturalfoundation.org" target="_blank">
+                                <a href="http://localhost:9000/dmu/index.do" target="_blank">
                                     <a>대림문화재단</a>
                                 </a>
                             </li>
@@ -253,7 +253,7 @@
                                     <a href="javascript:void(0);"> LEARN </a>
                                 </li>
                                 <li class="">
-                                    <a href="javascript:void(0);"> EVENT </a>
+                                    <a href="exhibition_list.do"> EVENT </a>
                                 </li>
                                 <li class="">
                                     <a href="javascript:void(0);"> TICKET </a>
@@ -488,15 +488,12 @@
                                             data-swiper-slide-index="0">
                                             <div data-v-04a3ebf5="" id="divImgType0" class="visual-obj-area">
                                                 <!---->
-                                                <div data-v-04a3ebf5="" class="video-area"><video data-v-04a3ebf5=""
-                                                        id="video0" loop="loop" muted="muted" autoplay="autoplay"
-                                                        playsinline="" class="videoClass wide-video video">
-                                                        <source data-v-04a3ebf5=""
-                                                            src="https://cdn.daelimmuseum.org/Store/Homepage/Main/Pc/202206/20220607150145134001.mp4"
+                                                <div data-v-04a3ebf5="" class="video-area">
+                                                <video data-v-04a3ebf5="" id="video0" loop="loop" muted="muted" autoplay="autoplay" playsinline="" class="videoClass wide-video video">
+                                                        <source data-v-04a3ebf5=""  src="https://cdn.daelimmuseum.org/Store/Homepage/Main/Pc/202206/20220607150145134001.mp4"
                                                             label="divVideoSeq0" idx="0" type="video/mp4">
-                                                    </video><video data-v-04a3ebf5="" id="video0" loop="loop"
-                                                        muted="muted" autoplay="autoplay" playsinline=""
-                                                        class="videoClass mo-video video">
+                                                    </video>
+                                                    <video data-v-04a3ebf5="" id="video0" loop="loop"  muted="muted" autoplay="autoplay" playsinline="" class="videoClass mo-video video">
                                                         <source data-v-04a3ebf5=""
                                                             src="https://cdn.daelimmuseum.org/Store/Homepage/Main/Mobile/202206/20220607162048744001.mp4"
                                                             label="divVideoSeq0" idx="0" type="video/mp4">

@@ -19,7 +19,7 @@ public class TicketDAO extends DBConn {
 			pstmt.setString(2, vo.getDstart());
 			pstmt.setString(3, vo.getDend());
 			pstmt.setString(4, vo.getDprice());
-			pstmt.setString(5, vo.getdPlace());
+			pstmt.setString(5, vo.getDplace());
 			pstmt.setString(6, vo.getDinformation());
 			pstmt.setString(7, vo.getDtimed());
 			 		
@@ -89,7 +89,7 @@ public class TicketDAO extends DBConn {
 				pstmt.setString(2, vo.getDstart());
 				pstmt.setString(3, vo.getDend());
 				pstmt.setString(4, vo.getDprice());
-				pstmt.setString(5, vo.getdPlace());
+				pstmt.setString(5, vo.getDplace());
 				pstmt.setString(6, vo.getDinformation());
 				pstmt.setString(7, vo.getDtimed());
 			}

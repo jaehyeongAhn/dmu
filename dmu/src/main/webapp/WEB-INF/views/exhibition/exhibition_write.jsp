@@ -19,7 +19,7 @@
 	<!---------------------------------------------->
 	<div class="content">
 		<h1>Exhibition 정보 입력</h1>
-		<form name="boardWriteForm" action="exhibition_write_check.do" method="post" enctype="multipart/form-data">
+		<form name="boardWriteForm" action="exhibition_write_check.do" method="post"  >
 			<ul>
 				<li>
 					<label>파일첨부</label>

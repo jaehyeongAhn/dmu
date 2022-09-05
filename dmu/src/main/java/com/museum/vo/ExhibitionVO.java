@@ -3,8 +3,7 @@ package com.museum.vo;
 public class ExhibitionVO {
 	
 	int rno;
-	String did, dexhibtion,  dstart, dend, dprice, dPlace, dinformation,dtimed;
-	
+	String did, dexhibtion,  dstart, dend, dprice, dplace, dinformation,dtimed;
 	public int getRno() {
 		return rno;
 	}
@@ -41,11 +40,11 @@ public class ExhibitionVO {
 	public void setDprice(String dprice) {
 		this.dprice = dprice;
 	}
-	public String getdPlace() {
-		return dPlace;
+	public String getDplace() {
+		return dplace;
 	}
-	public void setdPlace(String dPlace) {
-		this.dPlace = dPlace;
+	public void setDplace(String dplace) {
+		this.dplace = dplace;
 	}
 	public String getDinformation() {
 		return dinformation;
@@ -59,6 +58,7 @@ public class ExhibitionVO {
 	public void setDtimed(String dtimed) {
 		this.dtimed = dtimed;
 	}
+	
 	 
 	
 

@@ -1,4 +1,4 @@
-package com.museum.dmu;
+package com.museum.controller;
 
  
  
@@ -79,28 +79,20 @@ public class ExhibitionController {
 	
 	/////////////////LIST////////////////
 	
-	@RequestMapping(value="/exhibition_list.do", method=RequestMethod.GET)
-	public ModelAndView exhibition_list(String did) {
-		
-		ModelAndView mv = new ModelAndView();
-		TicketDAO dao = new TicketDAO();
-		
-		
-		mv.setViewName("/ticketlist/exhibition_list");
-		
-		return mv;
-	}
+	/*
+	 * @RequestMapping(value="/exhibition_list.do", method=RequestMethod.GET) public
+	 * ModelAndView exhibition_list(String did) {
+	 * 
+	 * ModelAndView mv = new ModelAndView(); TicketDAO dao = new TicketDAO();
+	 * 
+	 * 
+	 * mv.setViewName("/ticketlist/exhibition_list");
+	 * 
+	 * return mv; }
+	 */
 	
 	
 	 
-	@RequestMapping(value="/learn_list.do", method=RequestMethod.GET)
-	public String learn_list() {
-		return "ticketlist/learn_list";
-	}
- 
-		@RequestMapping(value="/event_list.do", method=RequestMethod.GET)
-		public String event_list() {
-			return "ticketlist/event_list";
-		}
+	 
 	 
 }

@@ -69,12 +69,12 @@
 
 			<ul data-v-3c1f59cb="">
 				<li data-v-3c1f59cb="">
-					<a data-v-3c1f59cb="" href="javascript:void(0);" class="thumb">
+					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do" target="_parent" class="thumb">
 						<img data-v-2fed1a9a="" data-v-3c1f59cb="" src="https://cdn.daelimmuseum.org/Program/Exhibition/List/B/Big/202206/20220607103523179001.png"
 						alt="어쨌든, 사랑" style=""> 
 					</a>
 				<span data-v-3c1f59cb="" class="place"> 디뮤지엄 </span>
-					<a data-v-3c1f59cb="" href="javascript:void(0);" class="title"> 어쨌든, 사랑 </a>
+					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do" target="_parent" class="title"> 어쨌든, 사랑 </a>
 						<p data-v-3c1f59cb="" class="explan"></p>
 						<span data-v-3c1f59cb="" class="term"> 2022.03.16 ~ 2022.10.30 </span></li>
 			</ul>										
