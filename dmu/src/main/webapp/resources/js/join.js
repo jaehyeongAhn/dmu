@@ -21,10 +21,13 @@ $(document).ready(function() {
 		
 		//join.do 페이지로 넘어감
 		$("#nextJoinPage").click(function(){
-			$(location).attr("href", "join.do");
+			join_termsForm.submit();
 		});
 
-
+		//index.do 페이지로 돌아감
+		$(".backHome").click(function(){
+			$(location).attr("href", "index.do");
+		});
 
 
 
@@ -46,7 +49,7 @@ $(document).ready(function() {
 				obj.next().remove();
 				obj.after(style_warning);
 				
-				obj.next().children(".join_warning").css("height", "20px").css("margin-right", "10px");
+				obj.next().children(".join_warning").css("width", "20px").css("height", "20px").css("margin-right", "10px");
 				//$(".join_warning + span").text(coment).css({"color" : "#D92121", "letter-spacing" : "-0.08rem"});
 				obj.next().children(".join_warning + span").text(coment).css({"color" : "#D92121", "letter-spacing" : "-0.08rem", "font-weight" : "400"});
 				$(".check_join").css({"height": "40px", "display" : "flex", "align-items" : "center", "justify-content" : "flex-start"});
@@ -68,6 +71,21 @@ $(document).ready(function() {
 			}
 		}
 		
+
+		/********* popup setup *********/
+		function popup_setup(guideLine, obj) {
+			$(".background_join").addClass("show_join");
+			$(".window_join").addClass("show_join");
+			$("#popup_joinGuide").text(guideLine);
+			$("#popup_joinOk").click(function() {
+				$(".background_join").removeClass("show_join");
+				$(".window_join").removeClass("show_join");
+				obj.focus();
+			});
+		}
+		
+		
+		
 		//이메일 유효성 체크
 		function emailCheck(){
 			//email validation check
@@ -84,6 +102,7 @@ $(document).ready(function() {
 				$("#email2").css("border", "0.5px solid #dcdcdc");
 				
 				warningCheck('ok', $(".emailTable"), "사용 가능한 이메일입니다.");
+				$("#email").val(email);
 			}
 			
 			return true;
@@ -109,12 +128,12 @@ $(document).ready(function() {
 		$("#email3").change(function() {
 			if($(this).val() == "default"){
 				$("#email2").val("");
-				$("#email2").attr("disabled", false);
+				$("#email2").attr("readonly", false);
 				$("#email2").focus();
 				emailCheck();
 			}else{
-				$("#email2").val("");
-				$("#email2").attr("disabled", true);
+				//$("#email2").val("");
+				$("#email2").attr("readonly", true);
 				$("#email2").val($(this).val());
 				emailCheck();
 			}
@@ -128,12 +147,12 @@ $(document).ready(function() {
 
 		/********* id check *********/
 		let idRule = /^(?!(?:[0-9]+)$)([a-zA-Z]|[0-9a-zA-Z]){6,12}$/;
-		$("#id").keyup(function(){
-			let id = $("#id").val();
-			if($("#id").val() == ""){
+		$("#did").keyup(function(){
+			let id = $("#did").val();
+			if($("#did").val() == ""){
 				$("#idCheck").attr("disabled", true);
 				warningCheck(true, $(".idTable"), "아이디를 입력해 주세요.");
-			}else if(!idRule.test($("#id").val())){
+			}else if(!idRule.test($("#did").val())){
 				warningCheck(true, $(".idTable"), "6~12자의 영문 혹은 영문과 숫자를 조합하여 입력해 주세요.");
 			}else{
 				$("#idCheck").attr("disabled", false);
@@ -141,8 +160,8 @@ $(document).ready(function() {
 			}
 		});
 		
-		$("#id").keyup(function(){
-			if($("#id").val().length == 0){
+		$("#did").keyup(function(){
+			if($("#did").val().length == 0){
 				$("#idCheck").attr("disabled", true);
 			}else{
 				$("#idCheck").attr("disabled", false);
@@ -151,9 +170,9 @@ $(document).ready(function() {
 		
 		/********* id 중복 check **********/
 		$("#idCheck").click(function(){
-			if($("#idCheck") != "" && idRule.test($("#id").val())){
+			if($("#idCheck") != "" && idRule.test($("#did").val())){
 				$.ajax({
-					url : "join_idCheck.do?did="+$("#id").val(),
+					url : "join_idCheck.do?did="+$("#did").val(),
 					success : function(result){
 						if(result == 0){
 							warningCheck("ok", $(".idTable"), "사용 가능한 아이디입니다.");
@@ -193,13 +212,13 @@ $(document).ready(function() {
 		/********* validation check *********/
 
 		$("#joinOk").click(function() {
-			if($("#id").val() == ""){
+			if($("#did").val() == ""){
 				warningCheck(true, $(".idTable"), "아이디를 입력해 주세요.");
-				$("#id").focus();
+				$("#did").focus();
 				return false;
-			}else if(!idRule.test($("#id").val())){
+			}else if(!idRule.test($("#did").val())){
 				warningCheck(true, $(".idTable"), "6~12자의 영문 혹은 영문과 숫자를 조합하여 입력해 주세요.");
-				$("#id").focus();
+				$("#did").focus();
 				return false;
 			}else if($("#pass").val() == "" || !passRule.test($("#pass").val())){
 				warningCheck(true, $(".passTable"), "10~14자 영문, 숫자, 특수문자를 조합하여 입력해 주세요.");
@@ -209,12 +228,15 @@ $(document).ready(function() {
 				warningCheck(true, $(".passCheckTable"), "비밀번호가 일치하지 않습니다.");
 				$("#passcheck").focus();
 				return false;
-			}else if($("#name").val() == ""){
+			}else if($("#dname").val() == ""){
 				warningCheck(true, $(".nameTable"), "이름을 입력해 주세요.");
-				$("#name").focus();
+				$("#dname").focus();
 				return false;
-			}else if($("#email1").val() == "" || $("#email2").val() == ""){
+			}else if($("#email1").val() == ""){
 				popup_setup("이메일을 입력해 주세요.", $("#email1"));
+				return false;
+			}else if($("#email2").val() == ""){
+				popup_setup("이메일을 입력해 주세요.", $("#email2"));
 				return false;
 			}else if(!emailCheck()){
 				popup_setup("유효하지 않은 이메일 형식입니다.", $("#email1"));
@@ -236,16 +258,37 @@ $(document).ready(function() {
 			}
 
 		});
-
-		/********* popup setup *********/
-		function popup_setup(guideLine, obj) {
-			$(".background_join").addClass("show_join");
-			$(".window_join").addClass("show_join");
-			$("#popup_joinGuide").text(guideLine);
-			$("#popup_joinOk").click(function() {
-				$(".background_join").removeClass("show_join");
-				$(".window_join").removeClass("show_join");
-				obj.focus();
-			});
+		
+		
+		
+	/********************************* login.do ************************************/
+	
+		
+	//login check
+	$("#loginOk").click(function(){
+		if($("#login_id").val() == ""){
+			warningCheck(true, $("#idInput"), "아이디를 입력해주세요.");
+			$("#login_id").css("border", "0.5px solid #D92121");
+			
+			$("#login_pass").css("border", "0.5px solid #dcdcdc");
+			warningCheck(false, $("#passInput"), "");
+			
+		}else if($("#login_pass").val() == ""){
+		
+			$("#login_id").css("border", "0.5px solid #dcdcdc");
+			warningCheck(false, $("#idInput"), "");
+			
+			$("#login_pass").css("border", "0.5px solid #D92121");
+			warningCheck(true, $("#passInput"), "비밀번호를 입력해주세요.");
+		}else{
+			warningCheck(false, $("#passInput"), "");
+			loginForm.submit();
 		}
 	});
+	
+	
+	/********************************** join_ok.do *********************************/
+	$("#loginGo").click(function(){
+		$(location).attr("href", "http://localhost:9000/dmu/login.do");
+	});
+});

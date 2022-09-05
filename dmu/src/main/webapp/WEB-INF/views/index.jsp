@@ -219,7 +219,7 @@
                     <div class="header-side">
                         <ul>
                             <li>
-                                <a href="/login/" class=""> LOGIN </a>
+                                <a href="login.do" class=""> LOGIN </a>
                             </li>
                             <li>
                                 <a href="/join/info" class=""> BECOME A MEMBER </a>

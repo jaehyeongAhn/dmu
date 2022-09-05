@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class TiketController {
+public class TicketController {
 	//exhibition_list :전시회 리스트
 	@RequestMapping(value="/exhibition_list.do", method=RequestMethod.GET)
 	public String exhibition_list() {
@@ -21,4 +21,12 @@ public class TiketController {
 		public String event_list() {
 			return "list/event_list";
 		}
+		
+	// ticketlist_write.do : 게시판 글쓰기 화면
+		 
+		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
+		public String board_write() {
+			return "/list/ticketlist_write";
+		}
+		
 }

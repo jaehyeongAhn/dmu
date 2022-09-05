@@ -49,6 +49,11 @@
 				<li data-v-7b1f57c8="" class="">
 					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/event_list.do" role="button">EVENT </a>
 				</li>
+				<li>
+					<a href="ticketlist_write.do">
+					<button type="button" class="btn_style">글쓰기</button>
+					</a>
+				</li>
 			</ul>
 		</div>
 <div data-v-7b1f57c8="" class="sub-contents-area">

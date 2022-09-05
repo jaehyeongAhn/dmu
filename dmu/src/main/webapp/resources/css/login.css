@@ -1,0 +1,251 @@
+
+	@font-face {
+		font-family: 'Geogrotesque';
+		src: local('Geogrotesque Light'),
+			local('/dmu/resources/font/Geogrotesque-Light'),
+			url('/dmu/resources/font/GeogrotesqueCyr-Light.woff2')
+			format('woff2'),
+			url('/dmu/resources/font/GeogrotesqueCyr-Light.woff') format('woff'),
+			url('/dmu/resources/font/GeogrotesqueCyr-Light.ttf')
+			format('truetype');
+		font-weight: 300;
+		font-style: normal;
+	}
+	
+	* {
+		font-family: "Geogrotesque";
+	}
+	body {
+		margin : 0;
+		padding : 0;
+	}
+	div.container h2 {
+		font-size: 3rem !important;
+		text-align: center;
+		line-height: 3.2rem;
+		letter-spacing: -0.08em;
+		font-weight : 500;
+	}
+	
+	form[name='loginForm'] {
+		text-align: center;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+	}
+	
+	.loginList {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		width: 408px;
+	}
+	
+	div#idInput, div#passInput {
+		border: 0.5px solid #dcdcdc;
+		width: 402.67px;
+		height: 60px;
+	}
+	
+	div#passInput {
+		margin-top: 20px;
+	}
+	
+	div#idInput input::placeholder, div#passInput input::placeholder {
+		color : #999999;
+	}
+	
+	div#idInput>input, div#passInput>input {
+		border: none;
+		width: 100%;
+		height: 100%;
+		padding: 16px;
+		font-size: 15px;
+		letter-spacing: -0.03rem;
+		height: 100%;
+		box-sizing: border-box;
+	}
+	div#idSetup {
+		display : flex;
+		justify-content : space-between;
+		margin-top : 20px;
+		align-items : center;
+    	padding-bottom: 20px;
+	}
+	
+	/* 체크박스 커스텀 */
+	input#id_save {
+		display : none;
+	}
+	input#id_save + label {
+	    cursor: pointer;
+	}
+	input#id_save:checked + label {
+	    cursor: pointer;
+	}
+	input#id_save + label::before {
+		content : "";
+	    border: 0.5px solid #dcdcdc;
+	    width: 24px;
+	    height: 24px;
+	    cursor: pointer;
+	    display: inline-block;
+	    vertical-align: middle;
+	    margin-right : 5px;
+	    cursor: pointer;
+	}
+	input#id_save:checked + label::before{
+		content: "";
+	    /*background: black;
+	    color : white;*/
+	    width: 24px;
+	    height: 24px;
+	    text-align: center;
+	    vertical-align: middle;
+	    background-image : url("http://localhost:9000/dmu/resources/images/check.png");
+	    background-size : cover;
+	    background-repeat : no-repeat;
+	}
+	label[for = "id_save"], div#id_save > div > a{
+		align-items: center;
+	    height: inherit;
+	    display: flex;
+	    vertical-align: middle;
+	}
+	
+	div#idSetup div:nth-child(2) a{
+		text-decoration : none;
+		color : gray;
+	}
+	div#idSetup div:nth-child(2) a:first-child::after {
+		content : "|";
+		color : lightgray;
+		padding-left : 5px;
+	}
+	
+	/****************** 로그인 버튼 *********************/
+	div#loginBtn, div#joinBtn {
+		margin-top : 20px;
+	}
+	div#joinBtn a {
+		width : 100%;
+		height : 60px;
+	}
+	div#loginBtn button, div#joinBtn button {
+		color : white;
+		width : 100%;
+		height : 60px;
+		font-size : 16px;
+		letter-spacing : -0.12rem;
+		font-weight : 400;
+	}
+	div#loginBtn button {
+		color : white;
+		background : black;
+		border : 0.5px solid black;
+	}
+	div#joinBtn button {
+		color : black;
+		background : white;
+		border : 0.5px solid black;
+	}
+	div#loginBtn button:hover {
+		background : white;
+		color : black;
+		cursor : pointer;
+	}
+	div#joinBtn button:hover {
+		background : #888888;
+		border : 0.5px solid #888888;
+		color : white;
+		cursor : pointer;
+	}
+	/******** 전체 페이지 *********/
+	main.login div.section{
+		min-width : 1200px;
+	}
+	
+	/******************** Popup SetUp***********************/
+	.login {
+		position : relative;
+		min-width : 1200px;
+		margin-top : 70px;
+		/* width : 100vw; */
+		/* top : 160px; */
+	}
+	.background_join {
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.7);
+		opacity: 0;
+		z-index: -1;
+		top : 0;
+		left : 0;
+	}
+	
+	.window_join {
+		width: 100vw;
+		height: 100vh;
+		position: relative;
+		top: 0;
+		left: 0;
+		min-width: 1200px;
+	}
+	
+	.popup_join {
+		width: 400px;
+		height: 200px;
+		background: white;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -30%);
+		text-align: center;
+		z-index: -1;
+	}
+	
+	#popup_joinGuide {
+		margin: 2rem 0;
+		letter-spacing: -0.08rem;
+		color: #4b4b4b;
+		padding : 7px 20px;
+		font-size : 16px;
+	}
+	
+	#popup_joinOk {
+		width: 85%;
+		height: 50px;
+		border: none;
+		background: black;
+		color: white;
+		font-size: 15px;
+		letter-spacing: -0.085rem;
+		font-weight: 500;
+		cursor : pointer;
+	}
+	
+	.show_join {
+		opacity: 1;
+		z-index: 10;
+		transition: all 0.3s;
+	}
+	
+	.show_join .popup_join {
+		z-index: 10;
+		transform: translate(-50%, -50%);
+		transition: all 0.3s;
+	}
+	
+	/************** header ****************/
+	iframe.header {
+		position : relative;
+		top : 0;
+		left : 0;
+	}
+	
+	/************** footer ****************/
+	iframe.footer {
+		position : absolute;
+		left : 0;
+	}
