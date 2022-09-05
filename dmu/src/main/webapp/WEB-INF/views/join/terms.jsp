@@ -11,17 +11,23 @@
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/join.js"></script>
-
+<script>
+	$(document).ready(function(){
+		let height = $(document).height();
+		$(".footer").css("top", height - 100);
+	}); 
+</script>
 </head>
 <body>
-	<!-- <iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe> -->
+	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 class = "header"></iframe>
+
 	<main class = "join">
 		<div class = "section">
 			<div class = "joinContainer">
 				<div class = "container">
 					<h3>회원가입</h3>
 				</div>
-				<form name = "join_termsForm" action = "#" method = "post">
+				<form name = "join_termsForm" action = "join_terms_ok.do" method = "post">
 					<fieldset>
 						<legend>약관동의</legend>
 						<div class = "checkList" id = "all_checkList">
@@ -29,16 +35,16 @@
 						</div>
 						<div class = "termsList">
 							<div class = "checkList">
-								<input type = "checkbox" id = "older" name = "older" class = "terms">
+								<input type = "checkbox" id = "older" name = "older" class = "terms" value = "y">
 								<label for = "older">[필수]&nbsp;&nbsp;만&nbsp;&nbsp;14세&nbsp;&nbsp;이상&nbsp;&nbsp;입니다.</label>
 							</div>
 							<div class = "checkList">
-								<input type = "checkbox" id = "consent" name = "consent" class = "terms">
+								<input type = "checkbox" id = "terms" name = "terms" class = "terms" value = "y">
 								<label for = "consent">[필수]&nbsp;&nbsp;이용약관&nbsp;&nbsp;동의</label>	
 								<!-- <span id = "consent_detail">[전문보기]</span>	 -->					
 							</div>
 							<div class = "checkList">
-								<input type = "checkbox" id = "unregister" name = "unregister" class = "terms">
+								<input type = "checkbox" id = "consent" name = "consent" class = "terms" value = "y">
 								<label for = "unregister">[필수]&nbsp;&nbsp;개인정보&nbsp;&nbsp;수집&nbsp;&nbsp;및&nbsp;&nbsp;이용에&nbsp;&nbsp;대한&nbsp;&nbsp;동의</label>														
 								<!-- <span id = "unregister_detail">[전문보기]</span> -->						
 							</div>
@@ -51,14 +57,15 @@
 				</form>
 			</div>
 		</div>
-	</main>
-	<div class = "background_terms">
-		<div class = "window_terms">
-			<div class = "popup_terms">
-				
+		<%-- <div class = "background_terms">
+			<div class = "window_terms">
+				<div class = "popup_terms">
+					
+				</div>
 			</div>
-		</div>
-	</div>
-	<!-- <iframe src="footer.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe> -->
+		</div> --%>
+	</main>
+	
+	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer"></iframe>
 </body>
 </html>

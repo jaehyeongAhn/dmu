@@ -11,9 +11,16 @@
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/join.js"></script>
+<script>
+	$(document).ready(function(){
+		let height = $(document).height();
+		$(".footer").css("top", height);
+	}); 
+</script>
 </head>
 <body>
-	<!-- <iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe> -->
+	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 class = "header"></iframe>
+	<div>
 	<main class = "join">
 		<div class = "section">
 			<div class = "joinContainer">
@@ -22,6 +29,9 @@
 				</div>
 				<div class="join_style">
 					<form name="joinFrom" action="joinController.do" method="post">
+						<input type = "hidden" name = "older" value = "${ vo.older }">
+						<input type = "hidden" name = "terms" value = "${ vo.terms }">
+						<input type = "hidden" name = "consent" value = "${ vo.consent }">
 						<fieldset class = "loginInformation">
 							<legend>로그인&nbsp;&nbsp;정보</legend>
 							<span class = "checkpoint">표시는 필수 입력 항목입니다.</span>
@@ -31,7 +41,7 @@
 										<label class = "checkpoint">아이디</label> 
 										<div class = "idTable">
 											<div style = "margin : 0;">
-												<input type="text" name="id" id = "id" placeholder = "아이디를 입력해주세요" maxlength = "12">
+												<input type="text" name="did" id = "did" placeholder = "아이디를 입력해주세요" maxlength = "12">
 											</div>
 											<button type = "button" id = "idCheck" disabled>중복체크</button>
 										</div>
@@ -59,39 +69,40 @@
 									<li>
 										<label>회원&nbsp;유형</label> 
 										<div class = "customerTable">
-											<input type="radio" name="customerType" id = "local" checked = "checked">
+											<input type="radio" name="nationality" id = "local" checked = "checked" value = "local">
 											<label for = "local">내국인</label>
-											<input type="radio" name="customerType" id = "foreign">
+											<input type="radio" name="nationality" id = "foreign" value = "foreign">
 											<label for = "foreign">외국인</label>
 										</div>
 									</li>
 									<li>
 										<label class = "checkpoint">이름</label> 
 										<div class = "nameTable">
-											<input type="text" name="id" id= "name" placeholder = "이름을 입력해주세요">
+											<input type="text" name="dname" id= "dname" placeholder = "이름을 입력해주세요">
 										</div>
 									</li>
 									<li>
 										<label class = "checkpoint">성별</label>
 										<div class = "genderTable">
-											<input type="radio" name = "gender" id = "m" checked="checked">
+											<input type="radio" name = "gender" id = "m" checked="checked" value = "m">
 											<label for = "m">남자</label>
-											<input type="radio" name = "gender" id = "f">
+											<input type="radio" name = "gender" id = "f" value = "f">
 											<label for = "f">여자</label>
 										</div>
 									</li>
 									<li>
 										<label class = "checkpoint">이메일</label>
 										<div class = "emailTable">
-											<input type = "text" name = "email1" id = "email1" placeholder = "이메일">@
-											<input type = "text" name = "email2" id = "email2">
+											<input type = "text" name = "email1" id = "email1" placeholder = "이메일"><span>@</span>
+											<input type = "text" name = "email2" id="email2">
 											<select name = "email3" id = "email3">
 												<option value = "default">직접입력</option>
 												<option value = "gmail.com">gmail.com</option>
 												<option value = "naver.com">naver.com</option>
-												<option value = "hanmail.com">hanmail.net</option>
+												<option value = "hanmail.net">hanmail.net</option>
 												<option value = "nate.com">nate.com</option>			
 											</select>
+											<!-- <input type = "hidden" name = "email" id = "email"> -->
 										</div>
 									</li>
 									<li>
@@ -164,6 +175,8 @@
 			</div>
 		</div>
 	</main>
-	<!-- <iframe src="footer.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe> -->
+	</div>
+	
+	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer"></iframe>
 </body>
 </html>
