@@ -76,7 +76,7 @@
 				<span data-v-3c1f59cb="" class="place"> 디뮤지엄 </span>
 					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do" target="_parent" class="title"> 어쨌든, 사랑 </a>
 						<p data-v-3c1f59cb="" class="explan"></p>
-						<span data-v-3c1f59cb="" class="term"> 2022.03.16 ~ 2022.10.30 </span></li>
+						<span data-v-3c1f59cb="" class="term"> 2022.03.16~ 2022.10.30 </span></li>
 			</ul>										
 </div>
 												
