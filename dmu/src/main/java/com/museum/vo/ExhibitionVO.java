@@ -3,7 +3,7 @@ package com.museum.vo;
 public class ExhibitionVO {
 	
 	int rno;
-	String did, dexhibtion,  dstart, dend, dprice, dplace, dinformation,dtimed;
+	String did, dexhibtion,  dstart, dend, dprice, dplace, dinformation, dtimed;
 	public int getRno() {
 		return rno;
 	}
