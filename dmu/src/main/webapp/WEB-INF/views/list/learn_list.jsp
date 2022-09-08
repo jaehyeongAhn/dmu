@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>dmu</title>
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/tiket.css">
+<link rel="stylesheet"  href="http://localhost:9000/dmu/resources/css/tiket.css">
+<link rel="stylesheet"  href="http://localhost:9000/mycgv/resources/css/am-pagination.css">
+<script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 </head>
 <body>
 <iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
@@ -95,6 +98,11 @@
 
 		<span data-v-41f56098="" class="total">총 <strong>9</strong>건</span>
 			<ul data-v-41f56098="" class="order">
+				<li data-v-3c1f59cb="" class="">
+					<a data-v-3c1f59cb="" href="ticketlist_write.do">
+					<button type="button" class="btn_style">글쓰기</button>
+					</a>			
+				</li>
 				<li data-v-41f56098="" class="on">
 					<a data-v-41f56098="" href="javascript:void(0);">시작일 순</a>
 				</li>
@@ -105,127 +113,51 @@
 			</ul>
 		</div>
 <div data-v-41f56098="" class="ticket-list education">
-													
+			<c:forEach var="vo" items="${list}">
+			<c:if test="${vo.dcode eq'laern'}">
 			<ul data-v-41f56098="">
 				<li data-v-41f56098="">
+						<c:if test="${vo.dsfile != null }">
 					<a data-v-41f56098="" href="javascript:void(0);" class="thumb">
-						<img data-v-2fed1a9a="" data-v-41f56098=""
-							src="https://cdn.daelimmuseum.org/Program/Learn/List/B/Big/202205/20220510114220805001.jpg"
-					alt="Culture English Club" style=""></a>
+						<img data-v-2fed1a9a="" data-v-1e8092ec=""src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"></a>
+						</c:if>
 			<ul data-v-41f56098="" class="flag">
-				<li data-v-41f56098="">1회성 교육</li>
-				<li data-v-41f56098="">디뮤지엄</li>
+				<li data-v-41f56098="">${vo.dnum}회성 교육</li>
+				<li data-v-41f56098="">${vo.dplace}</li>
 			<!---->
 			<!---->
 			</ul>
 					<a data-v-41f56098="" href="javascript:void(0);"
-					class="title"> Culture English Club </a>
+					class="title">${vo.dtitle}</a>
 					
-						<p data-v-41f56098="" class="explan">Culture Lover들의 문화·예술로 익히는 영어습관</p>
+					<!-- <p data-v-41f56098="" class="explan">Culture Lover들의 문화·예술로 익히는 영어습관</p> -->
 			<ul data-v-41f56098="" class="info">
 					<li data-v-41f56098="">
 						<span data-v-41f56098="" class="tit">교육진행</span>
-						<span data-v-41f56098="" class="txt">2022.06.08 ~ 2022.09.14 19:00 ~ 19:50</span>
+						<span data-v-41f56098="" class="txt">${vo.dstart}~ ${vo.dend}</span>
 					</li>
 					<li data-v-41f56098="">
 						<span data-v-41f56098="" class="tit">장소</span>
-						<span data-v-41f56098="" class="txt">디뮤지엄 교육센터 3교육실</span>
+						<span data-v-41f56098="" class="txt">${vo.dplace}</span>
 					</li>
 					<li data-v-41f56098="">
 						<span data-v-41f56098="" class="tit">대상</span>
-						<span data-v-41f56098="" class="txt">성인</span></li>
+						<span data-v-41f56098="" class="txt">${vo.dtarget}</span></li>
 					<li data-v-41f56098="">
 						<span data-v-41f56098=""class="tit">교육시간</span>
-						<span data-v-41f56098="" class="txt">50분</span>
+						<span data-v-41f56098="" class="txt">${vo.dtime}</span>
 					</li>
 					<li data-v-41f56098="">
 						<span data-v-41f56098="" class="tit">참가비</span>
-						<span data-v-41f56098="" class="txt">15,000 원</span>
+						<span data-v-41f56098="" class="txt">${vo.dprice} 원</span>
 					</li>
 				</ul>
-			</li>
-					<li data-v-41f56098="">
-						<a data-v-41f56098=""href="javascript:void(0);" class="thumb">
-							<img data-v-2fed1a9a="" data-v-41f56098=""
-							src="https://cdn.daelimmuseum.org/Program/Learn/List/B/Big/202205/20220504184703612001.png"
-							alt="유아프로그램: 꼬마뮤지엄" style="">
-						</a>
-				<ul data-v-41f56098="" class="flag">
-					<li data-v-41f56098="">1회성 교육</li>
-					<li data-v-41f56098="">디뮤지엄</li>
-					<!---->
-					<!---->
-				</ul>
-						<a data-v-41f56098="" href="javascript:void(0);"
-						class="title"> 유아프로그램: 꼬마뮤지엄 </a>
-						<p data-v-41f56098="" class="explan"></p>
-				<ul data-v-41f56098="" class="info">
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">교육진행</span>
-						<span data-v-41f56098="" class="txt">2022.04.22 ~ 2022.10.31 </span>
-					</li>
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">장소</span>
-						<span data-v-41f56098="" class="txt">디뮤지엄 M1 교육센터 1 교육실</span>
-					</li>
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">대상</span>
-						<span data-v-41f56098="" class="txt">유아</span>
-					</li>
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">교육시간</span>
-						<span data-v-41f56098="" class="txt">120분</span>
-					</li>
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">참가비</span>
-						<span data-v-41f56098="" class="txt">50,000 원</span>
-					</li>
-				</ul>
-			</li>
-					<li data-v-41f56098="">
-						<a data-v-41f56098="" href="javascript:void(0);" class="thumb">
-							<img data-v-2fed1a9a="" data-v-41f56098=""
-							src="https://cdn.daelimmuseum.org/Program/Learn/List/B/Big/202204/20220408201908816001.jpg"
-							alt="키즈워크룸 : 애니메이터 프로젝트(개인)" style="">
-						</a>
-				<ul data-v-41f56098="" class="flag">
-					<li data-v-41f56098="">1회성 교육</li>
-					<li data-v-41f56098="">디뮤지엄</li>
-					<li data-v-41f56098="">전시연계</li>
-				<!---->
-				</ul>
-						<a data-v-41f56098="" href="javascript:void(0);"
-						class="title"> 키즈워크룸 : 애니메이터 프로젝트(개인) 
-						</a>
-						<p data-v-41f56098="" class="explan">움직이는 그림을 만드는 우리는,
-						키즈 애니메이터! 과학과 움직임의 원리가 더해진 무빙 프로젝터로 2D 애니메이션을 제작하는 문제해결
-						중심 융·복합 교육
-						</p>
-				<ul data-v-41f56098="" class="info">
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">교육진행</span>
-						<span data-v-41f56098="" class="txt">2022.04.01 ~ 2022.10.30 </span>
-					</li>
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">장소</span>
-						<span data-v-41f56098="" class="txt">디뮤지엄 4 교육실</span>
-					</li>
-					
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">대상</span>
-						<span data-v-41f56098="" class="txt">어린이</span>
-					</li>
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">교육시간</span>
-						<span data-v-41f56098="" class="txt">120분</span>
-					</li>
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">참가비</span>
-						<span data-v-41f56098="" class="txt">33,000 원</span>
-					</li>
-				</ul>
-			</li>
-		</ul>
+			</ul>
+			</c:if>
+			</c:forEach>								
+				
+			
+		
 	</div>
 <div data-v-41f56098="" class="btn-more-area">
 <div data-v-26e42198="" data-v-41f56098="" class="btn-area">
@@ -240,6 +172,11 @@
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</main>
+
 		<iframe src="footer.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
 	</body>
 </html>
