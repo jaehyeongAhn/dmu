@@ -38,7 +38,7 @@ public class JoinController {
 	
 	//idCheck.do : 아이디 중복 확인
 	@ResponseBody
-	@RequestMapping(value = "/join_idCheck.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/join_idCheck.do", method = RequestMethod.POST)
 	public String idCheck(String did) {
 		DmuMemberDAO dao = new DmuMemberDAO();
 		int result = dao.idCheck(did);

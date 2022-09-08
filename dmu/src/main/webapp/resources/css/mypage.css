@@ -1,0 +1,220 @@
+
+	*{
+		padding : 0;
+		margin : 0;
+	}
+	.footer {
+		margin-top : 130px;
+	}
+	/**** 사이드 메뉴 ****/
+	div.container{
+		display : flex;
+		min-width : 1200px;
+		width : 626px;
+		margin : 0 auto;
+	}
+	aside.mypage {
+		width : 190px;
+		padding : 20px;
+		display : table-cell;
+	}
+	div.mypage-list {
+		width : inherit;
+	}
+	div.mypage-list a.mypage-main {
+		font-size: 23px;
+   	 	text-decoration: none;
+    	color: black;
+    	display : block;
+    	padding : 10px;
+    	width : 190px;
+	}
+	div.mypage-list a.mypage-main::after{
+		content: "";
+	    width: inherit;
+	    height: 2px;
+	    background: black;
+	    border: none;
+	    position: relative;
+	    top: 13px;
+    	left: -10px;
+	    display: block;
+	    box-sizing: border-box;
+	}
+	li.on {
+		padding : 10px;
+	}
+	div.mypage-menu-list ul{
+		list-style : none;
+		padding : 0;
+		margin : 0;
+	}
+	div.mypage-menu-list ul li a.menu-title{
+		font-size: 19px;
+	    font-weight: 600;
+	    letter-spacing: -0.02rem;
+	    margin : 15px 0;
+	    display : block;
+	    text-decoration : none;
+	    color : black;
+	}
+	div.mypage-menu-list ul li a.menu-title::after{
+		content: "";
+	    width: 190px;
+	    height: 1px;
+	    background: #d7d7d7;
+	    position: relative;
+	    top: 11px;
+	    left: -10px;
+	    display: block;
+	}
+	div.sub-menu-list ul {
+		margin : 20px 0 0 0;
+	}
+	div.sub-menu-list ul li{
+		font-weight: 300;
+	    letter-spacing: -0.08rem;
+	    padding: 10px 0;
+	}
+	div.sub-menu-list ul li a{
+		text-decoration : none;
+	    color: #959595;
+	    font-size : 17.5px;
+	}
+	div.sub-menu-list ul li a:hover{
+	    color: black;
+	    font-size : 17.5px;
+	    font-weight : 700;
+	}
+	
+	/* content */
+	div.sub-contents {
+		display: table-cell;
+	    top: 0;
+	    left: 220px;
+	    padding: 20px;
+	    width : 100%;
+	}
+	div.gray-box {
+		width : 100%;
+		background : #f8f8f8;
+	}
+	div.gray-box p {
+		font-size : 38px;
+		letter-spacing : -0.08rem;
+		display : inherit;
+	}
+	div.gray-box strong {
+		font-size : 40px;
+	}
+	div.greeting-area {
+		padding : 50px 50px;
+		box-sizing : border-box;
+	}
+	div.greeting-area p::before {
+	    content: "";
+	    width: 70px;
+	    height: 70px;
+	    background-image: url(http://localhost:9000/dmu/resources/images/mypage_name.gif);
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	    display: inline-block;
+	    vertical-align: middle;
+	    margin-right : 20px;
+	    border-radius : 50%;
+	}
+	div.purchase-list {
+		width : 100%;
+		margin : 50px 0;
+	}
+	div.purchase-title {
+		color: #959595;
+	    font-weight: 400;
+	    letter-spacing: -0.04rem;
+	    display: flex;
+					align-items: center;
+					padding: 0 0 20px 0;
+	}
+	div.purchase-title a {
+		color: black;
+	    text-decoration: none;
+	    font-size: 25px;
+	    display : flex;
+	    align-items : center;
+	}
+	div.purchase-title a::after {
+	    content: ">";
+	    align-items: center;
+	    font-size: 14px;
+	    margin-left: 10px;
+	    vertical-align: middle;
+	}
+	div.purchase-title:before {
+	    content: "";
+	    width: 50px;
+	    height: 50px;
+	    background-image: url(http://localhost:9000/dmu/resources/images/ticket.svg);
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    display: inline-block;
+					background-position-y: 50%;
+					margin-right : 10px;
+	}
+	div.purchase-title div p {
+		margin : 0;
+	}
+	div.purchase-result::before {
+	    content: "";
+	    width: 100%;
+	    height: 1px;
+	    background: black;
+	    display: block;
+	}
+	div.purchase-result-title {
+		display: flex;
+	    align-items: center;
+	    justify-content: space-between;
+	    background: #f8f8f8;
+	    border: 0.5px solid #d9d9d9;
+	    padding: 18px 30px;
+	}
+	div.purchase-result-title p {
+		margin : 0;
+		font-size : 17px;
+	}
+	div.purchase-result-title strong {
+		font-size : 20px;
+	}
+	div.purchase-result-content {
+		display : flex;
+		padding : 0 30px;
+		align-items: center;
+		border: 0.5px solid #d9d9d9;
+	}
+	div.purchase-result-content img {
+		width: 300px;
+	    height: 200px;
+	    background: gray;
+	}
+	div.purchase-result-content-text {
+		margin-left: 50px;
+					padding: 25px;
+					box-sizing : border-box;
+	}
+	div.purchase-result-content-text a {
+					display: block;
+		font-size: 45px;
+		margin-top: 35px;
+		text-decoration : none;
+		color : black;
+	}
+	div.purchase-result-content-text div {
+		margin: 40px 0;
+	    color: #363333;
+	    font-size: 17px;
+	}
+	div.purchase-result-content-text span.date::after {
+		content: ":";
+	    color: #afafaf;
+	    margin: 0 15px;
+	}

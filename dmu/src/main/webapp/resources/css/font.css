@@ -1,45 +1,4 @@
-
-@font-face {
-    font-family: 'Geogrotesque';
-    src: local('Geogrotesque Thin'), local('Geogrotesque-Thin'),
-        url('/dmu/resources/font/GeogrotesqueCyr-Thin.woff2') format('woff2'),
-        url('/dmu/resources/font/GeogrotesqueCyr-Thin.woff') format('woff'),
-        url('/dmu/resources/font/GeogrotesqueCyr-Thin.ttf') format('truetype');
-    font-weight: 100;
-    font-style: normal;
-  }
-@font-face {
-	font-family: 'Geogrotesque';
-	src: local('Geogrotesque Light'),
-		local('/dmu/resources/font/Geogrotesque-Light'),
-		url('/dmu/resources/font/GeogrotesqueCyr-Light.woff2')
-		format('woff2'),
-		url('/dmu/resources/font/GeogrotesqueCyr-Light.woff')
-		format('woff'),
-		url('/dmu/resources/font/GeogrotesqueCyr-Light.ttf')
-		format('truetype');
-	font-weight: 300;
-	font-style: normal;
-}
-@font-face {
-    font-family: 'Geogrotesque';
-    src: local('Geogrotesque Regular'), local('Geogrotesque-Regular'),
-        url('/dmu/resources/font/GeogrotesqueCyr-Regular.woff2') format('woff2'),
-        url('/dmu/resources/font/GeogrotesqueCyr-Regular.woff') format('woff'),
-        url('/dmu/resources/font/GeogrotesqueCyr-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
- }
- @font-face {
-    font-family: 'Geogrotesque';
-    src: local('Geogrotesque Medium'), local('Geogrotesque-Medium'),
-        url('/dmu/resources/font/GeogrotesqueCyr-Medium.woff2') format('woff2'),
-        url('/dmu/resources/font/GeogrotesqueCyr-Medium.woff') format('woff'),
-        url('/dmu/resources/font/GeogrotesqueCyr-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
- }
- 
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard-std.css");
 * {
-	font-family: "Geogrotesque";
+	font-family: -apple-system, BlinkMacSystemFont, "Pretendard Std", Pretendard, Roboto, "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }

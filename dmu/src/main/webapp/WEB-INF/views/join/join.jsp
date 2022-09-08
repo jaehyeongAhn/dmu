@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>D MUSEUM</title>
+<title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/join.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
@@ -15,6 +15,10 @@
 	$(document).ready(function(){
 		let height = $(document).height();
 		$(".footer").css("top", height);
+		
+		$("#cancle").click(function(){
+			$(location).attr("href", "index.do");
+		});
 	}); 
 </script>
 </head>
