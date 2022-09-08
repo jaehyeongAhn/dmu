@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: user
-=======
-Built-By: zwal9
->>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
 Build-Jdk: 11.0.14
 Created-By: Maven Integration for Eclipse
 

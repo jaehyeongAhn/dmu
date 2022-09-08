@@ -115,7 +115,7 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-<<<<<<< HEAD
+
 		</dependency>
 		  <!-- FileUpload - MultipartHttpServletRequset -->
 		<dependency>
@@ -129,15 +129,7 @@
 		  <artifactId>commons-fileupload</artifactId>
 		  <version>1.4</version>
 		</dependency>      
-=======
-		</dependency> 
-		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-		<dependency>
-		    <groupId>com.google.code.gson</groupId>
-		    <artifactId>gson</artifactId>
-		    <version>2.9.0</version>
-		</dependency>
->>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
+
 	</dependencies>
     <build>
         <plugins>

@@ -41,13 +41,13 @@
 					<input type="text" name="dprice" id="dprice">
 					<label>장소(공통)</label>
 					<input type="text" name="dplace" id="dplace">
-					<label>정원(교육)</label>
+					<label>정원(0이라도입력)</label>
 					<input type="text" name="dpersonnel" id="dpersonnel">
 				</li>
 				<li>
 					<label>대상(교육,이벤트)</label>
 					<input type="text" name="dtarget" id="dtarget">
-					<label>교육횟수(교육)</label>
+					<label>교육횟수(0이라도입력)</label>
 					<input type="text" name="dnum" id="dnum">
 				</li>
 				 
