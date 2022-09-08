@@ -30,14 +30,9 @@
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/notice.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
-</head>
+<script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no"
-		frameborder=0></iframe>
-	<form name="noticeUpdateForm" action="admin_notice_update_check.do" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="nid" value="${vo.nid}">
+	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
 	<main>
 		<section class="sub-contents-wrap">
 			<div data-v-0d03d759="" class="sub-top-area notice">
@@ -57,66 +52,36 @@
 				<div class="container">
 					<div class="notice-view-area">
 						<div class="base-info-area">
+							<span class="category">${vo.ncategory}</span>
 							<div class="title-area">
-								<strong class="title">공지사항 작성 폼</strong>
+								<strong class="title">${vo.ntitle}</strong>
+								<span class="date">${vo.ndate}</span>
 							</div>
 						</div>
-						<div class="notice-content-write">
-
-							<table class="MsoTableGrid" border="1" cellspacing="0"
-								cellpadding="0" width="100%"
-								style="width: 898.369px; letter-spacing: -0.3px; border: none;">
-
-								<ul>
-									<li>
-									<label>카테고리</label> 
-									<select name="ncategory" class="select-area-write">
-											<option value="defalut">선택</option>
-											<option value="디뮤지엄">디뮤지엄</option>
-											<option value="대림미술관">대림미술관</option>
-											<option value="구슬모아당구장">구슬모아당구장</option>
-											<option value="뮤지엄샵">뮤지엄샵</option>
-									</select></li>
-									<li>
-										<label>제목</label> 
-										<input type="text" name="ntitle" class="input-area-write" id="ntitle" value="${vo.ntitle}">
-									</li>
-									<li>
-										<label>내용</label> 
-										<textarea name="ncontent" class="input-area-write">${vo.ncontent}</textarea>
-									</li>
-								</ul>
-							</table>
-							<p class="a" style="line-height: normal;">
-								<br>
+						<div class="notice-content">
+							<p style="line-height: 1.5">
+								<font color="#666666">${vo.ncontent}</font>
 							</p>
 						</div>
 						<!---->
+						<div class="list-bottom-area">
+<!-- 							<ul>
+								<li class="next"><strong>다음글</strong><a
+									href="/noticeDetail/9" class=""> 신규 멤버십 &lt;D GREW&gt; 런칭 및
+										기존 멤버십 안내 </a></li>
+							</ul> -->
+						</div>
 					</div>
 					<div class="btn-bottom-area">
 						<div data-v-26e42198="" class="btn-area">
-							<button data-v-26e42198="" id="btn501" type="button"
-								class="secondary">수정완료</button>
-						<a href="admin_notice_content.do?nid=${vo.nid}">
-							<button data-v-26e42198="" id="btn50" type="button"
-								class="secondary">이전페이지</button>
-						</a>
-						<a href="admin_notice_list.do">
-							<button data-v-26e42198="" id="btn50" type="button"
+						<a href="notice_list.do">
+							<button data-v-26e42198="" id="btn62" type="button"
 								class="secondary">목록</button></a>
 						</div>
 					</div>
 				</div>
 			</div>
-			<iframe src="footer.do" width="100%" height="530px" scrolling="no"
-				frameborder=0></iframe>
-			<!-- built files will be auto injected -->
-			<footer>
-				<!-- 0510 네이버 공통 js 추가 -->
-				<script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script>
-			</footer>
 		</section>
 	</main>
-</form>
 </body>
 </html>
