@@ -35,34 +35,9 @@
 									</div>
 								</li>
 								<li class="on">
-									<a class="menu-title">MY SHOPPING</a>
-									<div class="sub-menu-list">
-										<ul>
-											<li class="">
-												<a href="#" href="#">주문내역</a>
-											</li>
-											<li class="">
-												<a class="" href="#">취소/반품내역</a>
-											</li>
-											<li class="">
-												<a class="" href="#">위시리스트</a>
-											</li>
-											<li class="">
-												<a class="" href="#">고객리뷰</a>
-											</li>
-											<li class="">
-												<a class="" href="#">상품문의</a>
-											</li>
-										</ul>
-									</div>
-								</li>
-								<li class="on">
 									<a class="menu-title">MY INFO</a>
 									<div class="sub-menu-list">
 										<ul>
-											<li class="">
-												<a class="" href="#">나의 문의</a>
-											</li>
 											<li class="">
 												<a class="" href="#">개인정보 변경/탈퇴</a>
 											</li>

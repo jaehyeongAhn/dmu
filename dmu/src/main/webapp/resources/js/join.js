@@ -206,6 +206,15 @@ $(document).ready(function() {
 			}
 		});
 		
+		//이름 확인
+		$("#dname").keyup(function(){
+			if($("#dname").val() == 0){
+				warningCheck(true, $(".nameTable"), "이름을 입력해 주세요.");
+			}else{
+				warningCheck(false, $(".nameTable"), "");
+			}
+		});
+		
 		/********* validation check *********/
 
 		$("#joinOk").click(function() {
@@ -225,9 +234,9 @@ $(document).ready(function() {
 				warningCheck(true, $(".passCheckTable"), "비밀번호가 일치하지 않습니다.");
 				$("#passcheck").focus();
 				return false;
-			}else if($("#name").val() == ""){
+			}else if($("#dname").val() == ""){
 				warningCheck(true, $(".nameTable"), "이름을 입력해 주세요.");
-				$("#name").focus();
+				$("#dname").focus();
 				return false;
 			}else if($("#email1").val() == "" || $("#email2").val() == ""){
 				popup_setup("이메일을 입력해 주세요.", $("#email1"));

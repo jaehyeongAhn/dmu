@@ -11,4 +11,10 @@ public class MypageController {
 	public String mypage_main() {
 		return "/mypage/mypage_main";
 	}
+	
+	//mypage_member.do : 마이페이지 메인
+	@RequestMapping(value = "/mypage_member.do", method = RequestMethod.GET)
+	public String mypage_member() {
+		return "/mypage/mypage_member";
+	}
 }
