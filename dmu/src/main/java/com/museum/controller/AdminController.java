@@ -136,7 +136,7 @@ public class AdminController {
 	}
 	
 	/*
-	 * admin_notice_delete.do
+	 * admin_notice_delete.do : 삭제 페이지
 	 */
 	
 	@RequestMapping(value = "/admin_notice_delete.do", method = RequestMethod.GET)

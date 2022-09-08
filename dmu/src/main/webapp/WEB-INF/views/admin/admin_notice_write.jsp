@@ -36,7 +36,7 @@
 <body>
 	<iframe src="header.do" width="100%" height="160px" scrolling="no"
 		frameborder=0></iframe>
-	<form name="noticeWriteForm" action="admin_notice_write_check.do" method="post" enctype="multipart/form-data">
+	<form name="noticeWriteForm" action="admin_notice_write_check.do" method="post">
 	<main>
 		<section class="sub-contents-wrap">
 			<div data-v-0d03d759="" class="sub-top-area notice">
@@ -70,7 +70,7 @@
 									<li>
 									<label>카테고리</label> 
 									<select name="ncategory" class="select-area-write">
-											<option value="defalut">선택</option>
+											<option value="default">선택</option>
 											<option value="디뮤지엄">디뮤지엄</option>
 											<option value="대림미술관">대림미술관</option>
 											<option value="구슬모아당구장">구슬모아당구장</option>

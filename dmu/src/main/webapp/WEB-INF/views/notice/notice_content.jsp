@@ -31,7 +31,6 @@
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/notice.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
 <body>
 	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
 	<main>
@@ -75,13 +74,7 @@
 					</div>
 					<div class="btn-bottom-area">
 						<div data-v-26e42198="" class="btn-area">
-						<a href="admin_notice_update.do?nid=${vo.nid}">
-							<button data-v-26e42198="" id="btn62" type="button"
-								class="secondary">수정하기</button></a>
-						<a href="admin_notice_delete.do?nid=${vo.nid}">
-							<button data-v-26e42198="" id="btn62" type="button"
-								class="secondary">삭제하기</button></a>
-						<a href="admin_notice_list.do">
+						<a href="notice_list.do">
 							<button data-v-26e42198="" id="btn62" type="button"
 								class="secondary">목록</button></a>
 						</div>

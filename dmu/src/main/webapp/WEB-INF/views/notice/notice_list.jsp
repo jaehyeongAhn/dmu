@@ -31,7 +31,6 @@
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/notice.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script>
 $(document).ready(function(){
@@ -56,7 +55,7 @@ $(document).ready(function(){
 	//페이징 번호 클릭 시 이벤트 처리
 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-           $(location).attr('href', "http://localhost:9000/dmu/admin_notice_list.do?rpage="+e.page);         
+           $(location).attr('href', "http://localhost:9000/dmu/notice_list.do?rpage="+e.page);         
     });
 	
 	});
@@ -136,12 +135,6 @@ $(document).ready(function(){
 							role="button" style="cursor: pointer;">뮤지엄샵</a></li>
 					</ul>
 				</div>
-<!-- 				<div data-v-26e42198="" class="btn-area">
-					<a href="admin_notice_write.do">
-					<button data-v-26e42198="" id="btn50_1" type="button"
-						class="secondary">글쓰기</button>
-					</a>
-				</div> -->
 				<div data-v-080a389a="" class="sub-contents-area">
 					<div data-v-1b9c8af9="" data-v-080a389a="" slot=""
 						class="container">
@@ -153,7 +146,7 @@ $(document).ready(function(){
 						
 							<ul data-v-1b9c8af9="" data-v-080a389a="">
 							<c:forEach var="vo" items="${list}">
-								<li data-v-1b9c8af9="" data-v-080a389a=""><a href="admin_notice_content.do?nid=${vo.nid}"
+								<li data-v-1b9c8af9="" data-v-080a389a=""><a href="notice_content.do?nid=${vo.nid}"
 									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
 										data-v-1b9c8af9="" data-v-080a389a="" class="number">${vo.rno}</span>
 										<span data-v-1b9c8af9="" data-v-080a389a="" class="category">${vo.ncategory}</span>

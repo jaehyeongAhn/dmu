@@ -20,7 +20,6 @@ public class DmuNoticeDAO extends DBConn{
 			pstmt.setString(1, vo.getNcategory());
 			pstmt.setString(2, vo.getNtitle());
 			pstmt.setString(3, vo.getNcontent());
-
 			
 			result = pstmt.executeUpdate();
 			close();
