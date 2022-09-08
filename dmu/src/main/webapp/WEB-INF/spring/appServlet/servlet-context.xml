@@ -30,8 +30,9 @@
 	<!-- service 객체 생성 -->
 	<beans:bean id="ticketService" class="com.museum.service.TicketServiceImpl"></beans:bean>
 	<beans:bean id="pageService" class="com.museum.service.PageServiceImpl"></beans:bean>
-	
 	<beans:bean id="emailService" class="com.museum.service.EmailServiceImpl"></beans:bean>
+	<beans:bean id="loginService" class="com.museum.service.LoginServiceImpl"></beans:bean>
+	<beans:bean id="joinService" class="com.museum.service.JoinServiceImpl"></beans:bean>
 	
 	<context:component-scan base-package="com.museum.dmu" />
 	<context:component-scan base-package="com.museum.controller" />

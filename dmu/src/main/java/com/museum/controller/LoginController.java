@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.museum.dao.DmuMemberDAO;
 import com.museum.service.EmailServiceImpl;
+import com.museum.service.LoginServiceImpl;
 import com.museum.vo.DmuMemberVO;
 
 @Controller
@@ -16,6 +17,9 @@ public class LoginController {
 
 	@Autowired
 	private EmailServiceImpl emailService;
+	
+	@Autowired
+	private LoginServiceImpl loginService;
 	
 	/***************************** 아이디 찾기 ***********************************/
 	//emailCode.do : 이메일 인증번호 발송
@@ -29,9 +33,7 @@ public class LoginController {
 	@ResponseBody
 	@RequestMapping(value = "/emailCheck.do", method = RequestMethod.POST)
 	public String emailCheck(String email, String name) {
-		DmuMemberDAO dao = new DmuMemberDAO();
-		
-		int result = dao.emailCheckId(email, name);
+		int result = loginService.emailCheckId(email, name);
 
 		return String.valueOf(result);
 	}
@@ -42,10 +44,8 @@ public class LoginController {
 	public ModelAndView password_alter(DmuMemberVO vo) {
 		ModelAndView mv = new ModelAndView();
 		
-		DmuMemberDAO dao = new DmuMemberDAO();
-		
 		//비밀번호 업데이트
-		int result = dao.login_update(vo);
+		int result = loginService.loginUpdate(vo);
 
 		if(result == 1) {
 			mv.addObject("result", result);
@@ -80,9 +80,7 @@ public class LoginController {
 	@ResponseBody
 	@RequestMapping(value = "/emailCheckPass.do", method = RequestMethod.POST)
 	public String emailCheckPass(String email, String name, String did) {
-		DmuMemberDAO dao = new DmuMemberDAO();
-
-		int result = dao.emailCheckPass(email, name, did);
+		int result = loginService.emailCheckPass(email, name, did);
 		
 		return String.valueOf(result);
 	}
@@ -97,9 +95,8 @@ public class LoginController {
 	@RequestMapping(value = "/login_findOk.do", method = RequestMethod.POST)
 	public ModelAndView login_findOk_Check(DmuMemberVO vo) {
 		ModelAndView mv = new ModelAndView();
-		DmuMemberDAO dao = new DmuMemberDAO();
 
-		String result = dao.selectId(vo);
+		String result = loginService.findId(vo);
 
 		if(!result.equals("")) {
 			mv.addObject("find_information", "아이디");
@@ -135,9 +132,8 @@ public class LoginController {
 	@RequestMapping(value = "/login_check.do", method = RequestMethod.POST)
 	public ModelAndView login_check(DmuMemberVO vo){
 		ModelAndView mv = new ModelAndView();
-		
-		DmuMemberDAO dao = new DmuMemberDAO();
-		int result = dao.login(vo);
+
+		int result = loginService.login(vo);
 		if(result == 1) {
 			mv.addObject("login_result", result);
 			mv.setViewName("index");
