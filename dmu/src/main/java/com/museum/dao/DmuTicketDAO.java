@@ -2,26 +2,37 @@ package com.museum.dao;
 
 import java.util.ArrayList;
 
+
+
 import com.museum.vo.DmuTicketVO;
  
 
 public class DmuTicketDAO extends DBConn {
 
+	/**
+	 *  insert : 게시글 추가
+	 */
 	public int insert(DmuTicketVO vo) {
 		int result = 0;
 		
-		String sql = " insert into dmu_ticket_list values('b_'||sequ_dmu_ticket_list.nextval,?, ?, ?, ?, ?, ?, ?) ";
+		String sql = " insert into dmu_ticket values('d_'||sequ_dmu_ticket.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,? )";
 		 	
 		try {
 			getPreparedStatement(sql);
 					 
-			pstmt.setString(1, vo.getDexhibtion());
-			pstmt.setString(2, vo.getDstart());
-			pstmt.setString(3, vo.getDend());
-			pstmt.setString(4, vo.getDprice());
-			pstmt.setString(5, vo.getDplace());
-			pstmt.setString(6, vo.getDinformation());
-			pstmt.setString(7, vo.getDtimed());
+			pstmt.setString(1, vo.getDtitle());
+			pstmt.setInt(2, vo.getDprice());
+			pstmt.setString(3, vo.getDplace());
+			pstmt.setString(4, vo.getDinformation());
+			pstmt.setInt(5, vo.getDpersonnel());
+			pstmt.setString(6, vo.getDtime());
+			pstmt.setString(7, vo.getDtarget());
+			pstmt.setInt(8, vo.getDnum());
+			pstmt.setString(9, vo.getDfile());
+			pstmt.setString(10, vo.getDsfile());
+			pstmt.setString(11, vo.getDstart());
+			pstmt.setString(12, vo.getDend());
+			pstmt.setString(13, vo.getDcode());
 			 		
 			result = pstmt.executeUpdate();
 					
@@ -32,84 +43,68 @@ public class DmuTicketDAO extends DBConn {
 		}		
 		return result;		
 	}
-	
-	/*
-	 *  insert : 게시글 전체 리스트 ( 추가 - 페이징 처리)
+	/**
+	 * select : exhibition 공지사항 리스트
 	 */
 	public ArrayList<DmuTicketVO> select(int startCount, int endCount){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
-		
-		String sql = "SELECT ROWNUM RNO, DID, dexhibtion,  dstart,dend, dprice, dPlace, dinformation,  dtime "
-				+ " FROM(SELECT DID, dexhibtion,  dstart, dend, dprice, dPlace, dinformation,  dtime  FROM dmu_ticket_list) ";
-				 
-		try {
+		String sql = " select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum "
+				 	+" from(select rownum rno,did,dplace,dtitle, to_char(dstart, 'yyyy-mm-dd') dstart ,"
+				 	+ " to_char(dend, 'yyyy-mm-dd') dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum "
+					+" from (select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum from dmu_ticket)) "
+					+" 	where rno between ? and ?";
+		try { 
 			getPreparedStatement(sql);
-			//페이징처리 맵핑
 			pstmt.setInt(1, startCount);
 			pstmt.setInt(2, endCount);
-		
+			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				DmuTicketVO vo = new DmuTicketVO();
-				
 				vo.setRno(rs.getInt(1));
 				vo.setDid(rs.getString(2));
-				vo.setDexhibtion(rs.getString(3));
-				vo.setDstart(rs.getString(4));
-				vo.setDend(rs.getString(4));
+				vo.setDplace(rs.getString(3));
+				vo.setDtitle(rs.getString(4));
+				vo.setDstart(rs.getString(5));
+				vo.setDend(rs.getString(6));
+				vo.setDfile(rs.getString(7));
+				vo.setDsfile(rs.getString(8));
+				vo.setDcode(rs.getString(9));
+				vo.setDtime(rs.getString(10));
+				vo.setDprice(rs.getInt(11));
+				vo.setDtarget(rs.getString(12));
+				vo.setDnum(rs.getInt(13));
 				
 				list.add(vo);
-				
 			}
 			
 			close();
-					
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return list;
 	}
 	
-	/*
-	 *  select : 게시글 상세보기
+	/**
+	 * totalCount : 전체 로우수 출력
 	 */
-	public DmuTicketVO select(String bid) {
-		DmuTicketVO vo = new DmuTicketVO();
-		
-		String sql = "select did, dexhibtion, dstart, dend, dprice,dplace,dinformation,dtime "
-				+ " from dmu_ticket_list where did=?";
+	public int totalCount() {
+		int result = 0;
+		String sql = "select count(*) from dmu_ticket";
 		
 		try {
 			getPreparedStatement(sql);
-			pstmt.setString(1, bid);
 			rs = pstmt.executeQuery();
-			
 			while(rs.next()) {
-				pstmt.setString(1, vo.getDexhibtion());
-				pstmt.setString(2, vo.getDstart());
-				pstmt.setString(3, vo.getDend());
-				pstmt.setString(4, vo.getDprice());
-				pstmt.setString(5, vo.getDplace());
-				pstmt.setString(6, vo.getDinformation());
-				pstmt.setString(7, vo.getDtimed());
+				result = rs.getInt(1);
 			}
-			
-		//	close(); 조회수 업데이트를 같은 곳에서 하기위해서 주석 처리해야된다
-			
+			//close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return vo;
-		
+		return result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }
  

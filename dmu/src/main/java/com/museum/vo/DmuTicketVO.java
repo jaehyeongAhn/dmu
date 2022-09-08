@@ -1,11 +1,27 @@
 package com.museum.vo;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class DmuTicketVO {
 	
-	int rno,dpersonnel,dnum;
-	String did, dexhibtion,dlearn, devent, dstart, dend, dprice, dplace, dinformation,dtimed,dfile,dsfile,dcode;
+	int rno,dpersonnel,dprice,dnum;
+	String did, dtitle, dstart, dend , dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget;
+	
+	CommonsMultipartFile file1;
+	public CommonsMultipartFile getFile1() {
+		return file1;
+	}
+	public void setFile1(CommonsMultipartFile file1) {
+		this.file1 = file1;
+	}
 	public String getDcode() {
 		return dcode;
+	}
+	public String getDtarget() {
+		return dtarget;
+	}
+	public void setDtarget(String dtarget) {
+		this.dtarget = dtarget;
 	}
 	public void setDcode(String dcode) {
 		this.dcode = dcode;
@@ -22,6 +38,8 @@ public class DmuTicketVO {
 	public void setDpersonnel(int dpersonnel) {
 		this.dpersonnel = dpersonnel;
 	}
+
+	
 	public int getDnum() {
 		return dnum;
 	}
@@ -34,23 +52,12 @@ public class DmuTicketVO {
 	public void setDid(String did) {
 		this.did = did;
 	}
-	public String getDexhibtion() {
-		return dexhibtion;
+
+	public String getDtitle() {
+		return dtitle;
 	}
-	public void setDexhibtion(String dexhibtion) {
-		this.dexhibtion = dexhibtion;
-	}
-	public String getDlearn() {
-		return dlearn;
-	}
-	public void setDlearn(String dlearn) {
-		this.dlearn = dlearn;
-	}
-	public String getDevent() {
-		return devent;
-	}
-	public void setDevent(String devent) {
-		this.devent = devent;
+	public void setDtitle(String dtitle) {
+		this.dtitle = dtitle;
 	}
 	public String getDstart() {
 		return dstart;
@@ -64,10 +71,11 @@ public class DmuTicketVO {
 	public void setDend(String dend) {
 		this.dend = dend;
 	}
-	public String getDprice() {
+	
+	public int getDprice() {
 		return dprice;
 	}
-	public void setDprice(String dprice) {
+	public void setDprice(int dprice) {
 		this.dprice = dprice;
 	}
 	public String getDplace() {
@@ -82,11 +90,12 @@ public class DmuTicketVO {
 	public void setDinformation(String dinformation) {
 		this.dinformation = dinformation;
 	}
-	public String getDtimed() {
-		return dtimed;
+	
+	public String getDtime() {
+		return dtime;
 	}
-	public void setDtimed(String dtimed) {
-		this.dtimed = dtimed;
+	public void setDtime(String dtime) {
+		this.dtime = dtime;
 	}
 	public String getDfile() {
 		return dfile;
