@@ -21,7 +21,7 @@
       <beans:property name="password" value="${email.password}" />
       <beans:property name="javaMailProperties">
          <beans:props>
-                <beans:prop key="mail.transport.protocol">smtp</beans:prop>
+                 <beans:prop key="mail.transport.protocol">smtp</beans:prop>
                 <beans:prop key="mail.smtp.auth">true</beans:prop>
                 <!-- gmail의 경우 보안문제 업데이트로 인해 SSLSocketFactory를 추가해야 smtp 사용 가능. -->
                 <beans:prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</beans:prop>

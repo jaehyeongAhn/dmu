@@ -19,8 +19,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
-<link rel="stylesheet"
-		href="http://localhost:9000/dmu/resources/css/ticket.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
 
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -64,16 +63,23 @@
 														alt="어쨌든, 사랑" style="">
 												</div>
 												<div data-v-8ed31374="" class="title-ticket">
-													<h2 data-v-8ed31374="" class="title">${ vo.dexhibtion }</h2>
+													<h2 data-v-8ed31374="" class="title">${ vo.dtitle }</h2>
 													<span data-v-8ed31374="" class="explan"> </span>
 												</div>
 												<div data-v-8ed31374="" class="info-ticket">
 													<ul data-v-8ed31374="">
-														<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">장소</strong><span data-v-8ed31374="" class="text">${ vo.dplace }</span></li>
-														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">전시기간</strong><span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span></li>
-														<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">운영시간</strong><span data-v-8ed31374="" class="text">${ vo.dtime } 
-															 
-															</span></li>
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">장소</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dplace }</span>
+														</li>
+														<li data-v-8ed31374="" class="">
+															<strong data-v-8ed31374="" class="title">전시기간</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span>
+														</li>
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">운영시간</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dtime }</span>
+														</li>
 														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
 															<p data-v-8ed31374="" class="price">${ vo.dprice } </p>
 														</li>
