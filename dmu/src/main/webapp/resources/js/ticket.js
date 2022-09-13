@@ -34,7 +34,7 @@ $(document).ready(function(){
 							return false;
 						}else{
 							//서버전송
-							boardWriteForm.submit();
+							ticketlistform.submit();
 						} 
 					});
 	

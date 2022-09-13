@@ -32,6 +32,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
+<script>
+	$(document).ready(function(){
+		let ncategory = "${ vo.ncategory }"
+		$(".select-area-write").val(ncategory);
+	});
+</script>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="160px" scrolling="no"

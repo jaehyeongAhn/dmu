@@ -36,7 +36,19 @@ $(document).ready(function(){
 			obj.next().remove();
 		}
 	}
-		
+
 	
+	$("#loginOk").click(function(){
+		if($("#login_id").val().trim() == ""){
+			warningCheck(false, $("#passInput"), "");
+			warningCheck(true, $("#idInput"), "아이디를 입력해주세요.");
+		}else if($("#login_pass").val().trim() == ""){
+			warningCheck(false, $("#idInput"), "");
+			warningCheck(true, $("#passInput"), "비밀번호를 입력해주세요.");
+		}else{
+			warningCheck(false, $("#passInput"), "");
+			loginForm.submit();
+		}
+	});
 	
 });

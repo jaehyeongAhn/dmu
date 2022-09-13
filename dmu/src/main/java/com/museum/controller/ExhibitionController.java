@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.museum.dao.TicketDAO;
-import com.museum.vo.ExhibitionVO;
+import com.museum.dao.DmuTicketDAO;
+import com.museum.vo.DmuTicketVO;
+ 
  
  
  
@@ -22,8 +23,8 @@ public class ExhibitionController {
 	@RequestMapping(value="/exhibition.do", method=RequestMethod.GET)
 	public ModelAndView exhibition(String did) {
 		ModelAndView mv = new ModelAndView();
-		TicketDAO dao = new TicketDAO();
-		ExhibitionVO vo = dao.select(did);
+		DmuTicketDAO dao = new DmuTicketDAO();
+		DmuTicketVO vo = dao.select(did);
 		
 		
 		/*
@@ -37,33 +38,7 @@ public class ExhibitionController {
 		return mv;
 	}
 	
-	
-	@RequestMapping(value="/exhibition_write.do", method=RequestMethod.GET)
-	public String exhibition_write() {
-		return "/exhibition/exhibition_write";
-	}
-	
-	@RequestMapping(value="/exhibition_write_check.do", method=RequestMethod.POST)
-	public ModelAndView exhibition_write_check(ExhibitionVO vo) {
-	
-		ModelAndView mv = new ModelAndView();
-		TicketDAO dao = new TicketDAO();	
-		int result =  dao.insert(vo);
-		 
-		if(result == 1) {
-		
 	 
-		mv.setViewName("redirect:/exhibition_list.do");
-		 
-		}else {			
-			mv.setViewName("error_page");
-		}
-			
-		return mv;
-	}
-	
-	
-	
 	
 	@RequestMapping(value="/learn.do", method=RequestMethod.GET)
 	public String learn() {
@@ -77,19 +52,7 @@ public class ExhibitionController {
 	
 	
 	
-	/////////////////LIST////////////////
-	
-	/*
-	 * @RequestMapping(value="/exhibition_list.do", method=RequestMethod.GET) public
-	 * ModelAndView exhibition_list(String did) {
-	 * 
-	 * ModelAndView mv = new ModelAndView(); TicketDAO dao = new TicketDAO();
-	 * 
-	 * 
-	 * mv.setViewName("/ticketlist/exhibition_list");
-	 * 
-	 * return mv; }
-	 */
+	 
 	
 	
 	 

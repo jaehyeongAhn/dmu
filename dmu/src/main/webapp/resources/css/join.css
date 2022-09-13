@@ -624,6 +624,13 @@ iframe.footer {
 }
 
 /************************* join_ok **************************/
+main.join_ok {
+	min-width : 1200px;
+	margin-top : 50px;
+}
+main.join_ok div.section {
+	height : 500px;
+}
 div.content {
 	text-align : center;
 }
@@ -660,4 +667,15 @@ button#loginGo:hover {
 	background-color : white;
 	letter-spacing : -0.08rem;
 	cursor : pointer;
+}
+
+/********************** idfind *************************/
+
+a.pass_check {
+	text-decoration : none;
+	color : #5d5d5d;
+}
+a.pass_check:hover {
+	text-decoration : underline;
+	color : black;
 }

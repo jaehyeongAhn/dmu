@@ -208,6 +208,197 @@
         src="https://maps.googleapis.com/maps-api-v3/api/js/50/2/common.js"></script>
     <script type="text/javascript" charset="UTF-8"
         src="https://maps.googleapis.com/maps-api-v3/api/js/50/2/util.js"></script>
+        
+    <script>
+    	$(document).ready(function(){
+    		
+    		let index = 0;
+    		
+    		function text_slide(){
+        		//텍스트 슬라이드
+        		$(".whats-info").find("span:nth-child(1)").removeClass("category");
+    			$(".whats-info").find("strong").removeClass("title");
+    			$(".whats-info").find("span:nth-child(3)").removeClass("period");
+    			$(".whats-info").find("span:nth-child(4)").removeClass("place");
+    			$(".whats-info").children("div").removeClass("btn-group");
+    			$(".whats-info").children("div div").removeClass("btn-area");
+    			$(".whats-info").children("div div button").removeClass("primary");
+    			$(".whats-info-area li.on").find("div").removeClass("whats-info");
+    			
+    			$(".whats-info-area").find("li").removeClass("on");
+    			$(".whats-info-area").find("li div").css("display", "none");
+    			$(".whats-info-area").find("li:nth-child(" + (index + 1) + ") div").addClass("whats-info");
+    			$(".whats-info-area").find("li:nth-child(" + (index + 1) + ")").addClass("on");
+    			$(".whats-info-area li.on").find("div.whats-info").css("display", "table-cell");
+
+    			$(".whats-info").find("span:nth-child(1)").addClass("category");
+    			$(".whats-info").find("strong").addClass("title");
+    			$(".whats-info").find("span:nth-child(3)").addClass("period");
+    			$(".whats-info").find("span:nth-child(4)").addClass("place");
+    			$(".whats-info").children("div").addClass("btn-group");
+    			$(".whats-info").children("div div").addClass("btn-area");
+    			$(".whats-info").children("div div button").addClass("primary");
+    		}
+    		
+    		function slider_method(){
+				//slider
+    			$(".swiper-slide:nth-child(" + (index - 1) + ")").removeClass("swiper-slide-prev");
+    			$(".swiper-slide:nth-child(" + (index) + ")").removeClass("swiper-slide-active");
+    			$(".swiper-slide:nth-child(" + (index + 1) + ")").removeClass("swiper-slide-next");
+    			
+    			$(".swiper-slide:nth-child(" + (index) + ")").addClass("swiper-slide-prev");
+    			$(".swiper-slide:nth-child(" + (index + 1) + ")").addClass("swiper-slide-active");
+    			$(".swiper-slide:nth-child(" + (index + 2) + ")").addClass("swiper-slide-next");
+    		}
+    		
+    		$("button.btn-next.btn-whats-next").click(function(){
+    			if(index < 4){
+        			index += 1;
+        			
+        			let img = $(".swiper-slide-active").children("img").width() + 40;
+        			let img_containter = $(".slide-img-area").width();
+        			
+        			slider_method();
+        			
+        			text_slide();
+        			
+    				//이미지 슬라이드
+    				$(this).removeClass("swiper-button-disabled");
+    				$(this).attr("aria-disabled", false);
+    				$(this).attr("disabled", false);
+    				$("button.btn-prev.btn-whats-prev").removeClass("swiper-button-disabled");
+    				$("button.btn-prev.btn-whats-prev").attr("aria-disabled", false);
+    				$("button.btn-prev.btn-whats-prev").attr("disabled", false);
+    				
+    				let x_position = -(img * index);
+					if(index == 3){
+						x_position = -(img * index) + (img_containter - img + 40);
+					}
+	    			$(".slide-img-area .swiper-container .swiper-wrapper").css({
+	    				"transform": "translate3d(" + x_position + "px, 0, 0)",
+	    				"transition" : "transform 0.5s"
+	    			});//attr
+        			
+        			//페이지 슬라이드
+        			$("div.whats-img .swiper-pagination-current").text("0" + (index+1));
+	    			
+        			if(index == 3){
+        				$(this).addClass("swiper-button-disabled");
+        				$(this).attr("aria-disabled", true);
+        				$(this).attr("disabled", true);
+        				$("button.btn-prev.btn-whats-prev").removeClass("swiper-button-disabled");
+        				$("button.btn-prev.btn-whats-prev").attr("aria-disabled", false);
+        				$("button.btn-prev.btn-whats-prev").attr("disabled", false);
+        				index = 3;
+        				return false;
+        			}
+    			}
+    		});
+    		
+    		$("button.btn-prev.btn-whats-prev").click(function(){
+				if(index > -1){
+        			index -= 1;
+
+        			let img = $(".swiper-slide-active").children("img").width() + 40;
+        			let img_containter = $(".slide-img-area").width();
+        			
+        			slider_method();
+        			
+        			text_slide();
+        			
+    				$(this).removeClass("swiper-button-disabled");
+    				$(this).attr("aria-disabled", false);
+    				$(this).attr("disabled", false);
+    				$("button.btn-next.btn-whats-next").removeClass("swiper-button-disabled");
+    				$("button.btn-next.btn-whats-next").attr("aria-disabled", false);
+    				$("button.btn-next.btn-whats-next").attr("disabled", false);
+    				
+    				let x_position = -(img * index);
+					if(index == 3){
+						x_position = -(img * index) + (img_containter - img);
+					}
+					
+	    			$(".slide-img-area .swiper-container .swiper-wrapper").css({
+	    				"transform": "translate3d(" + x_position + "px, 0, 0)",
+	    				"transition" : "transform 0.5s"
+	    			});//attr
+
+    				//alert(index);
+    				//alert(x_position);
+        			$("div.whats-img .swiper-pagination-current").text("0" + (index+1));
+        			if(index == 0){
+        				$(this).addClass("swiper-button-disabled");
+        				$(this).attr("aria-disabled", true);
+        				$(this).attr("disabled", true);
+        				$("button.btn-next.btn-whats-next").removeClass("swiper-button-disabled");
+        				$("button.btn-next.btn-whats-next").attr("aria-disabled", false);
+        				$("button.btn-next.btn-whats-next").attr("disabled", false);
+        				index = 0;
+        				return false;
+        			}
+    			}
+    		});
+    		
+    		
+    		//main
+    		let main_index = 1;
+			let window_size = $(document).width();
+   			$(".main-visual-area .swiper-container .swiper-wrapper").css({
+   				"transform" : "translate3d(" + -window_size + "px, 0, 0)",
+   				"transition" : "transform 0.5s"
+   			});
+			$("div.slide-pagination-area button.btn-mains-prev").addClass("swiper-button-disabled");
+			$("div.slide-pagination-area button.btn-mains-prev").attr("disabled", true);
+			$("div.slide-pagination-area button.btn-mains-prev").css("cursor", "default");
+   			//setInterval(nextSlide, 4000); //4초(4000)마다 다음 슬라이드로 넘어감
+   			
+    		$("div.slide-pagination-area button.btn-mains-prev").click(function(){
+    			let window_size = $(document).width();
+    			main_index -= 1;
+
+    			if(main_index < 1){
+    				main_index = 1;
+    				return false;
+    			}
+
+    			$(".main-visual-area .swiper-container .swiper-wrapper").css({
+    				"transform" : "translate3d(" + -window_size + "px, 0, 0)",
+    				"transition" : "transform 0.5s"
+    			});
+    			$("div.main-page-list .swiper-pagination-current").text("0" + main_index);
+    			
+				$("div.slide-pagination-area button.btn-mains-next").removeClass("swiper-button-disabled");
+    			$("div.slide-pagination-area button.btn-mains-next").attr("disabled", false);
+    			$("div.slide-pagination-area button.btn-mains-next").css("cursor", "pointer");
+				$(this).addClass("swiper-button-disabled");
+    			$(this).attr("disabled", true);
+    			$(this).css("cursor", "default");
+    		});
+    		
+    		$("div.slide-pagination-area button.btn-mains-next").click(function(){
+    			let window_size = $(document).width();
+    			main_index += 1;
+    			if(main_index > 2){
+    				main_index = 2;
+    				return false;
+    			}
+
+    			$(".main-visual-area .swiper-container .swiper-wrapper").css({
+       				"transform" : "translate3d(" + -(window_size * 2) + "px, 0, 0)",
+    				"transition" : "transform 0.5s"
+    			});
+    			$("div.main-page-list .swiper-pagination-current").text("0" + main_index);
+
+				$("div.slide-pagination-area button.btn-mains-prev").removeClass("swiper-button-disabled");
+    			$("div.slide-pagination-area button.btn-mains-prev").attr("disabled", false);
+    			$("div.slide-pagination-area button.btn-mains-prev").css("cursor", "pointer");
+				$(this).addClass("swiper-button-disabled");
+				$(this).attr("disabled", true);
+    			$(this).css("cursor", "default");
+    		});
+    		//div.slide-pagination-area div.whats-img span.swiper-pagination-current
+    	});
+    </script>
 </head>
 
 <body class="">
@@ -423,7 +614,7 @@
                                 <div data-v-04a3ebf5=""
                                     class="swiper-container swiper-container-initialized swiper-container-horizontal">
                                     <div class="swiper-wrapper"
-                                        style="transition-duration: 0ms; transform: translate3d(-156.667px, 0px, 0px);">
+                                        style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
                                         <div data-v-04a3ebf5=""
                                             class="swiper-slide d-museum swiper-slide-duplicate swiper-slide-prev swiper-slide-duplicate-next"
                                             data-swiper-slide-index="1">
@@ -682,11 +873,11 @@
                             </div>
                         </div>
                         <div data-v-ea82c312="" data-v-796e266c="" class="slide-pagination-area"><button
-                                data-v-ea82c312="" type="button" class="btn-prev btn-mains-prev"> prev </button>
+                                data-v-ea82c312="" type="button" class="btn-prev btn-mains-prev" style = "display : inline-block;"> prev </button>
                             <div data-v-ea82c312="" class="main-page-list swiper-pagination-fraction"><span
                                     style="color: #fff" class="swiper-pagination-current">01</span> / <span
                                     style="color: rgba(255,255,255,.3);" class="swiper-pagination-total">02</span></div>
-                            <button data-v-ea82c312="" type="button" class="btn-next btn-mains-next"> next </button>
+                            <button data-v-ea82c312="" type="button" class="btn-next btn-mains-next" style = "display : inline-block;"> next </button>
                         </div><span data-v-796e266c="" class="scroll-down">SCROLL DOWN</span>
                         <div data-v-796e266c="" class="today-info">
                             <div data-v-796e266c=""><strong data-v-796e266c="">오늘 운영시간</strong>
@@ -717,19 +908,53 @@
                                             <div data-v-77eacbc9="" class="btn-group">
                                                 <div data-v-26e42198="" data-v-77eacbc9="" class="btn-area"><button
                                                         data-v-26e42198="" id="btn41" type="button" class="primary"> 더보기
-                                                    </button></div>
+                                                    </button>
+                                                </div>
                                                 <!---->
                                             </div>
                                         </div>
                                     </li>
                                     <li data-v-77eacbc9="" class="">
-                                        <!---->
+                                        <div data-v-77eacbc9="" class="">
+	                                        <span data-v-77eacbc9="" class="">교육</span>
+	                                        <strong data-v-77eacbc9="" class="">유아프로그램: 꼬마 뮤지엄</strong>
+	                                        <span data-v-77eacbc9="" class="">2022.04.22 ~ 2022.10.31</span>
+	                                        <span data-v-77eacbc9="" class=""> 디뮤지엄 </span>
+	                                        <div data-v-77eacbc9="" class="">
+		                                        <div data-v-26e42198="" data-v-77eacbc9="" class="">
+		                                        	<button data-v-26e42198="" id="" type="button" class=""> 더보기 </button>
+	                                        	</div>
+                                        		<!---->
+                                        	</div>
+                                        </div>
                                     </li>
                                     <li data-v-77eacbc9="" class="">
-                                        <!---->
+                                        <div data-v-77eacbc9="" class="">
+	                                        <span data-v-77eacbc9="" class="">교육</span>
+	                                        <strong data-v-77eacbc9="" class="">틴 랩 : 미술관 직업 탐.험(탐색하고 체험하기)</strong>
+	                                        <span data-v-77eacbc9="" class="">2022.03.16 ~ 2022.10.30</span
+	                                        ><span data-v-77eacbc9="" class=""> 디뮤지엄 </span>
+	                                        <div data-v-77eacbc9="" class="">
+		                                        <div data-v-26e42198="" data-v-77eacbc9="" class="">
+		                                        	<button data-v-26e42198="" id="btn70" type="button" class=""> 더보기 </button>
+		                                        </div>
+	                                        	<!---->
+	                                        </div>
+                                        </div>
                                     </li>
                                     <li data-v-77eacbc9="" class="">
-                                        <!---->
+                                        <div data-v-77eacbc9="" class="">
+	                                        <span data-v-77eacbc9="" class="">교육</span>
+	                                        <strong data-v-77eacbc9="" class="">온라인 진로특강</strong>
+	                                        <span data-v-77eacbc9="" class="">2022.03.16 ~ 2022.10.30</span>
+	                                        <span data-v-77eacbc9="" class=""> 디뮤지엄 </span>
+	                                        <div data-v-77eacbc9="" class="">
+		                                        <div data-v-26e42198="" data-v-77eacbc9="" class="">
+		                                        	<button data-v-26e42198="" id="btn71" type="button" class=""> 더보기 </button>
+		                                        </div>
+	                                        <!---->
+	                                        </div>
+                                        </div>
                                     </li>
                                 </ul>
                                 <div data-v-c88d4856="" class="slide-img-area">
