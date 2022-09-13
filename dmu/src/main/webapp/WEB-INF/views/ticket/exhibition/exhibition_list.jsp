@@ -67,11 +67,7 @@
 					<span data-v-3c1f59cb="" class="total">총 <strong>1</strong>건</span>
 					
 			<ul data-v-3c1f59cb="" class="order">
-				<li data-v-3c1f59cb="" class="">
-					<a data-v-3c1f59cb="" href="ticketlist_write.do">
-					<button type="button" class="btn_style">글쓰기</button>
-					</a>			
-				</li>
+				
 				<li data-v-3c1f59cb="" class="on">
 					<a data-v-3c1f59cb="" href="javascript:void(0);">시작일 순</a>
 				</li>
@@ -82,22 +78,22 @@
 <div data-v-3c1f59cb="" class="ticket-list exhibition">
 
 			<ul data-v-3c1f59cb="">
-					<%-- <c:forEach var="vo" items="${list}">
+					<c:forEach var="vo" items="${list}">
 					<c:if test="${vo.dcode eq'exhibition'}">
 						<li data-v-3c1f59cb="">
-						<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do" target="_parent" class="thumb">
+						<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do?did=${ vo.getDid()}" target="_parent" class="thumb">
 					<c:if test="${vo.dsfile != null }">
 						<img data-v-2fed1a9a="" data-v-1e8092ec="" src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"> 
 					</c:if>
 					</a>				 
 				<span data-v-3c1f59cb="" class="place"> ${vo.dplace } </span>
-					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do" target="_parent" class="title"> ${vo.dtitle } </a>
+					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do?did=${ vo.getDid()}" target="_parent" class="title"> ${vo.dtitle } </a>
 						<p data-v-3c1f59cb="" class="explan"></p>
 						<span data-v-3c1f59cb="" class="term"> ${vo.dstart }~ ${vo.dend } </span></li>
 					</c:if>
-					</c:forEach> --%>
+					</c:forEach>
 					
-					<c:forEach var="vo" items="${ list }"> 
+				<%-- 	<c:forEach var="vo" items="${ list }"> 
 						 <tr>
 						 
 							<c:if test="${vo.dsfile != null }">		
@@ -113,7 +109,7 @@
 							
 						 
 						</tr>
-					</c:forEach>  
+					</c:forEach>   --%>
 			</ul>										
 </div>
 												

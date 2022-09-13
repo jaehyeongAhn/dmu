@@ -33,7 +33,7 @@ public class ExhibitionController {
 		 * // ArrayList<ExhibitionVO> list = dao.select(startCount, endCount);
 		 */		
 		mv.addObject("vo",vo);
-		mv.setViewName("/exhibition/exhibition");
+		mv.setViewName("ticket/exhibition/exhibition");
 		
 		return mv;
 	}
@@ -42,12 +42,12 @@ public class ExhibitionController {
 	
 	@RequestMapping(value="/learn.do", method=RequestMethod.GET)
 	public String learn() {
-		return "/learn/learn";
+		return "ticket/learn/learn";
 	}
 	
 	@RequestMapping(value="/event.do", method=RequestMethod.GET)
 	public String event() {
-		return "/event/event";
+		return "ticket/event/event";
 	}
 	
 	

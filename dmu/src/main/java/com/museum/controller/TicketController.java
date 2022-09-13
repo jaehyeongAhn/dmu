@@ -30,7 +30,7 @@ public class TicketController {
 		 
 		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
-			return "/list/ticketlist_write";
+			return "adminticket/ticketlist_write";
 		}
 		/**
 		 * ticketlist_write_check.do : 게시판 글쓰기 처리
@@ -60,7 +60,7 @@ public class TicketController {
 				}
 				
 				//mv.setViewName("/board/board_list"); //에러X, 아무런 게시글 출력되지 X
-				mv.setViewName("redirect:/exhibition_list.do"); //DB연동을 Controller에서 진행하므로, 새로운 연결을 수행!!
+				mv.setViewName("redirect:/adminexhibition_list.do"); //DB연동을 Controller에서 진행하므로, 새로운 연결을 수행!!
 			}else{
 				mv.setViewName("error_page");
 			}
@@ -83,7 +83,7 @@ public class TicketController {
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
-			mv.setViewName("/list/exhibition_list");
+			mv.setViewName("ticket/exhibition/exhibition_list");
 			
 			
 			return mv;
@@ -104,7 +104,7 @@ public class TicketController {
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
-			mv.setViewName("/list/event_list");
+			mv.setViewName("ticket/event/event_list");
 			
 			
 			return mv;
@@ -125,7 +125,66 @@ public class TicketController {
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
-			mv.setViewName("/list/learn_list");
+			mv.setViewName("ticket/learn/learn_list");
+			
+			
+			return mv;
+		}
+		
+		//adminlearn list 관리자
+		@RequestMapping(value="/adminlearn_list.do", method=RequestMethod.GET)
+		public ModelAndView adminlearn_list(String rpage) {
+			ModelAndView mv = new ModelAndView();
+			
+
+			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+
+			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			
+			mv.addObject("list",list);
+			mv.addObject("dbCount", param.get("dbCount"));
+			mv.addObject("rpage", param.get("rpage"));
+			mv.addObject("pageSize", param.get("pageSize"));
+			mv.setViewName("adminticket/adminlearn_list");
+			
+			
+			return mv;
+		}
+		
+		//exhibition list 관리자
+		@RequestMapping(value="/adminexhibition_list.do", method=RequestMethod.GET)
+		public ModelAndView adminexhibition_list(String rpage) {
+			ModelAndView mv = new ModelAndView();
+			
+
+			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+
+			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			
+			mv.addObject("list",list);
+			mv.addObject("dbCount", param.get("dbCount"));
+			mv.addObject("rpage", param.get("rpage"));
+			mv.addObject("pageSize", param.get("pageSize"));
+			mv.setViewName("adminticket/adminexhibition_list");
+			
+			
+			return mv;
+		}
+		//adminevent list 관리자
+		@RequestMapping(value="/adminevent_list.do", method=RequestMethod.GET)
+		public ModelAndView adminevent_list(String rpage) {
+			ModelAndView mv = new ModelAndView();
+			
+
+			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+
+			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			
+			mv.addObject("list",list);
+			mv.addObject("dbCount", param.get("dbCount"));
+			mv.addObject("rpage", param.get("rpage"));
+			mv.addObject("pageSize", param.get("pageSize"));
+			mv.setViewName("adminticket/adminevent_list");
 			
 			
 			return mv;

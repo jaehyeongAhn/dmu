@@ -44,14 +44,14 @@
 
 			<ul data-v-7b1f57c8="" class="snb">
 				<li data-v-7b1f57c8="" class="">
-					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/exhibition_list.do" role="button">EXHIBITION </a>
+					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/adminexhibition_list.do" role="button">EXHIBITION </a>
 				</li>
 				
 				<li data-v-7b1f57c8="" class="on">
-					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/learn_list.do" role="button">LEARN </a>
+					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/adminlearn_list.do" role="button">LEARN </a>
 				</li>
 				<li data-v-7b1f57c8="" class="">
-					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/event_list.do" role="button">EVENT </a>
+					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/adminevent_list.do" role="button">EVENT </a>
 				</li>
 			</ul>
 		</div>
@@ -114,7 +114,7 @@
 		</div>
 <div data-v-41f56098="" class="ticket-list education">
 			<c:forEach var="vo" items="${list}">
-			<c:if test="${vo.dcode eq'laern'}">
+			<c:if test="${vo.dcode eq'learn'}">
 			<ul data-v-41f56098="">
 				<li data-v-41f56098="">
 						<c:if test="${vo.dsfile != null }">
