@@ -29,10 +29,13 @@
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/notice.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/am-pagination.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+</head>
 <script>
 $(document).ready(function(){
 	
@@ -64,8 +67,7 @@ $(document).ready(function(){
 </script>
 
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no"
-		frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
 	<main>
 		<section data-v-1b9c8af9="" class="sub-contents-wrap">
 			<div data-v-0d03d759="" data-v-1b9c8af9=""
@@ -87,7 +89,7 @@ $(document).ready(function(){
 					<div data-v-e4bbf8ae="" data-v-1b9c8af9="" class="search-area">
 						<div data-v-0f105554="" data-v-e4bbf8ae="" class="select-area"
 							style="width: 11.875rem;">
-							<div data-v-0f105554="" id="select21" class=""
+							<div data-v-0f105554="" id="select21" class="select" data-role="selectBox"
 								style="width: 11.875rem;">
 								<button data-v-0f105554="" type="button" data-value="title"
 									class="">제목</button>
@@ -125,15 +127,15 @@ $(document).ready(function(){
 				<div data-v-080a389a="" class="snb-area">
 					<ul data-v-080a389a="" class="snb">
 						<li data-v-080a389a="" class="on"><a data-v-080a389a=""
-							role="button" style="cursor: pointer;">전체</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_1">전체</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;">디뮤지엄</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_2">디뮤지엄</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;">대림미술관</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_3">대림미술관</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;">구슬모아당구장</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_4">구슬모아당구장</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;">뮤지엄샵</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_5">뮤지엄샵</a></li>
 					</ul>
 				</div>
 				<div data-v-26e42198="" class="btn-area">
@@ -203,9 +205,9 @@ $(document).ready(function(){
 							<ul data-v-650d6904="">
 								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
 									href="javascript:void(0);" role="button">1</a></li>
-								<li data-v-650d6904="" class=""><a data-v-650d6904=""
+								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
 									href="javascript:void(0);" role="button">2</a></li>
-								<li data-v-650d6904="" class=""><a data-v-650d6904=""
+								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
 									href="javascript:void(0);" role="button">3</a></li>
 							</ul>
 							<button data-v-650d6904="" type="button" class="btn-next">
@@ -214,18 +216,6 @@ $(document).ready(function(){
 								last</button>
 						</div>
 					</div>
-				</div>
-				<div data-v-080a389a="" class="sub-contents-area">
-					<!---->
-				</div>
-				<div data-v-080a389a="" class="sub-contents-area">
-					<!---->
-				</div>
-				<div data-v-080a389a="" class="sub-contents-area">
-					<!---->
-				</div>
-				<div data-v-080a389a="" class="sub-contents-area">
-					<!---->
 				</div>
 			</div>
 			<iframe src="footer.do" width="100%" height="530px" scrolling="no"

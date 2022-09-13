@@ -166,8 +166,8 @@
 <link href="/js/chunk-vendors.85a954b2b4f1348cc700.js" rel="preload"
 	as="script">
 <link href="/js/index.85a954b2b4f1348cc700.js" rel="preload" as="script">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/main_css.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
 <script type="text/javascript" charset="UTF-8"
 	src="https://maps.googleapis.com/maps-api-v3/api/js/50/2/common.js"></script>
 <script type="text/javascript" charset="UTF-8"
@@ -179,16 +179,16 @@
 				<div class="header-web">
 					<div class="header-side">
 						<ul>
-							<li><a href="http://localhost:9000/dmu/login.do" target="_parent" class=""> LOGIN </a></li>
+							<li><a href="http://localhost:9000/dmu/login.do"
+								target="_parent" class=""> LOGIN </a></li>
 							<li><a href="/join/info" class=""> BECOME A MEMBER </a></li>
 							<!---->
 							<!---->
-							<li><a href="/notice/all" class=""> NOTICE </a></li>
+							<li><a href="http://localhost:9000/dmu/notice_list.do"
+								class=""> NOTICE </a></li>
 							<li><a href="/faq/all?refresh=true" class=""> FAQ </a></li>
-							<li><a href="javascript:void(0);"> KOR </a></li>
-							<li>
-								<a href="https://daelimculturalfoundation.org" target="_blank"><a>대림문화재단</a></a>
-								</li>
+							<li><a href="https://daelimculturalfoundation.org"
+								target="_blank"><a>대림문화재단</a></a></li>
 						</ul>
 					</div>
 					<div class="main-menu-area">
@@ -202,7 +202,9 @@
 								</a></li>
 								<li class=""><a href="javascript:void(0);"> LEARN </a></li>
 								<li class=""><a href="javascript:void(0);"> EVENT </a></li>
-								<li class="on"><a href="http://localhost:9000/dmu/exhibition_list.do" target="_parent"> TICKET </a></li>
+								<li class="on"><a
+									href="http://localhost:9000/dmu/exhibition_list.do"
+									target="_parent"> TICKET </a></li>
 								<li class=""><a href="javascript:void(0);"> SHOP </a></li>
 							</ul>
 							<div class="sub-menu normal"
@@ -210,7 +212,12 @@
 								<div class="pannel">
 									<div>
 										<div class="menu-area">
-											<ul></ul>
+											<ul>
+												<li><a href="javascript:void(0);" href="http://localhost:9000/dmu/visit_main.do" style=""> 미술관 소개
+												</a></li>
+												<li><a href="javascript:void(0);" href="http://localhost:9000/dmu/visit_info.do"> 관람안내 </a></li>
+												<li><a href="javascript:void(0);" href="http://localhost:9000/dmu/visit_map.do"> 오시는 길 </a></li>
+											</ul>
 										</div>
 										<div class="banner-area">
 											<ul>
@@ -254,8 +261,6 @@
 						</div>
 						<div class="side-links">
 							<ul class="">
-								<li class="schedule"><a href="javascript:void(0);">
-										SCHEDULE </a></li>
 								<li class="search"><a href="javascript:void(0);">
 										SEARCH </a></li>
 								<li class="all-menu"><a href="javascript:void(0);"> ALL
@@ -281,11 +286,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="header-mobile">
+				<!-- <div class="header-mobile">
 					<div class="header-logo-area">
-						<strong class="mo-subject"> TICKET <!----></strong>
+						<strong class="mo-subject"> TICKET</strong>
 						<button type="button" class="btn-back">뒤로가기</button>
-						<!---->
+						
 						<button type="button" class="btn-all-menu">전체메뉴</button>
 					</div>
 					<div class="main-menu-area">
@@ -305,8 +310,8 @@
 							<ul class="util-menu">
 								<li><a href="/join/info" class=""> BECOME A MEMBER </a></li>
 								<li><a href="/login/" class=""> LOGIN </a></li>
-								<!---->
-								<!---->
+								
+								
 							</ul>
 						</div>
 						<div class="footer-area">
@@ -316,7 +321,7 @@
 								<li class="alarm"><a> ALARM </a></li>
 								<li class="help"><a> HELP </a></li>
 							</ul>
-							<!---->
+							
 							<div class="lang-area">
 								<a href="https://daelimculturalfoundation.org" target="_blank"><strong>대림문화재단</strong></a>
 								<ul>
@@ -324,11 +329,11 @@
 								</ul>
 							</div>
 						</div>
-						<!---->
+						
 						<button type="button" class="btn-close">닫기</button>
 					</div>
-					<!---->
-				</div>
+					
+				</div> -->
 			</header>
 </body>
 </html>

@@ -77,7 +77,7 @@
 									<li>
 									<label>카테고리</label> 
 									<select name="ncategory" class="select-area-write">
-											<option value="defalut">선택</option>
+											<option value="default">선택</option>
 											<option value="디뮤지엄">디뮤지엄</option>
 											<option value="대림미술관">대림미술관</option>
 											<option value="구슬모아당구장">구슬모아당구장</option>
@@ -89,7 +89,7 @@
 									</li>
 									<li>
 										<label>내용</label> 
-										<textarea name="ncontent" class="input-area-write">${vo.ncontent}</textarea>
+										<textarea name="ncontent" class="input-area-write" style="height:30rem">${vo.ncontent}</textarea>
 									</li>
 								</ul>
 							</table>

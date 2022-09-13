@@ -32,6 +32,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
+</head>
 <body>
 	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
 	<form name="noticeDeleteForm" action="admin_notice_delete_check.do" method="post">

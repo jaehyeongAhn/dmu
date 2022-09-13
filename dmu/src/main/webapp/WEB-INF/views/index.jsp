@@ -12,6 +12,9 @@
     <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
         rel="stylesheet">
@@ -21,9 +24,9 @@
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
     <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+    <script src="http://localhost:9000/dmu/resources/js/main.js"></script>
     <link href="/js/0.85a954b2b4f1348cc700.js" rel="prefetch">
     <link href="/js/1.85a954b2b4f1348cc700.js" rel="prefetch">
     <link href="/js/10.85a954b2b4f1348cc700.js" rel="prefetch">
@@ -161,7 +164,7 @@
     <link href="https://www.googletagmanager.com" rel="preconnect">
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-48000917-2&amp;l=dataLayer"></script>
     <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
-
+    <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
     <link data-vue-meta="1" rel="canonical" href="https://www.daelimmuseum.org">
     <meta data-vue-meta="1" name="description" content="#description" data-vmid="description">
     <meta data-vue-meta="1" name="keywords" content="#keywords">
@@ -418,7 +421,7 @@
                             <!---->
                             <!---->
                             <li>
-                                <a href="/notice/all" class=""> NOTICE </a>
+                                <a href="notice_list.do" class=""> NOTICE </a>
                             </li>
                             <li>
                                 <a href="/faq/all?refresh=true" class=""> FAQ </a>
@@ -528,10 +531,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="header-mobile">
+<!--                 <div class="header-mobile">
                     <div class="header-logo-area">
                         <strong class="mo-subject">
-                            <!---->
+                           
                         </strong>
                         <h1>
                             <a href="/" aria-current="page" class="router-link-exact-active router-link-active"> 대림문화재단
@@ -572,8 +575,8 @@
                                 <li>
                                     <a href="/login/" class=""> LOGIN </a>
                                 </li>
-                                <!---->
-                                <!---->
+                               
+                               
                             </ul>
                         </div>
                         <div class="footer-area">
@@ -585,7 +588,7 @@
                                     <a> HELP </a>
                                 </li>
                             </ul>
-                            <!---->
+                           
                             <div class="lang-area">
                                 <a href="https://daelimculturalfoundation.org" target="_blank">
                                     <strong>대림문화재단</strong>
@@ -597,11 +600,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <!---->
+                       
                         <button type="button" class="btn-close"> 닫기 </button>
                     </div>
-                    <!---->
-                </div>
+                   
+                </div> -->
             </header>
             <main>
                 <div data-v-796e266c="" class="main">
