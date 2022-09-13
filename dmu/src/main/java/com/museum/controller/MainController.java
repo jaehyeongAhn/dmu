@@ -22,4 +22,22 @@ public class MainController {
 		return "footer";
 	}
 	
+	@RequestMapping(value="/visit_main.do", method=RequestMethod.GET)
+	public String visit_main() {
+		return "/visit/visit_main";
+	}
+	
+	@RequestMapping(value="/visit_info.do", method=RequestMethod.GET)
+	public String visit_info() {
+		return "/visit/visit_info";
+	}
+	
+	@RequestMapping(value="/visit_map1.do", method=RequestMethod.GET)
+	public String visit_map1() {
+		return "/visit/visit_map1";
+	}
+	@RequestMapping(value="/visit_map2.do", method=RequestMethod.GET)
+	public String visit_map2() {
+		return "/visit/visit_map2";
+	}
 }

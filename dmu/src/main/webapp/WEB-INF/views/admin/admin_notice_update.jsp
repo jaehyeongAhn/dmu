@@ -36,7 +36,7 @@
 <body>
 	<iframe src="header.do" width="100%" height="160px" scrolling="no"
 		frameborder=0></iframe>
-	<form name="noticeUpdateForm" action="admin_notice_update_check.do" method="post" enctype="multipart/form-data">
+	<form name="noticeUpdateForm" action="admin_notice_update_check.do" method="post">
 	<input type="hidden" name="nid" value="${vo.nid}">
 	<main>
 		<section class="sub-contents-wrap">
@@ -71,7 +71,7 @@
 									<li>
 									<label>카테고리</label> 
 									<select name="ncategory" class="select-area-write">
-											<option value="defalut">선택</option>
+											<option value="default">선택</option>
 											<option value="디뮤지엄">디뮤지엄</option>
 											<option value="대림미술관">대림미술관</option>
 											<option value="구슬모아당구장">구슬모아당구장</option>
@@ -83,7 +83,7 @@
 									</li>
 									<li>
 										<label>내용</label> 
-										<textarea name="ncontent" class="input-area-write">${vo.ncontent}</textarea>
+										<textarea name="ncontent" class="input-area-write" style="height:30rem">${vo.ncontent}</textarea>
 									</li>
 								</ul>
 							</table>
