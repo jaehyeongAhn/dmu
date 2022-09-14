@@ -81,6 +81,8 @@
 					</div>
 				</div>
 			</div>
+			<iframe src="footer.do" width="100%" height="500px" scrolling="no"
+				frameborder=0></iframe>
 		</section>
 	</main>
 </body>
