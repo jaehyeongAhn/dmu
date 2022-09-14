@@ -14,30 +14,31 @@ $(document).ready(function(){
 					});
 					
 	
-					$("#data-v-8ed31374_btn").click(function(){
-					 	
-						
-						
-					});
+				 
 					
 					
-					
+				 
 					/*********************
-						전시 등록폼 유효성 체크
+						관람일및 회차,관람인원 및 권종 버튼 토글
 					**********************/
-					$("#btn_exhibition_Write").click(function(){
+					  $("#data-v-8ed31374_btn").click(function() {						
+   							 
+   							 $("#calendar").toggle();  
+   							 
+  						});
+ 
+		
+					 $("#btn_toggle").click(function() {						
+   							 
+   							 $("#content").toggle();  
+  						});
+  						
+  						
+					$("#btb_toggle_hide").click(function() {						
 						 
-					
-				 		if($("#dexhibtion").val() == ""){
-							alert("제목을 입력해주세요");
-						 
-							return false;
-						}else{
-							//서버전송
-							ticketlistform.submit();
-						} 
+						 $("#content_hide").toggle();  
 					});
-	
+		
 		
 		
 		}); 
