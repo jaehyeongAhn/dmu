@@ -55,7 +55,7 @@ public class JoinController {
 	 */
 	@RequestMapping(value = "/join_terms.do", method = RequestMethod.GET)
 	public String join_terms() {
-		return "/join/terms";
+		return "/join/join_terms";
 	}
 	
 	/*

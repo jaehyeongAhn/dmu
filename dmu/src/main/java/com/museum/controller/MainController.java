@@ -21,7 +21,10 @@ public class MainController {
 	public String footer() {
 		return "footer";
 	}
-	
+	@RequestMapping(value="/sitemap.do", method=RequestMethod.GET)
+	public String sitemap() {
+		return "sitemap";
+	}
 	@RequestMapping(value="/visit_main.do", method=RequestMethod.GET)
 	public String visit_main() {
 		return "/visit/visit_main";
@@ -40,4 +43,5 @@ public class MainController {
 	public String visit_map2() {
 		return "/visit/visit_map2";
 	}
+	
 }

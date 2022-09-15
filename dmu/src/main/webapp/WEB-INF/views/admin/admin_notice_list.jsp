@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/notice.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
-<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/am-pagination.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
@@ -141,7 +141,7 @@ $(document).ready(function(){
 				<div data-v-26e42198="" class="btn-area">
 					<a href="admin_notice_write.do">
 					<button data-v-26e42198="" id="btn50_1" type="button"
-						class="secondary">글쓰기</button>
+						class="secondary" style="margin-top:30px">글쓰기</button>
 					</a>
 				</div>
 				<div data-v-080a389a="" class="sub-contents-area">
