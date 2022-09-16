@@ -34,6 +34,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 </head>
 <script>

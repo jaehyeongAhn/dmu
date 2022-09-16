@@ -95,7 +95,8 @@ a:-webkit-any-link {
 }
 .sub-top-area nav ul li[data-v-0d03d759]:first-child {
     padding: 0 1.6875rem;
-    background: url(data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="14.707" height="14.207" viewBox="0 0 14.707 14.207"%3E%3Cpath d="M1405 331h-11v-9h1v8h9v-8h1v9z" style="fill:%23999" transform="translate(-1392.146 -316.793)"/%3E%3Cpath d="m1392.5 324.5 7-7 7 7" style="fill:none;stroke:%23999" transform="translate(-1392.146 -316.793)"/%3E%3C/svg%3E) center center no-repeat;
+    background-image: url("/dmu/resources/images/home.svg" );
+    background-repeat : no-repeat;
     font-size: 0;
     background-position: top center;
 }
