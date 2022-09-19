@@ -60,12 +60,12 @@
 						</h1>
 						<div class="main-menu">
 							<ul>
-								<li class="visit" style="border:1px solid red"><a href="visit_main.do" target="_parents"> VISIT </a></li>
-								<li class="exhibition" style="border:1px solid red"><a href="javascript:void(0);"> EXHIBITION
+								<li class="visit"><a href="visit_main.do" target="_parents"> VISIT </a></li>
+								<li class="exhibition"><a href="javascript:void(0);"> EXHIBITION
 								</a></li>
-								<li class="learn" style="border:1px solid red"><a href="javascript:void(0);"> LEARN </a></li>
-								<li class="event" style="border:1px solid red"><a href="javascript:void(0);"> EVENT </a></li>
-								<li class="ticket" style="border:1px solid red"><a
+								<li class="learn" ><a href="javascript:void(0);"> LEARN </a></li>
+								<li class="event"><a href="javascript:void(0);"> EVENT </a></li>
+								<li class="ticket"><a
 									href="http://localhost:9000/dmu/exhibition_list.do"
 									target="_parent"> TICKET </a></li>
 							</ul>
