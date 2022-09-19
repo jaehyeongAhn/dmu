@@ -55,8 +55,7 @@
 					</div>
 					<div data-v-69c615d1="" class="sub-contents-area">
 						<div data-v-69c615d1="" class="visual wide aboutmuseum">
-							<video data-v-69c615d1="" id="aboutVideo" width="100%"
-								autoplay="autoplay" muted="muted" loop="loop">
+							<video data-v-69c615d1="" id="aboutVideo" width="100%" autoplay="autoplay" muted="muted" loop="loop">
 								<source data-v-69c615d1=""
 									src="https://cdn.daelimmuseum.org/Store/Homepage/Main/Pc/202202/20220225123810497001.mp4"
 									type="video/mp4">
