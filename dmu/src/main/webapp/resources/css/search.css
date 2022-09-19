@@ -1,0 +1,242 @@
+
+	*{
+		margin : 0;
+	}
+	.footer {
+		margin-top : 150px;
+		margin-bottom : -10px;
+	}
+	section.sub-contents-wrap {
+		min-width : 1200px;
+	}
+	div.sub-contents-wrap {
+		padding: 5.625rem 0 6.25rem 0;
+    	position: relative;
+	}
+	div.container  {
+		position: relative;
+	    width: 80rem;
+	    margin: 0 auto;
+	}
+	div.container h2{
+		position: relative;
+	    font-weight: 300;
+	    font-size: 4.5rem;
+	    color: #1d1d1d;
+	    margin-left : 55px;
+	}
+	div.sub-top-area h2:before {
+	    display: block;
+	    position: absolute;
+	    top: 50%;
+	    left: -19.5rem;
+	    margin-top: 0.0625rem;
+	    width: 18.125rem;
+	    height: 0.0625rem;
+	    background: #1d1d1d;
+	    content: '';
+	}
+	
+	div.top-search-area {
+		display: block;
+  			text-align: center;
+  			margin-top : 80px;
+	}
+	div.top-search-area input.search-bar {
+		border: none;
+	    border-bottom: 1px solid black;
+	    width: 844px;
+	    padding: 10px 20px;
+	    font-size: 17px;
+	    box-sizing : border-box;
+	}
+	div.top-search-area input.search-bar:focus {
+		outline : none;
+	}
+	div.top-search-area button.search-btn {
+		background-color : transparent;
+		background-image: url(http://localhost:9000/dmu/resources/images/search.svg);
+	    background-repeat: no-repeat;
+	    border: none;
+	    background-size: contain;
+	    width: 23px;
+	    height: 23px;
+	    text-indent: -143px;
+	    overflow: hidden;
+	    position: relative;
+  			left: -45px;	
+  			cursor : pointer;
+	}
+	div.top-search-area span.alert {
+		display: block;
+  			text-align: left;  
+		width: 844px;
+	    margin: 0 auto;
+	    padding: 5px 0px 10px 10px;
+	    font-size : 14px;
+	    color : red;
+	}
+	div.snb-area {
+		border-bottom : 0.5px solid #d3d3d3;
+		margin-bottom : 70px;
+	}
+	div.snb-area ul.snb.en {
+		display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    list-style: none;
+	    margin-top: 85px;
+  			padding: 0;
+	}
+	div.snb-area li {
+		width : 130px;
+		text-align : center;
+		height : 40px;
+		text-align : center;
+		/*padding : 20px 0;*/
+	}
+	div.snb-area li a {
+		color : #a9a9a9;
+		font-size : 17px;
+		font-weight : 500;
+		text-decoration : none;
+		letter-spacing : -0.08rem;
+		height: inherit;
+	    box-sizing: border-box;
+	    display: inline-block;
+	    text-align: center;
+	    padding : 0 10px;
+	}
+	div.snb-area li.on a {
+		border-bottom : 4px solid black;
+		color : black;
+		font-weight : 700;
+	}
+	
+	div.container.search dl.ex-list dt{
+		font-size: 30px;
+	    letter-spacing: -0.1rem;
+	    font-weight: 700;
+	    margin-top : 70px;
+	}
+	div.container.search dl.ex-list dd{
+		display : flex;
+		justify-content : space-between;
+		padding: 20px 0 50px 0;
+ 		border-bottom: 0.5px solid #d2d2d2;
+	}
+	div.container.search dl.ex-list div.img-area img{
+		width : 400px;
+	}
+	div.container.search dl.ex-list dd div.introduce-menu {
+		display : flex;
+	}
+	div.container.search dl.ex-list dd div.introduce-menu div.info-area {
+		margin-left: 40px;
+		display: inline-flex;
+	    flex-direction: column;
+	    justify-content: space-between;
+	    padding: 30px 0;
+	}
+	div.container.search dl.ex-list dd div.introduce-menu div.info-area p.tag {
+		background: black;
+	    color: white;
+	    width: 70px;
+	    padding: 7px;
+	    text-align: center;
+	    letter-spacing: -0.05rem;
+	    font-size: 15px;
+	}
+	div.container.search dl.ex-list dd div.introduce-menu div.info-area p.title {
+		font-size: 25px;
+		letter-spacing: -0.08rem;
+	    margin-bottom: 35px;
+	}
+	div.container.search dl.ex-list dd div.introduce-menu div.info-area ul {
+	    list-style: none;
+	    display: flex;
+	    padding: 0;
+	}
+	div.container.search dl.ex-list dd div.introduce-menu div.info-area ul li{
+		margin-right: 20px;
+		font-size: 15px;
+		font-weight : 400;
+	}
+	div.container.search dl.ex-list dd div.introduce-menu div.info-area ul li em{
+		font-style : normal;
+		color : #6a6a6a;
+	}
+	div.container.search dl.ex-list dd div.btn-group {
+		display: flex;
+		flex-direction: column;
+		justify-content : center;
+	}
+	div.container.search dl.ex-list dd div.btn-group div.btn-area {
+		margin : 8px 0;
+	}
+	div.container.search dl.ex-list dd div.btn-group div.btn-area:first-child button{
+  			width: 170px;
+	    height: 40px;
+	    border: 0.5px solid black;
+	    background: white;
+	    color: #4e4747;
+	    letter-spacing: -0.08rem;
+	    cursor : pointer;
+	}
+	div.container.search dl.ex-list dd div.btn-group div.btn-area:last-child button{
+  			width: 170px;
+	    height: 40px;
+	    border: 0.5px solid black;
+	    background: black;
+	    color: white;
+	    letter-spacing: -0.08rem;
+	    cursor : pointer;
+	}
+	div.container.search dl.ex-list dd div.btn-group div.btn-area:first-child button:hover{
+  			color : white;
+  			background : #707070;
+	    border: 0.5px solid #707070;
+	}
+	div.container.search dl.ex-list dd div.btn-group div.btn-area:last-child button:hover{
+  			color : black;
+  			background : white;
+	}
+	
+	
+	div.container.search ul.guidance-area {
+		text-align: center;
+	    font-size: 20px;
+	    color: #898989;
+	    letter-spacing: -0.08rem;
+	    padding: 150px 0;
+	    list-style: none;
+	}
+	
+	/* home button */
+	nav ul.menuBar {
+	    list-style: none;
+	    display: flex;
+	    margin: 0;
+	    padding: 0;
+	    justify-content: flex-end;
+	    align-items : center;
+	}
+	nav ul.menuBar li.home {
+		background-image: url(http://localhost:9000/dmu/resources/images/home.svg);
+	    background-repeat: no-repeat;
+	    overflow: hidden;
+	    width : 15px;
+	    background-size: contain;
+	    background-position-x: 50%;
+	    background-position-y: 50%;
+	}
+	nav ul.menuBar li.home a {
+		color : transparent;
+	}
+	ul.menuBar li:nth-child(2)::before {
+	    content: "|";
+	    margin: 0 16px;
+	    font-size: 11px;
+	    color: #b1b1b1;
+	    font-weight: 300;
+	}
