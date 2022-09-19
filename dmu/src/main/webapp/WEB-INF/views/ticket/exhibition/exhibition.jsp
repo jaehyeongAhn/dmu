@@ -303,10 +303,9 @@
 																	</div></li>
 															</ul>
 															<div data-v-26e42198="" data-v-8ed31374=""
-																class="btn-area btn-reservation">
-																<button data-v-26e42198="" id="btn32" type="button"
-																	disabled="disabled" class="primary">예매하기</button>
-																											</div>
+																class="btn-area btn-reservation"  >
+														 <button data-v-26e42198="" id="btn32" type="button" class="primary" > 예매하기 </button>
+																		 							</div>
 																										</div>
 																									</div></li>
 																							</ul>
