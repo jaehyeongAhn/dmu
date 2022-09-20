@@ -294,7 +294,7 @@
 																</div></li>
 															<li data-v-8ed31374=""><div data-v-8ed31374=""
 																	class="personal-control">
-																	<span data-v-8ed31374="" class="person">유아 및 어린이</span>
+																	<span data-v-8ed31374="" class="person"> </span>
 																	<div data-v-1dc6379c="" data-v-8ed31374=""
 																		class="control count-control">
 																		<button data-v-1dc6379c="" type="button" disabled="disabled"
@@ -316,11 +316,11 @@
 																</div></li>
 														</ul>
 														<ul data-v-8ed31374="" class="personnel-result">
-															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">성인</strong><span
+															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title"> </strong><span
 																data-v-8ed31374="" class="count">0</span></li>
-															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">청소년</strong><span
+															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title"> </strong><span
 																data-v-8ed31374="" class="count">0</span></li>
-															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">유아
+															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title"> 
 																	및 어린이</strong><span data-v-8ed31374="" class="count">0</span></li>
 														</ul>
 														<div data-v-8ed31374="" class="btn-bottom-area">
