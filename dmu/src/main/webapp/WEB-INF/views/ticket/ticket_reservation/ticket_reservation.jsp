@@ -21,12 +21,42 @@
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket_reservation.css">
+ 
 
 
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
+ <script src="http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+<script src="http://localhost:9000/mycgv/resources/js/am-pagination.js"></script>
 
+<script>
+	$(document).ready(function(){
+		
+		//페이징 출력
+		var pager = jQuery('#ampaginationsm').pagination({
+		
+		    maxSize: 7,	    		// max page size
+		    totals: '${dbCount}', 	// total rows
+		    page: '${rpage}',		// initial page		
+		    pageSize: '${ pageSize }',			// max number items per page  
+		
+		    // custom labels		
+		    lastText: '&raquo;&raquo;', 		
+		    firstText: '&laquo;&laquo;',		
+		    prevText: '&laquo;',		
+		    nextText: '&raquo;',
+				     
+		    btnSize:'sm'	// 'sm'  or 'lg'		
+		});
+		
+		//페이징 번호 클릭 시 이벤트 처리
+		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
+			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+	           $(location).attr('href', "http://localhost:9000/mycgv/board_list.do?rpage="+e.page);         
+	    });
+		
+ 	});
+</script> 
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
@@ -63,19 +93,19 @@
 													<ul data-v-a42e08ec="" class="ticket-info">
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">전시명</span><span data-v-a42e08ec=""
-															class="txt"><strong data-v-a42e08ec="">어쨌든, 사랑</strong></span></li>
+															class="txt"><strong data-v-a42e08ec="">${ vo.dtitle }</strong></span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">관람일시</span><span data-v-a42e08ec=""
-															class="txt">2022.09.20</span></li>
+															class="txt">${vo.dstart}</span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
-															class="tit">장소</span><span data-v-a42e08ec="" class="txt">디뮤지엄</span></li>
+															class="tit">장소</span><span data-v-a42e08ec="" class="txt">${ vo.dplace }</span></li>
 													</ul>
 													<ul data-v-a42e08ec="" class="ticket-personnel">
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="title">성인</span><span data-v-a42e08ec=""
-															class="price">18,000원</span><span data-v-a42e08ec=""
+															class="price">${ vo.dprice }원</span><span data-v-a42e08ec=""
 															class="personnel">1인</span><span data-v-a42e08ec=""
-															class="total">18,000원</span></li>
+															class="total">${ vo.dprice }원</span></li>
 													</ul>
 												</div>
 												<div data-v-a42e08ec="" class="payment-info-area">
@@ -189,15 +219,15 @@
 															<ul data-v-a42e08ec="" class="payment-list">
 																<li data-v-a42e08ec=""><strong data-v-a42e08ec=""
 																	class="title">총금액 / 1매</strong> <span
-																	data-v-a42e08ec="" class="price">18,000원</span></li>
+																	data-v-a42e08ec="" class="price">${ vo.dprice }</span></li>
 																<!---->
 																<li data-v-a42e08ec=""><strong data-v-a42e08ec=""
-																	class="title">할인금액</strong><span data-v-a42e08ec=""
-																	class="price">0원</span></li>
+																	class="title"></strong><span data-v-a42e08ec=""
+																	class="price"></span></li>
 															</ul>
 															<div data-v-a42e08ec="" class="payment-result">
 																<strong data-v-a42e08ec="" class="title">최종 결제금액</strong><span
-																	data-v-a42e08ec="" class="price">18,000원</span>
+																	data-v-a42e08ec="" class="price">${ vo.dprice }</span>
 															</div>
 														</div></li>
 												</ul>

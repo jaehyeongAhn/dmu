@@ -20,6 +20,7 @@
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/comment.css">
 
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -101,8 +102,9 @@
 											<div data-v-8ed31374="" class="left">
 												<div data-v-8ed31374="" class="img-ticket">
 													<img data-v-2fed1a9a="" data-v-8ed31374=""
-														src="https://cdn.daelimmuseum.org/Program/Exhibition/List/E/Small/202206/20220607103533991001.png"
+														src="http://localhost:9000/dmu/resources/upload/${vo.dsfile}"
 														alt="어쨌든, 사랑" style="">
+														 
 												</div>
 												<div data-v-8ed31374="" class="title-ticket">
 													<h2 data-v-8ed31374="" class="title">${ vo.dtitle }</h2>
@@ -137,6 +139,38 @@
 												</div>
 												<div data-v-8ed31374="" class="use-info-ticket">
 													<strong data-v-8ed31374="" class="title">이용 정보</strong>
+													<div class="content">
+		 
+		<table class="board">
+			<tr>
+				<td colspan="4">
+					<a href="board_write.do">
+					<button type="button" class="btn_style">글쓰기</button>
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<th>번호</th>
+				<th>후기</th>
+				<th>등록날짜</th>
+				 
+			</tr>
+			<c:forEach var="vo" items="${ list }"> 
+			 <tr>
+				<td>${ vo.getRno() }</td>
+				<td><a href="board_content.do?bid=${ vo.getBid()}">${ vo.getBtitle() }</a></td>
+				<td>${ vo.getBdate() }</td>
+				<td>${ vo.getBhits() }</td>
+			</tr>
+			</c:forEach> 
+			
+			<tr>
+				<%-- 페이지 네비게이션 시작 --%>						
+				<td colspan=4><div id="ampaginationsm"></div></td>
+				<%-- 페이지 네비게이션 종료  --%>
+			</tr>
+		</table>	
+	</div>
 													<div data-v-8ed31374="" class="contents">
 														<div class="editor-contents-area">
 															<p>
@@ -216,7 +250,7 @@
 														<ul data-v-8ed31374="" class="personnel-list">
 															<li data-v-8ed31374=""><div data-v-8ed31374=""
 																	class="personal-control">
-																	<span data-v-8ed31374="" class="person">성인</span>
+																	<span data-v-8ed31374="" class="person">인원</span>
 																	<div data-v-1dc6379c="" data-v-8ed31374=""
 																		class="control count-control">
 																		<button data-v-1dc6379c="" type="button" disabled="disabled"
@@ -238,7 +272,7 @@
 																</div></li>
 															<li data-v-8ed31374=""><div data-v-8ed31374=""
 																	class="personal-control">
-																	<span data-v-8ed31374="" class="person">청소년</span>
+																	 
 																	<div data-v-1dc6379c="" data-v-8ed31374=""
 																		class="control count-control">
 																		<button data-v-1dc6379c="" type="button" disabled="disabled"
@@ -304,7 +338,9 @@
 															</ul>
 															<div data-v-26e42198="" data-v-8ed31374=""
 																class="btn-area btn-reservation"  >
-														 <button data-v-26e42198="" id="btn32" type="button" class="primary" > 예매하기 </button>
+														 <a href="http://localhost:9000/dmu/ticket_reservation.do?did=${ vo.getDid()}" target="_parent" >
+														 <button data-v-26e42198="" id="btn32" type="button" class="primary" >
+														  예매하기 </button></a>
 																		 							</div>
 																										</div>
 																									</div></li>

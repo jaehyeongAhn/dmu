@@ -37,9 +37,7 @@ public class ExhibitionController {
 		
 		return mv;
 	}
-	
-	 
-	
+ 
 	@RequestMapping(value="/learn.do", method=RequestMethod.GET)
 	public String learn() {
 		return "ticket/learn/learn";
