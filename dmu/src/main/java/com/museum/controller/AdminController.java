@@ -2,15 +2,20 @@ package com.museum.controller;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.museum.dao.DmuNoticeDAO;
+import com.museum.service.NoticeServiceImpl;
 import com.museum.vo.DmuNoticeVO;
 @Controller
 public class AdminController {
+	
+	@Autowired
+	private NoticeServiceImpl noticeService;
 
 	@RequestMapping(value = "/admin_notice_list.do", method = RequestMethod.GET)
 	public ModelAndView admin_notice_list(String rpage) {
@@ -25,7 +30,7 @@ public class AdminController {
 		int pageSize = 3;	//한페이지당 게시물 수
 		int reqPage = 1;	//요청페이지	
 		int pageCount = 1;	//전체 페이지 수
-		int dbCount = dao.totalCount();	//DB에서 가져온 전체 행수
+		int dbCount = noticeService.getTotalCount();	//DB에서 가져온 전체 행수
 		
 		//총 페이지 수 계산
 		if(dbCount % pageSize == 0){
@@ -45,7 +50,7 @@ public class AdminController {
 		}
 		
 		
-	ArrayList<DmuNoticeVO> list = dao.select(startCount, endCount);
+	ArrayList<DmuNoticeVO> list = noticeService.getList(startCount, endCount);
 	
 	mv.addObject("list", list);
 	mv.addObject("dbCount", dbCount);
@@ -73,7 +78,7 @@ public class AdminController {
 	public ModelAndView admin_notice_write_check(DmuNoticeVO vo){
 		ModelAndView mv = new ModelAndView();
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		int result = dao.insert(vo);
+		int result = noticeService.getWriteResult(vo);
 		if(result == 1){
 			mv.setViewName("redirect:/admin_notice_list.do");
 		}else{
@@ -90,7 +95,7 @@ public class AdminController {
 	public ModelAndView admin_notice_content(String nid) {
 		ModelAndView mv = new ModelAndView();
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		DmuNoticeVO vo = dao.select(nid);
+		DmuNoticeVO vo = noticeService.getContent(nid);
 		
 		mv.addObject("vo", vo);
 		mv.setViewName("/admin/admin_notice_content");
@@ -107,7 +112,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		DmuNoticeVO vo = dao.select(nid);
+		DmuNoticeVO vo = noticeService.getContent(nid);
 		
 		mv.addObject("vo", vo);
 		mv.setViewName("admin/admin_notice_update");
@@ -124,7 +129,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		int result = dao.update(vo);
+		int result = noticeService.getUpdateResult(vo);
 		if(result == 1){
 			mv.setViewName("redirect:/admin_notice_list.do");
 		}else{
@@ -158,7 +163,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		int result = dao.delete(nid);
+		int result = noticeService.getDeleteResult(nid);
 		
 		if(result == 1) {
 			mv.setViewName("redirect:/admin_notice_list.do");

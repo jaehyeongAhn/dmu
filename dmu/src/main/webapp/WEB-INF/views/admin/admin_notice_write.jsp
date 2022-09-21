@@ -82,7 +82,7 @@
 										<input type="text" name="ntitle" class="input-area-write" id="ntitle"></li>
 									<li>
 										<label>내용</label> 
-										<textarea name="ncontent" class="input-area-write"></textarea>
+										<textarea name="ncontent" class="input-area-write" style="height:30rem"></textarea>
 									</li>
 								</ul>
 							</table>

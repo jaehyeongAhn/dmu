@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>D MUSEUM</title>
+<title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/join.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
@@ -12,16 +12,14 @@
 <script src="http://localhost:9000/dmu/resources/js/join.js"></script>
 <script>
 	$(document).ready(function(){
-		let header_height = $(".header").outerHeight();
-		let main_height = $(".joinContainer").outerHeight(true);
-		$(".footer").css("top", header_height + main_height + 200);
+		$(".footer").css({"position" : "relative", "top" :"100px"});
 	}); 
 </script>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 class = "header"></iframe>
 
-	<main class = "join">
+	<main class = "join_ok">
 		<div class = "section">
 			<div class = "joinContainer">
 				<div class = "content">
@@ -34,21 +32,14 @@
 						<p>로그인 후 회원에게만 제공되는 다양한 혜택을 만나 보세요.</p>
 					</div>
 					<div>
-						<button type = "button" id = "loginGo">로그인</button>
+						<a href = "login.do"><button type = "button" id = "loginGo">로그인</button></a>
 					</div>
 				</div>
 				
 			</div>
 		</div>
-		<%-- <div class = "background_terms">
-			<div class = "window_terms">
-				<div class = "popup_terms">
-					
-				</div>
-			</div>
-		</div> --%>
 	</main>
 	
-	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	<iframe src="footer.do" width="100%" height="510px" scrolling="no" frameborder=0 class = "footer"></iframe>
 </body>
 </html>

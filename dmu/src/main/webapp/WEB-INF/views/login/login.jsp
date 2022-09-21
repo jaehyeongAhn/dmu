@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>D MUSEUM</title>
+<title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel = "stylesheet" href = "http://localhost:9000/dmu/resources/css/login.css">
-<link rel = "stylesheet" href = "http://localhost:9000/dmu/resources/css/main.css">
+<link rel = "stylesheet" href = "http://localhost:9000/dmu/resources/css/main_css.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/join.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/login.js"></script>
 <script>
 	$(document).ready(function(){
 
@@ -20,6 +20,7 @@
 			$(".background_join").addClass("show_join");
 			$(".window_join").addClass("show_join");
 			$("#popup_joinGuide").html(guideLine);
+			$("#popup_joinGuide").css({"line-height" : "1.5rem"});
 			$("#popup_joinOk").click(function() {
 				$(".background_join").removeClass("show_join");
 				$(".window_join").removeClass("show_join");
@@ -45,7 +46,8 @@
 				<ul class = "loginList">
 					<li>
 						<div id = "idInput">
-							<input type = "text" name = "did" id = "login_id" placeholder = "아이디를 입력해 주세요." maxlength = "20">								
+							<input type = "text" name = "did" id = "login_id" placeholder = "아이디를 입력해 주세요." 
+							maxlength = "20" >								
 						</div>
 					</li>
 					<li>
@@ -59,8 +61,8 @@
 								<input type = "checkbox" id = "id_save"><label for = "id_save">아이디 저장</label>
 							</div>
 							<div>
-								<a href = "#">아이디 찾기</a>
-								<a href = "#">비밀번호 찾기</a>
+								<a href = "login_idfind.do">아이디 찾기</a>
+								<a href = "login_idfind.do?show=pass">비밀번호 찾기</a>
 							</div>
 						</div>
 					</li>

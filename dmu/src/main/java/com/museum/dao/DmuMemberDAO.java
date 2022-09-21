@@ -3,6 +3,87 @@ package com.museum.dao;
 import com.museum.vo.DmuMemberVO;
 
 public class DmuMemberDAO extends DBConn{
+	//login_update : 비밀번호 재변경
+	public int login_update(DmuMemberVO vo) {
+		int result = 0;
+		String sql = "UPDATE DMU_MEMBER SET PASS = ? WHERE DID = ?";
+		try {
+			getPreparedStatement(sql);
+			pstmt.setString(1, vo.getPass());
+			pstmt.setString(2, vo.getDid());
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	//emailCheckPass : 비밀번호 찾기 email 일치 확인
+	public int emailCheckPass(String email, String name, String did) {
+		int result = 0;
+		String sql = "SELECT COUNT(*) FROM DMU_MEMBER WHERE EMAIL = ? AND DNAME = ? AND DID = ?";
+		try {
+			getPreparedStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.setString(2, name);
+			pstmt.setString(3, did);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	//selectId : id 찾기
+	public String selectId(DmuMemberVO vo) {
+		String result = "";
+		//String sql = "SELECT RPAD(SUBSTR(DID, 1, 4), 10, '*') DID FROM DMU_MEMBER WHERE EMAIL = ? AND DNAME = ?";
+		String sql = "SELECT DID FROM DMU_MEMBER WHERE EMAIL = ? AND DNAME = ?";
+		try {
+			getPreparedStatement(sql);
+			pstmt.setString(1, vo.getEmail());
+			pstmt.setString(2, vo.getDname());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				result = rs.getString(1);
+			}
+			
+			close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	//emailCheckId : 아이디 찾기 email 일치 확인
+	public int emailCheckId(String email, String name) {
+		int result = 0;
+		String sql = "SELECT COUNT(*) FROM DMU_MEMBER WHERE EMAIL = ? AND DNAME = ?";
+		try {
+			getPreparedStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.setString(2, name);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 	//login : 로그인
 	public int login(DmuMemberVO vo) {
 		int result = 0;

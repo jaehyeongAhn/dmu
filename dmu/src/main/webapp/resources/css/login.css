@@ -41,17 +41,17 @@
 		width: 408px;
 	}
 	
-	div#idInput, div#passInput {
+	div#idInput, div#passName {
 		border: 0.5px solid #dcdcdc;
 		width: 402.67px;
 		height: 60px;
 	}
 	
-	div#passInput {
+	div#passName {
 		margin-top: 20px;
 	}
 	
-	div#idInput input::placeholder, div#passInput input::placeholder {
+	div#idInput input::placeholder, div#passName input::placeholder {
 		color : #999999;
 	}
 	
@@ -248,4 +248,378 @@
 	iframe.footer {
 		position : absolute;
 		left : 0;
+	}
+	
+	/********************************** idfind.jsp ************************************/
+	main.login_id {
+		min-width : 1200px;
+	}
+	div.idfind {
+		text-align : center;
+		min-width : 1200px;
+	}
+	form[name="loginIdFindForm"] ul.idfindList, form[name="loginPassFindForm"] ul.passfindList {
+		display : inline-block;
+		width : 626px;
+		justify-content : center;
+		align-items : center;
+		list-style-type : none;
+		padding : 0;
+	}
+	ul.idfindList li, ul.passfindList li {
+		margin-bottom : 20px;
+	}
+	ul.idfindList div#idInput, ul.idfindList div.emailTable, div#codeSet, div#myidBtn,
+	ul.passfindList div#passInput, ul.passfindList div.emailPass, div#pass_codeSet, div#myPassBtn {
+		width : 100%;
+		height : 55px;
+		display : flex;
+		justify-content : space-between;
+		align-items : center;
+	}
+	label.idFindLabel, label.passfindList {
+		text-align : left;
+		display: inline-block;
+	    width: 100%;
+		margin-bottom : 15px;
+		color : #959595;
+		font-weight : 500;
+	}
+	ul.passfindList div#passInput {
+		border : 0.5px solid #dcdcdc;
+	}
+	input#name_check, input#name_check_pass {
+		width : 100% !important;
+	}
+	input#email1, input#email2 {
+		width : 18.5%;
+		font-size : 15px; 
+		padding : 16px;
+		border : 0.5px solid #dcdcdc;
+	}
+	input#name_check_pass {
+		height : 100%;
+	}
+	select#email3, button#accredit_send, select#pass_email3, button#accredit_send_pass {
+		width : 22%;
+		font-size : 15px; 
+		padding : 16px;
+		border : 0.5px solid #dcdcdc;
+		
+	}
+	#accredit_send:disabled, #accredit_check:disabled, #find_myid:disabled, 
+	#accredit_send_pass:disabled, #pass_accredit_check:disabled, #find_mypass:disabled{
+		background : #dbdbdb;
+		color : #c5c5c5;
+		font-weight : 600;
+		font-size : 15px;
+		border : 0.5px solid #c5c5c5;
+	}
+	div#codeSet div:first-child, div#pass_codeSet div:first-child {
+		width : 76.5%;
+		height : inherit;
+		box-sizing : border-box;
+		border : 0.5px solid #dcdcdc;
+	}
+	input#id_accredit, input#pass_accredit{
+		width : 100%;
+		display : inline-block;
+		height : 100%;
+		box-sizing : border-box;
+		padding : 16px;
+		color : black;
+		border : none;
+	}
+	input#id_accredit::placeholder, input#pass_accredit::placeholder {
+		color : #a8a8a8;
+		font-size : 14px;
+	}
+	div#codeSet div:last-child, div#pass_codeSet div:last-child{
+		display : inline-block;
+		width : 21.9%;
+		height : inherit;
+	}
+	button#accredit_check, button#pass_accredit_check {
+		display : inline-block;
+		width : 100%;
+		height : 100%;
+		font-size : 15px;
+	}
+	#accredit_send, #accredit_check, #accredit_send_pass, #pass_accredit_check {
+		background : black;
+		color : white;
+		border : 0.5px solid black;
+	}
+	#accredit_send:hover, #accredit_check:hover, button#find_myid:hover,
+	#accredit_send_pass:hover, #pass_accredit_check:hover, button#find_mypass:hover {
+		background : white;
+		color : black;
+		border : 0.5px solid black;
+	}
+	
+	#accredit_send:disabled:hover, #accredit_check:disabled:hover, button#find_myid:disabled:hover,
+	#accredit_send_pass:disabled:hover, #pass_accredit_check:disabled:hover, button#find_mypass:disabled:hover {
+		background : #dbdbdb;
+		color : #c5c5c5;
+		font-weight : 600;
+		font-size : 15px;
+		border : 0.5px solid #c5c5c5;
+	}
+	input#email2:read-only, input#pass_email2:read-only {
+		background : #f2f2f2;
+	}
+	button#find_myid, button#find_mypass {
+		width: 100%;
+	    height: inherit;
+	    font-size: 15px;
+	    background : black;
+	    color : white;
+	}
+	div.message {
+		padding : 30px 0 25px 0;
+	}
+	div.message p {
+		color : #787878;
+		margin: 0;
+	    font-size: 18px;
+	    letter-spacing: -0.1rem;
+	    padding: 1px 0;
+	}
+	
+	div#passID {
+		height : 55px;
+		border : 0.5px solid #dcdcdc !important;
+	}
+	input#name_check_pass, input#name_check {
+		height : inherit;
+		box-sizing : border-box;
+		padding : 16px;
+		font-size : 15px;
+		border : none;
+	}
+	input#pass_email1, input#pass_email2 {
+		width : 18.5%;
+		font-size : 15px; 
+		padding : 16px;
+		border : 0.5px solid #dcdcdc;
+	}
+	ul.passfindList input::placeholder {
+		color : #a8a8a8;
+	}
+	
+	/**
+	*	탭 메뉴
+	**/
+	div.tab_menu {
+		border-bottom : 1px solid #dcdcdc;
+		display : flex;
+		justify-content : center;
+		align-items : center;
+		margin-bottom : 40px;
+		margin-top : 70px;
+	}
+	div.id_tab, div.pass_tab {
+		width : 170px;
+		height : 60px;
+		text-align : center;
+		display : flex;
+		justify-content : center;
+		align-items : center;
+	}
+	div.id_tab div, div.pass_tab div {
+		width : 70%;
+		height : inherit;
+		cursor : pointer;
+		border-bottom : 4.5px solid transparent;
+	}
+	div.id_tab .show, div.pass_tab .show {
+		width : 70%;
+		height : inherit;
+		border-bottom : 4.5px solid black;
+	}
+	div.id_tab div p, div.pass_tab div p {
+	    font-size: 18px;
+	    font-weight: 500;
+	    box-sizing: border-box;
+	    letter-spacing: -0.1rem;
+	    padding : 0;
+	    color : #a2a2a2;
+	}
+	div.id_tab .show p, div.pass_tab .show p {
+	    font-size: 18px;
+	    font-weight: 500;
+	    box-sizing: border-box;
+	    letter-spacing: -0.1rem;
+	    padding : 0;
+	    color : black;
+	}
+	.idfind form {
+		display : none;
+	}
+	.idfind form.show {
+		display : inline-block;
+	}
+	
+	
+	
+	
+/******************************************* login.jsp *******************************************/
+
+	@font-face {
+		font-family: 'Geogrotesque';
+		src: local('Geogrotesque Light'),
+			local('/dmu/resources/font/Geogrotesque-Light'),
+			url('/dmu/resources/font/GeogrotesqueCyr-Light.woff2')
+			format('woff2'),
+			url('/dmu/resources/font/GeogrotesqueCyr-Light.woff') format('woff'),
+			url('/dmu/resources/font/GeogrotesqueCyr-Light.ttf')
+			format('truetype');
+		font-weight: 300;
+		font-style: normal;
+	}
+	
+	* {
+		font-family: "Geogrotesque";
+	}
+	
+	div.container h2 {
+		font-size: 3rem !important;
+		text-align: center;
+		line-height: 3.2rem;
+		letter-spacing: -0.08em;
+		font-weight : 500;
+	}
+	
+	form[name='loginForm'] {
+		text-align: center;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		margin-top : 50px;
+	}
+	
+	.loginList {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		width: 408px;
+	}
+	
+	div#idInput, div#passInput {
+		border: 0.5px solid #dcdcdc;
+		width: 402.67px;
+		height: 60px;
+	}
+	
+	div#passInput {
+		margin-top: 20px;
+	}
+	
+	div#idInput input::placeholder, div#passInput input::placeholder {
+		color : #999999;
+	}
+	
+	div#idInput>input, div#passInput>input {
+		border: none;
+		width: 100%;
+		height: 100%;
+		padding: 16px;
+		font-size: 15px;
+		letter-spacing: -0.03rem;
+		height: 100%;
+		box-sizing: border-box;
+	}
+	div#idSetup {
+		display : flex;
+		justify-content : space-between;
+		margin-top : 20px;
+		align-items : center;
+	}
+	/* 체크박스 커스텀 */
+	input#id_save {
+		display : none;
+	}
+	input#id_save + label::before {
+		content : "";
+	    border: 0.5px solid #dcdcdc;
+	    width: 24px;
+	    height: 24px;
+	    cursor: pointer;
+	    display: inline-block;
+	    vertical-align: middle;
+	    margin-right : 5px;
+	}
+	input#id_save:checked + label::before{
+		content: "";
+	    width: 24px;
+	    height: 24px;
+	    color : white;
+	    text-align: center;
+	    vertical-align: middle;
+	    background-image : url("http://localhost:9000/dmu/resources/images/check.png");
+	    background-size : cover;
+	    background-repeat : no-repeat;
+	}
+	label[for = "id_save"], div#id_save > div > a{
+		align-items: center;
+	    height: inherit;
+	    display: flex;
+	    vertical-align: middle;
+	}
+	
+	div#idSetup div:nth-child(2) a{
+		text-decoration : none;
+		color : gray;
+	}
+	div#idSetup div:nth-child(2) a:first-child::after {
+		content : "|";
+		color : lightgray;
+		padding-left : 5px;
+	}
+	
+	/****************** 로그인 버튼 *********************/
+	div#loginBtn, div#joinBtn {
+		margin-top : 20px;
+	}
+	div#joinBtn a {
+		width : 100%;
+		height : 60px;
+	}
+	div#loginBtn button, div#joinBtn button {
+		color : white;
+		width : 100%;
+		height : 60px;
+		font-size : 16px;
+		letter-spacing : -0.12rem;
+		font-weight : 400;
+	}
+	div#loginBtn button {
+		color : white;
+		background : black;
+		border : 0.5px solid black;
+	}
+	div#joinBtn button {
+		color : black;
+		background : white;
+		border : 0.5px solid black;
+	}
+	div#loginBtn button:hover {
+		background : white;
+		color : black;
+		cursor : pointer;
+	}
+	div#joinBtn button:hover {
+		background : #888888;
+		border : 0.5px solid #888888;
+		color : white;
+		cursor : pointer;
+	}
+	/******** 전체 페이지 *********/
+	main.login div.section{
+		min-width : 1200px;
+	}
+	
+	form[name = "passwordAlterForm"] {
+		display : flex;
+		justify-content : center;
 	}

@@ -4,8 +4,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class DmuTicketVO {
 	
-	int rno,dpersonnel,dprice,dnum;
-	String did, dtitle, dstart, dend , dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget;
+	int rno,dpersonnel,dnum, dprice;
+	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget;
 	
 	CommonsMultipartFile file1;
 	public CommonsMultipartFile getFile1() {

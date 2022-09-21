@@ -1954,7 +1954,6 @@ header .header-web .main-menu-area .main-menu .sub-menu.normal .pannel {
 header .header-web .main-menu-area .main-menu .sub-menu.normal .pannel>div {
     padding: 0;
 }
-
 header .header-web .main-menu-area .main-menu .sub-menu.normal .pannel>div>div {
     float: none;
     height: 4.375rem;
@@ -2127,7 +2126,6 @@ header .header-web .main-menu-area .main-menu .sub-menu .pannel>div:after {
     visibility: hidden;
     clear: both;
 }
-
 header .header-web .main-menu-area .side-links {
     position: absolute;
     top: 1.40625rem;

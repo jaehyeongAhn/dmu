@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.museum.dao.DmuTicketDAO" %>    
+<%@ page import="com.museum.vo.DmuTicketVO" %>  
+ 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
@@ -21,21 +24,16 @@
 <div data-v-7b1f57c8="" class="sub-contents-area">
 <div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
 			<ul data-v-6d324aa0="">
-				<li data-v-6d324aa0="" class="on">
-					<span data-v-6d324aa0=""  class="no">01</span>
-					<span data-v-6d324aa0="" class="txt">.티켓 선택</span>
-				</li>
-				
-				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">02</span>
-					<span data-v-6d324aa0="" class="txt">.관람일/인원 선택</span>
-				</li>
-				
-				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">03</span>
-					<span data-v-6d324aa0="" class="txt">.결제</span>
-				</li>
-			</ul>
+											<li data-v-6d324aa0="" class="complete"><span
+												data-v-6d324aa0="" class="no">01</span><span
+												data-v-6d324aa0="" class="txt">ticket</span></li>
+											<li data-v-6d324aa0="" class="on"><span
+												data-v-6d324aa0="" class="no">02</span><span
+												data-v-6d324aa0="" class="txt">ticket content</span></li>
+											<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
+												class="no">03</span><span data-v-6d324aa0="" class="txt">수정/삭제
+													</span></li>
+										</ul>
 		</div>
 <div data-v-7b1f57c8="" class="container">
 <div data-v-7b1f57c8="" class="ticket-list-area">
@@ -43,15 +41,15 @@
 <div data-v-7b1f57c8="" class="snb-area">
 			<ul data-v-7b1f57c8="" class="snb">
 				<li data-v-7b1f57c8="" class="on">
-					<a data-v-7b1f57c8=""href="http://localhost:9000/dmu/exhibition_list.do" role="button">EXHIBITION </a>
+					<a data-v-7b1f57c8=""href="http://localhost:9000/dmu/adminexhibition_list.do" role="button">EXHIBITION </a>
 				</li>
 			
 				<li data-v-7b1f57c8="" class="">
-					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/learn_list.do" role="button">LEARN </a>
+					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/adminlearn_list.do" role="button">LEARN </a>
 				</li>
 			
 				<li data-v-7b1f57c8="" class="">
-					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/event_list.do" role="button">EVENT </a>
+					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/adminevent_list.do" role="button">EVENT </a>
 				</li>
 				
 			</ul>
@@ -81,19 +79,36 @@
 			<ul data-v-3c1f59cb="">
 					<c:forEach var="vo" items="${list}">
 					<c:if test="${vo.dcode eq'exhibition'}">
-				<li data-v-3c1f59cb="">
-					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do" target="_parent" class="thumb">
+						<li data-v-3c1f59cb="">
+						<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" target="_parent" class="thumb">
 					<c:if test="${vo.dsfile != null }">
 						<img data-v-2fed1a9a="" data-v-1e8092ec="" src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"> 
 					</c:if>
-					</a>
-					
+					</a>				 
 				<span data-v-3c1f59cb="" class="place"> ${vo.dplace } </span>
-					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do" target="_parent" class="title"> ${vo.dtitle } </a>
+					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" target="_parent" class="title"> ${vo.dtitle } </a>
 						<p data-v-3c1f59cb="" class="explan"></p>
 						<span data-v-3c1f59cb="" class="term"> ${vo.dstart }~ ${vo.dend } </span></li>
 					</c:if>
 					</c:forEach>
+					
+				<%-- 	<c:forEach var="vo" items="${ list }"> 
+						 <tr>
+						 
+							<c:if test="${vo.dsfile != null }">		
+							<a href="exhibition.do?did=${ vo.getDid()}"><img  src="http://localhost:9000/dmu/resources/upload/${vo.dsfile}"></a>
+							 
+			 				</c:if>
+			 			
+							<td><a href="exhibition.do?did=${ vo.getDid()}"></a></td>
+							<td>${ vo.getDcode() }</td>
+							 
+							<td><a href="exhibition.do?did=${ vo.getDid()}">${ vo.getDtitle() }</a></td>
+							<td>${ vo.getDstart() } ~ ${ vo.getDend() } </td>
+							
+						 
+						</tr>
+					</c:forEach>   --%>
 			</ul>										
 </div>
 												

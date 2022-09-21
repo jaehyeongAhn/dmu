@@ -8,6 +8,7 @@
 <link rel="stylesheet"  href="http://localhost:9000/dmu/resources/css/write.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+
 </head>
 <body>
 	<!-- Header Include -->
@@ -77,10 +78,3 @@
 	
 </body>
 </html>
-
-
-
-
-
-
-

@@ -1,5 +1,6 @@
 package com.museum.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -7,10 +8,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.museum.dao.DmuMemberDAO;
+import com.museum.service.JoinServiceImpl;
 import com.museum.vo.DmuMemberVO;
 
 @Controller
 public class JoinController {
+	
+	@Autowired
+	private JoinServiceImpl joinService;
 	/*
 	 * join_ok.do : 회원 가입 성공 페이지
 	 */
@@ -25,9 +30,8 @@ public class JoinController {
 	@RequestMapping(value = "/joinController.do", method = RequestMethod.POST)
 	public ModelAndView joinController(DmuMemberVO vo) {
 		ModelAndView mv = new ModelAndView();
-		
-		DmuMemberDAO dao = new DmuMemberDAO();
-		int result = dao.insert(vo);
+
+		int result = joinService.join(vo);
 		if(result == 1) {
 			mv.setViewName("/join/join_ok");
 		}else {
@@ -38,7 +42,7 @@ public class JoinController {
 	
 	//idCheck.do : 아이디 중복 확인
 	@ResponseBody
-	@RequestMapping(value = "/join_idCheck.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/join_idCheck.do", method = RequestMethod.POST)
 	public String idCheck(String did) {
 		DmuMemberDAO dao = new DmuMemberDAO();
 		int result = dao.idCheck(did);
@@ -51,7 +55,7 @@ public class JoinController {
 	 */
 	@RequestMapping(value = "/join_terms.do", method = RequestMethod.GET)
 	public String join_terms() {
-		return "/join/terms";
+		return "/join/join_terms";
 	}
 	
 	/*
