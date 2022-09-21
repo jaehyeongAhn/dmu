@@ -54,13 +54,13 @@ public class TicketController {
 				if(!vo.getFile1().getOriginalFilename().equals("")) {
 					String path = request.getSession().getServletContext().getRealPath("/");
 					path += "\\resources\\upload\\";
-					
+					 
 					File file = new File(path+vo.getDsfile());
 					vo.getFile1().transferTo(file);
 				}
 				
 				//mv.setViewName("/board/board_list"); //에러X, 아무런 게시글 출력되지 X
-				mv.setViewName("redirect:/adminexhibition_list.do"); //DB연동을 Controller에서 진행하므로, 새로운 연결을 수행!!
+				mv.setViewName("redirect:/exhibition_list.do"); //DB연동을 Controller에서 진행하므로, 새로운 연결을 수행!!
 			}else{
 				mv.setViewName("error_page");
 			}

@@ -41,5 +41,21 @@ $(document).ready(function(){
 		
 		
 		
+					/*********************
+						전시 등록폼 유효성 체크
+					**********************/
+					$("#btn_exhibition_Write").click(function(){
+						 
+					
+				 		if($("#dtitle").val() == ""){
+							alert("제목을 입력해주세요");
+						 
+							return false;
+						}else{
+							//서버전송
+							ticketlistform.submit();
+						} 
+					});
+		
 		}); 
 		

@@ -114,7 +114,7 @@ public class DmuTicketDAO extends DBConn {
 	public DmuTicketVO select(String did) {
 		DmuTicketVO vo = new DmuTicketVO();
 		
-		String sql = " select did, dtitle, dstart, dend, dprice,dplace,dinformation,dtime, TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE "
+		String sql = " select did, dtitle, dstart, dend, dprice,dplace,dinformation,dtime,dfile,dsfile, TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE "
 				+ " from dmu_ticket where did=?";
 		
 		try {
@@ -131,7 +131,9 @@ public class DmuTicketDAO extends DBConn {
 				vo.setDplace(rs.getString(6));
 				vo.setDinformation(rs.getString(7));
 				vo.setDtime(rs.getString(8));
-				vo.setEnddate(rs.getString(9));
+				vo.setDfile(rs.getString(9));
+				vo.setDsfile(rs.getString(10));
+				vo.setEnddate(rs.getString(11));
 			}
 			
 		//	close(); 조회수 업데이트를 같은 곳에서 하기위해서 주석 처리해야된다
