@@ -29,34 +29,7 @@
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/mycgv/resources/js/am-pagination.js"></script>
 
-<script>
-	$(document).ready(function(){
-		
-		//페이징 출력
-		var pager = jQuery('#ampaginationsm').pagination({
-		
-		    maxSize: 7,	    		// max page size
-		    totals: '${dbCount}', 	// total rows
-		    page: '${rpage}',		// initial page		
-		    pageSize: '${ pageSize }',			// max number items per page  
-		
-		    // custom labels		
-		    lastText: '&raquo;&raquo;', 		
-		    firstText: '&laquo;&laquo;',		
-		    prevText: '&laquo;',		
-		    nextText: '&raquo;',
-				     
-		    btnSize:'sm'	// 'sm'  or 'lg'		
-		});
-		
-		//페이징 번호 클릭 시 이벤트 처리
-		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
-			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           $(location).attr('href', "http://localhost:9000/mycgv/board_list.do?rpage="+e.page);         
-	    });
-		
- 	});
-</script> 
+ 
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
@@ -102,7 +75,7 @@
 													</ul>
 													<ul data-v-a42e08ec="" class="ticket-personnel">
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
-															class="title">성인</span><span data-v-a42e08ec=""
+															class="title">인원</span><span data-v-a42e08ec=""
 															class="price">${ vo.dprice }원</span><span data-v-a42e08ec=""
 															class="personnel">1인</span><span data-v-a42e08ec=""
 															class="total">${ vo.dprice }원</span></li>
@@ -244,8 +217,10 @@
 													</ul>
 													<div data-v-26e42198="" data-v-a42e08ec=""
 														class="btn-area btn-reservation">
+														<a href="http://localhost:9000/dmu/complete.do?did=${ vo.getDid()}" target="_parent" >
 														<button data-v-26e42198="" id="btn289" type="button"
-															disabled="disabled" class="primary"> 결제하기 </button>
+															 							class="primary"> 결제하기 </button></a>
+															<!-- disabled="disabled" -->
 													</div>
 												</div>
 											</div>

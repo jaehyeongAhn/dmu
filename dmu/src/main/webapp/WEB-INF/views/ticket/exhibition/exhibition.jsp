@@ -101,10 +101,11 @@
 											<!---->
 											<div data-v-8ed31374="" class="left">
 												<div data-v-8ed31374="" class="img-ticket">
-													<img data-v-2fed1a9a="" data-v-8ed31374=""
-														src="http://localhost:9000/dmu/resources/upload/${vo.dsfile}"
-														alt="어쨌든, 사랑" style="">
-														 
+													 
+													<img data-v-2fed1a9a="" data-v-8ed31374="" src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"
+													alt=${ vo.dtitle } style=""> 
+													 
+													
 												</div>
 												<div data-v-8ed31374="" class="title-ticket">
 													<h2 data-v-8ed31374="" class="title">${ vo.dtitle }</h2>
@@ -129,19 +130,14 @@
 														</li>
 													</ul>
 												</div>
-												<div data-v-8ed31374="" class="organ-ticket">
-													<p data-v-8ed31374="" class="comment">
-														※ 10명 이상의 단체라면, 단체 예매로 신청하세요.<br> &nbsp;&nbsp;&nbsp;&nbsp;단체를 위한 할인 혜택을 드립니다.
-													</p>
-													<div data-v-26e42198="" data-v-8ed31374="" class="btn-area">
-														<button data-v-26e42198="" name ="btn25" id="btn25" type="button" class="secondary small">단체예매 신청</button>
-													</div>
+												<div data-v-8ed31374="" class=" ">
+													 
 												</div>
 												<div data-v-8ed31374="" class="use-info-ticket">
 													<strong data-v-8ed31374="" class="title">이용 정보</strong>
 													<div class="content">
 		 
-		<table class="board">
+		<%-- <table class="board">
 			<tr>
 				<td colspan="4">
 					<a href="board_write.do">
@@ -165,11 +161,11 @@
 			</c:forEach> 
 			
 			<tr>
-				<%-- 페이지 네비게이션 시작 --%>						
+				페이지 네비게이션 시작						
 				<td colspan=4><div id="ampaginationsm"></div></td>
-				<%-- 페이지 네비게이션 종료  --%>
+				페이지 네비게이션 종료 
 			</tr>
-		</table>	
+		</table>	 --%>
 	</div>
 													<div data-v-8ed31374="" class="contents">
 														<div class="editor-contents-area">
@@ -275,12 +271,9 @@
 																	 
 																	<div data-v-1dc6379c="" data-v-8ed31374=""
 																		class="control count-control">
-																		<button data-v-1dc6379c="" type="button" disabled="disabled"
-																			class="btn-minus"></button>
+																		 
 																		<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area">
-																			<input data-v-67ca82d2="" id="field42" autocomplete="on"
-																				placeholder="" readonly="readonly" maxlength="-1" type="text"
-																				class="">
+																			 
 																			<!---->
 																			<!---->
 																			<!---->
@@ -289,7 +282,7 @@
 																			<a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>
 																			<!---->
 																		</div>
-																		<button data-v-1dc6379c="" type="button" class="btn-plus"></button>
+																		 
 																	</div>
 																</div></li>
 															<li data-v-8ed31374=""><div data-v-8ed31374=""
@@ -297,12 +290,9 @@
 																	<span data-v-8ed31374="" class="person"> </span>
 																	<div data-v-1dc6379c="" data-v-8ed31374=""
 																		class="control count-control">
-																		<button data-v-1dc6379c="" type="button" disabled="disabled"
-																			class="btn-minus"></button>
+																		 
 																		<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area">
-																			<input data-v-67ca82d2="" id="field44" autocomplete="on"
-																				placeholder="" readonly="readonly" maxlength="-1" type="text"
-																				class="">
+																			 
 																			<!---->
 																			<!---->
 																			<!---->
@@ -311,17 +301,14 @@
 																			<a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>
 																			<!---->
 																		</div>
-																		<button data-v-1dc6379c="" type="button" class="btn-plus"></button>
+																		 
 																	</div>
 																</div></li>
 														</ul>
 														<ul data-v-8ed31374="" class="personnel-result">
-															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title"> </strong><span
+															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">인원</strong><span
 																data-v-8ed31374="" class="count">0</span></li>
-															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title"> </strong><span
-																data-v-8ed31374="" class="count">0</span></li>
-															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title"> 
-																	및 어린이</strong><span data-v-8ed31374="" class="count">0</span></li>
+															 
 														</ul>
 														<div data-v-8ed31374="" class="btn-bottom-area">
 															<ul data-v-8ed31374="" class="agreement-list">
