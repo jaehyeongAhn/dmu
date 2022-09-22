@@ -58,6 +58,9 @@
 				onSelect : function(){
 					var date = $.datepicker.formatDate("yy-mm-dd", $("#calendar").datepicker("getDate"));
 					$("#date").val(date);
+					$(".round-selection").attr("disabled", false) 
+				 
+				 
 					//alert(date);
 				}
 			});
@@ -67,6 +70,9 @@
 			
 		});
 	</script>
+	
+	 
+	
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
@@ -225,9 +231,7 @@
 													<div data-v-8ed31374="" id="btn_toggle" role="button" class="title-area btn-toggle on">회차</div>
 														<div data-v-8ed31374="" class="field-area">
 															<ul data-v-8ed31374="" class="round-list">
-																<li data-v-8ed31374="" class=""><button
-																		data-v-8ed31374="" type="button" disabled="disabled"
-																		class="round-selection">
+																<li data-v-8ed31374="" class=""><button data-v-8ed31374="" type="button" disabled="disabled" class="round-selection" id="entertime">
 																		<span data-v-8ed31374="" name="content" id="content">전일 입장 가능 11:00 ~ 20:00</span>
 																		<!---->
 																	</button></li>
@@ -235,8 +239,8 @@
 														</div>
 														<div data-v-8ed31374="" class="decision-area">~</div></li>
 													<li data-v-8ed31374="" class="item-ticketing">
-													<div data-v-8ed31374="" role="button" class="title-area btn-toggle" id="btb_toggle_hide">관람인원 및 권종<div data-v-8ed31374="" class="tooltip-area">
-																<span data-v-8ed31374="" role="button" class="icon-question"></span>
+													<div data-v-8ed31374="" role="button" class="title-area btn-toggle" id="btb_toggle_hide" >관람인원 및 권종<div data-v-8ed31374="" class="tooltip-area">
+																 
 															<!---->
 														</div>
 													</div>
@@ -247,23 +251,17 @@
 															<li data-v-8ed31374=""><div data-v-8ed31374=""
 																	class="personal-control">
 																	<span data-v-8ed31374="" class="person">인원</span>
-																	<div data-v-1dc6379c="" data-v-8ed31374=""
-																		class="control count-control">
-																		<button data-v-1dc6379c="" type="button" disabled="disabled"
-																			class="btn-minus"></button>
-																		<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area">
-																			<input data-v-67ca82d2="" id="field40" autocomplete="on"
-																				placeholder="" readonly="readonly" maxlength="-1" type="text"
-																				class="">
-																			<!---->
-																			<!---->
-																			<!---->
-																			<!---->
-																			<!---->
-																			<a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>
-																			<!---->
-																		</div>
-																		<button data-v-1dc6379c="" type="button" class="btn-plus"></button>
+																	<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control">
+																	
+																		<button id="countpeople" name="countpeople" data-v-1dc6379c="" type="button" disabled="disabled" class="btn-minus"  id="decreaseQuantity"></button>
+																		
+																			<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area" >
+																			<input data-v-67ca82d2="" id="field40" autocomplete="on" placeholder="" readonly="readonly" maxlength="-1" type="text" class="" > 	
+																			<a data-v-67ca82d2="" href="javascript:void(0);" class=""></a></div>
+																			
+																		<button data-v-1dc6379c="" type="button" class="btn-plus" id="increaseQuantity"></button>
+																		
+																		 
 																	</div>
 																</div></li>
 															<li data-v-8ed31374=""><div data-v-8ed31374=""
