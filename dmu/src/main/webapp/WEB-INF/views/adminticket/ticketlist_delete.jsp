@@ -8,10 +8,16 @@
 <link rel="icon" href="/favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/join.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
-
+<style>
+	img{
+		tesxt-aline:center;
+	}
+</style>
 </head>
 <body>
 	<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
@@ -39,21 +45,27 @@
 													</span></li>
 										</ul>
 									</div>
-										<div data-v-8ed31374="" class="left">
-											<div data-v-8ed31374="" class="img-ticket">
-													<h1>정말로 삭제하시겠습니까?</h1>
-											
-													<img data-v-2fed1a9a="" data-v-1e8092ec="" src="http://localhost:9000/dmu/resources/images/delete.jpg"> <!-- 휴지통 이미지 -->
-												
-												
-												
-											</div>
-										</div>
+						<div class = "section">
+								<div class = "joinContainer">
+									<div class = "content">
+										<div class = "container">
+											<img id="deleteimg" src = "http://localhost:9000/dmu/resources/images/join_ok.png">
+										<h3>버튼을 누르면 삭제가 완료됩니다.</h3>
 												<div data-v-8ed31374="" class="use-info-ticket">
 													<div data-v-26e42198="" data-v-8ed31374="" class="btn-area">
+														<p>
+															<br>
+														</p>
+														<p>
+															<br>
+														</p>
 														<button data-v-26e42198="" type="submit" class="secondary small">삭제완료</button>
 														<a href="adminexhibition_list.do"><button data-v-26e42198=""  type="button" class="secondary small">리스트</button></a>
 													</div>
+												</div>
+											</div>
+											
+												</div>
 												</div>
 											</div>
 											

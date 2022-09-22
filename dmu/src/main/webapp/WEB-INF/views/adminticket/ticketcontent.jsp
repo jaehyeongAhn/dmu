@@ -20,8 +20,10 @@
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
-<script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
@@ -44,10 +46,10 @@
 												data-v-6d324aa0="" class="txt">ticket</span></li>
 											<li data-v-6d324aa0="" class="on"><span
 												data-v-6d324aa0="" class="no">02</span><span
-												data-v-6d324aa0="" class="txt">ticket content</span></li>
+												data-v-6d324aa0="" class="txt">ticket상세보기</span></li>
 											<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
-												class="no">03</span><span data-v-6d324aa0="" class="txt">수정/삭제
-													</span></li>
+												class="no">03</span><span data-v-6d324aa0="" class="txt">
+													수정/삭제</span></li>
 										</ul>
 									</div>
 									<div data-v-25f87e60="" class="container">
@@ -57,7 +59,9 @@
 											<div data-v-8ed31374="" class="left">
 												<div data-v-8ed31374="" class="img-ticket">
 													<c:if test="${vo.dsfile != null }">
-														<img data-v-2fed1a9a="" data-v-1e8092ec="" src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"> 
+													<img data-v-2fed1a9a="" data-v-8ed31374=""
+														src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"
+														 style="">
 													</c:if>
 												</div>
 												<div data-v-8ed31374="" class="title-ticket">
@@ -71,73 +75,78 @@
 															<span data-v-8ed31374="" class="text">${ vo.dplace }</span>
 														</li>
 														<li data-v-8ed31374="" class="">
-															<strong data-v-8ed31374="" class="title">전시기간</strong>
+															<strong data-v-8ed31374="" class="title">전시기간/교육기간</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span>
 														</li>
 														<li data-v-8ed31374="">
-															<strong data-v-8ed31374="" class="title">운영시간</strong>
+															<strong data-v-8ed31374="" class="title">운영시간/교육시간</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dtime }</span>
+														</li>
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">대상</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dtarget }</span>
+														</li>
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">교육횟수</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dnum }</span>
+														</li>
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">정원 수</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dpersonnel }</span>
 														</li>
 														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
 															<p data-v-8ed31374="" class="price">${ vo.dprice } </p>
 														</li>
-														<li data-v-8ed31374="" class="">
-															<strong data-v-8ed31374="" class="title">정원</strong>
-															<span data-v-8ed31374="" class="text">${ vo.dpersonnel }</span>
-														</li>
-														<li data-v-8ed31374="" class="">
-															<strong data-v-8ed31374="" class="title">대상</strong>
-															<span data-v-8ed31374="" class="text">${ vo.dtarget}</span>
-														</li>
-														<li data-v-8ed31374="" class="">
-															<strong data-v-8ed31374="" class="title">교육횟수</strong>
-															<span data-v-8ed31374="" class="text">${ vo.dnum}</span>
-														</li>
 													</ul>
 												</div>
-													<strong data-v-8ed31374="" class="title">이용 정보</strong>
 												<div data-v-8ed31374="" class="organ-ticket">
 													<p data-v-8ed31374="" class="comment">
+												<div data-v-8ed31374="" class="use-info-ticket">
+													<strong data-v-8ed31374="" class="title">이용 정보</strong>
 													<div data-v-8ed31374="" class="contents">
 														<div class="editor-contents-area">
-															
-															
+															<p>
+																 
+ 
+
+																<br>
+															</p>
+															<ul style="font-size: 15px">
 																${ vo.dinformation }
-															
+															</ul>
 															
 															<p>
 																<br>
 															</p>
+															<p>
+																<br>
+															</p>
+															<p>
+																<br>
+															</p>
 														</div>
-													</div>
 													
 												</div>
-												<div data-v-8ed31374="" class="use-info-ticket">
-													<div data-v-26e42198="" data-v-8ed31374="" class="btn-area">
-														<a href="admin_ticket_update.do?did=${vo.did}"><button data-v-26e42198=""  type="button"  class="secondary small">수정</button></a>
-														<a href="admin_ticket_delete.do?did=${vo.did}"><button data-v-26e42198=""  type="button" class="secondary small">삭제</button></a>
-														<a href="adminexhibition_list.do"><button data-v-26e42198=""  type="button" class="secondary small">리스트</button></a>
 													</div>
 												</div>
+													<div data-v-26e42198="" data-v-8ed31374="" class="btn-area">
+												<a href="ticket_update.do?bid=${vo.did }"><button data-v-26e42198="" name ="btn25" id="btn25" type="button" class="secondary small">수정하기</button></a>
+												<a href="ticket_delete.do?bid=${vo.did }"><button data-v-26e42198="" name ="btn25" id="btn25" type="button" class="secondary small">삭제하기</button></a>
+												<a href="adminexhibition_list.do"><button data-v-26e42198="" name ="btn25" id="btn25" type="button" class="secondary small">리스트</button></a>
+													</div>
 											</div>
 											
-										
-											</div>
-											<!---->
-										</div>
-										<!---->
-										<!---->
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				
+				</div>
 			</main>
 			
-			
-		
-	
+			<button class="goto-top">상단으로 이동</button>
+		</div>
+	</div>
 	<!-- built files will be auto injected -->
 	<footer>
 		<!-- 0510 네이버 공통 js 추가 -->
