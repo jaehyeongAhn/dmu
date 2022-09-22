@@ -60,7 +60,7 @@ public class LoginController {
 	@RequestMapping(value = "/login_pw.do", method = RequestMethod.GET)
 	public ModelAndView login_update(DmuMemberVO vo) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("did", vo.getDid());
+		mv.addObject("mid", vo.getMid());
 		mv.setViewName("/login/login_pw");
 		return mv;
 	}
@@ -79,8 +79,8 @@ public class LoginController {
 	//emailCheckPass.do : 이름 및 아이디, 이메일 존재 확인
 	@ResponseBody
 	@RequestMapping(value = "/emailCheckPass.do", method = RequestMethod.POST)
-	public String emailCheckPass(String email, String name, String did) {
-		int result = loginService.emailCheckPass(email, name, did);
+	public String emailCheckPass(String email, String name, String mid) {
+		int result = loginService.emailCheckPass(email, name, mid);
 		
 		return String.valueOf(result);
 	}

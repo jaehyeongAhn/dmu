@@ -168,7 +168,7 @@ $(document).ready(function() {
 					type : "post",
 					url : "join_idCheck.do",
 					data : {
-						did : $("#did").val()
+						mid : $("#did").val()
 					},
 					success : function(result){
 						if(result == 0){

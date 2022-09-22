@@ -24,7 +24,7 @@
 				<h2>비밀번호 변경</h2>			
 			</div>
 			<form name = "passwordAlterForm" action = "password_alter.do" method = "post">
-				<input type = "hidden" name = "did" value = "${ vo.did }">
+				<input type = "hidden" name = "mid" value = "${ vo.mid }">
 				<ul class = "loginList">
 					<li>
 						<div id = "idInput" class = "alterPassCheck">

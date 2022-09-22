@@ -46,7 +46,7 @@
 				<ul class = "loginList">
 					<li>
 						<div id = "idInput">
-							<input type = "text" name = "did" id = "login_id" placeholder = "아이디를 입력해 주세요." 
+							<input type = "text" name = "mid" id = "login_id" placeholder = "아이디를 입력해 주세요." 
 							maxlength = "20" >								
 						</div>
 					</li>

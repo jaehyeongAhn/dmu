@@ -58,7 +58,7 @@
 						<li>
 							<label class = "idFindLabel">이름</label>
 							<div id="idInput">
-								<input type="text" name="dname" id="name_check"
+								<input type="text" name="mname" id="name_check"
 									placeholder="이름을 입력해 주세요." maxlength="20">
 							</div>
 						</li>
@@ -105,14 +105,14 @@
 						<li>
 							<label class = "idFindLabel">이름</label>
 							<div id="passInput">
-								<input type="text" name="dname" id="name_check_pass"
+								<input type="text" name="mname" id="name_check_pass"
 									placeholder="이름을 입력해 주세요." maxlength="20">
 							</div>
 						</li>
 						<li>
 							<label class = "idFindLabel">아이디</label>
 							<div id="passID">
-								<input type="text" name="did" id="name_check" class = "idCheckPass"
+								<input type="text" name="mid" id="name_check" class = "idCheckPass"
 									placeholder="아이디를 입력해 주세요." maxlength="20">
 							</div>
 						</li>
