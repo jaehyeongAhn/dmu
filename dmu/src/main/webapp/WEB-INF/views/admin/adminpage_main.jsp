@@ -35,7 +35,7 @@
 												<a class="" href="#">예매관리</a>
 											</li>
 											<li class="">
-												<a class="" href="#">리뷰관리</a>
+												<a class="" href="#">1대1문의</a>
 											</li>
 										</ul>
 									</div>

@@ -44,7 +44,7 @@
 						<ul>
 							<li><a href="http://localhost:9000/dmu/login.do"
 								target="_parent" class=""> LOGIN </a></li>
-							<li><a href="/join/info" target="_parent" class="">
+							<li><a href="http://localhost:9000/dmu/join.do" target="_parent" class="">
 									BECOME A MEMBER </a></li>
 							<!---->
 							<!---->
