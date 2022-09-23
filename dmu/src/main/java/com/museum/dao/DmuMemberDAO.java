@@ -22,7 +22,7 @@ public class DmuMemberDAO extends DBConn{
 	//emailCheckPass : 비밀번호 찾기 email 일치 확인
 	public int emailCheckPass(String email, String name, String mid) {
 		int result = 0;
-		String sql = "SELECT COUNT(*) FROM DMU_MEMBER WHERE EMAIL = ? AND DNAME = ? AND MID = ?";
+		String sql = "SELECT COUNT(*) FROM DMU_MEMBER WHERE EMAIL = ? AND MNAME = ? AND MID = ?";
 		try {
 			getPreparedStatement(sql);
 			pstmt.setString(1, email);
@@ -44,7 +44,7 @@ public class DmuMemberDAO extends DBConn{
 	//selectId : id 찾기
 	public String selectId(DmuMemberVO vo) {
 		String result = "";
-		//String sql = "SELECT RPAD(SUBSTR(DID, 1, 4), 10, '*') DID FROM DMU_MEMBER WHERE EMAIL = ? AND DNAME = ?";
+		//String sql = "SELECT RPAD(SUBSTR(DID, 1, 4), 10, '*') DID FROM DMU_MEMBER WHERE EMAIL = ? AND MNAME = ?";
 		String sql = "SELECT MID FROM DMU_MEMBER WHERE EMAIL = ? AND MNAME = ?";
 		try {
 			getPreparedStatement(sql);
@@ -66,7 +66,7 @@ public class DmuMemberDAO extends DBConn{
 	//emailCheckId : 아이디 찾기 email 일치 확인
 	public int emailCheckId(String email, String name) {
 		int result = 0;
-		String sql = "SELECT COUNT(*) FROM DMU_MEMBER WHERE EMAIL = ? AND DNAME = ?";
+		String sql = "SELECT COUNT(*) FROM DMU_MEMBER WHERE EMAIL = ? AND MNAME = ?";
 		try {
 			getPreparedStatement(sql);
 			pstmt.setString(1, email);

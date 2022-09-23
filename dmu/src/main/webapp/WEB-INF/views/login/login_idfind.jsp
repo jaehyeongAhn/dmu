@@ -24,7 +24,6 @@
 			$(".pass_tab div").addClass("show");
 			$(".idfind form.pass_find").addClass("show");
 		}
-		
 		$(".footer").css({"position" : "relative", "top" :"100px"});
 	});
 </script>

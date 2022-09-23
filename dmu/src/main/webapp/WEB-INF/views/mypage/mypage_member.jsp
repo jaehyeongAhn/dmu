@@ -40,7 +40,7 @@
 												<a class="" href="mypage_ticket.do">티켓예매 목록</a>
 											</li>
 											<li class="">
-												<a class="" href="mypage_review.do">나의 리뷰</a>
+												<a class="" href="mypage_review.do">나의 문의</a>
 											</li>
 										</ul>
 									</div>

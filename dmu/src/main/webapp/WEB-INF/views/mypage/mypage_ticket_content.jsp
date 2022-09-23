@@ -50,7 +50,7 @@
 												<strong><a class="" href="mypage_ticket.do" style = "color : black;">티켓예매 목록</a></strong>
 											</li>
 											<li class="">
-												<a class="" href="mypage_review.do">나의 리뷰</a>
+												<a class="" href="mypage_review.do">나의 문의</a>
 											</li>
 										</ul>
 									</div>

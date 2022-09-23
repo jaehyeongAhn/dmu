@@ -45,14 +45,21 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 		
 		//비밀번호 업데이트
-		int result = loginService.loginUpdate(vo);
-
-		if(result == 1) {
-			mv.addObject("result", result);
-			mv.setViewName("/login/login_find");
+		int pw_result = loginService.login(vo);
+		if(pw_result == 0){
+			int result = loginService.loginUpdate(vo);
+			if(result == 1) {
+				mv.addObject("result", result);
+				mv.setViewName("/login/login_find");
+			}else {
+				mv.setViewName("error_page");
+			}
 		}else {
-			mv.setViewName("error_page");
+			mv.addObject("vo", vo);
+			mv.addObject("pw_result", pw_result);
+			mv.setViewName("/login/login_pw");
 		}
+		
 		return mv;
 	}
 	
@@ -99,7 +106,7 @@ public class LoginController {
 		String result = loginService.findId(vo);
 
 		if(!result.equals("")) {
-			mv.addObject("find_information", "아이디");
+			mv.addObject("find_information", vo.getMname());
 			mv.addObject("find_result", result);
 			mv.setViewName("/login/login_find");
 		}else {
