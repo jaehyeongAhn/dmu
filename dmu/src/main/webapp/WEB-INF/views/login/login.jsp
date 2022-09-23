@@ -77,16 +77,17 @@
 				</ul>
 			</form>
 		</div>
-		<div class = "background_join">
-			<div class = "window_join">
-				<div class = "popup_join">
-					<p id = "popup_joinGuide"></p>
-					<button type = "button" id = "popup_joinOk">확인</button>
-				</div>
-			</div>
-		</div>
 	</main>
 	
 	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	
+	<div class = "background_join">
+		<div class = "window_join">
+			<div class = "popup_join">
+				<p id = "popup_joinGuide"></p>
+				<button type = "button" id = "popup_joinOk">확인</button>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

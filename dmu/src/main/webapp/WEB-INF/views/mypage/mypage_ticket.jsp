@@ -210,7 +210,7 @@
 												<div class="purchase-result-list-content">
 													<div>
 														<div class="purchase-result-content-title">
-															<a href="#">
+															<a href="mypage_ticket_content.do">
 																<img src="http://localhost:9000/dmu2/resources/images/ticket.svg">
 															</a>
 															<div class="purchase-result-list-content-text">
@@ -236,7 +236,7 @@
 												<div class="purchase-result-list-content">
 													<div>
 														<div class="purchase-result-content-title">
-															<a href="#">
+															<a href="mypage_ticket_content.do">
 																<img src="http://localhost:9000/dmu2/resources/images/ticket.svg">
 															</a>
 															<div class="purchase-result-list-content-text">

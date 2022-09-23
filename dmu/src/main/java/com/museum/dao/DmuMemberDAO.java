@@ -87,7 +87,7 @@ public class DmuMemberDAO extends DBConn{
 	//login : ·Î±×ÀÎ
 	public int login(DmuMemberVO vo) {
 		int result = 0;
-		String sql = "SELECT COUNT(*) FROM DMU_MEMBER WHERE MID = ? AND PASS = ?";
+		String sql = "SELECT COUNT(*) FROM DMU_MEMBER WHERE MID = ? AND PASS = ? AND UNREGISTER = 'y'";
 		try {
 			getPreparedStatement(sql);
 			pstmt.setString(1, vo.getMid());
