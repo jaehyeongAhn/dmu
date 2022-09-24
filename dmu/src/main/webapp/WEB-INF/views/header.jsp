@@ -44,7 +44,7 @@
 						<ul>
 							<li><a href="http://localhost:9000/dmu/login.do"
 								target="_parent" class=""> LOGIN </a></li>
-							<li><a href="/join/info" target="_parent" class="">
+							<li><a href="http://localhost:9000/dmu/join.do" target="_parent" class="">
 									BECOME A MEMBER </a></li>
 							<!---->
 							<!---->
@@ -60,7 +60,6 @@
 						</h1>
 						<div class="main-menu">
 							<ul>
-
 								<li class="visit""><a href="visit_main.do" target="_parents"> VISIT </a></li>
 								<li class="exhibition"><a href="javascript:void(0);"> EXHIBITION
 								</a></li>

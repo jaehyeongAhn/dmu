@@ -23,6 +23,7 @@
         href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
 	    <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
     <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
+    <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/terms.css">
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -32,7 +33,7 @@
 <body>
 	<div id="app">
 		<div id="contents">
-			<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
+			<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 			<main>
 				<section data-v-78199e12="" class="sub-contents-wrap">
 					<div data-v-0d03d759="" data-v-78199e12=""

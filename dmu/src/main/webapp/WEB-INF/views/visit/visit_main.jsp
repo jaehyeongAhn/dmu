@@ -36,7 +36,7 @@
 <body>
 	<div id="app">
 		<div id="contents">
-			<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
+			<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 			<main>
 				<section data-v-69c615d1="" class="sub-contents-wrap">
 					<div data-v-0d03d759="" data-v-69c615d1=""

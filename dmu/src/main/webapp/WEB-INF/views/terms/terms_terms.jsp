@@ -15,20 +15,14 @@
 <link rel="icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper/css/swiper.min.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-<link
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/main_css.css">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/terms.css">
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/analytics.js"></script>
 <script
@@ -42,7 +36,7 @@
 <body>
 	<div id="app">
 		<div id="contents">
-			<iframe src="header.do" width="100%" height="160px" scrolling="no"
+			<iframe src="header.do" width="100%" height="200px" scrolling="no"
 				frameborder=0></iframe>
 			<main>
 				<section data-v-78199e12="" class="sub-contents-wrap">

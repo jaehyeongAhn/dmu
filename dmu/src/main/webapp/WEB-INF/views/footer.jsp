@@ -69,7 +69,7 @@
                     <li data-v-40ab164b=""><a data-v-40ab164b=""
                             href="https://daelimculturalfoundation.org/employment" target="_blank"
                             class="blank-link"> 채용 </a></li>
-                    <li data-v-40ab164b=""><a data-v-40ab164b="" href="/sitemap"> SITEMAP </a></li>
+                    <li data-v-40ab164b=""><a data-v-40ab164b="" href="sitemap.do" target="_top"> SITEMAP </a></li>
                     <li data-v-40ab164b=""><a data-v-40ab164b=""
                             href="https://daelimculturalfoundation.org/introduce" target="_blank"
                             class="blank-link"> 대림문화재단 소개 </a></li>
@@ -80,9 +80,9 @@
         </ul>
         <div data-v-40ab164b="" class="footer-bottom-area">
             <ul data-v-40ab164b="" class="footer-menu">
-                <li data-v-40ab164b=""><a data-v-40ab164b="" href="terms_privacy.do"> 개인정보 처리방침 </a></li>
-                <li data-v-40ab164b=""><a data-v-40ab164b="" href="terms_terms.do"> 이용약관 </a></li>
-                <li data-v-40ab164b=""><a data-v-40ab164b="" href="terms_media.do"> 영상정보처리기기 운영·관리방침 </a></li>
+                <li data-v-40ab164b=""><a data-v-40ab164b="" href="terms_privacy.do" target="_top"> 개인정보 처리방침 </a></li>
+                <li data-v-40ab164b=""><a data-v-40ab164b="" href="terms_terms.do" target="_top"> 이용약관 </a></li>
+                <li data-v-40ab164b=""><a data-v-40ab164b="" href="terms_media.do" target="_top"> 영상정보처리기기 운영·관리방침 </a></li>
             </ul>
             <div data-v-40ab164b="" class="footer-info-area"><button data-v-40ab164b="" type="button"
                     class="footer-info-title"> (재)대림문화재단 </button>

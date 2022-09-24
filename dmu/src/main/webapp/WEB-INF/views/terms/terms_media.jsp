@@ -15,28 +15,18 @@
 <link rel="icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper/css/swiper.min.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-<link
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/main_css.css">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/index.css">
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/analytics.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/terms.css">
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 </head>
 <body>
