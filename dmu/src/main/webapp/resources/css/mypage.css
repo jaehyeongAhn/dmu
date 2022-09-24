@@ -233,6 +233,7 @@
 	    font-size: 14px;
 	    margin-left: 10px;
 	    vertical-align: middle;
+	    color:#959595;
 	}
 	div.purchase-title:before {
 	    content: "";
@@ -247,6 +248,14 @@
 	}
 	div.purchase-title div p {
 		margin : 0;
+	}
+	div.purchase-title div a.booking_detail p{
+		color:#959595;
+		text-decoration: none;
+	    font-size: 15px;
+	    display : flex;
+	    align-items : center;
+	    margin-top : 3px;
 	}
 	div.purchase-result::before {
 	    content: "";

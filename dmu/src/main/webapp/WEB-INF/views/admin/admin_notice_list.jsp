@@ -135,8 +135,6 @@ $(document).ready(function(){
 							role="button" style="cursor: pointer;" data-tab="tab_3">대림미술관</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
 							role="button" style="cursor: pointer;" data-tab="tab_4">구슬모아당구장</a></li>
-						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_5">뮤지엄샵</a></li>
 					</ul>
 				</div>
 				<div data-v-26e42198="" class="btn-area">

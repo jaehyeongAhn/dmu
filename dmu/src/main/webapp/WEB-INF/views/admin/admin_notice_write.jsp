@@ -57,7 +57,7 @@
 					<div class="notice-view-area">
 						<div class="base-info-area">
 							<div class="title-area">
-								<strong class="title">공지사항 작성 폼</strong>
+								<strong class="title">공지사항 작성</strong>
 							</div>
 						</div>
 						<div class="notice-content-write">
@@ -95,7 +95,7 @@
 					<div class="btn-bottom-area">
 						<div data-v-26e42198="" class="btn-area">
 							<button data-v-26e42198="" id="btn50" type="button"
-								class="secondary">등록완료</button>
+								class="secondary">보내기</button>
 						<a href="admin_notice_list.do">
 							<button data-v-26e42198="" id="btn50" type="button"
 								class="secondary">목록</button></a>

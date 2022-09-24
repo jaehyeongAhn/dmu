@@ -64,7 +64,7 @@
 					<div class="notice-view-area">
 						<div class="base-info-area">
 							<div class="title-area">
-								<strong class="title">공지사항 작성 폼</strong>
+								<strong class="title">공지사항 작성</strong>
 							</div>
 						</div>
 						<div class="notice-content-write">
