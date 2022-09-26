@@ -1,10 +1,6 @@
 package com.museum.controller;
 
 import java.io.File;
-
-
-
-
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
@@ -17,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.museum.dao.DmuTicketDAO;
 import com.museum.service.FileServiceImpl;
 import com.museum.service.PageServiceImpl;
 import com.museum.service.TicketServiceImpl;
@@ -33,14 +29,14 @@ public class TicketController {
 	private FileServiceImpl  fileService;
 	
 
-	// ticketlist_write.do : 게시판 글쓰기 화면
+	// ticketlist_write.do : 寃뚯떆�뙋 湲��벐湲� �솕硫�
 		 
 		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
 			return "adminticket/ticketlist_write";
 		}
 		/**
-		 * ticketlist_write_check.do : 게시판 글쓰기 처리
+		 * ticketlist_write_check.do : 寃뚯떆�뙋 湲��벐湲� 泥섎━
 		 */
 		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
@@ -66,8 +62,8 @@ public class TicketController {
 					vo.getFile1().transferTo(file);
 				}
 				
-				//mv.setViewName("/board/board_list"); //에러X, 아무런 게시글 출력되지 X
-				mv.setViewName("redirect:/exhibition_list.do"); //DB연동을 Controller에서 진행하므로, 새로운 연결을 수행!!
+				//mv.setViewName("/board/board_list"); //�뿉�윭X, �븘臾대윴 寃뚯떆湲� 異쒕젰�릺吏� X
+				mv.setViewName("redirect:/exhibition_list.do"); //DB�뿰�룞�쓣 Controller�뿉�꽌 吏꾪뻾�븯誘�濡�, �깉濡쒖슫 �뿰寃곗쓣 �닔�뻾!!
 			}else{
 				mv.setViewName("error_page");
 			}
@@ -75,7 +71,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * exhibition_list.do : 전시회 전체 리스트 
+		 * exhibition_list.do : �쟾�떆�쉶 �쟾泥� 由ъ뒪�듃 
 		 */
 		@RequestMapping(value="/exhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView exhibition_list(String rpage) {
@@ -96,7 +92,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * event_list.do : 전시회 전체 리스트 
+		 * event_list.do : �쟾�떆�쉶 �쟾泥� 由ъ뒪�듃 
 		 */
 		@RequestMapping(value="/event_list.do", method=RequestMethod.GET)
 		public ModelAndView event_list(String rpage) {
@@ -117,7 +113,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * learn_list.do : 전시회 전체 리스트 
+		 * learn_list.do : �쟾�떆�쉶 �쟾泥� 由ъ뒪�듃 
 		 */
 		@RequestMapping(value="/learn_list.do", method=RequestMethod.GET)
 		public ModelAndView learn_list(String rpage) {
@@ -138,7 +134,7 @@ public class TicketController {
 			return mv;
 		}
 		
-		//adminlearn list 관리자
+		//adminlearn list 愿�由ъ옄
 		@RequestMapping(value="/adminlearn_list.do", method=RequestMethod.GET)
 		public ModelAndView adminlearn_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
@@ -158,7 +154,7 @@ public class TicketController {
 			return mv;
 		}
 		
-		//exhibition list 관리자
+		//exhibition list 愿�由ъ옄
 		@RequestMapping(value="/adminexhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView adminexhibition_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
@@ -177,7 +173,7 @@ public class TicketController {
 			
 			return mv;
 		}
-		//adminevent list 관리자
+		//adminevent list 愿�由ъ옄
 		@RequestMapping(value="/adminevent_list.do", method=RequestMethod.GET)
 		public ModelAndView adminevent_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
@@ -199,7 +195,7 @@ public class TicketController {
 
 	
 		/**
-		 * ticketlist_content : 티켓 상세보기
+		 * ticketlist_content : �떚耳� �긽�꽭蹂닿린
 		 */
 		@RequestMapping(value="/ticketlist_content.do", method=RequestMethod.GET)
 		public ModelAndView ticketlist_content(String did) {
@@ -213,20 +209,20 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * admin_ticket_update_check.do : 공지사항 수정 처리
+		 * admin_ticket_update_check.do : 怨듭��궗�빆 �닔�젙 泥섎━
 		 */
 		@RequestMapping(value="/admin_ticket_update_check.do", method=RequestMethod.POST)
 		public ModelAndView admin_ticket_update_check(DmuTicketVO vo,HttpServletRequest request)
 																	throws Exception {
 			ModelAndView mv = new ModelAndView();
 
-			String old_filename = vo.getDsfile();	//수정화면에서 hidden으로 넘어오는 기존 upload 폴더에 저장된 파일명
+			String old_filename = vo.getDsfile();	//�닔�젙�솕硫댁뿉�꽌 hidden�쑝濡� �꽆�뼱�삤�뒗 湲곗〈 upload �뤃�뜑�뿉 ���옣�맂 �뙆�씪紐�
 			
 			vo = fileService.update_fileCheck(vo);
 			int result = ticketService.getUpdate(vo);
 			
 			if(result == 1){
-				//새로운 파일을 upload 폴더에 저장한 후 기존의 파일은 삭제
+				//�깉濡쒖슫 �뙆�씪�쓣 upload �뤃�뜑�뿉 ���옣�븳 �썑 湲곗〈�쓽 �뙆�씪�� �궘�젣
 				fileService.update_filesave(vo, request, old_filename);
 				mv.setViewName("redirect:/adminexhibition_list.do");
 				
@@ -238,7 +234,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * admin_ticket_update.do : 공지사항 수정화면 
+		 * admin_ticket_update.do : 怨듭��궗�빆 �닔�젙�솕硫� 
 		 */
 		@RequestMapping(value="/admin_ticket_update.do", method=RequestMethod.GET)
 		public ModelAndView admin_ticket_update(String did) {
@@ -253,7 +249,7 @@ public class TicketController {
 		}
 		
 		/**
-		 * admin_ticket_delete.do : 공지사항 삭제 화면 
+		 * admin_ticket_delete.do : 怨듭��궗�빆 �궘�젣 �솕硫� 
 		 */
 		@RequestMapping(value="/admin_ticket_delete.do", method=RequestMethod.GET)
 		public ModelAndView admin_ticket_delete(String did) {
@@ -265,7 +261,7 @@ public class TicketController {
 		}
 		
 		/**
-		 * admin_ticket_delete_check.do : 공지사항 삭제 처리
+		 * admin_ticket_delete_check.do : 怨듭��궗�빆 �궘�젣 泥섎━
 		 */
 		@RequestMapping(value="/admin_ticket_delete_check.do", method=RequestMethod.POST)
 		public ModelAndView admin_ticket_delete_check(String did, HttpServletRequest request)
