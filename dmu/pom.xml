@@ -128,14 +128,22 @@
         <groupId>commons-fileupload</groupId>
         <artifactId>commons-fileupload</artifactId>
         <version>1.4</version>
-      </dependency>      
-
-	<!-- Java Mail -->
-      <dependency>
-          <groupId>javax.mail</groupId>
-          <artifactId>mail</artifactId>
-          <version>1.4.7</version>
-      </dependency> 
+      </dependency>     
+		
+		<!-- gson library -->
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.9.0</version>
+		</dependency> 
+	
+		<!-- Java Mail -->
+	      <dependency>
+	          <groupId>javax.mail</groupId>
+	          <artifactId>mail</artifactId>
+	          <version>1.4.7</version>
+	      </dependency> 
       
       <!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
       <dependency>
@@ -144,8 +152,39 @@
           <version>${org.springframework-version}</version>
       </dependency>
       
+<<<<<<< HEAD
       
       
+=======
+      	
+		<!-- JDBC -->
+		<dependency>
+		 	<groupId>org.springframework</groupId>
+		 	<artifactId>spring-jdbc</artifactId>
+		 	<version>3.2.5.RELEASE</version>
+		</dependency>
+	
+		<!-- DBCP -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+	
+		<!-- Mybatis -->
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis</artifactId>
+		    <version>3.3.1</version>
+		</dependency>
+	
+		<dependency>
+		    <groupId>org.mybatis</groupId>
+		    <artifactId>mybatis-spring</artifactId>
+		    <version>1.2.4</version>
+		</dependency>
+		
+>>>>>>> branch 'mw' of https://github.com/jaehyeongAhn/dmu.git
    </dependencies>
     <build>
         <plugins>

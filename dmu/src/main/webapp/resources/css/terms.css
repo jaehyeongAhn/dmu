@@ -1,0 +1,245 @@
+body * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'Geogrotesque', 'YoonGothic', sans-serif;
+    font-weight: inherit;
+    font-size: inherit;
+}
+body ol, body ul, body li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+div {
+    display: block;
+}
+#contents > header, #contents > main, #contents > footer {
+    min-width: 80rem;
+}
+main {
+    min-height: calc(100vh - 43.375rem);
+}
+section {
+    display: block;
+}
+body h1, body h2, body h3, body h4, body h5, body h6 {
+    margin: 0;
+    padding: 0;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+strong {
+    font-weight: bold;
+}
+.sub-top-area .container[data-v-0d03d759] {
+    position: relative;
+    width: 80rem;
+    margin: 0 auto;
+}
+.sub-top-area h2[data-v-0d03d759] {
+    position: relative;
+    font-weight: 300;
+    font-size: 4.5rem;
+    color: #1d1d1d;
+}
+.sub-top-area h2[data-v-0d03d759]:before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -19.5rem;
+    margin-top: 0.0625rem;
+    width: 18.125rem;
+    height: 0.0625rem;
+    background: #1d1d1d;
+    content: '';
+}
+.sub-top-area nav[data-v-0d03d759] {
+    position: absolute;
+    bottom: 1.5rem;
+    right: -1.25rem;
+}
+.sub-top-area nav ul[data-v-0d03d759] {
+    display: flex;
+}
+.sub-top-area nav ul li[data-v-0d03d759]:first-child {
+    padding: 0 1.6875rem;
+    background: url(data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="14.707" height="14.207" viewBox="0 0 14.707 14.207"%3E%3Cpath d="M1405 331h-11v-9h1v8h9v-8h1v9z" style="fill:%23999" transform="translate(-1392.146 -316.793)"/%3E%3Cpath d="m1392.5 324.5 7-7 7 7" style="fill:none;stroke:%23999" transform="translate(-1392.146 -316.793)"/%3E%3C/svg%3E) center center no-repeat;
+    font-size: 0;
+    background-position: top center;
+}
+.sub-top-area nav ul li[data-v-0d03d759] {
+    position: relative;
+    padding: 0 1.25rem;
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: #999;
+    letter-spacing: -0.035em;
+}
+.sub-top-area nav ul li[data-v-0d03d759]:last-child {
+    font-weight: 500;
+    color: #111;
+}
+.sub-top-area nav ul li + li[data-v-0d03d759]:before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0.0625rem;
+    height: 0.625rem;
+    margin-top: -0.3125rem;
+    background: #ccc;
+    content: '';
+}
+.sub-container[data-v-78199e12] {
+    width: 80rem;
+    margin: 0 auto;
+    padding-bottom: 9.375rem;
+    position: relative;
+}
+div[data-v-78199e12] .terms-paragraph h3 {
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+    font-size: 2.25rem;
+    line-height: 1.33;
+    color: #111;
+    letter-spacing: -0.05625rem;
+}
+div[data-v-78199e12] .terms-paragraph {
+    padding: 3.125rem 0;
+}
+div[data-v-78199e12] .terms-paragraph p {
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: #111;
+    letter-spacing: -0.03125rem;
+}
+div[data-v-78199e12] .terms-paragraph strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: #111;
+    letter-spacing: -0.03125rem;
+}
+div[data-v-78199e12] .terms-paragraph .terms-list {
+    display: flex;
+}
+div[data-v-78199e12] .terms-paragraph ul {
+    margin-bottom: 2.5rem;
+}
+div[data-v-78199e12] .terms-paragraph ul li {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #666;
+    letter-spacing: -0.025rem;
+}
+div[data-v-78199e12] .terms-paragraph .terms-list ul li {
+    color: #111;
+}
+div[data-v-78199e12] .terms-paragraph .terms-list ul {
+    margin: 0 3.75rem 0 0;
+}
+div[data-v-78199e12] .terms-paragraph .terms-list ul:last-child {
+    margin-right: 0;
+}
+div[data-v-78199e12] .terms-paragraph + .terms-paragraph {
+    border-top: 1px solid #ddd;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+}
+div[data-v-78199e12] .terms-paragraph table:last-child {
+    margin-bottom: 0;
+}
+div[data-v-78199e12] .terms-paragraph table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 2.5rem;
+    border-top: 2px solid #111;
+}
+colgroup {
+    display: table-column-group;
+}
+col {
+    display: table-column;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+div[data-v-78199e12] .terms-paragraph table tbody td:first-child {
+    border-left: 0;
+}
+div[data-v-78199e12] .terms-paragraph table tbody td {
+    padding: 1.25rem 0.625rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+}
+div[data-v-78199e12] .terms-paragraph table thead th {
+    padding: 1.25rem 0.625rem;
+    border: 1px solid #e0e0e0;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #111;
+    text-align: center;
+    background: #f7f7f7;
+}
+
+
+

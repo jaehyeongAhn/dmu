@@ -9268,7 +9268,11 @@ $.extend( Datepicker.prototype, {
 			monthHtml += "</select>";
 		}
 
+ 
 		if ( !showMonthAfterYear ) {
+ 
+		if ( showMonthAfterYear ) {
+ 
 			html += monthHtml + ( secondary || !( changeMonth && changeYear ) ? "&#xa0;" + "." + "&#xa0;" : "" );
 		}
 
@@ -9306,7 +9310,11 @@ $.extend( Datepicker.prototype, {
 		}
 
 		html += this._get( inst, "yearSuffix" );
+ 
 		if ( showMonthAfterYear ) {
+ 
+		if ( !showMonthAfterYear ) {
+ 
 			html += ( secondary || !( changeMonth && changeYear ) ? "&#xa0;" + "." + "&#xa0;" : "" ) + monthHtml;
 		}
 		html += "</div>"; // Close datepicker_header

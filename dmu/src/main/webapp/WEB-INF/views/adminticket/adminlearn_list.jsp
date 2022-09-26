@@ -118,7 +118,7 @@
 			<ul data-v-41f56098="">
 				<li data-v-41f56098="">
 						<c:if test="${vo.dsfile != null }">
-					<a data-v-41f56098="" href="javascript:void(0);" class="thumb">
+					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketcontent.do?did=${ vo.did }" class="thumb">
 						<img data-v-2fed1a9a="" data-v-1e8092ec=""src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"></a>
 						</c:if>
 			<ul data-v-41f56098="" class="flag">
@@ -127,7 +127,7 @@
 			<!---->
 			<!---->
 			</ul>
-					<a data-v-41f56098="" href="javascript:void(0);"
+					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketcontent.do?did=${ vo.did }"
 					class="title">${vo.dtitle}</a>
 					
 					<!-- <p data-v-41f56098="" class="explan">Culture Lover들의 문화·예술로 익히는 영어습관</p> -->

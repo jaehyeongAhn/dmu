@@ -324,6 +324,7 @@ button.ui-button::-moz-focus-inner {
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
 	position: absolute;
+ 
 	top: 10px;
 	width: 1.8em;
 	height: 1.8em;
@@ -332,6 +333,16 @@ button.ui-button::-moz-focus-inner {
 .ui-datepicker .ui-datepicker-prev-hover,
 .ui-datepicker .ui-datepicker-next-hover {
 	top: 1px;
+ 
+	top: 2px;
+	width: 1.8em;
+	height: 1.8em;
+	font-size : 17px;
+}
+.ui-datepicker .ui-datepicker-prev-hover,
+.ui-datepicker .ui-datepicker-next-hover {
+	top: 0px;
+ 
 	border : 1.5px solid transparent;
 	color : red;
 }
@@ -379,7 +390,11 @@ button.ui-button::-moz-focus-inner {
 .ui-datepicker th {
 	padding: .7em .3em;
 	text-align: center;
+ 
 	font-weight: bold;
+ 
+	font-weight: 400;
+ 
 	border: 0;
 }
 .ui-datepicker td {
@@ -903,10 +918,17 @@ body .ui-tooltip {
 	font-size: 1em;
 }
 .ui-widget.ui-widget-content {
+ 
 /* 	border: 1px solid #c5c5c5; */
 }
 .ui-widget-content {
 /* 	border: 1px solid #dddddd; */
+ 
+	border: 1px solid #c5c5c5;
+}
+.ui-widget-content {
+	border: 1px solid #dddddd;
+ 
 	background: #ffffff;
 	color: #333333;
 }
@@ -941,6 +963,10 @@ html .ui-button.ui-state-disabled:active {
 	display : table-cell;
 	text-align : center;
 	vertical-align : middle;
+ 
+ 
+	font-weight: 600;
+ 
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -988,7 +1014,11 @@ a.ui-button:focus {
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
+ 
 	/* border: 1px solid lightSeaGreen; */
+ 
+	border: 1px solid lightSeaGreen;
+ 
 	background: lightSeaGreen;
 	color: white;
 }
@@ -1026,7 +1056,11 @@ a.ui-button:active,
 	color: white;
 } */
 .ui-state-checked {
+ 
 	/* border: 1px solid #dad55e; */
+ 
+	border: 1px solid #dad55e;
+ 
 	background: #fffa90;
 }
 .ui-state-highlight a,
@@ -1334,8 +1368,8 @@ a.ui-button:active,
 	box-shadow: 0px 0px 5px #666666;
 }
 
-/** ¼öÁ¤ÇÑ ³»¿ë **/
-/** datepicker¸¦ (input type = "text")¿¡ Àû¿ë ½Ã **/
+/** ìˆ˜ì •í•œ ë‚´ìš© **/
+/** datepickerë¥¼ (input type = "text")ì— ì ìš© ì‹œ **/
 div#ui-datepicker-div {
     width: 353px;
     margin: 0 31px;
@@ -1347,14 +1381,14 @@ div#ui-datepicker-div {
 	color : gray;
 }
 
-/** datepicker¸¦ <div>¿¡ Àû¿ë ½Ã **/
+/** datepickerë¥¼ <div>ì— ì ìš© ì‹œ **/
 div.ui-datepicker-inline {
     width: 337px;
     margin: 0 31px;
     padding: 20px 0 26px 0;
 }
 
-/* next, prev ¼öÁ¤ */
+/* next, prev ìˆ˜ì • */
 .ui-datepicker-next .ui-datepicker-next-hover {
 	color : #f2f2f2;
 }

@@ -17,161 +17,24 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/main.css">
-
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/analytics.js"></script>
-<script
-	src="http://localhost:9000/mycgv/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
-<link href="/js/0.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/1.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/10.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/100.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/101.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/102.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/103.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/104.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/105.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/106.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/107.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/108.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/109.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/11.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/110.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/111.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/112.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/113.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/12.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/13.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/14.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/15.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/16.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/17.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/18.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/19.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/2.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/20.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/21.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/22.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/23.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/24.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/25.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/26.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/27.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/28.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/29.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/3.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/30.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/31.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/32.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/33.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/34.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/35.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/36.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/37.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/38.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/39.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/4.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/40.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/41.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/42.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/43.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/44.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/45.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/46.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/47.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/48.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/49.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/5.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/50.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/51.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/52.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/53.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/54.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/55.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/56.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/57.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/58.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/59.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/6.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/60.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/61.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/62.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/63.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/64.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/65.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/66.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/67.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/68.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/69.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/7.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/70.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/71.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/72.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/73.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/74.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/75.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/76.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/77.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/78.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/79.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/8.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/80.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/81.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/82.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/83.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/84.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/85.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/86.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/87.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/88.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/89.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/9.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/90.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/91.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/92.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/93.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/94.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/95.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/96.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/97.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/98.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/99.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-calender.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-event.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-exhibition.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-faq.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-guide.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-learn.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-login-find.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-login-join.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-login.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-museum.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-mypage.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-notice.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-reservation.85a954b2b4f1348cc700.js"
-	rel="prefetch">
-<link href="/js/group-search.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-shop.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-shop~group-ticket.85a954b2b4f1348cc700.js"
-	rel="prefetch">
-<link href="/js/group-ticket.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/group-visit.85a954b2b4f1348cc700.js" rel="prefetch">
-<link href="/js/chunk-vendors.85a954b2b4f1348cc700.js" rel="preload"
-	as="script">
-<link href="/js/index.85a954b2b4f1348cc700.js" rel="preload" as="script">
-<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
-<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
+<link rel="stylesheet"
+	href="http://localhost:9000/dmu/resources/css/main_css.css">
+<link rel="stylesheet"
+	href="http://localhost:9000/dmu/resources/css/index.css">
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script type="text/javascript" charset="UTF-8"
 	src="https://maps.googleapis.com/maps-api-v3/api/js/50/2/common.js"></script>
 <script type="text/javascript" charset="UTF-8"
 	src="https://maps.googleapis.com/maps-api-v3/api/js/50/2/util.js"></script>
+</head>
 <body>
 	<div id="app">
 		<div id="contents">
@@ -181,12 +44,12 @@
 						<ul>
 							<li><a href="http://localhost:9000/dmu/login.do"
 								target="_parent" class=""> LOGIN </a></li>
-							<li><a href="/join/info" class=""> BECOME A MEMBER </a></li>
+							<li><a href="http://localhost:9000/dmu/join.do" target="_parent" class="">
+									BECOME A MEMBER </a></li>
 							<!---->
 							<!---->
 							<li><a href="http://localhost:9000/dmu/notice_list.do"
-								class=""> NOTICE </a></li>
-							<li><a href="/faq/all?refresh=true" class=""> FAQ </a></li>
+								target="_parent" class=""> NOTICE </a></li>
 							<li><a href="https://daelimculturalfoundation.org"
 								target="_blank"><a>대림문화재단</a></a></li>
 						</ul>
@@ -197,26 +60,27 @@
 						</h1>
 						<div class="main-menu">
 							<ul>
-								<li class=""><a href="javascript:void(0);"> VISIT </a></li>
-								<li class=""><a href="javascript:void(0);"> EXHIBITION
+								<li class="visit""><a href="visit_main.do" target="_parents"> VISIT </a></li>
+								<li class="exhibition"><a href="javascript:void(0);"> EXHIBITION
 								</a></li>
-								<li class=""><a href="javascript:void(0);"> LEARN </a></li>
-								<li class=""><a href="javascript:void(0);"> EVENT </a></li>
-								<li class="on"><a
+								<li class="learn"><a href="javascript:void(0);"> LEARN </a></li>
+								<li class="event"><a href="javascript:void(0);"> EVENT </a></li>
+								<li class="ticket"><a
 									href="http://localhost:9000/dmu/exhibition_list.do"
 									target="_parent"> TICKET </a></li>
-								<li class=""><a href="javascript:void(0);"> SHOP </a></li>
 							</ul>
-							<div class="sub-menu normal"
-								style="width: 1647.5px; display: none;">
+							<div class="sub-menu" id="menu_visit" style="width: 100%; display:none;">
 								<div class="pannel">
 									<div>
 										<div class="menu-area">
 											<ul>
-												<li><a href="javascript:void(0);" href="http://localhost:9000/dmu/visit_main.do" style=""> 미술관 소개
-												</a></li>
-												<li><a href="javascript:void(0);" href="http://localhost:9000/dmu/visit_info.do"> 관람안내 </a></li>
-												<li><a href="javascript:void(0);" href="http://localhost:9000/dmu/visit_map.do"> 오시는 길 </a></li>
+												<li><a href="javascript:void(0);"
+													href="http://localhost:9000/dmu/visit_main.do" style="">
+														미술관 소개 </a></li>
+												<li><a href="javascript:void(0);"
+													href="http://localhost:9000/dmu/visit_info.do"> 관람안내 </a></li>
+												<li><a href="javascript:void(0);"
+													href="http://localhost:9000/dmu/visit_map.do"> 오시는 길 </a></li>
 											</ul>
 										</div>
 										<div class="banner-area">
@@ -258,35 +122,64 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="side-links">
-							<ul class="">
-								<li class="search"><a href="javascript:void(0);">
-										SEARCH </a></li>
-								<li class="all-menu"><a href="javascript:void(0);"> ALL
-										MENU </a></li>
-							</ul>
-						</div>
-						<div class="search-view-box" style="display: none;">
-							<div>
-								<div data-v-67ca82d2="" class="input-area">
-									<input data-v-67ca82d2="" id="field13" autocomplete="on"
-										placeholder="검색어를 입력하세요." maxlength="-1" type="text" class="">
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-									<a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>
-									<!---->
+						<div class="sub-menu normal" id="menu_exhibition" style="width: 100%; display:none;">
+							<div class="pannel">
+								<div>
+									<div class="menu-area">
+										<ul>
+											<li><a href="javascript:void(0);" style=""> 현재 전시 </a></li>
+											<li><a href="javascript:void(0);"> 지난 전시 </a></li>
+										</ul>
+									</div>
 								</div>
-								<button type="button" class="search-submit">검색</button>
 							</div>
-							<button type="button" class="search-close">검색 닫기</button>
 						</div>
-					</div>
-				</div>
-				<!-- <div class="header-mobile">
+						<div class="sub-menu normal" id="menu_learn" style="width: 100%; display:none;">
+							<div class="pannel">
+								<div>
+									<div class="menu-area">
+										<ul>
+											<li><a href="javascript:void(0);" style=""> 유아 </a></li>
+											<li><a href="javascript:void(0);"> 어린이 </a></li>
+											<li><a href="javascript:void(0);"> 청소년 </a></li>
+											<li><a href="javascript:void(0);"> 대학생 </a></li>
+											<li><a href="javascript:void(0);"> 성인 </a></li>
+											<li><a href="javascript:void(0);"> 교사 </a></li>
+											<li><a href="javascript:void(0);"> 전시해설 </a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+							<div class="side-links">
+										<ul class="">
+											<li class="search"><a href="javascript:void(0);">
+													SEARCH </a></li>
+											<li class="all-menu"><a href="javascript:void(0);">
+													ALL MENU </a></li>
+										</ul>
+									</div>
+									<div class="search-view-box" style="display: none;">
+										<div>
+											<div data-v-67ca82d2="" class="input-area">
+												<input data-v-67ca82d2="" id="field13" autocomplete="on"
+													placeholder="검색어를 입력하세요." maxlength="-1" type="text"
+													class="">
+												<!---->
+												<!---->
+												<!---->
+												<!---->
+												<!---->
+												<a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>
+												<!---->
+											</div>
+											<button type="button" class="search-submit">검색</button>
+										</div>
+										<button type="button" class="search-close">검색 닫기</button>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="header-mobile">
 					<div class="header-logo-area">
 						<strong class="mo-subject"> TICKET</strong>
 						<button type="button" class="btn-back">뒤로가기</button>
