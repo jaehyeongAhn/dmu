@@ -679,3 +679,20 @@ a.pass_check:hover {
 	text-decoration : underline;
 	color : black;
 }
+
+p.imformation_join {
+	font-size: 30px !important;
+    font-weight: 400;
+    text-align: left;
+    margin: 10px;
+}
+div.commentary p.idfind_check_comment {
+	width: 100%;
+    background: #f5f5f5;
+    border-top: 2px solid black;
+    padding: 50px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 30px;
+    letter-spacing: -0.15rem;
+}

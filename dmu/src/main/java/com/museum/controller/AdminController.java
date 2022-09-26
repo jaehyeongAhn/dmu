@@ -17,14 +17,12 @@ public class AdminController {
 	@Autowired
 	private NoticeServiceImpl noticeService;
 
-	//adminpage_main 
-	@RequestMapping(value = "/adminpage_main.do", method = RequestMethod.GET)
-	public String adminpage_main() {
-		return "/admin/adminpage_main";
-	}
-	
-	
-	
+	/******************
+	 * 
+	 * admin_notice
+	 *
+	 ******************/
+
 	@RequestMapping(value = "/admin_notice_list.do", method = RequestMethod.GET)
 	public ModelAndView admin_notice_list(String rpage) {
 		//String rpage = request.getParameter("rpage");
@@ -64,7 +62,7 @@ public class AdminController {
 	mv.addObject("dbCount", dbCount);
 	mv.addObject("pageSize", pageSize);
 	mv.addObject("rpage", reqPage);
-	mv.setViewName("/admin/admin_notice_list");
+	mv.setViewName("/admin/admin_notice/admin_notice_list");
 
 		
 		return mv;
@@ -106,7 +104,7 @@ public class AdminController {
 		DmuNoticeVO vo = noticeService.getContent(nid);
 		
 		mv.addObject("vo", vo);
-		mv.setViewName("/admin/admin_notice_content");
+		mv.setViewName("/admin/admin_notice/admin_notice_content");
 		
 		return mv;
 	}
@@ -157,7 +155,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("nid", nid);
-		mv.setViewName("admin/admin_notice_delete");
+		mv.setViewName("admin/admin_notice/admin_notice_delete");
 		
 		return mv;
 		
@@ -185,5 +183,24 @@ public class AdminController {
 		
 	}
 
+	
+	/******************
+	 * 
+	 * admin_page
+	 *
+	 ******************/
+	
+	
+	//adminpage_main 
+	@RequestMapping(value = "/adminpage_main.do", method = RequestMethod.GET)
+	public String adminpage_main() {
+		return "/admin/adminpage_main";
+	}
+	
+	@RequestMapping(value = "/adminpage_member.do", method = RequestMethod.GET)
+	public String adminpage_member() {
+		return "/admin/adminpage_member";
+	}
+	
 	
 }

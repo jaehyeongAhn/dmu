@@ -8,9 +8,27 @@ import com.museum.vo.DmuTicketVO;
  
 
 public class DmuTicketDAO extends DBConn {
+	/**
+	 *  delete : å¯ƒëš¯ë–†æ¹²ï¿½ ï¿½ê¶˜ï¿½ì £
+	 */
+	public int delete(String did) {
+		int result=0;
+		String sql = "delete from dmu_ticket where did=?";
+		try {
+			getPreparedStatement(sql);
+			pstmt.setString(1, did);
+			
+			result = pstmt.executeUpdate();
+			
+			close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 	/**
-	 *  insert : °Ô½Ã±Û Ãß°¡
+	 *  insert : å¯ƒëš¯ë–†æ¹²ï¿½ ç•°ë¶½ï¿½
 	 */
 	public int insert(DmuTicketVO vo) {
 		int result = 0;
@@ -21,7 +39,7 @@ public class DmuTicketDAO extends DBConn {
 			getPreparedStatement(sql);
 					 
 			pstmt.setString(1, vo.getDtitle());
-			pstmt.setString(2, vo.getDprice());
+			pstmt.setInt(2, vo.getDprice());
 			pstmt.setString(3, vo.getDplace());
 			pstmt.setString(4, vo.getDinformation());
 			pstmt.setInt(5, vo.getDpersonnel());
@@ -44,7 +62,7 @@ public class DmuTicketDAO extends DBConn {
 		return result;		
 	}
 	/**
-	 * select : exhibition °øÁö»çÇ× ¸®½ºÆ®
+	 * select : exhibition æ€¨ë“­ï¿½ï¿½ê¶—ï¿½ë¹† ç”±ÑŠë’ªï¿½ë“ƒ
 	 */
 	public ArrayList<DmuTicketVO> select(int startCount, int endCount){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
@@ -71,7 +89,7 @@ public class DmuTicketDAO extends DBConn {
 				vo.setDsfile(rs.getString(8));
 				vo.setDcode(rs.getString(9));
 				vo.setDtime(rs.getString(10));
-				vo.setDprice(rs.getString(11));
+				vo.setDprice(rs.getInt(11));
 				vo.setDtarget(rs.getString(12));
 				vo.setDnum(rs.getInt(13));
 				
@@ -87,7 +105,7 @@ public class DmuTicketDAO extends DBConn {
 	}
 	
 	/**
-	 * totalCount : ÀüÃ¼ ·Î¿ì¼ö Ãâ·Â
+	 * totalCount : ï¿½ìŸ¾ï§£ï¿½ æ¿¡ì’–ìŠ¦ï¿½ë‹” ç•°ì’•ì °
 	 */
 	public int totalCount() {
 		int result = 0;
@@ -108,15 +126,16 @@ public class DmuTicketDAO extends DBConn {
 	}
 	
 	
-	/* 02.°ü¶÷ÀÏ/ÀÎ¿ø¼±ÅÃ
-	 *  select : °Ô½Ã±Û »ó¼¼º¸±â
+	/* 02.æ„¿ï¿½ï¿½ì—ºï¿½ì”ª/ï¿½ì”¤ï¿½ìï¿½ê½‘ï¿½ê¹®
+	 *  select : å¯ƒëš¯ë–†æ¹²ï¿½ ï¿½ê¸½ï¿½ê½­è¹‚ë‹¿ë¦°
 	 */
 	public DmuTicketVO select(String did) {
 		DmuTicketVO vo = new DmuTicketVO();
 		
-		String sql = " select did, dtitle, dstart, dend, dprice,dplace,dinformation,dtime "
-				+ " from dmu_ticket where did=?";
-		
+
+		String sql = " select did, dtitle, dstart, dend, dprice,dplace,dinformation,dtime,dpersonnel,dtarget,dnum,dfile,dsfile, TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE  "
+    + " from dmu_ticket where did=?";
+
 		try {
 			getPreparedStatement(sql);
 			pstmt.setString(1, did);
@@ -127,14 +146,21 @@ public class DmuTicketDAO extends DBConn {
 				vo.setDtitle(rs.getString(2));				
 				vo.setDstart(rs.getString(3));
 				vo.setDend(rs.getString(4));
-				vo.setDprice(rs.getString(5));
+				vo.setDprice(rs.getInt(5));
 				vo.setDplace(rs.getString(6));
 				vo.setDinformation(rs.getString(7));
 				vo.setDtime(rs.getString(8));
-		 
+
+				vo.setDpersonnel(rs.getInt(9));
+				vo.setDtarget(rs.getString(10));
+				vo.setDnum(rs.getInt(11));
+				vo.setDfile(rs.getString(12));
+				vo.setDsfile(rs.getString(13));
+				vo.setEnddate(rs.getString(14));
+
 			}
 			
-		//	close(); Á¶È¸¼ö ¾÷µ¥ÀÌÆ®¸¦ °°Àº °÷¿¡¼­ ÇÏ±âÀ§ÇØ¼­ ÁÖ¼® Ã³¸®ÇØ¾ßµÈ´Ù
+		//	close(); è­°ê³ ì‰¶ï¿½ë‹” ï¿½ë¾½ï¿½ëœ²ï¿½ì” ï¿½ë“ƒç‘œï¿½ åª›ìˆˆï¿½ æ€¨ë…¹ë¿‰ï¿½ê½Œ ï¿½ë¸¯æ¹²ê³—ìï¿½ë¹ï¿½ê½Œ äºŒì‡±ê½ ï§£ì„â”ï¿½ë¹ï¿½ë¹ï¿½ë§‚ï¿½ë–
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -142,6 +168,35 @@ public class DmuTicketDAO extends DBConn {
 		
 		return vo;
 	}
-	
+	// æ€¨ë“­ï¿½ï¿½ê¶—ï¿½ë¹† ï¿½ë¾½ï¿½ëœ²ï¿½ì” ï¿½ë“ƒ
+	public int update(DmuTicketVO vo) {
+		int result = 0;
+		String sql = " 	update dmu_ticket set dtitle=?, dstart=?, dend=?, dprice=?, dplace=?, dinformation=?, dtime=?, dpersonnel=?,"
+				+ "		dtarget=?, dnum=?, dfile=?, dsfile=?  "
+				+ "		 where did=?  " ;
+		try {
+			getPreparedStatement(sql);
+			
+			pstmt.setString(1, vo.getDtitle());
+			pstmt.setString(2, vo.getDstart());
+			pstmt.setString(3, vo.getDend());
+			pstmt.setInt(4, vo.getDprice());
+			pstmt.setString(5, vo.getDplace());
+			pstmt.setString(6, vo.getDinformation());
+			pstmt.setString(7, vo.getDtime());
+			pstmt.setInt(8, vo.getDpersonnel());
+			pstmt.setString(9, vo.getDtarget());
+			pstmt.setInt(10, vo.getDnum());
+			pstmt.setString(11, vo.getDfile());
+			pstmt.setString(12, vo.getDsfile());
+			pstmt.setString(13, vo.getDid());
+			 		
+			result = pstmt.executeUpdate();
+			close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
  

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.museum.dao.DmuTicketDAO" %>    
 <%@ page import="com.museum.vo.DmuTicketVO" %>  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  <!-- JSTL 태그 추가  --> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  <!-- JSTL 태그 추가  --> 
 
 <!DOCTYPE html>
 <html lang="">

@@ -16651,7 +16651,7 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 .ticketing-list-area .field-area[data-v-8ed31374] {
 	width: 21.5rem;
 	margin: 0 auto;
-	padding: 1.25rem 0 1.625rem 0;
+	
 	border-top: 1px solid #ddd;
 }
 
@@ -16793,6 +16793,11 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 	background: #000;
 }
 
+.span #entertime {
+	color: #fff;
+	background: #000;
+}
+ 
 .round-list li.on button .remainder[data-v-8ed31374] {
 	color: #fff;
 }
