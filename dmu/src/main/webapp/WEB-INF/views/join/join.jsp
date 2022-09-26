@@ -23,7 +23,7 @@
 </script>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 class = "header"></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 	<div>
 	<main class = "join">
 		<div class = "section">
@@ -45,7 +45,7 @@
 										<label class = "checkpoint">아이디</label> 
 										<div class = "idTable">
 											<div style = "margin : 0;">
-												<input type="text" name="did" id = "did" placeholder = "아이디를 입력해주세요" maxlength = "12">
+												<input type="text" name="mid" id = "did" placeholder = "아이디를 입력해주세요" maxlength = "12">
 											</div>
 											<button type = "button" id = "idCheck" disabled>중복체크</button>
 										</div>
@@ -82,7 +82,7 @@
 									<li>
 										<label class = "checkpoint">이름</label> 
 										<div class = "nameTable">
-											<input type="text" name="dname" id= "dname" placeholder = "이름을 입력해주세요">
+											<input type="text" name="mname" id= "dname" placeholder = "이름을 입력해주세요">
 										</div>
 									</li>
 									<li>

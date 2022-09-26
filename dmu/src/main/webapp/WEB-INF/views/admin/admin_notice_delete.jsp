@@ -34,7 +34,7 @@
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 	<form name="noticeDeleteForm" action="admin_notice_delete_check.do" method="post">
 			<input type="hidden" name="nid" value="${nid}">
 	<main>

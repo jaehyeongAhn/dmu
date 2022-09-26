@@ -1,17 +1,5 @@
 $(document).ready(function(){
 
-					//exhibition 단체예매 신청 --> login 페이지 이동
-					$("#btn25").click(function(){
-						// alert("bb");
-						$(location).attr("href","http://localhost:9000/dmu/login.do");
-					/*	const id = document.getElementById("did");
-						
-						if(did.value == ""){
-							$(location).attr("href","http://localhost:9000/dmu/login.do");
-						}else{
-							$(location).attr("href","http://https://www.daelimmuseum.org/ticket/reservation/group?prgIdx=PRG202202230001&prgTypeCd=PG00101");
-						} */
-					});
 					
 	
 				 
@@ -56,6 +44,73 @@ $(document).ready(function(){
 							ticketlistform.submit();
 						} 
 					});
+					
+					
+					
+					/*********************
+						카운트 체크
+					**********************/
+			 	 
+	 
+					 
+							  $('#decreaseQuantity').click(function(e) {
+							    e.preventDefault();
+							    var stat = $('#field40').text();
+							    var num = parseInt(stat, 10);
+							    num--;
+							    if (num <= 0) {
+							      alert('더이상 줄일수 없습니다.');
+							      num = 1;
+							    }
+							    $('#numberUpDown').text(num);
+							  });
+							  $('#increaseQuantity').click(function(e) {
+							    e.preventDefault();
+							    var stat = $('#field40').text();
+							    var num = parseInt(stat, 10);
+							    num++;
+							
+							    if (num > 5) {
+							      alert('더이상 늘릴수 없습니다.');
+							      num = 5;
+							    }
+							    $('#field40').text(num);
+							  });
+						 
+		
+					/*********************
+						관람시 유의사항 동의 체크 후 예매하기 클릭 이벤트
+					**********************/
+					$("#check30").click(function(){
+						$( '.check30' ).prop( 'checked', this.checked );
+						$("#btn32").prop("disabled", !this.checked);
+					});
+					
+					
+					/*********************
+					예약 티켓 정보에 대한 동의 후 결제하기 클릭 이벤트
+					**********************/
+					$("#check287").click(function(){
+						$( '.check287' ).prop( 'checked', this.checked );
+						$("#btn289").prop("disabled", !this.checked);
+					});
+					
+					
+					
+					/*********************
+					 달력 일자 클릭시 회차 버튼 활성화
+					**********************/
+					$("#content").click(function(){
+				 
+						$( '.entertime' ).prop( 'selection', this.selection );
+						$("#entertime").prop("disabled", !this.checked);
+					});
+					
+					
+					
+					
+					
+					
 		
 		}); 
 		

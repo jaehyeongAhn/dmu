@@ -36,7 +36,7 @@
 </script>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 class = "header"></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 	<main class = "login">
 		<div class = "section">
 			<div class = "container">
@@ -46,7 +46,7 @@
 				<ul class = "loginList">
 					<li>
 						<div id = "idInput">
-							<input type = "text" name = "did" id = "login_id" placeholder = "아이디를 입력해 주세요." 
+							<input type = "text" name = "mid" id = "login_id" placeholder = "아이디를 입력해 주세요." 
 							maxlength = "20" >								
 						</div>
 					</li>
@@ -77,16 +77,17 @@
 				</ul>
 			</form>
 		</div>
-		<div class = "background_join">
-			<div class = "window_join">
-				<div class = "popup_join">
-					<p id = "popup_joinGuide"></p>
-					<button type = "button" id = "popup_joinOk">확인</button>
-				</div>
-			</div>
-		</div>
 	</main>
 	
 	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	
+	<div class = "background_join">
+		<div class = "window_join">
+			<div class = "popup_join">
+				<p id = "popup_joinGuide"></p>
+				<button type = "button" id = "popup_joinOk">확인</button>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

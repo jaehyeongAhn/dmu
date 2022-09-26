@@ -66,7 +66,7 @@
 				</li>
 				<li>
 					<button type="button" class="btn_style" id="btn_exhibition_Write">등록완료</button>
-					<a href="exhibition_write.do"><button type="reset" class="btn_style">다시쓰기</button></a>
+					<a href="ticketlist_write.do"><button type="reset" class="btn_style">다시쓰기</button></a>
 				</li>
 			</ul>
 		</form>

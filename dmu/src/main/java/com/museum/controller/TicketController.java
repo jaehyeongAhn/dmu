@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.museum.dao.DmuTicketDAO;
 import com.museum.service.PageServiceImpl;
 import com.museum.service.TicketServiceImpl;
 import com.museum.vo.DmuTicketVO;
@@ -35,7 +36,7 @@ public class TicketController {
 		/**
 		 * ticketlist_write_check.do : 게시판 글쓰기 처리
 		 */
-		@RequestMapping(value="/ticketlist_write_check.do", method=RequestMethod.POST)
+		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
 			ModelAndView mv = new ModelAndView();
 			
@@ -186,6 +187,24 @@ public class TicketController {
 			mv.addObject("pageSize", param.get("pageSize"));
 			mv.setViewName("adminticket/adminevent_list");
 			
+			
+			return mv;
+		}
+		//ticketcontent.do
+		@RequestMapping(value="/ticketcontent.do", method=RequestMethod.GET)
+		public ModelAndView ticketcontent(String did) {
+			ModelAndView mv = new ModelAndView();
+			DmuTicketDAO dao = new DmuTicketDAO();
+			DmuTicketVO vo = dao.select(did);
+			
+			
+			/*
+			 * int startCount = 0; int endCount = 0;
+			 * 
+			 * // ArrayList<ExhibitionVO> list = dao.select(startCount, endCount);
+			 */		
+			mv.addObject("vo",vo);
+			mv.setViewName("adminticket/ticketcontent");
 			
 			return mv;
 		}

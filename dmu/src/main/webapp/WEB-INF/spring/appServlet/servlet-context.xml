@@ -32,6 +32,16 @@
 	<beans:bean id="emailService" class="com.museum.service.EmailServiceImpl"></beans:bean>
 	<beans:bean id="loginService" class="com.museum.service.LoginServiceImpl"></beans:bean>
 	<beans:bean id="joinService" class="com.museum.service.JoinServiceImpl"></beans:bean>
+	<beans:bean id="NoticeService" class="com.museum.service.NoticeServiceImpl"></beans:bean>
+	<beans:bean id="searchService" class="com.museum.service.SearchServiceImpl"></beans:bean>
+	
+	<!-- Dao 객체 생성 -->
+	<beans:bean id="searchDao" class="com.museum.dao.DmuSearchDAO"></beans:bean>
+	
+ 
+  	
+	
+	
 	
 	<context:component-scan base-package="com.museum.dmu" />
 	<context:component-scan base-package="com.museum.controller" />

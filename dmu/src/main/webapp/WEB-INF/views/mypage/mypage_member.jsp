@@ -20,7 +20,7 @@
 </style>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 class = "header"></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 	<!-- 사이드 메뉴 -->
 	<div class = "main">
 		<div class = "section">
@@ -37,7 +37,10 @@
 									<div class="sub-menu-list">
 										<ul>
 											<li class="">
-												<a class="" href="#">티켓예매 목록</a>
+												<a class="" href="mypage_ticket.do">티켓예매 목록</a>
+											</li>
+											<li class="">
+												<a class="" href="mypage_review.do">나의 문의</a>
 											</li>
 										</ul>
 									</div>
@@ -47,7 +50,7 @@
 									<div class="sub-menu-list">
 										<ul>
 											<li class="">
-												<strong><a class="" href="mypage_member.do" style = "color : black;">개인정보 변경/탈퇴</a></strong>
+												<strong><a class="" href="mypage_member_check.do" style = "color : black;">개인정보 변경/탈퇴</a></strong>
 											</li>
 										</ul>
 									</div>
@@ -80,20 +83,16 @@
 										</li>
 										<li>
 											<div class="info form">
-												<div class = "new-password-form">
-													<strong class="new-password"> 새 비밀번호 </strong>
-													<div class="password-area new-pass">
-														<input placeholder="새 비밀번호를 입력해 주세요." maxlength="14" 
-															type="password" name = "pass" class="pass">
-													</div>
+												<strong class="new-password"> 새 비밀번호 </strong>
+												<div class="password-area new-pass">
+													<input placeholder="새 비밀번호를 입력해 주세요." maxlength="14" 
+														type="password" name = "pass" class="pass">
 												</div>
-												<div class = "new-password-checkform">
-													<div style = "display : none;">a</div><div></div><div></div>
-													<strong class="new-password check-pass"> 새 비밀번호 확인 </strong>
-													<div class="password-area new-pass-check">
-														<input placeholder="새 비밀번호를 재입력해 주세요." maxlength="14" 
-															type="password" name = "passCheck" class="passCheck">
-													</div>
+												<div></div><div></div>
+												<strong class="new-password check-pass"> 새 비밀번호 확인 </strong>
+												<div class="password-area new-pass-check">
+													<input placeholder="새 비밀번호를 재입력해 주세요." maxlength="14" 
+														type="password" name = "passCheck" class="passCheck">
 												</div>
 											</div>
 										</li>
@@ -134,7 +133,7 @@
 										<li>
 											<div class="info-list-title">주소</div>
 											<div class="info">
-												<p style = "margin-top : 0; margin-bottom : 15px;">서울특별시 강남구 한국대로 124-576 3층</p>
+												<p style = "margin-top : 0; margin-bottom: 15px;">서울특별시 강남구 한국대로 124-576 3층</p>
 												<div class = "addrSimple">
 													<input type = "text" name = "zonecode" id = "zonecode" placeholder = "새 우편번호">
 													<input type = "text" name = "addr1" id = "addr1">

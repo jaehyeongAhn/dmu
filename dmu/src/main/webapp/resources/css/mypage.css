@@ -1,8 +1,12 @@
-	* {
-		margin : 0;
-		padding : 0;
-	}
 
+	* {
+		padding : 0;
+		margin : 0;
+	}
+	.footer{
+		margin-top : 150px;
+		margin-bottom : -10px;
+	}
 	/******************** Popup SetUp***********************/
 	.login {
 		position : relative;
@@ -91,7 +95,7 @@
 	
 	/******* ****************/
 
-	/**** ���̵� �޴� ****/
+	/**** »çÀÌµå ¸Þ´º ****/
 	aside.mypage {
 		width : 190px;
 		padding : 20px;
@@ -169,7 +173,7 @@
 	/* content */
 	div.container{
 		display : flex;
-		min-width : 1200px;
+		min-width : 1350px;
 		width : 626px;
 		margin : 0 auto;
 	}
@@ -217,8 +221,8 @@
 	    font-weight: 400;
 	    letter-spacing: -0.04rem;
 	    display: flex;
-					align-items: center;
-					padding: 0 0 20px 0;
+		align-items: center;
+		/* padding: 0 0 20px 0; */
 	}
 	div.purchase-title a {
 		color: black;
@@ -233,6 +237,7 @@
 	    font-size: 14px;
 	    margin-left: 10px;
 	    vertical-align: middle;
+	    color:#959595;
 	}
 	div.purchase-title:before {
 	    content: "";
@@ -242,18 +247,21 @@
 	    background-repeat: no-repeat;
 	    background-size: contain;
 	    display: inline-block;
-					background-position-y: 50%;
-					margin-right : 10px;
+		background-position-y: 50%;
+		margin-right : 10px;
 	}
 	div.purchase-title div p {
 		margin : 0;
 	}
-	div.purchase-result::before {
+	/*div.purchase-result::before {
 	    content: "";
 	    width: 100%;
 	    height: 1px;
 	    background: black;
 	    display: block;
+	}*/
+	div.purchase-result {
+		margin-top : 20px;
 	}
 	div.purchase-result-title {
 		display: flex;
@@ -266,9 +274,14 @@
 	div.purchase-result-title p {
 		margin : 0;
 		font-size : 17px;
+		font-weight : 500;
+	}
+	div.purchase-result-title span {
+		font-weight : 700;
 	}
 	div.purchase-result-title strong {
 		font-size : 20px;
+		font-weight : 800;
 	}
 	div.purchase-result-content {
 		display : flex;
@@ -277,18 +290,18 @@
 		border: 0.5px solid #d9d9d9;
 	}
 	div.purchase-result-content img {
-		width: 300px;
-	    height: 200px;
+		width: 200px;
+	    height: 150px;
 	    background: gray;
 	}
 	div.purchase-result-content-text {
 		margin-left: 50px;
-					padding: 25px;
-					box-sizing : border-box;
+		padding: 10px;
+		box-sizing : border-box;
 	}
 	div.purchase-result-content-text a {
-					display: block;
-		font-size: 45px;
+		display: block;
+		font-size: 30px;
 		margin-top: 35px;
 		text-decoration : none;
 		color : black;
@@ -299,7 +312,7 @@
 	    font-size: 17px;
 	}
 	div.purchase-result-content-text span.date::after {
-		content: ":";
+		content: "|";
 	    color: #afafaf;
 	    margin: 0 15px;
 	}
@@ -425,14 +438,14 @@
 	}
 	input#zonecode {
 		width: 150px;
-		margin-right: 30px;
+					margin-right: 30px;
 	    border : 0.5px solid #d7d7d7;
 	    font-size: 17px;
 	    padding: 16px;
 	}
 	input#addr1 {
 		width: 350px;
-		margin-right: 30px;
+					margin-right: 30px;
 	    border : 0.5px solid #d7d7d7;
 	    font-size: 17px;
 	    padding: 16px;
@@ -457,8 +470,8 @@
 	input#addr2 {
 		width: 100%;
 	    height: 50px;
-		box-sizing: border-box;
-		margin-top : 10px;
+					box-sizing: border-box;
+					margin-top : 10px;
 	    border : 0.5px solid #d7d7d7;
 	    margin-top: 10px;
 	    font-size: 17px;
@@ -521,8 +534,546 @@
 		background : white;
 		cursor : pointer;
 	}
-	.footer {
-		margin-top : 150px;
-		margin-bottom : 0;
-		padding-bottom : 0;
+	
+	/*********************** mypage_ticket.jsp ******************************/
+	
+	div.snb-area ul.snb{
+		list-style : none;
+		display: flex;
+	    align-items: center;
+	    flex-grow: 1;
+	    text-align: center;
+	    padding: 0;
+	}
+	div.snb-area li.ticket_tab {
+		border : 0.5px solid #ddd;
+		font-size : 17px;
+		height : 50px;
+		box-sizing : border-box;
+	    flex-grow: 1;
+	    align-items: center;
+	}
+	div.snb-area li.ticket_tab a{
+		width : 100%;
+		height : 100%;
+		box-sizing : border-box;
+		display : block;
+		padding : 15px;
+		text-decoration : none;
+		color : #999;
+		font-weight : 300;
+	}
+	div.snb-area li.show_ticket {
+		border : 0.5px solid black;
+		background : black;
+	}
+	div.snb-area li.show_ticket a {
+		color : white;
+	}
+	div.period {
+		display : flex;
+	    padding: 25px 0;
+	}
+	div.period ul.d_day {
+		list-style : none;
+		display : flex;
+		flex-grow : 1;
+		width : 375px;
+		padding : 0;
+		margin : 0 30px 0 0;
+		height : 50px;
+	}
+	ul.d_day li {
+	    width: 25%;
+	    height: 50px;
+	}
+	div.period ul.d_day button {
+		flex-grow : 1;
+		width: 100%;
+	    height: 100%;
+	    border: 0.5px solid #ddd;
+	    background: white;
+	    color: black;
+	    letter-spacing: -0.08rem;
+		font-weight: 300;
+		font-size : 16px;
+		cursor : pointer;
+	}
+	ul.d_day li.show button {
+		background : black;
+		color : white;
+	    border: 0.5px solid black;
+	}
+	div.date-group {
+		width : 456px;
+		display : flex;
+		height : 50px;
+		align-items : center;
+	}
+	div.date-area {
+		display : flex;
+		box-sizing : border-box;
+		height: 100%;
+	}
+	div.date-area input.input-date {
+		border : 0.5px solid #ddd;
+	}
+	div.date-area input {
+		border: 0.5px solid #ddd;
+	    width: 100%;
+		height: 100%;
+	    margin: 0 10px;
+	    padding: 0 16px;
+	    box-sizing: border-box;
+	    font-size: 16px;
+	}
+	div.date-area input:focus {
+		outline: none;
+	}
+	img.ui-datepicker-trigger {
+	    position: relative;
+	    left : -45px;
+	    width: 25px;
+	    cursor : pointer;
+	}
+	div.data-group span {
+	    display: block;
+	    left: -12px;
+	    position: relative;
+	    font-size: 19px;
+	}
+	div.search-date {
+		width: 200px;
+	    height: 50px;
+	    margin: 0 15px;
+	}
+	div.search-date button#search_date {
+	    width: 100%;
+	    height: 100%;
+	    box-sizing: border-box;
+	    background: white;
+	    color : black;
+	    font-weight : 400;
+	    border : 0.5px solid black;
+	    font-size : 16px;
+	}
+	div.search-date button#search_date:hover {
+	    background: #6e6e6e;
+	    color : white;
+	    border : 0.5px solid #6e6e6e;
+	    cursor : pointer;
+	}
+	div.title-page::after {
+		content : "";
+		display : none !important; 
+	}
+	div.no-result_purchase {
+		border-top: 2px solid black;
+	    display: flex;
+	    padding: 100px 50px;
+	    text-align: center;
+	    /* width: inherit; */
+	    height: 100px;
+	    /* margin: 0 15px 0 0; */
+	    justify-content: center;
+	    align-items: center;
+	    color: #6e6e6e;
+	    font-size: 17.5px;
+	    font-weight: 200;
+	}
+	div.result_purchase {
+		border-top: 2px solid black;
+	    margin: 0 15px 0 0;
+	}
+	div.purchase-result-list-title {
+	    display: flex;
+		padding: 15px 0;
+		font-size : 17.5px;
+	    width: inherit;
+	}
+	div.purchase-result-list-title strong {
+		margin-left : 15px;
+	    font-weight: 800;
+	}
+	div.purchase-result-list-title p:nth-child(2){
+		margin-left : 40px;
+	}
+	div.purchase-result-list-content::before {
+	    content: "";
+	    width: 100%;
+	    height: 1px;
+	    background: #ddd;
+	    display: block;
+	}
+	div.purchase-result-list-content > div {
+		display : flex;
+		padding : 15px 0;
+		justify-content: space-between;
+	}
+	div.purchase-result-list-content > div img {
+	    width: 230px;
+	    height: 150px;
+	    background: gray;
+	}
+	div.purchase-result-content-title {
+		display : flex;
+	}
+	div.purchase-result-list-content-text {
+		padding: 20px;
+	    display: flex;
+	    align-content: flex-start;
+	    justify-content: center;
+	    flex-direction: column;
+	}
+	div.purchase-result-list-content-text a{
+	    font-size: 30px;
+	    text-decoration: none;
+	    color: black;
+	    font-weight: bold;
+	    margin-bottom: 30px;
+	    display: block;
+	}
+	div.purchase-result-list-content-text strong{
+	    font-weight : 800;
+	}
+	div.purchase-result-list-content-text div span.date::after {
+	    content: "|";
+	    color: #dbdbdb;
+	    margin: 0 10px;
+	}
+	div.purchase-result-list-content-status {
+		width: 200px;
+	    font-size: 25px;
+	    vertical-align: middle;
+	    display: flex;
+	    justify-content: start;
+	    align-items: center;
+	}
+	
+	/********************* mypage_member_check.do *********************/
+	
+	div.myinfo_check {
+		margin-top : 45px;
+	}
+	div.myinfo_check p.myinfo_check_comment {
+		font-size : 17px;
+		font-weight : 400;
+	}
+	div.check_normal_area {
+		margin-top : 20px;
+	}
+	div.check_normal_area h4 {
+		font-weight: 300;
+	    color: #585858;
+	    margin: 10px 0;
+	}
+	div.pass_check_area {
+		width: 400px;
+	    height: 60px;
+	    border: 0.5px solid #dbdbdb;
+	}
+	div.pass_check_area input {
+		width: inherit;
+	    height: inherit;
+	    border: none;
+	    font-size: 17px;
+	    padding: 16px;
+	    box-sizing: border-box;
+	}
+	div.btn-bottom.one {
+		text-align: center;
+					width: 100%;
+					margin-top : 30px;
+	}
+	div.btn-bottom-area {
+		width : inherit;
+		height : 60px;
+	}
+	div.btn-bottom-area button.member_check {
+		width: 300px;
+	    height: inherit;
+	    color: white;
+	    background: black;
+	    border: 0.5px solid black;
+	    font-size: 19px;
+	    font-weight: 400;
+	    cursor : pointer;
+	}
+	div.btn-bottom-area button.member_check:hover {
+	    color: black;
+	    background: white;
+	}
+	
+	
+/************************** mypage_review.do ****************************/
+
+
+	/******* content ºÎºÐ **********/									
+	button.review_write_btn{
+		background: black;
+	    color: white;
+	    font-size: 20px;
+	    width: 40px;
+	    height: 40px;
+	    border-radius: 50%;
+	    cursor: pointer;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    box-sizing: border-box;
+	    line-height: 41px;
+	    overflow : hidden;
+	}
+	button.review_write_btn span.comment{
+		font-size : 17px;
+		margin-right : 0px;
+		width : 60px;
+		height : 40px;
+		color : transparent;
+	}
+	button.review_write_btn div{
+		position : absolute;
+	}
+	button.review_write_btn:hover span.comment{
+		width : 80px;
+		color : white;
+	    transition : all 0.5s;
+	}
+	button.review_write_btn:hover{
+		width : 120px;
+	    border-radius: 50px;
+	    transition : all 0.5s;
+	}
+	button.review_write_btn:hover div{
+		position : relative;
+		transition : all 1s;
+	}
+	div.review_title {
+		display : flex;
+		justify-content : space-between;
+		padding: 15px 0;
+		border-bottom: 0.5px solid #ddd;
+		border-top: 0.5px solid black;
+		align-items : center;
+		margin-top: 21px;
+	}
+	div.review_title span{
+		margin-right : 20px;
+	}
+	div.review_title a.detail {
+		color : black;
+		text-decoration : none;
+		letter-spacing : -0.08rem;
+	}
+	div.review_title a.detail::after {
+		content : ">";
+		color : #939393;
+		margin-left : 10px;
+	}
+	div.review_content div.review_content_list {
+		display : flex;
+		justify-content : space-between;
+		align-items : center;
+		margin: 15px 0;
+	}
+	div.review_content div.review_content_list_img img {
+		width : 250px;
+		flex-grow : 1;
+	}
+	div.review_content div.review_content_list_information {
+		flex-grow : 2;
+		margin-left: 20px;
+		line-height: 45px;
+	}
+	div.review_content div.review_write {
+		flex-grow : 0.5;
+		justify-content: flex-end;
+		display: flex;
+	}
+
+
+	/********** mypage_review - set popup ************/
+	/* ÆË¾÷ ¿ÜºÎ */
+	div.background {
+		position : fixed;
+		width : 100%;
+		height : 100vh;
+		top : 0;
+		left : 0;
+		background : rgba(0, 0, 0, 0.7);
+		opacity : 0;
+		z-index : -1;
+	}
+	div.window {
+		position : relative;
+		width : 100%;
+		height : 100vh;
+	}
+	div.popup {
+		position : absolute;
+		width : 500px;
+		height : 70vh;
+		top : 50%;
+		left : 50%;
+		transform : translate(-50%, -30%);
+		background : white;
+		overflow : hidden;
+		display: flex;
+   		flex-direction: column;
+   		z-index : -1;
+   		box-shadow: 10px 10px 5px rgb(0 0 0 / 50%);
+	}
+	.background.show {
+		z-index : 10;
+		opacity : 1;
+		transition : all 0.5s;
+	}
+	.show div.popup {
+		transform : translate(-50%, -50%);
+		z-index : 10;
+		transition : all 0.5s;
+	}
+	
+	
+	/* ÆË¾÷ ³»ºÎ */
+	div.popup_title {
+		display: flex;
+		justify-content : space-between;
+		align-items : center;
+	    background: black;
+	    color: white;
+	    border : none;
+	    font-size: 17px;
+	    padding: 10px 16px;
+	    flex-grow : 1;
+	}
+	div.popup_title button#popup_close {
+		background-image : url("http://localhost:9000/dmu/resources/images/close.png");
+		background-repeat : no-repeat;
+		background-size : contain;
+		background-color : transparent;
+		width : 20px;
+		height : 20px;
+		cursor : pointer;
+	}
+	div.popup_write {
+		overflow : auto;
+		padding : 25px;
+		/* height: 100%; */
+   		box-sizing: border-box;
+   		flex-grow: 5;
+	}
+	div.popup_write_form > p,
+	div.write_reivew_form > p {
+		font-size: 17px;
+	    font-weight: 600;
+	    letter-spacing: -0.08rem;
+	    display : flex;
+	    align-items : center;
+	}
+	div.popup_write_form > p::before {
+	    content: "";
+	    background-image: url(http://localhost:9000/dmu/resources/images/product.png);
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    background-position-x : 50%;
+	    background-position-y : 50%;
+	    display: block;
+	    width: 20px;
+	    height: 20px;
+	    align-items: center;
+	    margin-right : 10px;
+	}
+	div.write_reivew_form > p::before {
+	    content: "";
+	    background-image: url(http://localhost:9000/dmu/resources/images/review.svg);
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    background-position-x : 50%;
+	    background-position-y : 50%;
+	    display: block;
+	    width: 20px;
+	    height: 20px;
+	    align-items: center;
+	    margin-right : 10px;
+	}
+	
+	div.write_ticket_information {
+		display : flex;
+		padding : 16px;
+		border: 0.5px solid #ddd;
+   		margin-top: 15px;
+	}
+	div.write_ticket_information img {
+		width : 150px;
+	}
+	div.review_content_list_comment > span:first-child::after {
+	    content: "|";
+	    color: #898989;
+	    margin: 0 10px;
+	    font-weight: 100;
+	    font-size: 12px;
+	}
+	div.write_ticket_information > div {
+	    margin: 0 20px;
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    line-height: 40px;
+	}
+	form[name="reviewWriteForm"] li {
+		display: flex;
+   		flex-direction: column;
+   		margin-top : 10px;
+	}
+	form[name="reviewWriteForm"] label {
+		font-weight: 600;
+	    letter-spacing: -0.08rem;
+	    margin: 10px 0;
+	    font-size: 15px;
+	}
+	form[name="reviewWriteForm"] textarea {
+	    resize: none;
+   		height: 300px;
+   		padding: 20px;
+   		font-size: 17px;
+   		border : 0.5px solid #bfbfbf;
+	}
+	
+	div.write_reivew_form {
+		margin-top : 30px;
+	}
+	div.popup_button_list {
+		/* position : absolute;
+		bottom : 0; */
+		display : flex;
+		justify-content : center;
+		align-items : center;
+		width: 100%;
+	    height: 70px;
+	    border-top: 0.5px solid #ddd;
+	    background : white;
+        box-shadow: 0px 10px 21px #4c4c4c;
+	    flex-grow : 1;
+	}
+	div.popup_button_list button.popup_close {
+		border: 0.5px solid black;
+	    background: white;
+	    width: 20%;
+	    height: 80%;
+	    font-size: 16px;
+	    letter-spacing: -0.08rem;
+	    margin: 0 10px;
+	    cursor : pointer;
+	}
+	div.popup_button_list button.review_ok {
+		border: 0.5px solid black;
+	    background: black;
+	    color : white;
+	    width: 20%;
+	    height: 80%;
+	    font-size: 16px;
+	    letter-spacing: -0.08rem;
+	    margin: 0 10px;
+	    cursor : pointer;
 	}

@@ -1893,13 +1893,14 @@ header .header-web .main-menu-area .main-menu>ul>li {
     vertical-align: middle;
 }
 
-header .header-web .main-menu-area .main-menu>ul>li a {
+header .header-web .main-menu-area .main-menu > ul > li a {
     display: block;
     font-size: 1.125rem;
     color: #111;
     padding: 0 2.3125rem;
     line-height: 4.375rem;
     font-weight: 600;
+    
 }
 
 header .header-web .main-menu-area .main-menu>ul>li.on a::after {
@@ -1999,8 +2000,7 @@ header .header-web .main-menu-area .main-menu .sub-menu .pannel {
     margin: 0 auto;
     padding: 0 9rem;
 }
-
-header .header-web .main-menu-area .main-menu .sub-menu .pannel>div {
+header .header-web .main-menu-area .main-menu .sub-menu .pannel > div {
     padding: 3.0625rem 0 2.1875rem;
 }
 
@@ -2015,17 +2015,19 @@ header .header-web .main-menu-area .main-menu .sub-menu .pannel>div>div.menu-are
     position: relative;
 }
 
-header .header-web .main-menu-area .main-menu .sub-menu .pannel>div>div.menu-area ul li a {
+header .header-web .main-menu-area .main-menu .sub-menu .pannel > div > div.menu-area ul li a {
     color: #999;
     letter-spacing: -0.4px;
     line-height: 2.5rem;
 }
 
-header .header-web .main-menu-area .main-menu .sub-menu .pannel>div>div.menu-area ul li a:hover {
+header .header-web .main-menu-area .main-menu .sub-menu .pannel > div > div.menu-area ul li a:hover {
     color: #111;
 }
-
-header .header-web .main-menu-area .main-menu .sub-menu .pannel>div>div.menu-area:after {
+header .header-web .main-menu-area .main-menu .sub-menu.normal .pannel > div > div.menu-area:after {
+    display: none;
+}
+header .header-web .main-menu-area .main-menu .sub-menu .pannel > div > div.menu-area:after {
     display: block;
     content: '';
     width: 1px;
@@ -2035,16 +2037,27 @@ header .header-web .main-menu-area .main-menu .sub-menu .pannel>div>div.menu-are
     top: 0;
     right: 0;
 }
+header .header-web .main-menu-area .main-menu .sub-menu .pannel > div > div.menu-area ul li a {
+    color: #999;
+    letter-spacing: -0.4px;
+    line-height: 2.5rem;
+}
 
-header .header-web .main-menu-area .main-menu .sub-menu .pannel>div>div.banner-area {
+header .header-web .main-menu-area .main-menu .sub-menu .pannel > div > div.banner-area {
     width: 65%;
 }
 
-header .header-web .main-menu-area .main-menu .sub-menu .pannel>div>div.banner-area>ul {
+body a, body a:hover, body a:visited {
+    text-decoration: none;
+    color: #111;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+header .header-web .main-menu-area .main-menu .sub-menu .pannel > div > div.banner-area > ul {
     font-size: 0;
 }
 
-header .header-web .main-menu-area .main-menu .sub-menu .pannel>div>div.banner-area>ul>li {
+header .header-web .main-menu-area .main-menu .sub-menu .pannel > div > div.banner-area > ul > li {
     display: inline-block;
     vertical-align: top;
     width: 50%;
@@ -2125,6 +2138,16 @@ header .header-web .main-menu-area .main-menu .sub-menu .pannel>div:after {
     height: 0;
     visibility: hidden;
     clear: both;
+}
+header .header-web .main-menu-area .main-menu .sub-menu .pannel > div > div.menu-area::after {
+    display: block;
+    content: '';
+    width: 1px;
+    height: 14.375rem;
+    background: #ddd;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 header .header-web .main-menu-area .side-links {
     position: absolute;
