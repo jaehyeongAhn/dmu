@@ -14,6 +14,7 @@ public class TicketServiceImpl implements TicketService {
 	public int getWriteResult(DmuTicketVO vo) {
 		DmuTicketDAO dao = new DmuTicketDAO();
 		int result = dao.insert(vo);
+		
 		return result;
 	}
 	//°Ô½Ã±Û °Ù¼ö

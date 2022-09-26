@@ -28,6 +28,7 @@
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/sitemap.css">
 <script type="text/javascript" charset="UTF-8"
 	src="https://maps.googleapis.com/maps-api-v3/api/js/50/2/common.js"></script>
 <script type="text/javascript" charset="UTF-8"
@@ -35,14 +36,14 @@
 </head>
 <body>
     <main>
-    	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
+    	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
         <div data-v-36112f05="" class="sub-contents-wrap">
             <div data-v-0d03d759="" data-v-36112f05="" class="sub-top-area sitemap">
                 <div data-v-0d03d759="" class="container">
                     <h2 data-v-0d03d759=""> SITEMAP </h2>
                     <nav data-v-0d03d759="">
                         <ul data-v-0d03d759="">
-                            <li data-v-0d03d759="" style="cursor: pointer;"> HOME </li>
+                            <li data-v-0d03d759="" style="cursor: pointer;"><a href="index.do"> HOME</a></li>
                             <!---->
                             <li data-v-0d03d759=""> SITEMAP </li>
                             <!---->

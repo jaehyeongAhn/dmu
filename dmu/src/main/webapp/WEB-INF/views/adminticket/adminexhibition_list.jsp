@@ -80,13 +80,17 @@
 					<c:forEach var="vo" items="${list}">
 					<c:if test="${vo.dcode eq'exhibition'}">
 						<li data-v-3c1f59cb="">
+
 						<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" target="_parent" class="thumb">
+
 					<c:if test="${vo.dsfile != null }">
 						<img data-v-2fed1a9a="" data-v-1e8092ec="" src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"> 
 					</c:if>
 					</a>				 
 				<span data-v-3c1f59cb="" class="place"> ${vo.dplace } </span>
+
 					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" target="_parent" class="title"> ${vo.dtitle } </a>
+
 						<p data-v-3c1f59cb="" class="explan"></p>
 						<span data-v-3c1f59cb="" class="term"> ${vo.dstart }~ ${vo.dend } </span></li>
 					</c:if>

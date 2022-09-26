@@ -17,6 +17,14 @@ public class AdminController {
 	@Autowired
 	private NoticeServiceImpl noticeService;
 
+	//adminpage_main 
+	@RequestMapping(value = "/adminpage_main.do", method = RequestMethod.GET)
+	public String adminpage_main() {
+		return "/admin/adminpage_main";
+	}
+	
+	
+	
 	@RequestMapping(value = "/admin_notice_list.do", method = RequestMethod.GET)
 	public ModelAndView admin_notice_list(String rpage) {
 		//String rpage = request.getParameter("rpage");

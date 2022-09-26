@@ -71,13 +71,17 @@
 														
 															<c:if test="${vo.dsfile != null }">
 														<a data-v-1e8092ec=""
+
 															href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" class="thumb">
+
 															<img
 																data-v-2fed1a9a="" data-v-1e8092ec=""
 																src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"></a>
 															</c:if>
 																<a
+
 															data-v-1e8092ec="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}"
+
 															class="title"> ${vo.dtitle } </a>
 														<ul data-v-1e8092ec="" class="info">
 																<li data-v-1e8092ec=""><span data-v-1e8092ec=""

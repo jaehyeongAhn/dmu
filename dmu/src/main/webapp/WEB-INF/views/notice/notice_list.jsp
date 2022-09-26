@@ -29,11 +29,13 @@
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/notice.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 $(document).ready(function(){
 	
@@ -65,8 +67,7 @@ $(document).ready(function(){
 </script>
 
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no"
-		frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 	<main>
 		<section data-v-1b9c8af9="" class="sub-contents-wrap">
 			<div data-v-0d03d759="" data-v-1b9c8af9=""

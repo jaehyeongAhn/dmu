@@ -168,7 +168,7 @@ $(document).ready(function() {
 					type : "post",
 					url : "join_idCheck.do",
 					data : {
-						did : $("#did").val()
+						mid : $("#did").val()
 					},
 					success : function(result){
 						if(result == 0){
@@ -530,7 +530,7 @@ $(document).ready(function() {
 			
 			return true;
 		}
-			
+		
 		$("#accredit_send_pass").click(function(){	
 			let email = $("#pass_email1").val() + "@" + $("#pass_email2").val();
 				if($("#pass_email1").val() != "" && $("#pass_email2").val() != "" ){
@@ -544,7 +544,7 @@ $(document).ready(function() {
 							data : {
 								email : email,
 								name : $("#name_check_pass").val(),
-								did : $(".idCheckPass").val()
+								mid : $(".idCheckPass").val()
 							},
 							success : function(result){
 								if(result != 0){

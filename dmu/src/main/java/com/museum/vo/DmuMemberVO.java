@@ -3,7 +3,7 @@ package com.museum.vo;
 public class DmuMemberVO {
 	//DB Column Name
 	int rno;
-	String did, pass, nationality, dname, gender, email, birth, pnumber, 
+	String mid, pass, nationality, mname, gender, email, birth, pnumber, 
 		zonecode, addr1, addr2, terms, older, consent, unregister, status, ddate;
 	
 	//View에서 넘어오는 name
@@ -18,12 +18,12 @@ public class DmuMemberVO {
 		this.rno = rno;
 	}
 
-	public String getDid() {
-		return did;
+	public String getMid() {
+		return mid;
 	}
 
-	public void setDid(String did) {
-		this.did = did;
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 
 	public String getPass() {
@@ -41,13 +41,12 @@ public class DmuMemberVO {
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
 	}
-
-	public String getDname() {
-		return dname;
+	public String getMname() {
+		return mname;
 	}
 
-	public void setDname(String dname) {
-		this.dname = dname;
+	public void setMname(String mname) {
+		this.mname = mname;
 	}
 
 	public String getGender() {

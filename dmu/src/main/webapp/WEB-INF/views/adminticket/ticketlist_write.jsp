@@ -34,6 +34,7 @@
 	<!---------------------------------------------->
 	<div class="content">
 		<form name="ticketlistform" action="ticketlist_write_check.do" method="post" enctype="multipart/form-data" >
+
 		<div data-v-6d324aa0="" data-v-25f87e60="" class="step-process-area">
 	<ul data-v-6d324aa0="">
 		<li data-v-6d324aa0="" class="complete">
@@ -95,6 +96,8 @@
 			<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
 				<p data-v-8ed31374="" class="price"><input type="text" name="dprice" id="dprice" ></p>
 			</li>
+
+			
 			
 			<li data-v-8ed31374="" class="">
 				<strong data-v-8ed31374="" class="title">정원</strong>

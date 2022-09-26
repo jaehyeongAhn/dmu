@@ -22,30 +22,39 @@
 </style>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 class = "header"></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 
 	<main class = "join">
 		<div class = "section">
-			<div class = "joinContainer">
+			<c:choose>
+			<c:when test="${ result == 1 }">
+			<div class = "joinContainer" style="width : 500px;">
+			</c:when>
+			<c:otherwise>
+			<div class = "joinContainer" style="width : 700px;">
+			</c:otherwise>
+			</c:choose>
 				<div class = "content">
 					<div class = "container">
 					<c:choose>
 						<c:when test="${ result == 1 }">
-							<h3>비밀번호 변경이 완료되었습니다.</h3>
+							<img src = "http://localhost:9000/dmu/resources/images/join_ok.png" style="width:120px;">
+							<h3 style = "font-size: 40px !important; line-height: 60px !important;">비밀번호 변경이<br>완료되었습니다.</h3>
 						</c:when>
 						<c:otherwise>
-							<h3>계정 찾기</h3>
+							<p class="imformation_join">가입한 정보</p>
 						</c:otherwise>
 					</c:choose>
 					</div>
-					<div class = "commentary">
+					<div class = "commentary" style="line-height: 25px;">
 					<c:choose>
 						<c:when test="${ result == 1 }">
-							<p>비밀번호가 정상적으로 변경되었습니다.</p>
+							<p>비밀번호는 최소 3개월 이내<br>추가적으로 변경해주시는 것이 좋습니다.</p>
 						</c:when>
 						<c:otherwise>
-							<p>회원님의 ${ find_information }는 ${ find_result } 입니다.</p>
-							<p><a href="login_idfind.do?show=pass"  class = "pass_check">비밀번호가 기억나지 않으시나요?</a></p>
+							<p class="idfind_check_comment">${ find_information }님의 아이디는 <strong style = "color:black;">${ find_result }</strong> 입니다.</p>
+							<p style="text-align: left;"><a href="login_idfind.do?show=pass"  class = "pass_check" 
+							style = "text-decoration:underline;">비밀번호</a>가 기억나지 않으시나요?</p>
 						</c:otherwise>
 					</c:choose>
 					</div>
