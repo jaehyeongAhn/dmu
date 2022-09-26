@@ -20,10 +20,12 @@
         rel="stylesheet">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
-
+	    <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
+    <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
     <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
     <script src="http://localhost:9000/dmu/resources/js/main.js"></script>
@@ -163,8 +165,6 @@
     <link href="/js/index.85a954b2b4f1348cc700.js" rel="preload" as="script">
     <link href="https://www.googletagmanager.com" rel="preconnect">
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-48000917-2&amp;l=dataLayer"></script>
-    <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
-    <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
     <link data-vue-meta="1" rel="canonical" href="https://www.daelimmuseum.org">
     <meta data-vue-meta="1" name="description" content="#description" data-vmid="description">
     <meta data-vue-meta="1" name="keywords" content="#keywords">
@@ -424,9 +424,6 @@
                                 <a href="notice_list.do" class=""> NOTICE </a>
                             </li>
                             <li>
-                                <a href="/faq/all?refresh=true" class=""> FAQ </a>
-                            </li>
-                            <li>
                                 <a href="http://localhost:9000/dmu/index.do" target="_blank">
                                     <a>대림문화재단</a>
                                 </a>
@@ -437,28 +434,34 @@
                         <h1><a href="javascript:void(0);">대림문화재단</a></h1>
                         <div class="main-menu">
                             <ul>
-                                <li class="">
-                                    <a href="javascript:void(0);"> VISIT </a>
+                                <li class="visit">
+                                    <a href="visit_main.do" target="_parents"> VISIT </a>
                                 </li>
-                                <li class="">
+                                <li class="exhibition">
                                     <a href="javascript:void(0);"> EXHIBITION </a>
                                 </li>
-                                <li class="">
+                                <li class="learn">
                                     <a href="javascript:void(0);"> LEARN </a>
                                 </li>
-                                <li class="">
-                                    <a href="exhibition_list.do"> EVENT </a>
+                                <li class="event">
+                                    <a href="javascript:void(0);"> EVENT </a>
                                 </li>
-                                <li class="">
-                                    <a href="javascript:void(0);"> TICKET </a>
+                                <li class="ticket">
+                                    <a href="exhibition_list.do"> TICKET </a>
                                 </li>
                             </ul>
-                            <div class="sub-menu normal" style="width: 1280px; display: none;">
+                            <div class="sub-menu" id="menu_visit" style="width: 100%; display:none;">
                                 <div class="pannel">
                                     <div>
                                         <div class="menu-area">
                                             <ul>
-
+												<li><a href="javascript:void(0);"
+													href="http://localhost:9000/dmu/visit_main.do" style="">
+														미술관 소개 </a></li>
+												<li><a href="javascript:void(0);"
+													href="http://localhost:9000/dmu/visit_info.do"> 관람안내 </a></li>
+												<li><a href="javascript:void(0);"
+													href="http://localhost:9000/dmu/visit_map.do"> 오시는 길 </a></li>
                                             </ul>
                                         </div>
                                         <div class="banner-area">
@@ -503,6 +506,35 @@
                                     </div>
                                 </div>
                             </div>
+                      <div class="sub-menu normal" id="menu_exhibition" style="width: 100%; display:none;">
+							<div class="pannel">
+								<div>
+									<div class="menu-area">
+										<ul>
+											<li><a href="javascript:void(0);" style=""> 현재 전시 </a></li>
+											<li><a href="javascript:void(0);"> 지난 전시 </a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="sub-menu normal" id="menu_learn" style="width: 100%; display:none;">
+							<div class="pannel">
+								<div>
+									<div class="menu-area">
+										<ul>
+											<li><a href="javascript:void(0);" style=""> 유아 </a></li>
+											<li><a href="javascript:void(0);"> 어린이 </a></li>
+											<li><a href="javascript:void(0);"> 청소년 </a></li>
+											<li><a href="javascript:void(0);"> 대학생 </a></li>
+											<li><a href="javascript:void(0);"> 성인 </a></li>
+											<li><a href="javascript:void(0);"> 교사 </a></li>
+											<li><a href="javascript:void(0);"> 전시해설 </a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
                         </div>
                         <div class="side-links">
                             <ul class="">

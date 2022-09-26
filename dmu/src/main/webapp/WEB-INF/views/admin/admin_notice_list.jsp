@@ -34,6 +34,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 </head>
 <script>
@@ -67,7 +68,7 @@ $(document).ready(function(){
 </script>
 
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 	<main>
 		<section data-v-1b9c8af9="" class="sub-contents-wrap">
 			<div data-v-0d03d759="" data-v-1b9c8af9=""
@@ -134,8 +135,6 @@ $(document).ready(function(){
 							role="button" style="cursor: pointer;" data-tab="tab_3">대림미술관</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
 							role="button" style="cursor: pointer;" data-tab="tab_4">구슬모아당구장</a></li>
-						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_5">뮤지엄샵</a></li>
 					</ul>
 				</div>
 				<div data-v-26e42198="" class="btn-area">
