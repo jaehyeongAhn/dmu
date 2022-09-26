@@ -95,7 +95,7 @@
 	
 	/******* ****************/
 
-	/**** ���̵� �޴� ****/
+	/**** »çÀÌµå ¸Þ´º ****/
 	aside.mypage {
 		width : 190px;
 		padding : 20px;
@@ -237,6 +237,7 @@
 	    font-size: 14px;
 	    margin-left: 10px;
 	    vertical-align: middle;
+	    color:#959595;
 	}
 	div.purchase-title:before {
 	    content: "";
@@ -807,7 +808,7 @@
 /************************** mypage_review.do ****************************/
 
 
-	/******* content �κ� **********/									
+	/******* content ºÎºÐ **********/									
 	button.review_write_btn{
 		background: black;
 	    color: white;
@@ -892,7 +893,7 @@
 
 
 	/********** mypage_review - set popup ************/
-	/* �˾� �ܺ� */
+	/* ÆË¾÷ ¿ÜºÎ */
 	div.background {
 		position : fixed;
 		width : 100%;
@@ -934,7 +935,7 @@
 	}
 	
 	
-	/* �˾� ���� */
+	/* ÆË¾÷ ³»ºÎ */
 	div.popup_title {
 		display: flex;
 		justify-content : space-between;
