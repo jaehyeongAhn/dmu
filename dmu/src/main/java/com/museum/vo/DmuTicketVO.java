@@ -4,8 +4,10 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class DmuTicketVO {
 	
-	int rno,dpersonnel,dnum;
-	String did, dtitle, dstart, dend , dprice,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate;
+
+	int rno,dpersonnel,dnum, dprice;
+	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate;
+
 	
 	CommonsMultipartFile file1;
 	public CommonsMultipartFile getFile1() {
@@ -80,11 +82,10 @@ public class DmuTicketVO {
 		this.dend = dend;
 	}
 	
-	 
-	public String getDprice() {
+	public int getDprice() {
 		return dprice;
 	}
-	public void setDprice(String dprice) {
+	public void setDprice(int dprice) {
 		this.dprice = dprice;
 	}
 	public String getDplace() {

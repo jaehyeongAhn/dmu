@@ -49,6 +49,7 @@ $(document).ready(function(){
 					
 				 		if($("#dtitle").val() == ""){
 							alert("제목을 입력해주세요");
+				 			$("#dtitle").focus();
 						 
 							return false;
 						}else{
@@ -58,6 +59,20 @@ $(document).ready(function(){
 					});
 					
 					
+					/*********************
+					티켓리스트 수정폼 유효성 체크
+					**********************/
+					$("#btnTicketUpdate").click(function(){
+						if($("#dtitle").val() == ""){
+							alert("제목을 입력해주세요");
+							$("#dtitle").focus();
+							return false;
+						}else{
+						//서버전송
+						ticketUpdateForm.submit();
+						}
+				});
+	
 					
 					/*********************
 						카운트 체크
@@ -90,6 +105,7 @@ $(document).ready(function(){
 							  });
 						 
 		
+
 		
 		
 		}); 
