@@ -435,7 +435,7 @@
                         <div class="main-menu">
                             <ul>
                                 <li class="visit">
-                                    <a href="visit_main.do" target="_parents"> VISIT </a>
+                                    <a href="visit_main.do"> VISIT </a>
                                 </li>
                                 <li class="exhibition">
                                     <a href="javascript:void(0);"> EXHIBITION </a>
