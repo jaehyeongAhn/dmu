@@ -25,9 +25,9 @@ public class LoginServiceImpl implements LoginService{
 	
 	//비밀번호 찾기 페이지의 계정 존재 여부 확인
 	@Override
-	public int emailCheckPass(String email, String name, String did) {
+	public int emailCheckPass(String email, String name, String mid) {
 		DmuMemberDAO dao = new DmuMemberDAO();
-		int result = dao.emailCheckPass(email, name, did);
+		int result = dao.emailCheckPass(email, name, mid);
 		
 		return result;
 	};
