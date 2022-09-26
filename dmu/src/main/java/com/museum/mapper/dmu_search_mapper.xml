@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace = "mapper.search">
+
+	<!-- search list -->
+	<select id = "search" parameterType = "map" resultType = "com.museum.vo.DmuTicketVO">
+		SELECT DID, DPLACE, DTITLE, TO_DATE(DSTART, 'YYYY-MM-DD') DSTART, TO_DATE(DEND, 'YYYY-MM-DD') DEND, 
+		DFILE, DSFILE, DCODE, DTIME, DPRICE, DTARGET, DNUM 
+		FROM DMU_TICKET
+		<choose>
+			<when test = "keyword != ''">
+				 WHERE UPPER(DTITLE) LIKE UPPER('%' || #{keyword} || '%')
+				<if test = "!dpage.equals('all')">
+					AND DCODE = #{dpage}
+				</if>
+			</when>
+		</choose>
+	</select>
+	
+	<!-- search total -->
+	<select id = "totalcount" parameterType = "java.lang.String" resultType = "com.museum.vo.DmuSearchVO">
+		SELECT NVL(MAX(EXHIBITION), 0) EXHIBITION, NVL(MAX(LEARN), 0) LEARN, NVL(MAX(EVENT), 0) EVENT
+		FROM (
+			SELECT 
+			    CASE WHEN DCODE = 'exhibition' THEN COUNT(DCODE) OVER(PARTITION BY DCODE) ELSE 0 END AS exhibition,
+			    CASE WHEN DCODE = 'learn' THEN COUNT(DCODE) OVER(PARTITION BY DCODE) ELSE 0 END AS learn,
+			    CASE WHEN DCODE = 'event' THEN COUNT(DCODE) OVER(PARTITION BY DCODE) ELSE 0 END AS event
+			FROM DMU_TICKET
+			WHERE UPPER(DTITLE) LIKE UPPER('%' || #{keyword} || '%')
+		)
+	</select>
+</mapper>
