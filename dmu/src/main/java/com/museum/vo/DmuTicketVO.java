@@ -6,9 +6,15 @@ public class DmuTicketVO {
 	
 
 	int rno,dpersonnel,dnum, dprice;
-	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate;
+	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate,dtitle2;
 
 	
+	public String getDtitle2() {
+		return dtitle2;
+	}
+	public void setDtitle2(String dtitle2) {
+		this.dtitle2 = dtitle2;
+	}
 	CommonsMultipartFile file1;
 	public CommonsMultipartFile getFile1() {
 		return file1;

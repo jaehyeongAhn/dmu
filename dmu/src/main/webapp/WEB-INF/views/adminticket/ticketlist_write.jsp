@@ -83,6 +83,10 @@
 											</select>
 			</li>
 			<li data-v-8ed31374="">
+				<strong data-v-8ed31374="" class="title">부제목</strong>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dtitle2" id="dtitle2" ></span>
+			</li>
+			<li data-v-8ed31374="">
 				<strong data-v-8ed31374="" class="title">장소</strong>
 				<span data-v-8ed31374="" class="text"><input type="text" name="dplace" id="dplace" ></span>
 			</li>
@@ -135,7 +139,7 @@
 			
 <div data-v-8ed31374="" class="use-info-ticket">
 	<div data-v-26e42198="" data-v-8ed31374="" class="btn-area">
-				<button data-v-26e42198="" name ="btn25" id="btn_exhibition_Write" type="button" class="secondary small">작성완</button>
+				<button data-v-26e42198="" name ="btn25" id="btn_exhibition_Write" type="button" class="secondary small">작성완료</button>
 				<a href="adminexhibition_list.do"><button data-v-26e42198=""  type="button" class="secondary small">리스트</button></a>
 	</div>
 </div>

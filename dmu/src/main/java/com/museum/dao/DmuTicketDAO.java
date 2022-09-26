@@ -33,7 +33,7 @@ public class DmuTicketDAO extends DBConn {
 	public int insert(DmuTicketVO vo) {
 		int result = 0;
 		
-		String sql = " insert into dmu_ticket values('d_'||sequ_dmu_ticket.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,? )";
+		String sql = " insert into dmu_ticket values('d_'||sequ_dmu_ticket.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,? ,?)";
 		 	
 		try {
 			getPreparedStatement(sql);
@@ -51,6 +51,7 @@ public class DmuTicketDAO extends DBConn {
 			pstmt.setString(11, vo.getDstart());
 			pstmt.setString(12, vo.getDend());
 			pstmt.setString(13, vo.getDcode());
+			pstmt.setString(14, vo.getDtitle2());
 			 		
 			result = pstmt.executeUpdate();
 					
@@ -66,10 +67,10 @@ public class DmuTicketDAO extends DBConn {
 	 */
 	public ArrayList<DmuTicketVO> select(int startCount, int endCount){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
-		String sql = " select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum "
+		String sql = " select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2 "
 				 	+" from(select rownum rno,did,dplace,dtitle,   dstart ,"
-				 	+ "   dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum "
-					+" from (select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum from dmu_ticket)) "
+				 	+ "   dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2 "
+					+" from (select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum ,dtitle2 from dmu_ticket)) "
 					+" 	where rno between ? and ?";
 		try { 
 			getPreparedStatement(sql);
@@ -92,6 +93,7 @@ public class DmuTicketDAO extends DBConn {
 				vo.setDprice(rs.getInt(11));
 				vo.setDtarget(rs.getString(12));
 				vo.setDnum(rs.getInt(13));
+				vo.setDtitle2(rs.getString(14));
 				
 				list.add(vo);
 			}
@@ -133,7 +135,7 @@ public class DmuTicketDAO extends DBConn {
 		DmuTicketVO vo = new DmuTicketVO();
 		
 
-		String sql = " select did, dtitle, dstart, dend, dprice,dplace,dinformation,dtime,dpersonnel,dtarget,dnum,dfile,dsfile, TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE  "
+		String sql = " select did, dtitle, dstart, dend, dprice,dplace,dinformation,dtime,dpersonnel,dtarget,dnum,dfile,dsfile, TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE ,dtitle2 "
     + " from dmu_ticket where did=?";
 
 
@@ -158,7 +160,8 @@ public class DmuTicketDAO extends DBConn {
 				vo.setDnum(rs.getInt(11));
 				vo.setDfile(rs.getString(12));
 				vo.setDsfile(rs.getString(13));
-		    vo.setEnddate(rs.getString(14));
+				vo.setEnddate(rs.getString(14));
+				vo.setDtitle2(rs.getString(15));
 
 				
 
@@ -176,7 +179,7 @@ public class DmuTicketDAO extends DBConn {
 	public int update(DmuTicketVO vo) {
 		int result = 0;
 		String sql = " 	update dmu_ticket set dtitle=?, dstart=?, dend=?, dprice=?, dplace=?, dinformation=?, dtime=?, dpersonnel=?,"
-				+ "		dtarget=?, dnum=?, dfile=?, dsfile=?  "
+				+ "		dtarget=?, dnum=?, dfile=?, dsfile=?  ,dtitle2=? "
 				+ "		 where did=?  " ;
 		try {
 			getPreparedStatement(sql);
@@ -193,7 +196,8 @@ public class DmuTicketDAO extends DBConn {
 			pstmt.setInt(10, vo.getDnum());
 			pstmt.setString(11, vo.getDfile());
 			pstmt.setString(12, vo.getDsfile());
-			pstmt.setString(13, vo.getDid());
+			pstmt.setString(13, vo.getDtitle2());
+			pstmt.setString(14, vo.getDid());
 			 		
 			result = pstmt.executeUpdate();
 			close();
