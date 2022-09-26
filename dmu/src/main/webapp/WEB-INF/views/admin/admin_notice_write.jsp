@@ -34,8 +34,7 @@
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no"
-		frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 	<form name="noticeWriteForm" action="admin_notice_write_check.do" method="post">
 	<main>
 		<section class="sub-contents-wrap">
@@ -57,7 +56,7 @@
 					<div class="notice-view-area">
 						<div class="base-info-area">
 							<div class="title-area">
-								<strong class="title">공지사항 작성 폼</strong>
+								<strong class="title">공지사항 작성</strong>
 							</div>
 						</div>
 						<div class="notice-content-write">
@@ -95,7 +94,7 @@
 					<div class="btn-bottom-area">
 						<div data-v-26e42198="" class="btn-area">
 							<button data-v-26e42198="" id="btn50" type="button"
-								class="secondary">등록완료</button>
+								class="secondary">보내기</button>
 						<a href="admin_notice_list.do">
 							<button data-v-26e42198="" id="btn50" type="button"
 								class="secondary">목록</button></a>

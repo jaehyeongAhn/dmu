@@ -13,7 +13,7 @@ public interface LoginService {
 	public int loginUpdate(DmuMemberVO vo);
 	
 	//비밀번호 찾기 페이지의 계정 존재 여부 확인
-	public int emailCheckPass(String email, String name, String did);
+	public int emailCheckPass(String email, String name, String mid);
 
 	//아이디 반환
 	public String findId(DmuMemberVO vo);

@@ -43,9 +43,9 @@ public class JoinController {
 	//idCheck.do : 아이디 중복 확인
 	@ResponseBody
 	@RequestMapping(value = "/join_idCheck.do", method = RequestMethod.POST)
-	public String idCheck(String did) {
+	public String idCheck(String mid) {
 		DmuMemberDAO dao = new DmuMemberDAO();
-		int result = dao.idCheck(did);
+		int result = dao.idCheck(mid);
 		
 		return String.valueOf(result);
 	}
@@ -55,7 +55,7 @@ public class JoinController {
 	 */
 	@RequestMapping(value = "/join_terms.do", method = RequestMethod.GET)
 	public String join_terms() {
-		return "/join/terms";
+		return "/join/join_terms";
 	}
 	
 	/*
