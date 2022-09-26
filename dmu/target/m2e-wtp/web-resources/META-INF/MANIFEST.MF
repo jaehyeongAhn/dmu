@@ -1,7 +1,11 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 
 Built-By: tj
 
+=======
+Built-By: tj
+>>>>>>> refs/remotes/origin/main
 Build-Jdk: 11.0.14
 Created-By: Maven Integration for Eclipse
 

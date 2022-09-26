@@ -9,7 +9,7 @@ import com.museum.vo.DmuTicketVO;
 
 public class DmuTicketDAO extends DBConn {
 	/**
-	 *  delete : 게시글 삭제
+	 *  delete : 寃뚯떆湲� �궘�젣
 	 */
 	public int delete(String did) {
 		int result=0;
@@ -28,7 +28,7 @@ public class DmuTicketDAO extends DBConn {
 	}
 
 	/**
-	 *  insert : 게시글 추가
+	 *  insert : 寃뚯떆湲� 異붽�
 	 */
 	public int insert(DmuTicketVO vo) {
 		int result = 0;
@@ -62,7 +62,7 @@ public class DmuTicketDAO extends DBConn {
 		return result;		
 	}
 	/**
-	 * select : exhibition 공지사항 리스트
+	 * select : exhibition 怨듭��궗�빆 由ъ뒪�듃
 	 */
 	public ArrayList<DmuTicketVO> select(int startCount, int endCount){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
@@ -105,7 +105,7 @@ public class DmuTicketDAO extends DBConn {
 	}
 	
 	/**
-	 * totalCount : 전체 로우수 출력
+	 * totalCount : �쟾泥� 濡쒖슦�닔 異쒕젰
 	 */
 	public int totalCount() {
 		int result = 0;
@@ -126,8 +126,8 @@ public class DmuTicketDAO extends DBConn {
 	}
 	
 	
-	/* 02.관람일/인원선택
-	 *  select : 게시글 상세보기
+	/* 02.愿��엺�씪/�씤�썝�꽑�깮
+	 *  select : 寃뚯떆湲� �긽�꽭蹂닿린
 	 */
 	public DmuTicketVO select(String did) {
 		DmuTicketVO vo = new DmuTicketVO();
@@ -136,8 +136,6 @@ public class DmuTicketDAO extends DBConn {
 		String sql = " select did, dtitle, dstart, dend, dprice,dplace,dinformation,dtime,dpersonnel,dtarget,dnum,dfile,dsfile, TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE  "
     + " from dmu_ticket where did=?";
 
-
-		
 		try {
 			getPreparedStatement(sql);
 			pstmt.setString(1, did);
@@ -158,13 +156,11 @@ public class DmuTicketDAO extends DBConn {
 				vo.setDnum(rs.getInt(11));
 				vo.setDfile(rs.getString(12));
 				vo.setDsfile(rs.getString(13));
-		    vo.setEnddate(rs.getString(14));
-
-				
+				vo.setEnddate(rs.getString(14));
 
 			}
 			
-		//	close(); 조회수 업데이트를 같은 곳에서 하기위해서 주석 처리해야된다
+		//	close(); 議고쉶�닔 �뾽�뜲�씠�듃瑜� 媛숈� 怨녹뿉�꽌 �븯湲곗쐞�빐�꽌 二쇱꽍 泥섎━�빐�빞�맂�떎
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -172,7 +168,7 @@ public class DmuTicketDAO extends DBConn {
 		
 		return vo;
 	}
-	// 공지사항 업데이트
+	// 怨듭��궗�빆 �뾽�뜲�씠�듃
 	public int update(DmuTicketVO vo) {
 		int result = 0;
 		String sql = " 	update dmu_ticket set dtitle=?, dstart=?, dend=?, dprice=?, dplace=?, dinformation=?, dtime=?, dpersonnel=?,"

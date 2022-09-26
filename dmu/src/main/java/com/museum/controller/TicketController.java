@@ -38,7 +38,7 @@ public class TicketController {
 		/**
 		 * ticketlist_write_check.do : 寃뚯떆�뙋 湲��벐湲� 泥섎━
 		 */
-		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.POST)
+		@RequestMapping(value="/ticketlist_write_check.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
 			ModelAndView mv = new ModelAndView();
 			
