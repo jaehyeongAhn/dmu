@@ -24,13 +24,12 @@
 			$(".pass_tab div").addClass("show");
 			$(".idfind form.pass_find").addClass("show");
 		}
-		
 		$(".footer").css({"position" : "relative", "top" :"100px"});
 	});
 </script>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 class = "header"></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 	<main class = "login_id">
 		<div class = "section">
 			<div class = "container">
@@ -58,7 +57,7 @@
 						<li>
 							<label class = "idFindLabel">이름</label>
 							<div id="idInput">
-								<input type="text" name="dname" id="name_check"
+								<input type="text" name="mname" id="name_check"
 									placeholder="이름을 입력해 주세요." maxlength="20">
 							</div>
 						</li>
@@ -105,14 +104,14 @@
 						<li>
 							<label class = "idFindLabel">이름</label>
 							<div id="passInput">
-								<input type="text" name="dname" id="name_check_pass"
+								<input type="text" name="mname" id="name_check_pass"
 									placeholder="이름을 입력해 주세요." maxlength="20">
 							</div>
 						</li>
 						<li>
 							<label class = "idFindLabel">아이디</label>
 							<div id="passID">
-								<input type="text" name="did" id="name_check" class = "idCheckPass"
+								<input type="text" name="mid" id="name_check" class = "idCheckPass"
 									placeholder="아이디를 입력해 주세요." maxlength="20">
 							</div>
 						</li>

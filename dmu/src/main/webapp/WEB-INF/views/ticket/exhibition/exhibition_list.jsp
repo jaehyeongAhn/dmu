@@ -93,23 +93,7 @@
 					</c:if>
 					</c:forEach>
 					
-				<%-- 	<c:forEach var="vo" items="${ list }"> 
-						 <tr>
-						 
-							<c:if test="${vo.dsfile != null }">		
-							<a href="exhibition.do?did=${ vo.getDid()}"><img  src="http://localhost:9000/dmu/resources/upload/${vo.dsfile}"></a>
-							 
-			 				</c:if>
-			 			
-							<td><a href="exhibition.do?did=${ vo.getDid()}"></a></td>
-							<td>${ vo.getDcode() }</td>
-							 
-							<td><a href="exhibition.do?did=${ vo.getDid()}">${ vo.getDtitle() }</a></td>
-							<td>${ vo.getDstart() } ~ ${ vo.getDend() } </td>
-							
-						 
-						</tr>
-					</c:forEach>   --%>
+				 
 			</ul>										
 </div>
 												
