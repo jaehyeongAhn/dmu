@@ -150,10 +150,7 @@
 												<button data-v-26e42198="" id="btn23" type="button"
 													class="primary">예매내역 확인</button>
 											</div>
-											<div data-v-26e42198="" data-v-7f52b83a="" class="btn-area">
-												<button data-v-26e42198="" id="btn24" type="button"
-													class="primary">티켓 선물하기</button>
-											</div>
+											 
 											<div data-v-26e42198="" data-v-7f52b83a="" class="btn-area">
 											<a href="http://localhost:9000/dmu/index.do" target="_parent" >
 												<button data-v-26e42198="" id="btn25" type="button"

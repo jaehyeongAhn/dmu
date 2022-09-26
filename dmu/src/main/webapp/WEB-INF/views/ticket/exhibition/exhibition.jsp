@@ -28,13 +28,63 @@
 <%--  jQuery UI CSS파일  --%>
   	<%-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> --%>
   	<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/jquery-ui.css">
-	
+	 
 	<%-- jQuery 기본 js파일 --%>
  	 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-	
+	 
 	<%-- jQuery UI 라이브러리 js파일 --%>
   	<%-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> --%>
+  	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script >
+	 
+
+	function onlyNumber() 
+	{ 
+		var str = 0;
+		var Mynum = document.getElementById("inptext").value;
+		Mynum =Mynum.replace(/[^0-9]/g,'');
+		document.getElementById("inptext").value=Mynum;
+		var plus = document.getElementById("inptext").value=Mynum;
+		if (plus < str)
+		{
+			document.getElementById("inptext").value=0;
+		}else if (plus > 4)
+		{
+			document.getElementById("inptext").value=4;
+		}
+	} 
+	$(document).ready(function(){
+		var inp =$("input").val();
+		$(".btn-plus").on("click",function(){
+			setTimeout(function(){
+			if (inp == 4)
+			{
+				inp;
+			}
+			else{inp ++;}
+			$("input").val(inp);
+			},500);
+		});
+		$(".btn-minus").on("click",function(){
+			setTimeout(function(){
+			if (inp == 0)
+			{
+				inp;
+			}
+			else if(inp <= 4)
+			{
+				inp--;
+			}
+			$("input").val(inp);
+			},4);
+		});
+	});
+
+ 
+	</script>
+	
   	<script src="http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
+   
 	<script>
 		$(document).ready(function(){
 			let enddate = "${vo.enddate}";
@@ -71,7 +121,8 @@
 		});
 	</script>
 	
-	 
+	  
+	  
 	
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
@@ -80,8 +131,9 @@
 	<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
 	
 		 
+		 
 		
-			<main>
+			<main name="exhibtionForm" action="ticket_reservation.do" method="get"  >
 				<div data-v-ec5a0c2c="" class="root-container">
 					<div data-v-ec5a0c2c="" class="content-wrapper">
 						<div data-v-ec5a0c2c="" class="body-wrapper">
@@ -132,7 +184,7 @@
 															<span data-v-8ed31374="" class="text">${ vo.dtime }</span>
 														</li>
 														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
-															<p data-v-8ed31374="" class="price">${ vo.dprice } </p>
+															<p data-v-8ed31374="" class="price">${ vo.dprice } 원 </p>
 														</li>
 													</ul>
 												</div>
@@ -141,38 +193,7 @@
 												</div>
 												<div data-v-8ed31374="" class="use-info-ticket">
 													<strong data-v-8ed31374="" class="title">이용 정보</strong>
-													<div class="content">
-		 
-		<%-- <table class="board">
-			<tr>
-				<td colspan="4">
-					<a href="board_write.do">
-					<button type="button" class="btn_style">글쓰기</button>
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<th>번호</th>
-				<th>후기</th>
-				<th>등록날짜</th>
-				 
-			</tr>
-			<c:forEach var="vo" items="${ list }"> 
-			 <tr>
-				<td>${ vo.getRno() }</td>
-				<td><a href="board_content.do?bid=${ vo.getBid()}">${ vo.getBtitle() }</a></td>
-				<td>${ vo.getBdate() }</td>
-				<td>${ vo.getBhits() }</td>
-			</tr>
-			</c:forEach> 
-			
-			<tr>
-				페이지 네비게이션 시작						
-				<td colspan=4><div id="ampaginationsm"></div></td>
-				페이지 네비게이션 종료 
-			</tr>
-		</table>	 --%>
-	</div>
+													<div class="content"> </div>
 													<div data-v-8ed31374="" class="contents">
 														<div class="editor-contents-area">
 															<p>
@@ -181,9 +202,7 @@
 
 																<br>
 															</p>
-															<ul style="font-size: 15px">
-																${ vo.dinformation }
-															</ul>
+															<ul style="font-size: 15px"> ${ vo.dinformation } </ul>
 															<p>
 																<br>
 															</p>
@@ -206,19 +225,9 @@
 																  <div class="vdp-datepicker small"
 																	allowed-to-show-view="function() {}"></div> 
 																	<div class=""></div> 
-														 		<!---->
-															<!-- 			<input type="hidden" readonly="readonly"
-																			autocomplete="off" value="31 08 2022">
-																		
-																	</div>
-																	<div class="dcalender vdp-datepicker__calendar" style="position: static;">
-																		<header>
-																			<span class="prev disabled">&lt;</span> <span
-																				class="day__month_btn">2022 . 08</span> <span
-																				class="next">&gt;</span>
-																		</header>
+														 	 
 													 
-														-->
+													  
 														<!-- 달력 코딩 -->
 														<div id = "calendar" class="ticketing-list-area"></div>
 														<input type = "hidden" name = "date" id = "date">
@@ -231,8 +240,9 @@
 													<div data-v-8ed31374="" id="btn_toggle" role="button" class="title-area btn-toggle on">회차</div>
 														<div data-v-8ed31374="" class="field-area">
 															<ul data-v-8ed31374="" class="round-list">
-																<li data-v-8ed31374="" class=""><button data-v-8ed31374="" type="button" disabled="disabled" class="round-selection" id="entertime">
-																		<span data-v-8ed31374="" name="content" id="content">전일 입장 가능 11:00 ~ 20:00</span>
+																<li data-v-8ed31374="" class="">
+																<button data-v-8ed31374="" type="button" disabled="disabled" class="round-selection" id="entertime">
+																		<span data-v-8ed31374="" name="content" id="content" class="ContentEnter" > 회차/운영시간 vo필요</span>
 																		<!---->
 																	</button></li>
 															</ul>
@@ -251,17 +261,19 @@
 															<li data-v-8ed31374=""><div data-v-8ed31374=""
 																	class="personal-control">
 																	<span data-v-8ed31374="" class="person">인원</span>
-																	<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control">
+																	<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control" name="data-v-1dc6379c">
 																	
-																		<button id="countpeople" name="countpeople" data-v-1dc6379c="" type="button" disabled="disabled" class="btn-minus"  id="decreaseQuantity"></button>
+																		<button id="countpeople" name="countpeople" data-v-1dc6379c="" type="button"   class="btn-minus"  id="decreaseQuantity"  ></button>
 																		
 																			<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area" >
-																			<input data-v-67ca82d2="" id="field40" autocomplete="on" placeholder="" readonly="readonly" maxlength="-1" type="text" class="" > 	
-																			<a data-v-67ca82d2="" href="javascript:void(0);" class=""></a></div>
+																			<input data-v-67ca82d2="" id="inptext"   type="text"   value="0"    onfocusout="onlyNumber();" autocomplete="on" placeholder="" readonly="readonly" maxlength="-1" > 	
+																			 
+																			<!-- <a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>--></div>  
 																			
-																		<button data-v-1dc6379c="" type="button" class="btn-plus" id="increaseQuantity"></button>
+																		<button data-v-1dc6379c="" type="button" class="btn-plus" id="increaseQuantity"  ></button>
 																		
 																		 
+																		  
 																	</div>
 																</div></li>
 															<li data-v-8ed31374=""><div data-v-8ed31374=""
@@ -304,17 +316,20 @@
 																</div></li>
 														</ul>
 														<ul data-v-8ed31374="" class="personnel-result">
-															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">인원</strong><span
-																data-v-8ed31374="" class="count">0</span></li>
-															 
+															<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">인원</strong>
+														 
+															<input data-v-8ed31374=""   id="inptext"  value="0"   ></li>
+														  
+																			 
 														</ul>
 														<div data-v-8ed31374="" class="btn-bottom-area">
 															<ul data-v-8ed31374="" class="agreement-list">
-																<li data-v-8ed31374=""><div data-v-34230fe0=""
-																		data-v-8ed31374="" class="check-area reservation">
-																		<input data-v-34230fe0="" id="check30" type="checkbox" class=""><label
-																			data-v-34230fe0="" for="check30"><span
-																			data-v-34230fe0="" class="check"></span>관람시 유의사항 동의</label>
+																<li data-v-8ed31374="">
+																	<div data-v-34230fe0="" data-v-8ed31374="" class="check-area reservation">
+																		<input data-v-34230fe0="" id="check30" type="checkbox" class = ""  >
+																		<label data-v-34230fe0="" for="check30">
+																			<span data-v-34230fe0="" class="check" id="check30"></span>관람시 유의사항 동의</label>
 																	</div>
 																	<div data-v-26e42198="" data-v-8ed31374="" class="btn-area link">
 																		<a data-v-26e42198="" href="javascript:void(0);"
@@ -324,8 +339,7 @@
 															<div data-v-26e42198="" data-v-8ed31374=""
 																class="btn-area btn-reservation"  >
 														 <a href="http://localhost:9000/dmu/ticket_reservation.do?did=${ vo.getDid()}" target="_parent" >
-														 <button data-v-26e42198="" id="btn32" type="button" class="primary" >
-														  예매하기 </button></a>
+														 <button data-v-26e42198="" id="btn32" type="button" class="primary"  disabled> 예매하기 </button></a>
 																		 							</div>
 																										</div>
 																									</div></li>

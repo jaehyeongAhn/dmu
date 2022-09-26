@@ -209,17 +209,14 @@
 														<li data-v-a42e08ec=""><div data-v-34230fe0=""
 																data-v-a42e08ec="" class="check-area">
 																<input data-v-34230fe0="" id="check287" type="checkbox"
-																	class=""><label data-v-34230fe0=""
-																	for="check287"><span data-v-34230fe0=""
-																	class="check"></span>예약 티켓 정보에 대한 동의</label>
+																	class=""><label data-v-34230fe0="" for="check287"><span data-v-34230fe0="" class="check" id="check287"></span>예약 티켓 정보에 대한 동의</label>
 															</div>
 															<p data-v-a42e08ec="" class="p-msg-local">예약하신 티켓의 가격, 할인 내역, 취소 정책을 최종확인 하였으며, 구매에 동의합니다.<br>(전자거래법 제8조 제2항)</p></li>
 													</ul>
 													<div data-v-26e42198="" data-v-a42e08ec=""
 														class="btn-area btn-reservation">
 														<a href="http://localhost:9000/dmu/complete.do?did=${ vo.getDid()}" target="_parent" >
-														<button data-v-26e42198="" id="btn289" type="button"
-															 							class="primary"> 결제하기 </button></a>
+														<button data-v-26e42198="" id="btn289" type="button" class="primary" disabled> 결제하기 </button></a>
 															<!-- disabled="disabled" -->
 													</div>
 												</div>

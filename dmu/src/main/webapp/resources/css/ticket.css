@@ -16765,6 +16765,7 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 
 .round-list li .round-selection[data-v-8ed31374]:disabled {
 	color: #ddd;
+	background: black;
 }
 
 .round-list li .round-selection:disabled .remainder[data-v-8ed31374] {
@@ -16788,7 +16789,7 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 	margin-left: auto;
 }
 
-.round-list li.on button[data-v-8ed31374] {
+.round-list li. button[data-v-8ed31374] {
 	color: #fff;
 	background: #000;
 }

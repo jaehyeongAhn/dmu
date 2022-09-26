@@ -2,11 +2,17 @@ package com.museum.service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.museum.dao.DmuTicketDAO;
 import com.museum.vo.DmuTicketVO;
 
+@Service
 public class TicketServiceImpl implements TicketService {
+	
+	 
+	
 	/**
 	 *  게시글 쓰기
 	 */
@@ -31,5 +37,7 @@ public class TicketServiceImpl implements TicketService {
 		ArrayList<DmuTicketVO> list = dao.select(startCount, endCount);
 		return list;
 	}
+	
+	 
 	
 }
