@@ -2,21 +2,16 @@ $(document).ready(function(){
 
 $('.sub-menu').hide();
 
-$('.visit').mouseenter(function(){
-    if($('.sub-menu').css('display') == 'none'){
-        $('#menu_visit').show();
-    }else{
-        $('#menu_visit').hide();
-    }
-
+$('.visit').mouseover(function(){
+      $('.sub-menu').stop().slideDown().show();
 });
 
-$('.visit').mouseleave(function() {
-    $(this).remove('#menu_visit');
+$('.visit').mouseout(function() {
+	$('#menu_visit').stop().slideUp().show();
 });
 
 
-$('.exhibition').mouseenter(function(){
+$('.exhibition').mouseover(function(){
     if($('.sub-menu').css('display') == 'none'){
         $('#menu_exhibition').show();
     }else{
@@ -24,11 +19,11 @@ $('.exhibition').mouseenter(function(){
     }
 });
 
-$('.exhibition').mouseleave(function() {
-    $(this).remove('#menu_exhibition');
+$('.exhibition').mouseout(function() {
+    $('#menu_exhibition').hide();
 });
 
-$('.learn').hover(function(){
+$('.learn').mouseover(function(){
     if($('.sub-menu').css('display') == 'none'){
         $('#menu_learn').show();
     }else{
@@ -46,7 +41,7 @@ $('.event').hover(function(){
 });
 
 $('.ticket').hover(function(){
-        $('.sub-menu').hide();
+    $('.sub-menu').hide();
 });
 
 });

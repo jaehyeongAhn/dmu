@@ -435,7 +435,7 @@
                         <div class="main-menu">
                             <ul>
                                 <li class="visit">
-                                    <a href="visit_main.do" target="_parents"> VISIT </a>
+                                    <a href="visit_main.do"> VISIT </a>
                                 </li>
                                 <li class="exhibition">
                                     <a href="javascript:void(0);"> EXHIBITION </a>
@@ -450,7 +450,7 @@
                                     <a href="exhibition_list.do"> TICKET </a>
                                 </li>
                             </ul>
-                            <div class="sub-menu" id="menu_visit" style="width: 100%; display:none;">
+                            <div class="sub-menu normal" id="menu_visit" style="width: 100%; display:none;">
                                 <div class="pannel">
                                     <div>
                                         <div class="menu-area">
@@ -638,6 +638,8 @@
                    
                 </div> -->
             </header>
+           </div>
+          </div>
             <main>
                 <div data-v-796e266c="" class="main">
                     <div data-v-796e266c="" class="main-visual" style="position: relative;">

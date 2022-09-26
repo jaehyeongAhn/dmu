@@ -15,7 +15,7 @@
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 </head>
 <body>
-<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
+<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 ></iframe>
 <main>
 <div data-v-ec5a0c2c="" class="root-container">
 <div data-v-ec5a0c2c="" class="content-wrapper">
@@ -93,23 +93,7 @@
 					</c:if>
 					</c:forEach>
 					
-				<%-- 	<c:forEach var="vo" items="${ list }"> 
-						 <tr>
-						 
-							<c:if test="${vo.dsfile != null }">		
-							<a href="exhibition.do?did=${ vo.getDid()}"><img  src="http://localhost:9000/dmu/resources/upload/${vo.dsfile}"></a>
-							 
-			 				</c:if>
-			 			
-							<td><a href="exhibition.do?did=${ vo.getDid()}"></a></td>
-							<td>${ vo.getDcode() }</td>
-							 
-							<td><a href="exhibition.do?did=${ vo.getDid()}">${ vo.getDtitle() }</a></td>
-							<td>${ vo.getDstart() } ~ ${ vo.getDend() } </td>
-							
-						 
-						</tr>
-					</c:forEach>   --%>
+				 
 			</ul>										
 </div>
 												
