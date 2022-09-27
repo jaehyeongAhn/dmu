@@ -8,23 +8,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.museum.dao.DmuAdminDAO;
 import com.museum.dao.DmuNoticeDAO;
+import com.museum.service.AdminServiceImpl;
 import com.museum.service.NoticeServiceImpl;
+import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
 @Controller
 public class AdminController {
 	
 	@Autowired
 	private NoticeServiceImpl noticeService;
+	@Autowired
+	private AdminServiceImpl adminService;
 
-	//adminpage_main 
-	@RequestMapping(value = "/adminpage_main.do", method = RequestMethod.GET)
-	public String adminpage_main() {
-		return "/admin/adminpage_main";
-	}
-	
-	
-	
+	/******************
+	 * 
+	 * admin_notice
+	 *
+	 ******************/
+
 	@RequestMapping(value = "/admin_notice_list.do", method = RequestMethod.GET)
 	public ModelAndView admin_notice_list(String rpage) {
 		//String rpage = request.getParameter("rpage");
@@ -59,12 +62,13 @@ public class AdminController {
 		
 		
 	ArrayList<DmuNoticeVO> list = noticeService.getList(startCount, endCount);
+
 	
 	mv.addObject("list", list);
 	mv.addObject("dbCount", dbCount);
 	mv.addObject("pageSize", pageSize);
 	mv.addObject("rpage", reqPage);
-	mv.setViewName("/admin/admin_notice_list");
+	mv.setViewName("/admin/admin_notice/admin_notice_list");
 
 		
 		return mv;
@@ -106,7 +110,7 @@ public class AdminController {
 		DmuNoticeVO vo = noticeService.getContent(nid);
 		
 		mv.addObject("vo", vo);
-		mv.setViewName("/admin/admin_notice_content");
+		mv.setViewName("/admin/admin_notice/admin_notice_content");
 		
 		return mv;
 	}
@@ -157,7 +161,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("nid", nid);
-		mv.setViewName("admin/admin_notice_delete");
+		mv.setViewName("admin/admin_notice/admin_notice_delete");
 		
 		return mv;
 		
@@ -185,5 +189,70 @@ public class AdminController {
 		
 	}
 
+	
+	/******************
+	 * 
+	 * admin_page
+	 *
+	 ******************/
+	
+	
+	//adminpage_main 
+	@RequestMapping(value = "/adminpage_main.do", method = RequestMethod.GET)
+	public String adminpage_main() {
+		return "/admin/adminpage_main";
+	}
+	
+	
+	@RequestMapping(value = "/adminpage_member_list.do", method = RequestMethod.GET)
+	public ModelAndView adminpage_member_list(String rpage) {
+		ModelAndView mv = new ModelAndView();
+
+		DmuAdminDAO dao = new DmuAdminDAO();
+
+		//페이징 처리 - startCount, endCount 구하기
+		int startCount = 0;
+		int endCount = 0;
+		int pageSize = 5;	//한페이지당 게시물 수
+		int reqPage = 1;	//요청페이지	
+		int pageCount = 1;	//전체 페이지 수
+		int dbCount = adminService.getTotalCount();	//DB에서 가져온 전체 행수
+
+		//총 페이지 수 계산
+		if(dbCount % pageSize == 0){
+			pageCount = dbCount/pageSize;
+		}else{
+			pageCount = dbCount/pageSize+1;
+		}
+
+		//요청 페이지 계산
+		if(rpage != null){
+			reqPage = Integer.parseInt(rpage);
+			startCount = (reqPage-1) * pageSize+1;
+			endCount = reqPage *pageSize;
+		}else{
+			startCount = 1;
+			endCount = pageSize;
+		}
+
+
+		ArrayList<DmuMemberVO> mlist = adminService.memberList(startCount, endCount);
+//		String address = mlist.get(0).getAddr1() + " " + mlist.get(0).getAddr2();
+		
+
+		mv.addObject("list", mlist);
+		mv.addObject("dbCount", dbCount);
+		mv.addObject("pageSize", pageSize);
+		mv.addObject("rpage", reqPage);
+//		mv.addObject("address", address);
+		mv.setViewName("/admin/admin_member/adminpage_member_list");
+
+		return mv;
+	}
+	
+	
+	
+	
+	
 	
 }
