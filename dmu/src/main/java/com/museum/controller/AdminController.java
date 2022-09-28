@@ -251,14 +251,7 @@ public class AdminController {
 		return mv;
 	}
 	
-	
-	
-	
 
-	@RequestMapping(value = "/adminpage_member.do", method = RequestMethod.GET)
-	public String adminpage_member() {
-		return "/admin/adminpage_member";
-	}
 
 	
 }
