@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.museum.dao.DmuTicketDAO"%>
 <%@ page import="com.museum.vo.DmuTicketVO"%>
+<%@ page import="com.museum.vo.DmuReservationVO"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- JSTL 태그 추가  -->
 
@@ -36,7 +38,9 @@
 <body>
 	<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
 	
-	 
+	<!--  <div class="content">
+		 
+		<form name=""  action=""  method="post"> -->
 			 
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">
@@ -69,15 +73,15 @@
 															class="txt"><strong data-v-a42e08ec="">${ vo.dtitle }</strong></span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">관람일시</span><span data-v-a42e08ec=""
-															class="txt">${vo.dstart}</span></li>
+															class="txt">${vo.rtime}</span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">장소</span><span data-v-a42e08ec="" class="txt">${ vo.dplace }</span></li>
 													</ul>
 													<ul data-v-a42e08ec="" class="ticket-personnel">
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="title">인원</span><span data-v-a42e08ec=""
-															class="price">${ vo.dprice }원</span><span data-v-a42e08ec=""
-															class="personnel">1인</span><span data-v-a42e08ec=""
+															class="price">${ vo.rtotal }원</span><span data-v-a42e08ec=""
+															class="personnel">${ vo.rtotal }인</span><span data-v-a42e08ec=""
 															class="total">${ vo.dprice }원</span></li>
 													</ul>
 												</div>
@@ -236,10 +240,11 @@
 					</div>
 				</div>
 			</main>
-			
+			</form>
 			<button class="goto-top"> 상단으로 이동 </button>
 		</div>
 	</div>
+	
     <!-- built files will be auto injected -->
     <footer>
        <!-- 0510 네이버 공통 js 추가 -->

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace = "mapper.ticket">
+
+	 <select id="content" parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">
+	 	select did, dtitle, dstart, dend, dprice,dplace,dinformation,dtime,dfile,dsfile, TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE from dmu_ticket where did=#{did}
+	 </select>
+	 
+	 
+	 <insert id="date" parameterType="com.museum.vo.DmuReservationVO">
+	 	insert into dmu_reservation values('d_'||sequ_dmu_reservation.nextval,#{did}, 0,#{rdate},#{rtime},#{rtotal},0,sysdate,0,sysdate,#{mid})
+	 </insert>
+	 
+	 <select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReservationVO">
+	 	select rdate,rtime,rtotal from dmu_reservation where did=#{did}
+	 </select>
+	 
+	 
+</mapper>
+
+ 

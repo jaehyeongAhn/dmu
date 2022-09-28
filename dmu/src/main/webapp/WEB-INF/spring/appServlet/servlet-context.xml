@@ -37,6 +37,7 @@
 	
 	<!-- Dao 객체 생성 -->
 	<beans:bean id="searchDao" class="com.museum.dao.DmuSearchDAO"></beans:bean>
+	<beans:bean id="ticketDao" class="com.museum.dao.DmuTicketDAO"></beans:bean>
 	
  
   	

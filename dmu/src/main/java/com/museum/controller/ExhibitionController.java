@@ -2,12 +2,15 @@ package com.museum.controller;
 
  
  
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.museum.dao.DmuTicketDAO;
+import com.museum.service.TicketService;
+import com.museum.service.TicketServiceImpl;
 import com.museum.vo.DmuTicketVO;
  
  
@@ -17,21 +20,21 @@ import com.museum.vo.DmuTicketVO;
 @Controller
 public class ExhibitionController {
 	
+	@Autowired
+	private TicketServiceImpl ticketService;
+	
+	
+	
 	/*
 	 *  exhibition.do 페이지 호출
 	 */
 	@RequestMapping(value="/exhibition.do", method=RequestMethod.GET)
 	public ModelAndView exhibition(String did) {
 		ModelAndView mv = new ModelAndView();
-		DmuTicketDAO dao = new DmuTicketDAO();
-		DmuTicketVO vo = dao.select(did);
+		 
+		DmuTicketVO vo = ticketService.getContent(did);
 		
-		
-		/*
-		 * int startCount = 0; int endCount = 0;
-		 * 
-		 * // ArrayList<ExhibitionVO> list = dao.select(startCount, endCount);
-		 */		
+		 
 		mv.addObject("vo",vo);
 		mv.setViewName("ticket/exhibition/exhibition");
 		

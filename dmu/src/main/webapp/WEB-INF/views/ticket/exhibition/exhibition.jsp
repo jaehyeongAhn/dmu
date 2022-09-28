@@ -38,6 +38,7 @@
 	<script >
 	 
 
+
 	function onlyNumber() 
 	{ 
 		var str = 0;
@@ -79,7 +80,6 @@
 			},4);
 		});
 	});
-
  
 	</script>
 	
@@ -131,9 +131,14 @@
 	<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
 	
 		 
+		 <div class="content">
 		 
-		
-			<main name="exhibtionForm" action="ticket_reservation.do" method="get"  >
+		<form name="ticket_reservationFrom"  action="ticketReservationCheck.do"  method="post">
+	
+		 
+		 
+			
+			<main  >
 				<div data-v-ec5a0c2c="" class="root-container">
 					<div data-v-ec5a0c2c="" class="content-wrapper">
 						<div data-v-ec5a0c2c="" class="body-wrapper">
@@ -230,7 +235,7 @@
 													  
 														<!-- 달력 코딩 -->
 														<div id = "calendar" class="ticketing-list-area"></div>
-														<input type = "hidden" name = "date" id = "date">
+														<input type = "hidden" name = "rdate" id = "rdate">
 														
 														
 														<!-- 
@@ -242,14 +247,14 @@
 															<ul data-v-8ed31374="" class="round-list">
 																<li data-v-8ed31374="" class="">
 																<button data-v-8ed31374="" type="button" disabled="disabled" class="round-selection" id="entertime">
-																		<span data-v-8ed31374="" name="content" id="content" class="ContentEnter" > 회차/운영시간 vo필요</span>
+																		<span data-v-8ed31374="" name="rtime" id="content" class="ContentEnter" > ${ vo.dstart }</span>
 																		<!---->
 																	</button></li>
 															</ul>
 														</div>
 														<div data-v-8ed31374="" class="decision-area">~</div></li>
 													<li data-v-8ed31374="" class="item-ticketing">
-													<div data-v-8ed31374="" role="button" class="title-area btn-toggle" id="btb_toggle_hide" >관람인원 및 권종<div data-v-8ed31374="" class="tooltip-area">
+													<div data-v-8ed31374="" role="button" class="title-area btn-toggle" id="btb_toggle_hide" >관람인원  <div data-v-8ed31374="" class="tooltip-area">
 																 
 															<!---->
 														</div>
@@ -266,7 +271,7 @@
 																		<button id="countpeople" name="countpeople" data-v-1dc6379c="" type="button"   class="btn-minus"  id="decreaseQuantity"  ></button>
 																		
 																			<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area" >
-																			<input data-v-67ca82d2="" id="inptext"   type="text"   value="0"    onfocusout="onlyNumber();" autocomplete="on" placeholder="" readonly="readonly" maxlength="-1" > 	
+																			<input data-v-67ca82d2="" id="inptext" name="rtotal"  type="text"   value="0"    onfocusout="onlyNumber();" autocomplete="on" placeholder="" readonly="readonly" maxlength="-1" > 	
 																			 
 																			<!-- <a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>--></div>  
 																			
@@ -340,6 +345,8 @@
 																class="btn-area btn-reservation"  >
 														 <a href="http://localhost:9000/dmu/ticket_reservation.do?did=${ vo.getDid()}" target="_parent" >
 														 <button data-v-26e42198="" id="btn32" type="button" class="primary"  disabled> 예매하기 </button></a>
+															<input type="hidden" name="did" value="${ vo.did }"> 																		 						
+																		 						
 																		 							</div>
 																										</div>
 																									</div></li>
@@ -356,6 +363,7 @@
 																</div>
 															</div>
 														</main>
+												</form>
 														
 														<button class="goto-top">상단으로 이동</button>
 													</div>

@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.museum.dao.DmuTicketDAO;
+import com.museum.vo.DmuReservationVO;
 import com.museum.vo.DmuTicketVO;
 
 @Service
 public class TicketServiceImpl implements TicketService {
 	
+	@Autowired
+	private DmuTicketDAO ticketDAO;
 	 
 	
 	/**
@@ -37,6 +40,30 @@ public class TicketServiceImpl implements TicketService {
 		ArrayList<DmuTicketVO> list = dao.select(startCount, endCount);
 		return list;
 	}
+	
+	//exhibtion.do 상세보기
+	@Override
+	public DmuTicketVO getContent(String did) {
+		 
+		return ticketDAO.select(did);
+	}
+	@Override
+	public int getticketReservationCheck(DmuReservationVO vo) {
+		 
+		return ticketDAO.insertDate(vo);
+	}
+	@Override
+	public int getInsertDate(DmuReservationVO vo) {
+		 
+		return ticketDAO.insertDate(vo);
+	}
+	
+	@Override
+	public DmuReservationVO getReservationcontent(String did) {
+		 
+		return ticketDAO.selectReservation(did);
+	}
+	 
 	
 	 
 	

@@ -2,12 +2,20 @@ package com.museum.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-
+import com.museum.vo.DmuReservationVO;
 import com.museum.vo.DmuTicketVO;
  
-
+@Repository
 public class DmuTicketDAO extends DBConn {
+	
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	
 
 	/**
 	 *  insert : 게시글 추가
@@ -21,7 +29,7 @@ public class DmuTicketDAO extends DBConn {
 			getPreparedStatement(sql);
 					 
 			pstmt.setString(1, vo.getDtitle());
-			pstmt.setString(2, vo.getDprice());
+			pstmt.setInt(2, vo.getDprice());
 			pstmt.setString(3, vo.getDplace());
 			pstmt.setString(4, vo.getDinformation());
 			pstmt.setInt(5, vo.getDpersonnel());
@@ -71,7 +79,7 @@ public class DmuTicketDAO extends DBConn {
 				vo.setDsfile(rs.getString(8));
 				vo.setDcode(rs.getString(9));
 				vo.setDtime(rs.getString(10));
-				vo.setDprice(rs.getString(11));
+				vo.setDprice(rs.getInt(11));
 				vo.setDtarget(rs.getString(12));
 				vo.setDnum(rs.getInt(13));
 				
@@ -112,38 +120,50 @@ public class DmuTicketDAO extends DBConn {
 	 *  select : 게시글 상세보기
 	 */
 	public DmuTicketVO select(String did) {
-		DmuTicketVO vo = new DmuTicketVO();
+		 
 		
-		String sql = " select did, dtitle, dstart, dend, dprice,dplace,dinformation,dtime,dfile,dsfile, TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE "
-				+ " from dmu_ticket where did=?";
-		
-		try {
-			getPreparedStatement(sql);
-			pstmt.setString(1, did);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				vo.setDid(rs.getString(1));
-				vo.setDtitle(rs.getString(2));				
-				vo.setDstart(rs.getString(3));
-				vo.setDend(rs.getString(4));
-				vo.setDprice(rs.getString(5));
-				vo.setDplace(rs.getString(6));
-				vo.setDinformation(rs.getString(7));
-				vo.setDtime(rs.getString(8));
-				vo.setDfile(rs.getString(9));
-				vo.setDsfile(rs.getString(10));
-				vo.setEnddate(rs.getString(11));
-			}
-			
-		//	close(); 조회수 업데이트를 같은 곳에서 하기위해서 주석 처리해야된다
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return vo;
+		return sqlSession.selectOne("mapper.ticket.content", did) ;
 	}
+	
+	/* 02.관람일/인원선택
+	 *  insert : 관람일/회차/관람인원 데이더 저장
+	 */
+	
+	public int insertDate(DmuReservationVO vo) {
+		
+		
+		
+		return sqlSession.insert("mapper.ticket.date",vo);
+	}
+	
+	/* 02.관람일/인원선택
+	 *   select : 결제내용 상세보기
+	 */
+	
+	public DmuReservationVO selectReservation(String did) {
+		
+		
+		
+		return sqlSession.selectOne("mapper.ticket.reservationContent",did);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
  
