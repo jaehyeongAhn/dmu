@@ -96,7 +96,7 @@
 		
 <div data-v-41f56098="" class="list-top-area">
 
-		<span data-v-41f56098="" class="total">총 <strong>9</strong>건</span>
+		<span data-v-41f56098="" class="total">총 <strong>${result }</strong>건</span>
 			<ul data-v-41f56098="" class="order">
 				
 				<li data-v-41f56098="" class="on">

@@ -105,7 +105,26 @@ public class DmuTicketDAO extends DBConn {
 		
 		return list;
 	}
-	
+	/**
+	 * 총 갯수 구하기	
+	 */
+	public int ticketCount(String dcode) {
+		int result = 0;
+		String sql = "select count(*) from dmu_ticket where dcode= ? ";
+		try {
+			getPreparedStatement(sql);
+			pstmt.setString(1, dcode);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+			result = rs.getInt(1);
+			} 
+			
+			}catch (Exception e) {
+			e.printStackTrace();
+			}
+			return result;
+	}
 	/**
 	 * totalCount : 전체 로우수 출력
 	 */

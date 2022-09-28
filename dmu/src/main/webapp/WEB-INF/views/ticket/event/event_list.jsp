@@ -49,7 +49,7 @@
 										<div data-v-7b1f57c8="" class="sub-contents-area">
 											<div data-v-1e8092ec="" data-v-7b1f57c8="" class="container">
 												<div data-v-1e8092ec="" class="list-top-area">
-													<span data-v-1e8092ec="" class="total">총 <strong>3</strong>건
+													<span data-v-1e8092ec="" class="total">총 <strong>${result }</strong>건
 													</span>
 													<ul data-v-1e8092ec="" class="order">
 														

@@ -37,7 +37,7 @@ public class TicketController {
 		 
 		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
-			return "adminticket/ticketlist_write";
+			return "admin/adminticket/ticketlist_write";
 		}
 		/**
 		 * ticketlist_write_check.do : 게시판 글쓰기 처리
@@ -60,8 +60,7 @@ public class TicketController {
 			if(result == 1){
 				if(!vo.getFile1().getOriginalFilename().equals("")) {
 					String path = request.getSession().getServletContext().getRealPath("/");
-					path += "\\resources\\upload\\";
-					System.out.println(path);
+					  path += "/resources/upload/";
 					File file = new File(path+vo.getDsfile());
 					vo.getFile1().transferTo(file);
 				}
@@ -85,8 +84,10 @@ public class TicketController {
 			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
 
 			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			int result =ticketService.getTicketCount("exhibition");
 			
 			mv.addObject("list",list);
+			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
@@ -106,8 +107,10 @@ public class TicketController {
 			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
 
 			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			int result =ticketService.getTicketCount("event");	
 			
 			mv.addObject("list",list);
+			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
@@ -127,8 +130,10 @@ public class TicketController {
 			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
 
 			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			int result =ticketService.getTicketCount("learn");
 			
 			mv.addObject("list",list);
+			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
@@ -147,12 +152,14 @@ public class TicketController {
 			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
 
 			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			int result =ticketService.getTicketCount("learn");
 			
 			mv.addObject("list",list);
+			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
-			mv.setViewName("adminticket/adminlearn_list");
+			mv.setViewName("admin/adminticket/adminlearn_list");
 			
 			
 			return mv;
@@ -167,12 +174,14 @@ public class TicketController {
 			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
 
 			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
-			
+			int result =ticketService.getTicketCount("exhibition");
+				
 			mv.addObject("list",list);
+			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
-			mv.setViewName("adminticket/adminexhibition_list");
+			mv.setViewName("admin/adminticket/adminexhibition_list");
 			
 			
 			return mv;
@@ -186,12 +195,14 @@ public class TicketController {
 			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
 
 			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			int result =ticketService.getTicketCount("event");
 			
 			mv.addObject("list",list);
+			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
-			mv.setViewName("adminticket/adminevent_list");
+			mv.setViewName("admin/adminticket/adminevent_list");
 			
 			
 			return mv;
@@ -208,7 +219,7 @@ public class TicketController {
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("/adminticket/ticketlist_content");
+			mv.setViewName("admin//adminticket/ticketlist_content");
 			
 			return mv;
 		}
@@ -247,7 +258,7 @@ public class TicketController {
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("/adminticket/ticketlist_update");
+			mv.setViewName("/admin/adminticket/ticketlist_update");
 			
 			return mv;
 		}
@@ -259,7 +270,7 @@ public class TicketController {
 		public ModelAndView admin_ticket_delete(String did) {
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("did", did);
-			mv.setViewName("/adminticket/ticketlist_delete");
+			mv.setViewName("/admin/adminticket/ticketlist_delete");
 			
 			return mv;
 		}

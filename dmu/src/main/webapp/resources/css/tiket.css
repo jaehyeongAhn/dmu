@@ -21,6 +21,16 @@ body * {
     font-size: inherit;
 }
 
+img[data-v-2fed1a9a]{
+	width:300px;
+	height:300px;
+	
+}
+li[data-v-3c1f59cb]{
+	position: relative;
+    
+    padding-left: 45.875rem;
+}
 main {
     display: block;
 }

@@ -78,7 +78,7 @@
 				<select data-v-8ed31374="" name = "dcode" id = "dcode">
 												<option value = "default">선택하세요</option>
 												<option value = "exhibition">exhibition</option>
-												<option value = "leran">learn</option>
+												<option value = "learn">learn</option>
 												<option value = "event">event</option>
 											</select>
 			</li>

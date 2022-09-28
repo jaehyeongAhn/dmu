@@ -22,23 +22,26 @@
 <div data-v-ec5a0c2c="" class="body-wrapper">
 <div data-v-7b1f57c8="" data-v-ec5a0c2c="">
 <div data-v-7b1f57c8="" class="sub-contents-area">
-<div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
-			<ul data-v-6d324aa0="">
-											<li data-v-6d324aa0="" class="complete"><span
-												data-v-6d324aa0="" class="no">01</span><span
-												data-v-6d324aa0="" class="txt">ticket</span></li>
-											<li data-v-6d324aa0="" class="on"><span
-												data-v-6d324aa0="" class="no">02</span><span
-												data-v-6d324aa0="" class="txt">ticket content</span></li>
-											<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
-												class="no">03</span><span data-v-6d324aa0="" class="txt">수정/삭제
-													</span></li>
-										</ul>
-		</div>
+			<div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
+				<ul data-v-6d324aa0="">
+					<li data-v-6d324aa0="" class="complete">
+						<span data-v-6d324aa0="" class="no">01</span>
+						<span data-v-6d324aa0="" class="txt">ticket</span>
+					</li>
+					<li data-v-6d324aa0="" class="on">
+						<span data-v-6d324aa0="" class="no">02</span>
+						<span data-v-6d324aa0="" class="txt">ticket content</span>
+					</li>
+					<li data-v-6d324aa0="" class="">
+						<span data-v-6d324aa0="" class="no">03</span>
+						<span data-v-6d324aa0="" class="txt">수정/삭제</span>
+					</li>
+				</ul>
+			</div>
 <div data-v-7b1f57c8="" class="container">
 <div data-v-7b1f57c8="" class="ticket-list-area">
 <div data-v-7b1f57c8="">
-<div data-v-7b1f57c8="" class="snb-area">
+		<div data-v-7b1f57c8="" class="snb-area">
 			<ul data-v-7b1f57c8="" class="snb">
 				<li data-v-7b1f57c8="" class="on">
 					<a data-v-7b1f57c8=""href="http://localhost:9000/dmu/adminexhibition_list.do" role="button">EXHIBITION </a>
@@ -59,7 +62,7 @@
 <div data-v-3c1f59cb="" class="list-top-area">
 
 
-					<span data-v-3c1f59cb="" class="total">총 <strong>1</strong>건</span>
+				<span data-v-3c1f59cb="" class="total">총 <strong>${result }</strong>건</span>
 					
 			<ul data-v-3c1f59cb="" class="order">
 				<li data-v-3c1f59cb="" class="">
@@ -96,23 +99,6 @@
 					</c:if>
 					</c:forEach>
 					
-				<%-- 	<c:forEach var="vo" items="${ list }"> 
-						 <tr>
-						 
-							<c:if test="${vo.dsfile != null }">		
-							<a href="exhibition.do?did=${ vo.getDid()}"><img  src="http://localhost:9000/dmu/resources/upload/${vo.dsfile}"></a>
-							 
-			 				</c:if>
-			 			
-							<td><a href="exhibition.do?did=${ vo.getDid()}"></a></td>
-							<td>${ vo.getDcode() }</td>
-							 
-							<td><a href="exhibition.do?did=${ vo.getDid()}">${ vo.getDtitle() }</a></td>
-							<td>${ vo.getDstart() } ~ ${ vo.getDend() } </td>
-							
-						 
-						</tr>
-					</c:forEach>   --%>
 			</ul>										
 </div>
 												
