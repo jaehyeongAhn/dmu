@@ -37,10 +37,9 @@
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 </head>
 <body>
+<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
 	<div id="app">
 		<div id="contents">
-			<iframe src="header.do" width="100%" height="160px" scrolling="no"
-				frameborder=0></iframe>
 			<main>
 				<section data-v-76e7a880="" class="sub-contents-wrap">
 					<div data-v-0d03d759="" data-v-76e7a880=""

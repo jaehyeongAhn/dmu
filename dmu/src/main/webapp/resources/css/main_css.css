@@ -1919,7 +1919,7 @@ header .header-web .main-menu-area .main-menu .sub-menu {
     position: absolute;
     top: 4.375rem;
     left: 50%;
-    z-index: 100;
+    z-index: 9999;
     margin-left: -50vw;
     border-bottom: 1px solid #ddd;
 }

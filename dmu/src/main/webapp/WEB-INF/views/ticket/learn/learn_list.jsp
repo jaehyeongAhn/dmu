@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 </head>
 <body>
-<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
+<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 ></iframe>
 <main>
 <div data-v-ec5a0c2c="" class="root-container">
 <div data-v-ec5a0c2c="" class="content-wrapper">

@@ -203,6 +203,7 @@ public class AdminController {
 		return "/admin/adminpage_main";
 	}
 	
+
 	
 	@RequestMapping(value = "/adminpage_member_list.do", method = RequestMethod.GET)
 	public ModelAndView adminpage_member_list(String rpage) {
@@ -253,6 +254,11 @@ public class AdminController {
 	
 	
 	
-	
+
+	@RequestMapping(value = "/adminpage_member.do", method = RequestMethod.GET)
+	public String adminpage_member() {
+		return "/admin/adminpage_member";
+	}
+
 	
 }
