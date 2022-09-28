@@ -152,10 +152,7 @@
           <version>${org.springframework-version}</version>
       </dependency>
       
-<<<<<<< HEAD
-      
-      
-=======
+ 
       	
 		<!-- JDBC -->
 		<dependency>
@@ -183,8 +180,7 @@
 		    <artifactId>mybatis-spring</artifactId>
 		    <version>1.2.4</version>
 		</dependency>
-		
->>>>>>> branch 'mw' of https://github.com/jaehyeongAhn/dmu.git
+ 
    </dependencies>
     <build>
         <plugins>

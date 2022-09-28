@@ -67,11 +67,7 @@ public class MainController {
 	public String terms_terms() {
 		return "/terms/terms_terms";
 	}
-	
-	@RequestMapping(value="/complete.do", method=RequestMethod.GET)
-	public String complete() {
-		return "complete";
-	}
+	 
 	
 	
 }
