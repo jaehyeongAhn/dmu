@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.museum.dao.DmuAdminDAO;
 import com.museum.dao.DmuNoticeDAO;
 import com.museum.service.AdminServiceImpl;
@@ -32,9 +35,9 @@ public class AdminController {
 	public ModelAndView admin_notice_list(String rpage) {
 		//String rpage = request.getParameter("rpage");
 		ModelAndView mv = new ModelAndView();
-		
+
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		
+
 		//페이징 처리 - startCount, endCount 구하기
 		int startCount = 0;
 		int endCount = 0;
@@ -42,14 +45,14 @@ public class AdminController {
 		int reqPage = 1;	//요청페이지	
 		int pageCount = 1;	//전체 페이지 수
 		int dbCount = noticeService.getTotalCount();	//DB에서 가져온 전체 행수
-		
+
 		//총 페이지 수 계산
 		if(dbCount % pageSize == 0){
 			pageCount = dbCount/pageSize;
 		}else{
 			pageCount = dbCount/pageSize+1;
 		}
-		
+
 		//요청 페이지 계산
 		if(rpage != null){
 			reqPage = Integer.parseInt(rpage);
@@ -59,27 +62,27 @@ public class AdminController {
 			startCount = 1;
 			endCount = pageSize;
 		}
-		
-		
-	ArrayList<DmuNoticeVO> list = noticeService.getList(startCount, endCount);
 
-	
-	mv.addObject("list", list);
-	mv.addObject("dbCount", dbCount);
-	mv.addObject("pageSize", pageSize);
-	mv.addObject("rpage", reqPage);
-	mv.setViewName("/admin/admin_notice/admin_notice_list");
 
-		
+		ArrayList<DmuNoticeVO> list = noticeService.getList(startCount, endCount);
+
+
+		mv.addObject("list", list);
+		mv.addObject("dbCount", dbCount);
+		mv.addObject("pageSize", pageSize);
+		mv.addObject("rpage", reqPage);
+		mv.setViewName("/admin/admin_notice/admin_notice_list");
+
+
 		return mv;
-		
+
 	}
 
 	
 
 	@RequestMapping(value = "/admin_notice_write.do", method = RequestMethod.GET)
 	public String admin_notice_write() {
-		return "/admin/admin_notice_write";
+		return "/admin/admin_notice/admin_notice_write";
 	}
 
 	/*
@@ -90,6 +93,7 @@ public class AdminController {
 	public ModelAndView admin_notice_write_check(DmuNoticeVO vo){
 		ModelAndView mv = new ModelAndView();
 		DmuNoticeDAO dao = new DmuNoticeDAO();
+		vo.setNcontent(vo.getNcontent().replace("<br/>", "\r\n"));
 		int result = noticeService.getWriteResult(vo);
 		if(result == 1){
 			mv.setViewName("redirect:/admin_notice_list.do");
@@ -108,7 +112,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		DmuNoticeDAO dao = new DmuNoticeDAO();
 		DmuNoticeVO vo = noticeService.getContent(nid);
-		
+		vo.setNcontent(vo.getNcontent().replace("\r\n", "<br/>"));
 		mv.addObject("vo", vo);
 		mv.setViewName("/admin/admin_notice/admin_notice_content");
 		
@@ -122,12 +126,12 @@ public class AdminController {
 	@RequestMapping(value = "/admin_notice_update.do", method = RequestMethod.GET)
 	public ModelAndView admin_notice_update(String nid) {
 		ModelAndView mv = new ModelAndView();
-		
 		DmuNoticeDAO dao = new DmuNoticeDAO();
 		DmuNoticeVO vo = noticeService.getContent(nid);
+		//vo.setNcontent(vo.getNcontent().replace("\r\n", "<br/>"));
 		
 		mv.addObject("vo", vo);
-		mv.setViewName("admin/admin_notice_update");
+		mv.setViewName("admin/admin_notice/admin_notice_update");
 		
 		return mv;
 	}
@@ -139,8 +143,8 @@ public class AdminController {
 	@RequestMapping(value = "/admin_notice_update_check.do", method = RequestMethod.POST)
 	public ModelAndView admin_notice_update_check(DmuNoticeVO vo) {
 		ModelAndView mv = new ModelAndView();
-		
 		DmuNoticeDAO dao = new DmuNoticeDAO();
+		vo.setNcontent(vo.getNcontent().replace("<br/>", "\r\n"));
 		int result = noticeService.getUpdateResult(vo);
 		if(result == 1){
 			mv.setViewName("redirect:/admin_notice_list.do");
@@ -203,7 +207,27 @@ public class AdminController {
 		return "/admin/adminpage_main";
 	}
 	
-
+	@ResponseBody
+	@RequestMapping(value = "/adminpage_member_list_detail.do", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public String adminpage_member_list_detail(String mid) {
+		DmuMemberVO mvo = adminService.memberContent(mid);
+		
+		JsonObject jo = new JsonObject();
+		Gson gson = new Gson();
+		jo.addProperty("mid", mid);
+		jo.addProperty("mname", mvo.getMname());
+		jo.addProperty("pnumber", mvo.getPnumber());
+		jo.addProperty("email", mvo.getEmail());
+		jo.addProperty("birth", mvo.getBirth());
+		jo.addProperty("address", mvo.getAddress());
+		jo.addProperty("gender", mvo.getGender());
+		jo.addProperty("nationality", mvo.getNationality());
+		jo.addProperty("unregister", mvo.getUnregister());
+		jo.addProperty("ddate", mvo.getDdate());
+		
+		return gson.toJson(jo);
+	}
+	
 	
 	@RequestMapping(value = "/adminpage_member_list.do", method = RequestMethod.GET)
 	public ModelAndView adminpage_member_list(String rpage) {
@@ -252,6 +276,6 @@ public class AdminController {
 	}
 	
 
-
+	
 	
 }

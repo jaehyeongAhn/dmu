@@ -9,9 +9,11 @@
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/mypage.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
+<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/adminpage.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/admin_member.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script>
 $(document).ready(function(){
@@ -36,71 +38,27 @@ $(document).ready(function(){
 	//페이징 번호 클릭 시 이벤트 처리
 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-           $(location).attr('href', "http://localhost:9000/dmu/adminpage_member.do?rpage="+e.page);         
+           $(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);         
     });
 	
+	
+	//popup
+	$(".member_detail").click(function(){
+		$(".background_member").addClass("show");
+		$(".window_member").addClass("show");
+		$(".popup_close").click(function(){
+			$(".background_member").removeClass("show");
+			$(".window_member").removeClass("show");
+		});
 	});
+	
+
+});
+
+
 
 </script>
 <style>
-table {
-    display: table;
-    border-collapse: separate;
-    box-sizing: border-box;
-    text-indent: initial;
-    border-spacing: 2px;
-    border-color: grey;
-}
-div .info-list table:last-child {
-    margin-bottom: 0;
-}
-div .info-list table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 2.5rem;
-    border-top: 2px solid #111;
-}
-thead {
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-tr {
-    display: table-row;
-    vertical-align: inherit;
-    border-color: inherit;
-	
-}
-tbody {
-    display: table-row-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-div .info-list table tbody td:first-child {
-    border-left: 0;
-}
-div .info-list table tbody td {
-    padding: 1.25rem 0.625rem;
-    line-height: 1.6;
-    color: #666;
-    border: 1px solid #e0e0e0;
-    text-align: center;
-    font-size:11px;
-	
-}
-div .info-list table thead th {
-    padding: 1.25rem 0.625rem;
-    border: 1px solid #e0e0e0;
-    font-weight: 1000;
-    font-size: 11px;
-    line-height: 1.6;
-    color: #111;
-    text-align: center;
-    background: #f7f7f7;
-}
-div.myinfo-box::after {
-	display:none;
-}
 </style>
 </head>
 <body>
@@ -168,39 +126,18 @@ div.myinfo-box::after {
 												<th>회원명</th>
 												<th>전화번호</th>
 												<th>이메일</th>
-												<th>생년월일</th>
-												<th>주소</th>
-												<th>성별</th>
-												<th>회원유형</th>
 												<th>가입일자</th>
 												<th>상태</th>
+												<th>자세히보기</th>
 											</tr>
 										</thead>
 										<tbody>
 										<c:forEach var="vo" items="${list}">
 											<tr>
-												<td>${vo.mid}</td>
+												<td class="test">${vo.mid}</td>
 												<td>${vo.mname}</td>
 												<td>${vo.pnumber}</td>
 												<td>${vo.email}</td>
-												<td>${vo.birth}</td>
-												<td>${vo.address}</td>
-										<c:choose>
-											<c:when test="${vo.gender == 'f'}">
-												<td>여</td>
-											</c:when>
-											<c:otherwise>
-												<td>남</td>
-											</c:otherwise>
-										</c:choose>
-										<c:choose>
-											<c:when test="${vo.nationality == 'foreign'}">
-												<td>외국인</td>
-											</c:when>
-											<c:otherwise>
-												<td>내국인</td>
-											</c:otherwise>
-										</c:choose>
 												<td>${vo.ddate}</td>
 										<c:choose>
 											<c:when test="${vo.unregister == 'n'}">
@@ -210,6 +147,8 @@ div.myinfo-box::after {
 												<td>가입완료</td>
 											</c:otherwise>
 										</c:choose>
+											<td><button class="member_detail"><a href="#">자세히보기</a>
+											</button></td>
 											</tr>
 										</c:forEach>
 										</tbody>
@@ -242,13 +181,59 @@ div.myinfo-box::after {
 	</div>
 	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer" ></iframe>
 	
-	<div class = "background_join">
-		<div class = "window_join">
-			<div class = "popup_join">
-				<p id = "popup_joinGuide"></p>
+	<div class = "background_member">
+		<div class = "window_member">
+			<div class = "popup_member">
+				<p class = "popup_title">회원정보</p>
+				<div class="popup_detail">
+								<table class="popup_detail_table">
+										<thead>
+											<tr>
+												<th>아이디</th>
+												<td class="mid">${vo.mid}</td>
+											</tr>
+											<tr>
+												<th>회원명</th>
+												<td class="mname">${vo.mname}</td>
+											</tr>
+											<tr>
+												<th>전화번호</th>
+												<td class="pnumber">${vo.pnumber}</td>
+											</tr>
+											<tr>
+												<th>이메일</th>
+												<td class="email">${vo.email}</td>
+											</tr>
+											<tr>
+												<th>생년월일</th>
+												<td class="birth">${vo.birth}</td>
+											</tr>
+											<tr>	
+												<th>주소</th>
+												<td class="address">${vo.address}</td>
+											</tr>
+											<tr>
+												<th>성별</th>
+												<td class="gender">${vo.gender}</td>
+											</tr>
+											<tr>
+												<th>회원유형</th>
+												<td class="nationality">${vo.nationality}</td>
+											</tr>
+											<tr>
+												<th>가입일자</th>
+												<td class="ddate">${vo.ddate}</td>
+											</tr>
+											<tr>	
+												<th>상태</th>
+												<td class="unregister">${vo.unregister}</td>
+											</tr>
+										</thead>
+									</table>
+				
+				</div>
 				<div class = "popup_button">
-					<button type = "button" id = "popup_joinNo">취소</button>
-					<button type = "button" id = "popup_joinOk">확인</button>
+					<button type = "button" class = "popup_close">확인</button>
 				</div>
 			</div>
 		</div>

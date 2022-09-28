@@ -9,8 +9,8 @@ public interface AdminService {
 	
 	int getTotalCount();
 	ArrayList<DmuMemberVO> memberList(int startCount, int endCount);
-	DmuMemberVO getContent(String nid);
-	
+	DmuMemberVO getContent(String mid);
+	DmuMemberVO memberContent(String mid);
 	
 	
 }

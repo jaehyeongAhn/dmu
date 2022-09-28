@@ -416,7 +416,7 @@
                                 <a href="login.do" class=""> LOGIN </a>
                             </li>
                             <li>
-                                <a href="/join/info" class=""> BECOME A MEMBER </a>
+                                <a href="join_terms.do" class=""> BECOME A MEMBER </a>
                             </li>
                             <!---->
                             <!---->

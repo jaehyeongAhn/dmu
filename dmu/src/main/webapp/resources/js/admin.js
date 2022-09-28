@@ -38,6 +38,7 @@ $(document).ready(function(){
 });//ready
 
 
+
 const body = document.querySelector('body');
 const select = document.querySelector('[data-role="selectBox"]');
 const values = select.querySelector('[data-value="title"]');
@@ -95,5 +96,6 @@ body.addEventListener('click', hideSelect);
          noticeUpdateForm.submit();
       }
    }); 
+
 
 
