@@ -10,6 +10,34 @@
 <link rel="stylesheet"  href="http://localhost:9000/mycgv/resources/css/am-pagination.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script>
+	$(document).ready(function(){
+		
+		//페이징 리스트 출력
+		var pager = jQuery('#ampaginationsm').pagination({
+		
+		    maxSize: 7,	    		// max page size
+		    totals: '${dbCount}',	// total rows	
+		    page: '${rpage}',		// initial page		
+		    pageSize: '${pageSize}',	// max number items per page
+		
+		    // custom labels		
+		    lastText: '&raquo;&raquo;', 		
+		    firstText: '&laquo;&laquo;',		
+		    prevText: '&laquo;',		
+		    nextText: '&raquo;',
+				     
+		    btnSize:'sm'	// 'sm'  or 'lg'		
+		});
+		
+		//페이징 번호 클릭 시 이벤트 처리
+		jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+	           $(location).attr('href', "http://localhost:9000/dmu/adminlearn_list.do?rpage="+e.page);         
+	    });
+		
+ 	});
+</script>
 </head>
 <body>
 <iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
@@ -156,8 +184,10 @@
 	</div>
 <div data-v-41f56098="" class="btn-more-area">
 <div data-v-26e42198="" data-v-41f56098="" class="btn-area">
+					<div id="ampaginationsm">
 					<button data-v-26e42198="" id="btn144" type="button"
 					class="secondary more">더보기</button>
+					</div>
 </div>
 </div>
 </div>
