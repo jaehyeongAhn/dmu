@@ -32,9 +32,8 @@ public class ExhibitionController {
 	public ModelAndView exhibition(String did) {
 		ModelAndView mv = new ModelAndView();
 		 
-		DmuTicketVO vo = ticketService.getContent(did);
-		
-		 
+		DmuTicketVO vo =  ticketService.getContent(did);
+ 	 
 		mv.addObject("vo",vo);
 		mv.setViewName("ticket/exhibition/exhibition");
 		

@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.museum.dao.DmuTicketDAO"%>
-<%@ page import="com.museum.vo.DmuTicketVO"%>
-<%@ page import="com.museum.vo.DmuReservationVO"%>
+ 
+ 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- JSTL 태그 추가  -->
@@ -70,19 +69,22 @@
 													<ul data-v-a42e08ec="" class="ticket-info">
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">전시명</span><span data-v-a42e08ec=""
-															class="txt"><strong data-v-a42e08ec="">${ vo.dtitle }</strong></span></li>
+															class="txt"><strong data-v-a42e08ec="">${ vo.dtdtitle }</strong></span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">관람일시</span><span data-v-a42e08ec=""
-															class="txt">${vo.rtime}</span></li>
+															class="txt">${vo.drrdate}</span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
-															class="tit">장소</span><span data-v-a42e08ec="" class="txt">${ vo.dplace }</span></li>
+															class="tit">장소</span><span data-v-a42e08ec="" class="txt">${ vo.dtdplace }</span></li>
 													</ul>
 													<ul data-v-a42e08ec="" class="ticket-personnel">
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="title">인원</span><span data-v-a42e08ec=""
-															class="price">${ vo.rtotal }원</span><span data-v-a42e08ec=""
+															class="price">${ vo.drrtotal }원</span><span data-v-a42e08ec=""
 															class="personnel">${ vo.rtotal }인</span><span data-v-a42e08ec=""
-															class="total">${ vo.dprice }원</span></li>
+															class="total">${ vo.dtdprice }원</span></li>
+															
+									 
+															
 													</ul>
 												</div>
 												<div data-v-a42e08ec="" class="payment-info-area">
@@ -221,6 +223,7 @@
 														class="btn-area btn-reservation">
 														<a href="http://localhost:9000/dmu/complete.do?did=${ vo.getDid()}" target="_parent" >
 														<button data-v-26e42198="" id="btn289" type="button" class="primary" disabled> 결제하기 </button></a>
+														 <input type="hidden" name="did" value="${ vo.did }">
 															<!-- disabled="disabled" -->
 													</div>
 												</div>

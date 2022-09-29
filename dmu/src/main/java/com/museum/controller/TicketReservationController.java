@@ -44,12 +44,20 @@ public class TicketReservationController {
 	public ModelAndView ticketReservationCheck(DmuReservationVO vo) {   
 		ModelAndView mv = new ModelAndView();	
 	
+		System.out.println(vo.getRid());
+		System.out.println(vo.getDid());
+		System.out.println(vo.getRdate());
+		System.out.println(vo.getRtime());
+		System.out.println(vo.getRtotal());
+		System.out.println(vo.getMid());
+	 
+	 
 		int result = ticketService.getInsertDate(vo);
 		
 		if(result == 1){
 			
 		//	mv.addObject("join_result","ok");
-			mv.setViewName("/ticket_reservation/complete");
+			mv.setViewName("/ticket_reservation/ticket_reservation");
 		//	response.sendRedirect("../login/login.jsp?join=ok");  //¹æ¹ý 2
 		}else{
   

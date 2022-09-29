@@ -82,7 +82,15 @@ $(document).ready(function(){
 						관람시 유의사항 동의 체크 후 예매하기 클릭 이벤트
 					**********************/
 					$("#check30").click(function(){
-						$( '.check30' ).prop( 'checked', this.checked );
+						/*$( '.check30' ).prop( 'checked', this.checked );*/
+						
+						$( '.check30' ).prop( 'checked', function(){
+						/*	if($(this).checked){*/
+							
+								alert("aaa");
+							/*}*/
+						
+						});
 						$("#btn32").prop("disabled", !this.checked);
 					});
 					
@@ -108,8 +116,22 @@ $(document).ready(function(){
 					
 					
 					
-					
-					
+					/*********************
+					 예매하기 클릭 시 관람일,회차,관람인원
+					**********************/
+					$("#btn32").click(function(){
+			 
+					 
+					 
+					 
+					 
+					 
+					 
+					 
+					 
+					 
+					ticket_reservationFrom.submit();
+					});
 					
 		
 		}); 

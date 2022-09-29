@@ -12,15 +12,16 @@
 	 </select>
 	 
 	 
-	 <insert id="date" parameterType="com.museum.vo.DmuReservationVO">
-	 	insert into dmu_reservation values('d_'||sequ_dmu_reservation.nextval,#{did}, 0,#{rdate},#{rtime},#{rtotal},0,sysdate,0,sysdate,#{mid})
+	 <insert id="reservationdate" parameterType="com.museum.vo.DmuReservationVO">
+	 	 
+	 	insert into dmu_reservation values('R_'||sequ_dmu_reservation.nextval,#{did},0,#{rdate},#{rtime},#{rtotal},0,sysdate,'',sysdate,#{mid})
 	 </insert>
 	 
-	 <select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReservationVO">
-	 	select rdate,rtime,rtotal from dmu_reservation where did=#{did}
+	 <select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
+	 	 
+		 select dt.dtitle,dt.dplace,dt.dprice, dr.rdate,dr.RTOTAL from dmu_ticket DT , dmu_reservation DR where dt.did = dr.did ;
 	 </select>
-	 
 	 
 </mapper>
 
- 
+  

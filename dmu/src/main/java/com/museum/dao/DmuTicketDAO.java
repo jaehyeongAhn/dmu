@@ -2,6 +2,7 @@ package com.museum.dao;
 
 import java.util.ArrayList;
 
+
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -133,7 +134,7 @@ public class DmuTicketDAO extends DBConn {
 		
 		
 		
-		return sqlSession.insert("mapper.ticket.date",vo);
+		return sqlSession.insert("mapper.ticket.reservationdate",vo);
 	}
 	
 	/* 02.관람일/인원선택
