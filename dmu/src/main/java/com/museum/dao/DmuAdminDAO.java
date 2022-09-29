@@ -1,65 +1,35 @@
 package com.museum.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.museum.vo.DmuMemberVO;
-import com.museum.vo.DmuNoticeVO;
 
+@Repository
 public class DmuAdminDAO extends DBConn{
+
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	
 	
 	/*
 	 * adminpage_member_list : 어드민 페이지 회원 리스트 출력 
 	 */
 	public ArrayList<DmuMemberVO> memberList(int startCount, int endCount) {
-		ArrayList<DmuMemberVO> mlist = new ArrayList<DmuMemberVO>();
+		Map<String, Integer> param = new HashMap<String, Integer>();
+		param.put("start", startCount);
+		param.put("end", endCount);
 		
-		String sql = "select rno, mid, nationality, mname, gender, email, birth, pnumber, addr1, addr2, unregister, ddate, addr1||' '||addr2 address"
-				+ " from(select rownum rno, mid, nationality, mname, gender, email, to_char(birth, 'yyyy-mm-dd') birth, pnumber, addr1, addr2, unregister, to_char(ddate, 'yyyy-mm-dd') ddate "
-				+ " from(select mid, nationality, mname, gender, email, birth, pnumber, addr1, addr2, unregister, ddate from dmu_member "
-				+ " order by ddate))"
-				+ " where rno between ? and ?";
+		List<DmuMemberVO> mlist = sqlSession.selectList("mapper.admin.memberList", param);
 		
-		try {
-			getPreparedStatement(sql);
-			
-			 pstmt.setInt(1, startCount); 
-			 pstmt.setInt(2, endCount);
-			 
-			
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				DmuMemberVO vo = new DmuMemberVO();
-				
-				vo.setRno(rs.getInt(1));
-				vo.setMid(rs.getString(2));
-				vo.setNationality(rs.getString(3));
-				vo.setMname(rs.getString(4));
-				vo.setGender(rs.getString(5));
-				vo.setEmail(rs.getString(6));
-				vo.setBirth(rs.getString(7));
-				vo.setPnumber(rs.getString(8));
-				vo.setAddr1(rs.getString(9));
-				vo.setAddr2(rs.getString(10));
-				vo.setUnregister(rs.getString(11));
-				vo.setDdate(rs.getString(12));
-				vo.setAddress(rs.getString(13));
-				
-				mlist.add(vo);
-				
-			}
-			close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return mlist;
+		return (ArrayList<DmuMemberVO>) mlist;
 	}
-	
-	
-	/*
-	 * memberContent : 어드민 회원 리스트 상세내용 출력
-	 */
-	
 	
 	
 	/*
@@ -67,22 +37,17 @@ public class DmuAdminDAO extends DBConn{
 	 */
 	
 	public int totalCount() {
-		int result = 0;
-		
-		String sql = "select count(*) from dmu_member";
-		
-		try {
-			getPreparedStatement(sql);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				result = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
+
+		return sqlSession.selectOne("mapper.admin.totalCount");
 	}
 
+	
+	/*
+	 * adminpage_member_content : 어드민 페이지 회원 상세내용
+	 */
+	
+	public DmuMemberVO memberContent(String mid) {
+		return sqlSession.selectOne("mapper.admin.memberContent", mid);
+	}
 
 }
