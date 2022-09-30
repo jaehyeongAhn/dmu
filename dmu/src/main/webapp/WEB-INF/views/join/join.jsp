@@ -13,8 +13,8 @@
 <script src="http://localhost:9000/dmu/resources/js/join.js"></script>
 <script>
 	$(document).ready(function(){
-		let height = $(document).height();
-		$(".footer").css("top", height);
+		/*let height = $(document).height();
+		$(".footer").css("top", height);*/
 		
 		$("#cancle").click(function(){
 			$(location).attr("href", "index.do");
@@ -25,7 +25,7 @@
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 	<div>
-	<main class = "join">
+	<main class = "join" style="height: 1600px;">
 		<div class = "section">
 			<div class = "joinContainer">
 				<div class = "container">
@@ -170,17 +170,18 @@
 				</div>
 			</div>
 		</div>
-		<div class = "background_join">
-			<div class = "window_join">
-				<div class = "popup_join">
-					<p id = "popup_joinGuide"></p>
-					<button type = "button" id = "popup_joinOk">확인</button>
-				</div>
-			</div>
-		</div>
 	</main>
 	</div>
 	
 	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	
+	<div class = "background_join">
+		<div class = "window_join">
+			<div class = "popup_join">
+				<p id = "popup_joinGuide"></p>
+				<button type = "button" id = "popup_joinOk">확인</button>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

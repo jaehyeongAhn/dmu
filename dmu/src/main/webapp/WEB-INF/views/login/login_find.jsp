@@ -19,12 +19,41 @@
 	}); 
 </script>
 <style>
+/**************** login_find.do *************************/
+	div.joinContainer div.container h3 {
+		font-weight: 400;
+	    font-size: 30px !important;
+	    text-align: center;
+	    margin-bottom: 10px;
+	    letter-spacing: -0.08rem;
+	}
+	div.commentary p.login_ment {
+		border-top: 2px solid black;
+	    width: 800px;
+	    font-size: 30px;
+	    font-weight: 400;
+	    padding: 50px 0;
+	    background: #f5f5f5;
+	    letter-spacing: -0.08rem;
+	}
+	div.container p.imformation_join {
+		font-size: 30px;
+	    text-align: left;
+	}
+	div.commentary p.idfind_check_comment {
+	    padding: 50px 30px;
+	    background: #f5f5f5;
+	    border-top: 2px solid black;
+	    font-size: 25px;
+	}
+</style>
+<style>
 </style>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 
-	<main class = "join">
+	<main class = "join" style = "height : 500px;">
 		<div class = "section">
 			<c:choose>
 			<c:when test="${ result == 1 }">

@@ -13,8 +13,8 @@
 <script src="http://localhost:9000/dmu/resources/js/join.js"></script>
 <script>
 	$(document).ready(function(){
-		let height = $(document).height();
-		$(".footer").css("top", height - 100);
+		/*let height = $(document).height();
+		$(".footer").css("top", height - 500);*/
 		$(".backHome").click(function(){
 			$(location).attr("href", "index.do");
 		});
@@ -24,7 +24,7 @@
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 
-	<main class = "join">
+	<main class = "join" style="height:600px;">
 		<div class = "section">
 			<div class = "joinContainer">
 				<div class = "container">

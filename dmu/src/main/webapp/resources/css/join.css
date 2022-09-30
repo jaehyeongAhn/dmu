@@ -618,9 +618,10 @@ iframe.header {
 
 /************** footer ****************/
 iframe.footer {
-	position : absolute;
-	bottom : 0;
-	left : 0;
+	position : relative;
+	/*bottom : 0;
+	left : 0;*/
+    margin-top: 80px;
 }
 
 /************************* join_ok **************************/

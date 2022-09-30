@@ -65,7 +65,7 @@ public class LoginController {
 	
 	//login_pw.do : 비밀번호 재변경 페이지
 	@RequestMapping(value = "/login_pw.do", method = RequestMethod.GET)
-	public ModelAndView login_update(DmuMemberVO vo) {
+	public ModelAndView login_pw(DmuMemberVO vo) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("mid", vo.getMid());
 		mv.setViewName("/login/login_pw");
@@ -94,8 +94,14 @@ public class LoginController {
 	
 	//login_findOk.do : 아이디 찾기 완료 페이지
 	@RequestMapping(value = "/login_find.do", method = RequestMethod.GET)
-	public String login_findOk(DmuMemberVO vo) {
-		return "/login/login_find";
+	public ModelAndView login_findOk(DmuMemberVO vo) {
+		ModelAndView mv = new ModelAndView();
+			mv.addObject("find_information", "회원");
+			mv.addObject("find_result", "tester");
+			mv.setViewName("/login/login_find");
+		
+		return mv;
+		//return "/login/login_find";
 	}
 	
 	//login_findOk_Check.do : 아이디 반환
