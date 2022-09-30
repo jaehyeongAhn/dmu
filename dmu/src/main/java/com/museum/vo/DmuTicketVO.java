@@ -5,7 +5,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class DmuTicketVO {
 	
 	int rno,dpersonnel,dnum, dprice;
-	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate;
+	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate,dentertime;
 	
 	CommonsMultipartFile file1;
 	public CommonsMultipartFile getFile1() {
@@ -16,6 +16,13 @@ public class DmuTicketVO {
 	}
 	
 	
+	 
+	public String getDentertime() {
+		return dentertime;
+	}
+	public void setDentertime(String dentertime) {
+		this.dentertime = dentertime;
+	}
 	public String getEnddate() {
 		return enddate;
 	}

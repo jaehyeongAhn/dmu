@@ -80,6 +80,8 @@
 	});
 </script>
 
+  
+
 <script src="http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
 
 <script>
@@ -126,10 +128,8 @@
 
 			});
 </script>
-
-
-
-
+ 
+ 
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
@@ -142,12 +142,15 @@
 
 		<form name="ticket_reservationFrom" action="ticketReservationCheck.do" method="post">
 		
-		 <input type=text name="did" value="${vo.did }"> 
+		 <input type="text" name="did" value="${vo.did }"> 
+		 <input type="text" name="rprice" id="rprice" value=${vo.dprice }> 
 		 <input type="text" name="rdate" id="rdate" value=""> 
-		 <input type="text" name="rtime" id="rtime" value="${vo.dstart }"> 
-		 <input type="text" name="rtotal" id="rtotal" value=""> 
+		 <input type="text" name="rtime" id="rtime" value=""> 
+		 <input type="text" name="rtotal" id="rtotal" value="">  
+		 <input type="text" name="dplace" id="dplace" value=${vo.dplace }> 
+		 <input type="text" name="rallprice" id="rallprice" value=""> 
 		 <input type="text" name="mid" id="mid" value="mmww6443"> 
-
+ 
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">
 					<div data-v-ec5a0c2c="" class="content-wrapper">
@@ -185,18 +188,15 @@
 												</div>
 												<div data-v-8ed31374="" class="info-ticket">
 													<ul data-v-8ed31374="">
+														<li data-v-8ed31374="">
+														<strong data-v-8ed31374="" class="title">장소</strong> 
+														<span data-v-8ed31374="" class="text">${ vo.dplace }</span></li>
+														<li data-v-8ed31374="" class="">
+															<strong data-v-8ed31374="" class="title">전시기간</strong>
+															 <span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span></li>
 														<li data-v-8ed31374=""><strong data-v-8ed31374=""
-															class="title">장소</strong> <span data-v-8ed31374=""
-															class="text">${ vo.dplace }</span></li>
-														<li data-v-8ed31374="" class=""><strong
-															data-v-8ed31374="" class="title">전시기간</strong> <span
-															data-v-8ed31374="" class="text">${ vo.dstart } ~
-																${ vo.dend }</span></li>
-														<li data-v-8ed31374=""><strong data-v-8ed31374=""
-															class="title">운영시간</strong> <span data-v-8ed31374=""
-															class="text">${ vo.dtime }</span></li>
-														<li data-v-8ed31374="" class=""><strong
-															data-v-8ed31374="" class="title">이용요금</strong>
+															class="title">운영시간</strong> <span data-v-8ed31374="" class="text">${ vo.dtime }</span></li>
+														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
 															<p data-v-8ed31374="" class="price">${ vo.dprice }원</p></li>
 													</ul>
 												</div>
@@ -253,8 +253,9 @@
 														<div data-v-8ed31374="" class="field-area">
 															<ul data-v-8ed31374="" class="round-list">
 																<li data-v-8ed31374="" class="">
-																	<button data-v-8ed31374="" type="button" disabled="disabled" class="round-selection" id="entertime">
-																		<span data-v-8ed31374="" name="rtime" id="content" class="ContentEnter" value="${vo.dstart}"> ${ vo.dstart }</span>
+																	<button data-v-8ed31374="" type="button" disabled="disabled" class="round-selection" id="entertime"  onclick="myFunction()">
+																		<span data-v-8ed31374="" name="rtime" id="content" class="ContentEnter" value="${vo.dentertime }"> ${vo.dentertime }</span>
+																	 	
 																		 
 																		<!---->
 																	</button>
@@ -323,8 +324,8 @@
 																	</div></li>
 															</ul>
 															<ul data-v-8ed31374="" class="personnel-result">
-																<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">인원</strong> 
-																	<input data-v-8ed31374="" id="inptext" value="0" disabled></li>
+																<li data-v-8ed31374=""> 
+																	 
 																 
 
 

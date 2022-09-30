@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
- 
- 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- JSTL 태그 추가  -->
@@ -37,9 +35,9 @@
 <body>
 	<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
 	
-	<!--  <div class="content">
+  <div class="content">
 		 
-		<form name=""  action=""  method="post"> -->
+		<form name=""  action=""  method="post">  
 			 
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">
@@ -69,19 +67,20 @@
 													<ul data-v-a42e08ec="" class="ticket-info">
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">전시명</span><span data-v-a42e08ec=""
-															class="txt"><strong data-v-a42e08ec="">${ vo.dtdtitle }</strong></span></li>
+															class="txt"><strong data-v-a42e08ec="">${ vo.dtitle }</strong></span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">관람일시</span><span data-v-a42e08ec=""
-															class="txt">${vo.drrdate}</span></li>
+															class="txt">${vo.rdate}</span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
-															class="tit">장소</span><span data-v-a42e08ec="" class="txt">${ vo.dtdplace }</span></li>
+															class="tit">장소</span><span data-v-a42e08ec="" class="txt">${ vo.dplace }</span></li>
 													</ul>
 													<ul data-v-a42e08ec="" class="ticket-personnel">
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
-															class="title">인원</span><span data-v-a42e08ec=""
-															class="price">${ vo.drrtotal }원</span><span data-v-a42e08ec=""
-															class="personnel">${ vo.rtotal }인</span><span data-v-a42e08ec=""
-															class="total">${ vo.dtdprice }원</span></li>
+															class="title"></span><span data-v-a42e08ec=""
+															class="price"> </span>
+															<span data-v-a42e08ec=""
+															class="personnel">인원 </span>
+															<span data-v-a42e08ec="" class="total">  ${ vo.rtotal }인</span></li>
 															
 									 
 															
@@ -196,9 +195,8 @@
 															data-v-a42e08ec="" class="title-area"> 결제 정보 </div>
 														<div data-v-a42e08ec="" class="field-payment-area">
 															<ul data-v-a42e08ec="" class="payment-list">
-																<li data-v-a42e08ec=""><strong data-v-a42e08ec=""
-																	class="title">총금액 / 1매</strong> <span
-																	data-v-a42e08ec="" class="price">${ vo.dprice }</span></li>
+																<li data-v-a42e08ec=""><strong data-v-a42e08ec="" class="title">총금액 / ${ vo.rtotal }매</strong> 
+																<span data-v-a42e08ec="" class="price">${vo.rallprice} </span></li>
 																<!---->
 																<li data-v-a42e08ec=""><strong data-v-a42e08ec=""
 																	class="title"></strong><span data-v-a42e08ec=""
@@ -206,7 +204,7 @@
 															</ul>
 															<div data-v-a42e08ec="" class="payment-result">
 																<strong data-v-a42e08ec="" class="title">최종 결제금액</strong><span
-																	data-v-a42e08ec="" class="price">${ vo.dprice }</span>
+																	data-v-a42e08ec="" class="price">${vo.rallprice}</span>
 															</div>
 														</div></li>
 												</ul>

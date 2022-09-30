@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.museum.dao.DmuMemberDAO;
 import com.museum.dao.DmuTicketDAO;
 import com.museum.service.TicketServiceImpl;
+import com.museum.vo.DmuReJoinVO;
 import com.museum.vo.DmuReservationVO;
 import com.museum.vo.DmuTicketVO;
  
@@ -27,9 +28,10 @@ public class TicketReservationController {
 	@RequestMapping(value="/ticket_reservation.do", method=RequestMethod.GET)
 	public ModelAndView ticket_reservation(String did) {
 		 ModelAndView mv = new ModelAndView();
-		 
-	 	 DmuTicketVO vo = ticketService.getContent(did); 
+ 
+		 DmuReJoinVO vo = ticketService.getReservationcontent(did);
 		
+		 
 		mv.addObject("vo",vo);
 		mv.setViewName("ticket/ticket_reservation/ticket_reservation");
 	
@@ -41,23 +43,17 @@ public class TicketReservationController {
 	 */
 	
 	@RequestMapping(value="/ticketReservationCheck.do",  method=RequestMethod.POST)
-	public ModelAndView ticketReservationCheck(DmuReservationVO vo) {   
+	public ModelAndView ticketReservationCheck(DmuReJoinVO vo) {   
 		ModelAndView mv = new ModelAndView();	
 	
-		System.out.println(vo.getRid());
-		System.out.println(vo.getDid());
-		System.out.println(vo.getRdate());
-		System.out.println(vo.getRtime());
-		System.out.println(vo.getRtotal());
-		System.out.println(vo.getMid());
-	 
+ 
 	 
 		int result = ticketService.getInsertDate(vo);
 		
 		if(result == 1){
 			
 		//	mv.addObject("join_result","ok");
-			mv.setViewName("/ticket_reservation/ticket_reservation");
+			mv.setViewName("redirect:/ticket_reservation.do");
 		//	response.sendRedirect("../login/login.jsp?join=ok");  //¹æ¹ý 2
 		}else{
   

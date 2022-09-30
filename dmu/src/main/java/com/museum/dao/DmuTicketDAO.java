@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.museum.vo.DmuReJoinVO;
 import com.museum.vo.DmuReservationVO;
 import com.museum.vo.DmuTicketVO;
  
@@ -24,7 +25,7 @@ public class DmuTicketDAO extends DBConn {
 	public int insert(DmuTicketVO vo) {
 		int result = 0;
 		
-		String sql = " insert into dmu_ticket values('d_'||sequ_dmu_ticket.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,? )";
+		String sql = " insert into dmu_ticket values('d_'||sequ_dmu_ticket.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,? )";
 		 	
 		try {
 			getPreparedStatement(sql);
@@ -41,7 +42,8 @@ public class DmuTicketDAO extends DBConn {
 			pstmt.setString(10, vo.getDsfile());
 			pstmt.setString(11, vo.getDstart());
 			pstmt.setString(12, vo.getDend());
-			pstmt.setString(13, vo.getDcode());
+			pstmt.setString(13, vo.getDentertime());
+			pstmt.setString(14, vo.getDcode());
 			 		
 			result = pstmt.executeUpdate();
 					
@@ -57,10 +59,10 @@ public class DmuTicketDAO extends DBConn {
 	 */
 	public ArrayList<DmuTicketVO> select(int startCount, int endCount){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
-		String sql = " select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum "
+		String sql = " select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dentertime,dnum "
 				 	+" from(select rownum rno,did,dplace,dtitle,   dstart ,"
-				 	+ "   dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum "
-					+" from (select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum from dmu_ticket)) "
+				 	+ "   dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dentertime,dnum "
+					+" from (select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dentertime,dnum from dmu_ticket)) "
 					+" 	where rno between ? and ?";
 		try { 
 			getPreparedStatement(sql);
@@ -82,7 +84,8 @@ public class DmuTicketDAO extends DBConn {
 				vo.setDtime(rs.getString(10));
 				vo.setDprice(rs.getInt(11));
 				vo.setDtarget(rs.getString(12));
-				vo.setDnum(rs.getInt(13));
+				vo.setDentertime(rs.getString(13));
+				vo.setDnum(rs.getInt(14));
 				
 				list.add(vo);
 			}
@@ -130,7 +133,7 @@ public class DmuTicketDAO extends DBConn {
 	 *  insert : 관람일/회차/관람인원 데이더 저장
 	 */
 	
-	public int insertDate(DmuReservationVO vo) {
+	public int insertDate(DmuReJoinVO vo) {
 		
 		
 		
@@ -141,7 +144,7 @@ public class DmuTicketDAO extends DBConn {
 	 *   select : 결제내용 상세보기
 	 */
 	
-	public DmuReservationVO selectReservation(String did) {
+	public DmuReJoinVO selectReservation(String did) {
 		
 		
 		

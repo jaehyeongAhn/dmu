@@ -92,6 +92,11 @@ $(document).ready(function(){
 						
 						});
 						$("#btn32").prop("disabled", !this.checked);
+						
+						$("#rallprice").val($("#rprice").val()*$("#rtotal").val());
+						
+						
+						
 					});
 					
 					
@@ -109,10 +114,15 @@ $(document).ready(function(){
 					 달력 일자 클릭시 회차 버튼 활성화
 					**********************/
 					$("#content").click(function(){
-				 
+ 
 						$( '.entertime' ).prop( 'selection', this.selection );
 						$("#entertime").prop("disabled", !this.checked);
+						
+						$("#rtime").val($("#content").text());
+						
 					});
+					
+				 
 					
 					
 					
