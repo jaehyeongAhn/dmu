@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "mapper.member">
+	
+	<!-- password rechange -->
+	<update id="login_update" parameterType="com.museum.vo.DmuMemberVO">
+		UPDATE DMU_MEMBER SET PASS = #{pass} WHERE MID = #{mid}
+	</update>
+	
+	<!-- password rechange emailCheck -->
+	<select id="email_check_pass" parameterType="map" resultType="int">
+		SELECT COUNT(*) FROM DMU_MEMBER WHERE EMAIL = #{email} AND MNAME = #{name} AND MID = #{mid}
+	</select>
+	
+	<!-- id find -->
+	<select id="idfind" parameterType="com.museum.vo.DmuMemberVO" resultType="java.lang.String">
+		SELECT MID FROM DMU_MEMBER WHERE EMAIL = #{email} AND MNAME = #{mname}
+	</select>
+	
+	<!-- id find emailCheck -->
+	<select id="id_find_email" parameterType="map" resultType="int">
+		SELECT COUNT(*) FROM DMU_MEMBER WHERE EMAIL = #{email} AND MNAME = #{name}
+	</select>
+	
+	<!-- login -->
+	<select id="login" parameterType="com.museum.vo.DmuMemberVO" resultType="int">
+		SELECT COUNT(*) FROM DMU_MEMBER WHERE MID = #{mid} AND PASS = #{pass} AND UNREGISTER = 'y'
+	</select>
+	
+	<!-- join : idcheck -->
+	<select id="idcheck" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) FROM DMU_MEMBER WHERE MID = #{mid}
+	</select>
+	
+	<!-- insert join -->
+	<insert id="insert" parameterType="com.museum.vo.DmuMemberVO">
+		INSERT INTO DMU_MEMBER 
+		VALUES(#{mid}, #{pass}, #{nationality}, #{mname}, #{gender}, #{email}, 
+				#{birth}, #{pnumber}, #{zonecode}, #{addr1}, #{addr2}, #{terms}, 
+				#{older}, #{consent}, 'y', 'public', SYSDATE)
+	</insert>
+</mapper>

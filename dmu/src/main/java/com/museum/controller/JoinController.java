@@ -30,8 +30,9 @@ public class JoinController {
 	@RequestMapping(value = "/joinController.do", method = RequestMethod.POST)
 	public ModelAndView joinController(DmuMemberVO vo) {
 		ModelAndView mv = new ModelAndView();
-
+		
 		int result = joinService.join(vo);
+		System.out.println(result);
 		if(result == 1) {
 			mv.setViewName("/join/join_ok");
 		}else {
@@ -44,8 +45,7 @@ public class JoinController {
 	@ResponseBody
 	@RequestMapping(value = "/join_idCheck.do", method = RequestMethod.POST)
 	public String idCheck(String mid) {
-		DmuMemberDAO dao = new DmuMemberDAO();
-		int result = dao.idCheck(mid);
+		int result = joinService.idCheck(mid);
 		
 		return String.valueOf(result);
 	}

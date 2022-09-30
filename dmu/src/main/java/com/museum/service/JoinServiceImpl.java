@@ -1,23 +1,26 @@
 package com.museum.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.museum.dao.DmuMemberDAO;
 import com.museum.vo.DmuMemberVO;
 
-public class JoinServiceImpl {
+public class JoinServiceImpl implements JoinService {
+	
+	@Autowired
+	private DmuMemberDAO memberDao;
+	
 	//회원 가입
+	@Override
 	public int join(DmuMemberVO vo) {
-		DmuMemberDAO dao = new DmuMemberDAO();
-		int result = dao.insert(vo);
-		
-		return result;
+		System.out.println(vo.getMid());
+		return memberDao.insert(vo);
 	}
 	
 	//아이디 중복확인
-	public int idCheck(String did) {
-		DmuMemberDAO dao = new DmuMemberDAO();
-		int result = dao.idCheck(did);
-		
-		return result;
+	@Override
+	public int idCheck(String mid) {
+		return memberDao.idCheck(mid);
 	}
 
 }
