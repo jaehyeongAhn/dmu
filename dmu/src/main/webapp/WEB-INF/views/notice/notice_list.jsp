@@ -62,7 +62,36 @@ $(document).ready(function(){
            $(location).attr('href', "http://localhost:9000/dmu/notice_list.do?rpage="+e.page);         
     });
 	
+
+	
+	$(".snb-area .snb li a.tabbox").click(function(){
+		
+		
+		alert($(this).attr("id"));
+		
 	});
+	
+	
+/* 	initAjax(1);
+	
+	$.ajax({
+		type: "get",
+		data:{
+			nid:nid
+		}
+		url : "notice_list_json.do?nid="+nid+"&category="+ncategory
+		success:function(result){
+			console.log(result);
+			$('body').html(result);
+		}
+	
+		
+		
+	}); */
+	
+	
+	
+});//ready
 
 </script>
 
@@ -127,15 +156,13 @@ $(document).ready(function(){
 				<div data-v-080a389a="" class="snb-area">
 					<ul data-v-080a389a="" class="snb">
 						<li data-v-080a389a="" class="on"><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_1">전체</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_1" class="tabbox" id="all">전체</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_2">디뮤지엄</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_2" class="tabbox" id="dmuseum">디뮤지엄</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_3">대림미술관</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_3" class="tabbox" id="daelim">대림미술관</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_4">구슬모아당구장</a></li>
-						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_5">뮤지엄샵</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_4" class="tabbox" id="projectSpace">구슬모아당구장</a></li>
 					</ul>
 				</div>
 				<div data-v-080a389a="" class="sub-contents-area">
