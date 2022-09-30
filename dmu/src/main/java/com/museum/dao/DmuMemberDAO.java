@@ -56,21 +56,6 @@ public class DmuMemberDAO extends DBConn{
 	
 	//insert : 회원 가입 성공 시 회원 데이터 저장
 	public int insert(DmuMemberVO vo) {
-		
-		System.out.println(vo.getMid());
-		System.out.println(vo.getPass());
-		System.out.println(vo.getNationality());
-		System.out.println(vo.getMname());
-		System.out.println(vo.getGender());
-		System.out.println(vo.getEmail());
-		System.out.println(vo.getBirth());
-		System.out.println(vo.getPnumber());
-		System.out.println(vo.getZonecode());
-		System.out.println( vo.getAddr1());
-		System.out.println(vo.getAddr2());
-		System.out.println(vo.getTerms());
-		System.out.println(vo.getOlder());
-		System.out.println(vo.getConsent());
 		return sqlSession.insert(namespace + ".insert", vo);
 	}
 }

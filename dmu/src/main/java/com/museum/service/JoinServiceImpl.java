@@ -13,7 +13,6 @@ public class JoinServiceImpl implements JoinService {
 	//회원 가입
 	@Override
 	public int join(DmuMemberVO vo) {
-		System.out.println(vo.getMid());
 		return memberDao.insert(vo);
 	}
 	

@@ -32,7 +32,6 @@ public class JoinController {
 		ModelAndView mv = new ModelAndView();
 		
 		int result = joinService.join(vo);
-		System.out.println(result);
 		if(result == 1) {
 			mv.setViewName("/join/join_ok");
 		}else {
