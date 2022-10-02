@@ -63,7 +63,34 @@ $(document).ready(function(){
            $(location).attr('href', "http://localhost:9000/dmu/admin_notice_list.do?rpage="+e.page);         
     });
 	
+	 	
+	
+	$(".snb-area .snb li a.tabbox").click(function(){
+/* 		var idx = $(this).index();
+		
+		$(".snb-area .snb li").removeClass("on");
+		$(".snb-area .snb li").eq(idx).addClass("on");
+		
+		$(".snb-area .tabbox").removeClass("on");
+		$(".snb-area .tabbox").addClass("on"); */
+		
+		alert($(this).attr("id"));
+		
+		
+
+			
+		$.ajax({
+			url:"admin_content_json.do?id="
+			
+			
+		});
+
+		
+		
 	});
+	
+	
+	});//ready
 
 </script>
 
@@ -128,13 +155,13 @@ $(document).ready(function(){
 				<div data-v-080a389a="" class="snb-area">
 					<ul data-v-080a389a="" class="snb">
 						<li data-v-080a389a="" class="on"><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_1">전체</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_1" class="tabbox" id="all">전체</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_2">디뮤지엄</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_2" class="tabbox" id="dmuseum">디뮤지엄</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_3">대림미술관</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_3" class="tabbox" id="daelim">대림미술관</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_4">구슬모아당구장</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_4" class="tabbox" id="project">구슬모아당구장</a></li>
 					</ul>
 				</div>
 				<div data-v-26e42198="" class="btn-area">
@@ -151,8 +178,7 @@ $(document).ready(function(){
 						</div>
 				
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="notice-list">
-						
-							<ul data-v-1b9c8af9="" data-v-080a389a="">
+							<ul data-v-1b9c8af9="" data-v-080a389a="" class="listAll">
 							<c:forEach var="vo" items="${list}">
 								<li data-v-1b9c8af9="" data-v-080a389a=""><a href="admin_notice_content.do?nid=${vo.nid}"
 									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
@@ -163,9 +189,11 @@ $(document).ready(function(){
 											<span data-v-1b9c8af9=""
 												data-v-080a389a="" class="date">${vo.ndate}</span>
 										</div>
-										</a>
-										</li>
+									</a>
+								</li>
 							</c:forEach>
+						</div>
+						
 <!-- 								<li data-v-1b9c8af9="" data-v-080a389a=""><a
 									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
 										data-v-1b9c8af9="" data-v-080a389a="" class="number">9</span><span
