@@ -61,6 +61,11 @@ public class TicketServiceImpl implements TicketService {
 		 
 		return ticketDAO.selectReservation(did);
 	}
+	@Override
+	public DmuReJoinVO getcompletecontent(String did) {
+		
+		return ticketDAO.selectCompleteCheck(did);
+	}
 	 
 	
 	 

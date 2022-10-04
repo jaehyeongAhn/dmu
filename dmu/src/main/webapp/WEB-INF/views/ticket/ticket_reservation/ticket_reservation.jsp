@@ -37,7 +37,7 @@
 	
   <div class="content">
 		 
-		<form name=""  action=""  method="post">  
+		<form name="ticket_reservationFrom"  action="ticketCompleteCheck.do"  method="post">  
 			 
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">

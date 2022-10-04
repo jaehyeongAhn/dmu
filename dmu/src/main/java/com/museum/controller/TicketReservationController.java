@@ -45,9 +45,7 @@ public class TicketReservationController {
 	@RequestMapping(value="/ticketReservationCheck.do",  method=RequestMethod.POST)
 	public ModelAndView ticketReservationCheck(DmuReJoinVO vo) {   
 		ModelAndView mv = new ModelAndView();	
-	
- 
-	 
+  
 		int result = ticketService.getInsertDate(vo);
 		
 		if(result == 1){
@@ -64,12 +62,7 @@ public class TicketReservationController {
 	
 	}
 	
-	
-	
-	
-	
-	
-	
+ 
 	
 	/*
 	 * ticket_complete.do 페이지 호출
@@ -77,11 +70,11 @@ public class TicketReservationController {
 	@RequestMapping(value="/complete.do", method=RequestMethod.GET)
 	public ModelAndView complete(String did) {
 		 ModelAndView mv = new ModelAndView();
-		 DmuTicketDAO dao = new DmuTicketDAO();
 		 
-	 	 DmuTicketVO vo = dao.select(did);
 		 
-	 	mv.addObject("vo",vo);
+		 DmuReJoinVO vo = ticketService.getcompletecontent(did);
+		 
+	 	 mv.addObject("vo",vo);
 		 mv.setViewName("ticket/ticket_reservation/complete");
 		return mv;
 	}

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.museum.dao.DmuTicketDAO"%>
-<%@ page import="com.museum.vo.DmuTicketVO"%>
+ 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- JSTL 태그 추가  -->
 
@@ -140,16 +139,19 @@
 
 	<div class="content">
 
-		<form name="ticket_reservationFrom" action="ticketReservationCheck.do" method="post">
+		<form name="ticket_exhibtionFrom" action="ticketReservationCheck.do" method="post">
 		
-		 <input type="text" name="did" value="${vo.did }"> 
-		 <input type="text" name="rprice" id="rprice" value=${vo.dprice }> 
-		 <input type="text" name="rdate" id="rdate" value=""> 
-		 <input type="text" name="rtime" id="rtime" value=""> 
-		 <input type="text" name="rtotal" id="rtotal" value="">  
-		 <input type="text" name="dplace" id="dplace" value=${vo.dplace }> 
-		 <input type="text" name="rallprice" id="rallprice" value=""> 
-		 <input type="text" name="mid" id="mid" value="mmww6443"> 
+		 <input type="hidden" name="did" value="${vo.did }"> 
+		 <input type="hidden" name="rprice" id="rprice" value=${vo.dprice }> 
+		 <input type="hidden" name="rdate" id="rdate" value=""> 
+		 <input type="hidden" name="rtime" id="rtime" value=""> 
+		 <input type="hidden" name="rtotal" id="rtotal" value="">  
+		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
+		 <input type="hidden" name="rallprice" id="rallprice" value=""> 
+		 <input type="hidden" name="mid" id="mid" value="mmww6443"> 
+		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
+		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
+		 
  
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">
@@ -178,7 +180,7 @@
 											<div data-v-8ed31374="" class="left">
 												<div data-v-8ed31374="" class="img-ticket">
 
-													<img data-v-2fed1a9a="" data-v-8ed31374="" src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }" alt=${ vo.dtitle } style="">
+													<img data-v-2fed1a9a="" data-v-8ed31374=""   src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }" alt=${ vo.dtitle } style="">
 
 
 												</div>
@@ -194,8 +196,8 @@
 														<li data-v-8ed31374="" class="">
 															<strong data-v-8ed31374="" class="title">전시기간</strong>
 															 <span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span></li>
-														<li data-v-8ed31374=""><strong data-v-8ed31374=""
-															class="title">운영시간</strong> <span data-v-8ed31374="" class="text">${ vo.dtime }</span></li>
+														<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">운영시간</strong> 
+														<span data-v-8ed31374="" class="text">${ vo.dtime }</span></li>
 														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
 															<p data-v-8ed31374="" class="price">${ vo.dprice }원</p></li>
 													</ul>

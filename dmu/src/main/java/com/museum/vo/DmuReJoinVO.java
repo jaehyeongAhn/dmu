@@ -5,7 +5,21 @@ public class DmuReJoinVO {
 
 	
 	int dprice, rtotal,rallprice,rprice;
-	String rid,did,mid, dtitle,dplace,rdate,rtime,ROKDATE,RCHECK,RFAILDATE;
+	String rid,did,mid, dtitle,dplace,rdate,rtime,rokdate,rcheck,faildate, dfile,dsfile;
+	
+	
+	public String getDfile() {
+		return dfile;
+	}
+	public void setDfile(String dfile) {
+		this.dfile = dfile;
+	}
+	public String getDsfile() {
+		return dsfile;
+	}
+	public void setDsfile(String dsfile) {
+		this.dsfile = dsfile;
+	}
 	public int getDprice() {
 		return dprice;
 	}
@@ -72,24 +86,25 @@ public class DmuReJoinVO {
 	public void setRtime(String rtime) {
 		this.rtime = rtime;
 	}
-	public String getROKDATE() {
-		return ROKDATE;
+	public String getRokdate() {
+		return rokdate;
 	}
-	public void setROKDATE(String rOKDATE) {
-		ROKDATE = rOKDATE;
+	public void setRokdate(String rokdate) {
+		this.rokdate = rokdate;
 	}
-	public String getRCHECK() {
-		return RCHECK;
+	public String getRcheck() {
+		return rcheck;
 	}
-	public void setRCHECK(String rCHECK) {
-		RCHECK = rCHECK;
+	public void setRcheck(String rcheck) {
+		this.rcheck = rcheck;
 	}
-	public String getRFAILDATE() {
-		return RFAILDATE;
+	public String getFaildate() {
+		return faildate;
 	}
-	public void setRFAILDATE(String rFAILDATE) {
-		RFAILDATE = rFAILDATE;
+	public void setFaildate(String faildate) {
+		this.faildate = faildate;
 	}
+	 
 	
 	
 	 

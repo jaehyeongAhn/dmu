@@ -16,4 +16,6 @@ public interface TicketService {
 	 
 	int getInsertDate(DmuReJoinVO vo); //reservation 에 값 넣기
 	DmuReJoinVO getReservationcontent(String did);  //reservation 페이지 호출
+	DmuReJoinVO getcompletecontent(String did);  //complete 페이지 호출
+	
 }

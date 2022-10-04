@@ -25,7 +25,7 @@ public class DmuTicketDAO extends DBConn {
 	public int insert(DmuTicketVO vo) {
 		int result = 0;
 		
-		String sql = " insert into dmu_ticket values('d_'||sequ_dmu_ticket.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,? )";
+		String sql = " insert into dmu_ticket values('d_'||sequ_dmu_ticket.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?,? )";
 		 	
 		try {
 			getPreparedStatement(sql);
@@ -42,8 +42,9 @@ public class DmuTicketDAO extends DBConn {
 			pstmt.setString(10, vo.getDsfile());
 			pstmt.setString(11, vo.getDstart());
 			pstmt.setString(12, vo.getDend());
-			pstmt.setString(13, vo.getDentertime());
-			pstmt.setString(14, vo.getDcode());
+			pstmt.setString(13, vo.getDcode());
+			pstmt.setString(14, vo.getDtitle2());
+			pstmt.setString(15, vo.getDentertime());
 			 		
 			result = pstmt.executeUpdate();
 					
@@ -152,9 +153,14 @@ public class DmuTicketDAO extends DBConn {
 	}
 	
 	
+	/* 03.관람일/인원선택
+	 *   select : 결제하기
+	 */
 	
-	
-	
+	public DmuReJoinVO selectCompleteCheck(String did) {
+		
+		return sqlSession.selectOne("mapper.ticket.CompleteContent",did);
+	}
 	
 	
 	
