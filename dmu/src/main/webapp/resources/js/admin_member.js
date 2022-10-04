@@ -9,7 +9,7 @@ $(document).ready(function(){
     //$(this).css("background", "black");
     let index = $(this).parent().parent().index();
 
-    let mid = $("tr").filter(":eq("+(index+1)+")").children(".test").text();
+    let mid = $("tr").filter(":eq("+(index+1)+")").children(".memberId").text();
     alert(mid);
         $.ajax({
             type : "post",

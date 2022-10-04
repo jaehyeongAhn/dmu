@@ -134,7 +134,7 @@ $(document).ready(function(){
 										<tbody>
 										<c:forEach var="vo" items="${list}">
 											<tr>
-												<td class="test">${vo.mid}</td>
+												<td class="memberId">${vo.mid}</td>
 												<td>${vo.mname}</td>
 												<td>${vo.pnumber}</td>
 												<td>${vo.email}</td>

@@ -69,6 +69,23 @@ $(document).ready(function(){
 		
 		alert($(this).attr("id"));
 		
+		
+		$.ajax({
+			url : '/notice_list_category.jsp'.
+			type: 'post',
+			cache : false,
+			headers : {"cache-control":"no-cache", "pragma": "no-cache"},
+			data : {"category" : category},
+			success : function(data){
+				console.log(data);
+				
+				$('body').html(data);
+			},
+			error : function(data){
+				alert('error');
+			}
+		});
+		
 	});
 	
 	
