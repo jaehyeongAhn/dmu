@@ -41,6 +41,6 @@
 		INSERT INTO DMU_MEMBER 
 		VALUES(#{mid}, #{pass}, #{nationality}, #{mname}, #{gender}, #{email}, 
 				#{birth}, #{pnumber}, #{zonecode}, #{addr1}, #{addr2}, #{terms}, 
-				#{older}, #{consent}, 'y', 'public', SYSDATE)
+				#{older}, #{consent}, 'y', #{status}, SYSDATE)
 	</insert>
 </mapper>

@@ -48,7 +48,24 @@ public class JoinController {
 		
 		return String.valueOf(result);
 	}
+	
+	//join_status.do : 회원가입 설정(admin/public)
+	@RequestMapping(value = "/join_status.do", method = RequestMethod.GET)
+	public String join_status() {
+		return "/join/join_status";
+	}
 
+	//join_status_ok.do : 회원 가입 설정 체크
+	@RequestMapping(value = "/join_status_ok.do", method = RequestMethod.POST)
+	public ModelAndView join_status_ok(String status) {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("status", status);
+		mv.setViewName("/join/join_terms");
+		
+		return mv;
+	}
+	
 	/*
 	 * join_terms.do : 회원가입 페이지
 	 */

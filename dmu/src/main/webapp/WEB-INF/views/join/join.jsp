@@ -33,6 +33,7 @@
 				</div>
 				<div class="join_style">
 					<form name="joinFrom" action="joinController.do" method="post">
+						<input type = "hidden" name = "status" value = "${ vo.status }">
 						<input type = "hidden" name = "older" value = "${ vo.older }">
 						<input type = "hidden" name = "terms" value = "${ vo.terms }">
 						<input type = "hidden" name = "consent" value = "${ vo.consent }">
@@ -173,13 +174,13 @@
 	</main>
 	</div>
 	
-	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer"></iframe>
 	
 	<div class = "background_join">
 		<div class = "window_join">
 			<div class = "popup_join">
 				<p id = "popup_joinGuide"></p>
-				<button type = "button" id = "popup_joinOk">확인</button>
+				<button type = "button" id = "popup_joinOk" style = "cursor:pointer;">확인</button>
 			</div>
 		</div>
 	</div>

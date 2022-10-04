@@ -71,7 +71,7 @@
 							<button type = "button" id = "loginOk">로그인</button>				
 						</div>
 						<div id = "joinBtn">
-							<a href = "http://localhost:9000/dmu/join_terms.do"><button type = "button">회원이&nbsp;아니신가요?&nbsp;가입하기</button></a>
+							<a href = "http://localhost:9000/dmu/join_status.do"><button type = "button">회원이&nbsp;아니신가요?&nbsp;가입하기</button></a>
 						</div>
 					</li>
 				</ul>
