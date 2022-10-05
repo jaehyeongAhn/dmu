@@ -1,6 +1,11 @@
 package com.museum.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,10 +83,11 @@ public class NoticeController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/notice_list_json.do", method = RequestMethod.GET, produces="text/plain;charset=UTF-8")
-	public String notice_list_json(String rpage) {
+	public String notice_list_json(String rpage, String ncategory, HttpServletRequest request, HttpServletResponse response) 
+									throws Exception{
 		
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-
+		String kind = request.getParameter("category");
 		//페이징처리
 		//페이징 처리 - startCount, endCount 구하기
 		int startCount = 0;
@@ -89,7 +95,7 @@ public class NoticeController {
 		int pageSize = 5;	//한페이지당 게시물 수
 		int reqPage = 1;	//요청페이지	
 		int pageCount = 1;	//전체 페이지 수
-		int dbCount = dao.totalCount();	//DB에서 가져온 전체 행수
+		int dbCount = dao.totalCount_category(kind);	//DB에서 가져온 전체 행수
 
 		//총 페이지 수 계산
 		if(dbCount % pageSize == 0){
@@ -107,14 +113,15 @@ public class NoticeController {
 			startCount = 1;
 			endCount = pageSize;
 		}
+		
 
-		ArrayList<DmuNoticeVO> list = dao.select(startCount, endCount);
+		ArrayList<DmuNoticeVO> clist = dao.categoryList(startCount, endCount, ncategory);
 		
 		JsonObject job = new JsonObject();
 		JsonArray jarray = new JsonArray();
 		Gson gson = new Gson();
 		
-		for(DmuNoticeVO vo : list) {
+		for(DmuNoticeVO vo : clist) {
 			JsonObject jo = new JsonObject();
 			jo.addProperty("rno", vo.getRno());
 			jo.addProperty("nid", vo.getNid());
