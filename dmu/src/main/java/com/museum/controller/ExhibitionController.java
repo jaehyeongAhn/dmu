@@ -41,13 +41,30 @@ public class ExhibitionController {
 	}
  
 	@RequestMapping(value="/learn.do", method=RequestMethod.GET)
-	public String learn() {
-		return "ticket/learn/learn";
+	public ModelAndView learn(String did) {
+		ModelAndView mv = new ModelAndView();
+		 
+		DmuTicketVO vo =  ticketService.getContent(did);
+ 	 
+		mv.addObject("vo",vo);
+		mv.setViewName("ticket/learn/learn");
+		
+		return mv;
+		
+		
+		 
 	}
 	
 	@RequestMapping(value="/event.do", method=RequestMethod.GET)
-	public String event() {
-		return "ticket/event/event";
+	public ModelAndView event(String did) {
+		ModelAndView mv = new ModelAndView();
+		 
+		DmuTicketVO vo =  ticketService.getContent(did);
+ 	 
+		mv.addObject("vo",vo);
+		mv.setViewName("ticket/event/event");
+		
+		return mv;
 	}
 	
 	

@@ -127,17 +127,34 @@
 
 			});
 </script>
+ 
+ 
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
-
 
 </head>
 <body>
-	 <iframe src="http://localhost:9000/dmu/header.do" width="100%"
+	<iframe src="http://localhost:9000/dmu/header.do" width="100%"
 		height="160px" scrolling="no" frameborder=0></iframe>
+
+
+	<div class="content">
+
+		<form name="ticket_learnFrom" action="ticketReservationCheck.do" method="post">
+		
+		 <input type="text" name="did" value="${vo.did }"> 
+		 <input type="text" name="rprice" id="rprice" value=${vo.dprice }> 
+		 <input type="text" name="rdate" id="rdate" value=""> 
+		 <input type="text" name="rtime" id="rtime" value=""> 
+		 <input type="text" name="rtotal" id="rtotal" value="">  
+		 <input type="text" name="dplace" id="dplace" value=${vo.dplace }> 
+		 <input type="text" name="rallprice" id="rallprice" value=""> 
+		 <input type="text" name="mid" id="mid" value="mmww6443"> 
+		 <input type="text" name="dsfile" id="dsfile" value=${vo.dsfile }> 
+		 <input type="text" name="dfile" id="dfile" value=${vo.dfile }> 
+		
 	 
+		 
  
-		<div id="contents">
-			 
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">
 					<div data-v-ec5a0c2c="" class="content-wrapper">
@@ -159,360 +176,196 @@
 										</ul>
 									</div>
 									<div data-v-25f87e60="" class="container">
-										<!---->
-										<div data-v-b10d847a="" data-v-25f87e60=""
+										<div data-v-8ed31374="" data-v-25f87e60=""
 											class="reservation-area">
 											<!---->
-											<div data-v-b10d847a="" class="left">
-												<div data-v-b10d847a="" class="img-ticket">
-													<img data-v-2fed1a9a="" data-v-b10d847a=""
-														src="https://cdn.daelimmuseum.org/Program/Learn/List/E/202205/20220510114246801001.jpg"
-														alt="Culture English Club" style="">
+											<div data-v-8ed31374="" class="left">
+												<div data-v-8ed31374="" class="img-ticket">
+
+													<img data-v-2fed1a9a="" data-v-8ed31374=""   src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }" alt=${ vo.dtitle } style="">
+
+
 												</div>
-												<ul data-v-b10d847a="" class="flag-list">
-													<li data-v-b10d847a="">1회성 교육</li>
-													<li data-v-b10d847a="">디뮤지엄</li>
-													<!---->
-													<!---->
-												</ul>
-												<div data-v-b10d847a="" class="title-ticket">
-													<h2 data-v-b10d847a="" class="title">Culture English
-														Club</h2>
-													<span data-v-b10d847a="" class="explan"> Culture
-														Lover들의 문화·예술로 익히는 영어습관 </span>
+												<div data-v-8ed31374="" class="title-ticket">
+													<h2 data-v-8ed31374="" class="title">${ vo.dtitle }</h2>
+													<span data-v-b10d847a="" class="explan"> ${ vo.dtitle2 }  </span>
 												</div>
-												<div data-v-b10d847a="" class="info-ticket">
-													<ul data-v-b10d847a="">
-														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육진행</strong><span data-v-b10d847a="" class="text">2022.06.08 ~ 2022.09.14 19:00 ~ 19:50</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">장소</strong><span data-v-b10d847a="" class="text">디뮤지엄 교육센터 3교육실</span></li>
-														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">대상</strong><span data-v-b10d847a="" class="text">문화예술, 언어공부에 관심있는 성인</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">교육시간</strong><span data-v-b10d847a="" class="text">50분</span></li>
-														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육횟수</strong><span data-v-b10d847a="" class="text">총 1차시 교육진행</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">정원 수</strong><span data-v-b10d847a="" class="text">20 명</span></li>
-														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">참가비</strong><span data-v-b10d847a="" class="text">15,000 원</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">문의</strong><span data-v-b10d847a="" class="text">교육팀 (02-6233-7219)</span></li>
+												<div data-v-8ed31374="" class="info-ticket"> 
+													<ul data-v-8ed31374="">
+														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육진행</strong><span data-v-b10d847a="" class="text">${ vo.dstart } ~ ${ vo.dend } ${ vo.dtime }</span></li>
+														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">장소</strong><span data-v-b10d847a="" class="text">${ vo.dplace }</span></li>
+														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">대상</strong><span data-v-b10d847a="" class="text">${ vo.dtarget }</span></li>
+														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">교육시간</strong><span data-v-b10d847a="" class="text">교육시간vo 필요 </span></li>
+														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육횟수</strong><span data-v-b10d847a="" class="text">${ vo.dnum } num에서 string으로 변경해야됨</span></li>
+														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">정원 수</strong><span data-v-b10d847a="" class="text">${ vo.dpersonnel }</span></li>
+														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">참가비</strong><span data-v-b10d847a="" class="text">${vo.dprice} 원</span></li>
+														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">문의</strong><span data-v-b10d847a="" class="text">문의 vo필요</span></li>
 													</ul>
 												</div>
-												<div data-v-b10d847a="" class="use-info-ticket">
-													<strong data-v-b10d847a="" class="title">이용 정보</strong>
-													<div data-v-b10d847a="" class="contents">
+												<div data-v-8ed31374="" class=" "></div>
+												<div data-v-8ed31374="" class="use-info-ticket">
+													<strong data-v-8ed31374="" class="title">이용 정보</strong>
+													<div class="content"></div>
+													<div data-v-8ed31374="" class="contents">
 														<div class="editor-contents-area">
-															<div class="exhibition-html">
-																<!----- 티켓 상세 정보 ----->
-																<div style="margin: 2rem 0 4rem 0">
-																	<ul style="font-size: 15px">
-																		<li class="txt" style="text-indent: -0.6rem; padding: 0.25rem 0 0.25rem 1.2rem; line-height: 1.5"> · &lt;Culture English Club&gt;는 성인을 대상으로 진행되며 개인 참여 프로그램입니다.</li>
-																		<li class="txt" style="text-indent: -0.6rem; padding: 0.25rem 0 0.25rem 1.2rem; line-height: 1.5"> · 티켓 구매와 변경, 취소 및 환불은 신청 하신 교육 당일 전 날 17시까지 가능하며, 그 이후에는 변경, 취소, 환불은 불가 합니다.</li>
-																		<li class="txt" style="text-indent: -0.6rem; padding: 0.25rem 0 0.25rem 1.2rem; line-height: 1.5"> · 본 티켓은 전시가 포함되어 있지 않으며, 예매하신 프로그램 날짜와 시간에만 참여 가능합니다. </li>
-																		<li class="txt" style="text-indent: -0.6rem; padding: 0.25rem 0 0.25rem 1.2rem; line-height: 1.5"> · 담당 에듀케이터가 수업을 진행 하고 있을 경우 통화가 어려울 수 있습니다. 이 때, '문의하기'에 질문을 남겨 주시면 최대한 빨리 답변 드리겠습니다.</li>
-																	</ul>
-																</div>
-															</div>
+															<p>
+
+
+
+																<br>
+															</p>
+															<ul style="font-size: 15px">${ vo.dinformation }
+															</ul>
+															<p>
+																<br>
+															</p>
+															<p>
+																<br>
+															</p>
+															<p>
+																<br>
+															</p>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div data-v-b10d847a="" class="right">
-												<ul data-v-b10d847a="" class="ticketing-list-area">
-													<li data-v-b10d847a="" class="item-ticketing"><div
-															data-v-b10d847a="" class="title-area btn-toggle on">
-															날짜</div>
-														<div data-v-b10d847a="" class="field-area">
-															<div data-v-b10d847a="" class="datepicker_wrap">
-																<div class="vdp-datepicker small"
-																	allowed-to-show-view="function() {}">
-																	<div class="">
+											<div data-v-8ed31374="" class="right">
+												<ul data-v-8ed31374="" class="ticketing-list-area">
+													<li data-v-8ed31374="" class="item-ticketing">
+														<div data-v-8ed31374="" name="btn_toggle"
+															id="data-v-8ed31374_btn" role="button"
+															class="title-area btn-toggle on">관람일</div>
+														<div data-v-8ed31374="" class="field-area"></div>
+														<div data-v-8ed31374="" class="datepicker_wrap"></div>
+														<div class="vdp-datepicker small"
+															allowed-to-show-view="function() {}"></div>
+														<div class=""></div> 
+														
+														<!-- 달력 코딩 -->
+														<div id="calendar" class="ticketing-list-area"></div>
+													   
+														
+														
+														 <!-- 
+														<div data-v-8ed31374="" class="decision-area">
+															2022.08.31</div></li> -->
+													<li data-v-8ed31374="" class="item-ticketing">
+														<div data-v-8ed31374="" id="btn_toggle" role="button"
+															class="title-area btn-toggle on">수업시간</div>
+														<div data-v-8ed31374="" class="field-area">
+															<ul data-v-8ed31374="" class="round-list">
+																<li data-v-8ed31374="" class="">
+																	<button data-v-8ed31374="" type="button" disabled="disabled" class="round-selection" id="entertime"  onclick="myFunction()">
+																		<span data-v-8ed31374="" name="rtime" id="content" class="ContentEnter" value="${vo.dentertime }"> ${vo.dentertime }</span>
+																	 	
+																		 
 																		<!---->
-																		<input type="hidden" readonly="readonly"
-																			autocomplete="off" value="07 09 2022">
-																		<!---->
-																	</div>
-																	<div class="dcalender vdp-datepicker__calendar"
-																		style="position: static;">
-																		<header>
-																			<span class="prev disabled">&lt;</span> <span
-																				class="day__month_btn">2022 . 09</span> <span
-																				class="next disabled">&gt;</span>
-																		</header>
-																		<div class="">
-																			<span class="cell day-header">Sun</span><span
-																				class="cell day-header">Mon</span><span
-																				class="cell day-header">Tue</span><span
-																				class="cell day-header">Wed</span><span
-																				class="cell day-header">Thu</span><span
-																				class="cell day-header">Fri</span><span
-																				class="cell day-header">Sat</span> <span
-																				class="cell day blank"></span><span
-																				class="cell day blank"></span><span
-																				class="cell day blank"></span><span
-																				class="cell day blank"></span><span
-																				class="cell day disabled today"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>1</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>2</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled weekend sat"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>3</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled weekend sun"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>4</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>5</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>6</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day selected"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>7</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>8</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>9</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled weekend sat"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>10</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled weekend sun"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>11</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>12</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>13</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day"><div class="cell_wrap">
-																					<div>
-																						<p>14</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>15</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>16</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled weekend sat"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>17</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled weekend sun"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>18</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>19</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>20</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>21</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>22</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>23</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled weekend sat"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>24</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled weekend sun"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>25</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>26</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>27</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>28</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>29</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span><span class="cell day disabled"><div
-																					class="cell_wrap">
-																					<div>
-																						<p>30</p>
-																						<div class="mark"></div>
-																					</div>
-																				</div></span>
-																		</div>
-																	</div>
-																	<!---->
-																	<!---->
-																</div>
-															</div>
-														</div>
-														<div data-v-b10d847a="" class="decision-area">
-															2022.09.07</div></li>
-													<li data-v-b10d847a="" class="item-ticketing"><div
-															data-v-b10d847a="" class="title-area btn-toggle on">
-															수업시간</div>
-														<div data-v-b10d847a="" class="field-area">
-															<ul data-v-b10d847a="" class="round-list">
-																<li data-v-b10d847a="" class="on"><button
-																		data-v-b10d847a="" type="button"
-																		class="round-selection">
-																		<span data-v-b10d847a="">Eng. Club 19:00</span>
-																		<!---->
-																	</button></li>
+																	</button>
+																</li>
 															</ul>
 														</div>
-														<div data-v-b10d847a="" class="decision-area">Eng.
-															Club 19:00</div></li>
-													<li data-v-b10d847a="" class="item-ticketing"><div
-															data-v-b10d847a="" class="title-area btn-toggle on">
-															인원</div>
-														<div data-v-b10d847a="" class="field-area">
-															<p data-v-b10d847a="" class="error-msg">한 개의 ID로 회당
+														<div data-v-8ed31374="" class="decision-area">~</div>
+													</li>
+													<li data-v-8ed31374="" class="item-ticketing">
+														<div data-v-8ed31374="" role="button" class="title-area btn-toggle" id="btb_toggle_hide"> 관람인원 	
+														<div data-v-8ed31374="" class="tooltip-area">
+
+																<!---->
+															</div>
+														</div>
+														<div data-v-8ed31374="" class="field-area" style=""
+															id="content_hide">
+															<p data-v-8ed31374="" class="error-msg">한 개의 ID로 회당
 																최대 4매까지 예매 가능합니다.</p>
-															<ul data-v-b10d847a="" class="personnel-list">
-																<li data-v-b10d847a=""><div data-v-b10d847a=""
+															<ul data-v-8ed31374="" class="personnel-list">
+																<li data-v-8ed31374=""><div data-v-8ed31374=""
 																		class="personal-control">
-																		<span data-v-b10d847a="" class="person"> 인원</span>
-																		<div data-v-1dc6379c="" data-v-b10d847a=""
-																			class="control count-control">
-																			<button data-v-1dc6379c="" type="button"
-																				disabled="disabled" class="btn-minus"></button>
-																			<div data-v-67ca82d2="" data-v-1dc6379c=""
-																				class="input-area">
-																				<input data-v-67ca82d2="" id="field138"
-																					autocomplete="on" placeholder=""
-																					readonly="readonly" maxlength="-1" type="text"
-																					class="">
-																				<!---->
-																				<!---->
-																				<!---->
-																				<!---->
-																				<!---->
+																		<span data-v-8ed31374="" class="person">인원</span>
+																		<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control" name="data-v-1dc6379c">
+
+																			<button id="countpeople" name="countpeople" data-v-1dc6379c="" type="button" class="btn-minus" id="decreaseQuantity"></button>
+
+																			<div data-v-67ca82d2="" data-v-1dc6379c="" 	class="input-area">
+																			
+																				<input data-v-67ca82d2="" id="inptext" name="rtotal" type="text" value="0" onfocusout="onlyNumber();" autocomplete="on" placeholder="" readonly="readonly" maxlength="-1">
+																			 
+																				<!-- <a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>-->
+																			</div>
+
+																			<button data-v-1dc6379c="" type="button" class="btn-plus" id="increaseQuantity"></button>
+
+
+
+																		</div>
+																	</div></li>
+																<li data-v-8ed31374=""><div data-v-8ed31374="" class="personal-control">
+
+																		<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control">
+
+																			<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area">
+ 
 																				<a data-v-67ca82d2="" href="javascript:void(0);"
 																					class=""></a>
-																				<!---->
+																				 
 																			</div>
-																			<button data-v-1dc6379c="" type="button"
-																				class="btn-plus"></button>
+
+																		</div>
+																	</div></li>
+																<li data-v-8ed31374=""><div data-v-8ed31374="" class="personal-control">
+																		<span data-v-8ed31374="" class="person"> </span>
+																		<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control">
+
+																			<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area">
+ 
+																				<a data-v-67ca82d2="" href="javascript:void(0);"
+																					class=""></a>
+																			 
+																			</div>
+
 																		</div>
 																	</div></li>
 															</ul>
-															<!---->
-															<div data-v-b10d847a="" class="btn-bottom-area">
-																<ul data-v-b10d847a="" class="agreement-list">
-																	<li data-v-b10d847a=""><div data-v-34230fe0=""
-																			data-v-b10d847a="" class="check-area reservation">
-																			<input data-v-34230fe0="" id="check139"
-																				type="checkbox" class=""><label
-																				data-v-34230fe0="" for="check139"><span
-																				data-v-34230fe0="" class="check"></span>프로그램 참여시
-																				유의사항 동의</label>
+															<ul data-v-8ed31374="" class="personnel-result">
+																<li data-v-8ed31374=""> 
+																	 
+																 
+
+
+															</ul>
+															<div data-v-8ed31374="" class="btn-bottom-area">
+																<ul data-v-8ed31374="" class="agreement-list">
+																	<li data-v-8ed31374="">
+																		<div data-v-34230fe0="" data-v-8ed31374=""
+																			class="check-area reservation">
+																			<input data-v-34230fe0="" id="check30"
+																				type="checkbox" class=""> <label
+																				data-v-34230fe0="" for="check30"> <span
+																				data-v-34230fe0="" class="check" id="check30"></span>프로그램 참여시 유의사항 동의
+																			</label>
 																		</div>
-																		<div data-v-26e42198="" data-v-b10d847a=""
+																		<div data-v-26e42198="" data-v-8ed31374=""
 																			class="btn-area link">
 																			<a data-v-26e42198="" href="javascript:void(0);"
 																				class="icon go-page"> 전문보기 </a>
-																		</div></li>
-																	<!---->
+																		</div>
+																	</li>
 																</ul>
-																<div data-v-26e42198="" data-v-b10d847a=""
+																<div data-v-26e42198="" data-v-8ed31374=""
 																	class="btn-area btn-reservation">
-																	<button data-v-26e42198="" id="btn141" type="button"
-																		disabled="disabled" class="primary">예매하기</button>
+																 
+																		<button data-v-26e42198="" id="btn32" type="submit" class="primary" disabled>예매하기</button>
+																	 
+																 
+
 																</div>
 															</div>
-														</div></li>
+														</div>
+													</li>
 												</ul>
 											</div>
 											<!---->
 										</div>
+										<!---->
 										<!---->
 									</div>
 								</div>
@@ -521,20 +374,24 @@
 					</div>
 				</div>
 			</main>
-			
-			<button class="goto-top">상단으로 이동</button>
-		</div>
+		</form>
+
+		<button class="goto-top">상단으로 이동</button>
+	</div>
 	</div>
 	<!-- built files will be auto injected -->
 	<footer>
 		<!-- 0510 네이버 공통 js 추가 -->
-		<script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script>
+		<script type="text/javascript" src="//wcs.naver.net/wcslog.js">
+			
+		</script>
 	</footer>
 
 	<script type="text/javascript"
 		src="/js/chunk-vendors.85a954b2b4f1348cc700.js"></script>
 	<script type="text/javascript" src="/js/index.85a954b2b4f1348cc700.js"></script>
-	<iframe src="footer.do" width="100%" height="550px" scrolling="no" frameborder=0></iframe>
+	<iframe src="footer.do" width="100%" height="550px" scrolling="no"
+		frameborder=0></iframe>
 
 </body>
 </html>

@@ -130,18 +130,42 @@ $(document).ready(function(){
 					 예매하기 클릭 시 관람일,회차,관람인원
 					**********************/
 					$("#btn32").click(function(){
-			 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
-					 
+ 
 					 
 					ticket_reservationFrom.submit();
 					});
+					
+					
+					/*********************
+					 전문 보기
+					**********************/
+				function popupOpen(){
+ 
+    if(document.all.popup.style.visibility=="hidden") {
+
+        document.all.popup.style.visibility="visible";
+        return false;
+    }else{
+        document.all.popup.style.visibility="hidden";
+        return false;   
+    }
+}
+ 
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					
 		
 		}); 
