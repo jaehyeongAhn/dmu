@@ -5,17 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
-<link rel="stylesheet" href = "http://localhost:9000/dmu2/resources/css/font.css">
-<link rel="stylesheet" href = "http://localhost:9000/dmu2/resources/css/mypage.css">
-<link rel="stylesheet" href = "http://localhost:9000/dmu2/resources/css/jquery-ui.css">
-<script src = "http://localhost:9000/dmu2/resources/js/jquery-3.6.0.min.js"></script>
-<script src = "http://localhost:9000/dmu2/resources/js/mypage.js"></script>
-<script src = "http://localhost:9000/dmu2/resources/js/jquery-ui.js"></script>
+<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/font.css">
+<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/mypage.css">
+<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/jquery-ui.css">
+<script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
 <script>
 	$(document).ready(function(){
 		$(".review_write_btn").click(function(){
 			$("body").css("overflow", "hidden");
-			$(".popup_inquire_write_form").scrollTop(0);
+			$(".popup_inquire_write").scrollTop(0);
 			$(".inquire_category").val("default");
 			$(".inquire_type").val("default");
 			$("div.write_inquire_form input").val("");
@@ -42,6 +42,15 @@
 			});
 		});
 		//<button type = "button" class = "review_ok
+		
+		//팝업창 사이즈
+		/* 문의사항 글쓰기 팝업창 */
+		let height_wirte = $(".popup_inquire").height() - $(".popup_inquire_title").outerHeight() - $(".inquire_button_list").outerHeight();
+		$(".popup_inquire_write").css("height", height_wirte);
+		
+		/* 문의사항 글보기 팝업창 */
+		let height_content = $(".popup_inquire_detail").height() - $(".popup_inquire_detail_title").outerHeight() - $(".inquire_detail_button_list").outerHeight();
+		$(".popup_inquire_detail_form").css("height", height_content);
 	});
 </script>
 </head>
@@ -292,10 +301,16 @@
 		    font-size: 17px;
 	        letter-spacing: -0.08rem;
 		}
+		div.popup_inquire_write {
+			position: absolute;
+		    width: 100%;
+		    overflow: auto;
+		}
 		div.popup_inquire_write_form {
 			overflow : auto;
 		    padding: 26px;
-		    height : 53vh;
+		    box-sizing : border-box;
+		    /*height : 53vh;*/
 		}
 		div.popup_inquire_write_form p.title_comment {
 			display : flex;
@@ -311,7 +326,7 @@
 			height : 20px;
 			display : inline-block;
 			margin-right : 10px;
-			background-image : url("http://localhost:9000/dmu2/resources/images/review.svg");
+			background-image : url("http://localhost:9000/dmu/resources/images/review.svg");
 			background-repeat : no-repeat;
 			background-size : contain;
 			background-position-x : 50%;
@@ -382,7 +397,9 @@
 		    display: flex;
 		    justify-content: center;
 		    align-items: center;
-		    position: relative;
+		    position: absolute;
+		    bottom : 0;
+		    width : 100%;
 		}
 		div.popup_inquire div.inquire_button_list button {
 			width: 120px;
@@ -515,7 +532,8 @@
 		div.popup_inquire_detail_form {
 			overflow : auto;
 		    padding: 26px;
-		    height : 52.5vh;
+		    /* height : 52.5vh; */
+		    box-sizing : border-box;
 		}
 		div.popup_inquire_detail_content > p:first-child {
 			display : flex;
@@ -529,7 +547,7 @@
 			width : 20px;
 			height : 20px;
 			display : inline-block;
-		    background-image: url(http://localhost:9000/dmu2/resources/images/review.svg);
+		    background-image: url(http://localhost:9000/dmu/resources/images/review.svg);
 		    background-repeat: no-repeat;
 		    background-size: contain;
 		    margin-right : 5px;
@@ -571,6 +589,7 @@
 			justify-content : center;    
 			box-shadow: 0px -10px 14px rgb(0 0 0 / 10%);
 			position : absolute;
+			bottom : 0;
 		}
 		div.inquire_detail_button_list button.inquire_detail_close {
 		    border: 0.5px solid black;
@@ -608,6 +627,13 @@
 						<div class = "inquire_write_content">
 							<p>디뮤지엄의 정확한 위치가 어디인지 알려주실 수 있으신가요?</p>
 							<div>
+								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
+								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
+								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
+								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
+								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
+								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
+								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
 								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
 								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
 								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.

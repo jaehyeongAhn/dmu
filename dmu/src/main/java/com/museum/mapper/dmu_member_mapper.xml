@@ -27,8 +27,10 @@
 	</select>
 	
 	<!-- login -->
-	<select id="login" parameterType="com.museum.vo.DmuMemberVO" resultType="int">
-		SELECT COUNT(*) FROM DMU_MEMBER WHERE MID = #{mid} AND PASS = #{pass} AND UNREGISTER = 'y'
+	<select id="login" parameterType="com.museum.vo.DmuMemberVO" resultType="com.museum.vo.DmuSessionVO">
+		SELECT COUNT(*) loginresult, MID, MNAME, STATUS 
+		FROM DMU_MEMBER WHERE MID = #{mid} AND PASS = #{pass} AND UNREGISTER = 'y'
+		GROUP BY MID, MNAME, STATUS
 	</select>
 	
 	<!-- join : idcheck -->

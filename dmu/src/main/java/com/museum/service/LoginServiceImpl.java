@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.museum.dao.DmuMemberDAO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuSessionVO;
 
 public class LoginServiceImpl implements LoginService{
 	
@@ -35,7 +36,7 @@ public class LoginServiceImpl implements LoginService{
 	
 	//로그인 체크
 	@Override
-	public int login(DmuMemberVO vo) {
+	public DmuSessionVO login(DmuMemberVO vo) {
 		return memberDao.login(vo);
 	}
 }

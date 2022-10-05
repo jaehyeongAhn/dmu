@@ -1,5 +1,10 @@
 package com.museum.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.museum.dao.DmuMemberDAO;
 import com.museum.service.EmailServiceImpl;
 import com.museum.service.LoginServiceImpl;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuSessionVO;
 
 @Controller
 public class LoginController {
@@ -45,8 +50,8 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 		
 		//비밀번호 업데이트
-		int pw_result = loginService.login(vo);
-		if(pw_result == 0){
+		DmuSessionVO pw_result = loginService.login(vo);
+		if(pw_result.getLoginresult() == 0){
 			int result = loginService.loginUpdate(vo);
 			if(result == 1) {
 				mv.addObject("result", result);
@@ -56,7 +61,7 @@ public class LoginController {
 			}
 		}else {
 			mv.addObject("vo", vo);
-			mv.addObject("pw_result", pw_result);
+			mv.addObject("pw_result", pw_result.getLoginresult());
 			mv.setViewName("/login/login_pw");
 		}
 		
@@ -96,9 +101,7 @@ public class LoginController {
 	@RequestMapping(value = "/login_find.do", method = RequestMethod.GET)
 	public ModelAndView login_findOk(DmuMemberVO vo) {
 		ModelAndView mv = new ModelAndView();
-			mv.addObject("find_information", "회원");
-			mv.addObject("find_result", "tester");
-			mv.setViewName("/login/login_find");
+		mv.setViewName("/login/login_find");
 		
 		return mv;
 		//return "/login/login_find";
@@ -143,15 +146,44 @@ public class LoginController {
 	//로그인 체크
 	@ResponseBody
 	@RequestMapping(value = "/login_check.do", method = RequestMethod.POST)
-	public ModelAndView login_check(DmuMemberVO vo){
+	public ModelAndView login_check(DmuMemberVO vo, HttpServletRequest request, 
+									HttpServletResponse response, boolean remeberId) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
-		int result = loginService.login(vo);
-		if(result == 1) {
-			mv.addObject("login_result", result);
-			mv.setViewName("index");
+		DmuSessionVO member = loginService.login(vo);
+		
+		if(member != null) {
+			//운영자 및 일반 회원 구분
+			if(!member.getStatus().equals("public")) {
+				//운영자 확인
+				if(member.getStatus().equals("accept")) {
+					mv.addObject("login_result", "accept");
+					mv.setViewName("/login/login");
+				}
+			} else {
+				//일반회원일 시
+				if(member.getLoginresult() == 1) {
+					//세션 저장
+					HttpSession session = request.getSession();
+					session.setAttribute("member", member);
+					
+					//쿠키 저장 여부 확인
+					Cookie cookie = new Cookie("rememberId", vo.getMid());
+					if(remeberId) {
+						//체크 박스 true 시, cookie 저장
+						response.addCookie(cookie);
+					}else {
+						//체크 박스 false 시, cookie 삭제
+						cookie.setMaxAge(0);
+						response.addCookie(cookie);
+					}
+					
+					mv.addObject("login_result", member.getLoginresult());
+					mv.setViewName("index");
+				}
+			}
 		}else {
-			mv.addObject("login_result", result);
+			mv.addObject("login_result", "fail");
 			mv.setViewName("/login/login");
 		}
 

@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuSessionVO;
 
 public class DmuMemberDAO extends DBConn{
 	
@@ -45,7 +46,7 @@ public class DmuMemberDAO extends DBConn{
 	}
 	
 	//login : ·Î±×ÀÎ
-	public int login(DmuMemberVO vo) {
+	public DmuSessionVO login(DmuMemberVO vo) {
 		return sqlSession.selectOne(namespace + ".login", vo);
 	}
 	
