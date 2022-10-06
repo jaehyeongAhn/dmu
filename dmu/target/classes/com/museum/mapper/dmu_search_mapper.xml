@@ -9,7 +9,7 @@
 
 	<!-- search list -->
 	<select id = "search" parameterType = "map" resultType = "com.museum.vo.DmuTicketVO">
-		SELECT DID, DPLACE, DTITLE, TO_DATE(DSTART, 'YYYY-MM-DD') DSTART, TO_DATE(DEND, 'YYYY-MM-DD') DEND, 
+		SELECT DID, DPLACE, DTITLE, TO_CHAR(DSTART, 'YYYY-MM-DD') DSTART, TO_CHAR(DEND, 'YYYY-MM-DD') DEND, 
 		DFILE, DSFILE, DCODE, DTIME, DPRICE, DTARGET, DNUM 
 		FROM DMU_TICKET
 		<choose>

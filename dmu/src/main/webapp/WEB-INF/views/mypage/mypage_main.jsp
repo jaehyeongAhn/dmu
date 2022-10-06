@@ -55,7 +55,7 @@
 				<div class="sub-contents">
 					<div class="gray-box">
 						<div class = "greeting-area">
-							<p><strong>이름란</strong>님 안녕하세요.</p>						
+							<p><strong>${ sessionScope.member.mname }</strong>님 안녕하세요.</p>						
 						</div>
 					</div>
 					<div class="records-group">

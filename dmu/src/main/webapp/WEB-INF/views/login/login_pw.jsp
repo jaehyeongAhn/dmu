@@ -53,7 +53,7 @@
 		</div>
 	</main>
 	
-	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer"
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer"
 		style = "margin-top : 150px;"></iframe>
 	
 	<div class = "background_join">

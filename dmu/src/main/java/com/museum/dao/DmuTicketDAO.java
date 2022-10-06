@@ -9,7 +9,7 @@ import com.museum.vo.DmuTicketVO;
 
 public class DmuTicketDAO extends DBConn {
 	/**
-	 *  delete : å¯ƒëš¯ë–†æ¹²ï¿½ ï¿½ê¶˜ï¿½ì £
+	 *  delete : °Ô½Ã±Û »èÁ¦
 	 */
 	public int delete(String did) {
 		int result=0;
@@ -28,7 +28,7 @@ public class DmuTicketDAO extends DBConn {
 	}
 
 	/**
-	 *  insert : å¯ƒëš¯ë–†æ¹²ï¿½ ç•°ë¶½ï¿½
+	 *  insert : °Ô½Ã±Û Ãß°¡
 	 */
 	public int insert(DmuTicketVO vo) {
 		int result = 0;
@@ -62,7 +62,7 @@ public class DmuTicketDAO extends DBConn {
 		return result;		
 	}
 	/**
-	 * select : exhibition æ€¨ë“­ï¿½ï¿½ê¶—ï¿½ë¹† ç”±ÑŠë’ªï¿½ë“ƒ
+	 * select : exhibition °øÁö»çÇ× ¸®½ºÆ®
 	 */
 	public ArrayList<DmuTicketVO> select(int startCount, int endCount){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
@@ -105,7 +105,7 @@ public class DmuTicketDAO extends DBConn {
 	}
 	
 	/**
-	 * totalCount : ï¿½ìŸ¾ï§£ï¿½ æ¿¡ì’–ìŠ¦ï¿½ë‹” ç•°ì’•ì °
+	 * totalCount : ÀüÃ¼ ·Î¿ì¼ö Ãâ·Â
 	 */
 	public int totalCount() {
 		int result = 0;
@@ -126,8 +126,8 @@ public class DmuTicketDAO extends DBConn {
 	}
 	
 	
-	/* 02.æ„¿ï¿½ï¿½ì—ºï¿½ì”ª/ï¿½ì”¤ï¿½ìï¿½ê½‘ï¿½ê¹®
-	 *  select : å¯ƒëš¯ë–†æ¹²ï¿½ ï¿½ê¸½ï¿½ê½­è¹‚ë‹¿ë¦°
+	/* 02.°ü¶÷ÀÏ/ÀÎ¿ø¼±ÅÃ
+	 *  select : °Ô½Ã±Û »ó¼¼º¸±â
 	 */
 	public DmuTicketVO select(String did) {
 		DmuTicketVO vo = new DmuTicketVO();
@@ -160,7 +160,7 @@ public class DmuTicketDAO extends DBConn {
 
 			}
 			
-		//	close(); è­°ê³ ì‰¶ï¿½ë‹” ï¿½ë¾½ï¿½ëœ²ï¿½ì” ï¿½ë“ƒç‘œï¿½ åª›ìˆˆï¿½ æ€¨ë…¹ë¿‰ï¿½ê½Œ ï¿½ë¸¯æ¹²ê³—ìï¿½ë¹ï¿½ê½Œ äºŒì‡±ê½ ï§£ì„â”ï¿½ë¹ï¿½ë¹ï¿½ë§‚ï¿½ë–
+		//	close(); Á¶È¸¼ö ¾÷µ¥ÀÌÆ®¸¦ °°Àº °÷¿¡¼­ ÇÏ±âÀ§ÇØ¼­ ÁÖ¼® Ã³¸®ÇØ¾ßµÈ´Ù
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -168,7 +168,7 @@ public class DmuTicketDAO extends DBConn {
 		
 		return vo;
 	}
-	// æ€¨ë“­ï¿½ï¿½ê¶—ï¿½ë¹† ï¿½ë¾½ï¿½ëœ²ï¿½ì” ï¿½ë“ƒ
+	// °Ô½Ã±Û ¾÷µ¥ÀÌÆ®
 	public int update(DmuTicketVO vo) {
 		int result = 0;
 		String sql = " 	update dmu_ticket set dtitle=?, dstart=?, dend=?, dprice=?, dplace=?, dinformation=?, dtime=?, dpersonnel=?,"
