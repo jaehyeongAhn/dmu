@@ -8,7 +8,7 @@
 <mapper namespace = "mapper.ticket">
 
 	 <select id="content" parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">
-	 	select did, dtitle,dplace,dprice,dinformation,dtime,dtarget,dnum,dfile,dsfile,dstart,dend,TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE,dentertime,dcode,dtitle2   from dmu_ticket where did=#{did}
+	 	select did, dtitle,dplace,to_char(dprice,'999,999'),dinformation,dtime,dtarget,dnum,dfile,dsfile,dstart,dend,TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE,dentertime,dcode,dtitle2   from dmu_ticket where did=#{did}
 	 </select>
 	 
 	  
@@ -21,7 +21,7 @@
 	 
 	 <select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
 	 	 
-		  select dt.dtitle,dt.dplace,dt.dprice, dr.rdate,dr.RTOTAL,rallprice from dmu_ticket DT , dmu_reservation DR 
+		  select dt.dtitle,dt.dplace,to_char(dt.dprice,'999,999'), dr.rdate,dr.RTOTAL,to_char(rallprice,'999,999') from dmu_ticket DT , dmu_reservation DR 
 				where dt.did = dr.did  and dr.rid= (select rid from
                                       				  (select rid from dmu_reservation order by rokdate desc)
                                  				 			  where rownum = 1)
@@ -30,7 +30,7 @@
 	 
 	 <select id="CompleteContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
 	 	
-	 	select  dt.dsfile, dt.dtitle, dt.dplace, dr.rid, dr.rdate, dr.rtotal, dr.rallprice from  dmu_ticket DT, dmu_reservation DR
+	 	select  dt.dsfile, dt.dtitle, dt.dplace, dr.rid, dr.rdate, dr.rtotal, to_char(dr.rallprice,'999,999') from  dmu_ticket DT, dmu_reservation DR
 	 		where dt.did = dr.did  and dr.rid= (select rid from
                                       				  (select rid from dmu_reservation order by rokdate desc)
                                  				 			  where rownum = 1)
