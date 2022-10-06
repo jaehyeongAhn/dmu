@@ -65,101 +65,102 @@
 					<div class="page-title">
 						<h2>개인정보 변경/탈퇴</h2>
 					</div>
-					<div class="myinfo">
-						<div class="myinfo-box">
-							<div class="top-title">
-								<strong>기본 회원 정보</strong>
-							</div>
-							<form name = "updateMemberForm" action = "update_info.do" method = "post">
-								<div class="info-list">
-									<ul>
-										<li>
-											<div class="info-list-title">아이디</div>
-											<div class="info">tester***</div>
-										</li>
-										<li>
-											<div class="info-list-title">비밀번호</div>
-											<div class="info">**********</div>
-										</li>
-										<li>
-											<div class="info form">
-												<strong class="new-password"> 새 비밀번호 </strong>
-												<div class="password-area new-pass">
-													<input placeholder="새 비밀번호를 입력해 주세요." maxlength="14" 
-														type="password" name = "pass" class="pass">
-												</div>
-												<div></div><div></div>
-												<strong class="new-password check-pass"> 새 비밀번호 확인 </strong>
-												<div class="password-area new-pass-check">
-													<input placeholder="새 비밀번호를 재입력해 주세요." maxlength="14" 
-														type="password" name = "passCheck" class="passCheck">
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="info-list-title">내/외국인</div>
-											<div class="info">내국인</div>
-										</li>
-										
-										<li>
-											<div class="info-list-title">성별</div>
-											<div class="info info-gender">
-												<div class="radio-area">
-													<input id="m" type="radio" name="gender" value="m">
-													<label for="m"><span class="check"></span> 남자 </label>
-												</div>
-												<div class="radio-area">
-													<input id="f" type="radio" name="gender" value="f">
-													<label for="f"><span class="check"></span> 여자 </label>
-												</div>
-											</div>
-										</li>
-										<li>
-											<div class="info-list-title">이름</div>
-											<div class="info">테*터</div>
-										</li>
-										<li>
-											<div class="info-list-title">생년월일</div>
-											<div class="info">2000.10.**</div>
-										</li>
-										<li>
-											<div class="info-list-title">휴대폰 번호</div>
-											<div class="info">010-****-1234</div>
-										</li>
-										<li>
-											<div class="info-list-title">이메일</div>
-											<div class="info">test*****@google.com</div>
-										</li>
-										<li>
-											<div class="info-list-title">주소</div>
-											<div class="info">
-												<p style = "margin-top : 0; margin-bottom: 15px;">서울특별시 강남구 한국대로 124-576 3층</p>
-												<div class = "addrSimple">
-													<input type = "text" name = "zonecode" id = "zonecode" placeholder = "새 우편번호">
-													<input type = "text" name = "addr1" id = "addr1">
-													<button type = "button" id = "addressCheck">주소 찾기</button>
-												</div>
-												<input type = "text" name = "addr2" id = "addr2" placeholder = "새로운 상세 주소 입력">
-											</div>
-										</li>
-									</ul>
+					<form name = "updateMemberForm" action = "update_info.do" method = "post">
+						<div class="myinfo">
+							<div class="myinfo-box">
+								<div class="top-title">
+									<strong>기본 회원 정보</strong>
 								</div>
-							</form>
-						</div>
-						<div class="withdrawal-agree">
-							<div class="status">
-								<a href = "#" class = "status_none"> 회원탈퇴 </a>
+									<div class="info-list">
+										<ul>
+											<li>
+												<div class="info-list-title">아이디</div>
+												<div class="info">tester***</div>
+											</li>
+											<li>
+												<div class="info-list-title">비밀번호</div>
+												<div class="info">**********</div>
+											</li>
+											<li>
+												<div class="info form">
+													<strong class="new-password"> 새 비밀번호 </strong>
+													<div class="password-area new-pass">
+														<input placeholder="새 비밀번호를 입력해 주세요." maxlength="14" 
+															type="password" name = "pass" class="pass">
+													</div>
+													<div></div><div></div>
+													<strong class="new-password check-pass"> 새 비밀번호 확인 </strong>
+													<div class="password-area new-pass-check">
+														<input placeholder="새 비밀번호를 재입력해 주세요." maxlength="14" 
+															type="password" name = "passCheck" class="passCheck">
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="info-list-title">내/외국인</div>
+												<div class="info">내국인</div>
+											</li>
+											
+											<li>
+												<div class="info-list-title">성별</div>
+												<div class="info info-gender">
+													남자
+													<!-- <div class="radio-area">
+														<input id="m" type="radio" name="gender" value="m">
+														<label for="m"><span class="check"></span> 남자 </label>
+													</div>
+													<div class="radio-area">
+														<input id="f" type="radio" name="gender" value="f">
+														<label for="f"><span class="check"></span> 여자 </label>
+													</div> -->
+												</div>
+											</li>
+											<li>
+												<div class="info-list-title">이름</div>
+												<div class="info">테*터</div>
+											</li>
+											<li>
+												<div class="info-list-title">생년월일</div>
+												<div class="info">2000.10.**</div>
+											</li>
+											<li>
+												<div class="info-list-title">휴대폰 번호</div>
+												<div class="info">010-****-1234</div>
+											</li>
+											<li>
+												<div class="info-list-title">이메일</div>
+												<div class="info">test*****@google.com</div>
+											</li>
+											<li>
+												<div class="info-list-title">주소</div>
+												<div class="info">
+													<p style = "margin-top : 0; margin-bottom: 15px;">서울특별시 강남구 한국대로 124-576 3층</p>
+													<div class = "addrSimple">
+														<input type = "text" name = "zonecode" id = "zonecode" placeholder = "새 우편번호">
+														<input type = "text" name = "addr1" id = "addr1">
+														<button type = "button" id = "addressCheck">주소 찾기</button>
+													</div>
+													<input type = "text" name = "addr2" id = "addr2" placeholder = "새로운 상세 주소 입력">
+												</div>
+											</li>
+										</ul>
+									</div>
+							</div>
+							<div class="withdrawal-agree">
+								<div class="status">
+									<a href = "#" class = "status_none"> 회원탈퇴 </a>
+								</div>
+							</div>
+							<div class="btn-group">
+								<div class="btn-area">
+									<button type="button" class="secondary">취소</button>
+								</div>
+								<div class="btn-area">
+									<button type="button" class="primary">저장</button>
+								</div>
 							</div>
 						</div>
-						<div class="btn-group">
-							<div class="btn-area">
-								<button type="button" class="secondary">취소</button>
-							</div>
-							<div class="btn-area">
-								<button type="button" class="primary">저장</button>
-							</div>
-						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>

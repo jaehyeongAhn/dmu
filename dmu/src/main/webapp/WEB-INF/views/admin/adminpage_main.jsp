@@ -29,7 +29,7 @@
 									<div class="sub-menu-list">
 										<ul>
 											<li class="">
-												<a class="" href="adminpage_member.do">회원관리</a>
+												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
 											<li class="">
 												<a class="" href="#">예매관리</a>

@@ -33,14 +33,14 @@ public class TicketController {
 	private FileServiceImpl  fileService;
 	
 
-	// ticketlist_write.do : å¯ƒëš¯ë–†ï¿½ë™‹ æ¹²ï¿½ï¿½ë²æ¹²ï¿½ ï¿½ì†•ï§ï¿½
+	// ticketlist_write.do : °Ô½ÃÆÇ ±Û¾²±â È­¸é
 		 
 		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
 			return "adminticket/ticketlist_write";
 		}
 		/**
-		 * ticketlist_write_check.do : å¯ƒëš¯ë–†ï¿½ë™‹ æ¹²ï¿½ï¿½ë²æ¹²ï¿½ ï§£ì„â”
+		 * ticketlist_write_check.do : °Ô½ÃÆÇ ±Û¾²±â Ã³¸®
 		 */
 		@RequestMapping(value="/ticketlist_write_check.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
@@ -66,8 +66,8 @@ public class TicketController {
 					vo.getFile1().transferTo(file);
 				}
 				
-				//mv.setViewName("/board/board_list"); //ï¿½ë¿‰ï¿½ìœ­X, ï¿½ë¸˜è‡¾ëŒ€ìœ´ å¯ƒëš¯ë–†æ¹²ï¿½ ç•°ì’•ì °ï¿½ë¦ºï§ï¿½ X
-				mv.setViewName("redirect:/exhibition_list.do"); //DBï¿½ë¿°ï¿½ë£ï¿½ì“£ Controllerï¿½ë¿‰ï¿½ê½Œ ï§ê¾ªë»¾ï¿½ë¸¯èª˜ï¿½æ¿¡ï¿½, ï¿½ê¹‰æ¿¡ì’–ìŠ« ï¿½ë¿°å¯ƒê³—ì“£ ï¿½ë‹”ï¿½ë»¾!!
+				//mv.setViewName("/board/board_list"); //¿¡·¯X, ¾Æ¹«·± °Ô½Ã±Û Ãâ·ÂµÇÁö X
+				mv.setViewName("redirect:/exhibition_list.do"); //DB¿¬µ¿À» Controller¿¡¼­ ÁøÇàÇÏ¹Ç·Î, »õ·Î¿î ¿¬°áÀ» ¼öÇà!!
 			}else{
 				mv.setViewName("error_page");
 			}
@@ -75,7 +75,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * exhibition_list.do : ï¿½ìŸ¾ï¿½ë–†ï¿½ì‰¶ ï¿½ìŸ¾ï§£ï¿½ ç”±ÑŠë’ªï¿½ë“ƒ 
+		 * exhibition_list.do : Àü½ÃÈ¸ ÀüÃ¼ ¸®½ºÆ® 
 		 */
 		@RequestMapping(value="/exhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView exhibition_list(String rpage) {
@@ -96,7 +96,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * event_list.do : ï¿½ìŸ¾ï¿½ë–†ï¿½ì‰¶ ï¿½ìŸ¾ï§£ï¿½ ç”±ÑŠë’ªï¿½ë“ƒ 
+		 * event_list.do : Àü½ÃÈ¸ ÀüÃ¼ ¸®½ºÆ® 
 		 */
 		@RequestMapping(value="/event_list.do", method=RequestMethod.GET)
 		public ModelAndView event_list(String rpage) {
@@ -117,7 +117,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * learn_list.do : ï¿½ìŸ¾ï¿½ë–†ï¿½ì‰¶ ï¿½ìŸ¾ï§£ï¿½ ç”±ÑŠë’ªï¿½ë“ƒ 
+		 * learn_list.do : Àü½ÃÈ¸ ÀüÃ¼ ¸®½ºÆ® 
 		 */
 		@RequestMapping(value="/learn_list.do", method=RequestMethod.GET)
 		public ModelAndView learn_list(String rpage) {
@@ -138,7 +138,7 @@ public class TicketController {
 			return mv;
 		}
 		
-		//adminlearn list æ„¿ï¿½ç”±ÑŠì˜„
+		//adminlearn list °ü¸®ÀÚ
 		@RequestMapping(value="/adminlearn_list.do", method=RequestMethod.GET)
 		public ModelAndView adminlearn_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
@@ -158,7 +158,7 @@ public class TicketController {
 			return mv;
 		}
 		
-		//exhibition list æ„¿ï¿½ç”±ÑŠì˜„
+		//exhibition list °ü¸®ÀÚ
 		@RequestMapping(value="/adminexhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView adminexhibition_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
@@ -177,7 +177,7 @@ public class TicketController {
 			
 			return mv;
 		}
-		//adminevent list æ„¿ï¿½ç”±ÑŠì˜„
+		//adminevent list °ü¸®ÀÚ
 		@RequestMapping(value="/adminevent_list.do", method=RequestMethod.GET)
 		public ModelAndView adminevent_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
@@ -199,7 +199,7 @@ public class TicketController {
 
 	
 		/**
-		 * ticketlist_content : ï¿½ë–šè€³ï¿½ ï¿½ê¸½ï¿½ê½­è¹‚ë‹¿ë¦°
+		 * ticketlist_content :
 		 */
 		@RequestMapping(value="/ticketlist_content.do", method=RequestMethod.GET)
 		public ModelAndView ticketlist_content(String did) {
@@ -213,20 +213,20 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * admin_ticket_update_check.do : æ€¨ë“­ï¿½ï¿½ê¶—ï¿½ë¹† ï¿½ë‹”ï¿½ì ™ ï§£ì„â”
+		 * admin_ticket_update_check.do : 
 		 */
 		@RequestMapping(value="/admin_ticket_update_check.do", method=RequestMethod.POST)
 		public ModelAndView admin_ticket_update_check(DmuTicketVO vo,HttpServletRequest request)
 																	throws Exception {
 			ModelAndView mv = new ModelAndView();
 
-			String old_filename = vo.getDsfile();	//ï¿½ë‹”ï¿½ì ™ï¿½ì†•ï§ëŒë¿‰ï¿½ê½Œ hiddenï¿½ì‘æ¿¡ï¿½ ï¿½ê½†ï¿½ë¼±ï¿½ì‚¤ï¿½ë’— æ¹²ê³—ã€ˆ upload ï¿½ë¤ƒï¿½ëœ‘ï¿½ë¿‰ ï¿½ï¿½ï¿½ì˜£ï¿½ë§‚ ï¿½ë™†ï¿½ì”ªï§ï¿½
+			String old_filename = vo.getDsfile();	//
 			
 			vo = fileService.update_fileCheck(vo);
 			int result = ticketService.getUpdate(vo);
 			
 			if(result == 1){
-				//ï¿½ê¹‰æ¿¡ì’–ìŠ« ï¿½ë™†ï¿½ì”ªï¿½ì“£ upload ï¿½ë¤ƒï¿½ëœ‘ï¿½ë¿‰ ï¿½ï¿½ï¿½ì˜£ï¿½ë¸³ ï¿½ì‘ æ¹²ê³—ã€ˆï¿½ì“½ ï¿½ë™†ï¿½ì”ªï¿½ï¿½ ï¿½ê¶˜ï¿½ì £
+				//
 				fileService.update_filesave(vo, request, old_filename);
 				mv.setViewName("redirect:/adminexhibition_list.do");
 				
@@ -238,7 +238,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * admin_ticket_update.do : æ€¨ë“­ï¿½ï¿½ê¶—ï¿½ë¹† ï¿½ë‹”ï¿½ì ™ï¿½ì†•ï§ï¿½ 
+		 * admin_ticket_update.do :
 		 */
 		@RequestMapping(value="/admin_ticket_update.do", method=RequestMethod.GET)
 		public ModelAndView admin_ticket_update(String did) {
@@ -253,7 +253,7 @@ public class TicketController {
 		}
 		
 		/**
-		 * admin_ticket_delete.do : æ€¨ë“­ï¿½ï¿½ê¶—ï¿½ë¹† ï¿½ê¶˜ï¿½ì £ ï¿½ì†•ï§ï¿½ 
+		 * admin_ticket_delete.do : 
 		 */
 		@RequestMapping(value="/admin_ticket_delete.do", method=RequestMethod.GET)
 		public ModelAndView admin_ticket_delete(String did) {
@@ -265,7 +265,7 @@ public class TicketController {
 		}
 		
 		/**
-		 * admin_ticket_delete_check.do : æ€¨ë“­ï¿½ï¿½ê¶—ï¿½ë¹† ï¿½ê¶˜ï¿½ì £ ï§£ì„â”
+		 * admin_ticket_delete_check.do : 
 		 */
 		@RequestMapping(value="/admin_ticket_delete_check.do", method=RequestMethod.POST)
 		public ModelAndView admin_ticket_delete_check(String did, HttpServletRequest request)

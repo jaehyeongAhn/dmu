@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.museum.dao.DmuAdminDAO;
 import com.museum.dao.DmuNoticeDAO;
 import com.museum.service.AdminServiceImpl;
@@ -250,6 +253,28 @@ public class AdminController {
 		return mv;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/adminpage_member_list_detail.do", method= RequestMethod.POST, produces="test/plain;charset=UTF-8")
+	public String adminpage_member_list_detail(String mid) {
+		DmuMemberVO mvo = adminService.memberContent(mid);
+		
+		JsonObject jo = new JsonObject();
+		Gson gson = new Gson();
+		jo.addProperty("mid", mid);
+		jo.addProperty("mname", mvo.getMname());
+		jo.addProperty("pnumber", mvo.getPnumber());
+		jo.addProperty("email", mvo.getEmail());
+		jo.addProperty("birth", mvo.getBirth());
+		jo.addProperty("address", mvo.getAddress());
+		jo.addProperty("gender", mvo.getGender());
+		jo.addProperty("nationality", mvo.getNationality());
+		jo.addProperty("unregister", mvo.getUnregister());
+		jo.addProperty("ddate", mvo.getDdate());
+		
+		return gson.toJson(jo);
+		
+		
+	}
 	
 	
 	

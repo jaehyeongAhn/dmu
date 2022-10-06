@@ -27,11 +27,14 @@
 			});
 		}
 		
-		let login_result = parseInt("${ login_result }");
-		if(login_result == 0){
+		let login_result = "${ login_result }";
+		if(login_result == "fail"){
 			popup_login("아이디&nbsp;&nbsp;또는&nbsp;&nbsp;비밀번호가&nbsp;&nbsp;잘못&nbsp;&nbsp;입력되었습니다."
 					+	"<br>아이디와&nbsp;&nbsp;비밀번호를&nbsp;&nbsp;정확히&nbsp;&nbsp;입력해&nbsp;&nbsp;주세요.");
+		}else if(login_result == "accept"){
+			popup_login("승인 대기 중인 계정입니다.");
 		}
+		
 	});
 </script>
 </head>
@@ -47,7 +50,7 @@
 					<li>
 						<div id = "idInput">
 							<input type = "text" name = "mid" id = "login_id" placeholder = "아이디를 입력해 주세요." 
-							maxlength = "20" >								
+							maxlength = "20" autocomplete = "off" value = "${ cookie.rememberId.value }">								
 						</div>
 					</li>
 					<li>
@@ -58,7 +61,8 @@
 					<li>
 						<div id = "idSetup">
 							<div>
-								<input type = "checkbox" id = "id_save"><label for = "id_save">아이디 저장</label>
+								<input type = "checkbox" id = "id_save" name = "remeberId" ${ empty cookie.rememberId.value ? "" : "checked" }>
+								<label for = "id_save">아이디 저장</label>
 							</div>
 							<div>
 								<a href = "login_idfind.do">아이디 찾기</a>
@@ -71,7 +75,7 @@
 							<button type = "button" id = "loginOk">로그인</button>				
 						</div>
 						<div id = "joinBtn">
-							<a href = "http://localhost:9000/dmu/join_terms.do"><button type = "button">회원이&nbsp;아니신가요?&nbsp;가입하기</button></a>
+							<a href = "http://localhost:9000/dmu/join_status.do"><button type = "button">회원이&nbsp;아니신가요?&nbsp;가입하기</button></a>
 						</div>
 					</li>
 				</ul>
@@ -79,7 +83,7 @@
 		</div>
 	</main>
 	
-	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer"></iframe>
 	
 	<div class = "background_join">
 		<div class = "window_join">
