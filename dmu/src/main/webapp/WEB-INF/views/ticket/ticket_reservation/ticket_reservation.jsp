@@ -70,7 +70,7 @@
 															class="txt"><strong data-v-a42e08ec="">${ vo.dtitle }</strong></span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">관람일시</span><span data-v-a42e08ec=""
-															class="txt">${vo.rdate}</span></li>
+															class="txt">${vo.rdateda}</span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">장소</span><span data-v-a42e08ec="" class="txt">${ vo.dplace }</span></li>
 													</ul>
@@ -196,7 +196,7 @@
 														<div data-v-a42e08ec="" class="field-payment-area">
 															<ul data-v-a42e08ec="" class="payment-list">
 																<li data-v-a42e08ec=""><strong data-v-a42e08ec="" class="title">총금액 / ${ vo.rtotal }매</strong> 
-																<span data-v-a42e08ec="" class="price">${vo.rallprice} </span></li>
+																<span data-v-a42e08ec="" class="price">${vo.rallpricech} </span></li>
 																<!---->
 																<li data-v-a42e08ec=""><strong data-v-a42e08ec=""
 																	class="title"></strong><span data-v-a42e08ec=""
@@ -204,7 +204,7 @@
 															</ul>
 															<div data-v-a42e08ec="" class="payment-result">
 																<strong data-v-a42e08ec="" class="title">최종 결제금액</strong><span
-																	data-v-a42e08ec="" class="price">${vo.rallprice}</span>
+																	data-v-a42e08ec="" class="price">${vo.rallpricech}</span>
 															</div>
 														</div></li>
 												</ul>

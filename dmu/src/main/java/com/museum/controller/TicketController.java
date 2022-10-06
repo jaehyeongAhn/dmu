@@ -1,6 +1,10 @@
 package com.museum.controller;
 
 import java.io.File;
+
+
+
+
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.museum.dao.DmuTicketDAO;
+import com.museum.service.FileServiceImpl;
 import com.museum.service.PageServiceImpl;
 import com.museum.service.TicketServiceImpl;
 import com.museum.vo.DmuTicketVO;
@@ -24,7 +29,8 @@ public class TicketController {
 	private TicketServiceImpl ticketService;
 	@Autowired
 	private PageServiceImpl pageService;
-	
+	@Autowired
+	private FileServiceImpl  fileService;
 	
 
 	// ticketlist_write.do : 게시판 글쓰기 화면
@@ -190,6 +196,97 @@ public class TicketController {
 			
 			return mv;
 		}
+
+	
+		/**
+		 * ticketlist_content :
+		 */
+		@RequestMapping(value="/ticketlist_content.do", method=RequestMethod.GET)
+		public ModelAndView ticketlist_content(String did) {
+			ModelAndView mv = new ModelAndView();
+			
+			DmuTicketVO vo = ticketService.getContent(did);
+			
+			mv.addObject("vo", vo);
+			mv.setViewName("/adminticket/ticketlist_content");
+			
+			return mv;
+		}
+		/**
+		 * admin_ticket_update_check.do : 
+		 */
+		@RequestMapping(value="/admin_ticket_update_check.do", method=RequestMethod.POST)
+		public ModelAndView admin_ticket_update_check(DmuTicketVO vo,HttpServletRequest request)
+																	throws Exception {
+			ModelAndView mv = new ModelAndView();
+
+			String old_filename = vo.getDsfile();	//
+			
+			vo = fileService.update_fileCheck(vo);
+			int result = ticketService.getUpdate(vo);
+			
+			if(result == 1){
+				//
+				fileService.update_filesave(vo, request, old_filename);
+				mv.setViewName("redirect:/adminexhibition_list.do");
+				
+			}else{
+
+				mv.setViewName("error_page");
+			}		
+			
+			return mv;
+		}
+		/**
+		 * admin_ticket_update.do :
+		 */
+		@RequestMapping(value="/admin_ticket_update.do", method=RequestMethod.GET)
+		public ModelAndView admin_ticket_update(String did) {
+			ModelAndView mv = new ModelAndView();
+			
+			DmuTicketVO vo = ticketService.getContent(did);
+			
+			mv.addObject("vo", vo);
+			mv.setViewName("/adminticket/ticketlist_update");
+			
+			return mv;
+		}
+		
+		/**
+		 * admin_ticket_delete.do : 
+		 */
+		@RequestMapping(value="/admin_ticket_delete.do", method=RequestMethod.GET)
+		public ModelAndView admin_ticket_delete(String did) {
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("did", did);
+			mv.setViewName("/adminticket/ticketlist_delete");
+			
+			return mv;
+		}
+		
+		/**
+		 * admin_ticket_delete_check.do : 
+		 */
+		@RequestMapping(value="/admin_ticket_delete_check.do", method=RequestMethod.POST)
+		public ModelAndView admin_ticket_delete_check(String did, HttpServletRequest request)
+																throws Exception {
+			ModelAndView mv = new ModelAndView();
+		
+			DmuTicketVO vo = ticketService.getContent(did);
+			int result = ticketService.getDelete(did);
+			
+			if(result == 1){	
+				fileService.fileDelete(vo, request);
+				mv.setViewName("redirect:/adminexhibition_list.do");
+			}else{
+
+				mv.setViewName("error_page");
+			}		
+			
+			return mv;
+		}
+		
+
 		//ticketcontent.do
 		@RequestMapping(value="/ticketcontent.do", method=RequestMethod.GET)
 		public ModelAndView ticketcontent(String did) {
@@ -208,4 +305,5 @@ public class TicketController {
 			
 			return mv;
 		}
+
 }

@@ -42,6 +42,21 @@ public class TicketServiceImpl implements TicketService {
 		return list;
 	}
 	
+	 
+		@Override
+		public int getUpdate(DmuTicketVO vo) {
+			DmuTicketDAO dao = new DmuTicketDAO();
+			int result = dao.update(vo);
+			return result;
+		}
+		@Override
+		public int getDelete(String did) {
+			DmuTicketDAO dao = new DmuTicketDAO();
+			int result = dao.delete(did);
+			return result;
+		}
+		
+	
 	//exhibtion.do 상세보기
 	@Override
 	public DmuTicketVO getContent(String did) {

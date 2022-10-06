@@ -200,7 +200,8 @@
 														<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">운영시간</strong> 
 														<span data-v-8ed31374="" class="text">${ vo.dtime }</span></li>
 														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
-															<p data-v-8ed31374="" class="price">${ vo.dprice }원</p></li>
+															<p data-v-8ed31374="" class="price" >${ vo.dpricech }원</p></li>
+															
 													</ul>
 												</div>
 												<div data-v-8ed31374="" class=" "></div>
@@ -345,7 +346,7 @@
 																			</label>
 																		</div>
 																		<div data-v-26e42198="" data-v-8ed31374="" class="btn-area link" id="btn-area link">
-																			<a data-v-26e42198="" href="javascript:void(0);"class="icon go-page" onClick="javascript:popupOpen()">전문보기</a>
+																			<a data-v-26e42198="" href="javascript:void(0);"class="icon go-page">전문보기</a>
 																		</div>
 																	</li>
 																</ul>
@@ -354,9 +355,9 @@
 																 
 																		<button data-v-26e42198="" id="btn32" type="submit" class="primary" disabled>예매하기</button>
 																		
-																	 <div data-v-9a980cc6="" data-v-9dea2aa6="" id="popup" class="layer-dimmed all-terms-pop is-footer" style="  visibility:hidden;">
+																 <!--	 <div data-v-9a980cc6="" data-v-9dea2aa6="" id="popup" class="layer-dimmed all-terms-pop is-footer" style="  visibility:hidden ;">
  
-																	 <div data-v-9a980cc6="" class="layer" style="width: 39.125rem; height: 48.25rem; margin-left: -313px; margin-top: -386px;">
+																	  <div data-v-9a980cc6="" class="layer" style="width: 39.125rem; height: 48.25rem; margin-left: -313px; margin-top: -386px;">
 																	 <div data-v-9a980cc6="" class="layer-header" > 전문보기
 																	  <button data-v-9a980cc6="" type="button" class="layer-close"> 닫기 </button></div> 
 																	  <div data-v-9a980cc6="" class="layer-body"><div data-v-9dea2aa6="" data-v-9a980cc6="">
@@ -390,7 +391,7 @@
 																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 디뮤지엄에서는 디뮤지엄 교육팀을 제외한 타 기관의 교육, 전시 해설은 불가합니다. 디뮤지엄의 승인 없이 교육을 진행할 경우 직원이 즉각 교육 중단을 요청할 수 있습니다.</li>
 																		    </ul>
 																		</div></div></div></div><div data-v-9a980cc6="" class="layer-footer"><div data-v-9dea2aa6="" data-v-9a980cc6=""><div data-v-9dea2aa6="" data-v-9a980cc6="" class="btn-group"><div data-v-26e42198="" data-v-9dea2aa6="" class="btn-area" data-v-9a980cc6=""><button data-v-26e42198="" id="btn352" type="button" class="primary full"> 확인 </button></div></div></div></div></div></div>
-																																		 
+																			 -->															 
 
 																</div>
 															</div>

@@ -70,5 +70,13 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 	
 	
+	/*
+	 * 카테고리
+	 */
 	
+	public int getTotalCount_category(String ncategory) {
+		DmuNoticeDAO dao = new DmuNoticeDAO();
+		int result = dao.totalCount_category(ncategory);
+		return result;
+	}
 }

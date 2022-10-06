@@ -58,7 +58,7 @@
 									<div data-v-7f52b83a="" class="container">
 										<div data-v-7f52b83a="" class="title-complete">
 											<h2 data-v-7f52b83a="">예매완료</h2>
-											<p data-v-7f52b83a="">${  vo.rid },님 예매가 성공적으로 완료되었습니다.</p>
+											<p data-v-7f52b83a="">${  vo.mname },님 예매가 성공적으로 완료되었습니다.</p>
 										</div>
 										<div data-v-7f52b83a="" class="complete-base-info">
 											<div data-v-7f52b83a="" class="thumb">
@@ -76,7 +76,7 @@
 												<ul data-v-7f52b83a="" class="info">
 													<li data-v-7f52b83a=""><span data-v-7f52b83a=""
 														class="info-tit">관람일시</span><span data-v-7f52b83a=""
-														class="info-txt">${vo.rdate}</span></li>
+														class="info-txt">${vo.rdateda}</span></li>
 													<li data-v-7f52b83a=""><span data-v-7f52b83a=""
 														class="info-tit">장소</span><span data-v-7f52b83a=""
 														class="info-txt">${vo.dplace}</span></li>
@@ -91,7 +91,7 @@
 												<li data-v-7f52b83a="" class="total-price"><strong
 													data-v-7f52b83a="" class="title">총 금액</strong>
 												<p data-v-7f52b83a="" class="amount">
-														<strong data-v-7f52b83a="">${vo.rallprice}</strong>
+														<strong data-v-7f52b83a="">${vo.rallpricech}</strong>
 													</p></li>
 												<li data-v-7f52b83a="" class="discount-amount minus"><strong
 													data-v-7f52b83a="" class="title">인원</strong>
@@ -101,7 +101,7 @@
 												<li data-v-7f52b83a="" class="final-payment"><strong
 													data-v-7f52b83a="" class="title">최종 결제금액</strong>
 												<p data-v-7f52b83a="" class="amount">
-														<strong data-v-7f52b83a="">${vo.rallprice}</strong>
+														<strong data-v-7f52b83a="">${vo.rallpricech}</strong>
 													</p></li>
 											</ul>
 										</div>
