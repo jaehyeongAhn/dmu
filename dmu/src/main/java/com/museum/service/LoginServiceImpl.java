@@ -1,52 +1,42 @@
 package com.museum.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.museum.dao.DmuMemberDAO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuSessionVO;
 
 public class LoginServiceImpl implements LoginService{
 	
+	@Autowired
+	private DmuMemberDAO memberDao;
+	
 	@Override
 	public int emailCheckId(String email, String name) {
-		DmuMemberDAO dao = new DmuMemberDAO();
-		
-		int result = dao.emailCheckId(email, name);
-		
-		return result;
+		return memberDao.emailCheckId(email, name);
 	}
 	
 	//loginUpdate(DmuMemberVO vo) : 비밀번호 업데이트
 	@Override
 	public int loginUpdate(DmuMemberVO vo) {
-		DmuMemberDAO dao = new DmuMemberDAO();
-		int result = dao.login_update(vo);
-		
-		return result;
+		return memberDao.login_update(vo);
 	}
 	
 	//비밀번호 찾기 페이지의 계정 존재 여부 확인
 	@Override
 	public int emailCheckPass(String email, String name, String mid) {
-		DmuMemberDAO dao = new DmuMemberDAO();
-		int result = dao.emailCheckPass(email, name, mid);
-		
-		return result;
+		return memberDao.emailCheckPass(email, name, mid);
 	};
 
 	//아이디 반환
 	@Override
 	public String findId(DmuMemberVO vo) {
-		DmuMemberDAO dao = new DmuMemberDAO();
-		String result = dao.selectId(vo);
-		
-		return result;
+		return memberDao.selectId(vo);
 	}
 	
 	//로그인 체크
 	@Override
-	public int login(DmuMemberVO vo) {
-		DmuMemberDAO dao = new DmuMemberDAO();
-		int result = dao.login(vo);
-		
-		return result;
+	public DmuSessionVO login(DmuMemberVO vo) {
+		return memberDao.login(vo);
 	}
 }

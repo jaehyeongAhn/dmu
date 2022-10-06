@@ -1,6 +1,7 @@
 package com.museum.service;
 
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuSessionVO;
 
 public interface LoginService {
 
@@ -19,5 +20,5 @@ public interface LoginService {
 	public String findId(DmuMemberVO vo);
 	
 	//로그인 체크
-	public int login(DmuMemberVO vo);
+	public DmuSessionVO login(DmuMemberVO vo);
 }

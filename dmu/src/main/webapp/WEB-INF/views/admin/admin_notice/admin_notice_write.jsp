@@ -94,7 +94,7 @@
 					<div class="btn-bottom-area">
 						<div data-v-26e42198="" class="btn-area">
 							<button data-v-26e42198="" id="btn50" type="button"
-								class="secondary">보내기</button>
+								class="secondary">등록</button>
 						<a href="admin_notice_list.do">
 							<button data-v-26e42198="" id="btn50" type="button"
 								class="secondary">목록</button></a>

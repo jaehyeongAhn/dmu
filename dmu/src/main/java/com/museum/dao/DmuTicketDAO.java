@@ -20,6 +20,26 @@ public class DmuTicketDAO extends DBConn {
 	
 
 	/**
+	 *  delete : 게시글 삭제
+	 */
+	public int delete(String did) {
+		int result=0;
+		String sql = "delete from dmu_ticket where did=?";
+		try {
+			getPreparedStatement(sql);
+			pstmt.setString(1, did);
+			
+			result = pstmt.executeUpdate();
+			
+			close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
+	/**
 	 *  insert : 게시글 추가
 	 */
 	public int insert(DmuTicketVO vo) {
@@ -60,10 +80,10 @@ public class DmuTicketDAO extends DBConn {
 	 */
 	public ArrayList<DmuTicketVO> select(int startCount, int endCount){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
-		String sql = " select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dentertime,dnum "
+		String sql = " select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum "
 				 	+" from(select rownum rno,did,dplace,dtitle,   dstart ,"
-				 	+ "   dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dentertime,dnum "
-					+" from (select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dentertime,dnum from dmu_ticket)) "
+				 	+ "   dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum "
+					+" from (select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum from dmu_ticket)) "
 					+" 	where rno between ? and ?";
 		try { 
 			getPreparedStatement(sql);
@@ -85,8 +105,7 @@ public class DmuTicketDAO extends DBConn {
 				vo.setDtime(rs.getString(10));
 				vo.setDprice(rs.getInt(11));
 				vo.setDtarget(rs.getString(12));
-				vo.setDentertime(rs.getString(13));
-				vo.setDnum(rs.getInt(14));
+				vo.setDnum(rs.getInt(13));
 				
 				list.add(vo);
 			}
@@ -119,6 +138,37 @@ public class DmuTicketDAO extends DBConn {
 		
 		return result;
 	}
+	
+	// 게시글 업데이트
+		public int update(DmuTicketVO vo) {
+			int result = 0;
+			String sql = " 	update dmu_ticket set dtitle=?, dstart=?, dend=?, dprice=?, dplace=?, dinformation=?, dtime=?, dpersonnel=?,"
+					+ "		dtarget=?, dnum=?, dfile=?, dsfile=?  "
+					+ "		 where did=?  " ;
+			try {
+				getPreparedStatement(sql);
+				
+				pstmt.setString(1, vo.getDtitle());
+				pstmt.setString(2, vo.getDstart());
+				pstmt.setString(3, vo.getDend());
+				pstmt.setInt(4, vo.getDprice());
+				pstmt.setString(5, vo.getDplace());
+				pstmt.setString(6, vo.getDinformation());
+				pstmt.setString(7, vo.getDtime());
+				pstmt.setInt(8, vo.getDpersonnel());
+				pstmt.setString(9, vo.getDtarget());
+				pstmt.setInt(10, vo.getDnum());
+				pstmt.setString(11, vo.getDfile());
+				pstmt.setString(12, vo.getDsfile());
+				pstmt.setString(13, vo.getDid());
+				 		
+				result = pstmt.executeUpdate();
+				close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return result;
+		}
 	
 	
 	/* 02.관람일/인원선택
@@ -162,9 +212,7 @@ public class DmuTicketDAO extends DBConn {
 		return sqlSession.selectOne("mapper.ticket.CompleteContent",did);
 	}
 	
-	
-	
-	
+ 
 	
 	
 	
