@@ -25,16 +25,6 @@ $(document).ready(function(){
       }
    });
 	
-    $('ul.snb li').click(function(){
-    var snb_id = $(this).attr('data-tab');
-
-    $('ul.snb li').removeClass('on');
-    $('.sub-contents-area').removeClass('on');
-
-    $(this).addClass('on');
-    $("#"+tab_id).addClass('on');
-	
-	});
 });//ready
 
 
