@@ -61,7 +61,7 @@
 					<li>
 						<div id = "idSetup">
 							<div>
-								<input type = "checkbox" id = "id_save" name = "remeberId" ${ empty cookie.rememberId.value ? "" : "checked" }>
+								<input type = "checkbox" id = "id_save" name = "rememberId" ${ empty cookie.rememberId.value ? "" : "checked" }>
 								<label for = "id_save">아이디 저장</label>
 							</div>
 							<div>

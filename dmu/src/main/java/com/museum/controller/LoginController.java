@@ -147,7 +147,7 @@ public class LoginController {
 	@ResponseBody
 	@RequestMapping(value = "/login_check.do", method = RequestMethod.POST)
 	public ModelAndView login_check(DmuMemberVO vo, HttpServletRequest request, 
-									HttpServletResponse response, boolean remeberId) throws Exception {
+									HttpServletResponse response, boolean rememberId) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
 		DmuSessionVO member = loginService.login(vo);
@@ -169,13 +169,22 @@ public class LoginController {
 					
 					//쿠키 저장 여부 확인
 					Cookie cookie = new Cookie("rememberId", vo.getMid());
-					if(remeberId) {
-						//체크 박스 true 시, cookie 저장
-						response.addCookie(cookie);
-					}else {
-						//체크 박스 false 시, cookie 삭제
-						cookie.setMaxAge(0);
-						response.addCookie(cookie);
+					Cookie[] cookieList = request.getCookies();
+					for(Cookie list : cookieList) {
+						//쿠키가 존재하지 않을 시
+						if(!list.getName().equals("rememberId")) {
+							if(rememberId) {
+								//체크 박스 true 시, cookie 저장
+								cookie.setMaxAge(7 * 24 * 60 * 60); //초 단위, 일주일동안 쿠키 저장
+								response.addCookie(cookie);
+							}
+						}else {
+							//체크 박스 false 시, cookie 삭제
+							if(!rememberId) {
+								cookie.setMaxAge(0);
+								response.addCookie(cookie);
+							}
+						}
 					}
 					
 					mv.addObject("login_result", member.getLoginresult());
