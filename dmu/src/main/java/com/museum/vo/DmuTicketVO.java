@@ -5,7 +5,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class DmuTicketVO {
 	
 	int rno,dpersonnel,dnum, dprice;
-	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,dentertime,dtitle2,enddate;
+	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,dentertime,dtitle2,enddate,dpricech;
 	
 	CommonsMultipartFile file1;
 	public CommonsMultipartFile getFile1() {
@@ -16,7 +16,13 @@ public class DmuTicketVO {
 	}
 	
 	
-	 
+ 
+	public String getDpricech() {
+		return dpricech;
+	}
+	public void setDpricech(String dpricech) {
+		this.dpricech = dpricech;
+	}
 	public String getEnddate() {
 		return enddate;
 	}

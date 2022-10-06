@@ -5,9 +5,34 @@ public class DmuReJoinVO {
 
 	
 	int dprice, rtotal,rallprice,rprice;
-	String rid,did,mid, dtitle,dplace,rdate,rtime,rokdate,rcheck,faildate, dfile,dsfile;
+	String rid,did,mid, dtitle,dplace,rdate,rtime,rokdate,rcheck,faildate, dfile,dsfile,dpricech,rallpricech,rdateda,mname;
 	
 	
+	 
+	public String getMname() {
+		return mname;
+	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+	public String getRdateda() {
+		return rdateda;
+	}
+	public void setRdateda(String rdateda) {
+		this.rdateda = rdateda;
+	}
+	public String getRallpricech() {
+		return rallpricech;
+	}
+	public void setRallpricech(String rallpricech) {
+		this.rallpricech = rallpricech;
+	}
+	public String getDpricech() {
+		return dpricech;
+	}
+	public void setDpricech(String dpricech) {
+		this.dpricech = dpricech;
+	}
 	public String getDfile() {
 		return dfile;
 	}

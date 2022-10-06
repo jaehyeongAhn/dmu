@@ -139,20 +139,8 @@ $(document).ready(function(){
 					/*********************
 					 전문 보기
 					**********************/
-				function popupOpen(){
- 
-    if(document.all.popup.style.visibility=="hidden") {
-
-        document.all.popup.style.visibility="visible";
-        return false;
-    }else{
-        document.all.popup.style.visibility="hidden";
-        return false;   
-    }
-}
- 
 					
-					
+ 	
 					
 					
 					
