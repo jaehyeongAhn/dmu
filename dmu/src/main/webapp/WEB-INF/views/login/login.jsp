@@ -12,8 +12,8 @@
 <script>
 	$(document).ready(function(){
 
-		let height = $(document).height();
-		$(".footer").css("top", height - 370);
+		/* let height = $(document).height();
+		$(".footer").css("top", height - 370); */
 		
 		/********* popup setup *********/
 		function popup_login(guideLine) {
@@ -83,7 +83,7 @@
 		</div>
 	</main>
 	
-	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style = "margin-bottom: -5px;"></iframe>
 	
 	<div class = "background_join">
 		<div class = "window_join">
