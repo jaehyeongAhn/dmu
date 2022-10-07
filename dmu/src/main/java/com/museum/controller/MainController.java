@@ -68,6 +68,6 @@ public class MainController {
 		return "/terms/terms_terms";
 	}
 	
-	
+
 	
 }
