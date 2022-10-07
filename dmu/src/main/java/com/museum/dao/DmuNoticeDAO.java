@@ -229,8 +229,7 @@ public class DmuNoticeDAO extends DBConn{
 				vo.setNid(rs.getString(2));
 				vo.setNcategory(rs.getString(3));
 				vo.setNtitle(rs.getString(4));
-				vo.setNcontent(rs.getString(5));
-				vo.setNdate(rs.getString(6));
+				vo.setNdate(rs.getString(5));
 			}
 			
 			

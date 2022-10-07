@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace = "mapper.ticket">
+
+	 <select id="content" parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">
+ 
+	 	select did, dtitle,dplace, dprice,to_char(dprice,'999,999') dpricech,dpersonnel ,dinformation,dtime,dtarget,dnum,dfile,dsfile,dstart,dend,TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE,dentertime,dcode,dtitle2   from dmu_ticket where did=#{did}
+ 
+	 </select>
+	 
+	  
+	 
+	 <insert id="reservationdate" parameterType="com.museum.vo.DmuReJoinVO">
+	 	 
+	 	insert into dmu_reservation values('R_'||sequ_dmu_reservation.nextval,#{did},#{rprice},#{rtime},#{rdate},#{rtotal},#{rallprice},sysdate,'',sysdate,#{mid})
+	 	
+	 </insert>
+	 
+	 <select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
+	 	 
+ 
+		   select dt.dtitle,dt.dplace, to_char(dt.dprice,'999,999') dpricech ,dr.rdate, to_char(dr.rdate, 'YY-MM-DD') rdateda ,dr.RTOTAL, to_char(dr.rallprice,'999,999') rallpricech from dmu_ticket DT , dmu_reservation DR 
+				where dt.did = dr.did  and dr.rid= (select rid from
+                                      				  (select rid from dmu_reservation order by rokdate desc)
+                                 				   where rownum = 1)
+		 
+	 </select>
+	 
+	 <select id="CompleteContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
+	 	
+ 
+	 select  dt.dsfile, dt.dtitle, dt.dplace, dr.rid,dr.rdate, to_char(dr.rdate, 'YY-MM-DD') rdateda, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech, dm.mname from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
+	 		where  dm.mid = dr.mid and dt.did = dr.did   and dr.rid= (select rid from
+                                      				  (select rid from dmu_reservation order by rokdate desc)
+                                 				 			  where rownum = 1) 
+                                 				 			  	 		 	
+	 </select>
+	  
+	 
+	 
+</mapper>
+
+  
