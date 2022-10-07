@@ -73,6 +73,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		DmuNoticeDAO dao = new DmuNoticeDAO();
 		DmuNoticeVO vo = dao.select(nid);
+		vo.setNcontent(vo.getNcontent().replace("\r\n", "<br/>"));
 		
 		mv.addObject("vo", vo);
 		mv.setViewName("/notice/notice_content");
@@ -82,20 +83,20 @@ public class NoticeController {
 
 	
 	@ResponseBody
-	@RequestMapping(value = "/notice_list_json.do", method = RequestMethod.GET, produces="text/plain;charset=UTF-8")
+	@RequestMapping(value = "/notice_list_json.do", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	public String notice_list_json(String rpage, String ncategory, HttpServletRequest request, HttpServletResponse response) 
 									throws Exception{
 		
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		String kind = request.getParameter("category");
+		//String kind = request.getParameter("ncategory");
 		//페이징처리
 		//페이징 처리 - startCount, endCount 구하기
 		int startCount = 0;
 		int endCount = 0;
-		int pageSize = 5;	//한페이지당 게시물 수
+		int pageSize = 3;	//한페이지당 게시물 수
 		int reqPage = 1;	//요청페이지	
 		int pageCount = 1;	//전체 페이지 수
-		int dbCount = dao.totalCount_category(kind);	//DB에서 가져온 전체 행수
+		int dbCount = dao.totalCount_category(ncategory);	//DB에서 가져온 전체 행수
 
 		//총 페이지 수 계산
 		if(dbCount % pageSize == 0){
