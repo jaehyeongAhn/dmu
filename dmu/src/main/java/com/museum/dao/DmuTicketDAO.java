@@ -3,11 +3,23 @@ package com.museum.dao;
 import java.util.ArrayList;
 
 
+import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import com.museum.vo.DmuReJoinVO;
+import com.museum.vo.DmuReservationVO;
 import com.museum.vo.DmuTicketVO;
  
-
+@Repository
 public class DmuTicketDAO extends DBConn {
+ 
+	
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	
+ 
 	/**
 	 *  delete : 
 	 */
@@ -26,6 +38,7 @@ public class DmuTicketDAO extends DBConn {
 		}
 		return result;
 	}
+ 
 
 	/**
 	 *  insert : 
@@ -33,7 +46,9 @@ public class DmuTicketDAO extends DBConn {
 	public int insert(DmuTicketVO vo) {
 		int result = 0;
 		
+ 
 		String sql = " insert into dmu_ticket values('d_'||sequ_dmu_ticket.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,? ,?,?)";
+ 
 		 	
 		try {
 			getPreparedStatement(sql);
@@ -68,7 +83,7 @@ public class DmuTicketDAO extends DBConn {
 	 */
 	public ArrayList<DmuTicketVO> select( int startCount,int endCount , String dcode){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
-		//sql臾� �뿉�꽌 dcode濡� 遺꾨쪟�빐�꽌 由ъ뒪�듃 異쒕젰 由ъ뒪�듃瑜� �쟾泥대�� 戮묒븘�꽌 jsp�뿉�꽌 遺꾨쪟�빐 二쇰㈃ �몢踰� �옉�뾽�쓣 �룎�젮�빞�빐�꽌 �떆�뒪�뀥�쟻�쑝濡�  �삤�옒嫄몃┝!!!!
+		//sql�눧占� 占쎈퓠占쎄퐣 dcode嚥∽옙 �겫袁⑥첒占쎈퉸占쎄퐣 �뵳�딅뮞占쎈뱜 �빊�뮆�젾 �뵳�딅뮞占쎈뱜�몴占� 占쎌읈筌ｋ�占쏙옙 筌믩쵐釉섓옙苑� jsp占쎈퓠占쎄퐣 �겫袁⑥첒占쎈퉸 雅뚯눖�늺 占쎈あ甕곤옙 占쎌삂占쎈씜占쎌뱽 占쎈즼占쎌젻占쎈튊占쎈퉸占쎄퐣 占쎈뻻占쎈뮞占쎈�ο옙�읅占쎌몵嚥∽옙  占쎌궎占쎌삋椰꾨챶�뵝!!!!
 		String sql = " select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime "
 				 	+" from(select rownum rno,did,dplace,dtitle,   dstart ,"
 				 	+ "   dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime "
@@ -115,7 +130,7 @@ public class DmuTicketDAO extends DBConn {
 	 */
 	public ArrayList<DmuTicketVO> selects( int startCount,int endCount , String dcode,String dtarget){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
-		//sql臾� �뿉�꽌 dcode濡� 遺꾨쪟�빐�꽌 由ъ뒪�듃 異쒕젰 由ъ뒪�듃瑜� �쟾泥대�� 戮묒븘�꽌 jsp�뿉�꽌 遺꾨쪟�빐 二쇰㈃ �몢踰� �옉�뾽�쓣 �룎�젮�빞�빐�꽌 �떆�뒪�뀥�쟻�쑝濡�  �삤�옒嫄몃┝!!!!
+		//sql�눧占� 占쎈퓠占쎄퐣 dcode嚥∽옙 �겫袁⑥첒占쎈퉸占쎄퐣 �뵳�딅뮞占쎈뱜 �빊�뮆�젾 �뵳�딅뮞占쎈뱜�몴占� 占쎌읈筌ｋ�占쏙옙 筌믩쵐釉섓옙苑� jsp占쎈퓠占쎄퐣 �겫袁⑥첒占쎈퉸 雅뚯눖�늺 占쎈あ甕곤옙 占쎌삂占쎈씜占쎌뱽 占쎈즼占쎌젻占쎈튊占쎈퉸占쎄퐣 占쎈뻻占쎈뮞占쎈�ο옙�읅占쎌몵嚥∽옙  占쎌궎占쎌삋椰꾨챶�뵝!!!!
 		String sql = " select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime "
 				+" from(select rownum rno,did,dplace,dtitle,   dstart ,"
 				+ "   dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime "
@@ -199,85 +214,89 @@ public class DmuTicketDAO extends DBConn {
 		return result;
 	}
 	
-
-	/* 02.
-	 *  select : 
-	 *  select : 
+ 
+public int update(DmuTicketVO vo) {
+	int result = 0;
+	String sql = " 	update dmu_ticket set dtitle=?, dstart=?, dend=?, dprice=?, dplace=?, dinformation=?, dtime=?, dpersonnel=?,"
+			+ "		dtarget=?, dnum=?, dfile=?, dsfile=?  ,dtitle2=? ,dentertime=?"
+			+ "		 where did=?  " ;
+	try {
+		getPreparedStatement(sql);
+		
+		pstmt.setString(1, vo.getDtitle());
+		pstmt.setString(2, vo.getDstart());
+		pstmt.setString(3, vo.getDend());
+		pstmt.setInt(4, vo.getDprice());
+		pstmt.setString(5, vo.getDplace());
+		pstmt.setString(6, vo.getDinformation());
+		pstmt.setString(7, vo.getDtime());
+		pstmt.setInt(8, vo.getDpersonnel());
+		pstmt.setString(9, vo.getDtarget());
+		pstmt.setString(10, vo.getDnum());
+		pstmt.setString(11, vo.getDfile());
+		pstmt.setString(12, vo.getDsfile());
+		pstmt.setString(13, vo.getDtitle2());
+		pstmt.setString(14, vo.getDid());
+		pstmt.setString(15, vo.getDentertime());
+		 		
+		result = pstmt.executeUpdate();
+		close();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return result;
+}
+	
+	 
+public DmuTicketVO select(String did) {
+		 
+		
+ 
+		return sqlSession.selectOne("mapper.ticket.content", did) ;
+ 
+ 
+	}
+ 
+	
+	/* 02.관람일/인원선택
+	 *  insert : 관람일/회차/관람인원 데이더 저장
 	 */
-	public DmuTicketVO select(String did) {
-		DmuTicketVO vo = new DmuTicketVO();
+	
+	public int insertDate(DmuReJoinVO vo) {
 		
-
-		String sql = " select did, dtitle, dstart, dend, dprice,dplace,dinformation,dtime,dpersonnel,dtarget,dnum,dfile,dsfile, TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE ,dtitle2 "
-    + " from dmu_ticket where did=?";
-
-		try {
-			getPreparedStatement(sql);
-			pstmt.setString(1, did);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				vo.setDid(rs.getString(1));
-				vo.setDtitle(rs.getString(2));				
-				vo.setDstart(rs.getString(3));
-				vo.setDend(rs.getString(4));
-				vo.setDprice(rs.getInt(5));
-				vo.setDplace(rs.getString(6));
-				vo.setDinformation(rs.getString(7));
-				vo.setDtime(rs.getString(8));
-
-				vo.setDpersonnel(rs.getInt(9));
-				vo.setDtarget(rs.getString(10));
-				vo.setDnum(rs.getString(11));
-				vo.setDfile(rs.getString(12));
-				vo.setDsfile(rs.getString(13));
-				vo.setEnddate(rs.getString(14));
-
-				vo.setDtitle2(rs.getString(15));
-
-				
-
-			}
-			
-		//	close(); 
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		
-		return vo;
+		
+		return sqlSession.insert("mapper.ticket.reservationdate",vo);
 	}
-	// 
-	public int update(DmuTicketVO vo) {
-		int result = 0;
-		String sql = " 	update dmu_ticket set dtitle=?, dstart=?, dend=?, dprice=?, dplace=?, dinformation=?, dtime=?, dpersonnel=?,"
-				+ "		dtarget=?, dnum=?, dfile=?, dsfile=?  ,dtitle2=? ,dentertime=?"
-				+ "		 where did=?  " ;
-		try {
-			getPreparedStatement(sql);
-			
-			pstmt.setString(1, vo.getDtitle());
-			pstmt.setString(2, vo.getDstart());
-			pstmt.setString(3, vo.getDend());
-			pstmt.setInt(4, vo.getDprice());
-			pstmt.setString(5, vo.getDplace());
-			pstmt.setString(6, vo.getDinformation());
-			pstmt.setString(7, vo.getDtime());
-			pstmt.setInt(8, vo.getDpersonnel());
-			pstmt.setString(9, vo.getDtarget());
-			pstmt.setString(10, vo.getDnum());
-			pstmt.setString(11, vo.getDfile());
-			pstmt.setString(12, vo.getDsfile());
-			pstmt.setString(13, vo.getDtitle2());
-			pstmt.setString(14, vo.getDid());
-			pstmt.setString(15, vo.getDentertime());
-			 		
-			result = pstmt.executeUpdate();
-			close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
+	
+	/* 02.관람일/인원선택
+	 *   select : 결제내용 상세보기
+	 */
+	
+	public DmuReJoinVO selectReservation(String did) {
+		
+		
+		
+		return sqlSession.selectOne("mapper.ticket.reservationContent",did);
 	}
+	
+	
+	/* 03.관람일/인원선택
+	 *   select : 결제하기
+	 */
+	
+	public DmuReJoinVO selectCompleteCheck(String did) {
+		
+		return sqlSession.selectOne("mapper.ticket.CompleteContent",did);
+	}
+	
+ 
+	
+	
+	
+	
+	
+	
+	 
 }
  

@@ -67,7 +67,6 @@ public class MainController {
 	public String terms_terms() {
 		return "/terms/terms_terms";
 	}
-	
-
+ 
 	
 }

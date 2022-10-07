@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.museum.dao.DmuTicketDAO" %>    
-<%@ page import="com.museum.vo.DmuTicketVO" %>  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  <!-- JSTL 태그 추가  --> 
+ 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!-- JSTL 태그 추가  -->
 
 <!DOCTYPE html>
 <html lang="">
@@ -19,68 +20,140 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
-<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/comment.css">
+<link rel="stylesheet"
+	href="http://localhost:9000/dmu/resources/css/ticket.css">
+<link rel="stylesheet"
+	href="http://localhost:9000/dmu/resources/css/comment.css">
 
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <%--  jQuery UI CSS파일  --%>
-  	<%-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> --%>
-  	<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/jquery-ui.css">
-	
-	<%-- jQuery 기본 js파일 --%>
- 	 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-	
-	<%-- jQuery UI 라이브러리 js파일 --%>
-  	<%-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> --%>
-  	<script src="http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
-	<script>
-		$(document).ready(function(){
-			let enddate = "${vo.enddate}";
-			// Getter
-			var dayNamesShort = $( "#calendar" ).datepicker( "option", "dayNamesShort" );
-			
-			$("#calendar").datepicker({
-				//datepicker 초기 설정
-				dayNames : [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
-				dayNamesMin : [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
-				monthNames : [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
-				minDate : 0,
-				maxDate : parseInt(enddate),
-				showMonthAfterYear : true,
-				//datepicker의 DOM이 업데이트 될 때 호출 (오늘 날짜 자동으로 받아 저장)
-				onUpdateDatepicker : function(){
-					var date = $.datepicker.formatDate("yy-mm-dd", $("#calendar").datepicker("getDate"));
-					$("#date").val(date);
-				},
-				//datepicker의 날짜가 변경될 때마다 이벤트 발생 (선택 날짜 받아 저장)
-				onSelect : function(){
-					var date = $.datepicker.formatDate("yy-mm-dd", $("#calendar").datepicker("getDate"));
-					$("#date").val(date);
-					$(".round-selection").attr("disabled", false) 
-				 
-				 
-					//alert(date);
+<%-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> --%>
+<link rel="stylesheet"
+	href="http://localhost:9000/dmu/resources/css/jquery-ui.css">
+
+<%-- jQuery 기본 js파일 --%>
+<script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
+
+<%-- jQuery UI 라이브러리 js파일 --%>
+<%-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> --%>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+	function onlyNumber() {
+		var str = 0;
+		var Mynum = document.getElementById("inptext").value;
+		Mynum = Mynum.replace(/[^0-9]/g, '');
+		document.getElementById("inptext").value = Mynum;
+		var plus = document.getElementById("inptext").value = Mynum;
+		if (plus < str) {
+			document.getElementById("inptext").value = 0;
+		} else if (plus > 4) {
+			document.getElementById("inptext").value = 4;
+		}
+	}
+	$(document).ready(function() {
+		var inp = $("#inptext").val();
+		$(".btn-plus").on("click", function() {
+			setTimeout(function() {
+				if (inp == 4) {
+					inp;
+				} else {
+					inp++;
 				}
-			});
-			 
-			// Setter
-			$( "#calendar" ).datepicker( "option", "dayNamesShort", [ "Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam" ] );
-			
+				$("#inptext").val(inp);
+				$("#rtotal").val(inp);
+			}, 500);
 		});
-	</script>
-	
-	 
-	
+		$(".btn-minus").on("click", function() {
+			setTimeout(function() {
+				if (inp == 0) {
+					inp;
+				} else if (inp <= 4) {
+					inp--;
+				}
+				$("#inptext").val(inp);
+				$("#rtotal").val(inp);
+			}, 4);
+		});
+	});
+</script>
+
+  
+
+<script src="http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
+
+<script>
+	$(document).ready(
+			function() {
+				let enddate = "${vo.enddate}";
+				// Getter
+				var dayNamesShort = $("#calendar").datepicker("option",
+						"dayNamesShort");
+
+				$("#calendar").datepicker(
+						{
+							//datepicker 초기 설정
+							dayNames : [ "Sun", "Mon", "Tue", "Wed", "Thu",
+									"Fri", "Sat" ],
+							dayNamesMin : [ "Sun", "Mon", "Tue", "Wed", "Thu",
+									"Fri", "Sat" ],
+							monthNames : [ "01", "02", "03", "04", "05", "06",
+									"07", "08", "09", "10", "11", "12" ],
+							minDate : 0,
+							maxDate : parseInt(enddate),
+							showMonthAfterYear : true,
+							//datepicker의 DOM이 업데이트 될 때 호출 (오늘 날짜 자동으로 받아 저장)
+							onUpdateDatepicker : function() {
+								var date = $.datepicker.formatDate("yy-mm-dd",
+										$("#calendar").datepicker("getDate"));
+								$("#date").val(date);
+							},
+							//datepicker의 날짜가 변경될 때마다 이벤트 발생 (선택 날짜 받아 저장)
+							onSelect : function() {
+								var date = $.datepicker.formatDate("yy-mm-dd",
+										$("#calendar").datepicker("getDate"));
+								$("#date").val(date);
+								$("#rdate").val(date);
+								$(".round-selection").attr("disabled", false)
+
+								//alert(date);
+							}
+						});
+
+				// Setter
+				$("#calendar").datepicker("option", "dayNamesShort",
+						[ "Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam" ]);
+
+			});
+</script>
+ 
+ 
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
 <body>
-	<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
-	
-		 
+	<iframe src="http://localhost:9000/dmu/header.do" width="100%"
+		height="160px" scrolling="no" frameborder=0></iframe>
+
+
+	<div class="content">
+
+		<form name="ticket_exhibtionFrom" action="ticketReservationCheck.do" method="post">
 		
+		 <input type="hidden" name="did" value="${vo.did }"> 
+		 <input type="hidden" name="rprice" id="rprice" value=${vo.dprice }> 
+		 <input type="hidden" name="rdate" id="rdate" value=""> 
+		 <input type="hidden" name="rtime" id="rtime" value=""> 
+		 <input type="hidden" name="rtotal" id="rtotal" value="">  
+		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
+		 <input type="hidden" name="rallprice" id="rallprice" value=""> 
+		 <input type="hidden" name="mid" id="mid" value="mmww6443"> 
+		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
+		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
+		 
+ 
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">
 					<div data-v-ec5a0c2c="" class="content-wrapper">
@@ -107,11 +180,10 @@
 											<!---->
 											<div data-v-8ed31374="" class="left">
 												<div data-v-8ed31374="" class="img-ticket">
-													 
-													<img data-v-2fed1a9a="" data-v-8ed31374="" src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"
-													alt=${ vo.dtitle } style=""> 
-													 
-													
+
+													<img data-v-2fed1a9a="" data-v-8ed31374=""   src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }" alt=${ vo.dtitle } style="">
+
+
 												</div>
 												<div data-v-8ed31374="" class="title-ticket">
 													<h2 data-v-8ed31374="" class="title">${ vo.dtitle }</h2>
@@ -120,69 +192,31 @@
 												<div data-v-8ed31374="" class="info-ticket">
 													<ul data-v-8ed31374="">
 														<li data-v-8ed31374="">
-															<strong data-v-8ed31374="" class="title">장소</strong>
-															<span data-v-8ed31374="" class="text">${ vo.dplace }</span>
-														</li>
+														<strong data-v-8ed31374="" class="title">장소</strong> 
+														<span data-v-8ed31374="" class="text">${ vo.dplace }</span></li>
 														<li data-v-8ed31374="" class="">
 															<strong data-v-8ed31374="" class="title">전시기간</strong>
-															<span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span>
-														</li>
-														<li data-v-8ed31374="">
-															<strong data-v-8ed31374="" class="title">운영시간</strong>
-															<span data-v-8ed31374="" class="text">${ vo.dtime }</span>
-														</li>
+															 <span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span></li>
+														<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">운영시간</strong> 
+														<span data-v-8ed31374="" class="text">${ vo.dtime }</span></li>
 														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
-															<p data-v-8ed31374="" class="price">${ vo.dprice } </p>
-														</li>
+															<p data-v-8ed31374="" class="price" >${ vo.dpricech }원</p></li>
+															
 													</ul>
 												</div>
-												<div data-v-8ed31374="" class=" ">
-													 
-												</div>
+												<div data-v-8ed31374="" class=" "></div>
 												<div data-v-8ed31374="" class="use-info-ticket">
 													<strong data-v-8ed31374="" class="title">이용 정보</strong>
-													<div class="content">
-		 
-		<%-- <table class="board">
-			<tr>
-				<td colspan="4">
-					<a href="board_write.do">
-					<button type="button" class="btn_style">글쓰기</button>
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<th>번호</th>
-				<th>후기</th>
-				<th>등록날짜</th>
-				 
-			</tr>
-			<c:forEach var="vo" items="${ list }"> 
-			 <tr>
-				<td>${ vo.getRno() }</td>
-				<td><a href="board_content.do?bid=${ vo.getBid()}">${ vo.getBtitle() }</a></td>
-				<td>${ vo.getBdate() }</td>
-				<td>${ vo.getBhits() }</td>
-			</tr>
-			</c:forEach> 
-			
-			<tr>
-				페이지 네비게이션 시작						
-				<td colspan=4><div id="ampaginationsm"></div></td>
-				페이지 네비게이션 종료 
-			</tr>
-		</table>	 --%>
-	</div>
+													<div class="content"></div>
 													<div data-v-8ed31374="" class="contents">
 														<div class="editor-contents-area">
 															<p>
-																 
- 
+
+
 
 																<br>
 															</p>
-															<ul style="font-size: 15px">
-																${ vo.dinformation }
+															<ul style="font-size: 15px">${ vo.dinformation }
 															</ul>
 															<p>
 																<br>
@@ -200,162 +234,200 @@
 											<div data-v-8ed31374="" class="right">
 												<ul data-v-8ed31374="" class="ticketing-list-area">
 													<li data-v-8ed31374="" class="item-ticketing">
-														<div data-v-8ed31374="" name="btn_toggle" id="data-v-8ed31374_btn" role="button" class="title-area btn-toggle on">관람일</div>
-														  <div data-v-8ed31374="" class="field-area"></div>
-														  	<div data-v-8ed31374="" class="datepicker_wrap"></div>
-																  <div class="vdp-datepicker small"
-																	allowed-to-show-view="function() {}"></div> 
-																	<div class=""></div> 
-														 		<!---->
-															<!-- 			<input type="hidden" readonly="readonly"
-																			autocomplete="off" value="31 08 2022">
-																		
-																	</div>
-																	<div class="dcalender vdp-datepicker__calendar" style="position: static;">
-																		<header>
-																			<span class="prev disabled">&lt;</span> <span
-																				class="day__month_btn">2022 . 08</span> <span
-																				class="next">&gt;</span>
-																		</header>
-													 
-														-->
+														<div data-v-8ed31374="" name="btn_toggle"
+															id="data-v-8ed31374_btn" role="button"
+															class="title-area btn-toggle on">관람일</div>
+														<div data-v-8ed31374="" class="field-area"></div>
+														<div data-v-8ed31374="" class="datepicker_wrap"></div>
+														<div class="vdp-datepicker small"
+															allowed-to-show-view="function() {}"></div>
+														<div class=""></div> 
+														
 														<!-- 달력 코딩 -->
-														<div id = "calendar" class="ticketing-list-area"></div>
-														<input type = "hidden" name = "date" id = "date">
+														<div id="calendar" class="ticketing-list-area"></div>
+													   
 														
 														
-														<!-- 
+														 <!-- 
 														<div data-v-8ed31374="" class="decision-area">
 															2022.08.31</div></li> -->
 													<li data-v-8ed31374="" class="item-ticketing">
-													<div data-v-8ed31374="" id="btn_toggle" role="button" class="title-area btn-toggle on">회차</div>
+														<div data-v-8ed31374="" id="btn_toggle" role="button"
+															class="title-area btn-toggle on">회차</div>
 														<div data-v-8ed31374="" class="field-area">
 															<ul data-v-8ed31374="" class="round-list">
-																<li data-v-8ed31374="" class=""><button data-v-8ed31374="" type="button" disabled="disabled" class="round-selection" id="entertime">
-																		<span data-v-8ed31374="" name="content" id="content">전일 입장 가능 11:00 ~ 20:00</span>
+																<li data-v-8ed31374="" class="">
+																	<button data-v-8ed31374="" type="button" disabled="disabled" class="round-selection" id="entertime"  onclick="myFunction()">
+																		<span data-v-8ed31374="" name="rtime" id="content" class="ContentEnter" value="${vo.dentertime }"> ${vo.dentertime }</span>
+																	 	
+																		 
 																		<!---->
-																	</button></li>
+																	</button>
+																</li>
 															</ul>
 														</div>
-														<div data-v-8ed31374="" class="decision-area">~</div></li>
+														<div data-v-8ed31374="" class="decision-area">~</div>
+													</li>
 													<li data-v-8ed31374="" class="item-ticketing">
-													<div data-v-8ed31374="" role="button" class="title-area btn-toggle" id="btb_toggle_hide" >관람인원 및 권종<div data-v-8ed31374="" class="tooltip-area">
-																 
-															<!---->
+														<div data-v-8ed31374="" role="button" class="title-area btn-toggle" id="btb_toggle_hide"> 관람인원 	
+														<div data-v-8ed31374="" class="tooltip-area">
+
+																<!---->
+															</div>
 														</div>
-													</div>
-													<div data-v-8ed31374="" class="field-area" style="" id="content_hide">
-														<p data-v-8ed31374="" class="error-msg">한 개의 ID로 회당 최대 4매까지 예매
-															가능합니다.</p>
-														<ul data-v-8ed31374="" class="personnel-list">
-															<li data-v-8ed31374=""><div data-v-8ed31374=""
-																	class="personal-control">
-																	<span data-v-8ed31374="" class="person">인원</span>
-																	<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control">
-																	
-																		<button id="countpeople" name="countpeople" data-v-1dc6379c="" type="button" disabled="disabled" class="btn-minus"  id="decreaseQuantity"></button>
-																		
-																			<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area" >
-																			<input data-v-67ca82d2="" id="field40" autocomplete="on" placeholder="" readonly="readonly" maxlength="-1" type="text" class="" > 	
-																			<a data-v-67ca82d2="" href="javascript:void(0);" class=""></a></div>
+														<div data-v-8ed31374="" class="field-area" style=""
+															id="content_hide">
+															<p data-v-8ed31374="" class="error-msg">한 개의 ID로 회당
+																최대 4매까지 예매 가능합니다.</p>
+															<ul data-v-8ed31374="" class="personnel-list">
+																<li data-v-8ed31374=""><div data-v-8ed31374=""
+																		class="personal-control">
+																		<span data-v-8ed31374="" class="person">인원</span>
+																		<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control" name="data-v-1dc6379c">
+
+																			<button id="countpeople" name="countpeople" data-v-1dc6379c="" type="button" class="btn-minus" id="decreaseQuantity"></button>
+
+																			<div data-v-67ca82d2="" data-v-1dc6379c="" 	class="input-area">
 																			
-																		<button data-v-1dc6379c="" type="button" class="btn-plus" id="increaseQuantity"></button>
-																		
-																		 
-																	</div>
-																</div></li>
-															<li data-v-8ed31374=""><div data-v-8ed31374=""
-																	class="personal-control">
-																	 
-																	<div data-v-1dc6379c="" data-v-8ed31374=""
-																		class="control count-control">
-																		 
-																		<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area">
+																				<input data-v-67ca82d2="" id="inptext" name="rtotal" type="text" value="0" onfocusout="onlyNumber();" autocomplete="on" placeholder="" readonly="readonly" maxlength="-1">
 																			 
-																			<!---->
-																			<!---->
-																			<!---->
-																			<!---->
-																			<!---->
-																			<a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>
-																			<!---->
+																				<!-- <a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>-->
+																			</div>
+
+																			<button data-v-1dc6379c="" type="button" class="btn-plus" id="increaseQuantity"></button>
+
+
+
 																		</div>
-																		 
-																	</div>
-																</div></li>
-															<li data-v-8ed31374=""><div data-v-8ed31374=""
-																	class="personal-control">
-																	<span data-v-8ed31374="" class="person"> </span>
-																	<div data-v-1dc6379c="" data-v-8ed31374=""
-																		class="control count-control">
-																		 
-																		<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area">
+																	</div></li>
+																<li data-v-8ed31374=""><div data-v-8ed31374="" class="personal-control">
+
+																		<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control">
+
+																			<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area">
+ 
+																				<a data-v-67ca82d2="" href="javascript:void(0);"
+																					class=""></a>
+																				 
+																			</div>
+
+																		</div>
+																	</div></li>
+																<li data-v-8ed31374=""><div data-v-8ed31374="" class="personal-control">
+																		<span data-v-8ed31374="" class="person"> </span>
+																		<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control">
+
+																			<div data-v-67ca82d2="" data-v-1dc6379c="" class="input-area">
+ 
+																				<a data-v-67ca82d2="" href="javascript:void(0);"
+																					class=""></a>
 																			 
-																			<!---->
-																			<!---->
-																			<!---->
-																			<!---->
-																			<!---->
-																			<a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>
-																			<!---->
+																			</div>
+
 																		</div>
-																		 
-																	</div>
-																</div></li>
-														</ul>
-														<ul data-v-8ed31374="" class="personnel-result">
-															<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">인원</strong><span
-																data-v-8ed31374="" class="count">0</span></li>
-															 
-														</ul>
-														<div data-v-8ed31374="" class="btn-bottom-area">
-															<ul data-v-8ed31374="" class="agreement-list">
-																<li data-v-8ed31374=""><div data-v-34230fe0=""
-																		data-v-8ed31374="" class="check-area reservation">
-																		<input data-v-34230fe0="" id="check30" type="checkbox" class=""><label
-																			data-v-34230fe0="" for="check30"><span
-																			data-v-34230fe0="" class="check"></span>관람시 유의사항 동의</label>
-																	</div>
-																	<div data-v-26e42198="" data-v-8ed31374="" class="btn-area link">
-																		<a data-v-26e42198="" href="javascript:void(0);"
-																			class="icon go-page"> 전문보기 </a>
 																	</div></li>
 															</ul>
-															<div data-v-26e42198="" data-v-8ed31374=""
-																class="btn-area btn-reservation"  >
-														 <a href="http://localhost:9000/dmu/ticket_reservation.do?did=${ vo.getDid()}" target="_parent" >
-														 <button data-v-26e42198="" id="btn32" type="button" class="primary" >
-														  예매하기 </button></a>
-																		 							</div>
-																										</div>
-																									</div></li>
-																							</ul>
-																						</div>
-																						<!---->
-																					</div>
-																					<!---->
-																					<!---->
-																				</div>
-																			</div>
+															<ul data-v-8ed31374="" class="personnel-result">
+																<li data-v-8ed31374=""> 
+																	 
+																 
+
+
+															</ul>
+															<div data-v-8ed31374="" class="btn-bottom-area">
+																<ul data-v-8ed31374="" class="agreement-list">
+																	<li data-v-8ed31374="">
+																		<div data-v-34230fe0="" data-v-8ed31374=""
+																			class="check-area reservation">
+																			<input data-v-34230fe0="" id="check30"
+																				type="checkbox" class=""> <label
+																				data-v-34230fe0="" for="check30"> <span
+																				data-v-34230fe0="" class="check" id="check30"></span>관람시 유의사항 동의
+																			</label>
 																		</div>
-																	</div>
+																		<div data-v-26e42198="" data-v-8ed31374="" class="btn-area link" id="btn-area link">
+																			<a data-v-26e42198="" href="javascript:void(0);"class="icon go-page">전문보기</a>
+																		</div>
+																	</li>
+																</ul>
+																<div data-v-26e42198="" data-v-8ed31374=""
+																	class="btn-area btn-reservation">
+																 
+																		<button data-v-26e42198="" id="btn32" type="submit" class="primary" disabled>예매하기</button>
+																		
+																 <!--	 <div data-v-9a980cc6="" data-v-9dea2aa6="" id="popup" class="layer-dimmed all-terms-pop is-footer" style="  visibility:hidden ;">
+ 
+																	  <div data-v-9a980cc6="" class="layer" style="width: 39.125rem; height: 48.25rem; margin-left: -313px; margin-top: -386px;">
+																	 <div data-v-9a980cc6="" class="layer-header" > 전문보기
+																	  <button data-v-9a980cc6="" type="button" class="layer-close"> 닫기 </button></div> 
+																	  <div data-v-9a980cc6="" class="layer-body"><div data-v-9dea2aa6="" data-v-9a980cc6="">
+																	  <div data-v-9dea2aa6="" data-v-9a980cc6="" class="title-area">
+																	  <strong data-v-9dea2aa6="" data-v-9a980cc6="" class="title">관람 시 유의사항 동의</strong></div>
+																	  <div data-v-9dea2aa6="" data-v-9a980cc6="" class="contents-area"><div>
+																		    <strong style="line-height:1.7;color:#111;">1. 입장, 티켓 환불 &amp; 취소</strong>
+																		    <ul>
+																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 예매하신 티켓의 변경, 취소, 환불은 전시 관람 또는 프로그램 하루 전 오후 5시까지만 가능합니다. 이후에는 취소와 환불이 불가하오니 유의해 주세요.</li>
+																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 전시 관람 또는 프로그램 참여 당일 예매하신 티켓은 취소, 변경, 환불이 불가합니다. 꼭 기억해 주세요.</li>
+																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 관람 및 참여 여부와 관계없이 예약시간에 사용하지 않은 티켓은 기간만료 처리 되어 취소,환불이 불가능합니다.</li>
+																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 재관람은 ‘사용완료’ 처리된 티켓으로만 가능합니다. 티켓을 취소 했거나, 예매 후 미술관을 방문하지 못해 기간만료 처리 된 티켓으로는 재관람이 어렵습니다.</li>
+																		    </ul>
+																		</div>
+																		
+																		<div style="padding-top:1rem">
+																		    <strong style="line-height:1.7;color:#111;">2. 코로나19 예방과 확산 방지를 위한 관람객 유의 사항</strong>
+																		    <ul>
+																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 미술관 안에서는 안전한 관람을 위하여 관람객 모두 마스크를 착용해야 합니다. <br>올바른 마스크 착용이 아니거나 마스크 착용을 거부할 경우 퇴장 조치 될 수 있습니다.</li>
+																		    </ul>
+																		</div>
+																		
+																		<div style="padding-top:1rem">
+																		   <strong style="line-height:1.7;color:#111;">3. 미술관 방문과 전시 관람</strong>
+																		    <ul>
+																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 전시장 안으로는 물, 껌, 사탕을 포함한 모든 음식물 반입이 불가하오니 꼭 기억해 주세요.</li>
+																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 미술관 내에는 안내견을 제외한 반려동물은 입장할 수 없습니다.</li>
+																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 플래시, 삼각대 및 셀카봉을 이용한 촬영, 상업적 용도의 촬영, 동영상 촬영은 불가합니다.</li>
+																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 14세 미만 어린이의 경우, 보호자와 함께 입장하셔야 합니다. 전시장에서는 어린이들이 보호자의 손을 잡고 전시를 관람할 수 있게 해 주세요.</li>
+																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 관람객이 전시 작품 및 시설물을 파괴하거나 훼손하였을 때에는 이에 상응하는 손해 배상을 하실 수 있으니, 관람에 유의해 주세요.</li>
+																		      <li style="line-height:1.7;text-indent:-0.7rem;padding-left:1rem;">• 디뮤지엄에서는 디뮤지엄 교육팀을 제외한 타 기관의 교육, 전시 해설은 불가합니다. 디뮤지엄의 승인 없이 교육을 진행할 경우 직원이 즉각 교육 중단을 요청할 수 있습니다.</li>
+																		    </ul>
+																		</div></div></div></div><div data-v-9a980cc6="" class="layer-footer"><div data-v-9dea2aa6="" data-v-9a980cc6=""><div data-v-9dea2aa6="" data-v-9a980cc6="" class="btn-group"><div data-v-26e42198="" data-v-9dea2aa6="" class="btn-area" data-v-9a980cc6=""><button data-v-26e42198="" id="btn352" type="button" class="primary full"> 확인 </button></div></div></div></div></div></div>
+																			 -->															 
+
 																</div>
 															</div>
-														</main>
-														
-														<button class="goto-top">상단으로 이동</button>
-													</div>
-												</div>
-												<!-- built files will be auto injected -->
-												<footer>
-													<!-- 0510 네이버 공통 js 추가 -->
-													<script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script>
-												</footer>
-											
-												<script type="text/javascript"
-													src="/js/chunk-vendors.85a954b2b4f1348cc700.js"></script>
-												<script type="text/javascript" src="/js/index.85a954b2b4f1348cc700.js"></script>
-												<iframe src="footer.do" width="100%" height="550px" scrolling="no" frameborder=0></iframe>
+														</div>
+													</li>
+												</ul>
+											</div>
+											<!---->
+										</div>
+										<!---->
+										<!---->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</form>
+
+		<button class="goto-top">상단으로 이동</button>
+	</div>
+	</div>
+	<!-- built files will be auto injected -->
+	<footer>
+		<!-- 0510 네이버 공통 js 추가 -->
+		<script type="text/javascript" src="//wcs.naver.net/wcslog.js">
+			
+		</script>
+	</footer>
+
+	<script type="text/javascript"
+		src="/js/chunk-vendors.85a954b2b4f1348cc700.js"></script>
+	<script type="text/javascript" src="/js/index.85a954b2b4f1348cc700.js"></script>
+	<iframe src="footer.do" width="100%" height="550px" scrolling="no"
+		frameborder=0></iframe>
 
 </body>
 </html>

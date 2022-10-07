@@ -78,6 +78,54 @@
 				<select data-v-8ed31374="" name = "dcode" id = "dcode">
 												<option value = "default">선택하세요</option>
 												<option value = "exhibition">exhibition</option>
+<<<<<<< HEAD
+												<option value = "learn">learn</option>
+												<option value = "event">event</option>
+											</select>
+			</li>
+			<li data-v-8ed31374="">
+				<strong data-v-8ed31374="" class="title">부제목</strong>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dtitle2" id="dtitle2" ></span>
+			</li>
+			<li data-v-8ed31374="">
+				<strong data-v-8ed31374="" class="title">장소</strong>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dplace" id="dplace" ></span>
+			</li>
+			
+			<li data-v-8ed31374="" class="">
+				<strong data-v-8ed31374="" class="title">전시기간</strong>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dstart" id="dstart" > ~ <input type="text" name="dend" id="dend" ></span>
+			</li>
+			
+			
+			<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
+				<p data-v-8ed31374="" class="price"><input type="text" name="dprice" id="dprice" ></p>
+			</li>
+
+			
+			
+			<li data-v-8ed31374="" class="">
+				<strong data-v-8ed31374="" class="title">정원</strong>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dpersonnel" id="dpersonnel"></span>
+			</li>
+			
+			<li data-v-8ed31374="" class="">
+				<strong data-v-8ed31374="" class="title">대상</strong>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dtarget" id="dtarget" ></span>
+			</li>
+			
+			<li data-v-8ed31374="" class="">
+				<strong data-v-8ed31374="" class="title">교육횟수</strong>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dnum" id="dnum" ></span>
+			</li>
+			<li data-v-8ed31374="">
+				<strong data-v-8ed31374="" class="title">운영시간</strong>
+				<textarea name="dtime"></textarea>
+			</li>
+			<li data-v-8ed31374="" class="">
+				<strong data-v-8ed31374="" class="title">회차</strong>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dentertime" id="dentertime" ></span>
+=======
 												<option value = "leran">learn</option>
 												<option value = "event">event</option>
 											</select>
@@ -116,6 +164,7 @@
 			<li data-v-8ed31374="">
 				<strong data-v-8ed31374="" class="title">운영시간</strong>
 				<textarea name="dtime"></textarea>
+>>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
 			</li>
 		</ul>
 	</div>
