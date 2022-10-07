@@ -74,6 +74,10 @@
 															<strong data-v-8ed31374="" class="title">부제목 </strong>
 															<span data-v-8ed31374="" class="text">${ vo.dtitle2 }</span>
 														</li>
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">회차/수업시간  </strong>
+															<span data-v-8ed31374="" class="text">${ vo.dentertime }</span>
+														</li>
 														<li data-v-8ed31374="" class="">
 															<strong data-v-8ed31374="" class="title">전시기간</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span>

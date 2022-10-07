@@ -5,7 +5,9 @@ import java.io.File;
 
 
 
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -15,8 +17,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.museum.dao.DmuTicketDAO;
 import com.museum.service.FileServiceImpl;
 import com.museum.service.PageServiceImpl;
@@ -60,7 +66,7 @@ public class TicketController {
 			if(result == 1){
 				if(!vo.getFile1().getOriginalFilename().equals("")) {
 					String path = request.getSession().getServletContext().getRealPath("/");
-					  path += "/resources/upload/";
+					  path += "resources/upload/";
 					File file = new File(path+vo.getDsfile());
 					vo.getFile1().transferTo(file);
 				}
@@ -78,19 +84,18 @@ public class TicketController {
 		 */
 		@RequestMapping(value="/exhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView exhibition_list(String rpage) {
-			ModelAndView mv = new ModelAndView();
 			
+			ModelAndView mv = new ModelAndView();
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+			Map<String,Integer> param = pageService.getPageResult(rpage, "exhibition", ticketService);
 
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
-			int result =ticketService.getTicketCount("exhibition");
+			ArrayList<DmuTicketVO> list = ticketService.getList( param.get("startCount") ,param.get("endCount"),"exhibition");
 			
 			mv.addObject("list",list);
-			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
+			mv.addObject("pageCount", param.get("pageCount"));
 			mv.setViewName("ticket/exhibition/exhibition_list");
 			
 			
@@ -104,16 +109,15 @@ public class TicketController {
 			ModelAndView mv = new ModelAndView();
 			
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+			Map<String,Integer> param = pageService.getPageResult(rpage, "event", ticketService);
 
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
-			int result =ticketService.getTicketCount("event");	
+			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"),"event");
 			
 			mv.addObject("list",list);
-			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
+			mv.addObject("pageCount", param.get("pageCount"));
 			mv.setViewName("ticket/event/event_list");
 			
 			
@@ -127,16 +131,15 @@ public class TicketController {
 			ModelAndView mv = new ModelAndView();
 			
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+			Map<String,Integer> param = pageService.getPageResult(rpage, "learn", ticketService);
 
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
-			int result =ticketService.getTicketCount("learn");
+			ArrayList<DmuTicketVO> list = ticketService.getList( param.get("startCount") ,param.get("endCount"),"learn");
 			
 			mv.addObject("list",list);
-			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
+			mv.addObject("pageCount", param.get("pageCount"));
 			mv.setViewName("ticket/learn/learn_list");
 			
 			
@@ -145,42 +148,90 @@ public class TicketController {
 		
 		//adminlearn list 관리자
 		@RequestMapping(value="/adminlearn_list.do", method=RequestMethod.GET)
-		public ModelAndView adminlearn_list(String rpage) {
+		public ModelAndView adminlearn_list(String rpage) throws Exception {
 			ModelAndView mv = new ModelAndView();
 			
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
-
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
-			int result =ticketService.getTicketCount("learn");
+			Map<String,Integer> param = pageService.getPageResult(rpage, "learn", ticketService);
+			
+			ArrayList<DmuTicketVO> list;
+			
+				
+		 list = ticketService.getList( param.get("startCount") ,param.get("endCount"),"learn");
+			
+			
+			
 			
 			mv.addObject("list",list);
-			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
+			mv.addObject("pageCount", param.get("pageCount"));
 			mv.setViewName("admin/adminticket/adminlearn_list");
 			
 			
 			return mv;
 		}
 		
+		//admin leran ajax
+		@ResponseBody
+		@RequestMapping(value="/adminlearn_ajaxlist.do", method =RequestMethod.GET,produces="text/plain;charset=UTF-8")
+		public String adminLearnAjaxList(String dtarget,String rpage){
+			
+
+			Map<String,Integer> param = pageService.getPageResult(rpage, dtarget, ticketService);
+			
+			ArrayList<DmuTicketVO> list = ticketService.getLists( param.get("startCount") ,param.get("endCount"),"learn",dtarget);
+			
+			JsonObject jobject = new JsonObject(); //DmuTicketVO
+			JsonArray jarray = new JsonArray();  //ArrayList
+			Gson gson = new Gson();
+			
+			for(DmuTicketVO vo : list){
+				JsonObject jo = new JsonObject();
+				jo.addProperty("rno", vo.getRno());
+				jo.addProperty("did", vo.getDid());
+				jo.addProperty("dplace", vo.getDplace());
+				jo.addProperty("dtitle", vo.getDtitle());
+				jo.addProperty("dstart", vo.getDstart());
+				jo.addProperty("dend", vo.getDend());
+				jo.addProperty("dfile", vo.getDfile());
+				jo.addProperty("dsfile", vo.getDsfile());
+				jo.addProperty("dcode", vo.getDcode());
+				jo.addProperty("dtime", vo.getDtime());
+				jo.addProperty("dprice", vo.getDprice());
+				jo.addProperty("dtarget", vo.getDtarget());
+				jo.addProperty("dnum", vo.getDnum());
+				jo.addProperty("dtitle2", vo.getDtitle2());
+				
+				jarray.add(jo);
+			}
+			jobject.add("list", jarray); 
+			jobject.addProperty("dbCount", param.get("dbCount"));
+			jobject.addProperty("pageSize", param.get("pageSize"));
+			jobject.addProperty("rpage", param.get("rpage"));
+			jobject.addProperty("pageCount", param.get("pageCount"));
+			
+			
+			
+			
+			return gson.toJson(jobject);
+		}
 		//exhibition list 관리자
 		@RequestMapping(value="/adminexhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView adminexhibition_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
 			
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+			Map<String,Integer> param = pageService.getPageResult(rpage, "exhibition", ticketService);
 
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
-			int result =ticketService.getTicketCount("exhibition");
+			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"),"exhibition");
 				
 			mv.addObject("list",list);
-			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
+			mv.addObject("pageCount", param.get("pageCount"));
 			mv.setViewName("admin/adminticket/adminexhibition_list");
 			
 			
@@ -192,16 +243,15 @@ public class TicketController {
 			ModelAndView mv = new ModelAndView();
 			
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+			Map<String,Integer> param = pageService.getPageResult(rpage, "event", ticketService);
 
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
-			int result =ticketService.getTicketCount("event");
+			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"),"event");
 			
 			mv.addObject("list",list);
-			mv.addObject("result",result);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
+			mv.addObject("pageCount", param.get("pageCount"));
 			mv.setViewName("admin/adminticket/adminevent_list");
 			
 			

@@ -19,16 +19,23 @@ public class TicketServiceImpl implements TicketService {
 	}
 	// 로우 길이 구하기 
 	@Override
-	public int getTotalCount() {
+	public int getTicketLearnCount(String dtarget) {
 		DmuTicketDAO dao = new DmuTicketDAO();
-		int result = dao.totalCount();
+		int result = dao.ticketlearnCount(dtarget);
 		return result;
+	}
+	// 계시판 learn리스트 출력 
+	@Override
+	public ArrayList<DmuTicketVO> getLists( int startCount,int endCount ,String dcode,String dtarget) {
+		DmuTicketDAO dao = new DmuTicketDAO();
+		ArrayList<DmuTicketVO> list = dao.selects( startCount,endCount,dcode,dtarget);
+		return list;
 	}
 	// 계시판 리스트 출력 
 	@Override
-	public ArrayList<DmuTicketVO> getList(int startCount, int endCount) {
+	public ArrayList<DmuTicketVO> getList( int startCount,int endCount ,String dcode) {
 		DmuTicketDAO dao = new DmuTicketDAO();
-		ArrayList<DmuTicketVO> list = dao.select(startCount, endCount);
+		ArrayList<DmuTicketVO> list = dao.select( startCount,endCount,dcode);
 		return list;
 	}
 	// 계시판 상세보기 

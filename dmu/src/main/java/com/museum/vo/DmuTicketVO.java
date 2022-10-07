@@ -5,10 +5,16 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class DmuTicketVO {
 	
 
-	int rno,dpersonnel,dnum, dprice;
-	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate,dtitle2;
+	int rno,dpersonnel, dprice;
+	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate,dtitle2,dentertime,dnum;
 
 	
+	public String getDentertime() {
+		return dentertime;
+	}
+	public void setDentertime(String dentertime) {
+		this.dentertime = dentertime;
+	}
 	public String getDtitle2() {
 		return dtitle2;
 	}
@@ -56,10 +62,11 @@ public class DmuTicketVO {
 	}
 
 	
-	public int getDnum() {
+	
+	public String getDnum() {
 		return dnum;
 	}
-	public void setDnum(int dnum) {
+	public void setDnum(String dnum) {
 		this.dnum = dnum;
 	}
 	public String getDid() {

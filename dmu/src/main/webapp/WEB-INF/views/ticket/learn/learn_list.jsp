@@ -7,9 +7,22 @@
 <meta charset="UTF-8">
 <title>dmu</title>
 <link rel="stylesheet"  href="http://localhost:9000/dmu/resources/css/tiket.css">
-<link rel="stylesheet"  href="http://localhost:9000/mycgv/resources/css/am-pagination.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+<script> 
+	$(document).ready(function(){
+		$(".aaa").click(function(){
+	
+			let dtarget = $(this).attr("id");
+	
+		});
+	$('#more_button').click(function(){
+								
+	$(location).attr('href', "http://localhost:9000/dmu/learn_list.do?rpage="+${rpage+1});         
+							    
+			});  
+});  
+</script>
 </head>
 <body>
 <iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
@@ -96,7 +109,7 @@
 		
 <div data-v-41f56098="" class="list-top-area">
 
-		<span data-v-41f56098="" class="total">총 <strong>${result }</strong>건</span>
+		<span data-v-41f56098="" class="total">총 <strong>${dbCount }</strong>건</span>
 			<ul data-v-41f56098="" class="order">
 				
 				<li data-v-41f56098="" class="on">
@@ -110,7 +123,6 @@
 		</div>
 <div data-v-41f56098="" class="ticket-list education">
 			<c:forEach var="vo" items="${list}">
-			<c:if test="${vo.dcode eq'learn'}">
 			<ul data-v-41f56098="">
 				<li data-v-41f56098="">
 						<c:if test="${vo.dsfile != null }">
@@ -149,18 +161,19 @@
 					</li>
 				</ul>
 			</ul>
-			</c:if>
 			</c:forEach>								
 				
 			
 		
 	</div>
-<div data-v-41f56098="" class="btn-more-area">
-<div data-v-26e42198="" data-v-41f56098="" class="btn-area">
-					<button data-v-26e42198="" id="btn144" type="button"
-					class="secondary more">더보기</button>
-</div>
-</div>
+											<c:if test= "${ rpage lt pageCount }"> 
+													<div data-v-41f56098="" class="btn-more-area">
+													<div data-v-26e42198="" data-v-41f56098="" class="btn-area" >
+														<button data-v-26e42198="" id="more_button" class="secondary more">더보기</button>
+					
+													</div>
+													</div>
+											</c:if> 
 </div>
 </div>
 </div>

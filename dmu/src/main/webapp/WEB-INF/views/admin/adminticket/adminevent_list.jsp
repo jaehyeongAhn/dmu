@@ -7,9 +7,19 @@
 <meta charset="UTF-8">
 <title>dmu</title>
 <link rel="stylesheet"  href="http://localhost:9000/dmu/resources/css/tiket.css">
-<link rel="stylesheet"  href="http://localhost:9000/mycgv/resources/css/am-pagination.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+<script>
+$(document).ready(function(){
+			
+	$('#more_button').click(function(){
+								
+								
+		$(location).attr('href', "http://localhost:9000/dmu/adminevent_list.do?rpage="+${rpage+1});         
+							    
+	});
+});
+</script>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
@@ -49,7 +59,7 @@
 										<div data-v-7b1f57c8="" class="sub-contents-area">
 											<div data-v-1e8092ec="" data-v-7b1f57c8="" class="container">
 												<div data-v-1e8092ec="" class="list-top-area">
-													<span data-v-1e8092ec="" class="total">총 <strong>${result }</strong>건
+													<span data-v-1e8092ec="" class="total">총 <strong>${dbCount}</strong>건
 													</span>
 													<ul data-v-1e8092ec="" class="order">
 														<li data-v-3c1f59cb="" class="">
@@ -64,7 +74,7 @@
 													</ul>
 												</div>
 												<c:forEach var="vo" items="${list}">
-												<c:if test="${vo.dcode eq'event'}">
+												
 												<div data-v-1e8092ec="" class="ticket-list event">
 													<ul data-v-1e8092ec="">
 														<li data-v-1e8092ec="">
@@ -102,9 +112,16 @@
 														
 													</ul>
 												</div>
-												</c:if>
 												</c:forEach>
 												<!---->
+									<c:if test= "${ rpage lt pageCount }"> 
+									<div data-v-41f56098="" class="btn-more-area">
+									<div data-v-26e42198="" data-v-41f56098="" class="btn-area" >
+											<button data-v-26e42198="" id="more_button" class="secondary more">더보기</button>
+					
+									</div>
+									</div>
+									</c:if> 
 											</div>
 										</div>
 									</div>

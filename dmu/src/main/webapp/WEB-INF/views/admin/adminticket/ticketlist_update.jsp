@@ -117,6 +117,10 @@
 				<strong data-v-8ed31374="" class="title">운영시간</strong>
 				<span data-v-8ed31374="" class="text"><input type="text" name="dtime" id="dtime" value="${vo.dtime }"></span>
 			</li>
+			<li data-v-8ed31374="">
+				<strong data-v-8ed31374="" class="title">회차/수업시간 </strong>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dtime" id="dtime" value="${vo.dentertime }"></span>
+			</li>
 			
 			<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
 				<p data-v-8ed31374="" class="price"><input type="text" name="dprice" id="dprice" value="${vo.dprice }"></p>

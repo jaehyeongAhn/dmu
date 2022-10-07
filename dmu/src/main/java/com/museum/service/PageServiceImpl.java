@@ -12,46 +12,66 @@ public class PageServiceImpl {
 	private TicketServiceImpl ticketrService;
 	
 	/**
-	 * ÆäÀÌÂ¡ Ã³¸® 
+	 * 
 	 */
 	 public Map<String,Integer> getPageResult(String rpage,String serviceName, Object service) {
 		 Map<String,Integer> param =new HashMap<String,Integer>();
 		//startCount, endCount
-			//ÆäÀÌÂ¡ Ã³¸® - startCount, endCount ±¸ÇÏ±â
+			//í˜ì´ì§• ì²˜ë¦¬ - startCount, endCount êµ¬í•˜ê¸° 
 			int startCount = 0;
 			int endCount = 0;
-			int pageSize = 5;	//ÇÑÆäÀÌÁö´ç °Ô½Ã¹° ¼ö
-			int reqPage = 1;	//¿äÃ»ÆäÀÌÁö	
-			int pageCount = 1;	//ÀüÃ¼ ÆäÀÌÁö ¼ö
-			int dbCount = 0;	//DB¿¡¼­ °¡Á®¿Â ÀüÃ¼ Çà¼ö
+			int pageSize = 3;	//í•œí˜ì´ì§€ë‹¹ ê²Œì‹œë¬¼ ìˆ˜ 
+			int reqPage = 1;	//ìš”ì²­ í˜ì´ì§€ 
+			int pageCount = 1;	//ì „ì²´ í˜ì´ì§€ ìˆ˜ 
+			int dbCount = 0;	//DBì—ì„œ ê°€ì ¸ì˜¨ ì „ì²´ í–‰ ìˆ˜ 
 			
-			if(serviceName.equals("ticket")) {
+			//dcodeê°€ learn ì¼ë•Œ dbcount ê°’ì´ ì •í•´ì§„ë‹¤. 
+			if(serviceName.equals("learn")) {
 				ticketrService =(TicketServiceImpl)service;
-				 dbCount = ticketrService.getTotalCount();
+				 dbCount = ticketrService.getTicketCount(serviceName);
+				 
 			}
-			//ÃÑ ÆäÀÌÁö ¼ö °è»ê
+			//dcodeê°€ event ì¼ë•Œ dbcount ê°’ì´ ì •í•´ì§„ë‹¤. 
+			if(serviceName.equals("event")) {
+				ticketrService =(TicketServiceImpl)service;
+				dbCount = ticketrService.getTicketCount(serviceName);
+				
+			}
+			//dcodeê°€ exhibition ì¼ë•Œ dbcount ê°’ì´ ì •í•´ì§„ë‹¤. 
+			if(serviceName.equals("exhibition")) {
+				ticketrService =(TicketServiceImpl)service;
+				dbCount = ticketrService.getTicketCount(serviceName);
+				
+			}
+			//dbcount ê°’ì´ ìˆìœ¼ë©´ ticketcount ì—ì„œ ê·¸ê°’ìœ¼ë¡œì°¾
+//			if(serviceName != null) {
+//				ticketrService =(TicketServiceImpl)service;
+//				dbCount = ticketrService.getTicketCount(serviceName);
+//			}
+			// ì´í˜ì´ì§€ ìˆ˜ ê³„ì‚° 
 			if(dbCount % pageSize == 0){
 				pageCount = dbCount/pageSize;
 			}else{
 				pageCount = dbCount/pageSize+1;
 			}
 			
-			//¿äÃ» ÆäÀÌÁö °è»ê
+			//ìš”ì²­ í˜ì´ì§€ ê³„ì‚° 
 			if(rpage != null){
 				reqPage = Integer.parseInt(rpage);
-				startCount = (reqPage-1) * pageSize+1;
+				startCount = 1;
+						//(reqPage-1) * pageSize+1;
 				endCount = reqPage *pageSize;
 			}else{
 				startCount = 1;
 				endCount = pageSize;
 			}
 			
-			//¸®ÅÏÅ¸ÀÔÀÎ  map ¿¡ µ¥ÀÌÅÍ Ãß°¡
+			//ë¦¬í„´íƒ€ì…ì¸ map ì— ë°ì´í„° ì¶”ê°€ 
 			param.put("startCount", startCount);
 			param.put("endCount", endCount);
 			param.put("dbCount", dbCount);
 			param.put("pageSize", pageSize);
-			param.put("PageCount", pageCount);
+			param.put("pageCount", pageCount);
 			param.put("rpage", reqPage);
 			
 			return param;

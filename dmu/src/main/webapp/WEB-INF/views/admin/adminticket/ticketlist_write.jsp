@@ -90,6 +90,10 @@
 				<strong data-v-8ed31374="" class="title">장소</strong>
 				<span data-v-8ed31374="" class="text"><input type="text" name="dplace" id="dplace" ></span>
 			</li>
+			<li data-v-8ed31374="">
+				<strong data-v-8ed31374="" class="title">회차/수업시간</strong>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dentertime" id="dentertime"></span>
+			</li>
 			
 			<li data-v-8ed31374="" class="">
 				<strong data-v-8ed31374="" class="title">전시기간</strong>
@@ -118,7 +122,7 @@
 				<span data-v-8ed31374="" class="text"><input type="text" name="dnum" id="dnum" ></span>
 			</li>
 			<li data-v-8ed31374="">
-				<strong data-v-8ed31374="" class="title">운영시간</strong>
+				<strong data-v-8ed31374="" class="title">운영시간/교육시간</strong>
 				<textarea name="dtime"></textarea>
 			</li>
 		</ul>
