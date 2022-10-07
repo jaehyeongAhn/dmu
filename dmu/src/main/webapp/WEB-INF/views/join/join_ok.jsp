@@ -40,6 +40,6 @@
 		</div>
 	</main>
 	
-	<iframe src="footer.do" width="100%" height="510px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer"></iframe>
 </body>
 </html>

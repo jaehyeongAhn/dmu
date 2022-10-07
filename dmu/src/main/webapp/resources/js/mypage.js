@@ -54,7 +54,35 @@ $(document).ready(function(){
 		}
 		
 
+		/************************ mypage_member_check.do *****************************/
+
+		//비밀번호 유효성 체크
+		$("button.member_check").click(function(){
+			if($(".passwordCheck").val() == ""){
+				warningCheck(true, $("div.myinfo-box div.check_normal_area div.pass_check_area"), "비밀번호를 입력해주세요.");
+			}else{
+				//mypageMemberCheckForm.submit();
+				$.ajax({
+					type : "post",
+					data : {
+						pass : $(".passwordCheck").val()
+					},
+					url : "mypage_member_confirm.do",
+					success : function(result) {
+						let data = JSON.parse(result);
+						
+						if(data.check_result == "fail") {
+							warningCheck(true, $("div.myinfo-box div.check_normal_area div.pass_check_area"), "비밀번호가 일치하지 않습니다.");
+						}else{
+							$(location).attr("href", "http://localhost:9000/dmu/mypage_member.do");
+						}
+					}
+				});//ajax
+			}//if~else
+		});//click
 		
+		
+		/************************ mypage_member.do **********************************/
 		let passRule = /^(?=.*[a-xA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{10,14}$/;
 		$(".primary").click(function(){
 			let password = $(".pass").val();
