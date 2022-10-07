@@ -9,7 +9,7 @@ import com.museum.vo.DmuTicketVO;
 
 public class DmuTicketDAO extends DBConn {
 	/**
-	 *  delete : �Խñ� ����
+	 *  delete : 
 	 */
 	public int delete(String did) {
 		int result=0;
@@ -28,7 +28,7 @@ public class DmuTicketDAO extends DBConn {
 	}
 
 	/**
-	 *  insert : �Խñ� �߰�
+	 *  insert : 
 	 */
 	public int insert(DmuTicketVO vo) {
 		int result = 0;
@@ -64,15 +64,11 @@ public class DmuTicketDAO extends DBConn {
 		return result;		
 	}
 	/**
-<<<<<<< HEAD
-	 * select : dcode로 분류해서  공지사항 리스트 출력 
-=======
-	 * select : exhibition �������� ����Ʈ
->>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
+	 * select : 
 	 */
 	public ArrayList<DmuTicketVO> select( int startCount,int endCount , String dcode){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
-		//sql문 에서 dcode로 분류해서 리스트 출력 리스트를 전체를 뽑아서 jsp에서 분류해 주면 두번 작업을 돌려야해서 시스템적으로  오래걸림!!!!
+		//sql臾� �뿉�꽌 dcode濡� 遺꾨쪟�빐�꽌 由ъ뒪�듃 異쒕젰 由ъ뒪�듃瑜� �쟾泥대�� 戮묒븘�꽌 jsp�뿉�꽌 遺꾨쪟�빐 二쇰㈃ �몢踰� �옉�뾽�쓣 �룎�젮�빞�빐�꽌 �떆�뒪�뀥�쟻�쑝濡�  �삤�옒嫄몃┝!!!!
 		String sql = " select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime "
 				 	+" from(select rownum rno,did,dplace,dtitle,   dstart ,"
 				 	+ "   dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime "
@@ -115,15 +111,11 @@ public class DmuTicketDAO extends DBConn {
 		return list;
 	}
 	/**
-<<<<<<< HEAD
-	 * select : learn 에서  dtarget으로 분류해서 리스트 출
-=======
-	 * totalCount : ��ü �ο�� ���
->>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
+	 * totalCount : 
 	 */
 	public ArrayList<DmuTicketVO> selects( int startCount,int endCount , String dcode,String dtarget){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
-		//sql문 에서 dcode로 분류해서 리스트 출력 리스트를 전체를 뽑아서 jsp에서 분류해 주면 두번 작업을 돌려야해서 시스템적으로  오래걸림!!!!
+		//sql臾� �뿉�꽌 dcode濡� 遺꾨쪟�빐�꽌 由ъ뒪�듃 異쒕젰 由ъ뒪�듃瑜� �쟾泥대�� 戮묒븘�꽌 jsp�뿉�꽌 遺꾨쪟�빐 二쇰㈃ �몢踰� �옉�뾽�쓣 �룎�젮�빞�빐�꽌 �떆�뒪�뀥�쟻�쑝濡�  �삤�옒嫄몃┝!!!!
 		String sql = " select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime "
 				+" from(select rownum rno,did,dplace,dtitle,   dstart ,"
 				+ "   dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime "
@@ -167,7 +159,7 @@ public class DmuTicketDAO extends DBConn {
 		return list;
 	}
 	/**
-	 *  dcode로 총 갯수 구하기	
+	 *  dcode
 	 */
 	public int ticketCount(String dcode) {
 		int result = 0;
@@ -187,7 +179,7 @@ public class DmuTicketDAO extends DBConn {
 			return result;
 	}
 	/**
-	 *  dtarget로 총 갯수 구하기	
+	 *  dtarget
 	 */
 	public int ticketlearnCount(String dtarget) {
 		int result = 0;
@@ -208,13 +200,9 @@ public class DmuTicketDAO extends DBConn {
 	}
 	
 
-	/* 02.관람일/인원선택
-	 *  select : 게시글 상세보기
-=======
-	
-	/* 02.������/�ο�����
-	 *  select : �Խñ� �󼼺���
->>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
+	/* 02.
+	 *  select : 
+	 *  select : 
 	 */
 	public DmuTicketVO select(String did) {
 		DmuTicketVO vo = new DmuTicketVO();
@@ -251,7 +239,7 @@ public class DmuTicketDAO extends DBConn {
 
 			}
 			
-		//	close(); ��ȸ�� ������Ʈ�� ���� ������ �ϱ����ؼ� �ּ� ó���ؾߵȴ�
+		//	close(); 
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -259,7 +247,7 @@ public class DmuTicketDAO extends DBConn {
 		
 		return vo;
 	}
-	// �Խñ� ������Ʈ
+	// 
 	public int update(DmuTicketVO vo) {
 		int result = 0;
 		String sql = " 	update dmu_ticket set dtitle=?, dstart=?, dend=?, dprice=?, dplace=?, dinformation=?, dtime=?, dpersonnel=?,"
