@@ -21,20 +21,15 @@
 <div data-v-7b1f57c8="" class="sub-contents-area">
 <div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
 			<ul data-v-6d324aa0="">
-				<li data-v-6d324aa0="" class="on">
-					<span data-v-6d324aa0="" class="no">01</span>
-					<span data-v-6d324aa0="" class="txt">.티켓 선택</span>
-				</li>
-				
-				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">02</span>
-					<span data-v-6d324aa0="" class="txt">.관람일/인원 선택</span>
-				</li>
-				
-				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">03</span>
-					<span data-v-6d324aa0="" class="txt">.결제</span>
-				</li>
+				<li data-v-6d324aa0="" class="complete"><span
+					data-v-6d324aa0="" class="no">01</span><span
+					data-v-6d324aa0="" class="txt">ticket</span></li>
+				<li data-v-6d324aa0="" class="on"><span
+					data-v-6d324aa0="" class="no">02</span><span
+					data-v-6d324aa0="" class="txt">ticket content</span></li>
+				<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
+				class="no">03</span><span data-v-6d324aa0="" class="txt">
+						수정/삭제</span></li>
 			</ul>
 		</div>
 <div data-v-7b1f57c8="" class="container">
@@ -118,7 +113,7 @@
 			<ul data-v-41f56098="">
 				<li data-v-41f56098="">
 						<c:if test="${vo.dsfile != null }">
-					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketcontent.do?did=${ vo.did }" class="thumb">
+					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" class="thumb">
 						<img data-v-2fed1a9a="" data-v-1e8092ec=""src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"></a>
 						</c:if>
 			<ul data-v-41f56098="" class="flag">
@@ -127,7 +122,7 @@
 			<!---->
 			<!---->
 			</ul>
-					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketcontent.do?did=${ vo.did }"
+					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}"
 					class="title">${vo.dtitle}</a>
 					
 					<!-- <p data-v-41f56098="" class="explan">Culture Lover들의 문화·예술로 익히는 영어습관</p> -->

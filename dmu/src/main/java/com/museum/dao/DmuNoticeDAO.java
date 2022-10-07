@@ -126,6 +126,8 @@ public class DmuNoticeDAO extends DBConn{
 		return result;
 	}
 	
+
+	
 	/*
 	 * 공지사항 수정
 	 */
@@ -176,4 +178,69 @@ public class DmuNoticeDAO extends DBConn{
 		
 		return result;
 	}
+	
+	
+	
+	/*
+	 * 카테고리
+	 * totalCount_category
+	 */
+	
+	public int totalCount_category(String ncategory) {
+		int result = 0;
+		
+		String sql = "select count(*) from dmu_notice where ncategory=?";
+		
+		try {
+			getPreparedStatement(sql);
+			pstmt.setString(1, ncategory);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				result=rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+				
+	}
+	
+	
+	
+	public ArrayList<DmuNoticeVO> categoryList(int startCount, int endCount, String ncategory) {
+		ArrayList<DmuNoticeVO> clist = new ArrayList<DmuNoticeVO>();
+		
+		String sql = "select rno, nid, ncategory, ntitle, ndate "
+				+ " from(select rownum rno, nid, ncategory, ntitle, to_char(ndate, 'yyyy-mm-dd') ndate "
+				+ " from(select nid, ncategory, ntitle, ndate from dmu_notice where ncategory=? "
+				+ " order by ndate desc)) "
+				+ " where rno between ? and ? ";
+		
+		try {
+			getPreparedStatement(sql);
+			pstmt.setString(1, ncategory);
+			pstmt.setInt(2, startCount);
+			pstmt.setInt(3, endCount);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				DmuNoticeVO vo = new DmuNoticeVO();
+				vo.setRno(rs.getInt(1));
+				vo.setNid(rs.getString(2));
+				vo.setNcategory(rs.getString(3));
+				vo.setNtitle(rs.getString(4));
+				vo.setNcontent(rs.getString(5));
+				vo.setNdate(rs.getString(6));
+			}
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return clist;
+	}
+	
+	
+	
 }

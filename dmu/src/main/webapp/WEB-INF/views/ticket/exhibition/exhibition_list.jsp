@@ -10,12 +10,22 @@
 <meta charset="UTF-8">
 <title>dmu</title>
 <link rel="stylesheet"  href="http://localhost:9000/dmu/resources/css/tiket.css">
-<link rel="stylesheet"  href="http://localhost:9000/mycgv/resources/css/am-pagination.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+<script> 
+
+	$(document).ready(function(){
+	
+
+			
+	$('#more_button').click(function(){
+								
+	$(location).attr('href', "http://localhost:9000/dmu/exhibition_list.do?rpage="+${rpage+1});         
+							    
+</script>		
 </head>
 <body>
-<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
+<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 ></iframe>
 <main>
 <div data-v-ec5a0c2c="" class="root-container">
 <div data-v-ec5a0c2c="" class="content-wrapper">
@@ -64,7 +74,7 @@
 <div data-v-3c1f59cb="" class="list-top-area">
 
 
-					<span data-v-3c1f59cb="" class="total">총 <strong>1</strong>건</span>
+					<span data-v-3c1f59cb="" class="total">총 <strong>${dbCount }</strong>건</span>
 					
 			<ul data-v-3c1f59cb="" class="order">
 				
@@ -79,7 +89,6 @@
 
 			<ul data-v-3c1f59cb="">
 					<c:forEach var="vo" items="${list}">
-					<c:if test="${vo.dcode eq'exhibition'}">
 						<li data-v-3c1f59cb="">
 						<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do?did=${ vo.getDid()}" target="_parent" class="thumb">
 					<c:if test="${vo.dsfile != null }">
@@ -90,30 +99,21 @@
 					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do?did=${ vo.getDid()}" target="_parent" class="title"> ${vo.dtitle } </a>
 						<p data-v-3c1f59cb="" class="explan"></p>
 						<span data-v-3c1f59cb="" class="term"> ${vo.dstart }~ ${vo.dend } </span></li>
-					</c:if>
 					</c:forEach>
 					
-				<%-- 	<c:forEach var="vo" items="${ list }"> 
-						 <tr>
-						 
-							<c:if test="${vo.dsfile != null }">		
-							<a href="exhibition.do?did=${ vo.getDid()}"><img  src="http://localhost:9000/dmu/resources/upload/${vo.dsfile}"></a>
-							 
-			 				</c:if>
-			 			
-							<td><a href="exhibition.do?did=${ vo.getDid()}"></a></td>
-							<td>${ vo.getDcode() }</td>
-							 
-							<td><a href="exhibition.do?did=${ vo.getDid()}">${ vo.getDtitle() }</a></td>
-							<td>${ vo.getDstart() } ~ ${ vo.getDend() } </td>
-							
-						 
-						</tr>
-					</c:forEach>   --%>
+				 
 			</ul>										
 </div>
 												
 <!---->
+											<c:if test= "${ rpage lt pageCount }"> 
+													<div data-v-41f56098="" class="btn-more-area">
+													<div data-v-26e42198="" data-v-41f56098="" class="btn-area" >
+														<button data-v-26e42198="" id="more_button" class="secondary more">더보기</button>
+					
+													</div>
+													</div>
+											</c:if> 
 </div>
 </div>
 </div>

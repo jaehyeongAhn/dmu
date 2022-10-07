@@ -4,8 +4,12 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class DmuTicketVO {
 	
-	int rno,dpersonnel,dnum;
-	String did, dtitle, dstart, dend , dprice,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget;
+ 
+	int rno,dpersonnel, dprice;
+	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate,dtitle2,dentertime,dnum,dpricech;
+
+ 
+	
 	
 	CommonsMultipartFile file1;
 	public CommonsMultipartFile getFile1() {
@@ -13,18 +17,6 @@ public class DmuTicketVO {
 	}
 	public void setFile1(CommonsMultipartFile file1) {
 		this.file1 = file1;
-	}
-	public String getDcode() {
-		return dcode;
-	}
-	public String getDtarget() {
-		return dtarget;
-	}
-	public void setDtarget(String dtarget) {
-		this.dtarget = dtarget;
-	}
-	public void setDcode(String dcode) {
-		this.dcode = dcode;
 	}
 	public int getRno() {
 		return rno;
@@ -38,13 +30,11 @@ public class DmuTicketVO {
 	public void setDpersonnel(int dpersonnel) {
 		this.dpersonnel = dpersonnel;
 	}
-
-	
-	public int getDnum() {
-		return dnum;
+	public int getDprice() {
+		return dprice;
 	}
-	public void setDnum(int dnum) {
-		this.dnum = dnum;
+	public void setDprice(int dprice) {
+		this.dprice = dprice;
 	}
 	public String getDid() {
 		return did;
@@ -52,7 +42,6 @@ public class DmuTicketVO {
 	public void setDid(String did) {
 		this.did = did;
 	}
-
 	public String getDtitle() {
 		return dtitle;
 	}
@@ -71,14 +60,6 @@ public class DmuTicketVO {
 	public void setDend(String dend) {
 		this.dend = dend;
 	}
-	
-	 
-	public String getDprice() {
-		return dprice;
-	}
-	public void setDprice(String dprice) {
-		this.dprice = dprice;
-	}
 	public String getDplace() {
 		return dplace;
 	}
@@ -91,7 +72,6 @@ public class DmuTicketVO {
 	public void setDinformation(String dinformation) {
 		this.dinformation = dinformation;
 	}
-	
 	public String getDtime() {
 		return dtime;
 	}
@@ -110,10 +90,49 @@ public class DmuTicketVO {
 	public void setDsfile(String dsfile) {
 		this.dsfile = dsfile;
 	}
+	public String getDcode() {
+		return dcode;
+	}
+	public void setDcode(String dcode) {
+		this.dcode = dcode;
+	}
+	public String getDtarget() {
+		return dtarget;
+	}
+	public void setDtarget(String dtarget) {
+		this.dtarget = dtarget;
+	}
+	public String getEnddate() {
+		return enddate;
+	}
+	public void setEnddate(String enddate) {
+		this.enddate = enddate;
+	}
+	public String getDtitle2() {
+		return dtitle2;
+	}
+	public void setDtitle2(String dtitle2) {
+		this.dtitle2 = dtitle2;
+	}
+	public String getDentertime() {
+		return dentertime;
+	}
+	public void setDentertime(String dentertime) {
+		this.dentertime = dentertime;
+	}
+	public String getDnum() {
+		return dnum;
+	}
+	public void setDnum(String dnum) {
+		this.dnum = dnum;
+	}
+	public String getDpricech() {
+		return dpricech;
+	}
+	public void setDpricech(String dpricech) {
+		this.dpricech = dpricech;
+	}
 	
-	
+	 
  
 }
-
-
-

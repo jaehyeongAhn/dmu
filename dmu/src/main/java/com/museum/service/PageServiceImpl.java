@@ -12,49 +12,69 @@ public class PageServiceImpl {
 	private TicketServiceImpl ticketrService;
 	
 	/**
-	 * ÆäÀÌÂ¡ Ã³¸® 
+	 * 
 	 */
 	 public Map<String,Integer> getPageResult(String rpage,String serviceName, Object service) {
 		 Map<String,Integer> param =new HashMap<String,Integer>();
 		//startCount, endCount
-			//ÆäÀÌÂ¡ Ã³¸® - startCount, endCount ±¸ÇÏ±â
+			//ï¿½ëŸ¹ï¿½ì” ï§ï¿½ ï§£ì„â” - startCount, endCount æ´Ñ‹ë¸¯æ¹²ï¿½ 
 			int startCount = 0;
 			int endCount = 0;
-			int pageSize = 5;	//ÇÑÆäÀÌÁö´ç °Ô½Ã¹° ¼ö
-			int reqPage = 1;	//¿äÃ»ÆäÀÌÁö	
-			int pageCount = 1;	//ÀüÃ¼ ÆäÀÌÁö ¼ö
-			int dbCount = 0;	//DB¿¡¼­ °¡Á®¿Â ÀüÃ¼ Çà¼ö
+			int pageSize = 3;	//ï¿½ë¸³ï¿½ëŸ¹ï¿½ì” ï§ï¿½ï¿½ë–¦ å¯ƒëš¯ë–†è‡¾ï¿½ ï¿½ë‹” 
+			int reqPage = 1;	//ï¿½ìŠ‚ï§£ï¿½ ï¿½ëŸ¹ï¿½ì” ï§ï¿½ 
+			int pageCount = 1;	//ï¿½ìŸ¾ï§£ï¿½ ï¿½ëŸ¹ï¿½ì” ï§ï¿½ ï¿½ë‹” 
+			int dbCount = 0;	//DBï¿½ë¿‰ï¿½ê½Œ åª›ï¿½ï¿½ì¡‡ï¿½ì‚© ï¿½ìŸ¾ï§£ï¿½ ï¿½ë»¾ ï¿½ë‹” 
 			
-			if(serviceName.equals("ticket")) {
+			//dcodeåª›ï¿½ learn ï¿½ì”ªï¿½ë¸£ dbcount åª›ë¯ªì”  ï¿½ì ™ï¿½ë¹ï§ê¾¨ë–. 
+			if(serviceName.equals("learn")) {
 				ticketrService =(TicketServiceImpl)service;
-				 dbCount = ticketrService.getTotalCount();
+				 dbCount = ticketrService.getTicketCount(serviceName);
+				 
 			}
-			//ÃÑ ÆäÀÌÁö ¼ö °è»ê
+			//dcodeåª›ï¿½ event ï¿½ì”ªï¿½ë¸£ dbcount åª›ë¯ªì”  ï¿½ì ™ï¿½ë¹ï§ê¾¨ë–. 
+			if(serviceName.equals("event")) {
+				ticketrService =(TicketServiceImpl)service;
+				dbCount = ticketrService.getTicketCount(serviceName);
+				
+			}
+			//dcodeåª›ï¿½ exhibition ï¿½ì”ªï¿½ë¸£ dbcount åª›ë¯ªì”  ï¿½ì ™ï¿½ë¹ï§ê¾¨ë–. 
+			if(serviceName.equals("exhibition")) {
+				ticketrService =(TicketServiceImpl)service;
+				dbCount = ticketrService.getTicketCount(serviceName);
+				
+			}
+			//dbcount åª›ë¯ªì”  ï¿½ì—³ï¿½ì‘ï§ï¿½ ticketcount ï¿½ë¿‰ï¿½ê½Œ æ´¹ë©¸ì»ªï¿½ì‘æ¿¡ì’–ê°¼
+//			if(serviceName != null) {
+//				ticketrService =(TicketServiceImpl)service;
+//				dbCount = ticketrService.getTicketCount(serviceName);
+//			}
+			// ç¥ì•ºëŸ¹ï¿½ì” ï§ï¿½ ï¿½ë‹” æ€¨ê¾©ê¶› 
 			if(dbCount % pageSize == 0){
 				pageCount = dbCount/pageSize;
 			}else{
 				pageCount = dbCount/pageSize+1;
 			}
 			
-			//¿äÃ» ÆäÀÌÁö °è»ê
+			//ï¿½ìŠ‚ï§£ï¿½ ï¿½ëŸ¹ï¿½ì” ï§ï¿½ æ€¨ê¾©ê¶› 
 			if(rpage != null){
 				reqPage = Integer.parseInt(rpage);
-				startCount = (reqPage-1) * pageSize+1;
+				startCount = 1;
+						//(reqPage-1) * pageSize+1;
 				endCount = reqPage *pageSize;
 			}else{
 				startCount = 1;
 				endCount = pageSize;
 			}
 			
-			//¸®ÅÏÅ¸ÀÔÀÎ  map ¿¡ µ¥ÀÌÅÍ Ãß°¡
+			//ç”±Ñ‹ê½©ï¿½ï¿½ï¿½ì—¯ï¿½ì”¤ map ï¿½ë¿‰ ï¿½ëœ²ï¿½ì” ï¿½ê½£ ç•°ë¶½ï¿½ 
 			param.put("startCount", startCount);
 			param.put("endCount", endCount);
 			param.put("dbCount", dbCount);
 			param.put("pageSize", pageSize);
-			param.put("PageCount", pageCount);
+			param.put("pageCount", pageCount);
 			param.put("rpage", reqPage);
 			
 			return param;
 			
 	 }
-}
+} 

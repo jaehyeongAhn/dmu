@@ -8,8 +8,24 @@ public class DmuMemberVO {
 	
 	//View에서 넘어오는 name
 	String email1, email2, pnum1, pnum2, pnum3, year, month, day;
-
 	
+	//회원 리스트용
+	String address;
+	
+	
+	 public String getAddress(){ 
+		// if(addr1 == null) { 
+		//	 return addr1+ " " + addr2; 
+		// }else{
+			 return address; 
+		// } 
+	 }
+	 
+	 public void setAddress(String address) { 
+		 this.address = address; 
+	}
+	 
+
 	public int getRno() {
 		return rno;
 	}
