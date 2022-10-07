@@ -10,14 +10,6 @@
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
-<!-- 이미지 경로 수정하기 -->
-<script>
-	$(document).ready(function(){
-	});
-</script>
-<style>
-	
-</style>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 class = "header"></iframe>
@@ -65,28 +57,30 @@
 					<div class="page-title">
 						<h2>개인정보 변경/탈퇴</h2>
 					</div>
-					<div class="myinfo_check">
-						<div class="myinfo-box">
-							<p class="myinfo_check_comment">회원님의 개인정보를 소중하게
-								보호하려고 노력하고 있습니다. 비밀번호 확인 후 개인정보를 제공합니다.</p>
-							<div class="check_normal_area">
-								<h4>비밀번호</h4>
-								<div class="field-area password">
-									<div class="pass_check_area">
-										<input autocomplete="new-password" placeholder="비밀번호를 입력해 주세요."
-											maxlength="14" type="password" class=""> 
-										<a class=""></a>
-										<!---->
+					<!-- <form name = "mypageMemberCheckForm" action = "mypage_member_confirm.do" method = "post"> -->
+						<div class="myinfo_check">
+							<div class="myinfo-box">
+								<p class="myinfo_check_comment">회원님의 개인정보를 소중하게
+									보호하려고 노력하고 있습니다. 비밀번호 확인 후 개인정보를 제공합니다.</p>
+								<div class="check_normal_area">
+									<h4>비밀번호</h4>
+									<div class="field-area password">
+										<div class="pass_check_area">
+											<input autocomplete="new-password" placeholder="비밀번호를 입력해 주세요."
+												maxlength="14" type="password" class="passwordCheck" name = "pass"> 
+											<a class=""></a>
+											<!---->
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="btn-bottom one">
-							<div class="btn-bottom-area">
-								<button type="button" class="member_check">확인</button>
+							<div class="btn-bottom one">
+								<div class="btn-bottom-area">
+									<button type="button" class="member_check">확인</button>
+								</div>
 							</div>
 						</div>
-					</div>
+					<!-- </form> -->
 				</div>
 			</div>
 		</div>

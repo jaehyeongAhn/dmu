@@ -23,7 +23,7 @@
 	<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
 	
 		
-	<main>
+	<main style="height:480px">
 		 <form name="ticketDeleteForm" action="admin_ticket_delete_check.do" method="post">
 		 	<input type="hidden" name="did" value="${did}">
 				<div data-v-ec5a0c2c="" class="root-container">

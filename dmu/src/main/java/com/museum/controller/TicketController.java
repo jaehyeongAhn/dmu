@@ -5,7 +5,10 @@ import java.io.File;
 
 
 
+
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -15,9 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.museum.dao.DmuTicketDAO;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.museum.service.FileServiceImpl;
 import com.museum.service.PageServiceImpl;
 import com.museum.service.TicketServiceImpl;
@@ -33,14 +39,14 @@ public class TicketController {
 	private FileServiceImpl  fileService;
 	
 
-	// ticketlist_write.do : 寃뚯떆�뙋 湲��벐湲� �솕硫�
+	// ticketlist_write.do : �Խ��� �۾��� ȭ��
 		 
 		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
-			return "adminticket/ticketlist_write";
+			return "admin/adminticket/ticketlist_write";
 		}
 		/**
-		 * ticketlist_write_check.do : 寃뚯떆�뙋 湲��벐湲� 泥섎━
+		 * ticketlist_write_check.do : �Խ��� �۾��� ó��
 		 */
 		@RequestMapping(value="/ticketlist_write_check.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
@@ -60,14 +66,15 @@ public class TicketController {
 			if(result == 1){
 				if(!vo.getFile1().getOriginalFilename().equals("")) {
 					String path = request.getSession().getServletContext().getRealPath("/");
-					path += "\\resources\\upload\\";
-					 
+					  path += "resources/upload/";
 					File file = new File(path+vo.getDsfile());
 					vo.getFile1().transferTo(file);
 				}
 				
-				//mv.setViewName("/board/board_list"); //�뿉�윭X, �븘臾대윴 寃뚯떆湲� 異쒕젰�릺吏� X
-				mv.setViewName("redirect:/exhibition_list.do"); //DB�뿰�룞�쓣 Controller�뿉�꽌 吏꾪뻾�븯誘�濡�, �깉濡쒖슫 �뿰寃곗쓣 �닔�뻾!!
+
+				//mv.setViewName("/board/board_list"); //에러X, 아무런 게시글 출력되지 X
+				mv.setViewName("redirect:/adminexhibition_list.do"); //DB연동을 Controller에서 진행하므로, 새로운 연결을 수행!!
+
 			}else{
 				mv.setViewName("error_page");
 			}
@@ -75,123 +82,181 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * exhibition_list.do : �쟾�떆�쉶 �쟾泥� 由ъ뒪�듃 
+		 * exhibition_list.do : ����ȸ ��ü ����Ʈ 
 		 */
 		@RequestMapping(value="/exhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView exhibition_list(String rpage) {
-			ModelAndView mv = new ModelAndView();
 			
+			ModelAndView mv = new ModelAndView();
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+			Map<String,Integer> param = pageService.getPageResult(rpage, "exhibition", ticketService);
 
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			ArrayList<DmuTicketVO> list = ticketService.getList( param.get("startCount") ,param.get("endCount"),"exhibition");
 			
 			mv.addObject("list",list);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
+			mv.addObject("pageCount", param.get("pageCount"));
 			mv.setViewName("ticket/exhibition/exhibition_list");
 			
 			
 			return mv;
 		}
 		/**
-		 * event_list.do : �쟾�떆�쉶 �쟾泥� 由ъ뒪�듃 
+		 * event_list.do : ����ȸ ��ü ����Ʈ 
 		 */
 		@RequestMapping(value="/event_list.do", method=RequestMethod.GET)
 		public ModelAndView event_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
 			
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+			Map<String,Integer> param = pageService.getPageResult(rpage, "event", ticketService);
 
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"),"event");
 			
 			mv.addObject("list",list);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
+			mv.addObject("pageCount", param.get("pageCount"));
 			mv.setViewName("ticket/event/event_list");
 			
 			
 			return mv;
 		}
 		/**
-		 * learn_list.do : �쟾�떆�쉶 �쟾泥� 由ъ뒪�듃 
+		 * learn_list.do : ����ȸ ��ü ����Ʈ 
 		 */
 		@RequestMapping(value="/learn_list.do", method=RequestMethod.GET)
 		public ModelAndView learn_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
 			
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+			Map<String,Integer> param = pageService.getPageResult(rpage, "learn", ticketService);
 
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			ArrayList<DmuTicketVO> list = ticketService.getList( param.get("startCount") ,param.get("endCount"),"learn");
 			
 			mv.addObject("list",list);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
+			mv.addObject("pageCount", param.get("pageCount"));
 			mv.setViewName("ticket/learn/learn_list");
 			
 			
 			return mv;
 		}
 		
-		//adminlearn list 愿�由ъ옄
+		//adminlearn list ������
 		@RequestMapping(value="/adminlearn_list.do", method=RequestMethod.GET)
-		public ModelAndView adminlearn_list(String rpage) {
+		public ModelAndView adminlearn_list(String rpage) throws Exception {
 			ModelAndView mv = new ModelAndView();
 			
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
-
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			Map<String,Integer> param = pageService.getPageResult(rpage, "learn", ticketService);
+			
+			ArrayList<DmuTicketVO> list;
+			
+				
+		 list = ticketService.getList( param.get("startCount") ,param.get("endCount"),"learn");
+			
+			
+			
 			
 			mv.addObject("list",list);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
-			mv.setViewName("adminticket/adminlearn_list");
+			mv.addObject("pageCount", param.get("pageCount"));
+			mv.setViewName("admin/adminticket/adminlearn_list");
 			
 			
 			return mv;
 		}
 		
-		//exhibition list 愿�由ъ옄
+
+		//admin leran ajax
+		@ResponseBody
+		@RequestMapping(value="/adminlearn_ajaxlist.do", method =RequestMethod.GET,produces="text/plain;charset=UTF-8")
+		public String adminLearnAjaxList(String dtarget,String rpage){
+			
+
+			Map<String,Integer> param = pageService.getPageResult(rpage, dtarget, ticketService);
+			
+			ArrayList<DmuTicketVO> list = ticketService.getLists( param.get("startCount") ,param.get("endCount"),"learn",dtarget);
+			
+			JsonObject jobject = new JsonObject(); //DmuTicketVO
+			JsonArray jarray = new JsonArray();  //ArrayList
+			Gson gson = new Gson();
+			
+			for(DmuTicketVO vo : list){
+				JsonObject jo = new JsonObject();
+				jo.addProperty("rno", vo.getRno());
+				jo.addProperty("did", vo.getDid());
+				jo.addProperty("dplace", vo.getDplace());
+				jo.addProperty("dtitle", vo.getDtitle());
+				jo.addProperty("dstart", vo.getDstart());
+				jo.addProperty("dend", vo.getDend());
+				jo.addProperty("dfile", vo.getDfile());
+				jo.addProperty("dsfile", vo.getDsfile());
+				jo.addProperty("dcode", vo.getDcode());
+				jo.addProperty("dtime", vo.getDtime());
+				jo.addProperty("dprice", vo.getDprice());
+				jo.addProperty("dtarget", vo.getDtarget());
+				jo.addProperty("dnum", vo.getDnum());
+				jo.addProperty("dtitle2", vo.getDtitle2());
+				
+				jarray.add(jo);
+			}
+			jobject.add("list", jarray); 
+			jobject.addProperty("dbCount", param.get("dbCount"));
+			jobject.addProperty("pageSize", param.get("pageSize"));
+			jobject.addProperty("rpage", param.get("rpage"));
+			jobject.addProperty("pageCount", param.get("pageCount"));
+			
+			
+			
+			
+			return gson.toJson(jobject);
+		}
+		//exhibition list 관리자
+
 		@RequestMapping(value="/adminexhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView adminexhibition_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
 			
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+			Map<String,Integer> param = pageService.getPageResult(rpage, "exhibition", ticketService);
 
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
-			
+			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"),"exhibition");
+				
 			mv.addObject("list",list);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
-			mv.setViewName("adminticket/adminexhibition_list");
+			mv.addObject("pageCount", param.get("pageCount"));
+			mv.setViewName("admin/adminticket/adminexhibition_list");
 			
 			
 			return mv;
 		}
-		//adminevent list 愿�由ъ옄
+		//adminevent list ������
 		@RequestMapping(value="/adminevent_list.do", method=RequestMethod.GET)
 		public ModelAndView adminevent_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
 			
 
-			Map<String,Integer> param = pageService.getPageResult(rpage, "ticket", ticketService);
+			Map<String,Integer> param = pageService.getPageResult(rpage, "event", ticketService);
 
-			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"));
+			ArrayList<DmuTicketVO> list = ticketService.getList(param.get("startCount"), param.get("endCount"),"event");
 			
 			mv.addObject("list",list);
 			mv.addObject("dbCount", param.get("dbCount"));
 			mv.addObject("rpage", param.get("rpage"));
 			mv.addObject("pageSize", param.get("pageSize"));
-			mv.setViewName("adminticket/adminevent_list");
+			mv.addObject("pageCount", param.get("pageCount"));
+			mv.setViewName("admin/adminticket/adminevent_list");
 			
 			
 			return mv;
@@ -199,7 +264,7 @@ public class TicketController {
 
 	
 		/**
-		 * ticketlist_content : �떚耳� �긽�꽭蹂닿린
+		 * ticketlist_content :
 		 */
 		@RequestMapping(value="/ticketlist_content.do", method=RequestMethod.GET)
 		public ModelAndView ticketlist_content(String did) {
@@ -208,25 +273,25 @@ public class TicketController {
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("/adminticket/ticketlist_content");
+			mv.setViewName("admin//adminticket/ticketlist_content");
 			
 			return mv;
 		}
 		/**
-		 * admin_ticket_update_check.do : 怨듭��궗�빆 �닔�젙 泥섎━
+		 * admin_ticket_update_check.do : 
 		 */
 		@RequestMapping(value="/admin_ticket_update_check.do", method=RequestMethod.POST)
 		public ModelAndView admin_ticket_update_check(DmuTicketVO vo,HttpServletRequest request)
 																	throws Exception {
 			ModelAndView mv = new ModelAndView();
 
-			String old_filename = vo.getDsfile();	//�닔�젙�솕硫댁뿉�꽌 hidden�쑝濡� �꽆�뼱�삤�뒗 湲곗〈 upload �뤃�뜑�뿉 ���옣�맂 �뙆�씪紐�
+			String old_filename = vo.getDsfile();	//
 			
 			vo = fileService.update_fileCheck(vo);
 			int result = ticketService.getUpdate(vo);
 			
 			if(result == 1){
-				//�깉濡쒖슫 �뙆�씪�쓣 upload �뤃�뜑�뿉 ���옣�븳 �썑 湲곗〈�쓽 �뙆�씪�� �궘�젣
+				//
 				fileService.update_filesave(vo, request, old_filename);
 				mv.setViewName("redirect:/adminexhibition_list.do");
 				
@@ -238,7 +303,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * admin_ticket_update.do : 怨듭��궗�빆 �닔�젙�솕硫� 
+		 * admin_ticket_update.do :
 		 */
 		@RequestMapping(value="/admin_ticket_update.do", method=RequestMethod.GET)
 		public ModelAndView admin_ticket_update(String did) {
@@ -247,25 +312,25 @@ public class TicketController {
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("/adminticket/ticketlist_update");
+			mv.setViewName("/admin/adminticket/ticketlist_update");
 			
 			return mv;
 		}
 		
 		/**
-		 * admin_ticket_delete.do : 怨듭��궗�빆 �궘�젣 �솕硫� 
+		 * admin_ticket_delete.do : 
 		 */
 		@RequestMapping(value="/admin_ticket_delete.do", method=RequestMethod.GET)
 		public ModelAndView admin_ticket_delete(String did) {
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("did", did);
-			mv.setViewName("/adminticket/ticketlist_delete");
+			mv.setViewName("/admin/adminticket/ticketlist_delete");
 			
 			return mv;
 		}
 		
 		/**
-		 * admin_ticket_delete_check.do : 怨듭��궗�빆 �궘�젣 泥섎━
+		 * admin_ticket_delete_check.do : 
 		 */
 		@RequestMapping(value="/admin_ticket_delete_check.do", method=RequestMethod.POST)
 		public ModelAndView admin_ticket_delete_check(String did, HttpServletRequest request)
@@ -287,23 +352,6 @@ public class TicketController {
 		}
 		
 
-		//ticketcontent.do
-		@RequestMapping(value="/ticketcontent.do", method=RequestMethod.GET)
-		public ModelAndView ticketcontent(String did) {
-			ModelAndView mv = new ModelAndView();
-			DmuTicketDAO dao = new DmuTicketDAO();
-			DmuTicketVO vo = dao.select(did);
-			
-			
-			/*
-			 * int startCount = 0; int endCount = 0;
-			 * 
-			 * // ArrayList<ExhibitionVO> list = dao.select(startCount, endCount);
-			 */		
-			mv.addObject("vo",vo);
-			mv.setViewName("adminticket/ticketcontent");
-			
-			return mv;
-		}
+		
 
 }

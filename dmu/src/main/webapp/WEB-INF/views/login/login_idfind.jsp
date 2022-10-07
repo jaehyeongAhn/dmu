@@ -98,7 +98,7 @@
 					<div class = "message">
 						<p>비밀번호가 기억나지 않나요?</p>
 						<p>회원정보에 등록된 이름, 아이디, 연락처를 입력하여<br></p>
-						<p>본인 확인을 해 주시면 비밀번호를 재 설정할 수 있어요.</p>
+						<p>본인 확인을 해 주시면 비밀번호를 재설정할 수 있어요.</p>
 					</div>
 					<ul class = "passfindList">
 						<li>
@@ -152,6 +152,6 @@
 	</main>
 	
 
-	<iframe src="footer.do" width="100%" height="510px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer"></iframe>
 </body>
 </html>

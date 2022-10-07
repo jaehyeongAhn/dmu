@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import com.museum.vo.DmuTicketVO;
 
 public interface TicketService {
-	int getWriteResult(DmuTicketVO vo); //°Ô½ÃÆÇ ±Û¾²±â
-	int getUpdate(DmuTicketVO vo); //°Ô½ÃÆÇ ¾÷µ¥ÀÌÆ®
-	int getTotalCount(); //ÀüÃ¼ È¸¿ø¼ö 
-	ArrayList<DmuTicketVO> getList(int startCount,int endCount); //exhibition ÀüÃ¼ ¸®½ºÆ®
-	DmuTicketVO getContent(String did); //
-	int getDelete(String did);		//°øÁö»çÇ× »èÁ¦ Ã³¸®
+	int getWriteResult(DmuTicketVO vo); //í‹°ì¼“ ê³„ì‹œíŒ ì‘ì„±í•˜ê¸° 
+	int getUpdate(DmuTicketVO vo); //í‹°ì¼“ ê³„ì‹œíŒ ì—…ë°ì´íŠ¸ 
+	int getTicketLearnCount(String dtarget); // í‹°ì¼“ learnê³„ì‹œíŒ ë¡œìš° êµ¬í•˜ê¸° 
+	ArrayList<DmuTicketVO> getLists(int startCount,int endCount,String dcode , String dtarget); //í‹°ì¼“ learnê³„ì‹œíŒ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥ 
+	ArrayList<DmuTicketVO> getList(int startCount,int endCount,String dcode ); //í‹°ì¼“ ê³„ì‹œíŒ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥ 
+	DmuTicketVO getContent(String did); // í‹°ì¼“ ê³„ì‹œíŒ ìƒì„¸ë³´ê¸° 
+	int getDelete(String did);		//í‹°ì¼“ ê³„ì‹œíŒ ì‚­ì œí•˜ê¸° 
+	int getTicketCount(String dcode); //í‹°ì¼“ ê³„ì‹œíŒ ì´ ê°¯ìˆ˜ êµ¬í•˜ê¸° 
 }

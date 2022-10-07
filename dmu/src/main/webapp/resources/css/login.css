@@ -246,8 +246,9 @@
 	
 	/************** footer ****************/
 	iframe.footer {
-		position : absolute;
-		left : 0;
+		position : relative;
+		/* left : 0; */
+	    margin-top: 160px;
 	}
 	
 	/********************************** idfind.jsp ************************************/

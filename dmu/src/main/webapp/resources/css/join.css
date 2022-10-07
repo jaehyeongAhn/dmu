@@ -3,7 +3,99 @@ body {
 	margin : 0;
 	padding : 0;
 }
-/****************** /join/terms ************************/
+/****************** /join/join_status *********************/
+
+	button.public, button.accept {
+	    font-size: 17px;
+	    width: 350px;
+	    height: 60px;
+	    margin: 5px auto;
+	    cursor : pointer;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    /* letter-spacing: -0.08rem; */
+	}
+	button.public {
+	    background: black;
+	    color: white;
+	    position : relative;
+	}
+	button.public img, button.accept img {
+		width: 20px !important;
+	    height: 20px;
+	    margin-right: 5px;
+        position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    opacity : 0;
+	    transform : translate(-50%, -50%);
+	    transform-origin : 50% 50%;
+	    transition : all 0.5s;
+	}
+	button.public img {
+	    filter: drop-shadow(0 0 0 black) invert(100%) sepia(0%) saturate(0%) hue-rotate(307deg) brightness(104%) contrast(101%);
+	}
+	button.public > span {
+        transform: translate(0, 0);
+        transition : transform 0.5s;
+	}
+	button.public:hover img {
+		width: 20px !important;
+	    filter : opacity(0.5) drop-shadow(0 0 0 black);
+	    left : 35%;
+	    transform: translate(-35%, -50%);
+	    transform-origin : 50% 50%;
+	    opacity : 1;
+	}
+	button.public:hover > span {
+        transform: translate(15px, 0);
+        transition : transform 0.5s;
+	}
+	button.accept {
+	    background: white;
+	    color: black;
+	    border : 0.5px solid black;
+	    position : relative;
+	}
+	button.accept > span {
+        transform: translate(0, 0);
+        transition : transform 0.5s;
+	}
+	button.accept img {
+	    filter: drop-shadow(0 0 0 white) invert(100%) sepia(0%) saturate(0%) hue-rotate(307deg) brightness(104%) contrast(101%);
+	}
+	button.public:hover {
+	    background: white;
+	    color: black;
+	    border : 0.5px solid black;
+	}
+	button.accept:hover {
+	    background: #56565b;
+	    color: white;
+	    border : 0.5px solid #56565b;
+	}
+	button.accept:hover > span {
+        transform: translate(15px, 0);
+	}
+	button.accept:hover img {
+		width: 20px !important;
+	    filter : opacity(0.5) drop-shadow(0 0 0 white);
+	    left : 35%;
+	    transform: translate(-35%, -50%);
+	    transform-origin : 50% 50%;
+	    opacity : 1;
+	}
+	button.public span::before, button.accept span::before {
+	    content: "";
+	    transition : all 0.5s;
+	}
+	button.public:hover span::before, button.accept:hover span::before {
+	    content: "|";
+	    margin: 0 10px 0 0;
+	}
+
+/****************** /join/join_terms ************************/
 	form[name="join_termsForm"] {
 		width : 626px;
 	}
@@ -618,9 +710,11 @@ iframe.header {
 
 /************** footer ****************/
 iframe.footer {
-	position : absolute;
-	bottom : 0;
-	left : 0;
+	position : relative;
+	/*bottom : 0;
+	left : 0;*/
+    margin-top: 80px;
+    margin-bottom: -5px;
 }
 
 /************************* join_ok **************************/
