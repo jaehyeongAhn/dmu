@@ -13,8 +13,8 @@
 <script src="http://localhost:9000/dmu/resources/js/join.js"></script>
 <script>
 	$(document).ready(function(){
-		let height = $(document).height();
-		$(".footer").css("top", height - 100);
+		/*let height = $(document).height();
+		$(".footer").css("top", height - 500);*/
 		$(".backHome").click(function(){
 			$(location).attr("href", "index.do");
 		});
@@ -24,13 +24,21 @@
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
 
-	<main class = "join">
+	<main class = "join" style="height:600px;">
 		<div class = "section">
 			<div class = "joinContainer">
 				<div class = "container">
-					<h3>회원가입</h3>
+					<c:choose>
+					<c:when test="${ status == 'public' }">
+						<h3>일반 회원가입</h3>
+					</c:when>
+					<c:otherwise>
+						<h3>관리자 회원가입</h3>
+					</c:otherwise>
+					</c:choose>
 				</div>
 				<form name = "join_termsForm" action = "join_terms_ok.do" method = "post">
+					<input type = "hidden" name = "status" value = "${ status }">
 					<fieldset>
 						<legend>약관동의</legend>
 						<div class = "checkList" id = "all_checkList">
@@ -62,6 +70,6 @@
 		</div>
 	</main>
 	
-	<iframe src="footer.do" width="100%" height="510px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer"></iframe>
 </body>
 </html>

@@ -9,7 +9,7 @@ import com.museum.vo.DmuTicketVO;
 
 public class DmuTicketDAO extends DBConn {
 	/**
-	 *  delete : 게시글 삭제
+	 *  delete : �Խñ� ����
 	 */
 	public int delete(String did) {
 		int result=0;
@@ -28,7 +28,7 @@ public class DmuTicketDAO extends DBConn {
 	}
 
 	/**
-	 *  insert : 게시글 추가
+	 *  insert : �Խñ� �߰�
 	 */
 	public int insert(DmuTicketVO vo) {
 		int result = 0;
@@ -64,7 +64,11 @@ public class DmuTicketDAO extends DBConn {
 		return result;		
 	}
 	/**
+<<<<<<< HEAD
 	 * select : dcode로 분류해서  공지사항 리스트 출력 
+=======
+	 * select : exhibition �������� ����Ʈ
+>>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
 	 */
 	public ArrayList<DmuTicketVO> select( int startCount,int endCount , String dcode){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
@@ -111,7 +115,11 @@ public class DmuTicketDAO extends DBConn {
 		return list;
 	}
 	/**
+<<<<<<< HEAD
 	 * select : learn 에서  dtarget으로 분류해서 리스트 출
+=======
+	 * totalCount : ��ü �ο�� ���
+>>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
 	 */
 	public ArrayList<DmuTicketVO> selects( int startCount,int endCount , String dcode,String dtarget){
 		ArrayList<DmuTicketVO> list = new ArrayList<DmuTicketVO>();
@@ -199,8 +207,14 @@ public class DmuTicketDAO extends DBConn {
 		return result;
 	}
 	
+
 	/* 02.관람일/인원선택
 	 *  select : 게시글 상세보기
+=======
+	
+	/* 02.������/�ο�����
+	 *  select : �Խñ� �󼼺���
+>>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
 	 */
 	public DmuTicketVO select(String did) {
 		DmuTicketVO vo = new DmuTicketVO();
@@ -209,8 +223,6 @@ public class DmuTicketDAO extends DBConn {
 		String sql = " select did, dtitle, dstart, dend, dprice,dplace,dinformation,dtime,dpersonnel,dtarget,dnum,dfile,dsfile, TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE ,dtitle2 "
     + " from dmu_ticket where did=?";
 
-
-		
 		try {
 			getPreparedStatement(sql);
 			pstmt.setString(1, did);
@@ -232,13 +244,14 @@ public class DmuTicketDAO extends DBConn {
 				vo.setDfile(rs.getString(12));
 				vo.setDsfile(rs.getString(13));
 				vo.setEnddate(rs.getString(14));
+
 				vo.setDtitle2(rs.getString(15));
 
 				
 
 			}
 			
-		//	close(); 조회수 업데이트를 같은 곳에서 하기위해서 주석 처리해야된다
+		//	close(); ��ȸ�� ������Ʈ�� ���� ������ �ϱ����ؼ� �ּ� ó���ؾߵȴ�
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -246,7 +259,7 @@ public class DmuTicketDAO extends DBConn {
 		
 		return vo;
 	}
-	// 공지사항 업데이트
+	// �Խñ� ������Ʈ
 	public int update(DmuTicketVO vo) {
 		int result = 0;
 		String sql = " 	update dmu_ticket set dtitle=?, dstart=?, dend=?, dprice=?, dplace=?, dinformation=?, dtime=?, dpersonnel=?,"

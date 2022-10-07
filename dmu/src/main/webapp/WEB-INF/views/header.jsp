@@ -29,11 +29,94 @@
 	href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet"
 	href="http://localhost:9000/dmu/resources/css/index.css">
-<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script type="text/javascript" charset="UTF-8"
 	src="https://maps.googleapis.com/maps-api-v3/api/js/50/2/common.js"></script>
 <script type="text/javascript" charset="UTF-8"
 	src="https://maps.googleapis.com/maps-api-v3/api/js/50/2/util.js"></script>
+<script>
+$(document).ready(function(){
+	
+
+	$('.visit').mouseover(function(){
+		$('#menu_visit').show();
+		
+	});
+	$('#menu_visit').mouseover(function(){
+		$("#menu_visit").show();
+	});
+	
+	$('.visit').mouseout(function(){
+		$("#menu_visit").hide();
+	});
+	$('#menu_visit').mouseout(function(){
+		$("#menu_visit").hide();
+	});
+	
+	$('.exhibition').mouseover(function(){
+		$("#menu_exhibition").show();
+	});
+	$('#menu_exhibition').mouseover(function(){
+		$("#menu_exhibition").show();
+	});
+	
+	$('.learn').mouseover(function(){
+		$("#menu_learn").show();
+	});
+	$('#menu_learn').mouseover(function(){
+		$("#menu_learn").show();
+	});
+	
+	$('.main-menu li').mouseleave(function(){
+		$('.sub-menu').hide();
+	});
+	
+
+/*     $('.sub-menu').mouseenter(function(){
+        $('.sub-menu').eq($(this).index()).css({
+            display:'block'
+        })
+    })
+    $('.sub-menu').mouseleave(function(){
+        $('.sub-menu').eq($(this).index()).css({
+            display:'none'
+        })
+    }); */
+
+	$(".event").hover(function(){
+		$('.sub-menu').hide();
+	})
+	$(".ticket").hover(function(){
+		$('.sub-menu').hide();
+	})    
+	
+	
+});//ready
+</script>
+<style>
+header .header-web .main-menu-area .main-menu .sub-menu{
+	display:none;
+}
+header .header-web .main-menu-area .main-menu > ul > li a:hover{
+	background-color:gray;
+}
+header .header-web .main-menu-area .main-menu > ul > li a:hover > div#menu_visit{
+	display:block;
+}
+header .header-web .main-menu-area .main-menu > ul > li.visit a:hover{
+	background-color:green;
+}
+header .header-web .main-menu-area .main-menu > ul > li.visit a:hover > div#menu_visit 
+{
+	display:block;
+}
+/*header .header-web .main-menu-area .main-menu > ul > li.visit {
+	display:none;
+}*/
+header .header-web .main-menu-area .main-menu > ul > li.visit:hover > div#menu_visit{
+	display:block;
+}
+
+</style>
 </head>
 <body>
 	<div id="app">
@@ -44,7 +127,7 @@
 						<ul>
 							<li><a href="http://localhost:9000/dmu/login.do"
 								target="_parent" class=""> LOGIN </a></li>
-							<li><a href="http://localhost:9000/dmu/join.do" target="_parent" class="">
+							<li><a href="join_terms.do" target="_parent" class="">
 									BECOME A MEMBER </a></li>
 							<!---->
 							<!---->
@@ -56,32 +139,30 @@
 					</div>
 					<div class="main-menu-area">
 						<h1>
-							<a href="http://localhost:9000/dmu/index.do" target="_parent">대림문화재단</a>
+							<a href="index.do" target="_top">대림문화재단</a>
 						</h1>
 						<div class="main-menu">
 							<ul>
-								<li class="visit""><a href="visit_main.do" target="_parents"> VISIT </a></li>
-								<li class="exhibition"><a href="javascript:void(0);"> EXHIBITION
-								</a></li>
+								<li class="visit"><a href="visit_main.do"> VISIT </a></li> 
+								<li class="exhibition"><a href="javascript:void(0);"> EXHIBITION</a></li>
 								<li class="learn"><a href="javascript:void(0);"> LEARN </a></li>
 								<li class="event"><a href="javascript:void(0);"> EVENT </a></li>
 								<li class="ticket"><a
 									href="http://localhost:9000/dmu/exhibition_list.do"
 									target="_parent"> TICKET </a></li>
 							</ul>
-							<div class="sub-menu" id="menu_visit" style="width: 100%; display:none;">
+							<div class="sub-menu" id="menu_visit" style="width: 100%;">
 								<div class="pannel">
 									<div>
 										<div class="menu-area">
-											<ul>
-												<li><a href="javascript:void(0);"
-													href="http://localhost:9000/dmu/visit_main.do" style="">
-														미술관 소개 </a></li>
-												<li><a href="javascript:void(0);"
-													href="http://localhost:9000/dmu/visit_info.do"> 관람안내 </a></li>
-												<li><a href="javascript:void(0);"
-													href="http://localhost:9000/dmu/visit_map.do"> 오시는 길 </a></li>
-											</ul>
+                                            <ul>
+												<li><a href="http://localhost:9000/dmu/visit_main.do"
+													href="javascript:void(0);" style=""> 미술관 소개 </a></li>
+												<li><a href="http://localhost:9000/dmu/visit_info.do"
+													href="javascript:void(0);"> 관람안내 </a></li>
+												<li><a href="http://localhost:9000/dmu/visit_map1.do"
+													href="javascript:void(0);"> 오시는 길 </a></li>
+                                            </ul>
 										</div>
 										<div class="banner-area">
 											<ul>
@@ -122,7 +203,7 @@
 									</div>
 								</div>
 							</div>
-						<div class="sub-menu normal" id="menu_exhibition" style="width: 100%; display:none;">
+						<div class="sub-menu normal" id="menu_exhibition" style="width: 100%;">
 							<div class="pannel">
 								<div>
 									<div class="menu-area">
@@ -134,7 +215,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="sub-menu normal" id="menu_learn" style="width: 100%; display:none;">
+						<div class="sub-menu normal" id="menu_learn" style="width: 100%;">
 							<div class="pannel">
 								<div>
 									<div class="menu-area">
@@ -227,6 +308,9 @@
 					</div>
 					
 				</div> -->
+				</div>
 			</header>
+		</div>
+	</div>
 </body>
 </html>

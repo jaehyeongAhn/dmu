@@ -6,6 +6,7 @@ import java.io.File;
 
 
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.museum.dao.DmuTicketDAO;
 import com.museum.service.FileServiceImpl;
 import com.museum.service.PageServiceImpl;
 import com.museum.service.TicketServiceImpl;
@@ -39,14 +39,14 @@ public class TicketController {
 	private FileServiceImpl  fileService;
 	
 
-	// ticketlist_write.do : 게시판 글쓰기 화면
+	// ticketlist_write.do : �Խ��� �۾��� ȭ��
 		 
 		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
 			return "admin/adminticket/ticketlist_write";
 		}
 		/**
-		 * ticketlist_write_check.do : 게시판 글쓰기 처리
+		 * ticketlist_write_check.do : �Խ��� �۾��� ó��
 		 */
 		@RequestMapping(value="/ticketlist_write_check.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
@@ -71,8 +71,10 @@ public class TicketController {
 					vo.getFile1().transferTo(file);
 				}
 				
+
 				//mv.setViewName("/board/board_list"); //에러X, 아무런 게시글 출력되지 X
 				mv.setViewName("redirect:/adminexhibition_list.do"); //DB연동을 Controller에서 진행하므로, 새로운 연결을 수행!!
+
 			}else{
 				mv.setViewName("error_page");
 			}
@@ -80,7 +82,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * exhibition_list.do : 전시회 전체 리스트 
+		 * exhibition_list.do : ����ȸ ��ü ����Ʈ 
 		 */
 		@RequestMapping(value="/exhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView exhibition_list(String rpage) {
@@ -102,7 +104,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * event_list.do : 전시회 전체 리스트 
+		 * event_list.do : ����ȸ ��ü ����Ʈ 
 		 */
 		@RequestMapping(value="/event_list.do", method=RequestMethod.GET)
 		public ModelAndView event_list(String rpage) {
@@ -124,7 +126,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * learn_list.do : 전시회 전체 리스트 
+		 * learn_list.do : ����ȸ ��ü ����Ʈ 
 		 */
 		@RequestMapping(value="/learn_list.do", method=RequestMethod.GET)
 		public ModelAndView learn_list(String rpage) {
@@ -146,7 +148,7 @@ public class TicketController {
 			return mv;
 		}
 		
-		//adminlearn list 관리자
+		//adminlearn list ������
 		@RequestMapping(value="/adminlearn_list.do", method=RequestMethod.GET)
 		public ModelAndView adminlearn_list(String rpage) throws Exception {
 			ModelAndView mv = new ModelAndView();
@@ -173,6 +175,7 @@ public class TicketController {
 			return mv;
 		}
 		
+
 		//admin leran ajax
 		@ResponseBody
 		@RequestMapping(value="/adminlearn_ajaxlist.do", method =RequestMethod.GET,produces="text/plain;charset=UTF-8")
@@ -218,6 +221,7 @@ public class TicketController {
 			return gson.toJson(jobject);
 		}
 		//exhibition list 관리자
+
 		@RequestMapping(value="/adminexhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView adminexhibition_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
@@ -237,7 +241,7 @@ public class TicketController {
 			
 			return mv;
 		}
-		//adminevent list 관리자
+		//adminevent list ������
 		@RequestMapping(value="/adminevent_list.do", method=RequestMethod.GET)
 		public ModelAndView adminevent_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
@@ -260,7 +264,7 @@ public class TicketController {
 
 	
 		/**
-		 * ticketlist_content : 티켓 상세보기
+		 * ticketlist_content :
 		 */
 		@RequestMapping(value="/ticketlist_content.do", method=RequestMethod.GET)
 		public ModelAndView ticketlist_content(String did) {
@@ -274,20 +278,20 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * admin_ticket_update_check.do : 공지사항 수정 처리
+		 * admin_ticket_update_check.do : 
 		 */
 		@RequestMapping(value="/admin_ticket_update_check.do", method=RequestMethod.POST)
 		public ModelAndView admin_ticket_update_check(DmuTicketVO vo,HttpServletRequest request)
 																	throws Exception {
 			ModelAndView mv = new ModelAndView();
 
-			String old_filename = vo.getDsfile();	//수정화면에서 hidden으로 넘어오는 기존 upload 폴더에 저장된 파일명
+			String old_filename = vo.getDsfile();	//
 			
 			vo = fileService.update_fileCheck(vo);
 			int result = ticketService.getUpdate(vo);
 			
 			if(result == 1){
-				//새로운 파일을 upload 폴더에 저장한 후 기존의 파일은 삭제
+				//
 				fileService.update_filesave(vo, request, old_filename);
 				mv.setViewName("redirect:/adminexhibition_list.do");
 				
@@ -299,7 +303,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * admin_ticket_update.do : 공지사항 수정화면 
+		 * admin_ticket_update.do :
 		 */
 		@RequestMapping(value="/admin_ticket_update.do", method=RequestMethod.GET)
 		public ModelAndView admin_ticket_update(String did) {
@@ -314,7 +318,7 @@ public class TicketController {
 		}
 		
 		/**
-		 * admin_ticket_delete.do : 공지사항 삭제 화면 
+		 * admin_ticket_delete.do : 
 		 */
 		@RequestMapping(value="/admin_ticket_delete.do", method=RequestMethod.GET)
 		public ModelAndView admin_ticket_delete(String did) {
@@ -326,7 +330,7 @@ public class TicketController {
 		}
 		
 		/**
-		 * admin_ticket_delete_check.do : 공지사항 삭제 처리
+		 * admin_ticket_delete_check.do : 
 		 */
 		@RequestMapping(value="/admin_ticket_delete_check.do", method=RequestMethod.POST)
 		public ModelAndView admin_ticket_delete_check(String did, HttpServletRequest request)

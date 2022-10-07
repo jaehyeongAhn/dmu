@@ -19,7 +19,7 @@
 			<div class = "container">
 				<aside class="mypage">
 					<div class="mypage-list">
-						<a href="#" class="mypage-main">
+						<a href="adminpage_main.do" class="mypage-main">
 							<strong class="menu-title">ADMIN PAGE</strong>
 						</a>
 						<div class="mypage-menu-list">
@@ -29,7 +29,7 @@
 									<div class="sub-menu-list">
 										<ul>
 											<li class="">
-												<a class="" href="#">회원관리</a>
+												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
 											<li class="">
 												<a class="" href="#">예매관리</a>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace = "mapper.notice">
+	
+	<insert id="write" parameterType="com.museum.vo.DmuNoticeVO">
+		insert into dmu_notice values('n_'||sequ_dmu_notice.nextval,#{ncategory},#{ntitle},#{ncontent},sysdate)
+	</insert>
+	
+	<select id="listAll" parameterType="map" resultType="com.museum.vo.DmuNoticeVO">
+		select rno, nid, ncategory, ntitle, ndate
+				from(select rownum rno, nid, ncategory, ntitle, to_char(ndate, 'yyyy-mm-dd') ndate
+				from(select nid, ncategory, ntitle, ndate from dmu_notice
+				order by ndate desc))
+				where rno between #{start} and #{end}
+	</select>
+	
+	<select id="content" parameterType="java.lang.String" resultType="com.museum.vo.DmuNoticeVO">
+		select nid, ncategory, ntitle, ncontent, ndate from dmu_notice where nid = #{nid}
+	</select> 
+	
+	<update id="update" parameterType="com.museum.vo.DmuNoticeVO">
+		update dmu_notice set ncategory=#{ncategory}, ntitle=#{ntitle}, ncontent=#{ncontent} where nid=#{nid}
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.String">
+		delete from dmu_notice where nid=#{nid}
+	</delete>
+	
+	<select id="totalCount" parameterType="java.lang.Integer" resultType="int">
+		select count(*) from dmu_notice
+	</select>
+
+
+</mapper>

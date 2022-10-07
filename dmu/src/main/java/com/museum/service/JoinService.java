@@ -7,6 +7,6 @@ public interface JoinService {
 	public int join(DmuMemberVO vo);
 	
 	//아이디 중복확인
-	public int idCheck(String did);
+	public int idCheck(String mid);
 
 }
