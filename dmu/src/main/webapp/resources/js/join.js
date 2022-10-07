@@ -153,7 +153,9 @@ $(document).ready(function() {
 			}
 		});
 		
+		let check_result_id = 0;
 		$("#did").keyup(function(){
+			check_result_id = 0;
 			if($("#did").val().length == 0){
 				$("#idCheck").attr("disabled", true);
 			}else{
@@ -173,8 +175,13 @@ $(document).ready(function() {
 					success : function(result){
 						if(result == 0){
 							warningCheck("ok", $(".idTable"), "사용 가능한 아이디입니다.");
+							check_result_id = 1;
 						}else if(result == 1){
 							warningCheck(true, $(".idTable"), "사용 중인 아이디입니다.");
+							/*$("#joinOk").click(function() {
+								popup_setup("아이디 중복 체크를 해주세요.", $("#did"));
+								return false;
+							});*/
 						}
 					}//success
 				});//ajax
@@ -255,6 +262,9 @@ $(document).ready(function() {
 				return false;
 			}else if($("#addr2").val() == ""){
 				popup_setup("상세주소를 입력해 주세요.", $("#addr2"));
+				return false;
+			}else if(check_result_id == 0){
+				popup_setup("아이디 중복 체크를 진행해주세요.", $("#did"));
 				return false;
 			}else{
 				joinFrom.submit();

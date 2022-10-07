@@ -153,7 +153,7 @@ input, textarea {
 .sub-contents-area .container {
     width: 80rem;
     margin: 0 auto;
-    padding: 5.25rem 0 9.375rem 0;
+    padding: 5.25rem 0 5.25rem 0;
     position: relative;
 }
 .snb-area .snb li a[data-v-080a389a] {
@@ -467,6 +467,7 @@ button[data-v-26e42198] {
 #ampaginationsm[data-v-1b9c8af9] {
 	text-decoration: none;
     margin-top: 3.375rem;
+    margin-bottom : 3.375rem;
 }
 #ampaginationsm[data-v-650d6904] {
 	text-decoration: none;

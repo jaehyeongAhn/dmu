@@ -13,7 +13,7 @@ import com.museum.vo.DmuTicketVO;
 public class FileServiceImpl {
 	
 	/**
-	 * Æ¼ÄÏ¸®½ºÆ® : ¸®½ºÆ® »èÁ¦ ½Ã ÆÄÀÏÀÌ Á¸ÀçÇÏ¸é »èÁ¦ÇÏ±â
+	 * í‹°ì¼“ë¦¬ìŠ¤íŠ¸ : ë¦¬ìŠ¤íŠ¸ ì‚­ì œ ì‹œ íŒŒì¼ì´ ì¡´ì¬í•˜ë©´ ì‚­ì œí•˜ê¸°
 	 */
 	public void fileDelete(DmuTicketVO vo, HttpServletRequest request) throws Exception {
 		if (vo.getDsfile() != null) {
@@ -28,11 +28,11 @@ public class FileServiceImpl {
 	}
 
 	/**
-	 * Æ¼ÄÏ¸®½ºÆ® : ÆÄÀÏÀÌ ÀÖ´Â °æ¿ì update½Ã ÆÄÀÏÀúÀå
+	 * í‹°ì¼“ë¦¬ìŠ¤íŠ¸ : íŒŒì¼ì´ ìˆëŠ” ê²½ìš° updateì‹œ íŒŒì¼ì €ì¥
 	 */
 	public void update_filesave(DmuTicketVO vo, HttpServletRequest request, String old_filename) throws Exception {
-		// »õ·Î¿î ÆÄÀÏÀ» upload Æú´õ¿¡ ÀúÀå
-		if (!vo.getFile1().getOriginalFilename().equals("")) { // »õ·Î¿î ÆÄÀÏ¼±ÅÃ O
+		// ìƒˆë¡œìš´ íŒŒì¼ì„ upload í´ë”ì— ì €ì¥
+		if (!vo.getFile1().getOriginalFilename().equals("")) { // ìƒˆë¡œìš´ íŒŒì¼ì„ íƒ O
 			String path = request.getSession().getServletContext().getRealPath("/");
 			path += "\\resources\\upload\\";
 			System.out.println(path);
@@ -40,7 +40,7 @@ public class FileServiceImpl {
 			File file = new File(path + vo.getDsfile());
 			vo.getFile1().transferTo(file);
 
-			// ±âÁ¸ÆÄÀÏÀÌ ÀÖ´Â °æ¿ì¿¡´Â ÆÄÀÏ »èÁ¦
+			// ê¸°ì¡´íŒŒì¼ì´ ìˆëŠ” ê²½ìš°ì—ëŠ” íŒŒì¼ ì‚­ì œ
 			File ofile = new File(path + old_filename);
 			if (ofile.exists()) {
 				ofile.delete();
@@ -51,13 +51,13 @@ public class FileServiceImpl {
 
 
 	/**
-	 * Æ¼ÄÏ¸®½ºÆ® : ÆÄÀÏÀÌ ÀÖ´Â °æ¿ì update½Ã ÆÄÀÏÃ¼Å©
+	 * í‹°ì¼“ë¦¬ìŠ¤íŠ¸ : íŒŒì¼ì´ ìˆëŠ” ê²½ìš° updateì‹œ íŒŒì¼ì²´í¬
 	 */
 	public DmuTicketVO update_fileCheck(DmuTicketVO vo) {
 
-		if (vo.getFile1() != null) {// »õ·Î¿î ÆÄÀÏ°´Ã¼°¡ ÀÖ´ÂÁö ¿©ºÎÃ¼Å© ÇÏ´Â °æ¿ì¿¡´Â nullÀ» »ç¿ë
+		if (vo.getFile1() != null) {// ìƒˆë¡œìš´ íŒŒì¼ê°ì²´ê°€ ìˆëŠ”ì§€ ì—¬ë¶€ì²´í¬ í•˜ëŠ” ê²½ìš°ì—ëŠ” nullì„ ì‚¬ìš©
 
-			if (!vo.getFile1().getOriginalFilename().equals("")) { // »õ·Î¿î ÆÄÀÏ¼±ÅÃ O
+			if (!vo.getFile1().getOriginalFilename().equals("")) { // ìƒˆë¡œìš´ íŒŒì¼ì„ íƒ O
 
 				UUID uuid = UUID.randomUUID();
 
@@ -70,10 +70,10 @@ public class FileServiceImpl {
 
 
 	/**
-	 * Æ¼ÄÏ¸®½ºÆ® : ÆÄÀÏ upload Æú´õ¿¡ ÀúÀå
+	 * í‹°ì¼“ë¦¬ìŠ¤íŠ¸ : íŒŒì¼ upload í´ë”ì— ì €ì¥
 	 */
 	public void fileSave(DmuTicketVO vo, HttpServletRequest request) throws Exception {
-		// 2. upload Æú´õ¿¡ nsfile ¸íÀ¸·Î ½ÇÁ¦ ÆÄÀÏ ¾÷·Îµå Ã³¸®
+		// 2. upload í´ë”ì— nsfile ëª…ìœ¼ë¡œ ì‹¤ì œ íŒŒì¼ ì—…ë¡œë“œ ì²˜ë¦¬
 		if (!vo.getFile1().getOriginalFilename().equals("")) {
 			String path = request.getSession().getServletContext().getRealPath("/");
 			path += "\\resources\\upload\\";
@@ -83,22 +83,7 @@ public class FileServiceImpl {
 		}
 	}
 
-	
-	/**
-	 * Æ¼ÄÏ¸®½ºÆ® : ÆÄÀÏ Ã¼Å© ÈÄ dfile, dsfile »ı¼º
-	 */
-	public DmuTicketVO fileCheck(DmuTicketVO vo) {
-		// 1. vo°´Ã¼ÀÇ ÆÄÀÏÃ¼Å© ÈÄ dfile, dsfile¿¡ ÀúÀåµÇ´Â ÀÌ¸§ »ı¼º
-		if (vo.getFile1().getOriginalFilename().equals("")) {
-			vo.setDfile("");
-			vo.setDsfile("");
-		} else {
-			UUID uuid = UUID.randomUUID();
-			vo.setDfile(vo.getFile1().getOriginalFilename());
-			vo.setDsfile(uuid + "_" + vo.getFile1().getOriginalFilename());
-		}
+	 
 
-		return vo;
-	}// fileCheck
 
 }

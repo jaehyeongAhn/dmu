@@ -33,6 +33,7 @@
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
@@ -62,7 +63,53 @@ $(document).ready(function(){
            $(location).attr('href', "http://localhost:9000/dmu/notice_list.do?rpage="+e.page);         
     });
 	
+
+	
+	$(".snb-area .snb li a.tabbox").click(function(){
+		
+		//alert($(this).attr("id"));
+		var kind = $(this).attr("id");
+		
+		$.ajax({
+			url : '/notice_list_json.do',
+			type: 'post',
+			cache : false,
+			headers : {"cache-control":"no-cache", "pragma": "no-cache"},
+			data : {"category" : kind},
+			success : function(data){
+				console.log(data);
+				let dataset = JSON.parse(data);
+		
+				$('.notice-list').html(data);
+			},
+			error : function(data){
+				alert('error');
+			}
+		});
+		
 	});
+	
+	
+/* 	initAjax(1);
+	
+	$.ajax({
+		type: "get",
+		data:{
+			nid:nid
+		}
+		url : "notice_list_json.do?nid="+nid+"&category="+ncategory
+		success:function(result){
+			console.log(result);
+			$('body').html(result);
+		}
+	
+		
+		
+	}); */
+	
+	
+	
+});//ready
 
 </script>
 
@@ -125,17 +172,15 @@ $(document).ready(function(){
 			</div>
 			<div data-v-080a389a="" data-v-1b9c8af9="">
 				<div data-v-080a389a="" class="snb-area">
-					<ul data-v-080a389a="" class="snb">
+					<ul data-v-080a389a="" class="snb categoryList">
 						<li data-v-080a389a="" class="on"><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_1">전체</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_1" class="tabbox" id="all">전체</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_2">디뮤지엄</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_2" class="tabbox" id="dmuseum">디뮤지엄</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_3">대림미술관</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_3" class="tabbox" id="daelim">대림미술관</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_4">구슬모아당구장</a></li>
-						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_5">뮤지엄샵</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_4" class="tabbox" id="projectSpace">구슬모아당구장</a></li>
 					</ul>
 				</div>
 				<div data-v-080a389a="" class="sub-contents-area">
@@ -146,7 +191,6 @@ $(document).ready(function(){
 						</div>
 				
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="notice-list">
-						
 							<ul data-v-1b9c8af9="" data-v-080a389a="">
 							<c:forEach var="vo" items="${list}">
 								<li data-v-1b9c8af9="" data-v-080a389a=""><a href="notice_content.do?nid=${vo.nid}"

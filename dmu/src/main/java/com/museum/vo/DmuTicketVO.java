@@ -4,8 +4,12 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class DmuTicketVO {
 	
-	int rno,dpersonnel,dnum, dprice;
-	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,dentertime,dtitle2,enddate,dpricech;
+ 
+	int rno,dpersonnel, dprice;
+	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate,dtitle2,dentertime,dnum,dpricech;
+
+ 
+	
 	
 	CommonsMultipartFile file1;
 	public CommonsMultipartFile getFile1() {
@@ -14,14 +18,89 @@ public class DmuTicketVO {
 	public void setFile1(CommonsMultipartFile file1) {
 		this.file1 = file1;
 	}
-	
-	
- 
-	public String getDpricech() {
-		return dpricech;
+	public int getRno() {
+		return rno;
 	}
-	public void setDpricech(String dpricech) {
-		this.dpricech = dpricech;
+	public void setRno(int rno) {
+		this.rno = rno;
+	}
+	public int getDpersonnel() {
+		return dpersonnel;
+	}
+	public void setDpersonnel(int dpersonnel) {
+		this.dpersonnel = dpersonnel;
+	}
+	public int getDprice() {
+		return dprice;
+	}
+	public void setDprice(int dprice) {
+		this.dprice = dprice;
+	}
+	public String getDid() {
+		return did;
+	}
+	public void setDid(String did) {
+		this.did = did;
+	}
+	public String getDtitle() {
+		return dtitle;
+	}
+	public void setDtitle(String dtitle) {
+		this.dtitle = dtitle;
+	}
+	public String getDstart() {
+		return dstart;
+	}
+	public void setDstart(String dstart) {
+		this.dstart = dstart;
+	}
+	public String getDend() {
+		return dend;
+	}
+	public void setDend(String dend) {
+		this.dend = dend;
+	}
+	public String getDplace() {
+		return dplace;
+	}
+	public void setDplace(String dplace) {
+		this.dplace = dplace;
+	}
+	public String getDinformation() {
+		return dinformation;
+	}
+	public void setDinformation(String dinformation) {
+		this.dinformation = dinformation;
+	}
+	public String getDtime() {
+		return dtime;
+	}
+	public void setDtime(String dtime) {
+		this.dtime = dtime;
+	}
+	public String getDfile() {
+		return dfile;
+	}
+	public void setDfile(String dfile) {
+		this.dfile = dfile;
+	}
+	public String getDsfile() {
+		return dsfile;
+	}
+	public void setDsfile(String dsfile) {
+		this.dsfile = dsfile;
+	}
+	public String getDcode() {
+		return dcode;
+	}
+	public void setDcode(String dcode) {
+		this.dcode = dcode;
+	}
+	public String getDtarget() {
+		return dtarget;
+	}
+	public void setDtarget(String dtarget) {
+		this.dtarget = dtarget;
 	}
 	public String getEnddate() {
 		return enddate;
@@ -41,108 +120,19 @@ public class DmuTicketVO {
 	public void setDentertime(String dentertime) {
 		this.dentertime = dentertime;
 	}
-	 
-	public String getDcode() {
-		return dcode;
-	}
-	public String getDtarget() {
-		return dtarget;
-	}
-	public void setDtarget(String dtarget) {
-		this.dtarget = dtarget;
-	}
-	public void setDcode(String dcode) {
-		this.dcode = dcode;
-	}
-	public int getRno() {
-		return rno;
-	}
-	public void setRno(int rno) {
-		this.rno = rno;
-	}
-	public int getDpersonnel() {
-		return dpersonnel;
-	}
-	public void setDpersonnel(int dpersonnel) {
-		this.dpersonnel = dpersonnel;
-	}
-
-	
-	public int getDnum() {
+	public String getDnum() {
 		return dnum;
 	}
-	public void setDnum(int dnum) {
+	public void setDnum(String dnum) {
 		this.dnum = dnum;
 	}
-	public String getDid() {
-		return did;
+	public String getDpricech() {
+		return dpricech;
 	}
-	public void setDid(String did) {
-		this.did = did;
-	}
-
-	public String getDtitle() {
-		return dtitle;
-	}
-	public void setDtitle(String dtitle) {
-		this.dtitle = dtitle;
-	}
-	public String getDstart() {
-		return dstart;
-	}
-	public void setDstart(String dstart) {
-		this.dstart = dstart;
-	}
-	public String getDend() {
-		return dend;
-	}
-	public void setDend(String dend) {
-		this.dend = dend;
+	public void setDpricech(String dpricech) {
+		this.dpricech = dpricech;
 	}
 	
 	 
  
-	public int getDprice() {
-		return dprice;
-	}
-	public void setDprice(int dprice) {
-		this.dprice = dprice;
-	}
-	public String getDplace() {
-		return dplace;
-	}
-	public void setDplace(String dplace) {
-		this.dplace = dplace;
-	}
-	public String getDinformation() {
-		return dinformation;
-	}
-	public void setDinformation(String dinformation) {
-		this.dinformation = dinformation;
-	}
-	
-	public String getDtime() {
-		return dtime;
-	}
-	public void setDtime(String dtime) {
-		this.dtime = dtime;
-	}
-	public String getDfile() {
-		return dfile;
-	}
-	public void setDfile(String dfile) {
-		this.dfile = dfile;
-	}
-	public String getDsfile() {
-		return dsfile;
-	}
-	public void setDsfile(String dsfile) {
-		this.dsfile = dsfile;
-	}
-	
-	
- 
 }
-
-
-

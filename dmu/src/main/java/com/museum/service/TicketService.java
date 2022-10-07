@@ -7,17 +7,20 @@ import com.museum.vo.DmuReservationVO;
 import com.museum.vo.DmuTicketVO;
 
 public interface TicketService {
-	int getWriteResult(DmuTicketVO vo); //°Ô½ÃÆÇ ±Û¾²±â
-	int getUpdate(DmuTicketVO vo); //°Ô½ÃÆÇ ¾÷µ¥ÀÌÆ®
-	int getTotalCount(); //ÀüÃ¼ È¸¿ø¼ö 
-	ArrayList<DmuTicketVO> getList(int startCount,int endCount); //exhibition ÀüÃ¼ ¸®½ºÆ®
+	int getWriteResult(DmuTicketVO vo); //ê²Œì‹œíŒ ê¸€ì“°ê¸°
+	int getUpdate(DmuTicketVO vo); //ê²Œì‹œíŒ ì—…ë°ì´íŠ¸
+ 
 	
 	DmuTicketVO getContent(String did);
-	int getDelete(String did);		//°øÁö»çÇ× »èÁ¦ Ã³¸®
+	int getDelete(String did);		//ê³µì§€ì‚¬í•­ ì‚­ì œ ì²˜ë¦¬
 	
 	 
-	int getInsertDate(DmuReJoinVO vo); //reservation ¿¡ °ª ³Ö±â
-	DmuReJoinVO getReservationcontent(String did);  //reservation ÆäÀÌÁö È£Ãâ
-	DmuReJoinVO getcompletecontent(String did);  //complete ÆäÀÌÁö È£Ãâ
+	int getInsertDate(DmuReJoinVO vo); //reservation ì— ê°’ ë„£ê¸°
+	DmuReJoinVO getReservationcontent(String did);  //reservation í˜ì´ì§€ í˜¸ì¶œ
+	DmuReJoinVO getcompletecontent(String did);  //complete í˜ì´ì§€ í˜¸ì¶œ
 	
+	int getTicketLearnCount(String dtarget); // ï¿½ë–šè€³ï¿½ learnæ€¨ê¾©ë–†ï¿½ë™‹ æ¿¡ì’–ìŠ¦ æ´Ñ‹ë¸¯æ¹²ï¿½ 
+	ArrayList<DmuTicketVO> getLists(int startCount,int endCount,String dcode , String dtarget); //ï¿½ë–šè€³ï¿½ learnæ€¨ê¾©ë–†ï¿½ë™‹ ç”±ÑŠë’ªï¿½ë“ƒ ç•°ì’•ì ° 
+	ArrayList<DmuTicketVO> getList(int startCount,int endCount,String dcode ); //ï¿½ë–šè€³ï¿½ æ€¨ê¾©ë–†ï¿½ë™‹ ç”±ÑŠë’ªï¿½ë“ƒ ç•°ì’•ì ° 
+	int getTicketCount(String dcode); //ï¿½ë–šè€³ï¿½ æ€¨ê¾©ë–†ï¿½ë™‹ ç¥ï¿½ åª›ï¿½ï¿½ë‹” æ´Ñ‹ë¸¯æ¹²ï¿½ 
 }

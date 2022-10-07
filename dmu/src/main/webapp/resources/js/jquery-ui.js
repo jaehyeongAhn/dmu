@@ -19055,8 +19055,7 @@ if ( $.uiBackCompat !== false ) {
 }
 
 var widgetsTooltip = $.ui.tooltip;
+});
 
 
 
-
-} );

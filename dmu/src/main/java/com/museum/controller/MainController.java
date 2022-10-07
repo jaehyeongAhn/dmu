@@ -39,10 +39,10 @@ public class MainController {
 	public String visit_map1() {
 		return "/visit/visit_map1";
 	}
-	@RequestMapping(value="/visit_map2.do", method=RequestMethod.GET)
-	public String visit_map2() {
-		return "/visit/visit_map2";
-	}
+	/*
+	 * @RequestMapping(value="/visit_map2.do", method=RequestMethod.GET) public
+	 * String visit_map2() { return "/visit/visit_map2"; }
+	 */
 	
 	/**
 	 * footer - sitemap
@@ -67,7 +67,6 @@ public class MainController {
 	public String terms_terms() {
 		return "/terms/terms_terms";
 	}
-	 
-	
+ 
 	
 }
