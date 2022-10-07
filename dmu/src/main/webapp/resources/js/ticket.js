@@ -104,5 +104,14 @@ $(document).ready(function(){
 				$('#field40').text(num);
 			});
 						 
+			
+									
+		
+									
+								
+								
+				
 		
 		}); //ready
+
+		
