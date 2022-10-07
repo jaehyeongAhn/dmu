@@ -272,7 +272,7 @@ public class TicketController {
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("admin//adminticket/ticketlist_content");
+			mv.setViewName("/admin/adminticket/ticketlist_content");
 			
 			return mv;
 		}
@@ -311,7 +311,7 @@ public class TicketController {
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("/adminticket/ticketlist_update");
+			mv.setViewName("/admin/adminticket/ticketlist_update");
 			
 			return mv;
 		}
@@ -323,7 +323,7 @@ public class TicketController {
 		public ModelAndView admin_ticket_delete(String did) {
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("did", did);
-			mv.setViewName("/adminticket/ticketlist_delete");
+			mv.setViewName("/admin/adminticket/ticketlist_delete");
 			
 			return mv;
 		}

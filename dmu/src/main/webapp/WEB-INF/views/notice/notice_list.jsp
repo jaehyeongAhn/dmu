@@ -71,44 +71,41 @@ $(document).ready(function(){
 		var kind = $(this).attr("id");
 		
 		$.ajax({
-			url : '/notice_list_json.do',
+			url : 'notice_list_json.do',
 			type: 'post',
 			cache : false,
 			headers : {"cache-control":"no-cache", "pragma": "no-cache"},
-			data : {"category" : kind},
+			data : {"ncategory" : kind},
 			success : function(data){
 				console.log(data);
 				let dataset = JSON.parse(data);
 		
-				$('.notice-list').html(data);
+				var output = "<div data-v-1b9c8af9='' data-v-080a389a='' class='notice-list'>";
+				output += "<ul data-v-1b9c8af9='' data-v-080a389a=''>";
+				for(obj of dataset.list){
+					output += "<li data-v-1b9c8af9='' data-v-080a389a=''>";
+					output += "<a href='notice_content.do?nid="+obj.nid+"' data-v-1b9c8af9='' data-v-080a389a='' href='javascript:void(0)'>";
+					output += "<span data-v-1b9c8af9='' data-v-080a389a='' class='number'>"+obj.rno+"</span>";
+					output += "<span data-v-1b9c8af9='' data-v-080a389a='' class='category'>"+obj.ncategory+"</span>";
+					output += "<div data-v-1b9c8af9='' data-v-080a389a='' class='title-area'>";
+					output += "<strong data-v-1b9c8af9='' data-v-080a389a='' class='title'>"+obj.ntitle+"</strong>";
+					output += "<span data-v-1b9c8af9='' data-v-080a389a='' class='date'>"+obj.ndate+"</span>"
+					output += "</div></a></li></ul></div>"
+				}
+				
+				$(".notice-list").remove();
+				$(".search-result").after(output);
+				
+				
+				//$('.notice-list').html(data);
 			},
 			error : function(data){
 				alert('error');
 			}
 		});
 		
-	});
-	
-	
-/* 	initAjax(1);
-	
-	$.ajax({
-		type: "get",
-		data:{
-			nid:nid
-		}
-		url : "notice_list_json.do?nid="+nid+"&category="+ncategory
-		success:function(result){
-			console.log(result);
-			$('body').html(result);
-		}
-	
+	});	
 		
-		
-	}); */
-	
-	
-	
 });//ready
 
 </script>
@@ -176,11 +173,11 @@ $(document).ready(function(){
 						<li data-v-080a389a="" class="on"><a data-v-080a389a=""
 							role="button" style="cursor: pointer;" data-tab="tab_1" class="tabbox" id="all">전체</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_2" class="tabbox" id="dmuseum">디뮤지엄</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_2" class="tabbox" id="디뮤지엄">디뮤지엄</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_3" class="tabbox" id="daelim">대림미술관</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_3" class="tabbox" id="대림미술관">대림미술관</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_4" class="tabbox" id="projectSpace">구슬모아당구장</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_4" class="tabbox" id="구슬모아당구장">구슬모아당구장</a></li>
 					</ul>
 				</div>
 				<div data-v-080a389a="" class="sub-contents-area">
