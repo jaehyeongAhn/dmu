@@ -1,12 +1,11 @@
 package com.museum.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,11 +16,16 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.museum.dao.DmuNoticeDAO;
+import com.museum.service.NoticeServiceImpl;
 import com.museum.vo.DmuNoticeVO;
 
 @Controller
 public class NoticeController {
 
+	
+	@Autowired
+	private NoticeServiceImpl noticeService;
+	
 	@RequestMapping(value = "/notice_list.do", method = RequestMethod.GET)
 	public ModelAndView notice_list(String rpage) {
 		//String rpage = request.getParameter("rpage");
@@ -55,7 +59,7 @@ public class NoticeController {
 		}
 		
 		
-	ArrayList<DmuNoticeVO> list = dao.select(startCount, endCount);
+	ArrayList<DmuNoticeVO> list = noticeService.getList(startCount, endCount);
 	
 	mv.addObject("list", list);
 	mv.addObject("dbCount", dbCount);
@@ -72,7 +76,7 @@ public class NoticeController {
 	public ModelAndView notice_content(String nid) {	
 		ModelAndView mv = new ModelAndView();
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		DmuNoticeVO vo = dao.select(nid);
+		DmuNoticeVO vo = noticeService.getContent(nid);
 		vo.setNcontent(vo.getNcontent().replace("\r\n", "<br/>"));
 		
 		mv.addObject("vo", vo);
@@ -116,7 +120,14 @@ public class NoticeController {
 		}
 		
 
-		ArrayList<DmuNoticeVO> clist = dao.categoryList(startCount, endCount, ncategory);
+		ArrayList<DmuNoticeVO> clist = new ArrayList<DmuNoticeVO>();
+		
+		if(ncategory.equals("all")) {
+			clist = noticeService.getList(startCount, endCount);
+		}else {
+			clist = noticeService.categoryList(startCount, endCount, ncategory);
+		}
+		
 		
 		JsonObject job = new JsonObject();
 		JsonArray jarray = new JsonArray();

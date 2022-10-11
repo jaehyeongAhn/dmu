@@ -24,6 +24,8 @@
         <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
         <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+        <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+	<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
     <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
     <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
         <script type="text/javascript" charset="UTF-8"

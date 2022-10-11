@@ -10,7 +10,7 @@ $(document).ready(function(){
     let index = $(this).parent().parent().index();
 
     let mid = $("tr").filter(":eq("+(index+1)+")").children(".memberId").text();
-    alert(mid);
+    //alert(mid);
         $.ajax({
             type : "post",
             data : {

@@ -18,6 +18,15 @@
 				where rno between #{start} and #{end}
 	</select>
 	
+	<select id="listCategory" parameterType="map" resultType="com.museum.vo.DmuNoticeVO">
+		select rno, nid, ncategory, ntitle, ndate
+				from(select rownum rno, nid, ncategory, ntitle, to_char(ndate, 'yyyy-mm-dd') ndate
+				from(select nid, ncategory, ntitle, ndate from dmu_notice where ncategory=?
+				order by ndate desc))
+				where rno between ? and ? 
+	</select>
+	
+	
 	<select id="content" parameterType="java.lang.String" resultType="com.museum.vo.DmuNoticeVO">
 		select nid, ncategory, ntitle, ncontent, ndate from dmu_notice where nid = #{nid}
 	</select> 

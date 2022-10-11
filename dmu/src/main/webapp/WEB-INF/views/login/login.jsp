@@ -9,6 +9,7 @@
 <link rel = "stylesheet" href = "http://localhost:9000/dmu/resources/css/main_css.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/login.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 	$(document).ready(function(){
 
@@ -39,7 +40,8 @@
 </script>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<main class = "login">
 		<div class = "section">
 			<div class = "container">

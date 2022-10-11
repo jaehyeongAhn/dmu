@@ -19,13 +19,15 @@
 	rel="stylesheet">
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/analytics.js"></script>
-<script
-	src="http://localhost:9000/mycgv/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/sitemap.css">
@@ -36,14 +38,15 @@
 </head>
 <body>
     <main>
-    	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
+    	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+        <div style="width:100%; height:17vh; color:transparent">헤더</div>
         <div data-v-36112f05="" class="sub-contents-wrap">
             <div data-v-0d03d759="" data-v-36112f05="" class="sub-top-area sitemap">
                 <div data-v-0d03d759="" class="container">
                     <h2 data-v-0d03d759=""> SITEMAP </h2>
                     <nav data-v-0d03d759="">
                         <ul data-v-0d03d759="">
-                            <li data-v-0d03d759="" style="cursor: pointer;"><a href="index.do"> HOME</a></li>
+                            <li data-v-0d03d759="" style="cursor: pointer;"><a href="index.do" style="opacity:0;">HOME</a></li>
                             <!---->
                             <li data-v-0d03d759=""> SITEMAP </li>
                             <!---->
@@ -105,7 +108,7 @@
                         <div data-v-36112f05="" class="sitemap-right">
                             <ul data-v-36112f05="">
                                 <li data-v-36112f05="" class="arrow">
-                                    <!----><a data-v-36112f05="" href="join_terms.do" class="" target=""> BECOME A MEMBER
+                                    <!----><a data-v-36112f05="" href="join_status.do" class="" target=""> BECOME A MEMBER
                                     </a>
                                     <!---->
                                 </li>
@@ -113,15 +116,9 @@
                                     <!----><a data-v-36112f05="" href="login.do" class="" target=""> MY PAGE </a>
                                     <!---->
                                 </li>
-                                <li data-v-36112f05="" class="list-style">
+                                <li data-v-36112f05="" class="arrow">
+                                    <!----><a data-v-36112f05="" href="notice_list.do" class="" target=""> NOTICE </a>
                                     <!---->
-                                    <!---->
-                                    <ul data-v-36112f05="">
-<!--                                         <li data-v-36112f05=""><a data-v-36112f05="" href="/faq/all" class=""> FAQ </a>
-                                        </li> -->
-                                        <li data-v-36112f05=""><a data-v-36112f05="" href="notice_list.do" class=""> NOTICE
-                                            </a></li>
-                                    </ul>
                                 </li>
                                 <li data-v-36112f05="" class="arrow"><a data-v-36112f05=""
                                         href="https://daelimculturalfoundation.org" target="_blank"> 대림문화재단 </a>
@@ -134,7 +131,7 @@
                 </div>
             </div>
         </div>
-        		<iframe src="footer.do" width="100%" height="530px" scrolling="no" frameborder=0 ></iframe>
+        		<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
     </main>
 </body>
 
