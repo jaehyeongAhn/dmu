@@ -198,4 +198,18 @@ public class LoginController {
 
 		return mv;
 	}
+	
+	//logout.do : ·Î±×¾Æ¿ô
+	@RequestMapping(value="/logout.do", method = RequestMethod.GET)
+	public ModelAndView logout(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		
+		if(session != null) {
+			session.invalidate();
+		}
+		
+		mv.setViewName("/index");
+		
+		return mv;
+	}
 }
