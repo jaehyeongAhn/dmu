@@ -26,18 +26,22 @@
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script> -->
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/visit.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 </head>
 <body>
 	<div id="app">
 		<div id="contents">
 			<main>
-			<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
+			<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+				<div style="width:100%; height:17vh; color:transparent">헤더</div>
 				<section data-v-49e31b64="" class="sub-contents-wrap">
 					<div data-v-0d03d759="" data-v-49e31b64=""
 						class="sub-top-area dmuseum">
@@ -45,7 +49,7 @@
 							<h2 data-v-0d03d759="">관람안내</h2>
 							<nav data-v-0d03d759="">
 								<ul data-v-0d03d759="">
-									<li data-v-0d03d759="" style="cursor: pointer;">HOME</li>
+									<li data-v-0d03d759="" style="cursor: pointer;"><a href="index.do" style="opacity:0;">HOME</a></li>
 									<li data-v-0d03d759="">VISIT</li>
 									<li data-v-0d03d759="">관람안내</li>
 									<!---->
@@ -295,7 +299,7 @@
 					</div>
 				</section>
 			</main>
-			<iframe src="footer.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
+			<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 			<button class="goto-top show">상단으로 이동</button>
 		</div>
 	</div>

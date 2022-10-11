@@ -28,6 +28,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <%--  jQuery UI CSS파일  --%>
 <%-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> --%>
 <link rel="stylesheet"
@@ -134,8 +135,8 @@
 
 </head>
 <body>
-	<iframe src="http://localhost:9000/dmu/header.do" width="100%"
-		height="160px" scrolling="no" frameborder=0></iframe>
+<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+<div style="width:100%; height:17vh; color:transparent">헤더</div>
 
 
 	<div class="content">
@@ -416,6 +417,7 @@
 	</div>
 	</div>
 	<!-- built files will be auto injected -->
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 	<footer>
 		<!-- 0510 네이버 공통 js 추가 -->
 		<script type="text/javascript" src="//wcs.naver.net/wcslog.js">
@@ -426,8 +428,7 @@
 	<script type="text/javascript"
 		src="/js/chunk-vendors.85a954b2b4f1348cc700.js"></script>
 	<script type="text/javascript" src="/js/index.85a954b2b4f1348cc700.js"></script>
-	<iframe src="footer.do" width="100%" height="550px" scrolling="no"
-		frameborder=0></iframe>
+
 
 </body>
 </html>
