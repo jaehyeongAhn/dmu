@@ -27,6 +27,8 @@
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script> -->
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/notice.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
@@ -36,17 +38,20 @@
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 </head>
 <script>
 $(document).ready(function(){
 	
 	//페이징 리스트 출력
+	function paging(dbcount, rpage, pageSize){
+		
 	var pager = jQuery('#ampaginationsm').pagination({
 	
 	    maxSize: 7,	    		// max page size
-	    totals: '${dbCount}',	// total rows	
-	    page: '${rpage}',		// initial page		
-	    pageSize: '${pageSize}',	// max number items per page
+	    totals: dbcount,	// total rows	
+	    page: rpage,		// initial page		
+	    pageSize: pageSize,	// max number items per page
 	
 	    // custom labels		
 	    lastText: '&raquo;&raquo;', 		
@@ -56,46 +61,101 @@ $(document).ready(function(){
 			     
 	    btnSize:'sm'	// 'sm'  or 'lg'		
 	});
+}
 	
 	//페이징 번호 클릭 시 이벤트 처리
-	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+/* 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-           $(location).attr('href', "http://localhost:9000/dmu/admin_notice_list.do?rpage="+e.page);         
+           $(location).attr('href', "http://localhost:9000/dmu/notice_list.do?rpage="+e.page);         
     });
-	
-	 	
+	 */
+
 	
 	$(".snb-area .snb li a.tabbox").click(function(){
-/* 		var idx = $(this).index();
 		
+		//alert($(this).attr("id"));
 		$(".snb-area .snb li").removeClass("on");
-		$(".snb-area .snb li").eq(idx).addClass("on");
+		$(this).parent().addClass("on");
+		var kind = $(this).attr("id");
 		
-		$(".snb-area .tabbox").removeClass("on");
-		$(".snb-area .tabbox").addClass("on"); */
+		notice_search(kind, 1);
 		
-		alert($(this).attr("id"));
+	});	
+	
+	notice_search("all", 1);
+	
+	function notice_search(kind, rpage){
 		
-		
-
-			
 		$.ajax({
-			url:"admin_content_json.do?id="
-			
-			
+			url : 'notice_list_json.do',
+			type: 'post',
+			cache : false,
+			headers : {"cache-control":"no-cache", "pragma": "no-cache"},
+			data : {"ncategory" : kind, "rpage": rpage},
+			success : function(data){
+				//
+				//console.log(data);
+				let dataset = JSON.parse(data);
+		
+				var output = "<div data-v-1b9c8af9='' data-v-080a389a='' class='notice-list'>";
+				output += "<ul data-v-1b9c8af9='' data-v-080a389a=''>";
+				for(obj of dataset.list){
+					output += "<li data-v-1b9c8af9='' data-v-080a389a=''>";
+					output += "<a href='admin_notice_content.do?nid="+obj.nid+"' data-v-1b9c8af9='' data-v-080a389a='' href='javascript:void(0)'>";
+					output += "<span data-v-1b9c8af9='' data-v-080a389a='' class='number'>"+obj.rno+"</span>";
+					output += "<span data-v-1b9c8af9='' data-v-080a389a='' class='category'>"+obj.ncategory+"</span>";
+					output += "<div data-v-1b9c8af9='' data-v-080a389a='' class='title-area'>";
+					output += "<strong data-v-1b9c8af9='' data-v-080a389a='' class='title'>"+obj.ntitle+"</strong>";
+					output += "<span data-v-1b9c8af9='' data-v-080a389a='' class='date'>"+obj.ndate+"</span>"
+					output += "</div></a></li>";
+				}
+				
+				var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm'>"
+				paging_list +="</div>"
+				
+				output += "</ul></div>";
+				
+				if(dataset.list.length !=0){
+					
+				$(".no-result").css("display","none");
+				
+				$(".notice-list").remove();
+				$(".search-result").after(output);
+				$(".notice-list").append(paging_list);
+				$("div.search-result strong.total").text(dataset.dbCount);
+				
+				//$('.notice-list').html(data);
+				
+				paging(dataset.dbCount, dataset.rpage, dataset.pageSize);
+				
+				//페이징 번호 클릭 시 이벤트 처리
+				jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+					   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+			           //$(location).attr('href', "http://localhost:9000/dmu/notice_list.do?rpage="+e.page);
+			           notice_search(kind, e.page);
+			    });
+				
+				}else{
+					$("div.search-result strong.total").text(dataset.dbCount);
+					$(".notice-list").remove();
+					$(".no-result").css("display", "block");
+				}
+				
+			},
+			error : function(data){
+				alert('error');
+			}
 		});
-
 		
+	}
 		
-	});
-	
-	
-	});//ready
+});//ready
 
 </script>
 
 <body>
-	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<main>
 		<section data-v-1b9c8af9="" class="sub-contents-wrap">
 			<div data-v-0d03d759="" data-v-1b9c8af9=""
@@ -157,11 +217,11 @@ $(document).ready(function(){
 						<li data-v-080a389a="" class="on"><a data-v-080a389a=""
 							role="button" style="cursor: pointer;" data-tab="tab_1" class="tabbox" id="all">전체</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_2" class="tabbox" id="dmuseum">디뮤지엄</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_2" class="tabbox" id="디뮤지엄">디뮤지엄</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_3" class="tabbox" id="daelim">대림미술관</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_3" class="tabbox" id="대림미술관">대림미술관</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							role="button" style="cursor: pointer;" data-tab="tab_4" class="tabbox" id="project">구슬모아당구장</a></li>
+							role="button" style="cursor: pointer;" data-tab="tab_4" class="tabbox" id="구슬모아당구장">구슬모아당구장</a></li>
 					</ul>
 				</div>
 				<div data-v-26e42198="" class="btn-area">
@@ -174,11 +234,11 @@ $(document).ready(function(){
 					<div data-v-1b9c8af9="" data-v-080a389a="" slot=""
 						class="container">
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="search-result">
-							총 <strong>${dbCount}</strong>건
+							총 <strong class="total"></strong>건
 						</div>
 				
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="notice-list">
-							<ul data-v-1b9c8af9="" data-v-080a389a="" class="listAll">
+							<ul data-v-1b9c8af9="" data-v-080a389a="">
 							<c:forEach var="vo" items="${list}">
 								<li data-v-1b9c8af9="" data-v-080a389a=""><a href="admin_notice_content.do?nid=${vo.nid}"
 									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
@@ -193,6 +253,7 @@ $(document).ready(function(){
 								</li>
 							</c:forEach>
 						</div>
+						<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
 						
 <!-- 								<li data-v-1b9c8af9="" data-v-080a389a=""><a
 									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
@@ -223,7 +284,7 @@ $(document).ready(function(){
 										</div></a></li> -->
 							</ul>
 						</div>
-						<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area"
+<!-- 						<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area"
 							data-v-080a389a="" id="ampaginationsm">
 							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-first">first</button>
@@ -241,12 +302,11 @@ $(document).ready(function(){
 								next</button>
 							<button data-v-650d6904="" type="button" class="btn-last">
 								last</button>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
-			<iframe src="footer.do" width="100%" height="530px" scrolling="no"
-				frameborder=0></iframe>
+			<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 			<!-- built files will be auto injected -->
 			<footer>
 				<!-- 0510 네이버 공통 js 추가 -->

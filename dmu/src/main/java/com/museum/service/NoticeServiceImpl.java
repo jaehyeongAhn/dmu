@@ -79,4 +79,13 @@ public class NoticeServiceImpl implements NoticeService{
 		int result = dao.totalCount_category(ncategory);
 		return result;
 	}
+	
+	
+	public ArrayList<DmuNoticeVO> categoryList(int startCount, int endCount, String ncategory){
+		DmuNoticeDAO dao = new DmuNoticeDAO();
+		ArrayList<DmuNoticeVO> clist = dao.categoryList(startCount, endCount, ncategory);
+		return clist;
+	}
+	
+	
 }

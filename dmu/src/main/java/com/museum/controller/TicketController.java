@@ -37,15 +37,15 @@ public class TicketController {
 	@Autowired
 	private FileServiceImpl  fileService;
 	
-
-	// ticketlist_write.do : 占쌉쏙옙占쏙옙 占쌜억옙占쏙옙 화占쏙옙
-		 
+		/**
+		 * ticketlist_write.do : 티켓 리스트 작성 
+		 */
 		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
 			return "admin/adminticket/ticketlist_write";
 		}
 		/**
-		 * ticketlist_write_check.do : 占쌉쏙옙占쏙옙 占쌜억옙占쏙옙 처占쏙옙
+		 * ticketlist_write_check.do : 티켓 리스트 작성 체크 
 		 */
 		@RequestMapping(value="/ticketlist_write_check.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {

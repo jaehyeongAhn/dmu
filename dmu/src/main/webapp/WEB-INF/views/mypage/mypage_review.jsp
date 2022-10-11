@@ -12,6 +12,7 @@
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 	$(document).ready(function(){
 		$(".review_write_btn").click(function(){
@@ -27,7 +28,8 @@
 </script>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 class = "header"></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<!-- 사이드 메뉴 -->
 	<div class = "main">
 		<div class = "section">
@@ -154,7 +156,7 @@
 			</div>
 		</div>
 	</div>
-	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" ></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 
 	<div class = "background">
 		<div class = "window">
