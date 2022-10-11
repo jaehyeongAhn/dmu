@@ -38,17 +38,17 @@ $(document).ready(function(){
 	//페이징 번호 클릭 시 이벤트 처리
 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-           $(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);         
+           $(location).attr('href', "http://localhost:9000/dmu/adminpage_reservation_list.do?rpage="+e.page);         
     });
 	
 	
 	//popup
-	$(".member_detail").click(function(){
-		$(".background_member").addClass("show");
-		$(".window_member").addClass("show");
+	$(".reservation_detail").click(function(){
+		$(".background_reservation").addClass("show");
+		$(".window_reservation").addClass("show");
 		$(".popup_close").click(function(){
-			$(".background_member").removeClass("show");
-			$(".window_member").removeClass("show");
+			$(".background_reservation").removeClass("show");
+			$(".window_reservation").removeClass("show");
 		});
 	});
 	
@@ -111,7 +111,7 @@ $(document).ready(function(){
 				<%-- 마이페이지 content --%>
 				<div class="sub-contents">
 					<div class="page-title">
-						<h2>회원관리</h2>
+						<h2>예매관리</h2>
 					</div>
 					<div class="myinfo">
 						<div class="myinfo-box">
@@ -122,33 +122,49 @@ $(document).ready(function(){
 									<table>
 										<thead>
 											<tr>
-												<th>아이디</th>
-												<th>회원명</th>
-												<th>전화번호</th>
-												<th>이메일</th>
-												<th>가입일자</th>
-												<th>상태</th>
-												<th>자세히보기</th>
+												<th>분류</th>
+												<th>티켓번호</th>
+												<th>이벤트명</th>
+												<th>예약자명</th>
+												<th>티켓금액</th>
+												<th>티켓매수</th>
+												<th>총 금액</th>
+												<th>관람일</th>
+												<th>예약일</th>
+												<th>예약취소  진행</th>
+												<th>예약취소  일자</th>
 											</tr>
 										</thead>
 										<tbody>
 										<c:forEach var="vo" items="${list}">
-											<tr>
-												<td class="memberId">${vo.mid}</td>
-												<td>${vo.mname}</td>
-												<td>${vo.pnumber}</td>
-												<td>${vo.email}</td>
-												<td>${vo.ddate}</td>
-										<c:choose>
-											<c:when test="${vo.unregister == 'n'}">
-												<td>탈퇴</td>
-											</c:when>
-											<c:otherwise>
-												<td>가입완료</td>
-											</c:otherwise>
-										</c:choose>
-											<td><button class="member_detail"><a href="#">자세히보기</a>
-											</button></td>
+											<tr>												 
+												<td >${vo.dcode}</td>											 
+												<td class="reservation_detail" class="reservationId"><a href="#">${vo.rid}</a></td> <!-- 티켓번호 -->
+												<td>${vo.dtitle }</td>   <!-- 전시/이벤트 명 --> 
+												<td>${vo.mname }</td>   <!-- 예약자 명 -->
+												<td>${vo.dpricech }</td>   <!-- 티켓금액 -->
+												<td>${vo.rtotal }</td>   <!-- 티켓매수 -->
+												<td>${vo.rallpricech }</td>   <!-- 총 금액 -->
+												<td>${vo.rdateda }</td>   <!-- 관람일 -->
+												<td>${vo.rokdatech }</td>   <!-- 예약일 -->
+												<c:choose>
+														<c:when test="${vo.rid == 'n'}">  <!-- 예약취소 진행 -->  
+															<td>취소완료</td>
+													</c:when>
+														<c:otherwise>
+															<td><button class="member_detail"><a href="#">예매취소</a></button></td>
+													</c:otherwise>
+												</c:choose>
+											 	
+											 	<c:choose>
+														<c:when test="${vo.rid == 'n'}">  <!-- 예약취소 일자 -->
+															<td>${vo.rokdate }</td>
+													</c:when>
+														<c:otherwise>
+															<td>-</td>
+													</c:otherwise>
+												</c:choose>		 
+									 										 
 											</tr>
 										</c:forEach>
 										</tbody>
@@ -181,52 +197,68 @@ $(document).ready(function(){
 	</div>
 	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer" ></iframe>
 	
-	<div class = "background_member">
-		<div class = "window_member">
-			<div class = "popup_member">
-				<p class = "popup_title">회원정보</p>
+	<div class = "background_reservation">
+		<div class = "window_reservation">
+			<div class = "popup_reservation">
+				<p class = "popup_title">티켓 정보</p>
 				<div class="popup_detail">
 								<table class="popup_detail_table">
 										<thead>
 											<tr>
-												<th>아이디</th>
-												<td class="mid">${vo.mid}</td>
+												<th>분류</th>
+												<td class="dcode">${vo.dcode}</td>
 											</tr>
 											<tr>
-												<th>회원명</th>
-												<td class="mname">${vo.mname}</td>
+												<th>예매번호</th>
+												<td class="rid">${vo.rid}</td>
 											</tr>
 											<tr>
-												<th>전화번호</th>
-												<td class="pnumber">${vo.pnumber}</td>
+												<th>티켓번호</th>
+												<td class="tid">${vo.rid}</td>
 											</tr>
 											<tr>
-												<th>이메일</th>
-												<td class="email">${vo.email}</td>
+												<th>전시/이벤트 명</th>
+												<td class="dtitle">${vo.dtitle}</td>
 											</tr>
 											<tr>
-												<th>생년월일</th>
-												<td class="birth">${vo.birth}</td>
+												<th>예약자명</th>
+												<td class="mid">${vo.mname}</td>
 											</tr>
 											<tr>	
-												<th>주소</th>
-												<td class="address">${vo.address}</td>
+												<th>티켓금액</th>
+												<td class="dprice">${vo.dpricech}</td>
 											</tr>
 											<tr>
-												<th>성별</th>
-												<td class="gender">${vo.gender}</td>
+												<th>티켓매수</th>
+												<td class="rtotal">${vo.rtotal}</td>
 											</tr>
 											<tr>
-												<th>회원유형</th>
-												<td class="nationality">${vo.nationality}</td>
+												<th>총 금액</th>
+												<td class="rallprice">${vo.rallpricech}</td>
 											</tr>
 											<tr>
-												<th>가입일자</th>
-												<td class="ddate">${vo.ddate}</td>
+												<th>관람일</th>
+												<td class="rdate">${vo.rdateda}</td>
+											</tr>
+											<tr>	
+												<th>예약일</th>
+												<td class="rokdate">${vo.rokdatech}</td>
+											</tr>
+											<tr>	
+												<th>결제번호</th>
+												<td class="unregister"> </td>
+											</tr>
+											<tr>	
+												<th>결제일</th>
+												<td class=""> </td>
+											</tr>
+											<tr>	
+												<th>결제수단</th>
+												<td class=""> </td>
 											</tr>
 											<tr>	
 												<th>상태</th>
-												<td class="unregister">${vo.unregister}</td>
+												<td class=""> </td>
 											</tr>
 										</thead>
 									</table>

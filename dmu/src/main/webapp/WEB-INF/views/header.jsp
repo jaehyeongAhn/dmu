@@ -20,6 +20,7 @@
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/analytics.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script
@@ -146,7 +147,7 @@ header .header-web .main-menu-area .main-menu > ul > li.visit:hover > div#menu_v
 								<li class="visit"><a href="visit_main.do"> VISIT </a></li> 
 								<li class="exhibition"><a href="javascript:void(0);"> EXHIBITION</a></li>
 								<li class="learn"><a href="javascript:void(0);"> LEARN </a></li>
-								<li class="event"><a href="javascript:void(0);"> EVENT </a></li>
+								<li class="event"><a href="http://localhost:9000/dmu/event_page.do" target="_parent"> EVENT </a></li>
 								<li class="ticket"><a
 									href="http://localhost:9000/dmu/exhibition_list.do"
 									target="_parent"> TICKET </a></li>
