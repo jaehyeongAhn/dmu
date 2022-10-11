@@ -27,7 +27,7 @@
 		select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime 
         from(select rownum rno,did,dplace,dtitle,dstart ,
         dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime 
-        from (select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum ,dtitle2,dentertimefrom dmu_ticket where dcode = #{dcode} and dtarget= #{dtarget}))
+        from (select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum ,dtitle2,dentertime from dmu_ticket where dcode = #{dcode} and dtarget= #{dtarget}))
         where rno between #{start} and #{end}
 	</select>
 	<!-- select list dcode dmu_ticket -->
