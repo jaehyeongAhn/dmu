@@ -9,7 +9,7 @@
 
 	 <select id="content" parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">
  
-	 	select did, dtitle,dplace, dprice,to_char(dprice,'999,999') dpricech ,dinformation,dtime,dtarget,dnum,dfile,dsfile,dstart,dend,TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE,dentertime,dcode,dtitle2   from dmu_ticket where did=#{did}
+	 	select did, dtitle,dplace, dprice,to_char(dprice,'999,999') dpricech,dpersonnel ,dinformation,dtime,dtarget,dnum,dfile,dsfile,dstart,dend,TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE,dentertime,dcode,dtitle2   from dmu_ticket where did=#{did}
  
 	 </select>
 	 

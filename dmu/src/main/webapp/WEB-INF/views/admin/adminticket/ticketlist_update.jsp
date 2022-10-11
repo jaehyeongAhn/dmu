@@ -119,7 +119,7 @@
 			</li>
 			<li data-v-8ed31374="">
 				<strong data-v-8ed31374="" class="title">회차/수업시간 </strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dtime" id="dtime" value="${vo.dentertime }"></span>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dentertime" id="dentertime" value="${vo.dentertime }"></span>
 			</li>
 			
 			<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
