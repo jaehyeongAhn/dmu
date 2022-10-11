@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.museum.dao.DmuTicketDAO"%>
-<%@ page import="com.museum.vo.DmuTicketVO"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- JSTL 태그 추가  -->
 
@@ -36,7 +35,9 @@
 <body>
 	<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
 	
-	 
+  <div class="content">
+		 
+		<form name="ticket_reservationFrom"  action="ticketCompleteCheck.do"  method="post">  
 			 
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">
@@ -69,16 +70,20 @@
 															class="txt"><strong data-v-a42e08ec="">${ vo.dtitle }</strong></span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">관람일시</span><span data-v-a42e08ec=""
-															class="txt">${vo.dstart}</span></li>
+															class="txt">${vo.rdateda}</span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">장소</span><span data-v-a42e08ec="" class="txt">${ vo.dplace }</span></li>
 													</ul>
 													<ul data-v-a42e08ec="" class="ticket-personnel">
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
-															class="title">인원</span><span data-v-a42e08ec=""
-															class="price">${ vo.dprice }원</span><span data-v-a42e08ec=""
-															class="personnel">1인</span><span data-v-a42e08ec=""
-															class="total">${ vo.dprice }원</span></li>
+															class="title"></span><span data-v-a42e08ec=""
+															class="price"> </span>
+															<span data-v-a42e08ec=""
+															class="personnel">인원 </span>
+															<span data-v-a42e08ec="" class="total">  ${ vo.rtotal }인</span></li>
+															
+									 
+															
 													</ul>
 												</div>
 												<div data-v-a42e08ec="" class="payment-info-area">
@@ -190,9 +195,8 @@
 															data-v-a42e08ec="" class="title-area"> 결제 정보 </div>
 														<div data-v-a42e08ec="" class="field-payment-area">
 															<ul data-v-a42e08ec="" class="payment-list">
-																<li data-v-a42e08ec=""><strong data-v-a42e08ec=""
-																	class="title">총금액 / 1매</strong> <span
-																	data-v-a42e08ec="" class="price">${ vo.dprice }</span></li>
+																<li data-v-a42e08ec=""><strong data-v-a42e08ec="" class="title">총금액 / ${ vo.rtotal }매</strong> 
+																<span data-v-a42e08ec="" class="price">${vo.rallpricech} </span></li>
 																<!---->
 																<li data-v-a42e08ec=""><strong data-v-a42e08ec=""
 																	class="title"></strong><span data-v-a42e08ec=""
@@ -200,7 +204,7 @@
 															</ul>
 															<div data-v-a42e08ec="" class="payment-result">
 																<strong data-v-a42e08ec="" class="title">최종 결제금액</strong><span
-																	data-v-a42e08ec="" class="price">${ vo.dprice }</span>
+																	data-v-a42e08ec="" class="price">${vo.rallpricech}</span>
 															</div>
 														</div></li>
 												</ul>
@@ -209,17 +213,15 @@
 														<li data-v-a42e08ec=""><div data-v-34230fe0=""
 																data-v-a42e08ec="" class="check-area">
 																<input data-v-34230fe0="" id="check287" type="checkbox"
-																	class=""><label data-v-34230fe0=""
-																	for="check287"><span data-v-34230fe0=""
-																	class="check"></span>예약 티켓 정보에 대한 동의</label>
+																	class=""><label data-v-34230fe0="" for="check287"><span data-v-34230fe0="" class="check" id="check287"></span>예약 티켓 정보에 대한 동의</label>
 															</div>
 															<p data-v-a42e08ec="" class="p-msg-local">예약하신 티켓의 가격, 할인 내역, 취소 정책을 최종확인 하였으며, 구매에 동의합니다.<br>(전자거래법 제8조 제2항)</p></li>
 													</ul>
 													<div data-v-26e42198="" data-v-a42e08ec=""
 														class="btn-area btn-reservation">
 														<a href="http://localhost:9000/dmu/complete.do?did=${ vo.getDid()}" target="_parent" >
-														<button data-v-26e42198="" id="btn289" type="button"
-															 							class="primary"> 결제하기 </button></a>
+														<button data-v-26e42198="" id="btn289" type="button" class="primary" disabled> 결제하기 </button></a>
+														 <input type="hidden" name="did" value="${ vo.did }">
 															<!-- disabled="disabled" -->
 													</div>
 												</div>
@@ -239,10 +241,11 @@
 					</div>
 				</div>
 			</main>
-			
+			</form>
 			<button class="goto-top"> 상단으로 이동 </button>
 		</div>
 	</div>
+	
     <!-- built files will be auto injected -->
     <footer>
        <!-- 0510 네이버 공통 js 추가 -->

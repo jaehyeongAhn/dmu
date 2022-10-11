@@ -2,13 +2,9 @@ package com.museum.controller;
 
 import java.io.File;
 
-
-
-
-
-
+ 
 import java.util.ArrayList;
-import java.util.HashMap;
+ 
 import java.util.Map;
 import java.util.UUID;
 
@@ -21,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+  
+ 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+ 
 import com.museum.service.FileServiceImpl;
 import com.museum.service.PageServiceImpl;
 import com.museum.service.TicketServiceImpl;
@@ -38,15 +37,15 @@ public class TicketController {
 	@Autowired
 	private FileServiceImpl  fileService;
 	
-
-	// ticketlist_write.do : �Խ��� �۾��� ȭ��
-		 
+		/**
+		 * ticketlist_write.do : 티켓 리스트 작성 
+		 */
 		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
 			return "admin/adminticket/ticketlist_write";
 		}
 		/**
-		 * ticketlist_write_check.do : �Խ��� �۾��� ó��
+		 * ticketlist_write_check.do : 티켓 리스트 작성 체크 
 		 */
 		@RequestMapping(value="/ticketlist_write_check.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
@@ -72,8 +71,8 @@ public class TicketController {
 				}
 				
 
-				//mv.setViewName("/board/board_list"); //에러X, 아무런 게시글 출력되지 X
-				mv.setViewName("redirect:/adminexhibition_list.do"); //DB연동을 Controller에서 진행하므로, 새로운 연결을 수행!!
+				//mv.setViewName("/board/board_list"); //�뿉�윭X, �븘臾대윴 寃뚯떆湲� 異쒕젰�릺吏� X
+				mv.setViewName("redirect:/adminexhibition_list.do"); //DB�뿰�룞�쓣 Controller�뿉�꽌 吏꾪뻾�븯誘�濡�, �깉濡쒖슫 �뿰寃곗쓣 �닔�뻾!!
 
 			}else{
 				mv.setViewName("error_page");
@@ -82,7 +81,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * exhibition_list.do : ����ȸ ��ü ����Ʈ 
+		 * exhibition_list.do : 占쏙옙占쏙옙회 占쏙옙체 占쏙옙占쏙옙트 
 		 */
 		@RequestMapping(value="/exhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView exhibition_list(String rpage) {
@@ -104,7 +103,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * event_list.do : ����ȸ ��ü ����Ʈ 
+		 * event_list.do : 占쏙옙占쏙옙회 占쏙옙체 占쏙옙占쏙옙트 
 		 */
 		@RequestMapping(value="/event_list.do", method=RequestMethod.GET)
 		public ModelAndView event_list(String rpage) {
@@ -126,7 +125,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * learn_list.do : ����ȸ ��ü ����Ʈ 
+		 * learn_list.do : 占쏙옙占쏙옙회 占쏙옙체 占쏙옙占쏙옙트 
 		 */
 		@RequestMapping(value="/learn_list.do", method=RequestMethod.GET)
 		public ModelAndView learn_list(String rpage) {
@@ -148,7 +147,7 @@ public class TicketController {
 			return mv;
 		}
 		
-		//adminlearn list ������
+		//adminlearn list 占쏙옙占쏙옙占쏙옙
 		@RequestMapping(value="/adminlearn_list.do", method=RequestMethod.GET)
 		public ModelAndView adminlearn_list(String rpage) throws Exception {
 			ModelAndView mv = new ModelAndView();
@@ -220,7 +219,7 @@ public class TicketController {
 			
 			return gson.toJson(jobject);
 		}
-		//exhibition list 관리자
+		//exhibition list 愿�由ъ옄
 
 		@RequestMapping(value="/adminexhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView adminexhibition_list(String rpage) {
@@ -241,7 +240,7 @@ public class TicketController {
 			
 			return mv;
 		}
-		//adminevent list ������
+		//adminevent list 占쏙옙占쏙옙占쏙옙
 		@RequestMapping(value="/adminevent_list.do", method=RequestMethod.GET)
 		public ModelAndView adminevent_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
@@ -273,7 +272,7 @@ public class TicketController {
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("admin//adminticket/ticketlist_content");
+			mv.setViewName("/admin/adminticket/ticketlist_content");
 			
 			return mv;
 		}
@@ -351,7 +350,7 @@ public class TicketController {
 			return mv;
 		}
 		
-
-		
+ 
+	  
 
 }

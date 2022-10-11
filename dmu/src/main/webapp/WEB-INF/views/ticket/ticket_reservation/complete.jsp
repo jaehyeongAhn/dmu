@@ -41,6 +41,12 @@
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
+	
+	 <div class="content">
+		 
+		<form name=""  action=""  method="post">  
+		
+		
 	<div id="app">
 		<div id="contents">
 			<main>
@@ -52,7 +58,7 @@
 									<div data-v-7f52b83a="" class="container">
 										<div data-v-7f52b83a="" class="title-complete">
 											<h2 data-v-7f52b83a="">예매완료</h2>
-											<p data-v-7f52b83a="">${  vo.did }, 예매가 성공적으로 완료되었습니다.</p>
+											<p data-v-7f52b83a="">${  vo.mname },님 예매가 성공적으로 완료되었습니다.</p>
 										</div>
 										<div data-v-7f52b83a="" class="complete-base-info">
 											<div data-v-7f52b83a="" class="thumb">
@@ -65,18 +71,18 @@
 												<div data-v-7f52b83a="" class="ticket-number-area">
 													<span data-v-7f52b83a="" class="info-tit">예매번호</span><a
 														data-v-7f52b83a="" href="javascript:void(0)"
-														class="info-txt">예매번호 vo 필요 </a>
+														class="info-txt">${ vo.rid } </a>
 												</div>
 												<ul data-v-7f52b83a="" class="info">
 													<li data-v-7f52b83a=""><span data-v-7f52b83a=""
 														class="info-tit">관람일시</span><span data-v-7f52b83a=""
-														class="info-txt">${vo.dstart}</span></li>
+														class="info-txt">${vo.rdateda}</span></li>
 													<li data-v-7f52b83a=""><span data-v-7f52b83a=""
 														class="info-tit">장소</span><span data-v-7f52b83a=""
 														class="info-txt">${vo.dplace}</span></li>
 													<li data-v-7f52b83a=""><span data-v-7f52b83a=""
 														class="info-tit">관람인원</span><span data-v-7f52b83a=""
-														class="info-txt">관람인원 vo 필요</span></li>
+														class="info-txt">${vo.rtotal}</span></li>
 												</ul>
 											</div>
 										</div>
@@ -85,17 +91,17 @@
 												<li data-v-7f52b83a="" class="total-price"><strong
 													data-v-7f52b83a="" class="title">총 금액</strong>
 												<p data-v-7f52b83a="" class="amount">
-														<strong data-v-7f52b83a="">${vo.dprice}</strong>
+														<strong data-v-7f52b83a="">${vo.rallpricech}</strong>
 													</p></li>
 												<li data-v-7f52b83a="" class="discount-amount minus"><strong
 													data-v-7f52b83a="" class="title">인원</strong>
 												<p data-v-7f52b83a="" class="amount">
-														<strong data-v-7f52b83a="">인원 vo 필요</strong>
+														<strong data-v-7f52b83a="">${vo.rtotal}</strong>
 													</p></li>
 												<li data-v-7f52b83a="" class="final-payment"><strong
 													data-v-7f52b83a="" class="title">최종 결제금액</strong>
 												<p data-v-7f52b83a="" class="amount">
-														<strong data-v-7f52b83a="">최종 결제금액 연산 필요</strong>
+														<strong data-v-7f52b83a="">${vo.rallpricech}</strong>
 													</p></li>
 											</ul>
 										</div>
@@ -150,10 +156,7 @@
 												<button data-v-26e42198="" id="btn23" type="button"
 													class="primary">예매내역 확인</button>
 											</div>
-											<div data-v-26e42198="" data-v-7f52b83a="" class="btn-area">
-												<button data-v-26e42198="" id="btn24" type="button"
-													class="primary">티켓 선물하기</button>
-											</div>
+											 
 											<div data-v-26e42198="" data-v-7f52b83a="" class="btn-area">
 											<a href="http://localhost:9000/dmu/index.do" target="_parent" >
 												<button data-v-26e42198="" id="btn25" type="button"
@@ -171,6 +174,7 @@
 			<button class="goto-top">상단으로 이동</button>
 		</div>
 	</div>
+			</form>
 
 
 </body>

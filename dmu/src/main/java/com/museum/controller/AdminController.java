@@ -82,7 +82,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/admin_notice_write.do", method = RequestMethod.GET)
 	public String admin_notice_write() {
-		return "/admin/admin_notice_write";
+		return "/admin/admin_notice/admin_notice_write";
 	}
 
 	/*
@@ -130,7 +130,7 @@ public class AdminController {
 		DmuNoticeVO vo = noticeService.getContent(nid);
 		
 		mv.addObject("vo", vo);
-		mv.setViewName("admin/admin_notice_update");
+		mv.setViewName("admin/admin_notice/admin_notice_update");
 		
 		return mv;
 	}

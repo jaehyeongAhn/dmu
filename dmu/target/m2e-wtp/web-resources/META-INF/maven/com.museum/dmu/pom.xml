@@ -152,6 +152,7 @@
           <version>${org.springframework-version}</version>
       </dependency>
       
+ 
       	
 		<!-- JDBC -->
 		<dependency>
@@ -179,7 +180,7 @@
 		    <artifactId>mybatis-spring</artifactId>
 		    <version>1.2.4</version>
 		</dependency>
-		
+ 
    </dependencies>
     <build>
         <plugins>
