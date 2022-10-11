@@ -40,9 +40,9 @@ public class DmuTicketDAO  {
     */
    public ArrayList<DmuTicketVO> select( int startCount,int endCount , String dcode){
 	   	Map<String,String> param = new HashMap<String,String>();
+	   	param.put("dcode",dcode);
 		param.put("start",Integer.toString(startCount));
 		param.put("end",Integer.toString(endCount));
-		param.put("dcode",dcode);
 		List<DmuTicketVO> list = sqlSession.selectList("mapper.ticket.listdcode",param);
 		return (ArrayList<DmuTicketVO>)list;
    }
@@ -51,10 +51,10 @@ public class DmuTicketDAO  {
     */
    public ArrayList<DmuTicketVO> selects( int startCount,int endCount , String dcode,String dtarget){
 	   Map<String,String> param = new HashMap<String,String>();
+	   param.put("dcode",dcode);
+	   param.put("dtarget",dtarget);
 		param.put("start",Integer.toString(startCount));
 		param.put("end",Integer.toString(endCount));
-		param.put("dcode",dcode);
-		param.put("dtarget",dtarget);
 		
 		List<DmuTicketVO> list = sqlSession.selectList("mapper.ticket.listdtarget",param);
 		return (ArrayList<DmuTicketVO>)list;

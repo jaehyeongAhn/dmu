@@ -10,7 +10,6 @@
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script> 
-
 	$(document).ready(function(){
 		$(".learn_target").click(function(){
 			
@@ -23,7 +22,7 @@
 				headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
 				//data : {"dtarget" : dtarget}, // 클릭해서 받은 dtarget값을 컨트롤로 보내준다. dtarget 이라는 이름으로 
 				success : function(data){
-					alert(data);
+					//alert(data);
 					//1. 서버에서 전송된 콜백함수의 파라미터값을 JSON 객체 변환 
 					let dataset = JSON.parse(data);
 					//alert(dataset);
@@ -33,7 +32,6 @@
 						//<span data-v-41f56098="" class="total">총 <strong>${dbCount}</strong>건</span>
 						for(aj of dataset.list){
 					   	output += "<ul data-v-41f56098=''>";
-					   	
 						output +="<li data-v-41f56098=''>";
 						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/ticketlist_content.do?did= "+ aj.did+" '  class='thumb'>"
 						output +="<img data-v-2fed1a9a='' data-v-1e8092ec=''src='http://localhost:9000/dmu/resources/upload/"+aj.dsfile+" '>"
