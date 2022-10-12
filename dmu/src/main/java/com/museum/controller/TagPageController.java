@@ -4,7 +4,7 @@ import java.io.File;
 
  
 import java.util.ArrayList;
- 
+import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
@@ -38,8 +38,24 @@ public class TagPageController {
 	// event_page.do
 		 
 		@RequestMapping(value="/event_page.do", method=RequestMethod.GET)
-		public String event_page() {
-			return "tag_page/event_page";
+		public ModelAndView event_page( ) {
+			ModelAndView mv = new ModelAndView();
+			
+			ArrayList<DmuTicketVO> list = ticketService.getEventContent("event");
+			
+		 
+			mv.addObject("list", list);
+			mv.setViewName("tag_page/event/event_page");
+			return mv;
 		}
-	 
+		
+	// event_page_det.do
+		@RequestMapping(value="/event_page_det.do", method=RequestMethod.GET)
+		public String event_page_det( ) {
+		 
+
+			return "tag_page/event/event_page_det";
+		}
+		 
 }
+ 
