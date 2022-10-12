@@ -37,15 +37,15 @@ public class TicketController {
 	@Autowired
 	private FileServiceImpl  fileService;
 	
-
-	// ticketlist_write.do : 占쌉쏙옙占쏙옙 占쌜억옙占쏙옙 화占쏙옙
-		 
+		/**
+		 * ticketlist_write.do : 티켓 리스트 작성 
+		 */
 		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
 			return "admin/adminticket/ticketlist_write";
 		}
 		/**
-		 * ticketlist_write_check.do : 占쌉쏙옙占쏙옙 占쌜억옙占쏙옙 처占쏙옙
+		 * ticketlist_write_check.do : 티켓 리스트 작성 체크 
 		 */
 		@RequestMapping(value="/ticketlist_write_check.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
@@ -272,7 +272,7 @@ public class TicketController {
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("admin//adminticket/ticketlist_content");
+			mv.setViewName("/admin/adminticket/ticketlist_content");
 			
 			return mv;
 		}
@@ -311,7 +311,7 @@ public class TicketController {
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("/adminticket/ticketlist_update");
+			mv.setViewName("/admin/adminticket/ticketlist_update");
 			
 			return mv;
 		}
@@ -323,7 +323,7 @@ public class TicketController {
 		public ModelAndView admin_ticket_delete(String did) {
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("did", did);
-			mv.setViewName("/adminticket/ticketlist_delete");
+			mv.setViewName("/admin/adminticket/ticketlist_delete");
 			
 			return mv;
 		}

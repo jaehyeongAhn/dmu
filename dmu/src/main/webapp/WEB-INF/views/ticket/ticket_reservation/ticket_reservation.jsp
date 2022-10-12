@@ -27,13 +27,14 @@
  <script src="http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/mycgv/resources/js/am-pagination.js"></script>
-
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
  
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
 <body>
-	<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
+<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	
   <div class="content">
 		 
@@ -256,7 +257,7 @@
 		src="/js/chunk-vendors.65f4f95d8b53aa7e7c6f.js"></script>
 	<script type="text/javascript" src="/js/index.65f4f95d8b53aa7e7c6f.js"></script>
  										 
-	<iframe src="footer.do" width="100%" height="550px" scrolling="no" frameborder=0></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 
 </body>
 

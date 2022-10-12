@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 	$(document).ready(function(){
 		//새로운 파일선택하는 이벤트 
@@ -36,8 +37,8 @@
 
 </head>
 <body>
-<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
-		
+<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+<div style="width:100%; height:17vh; color:transparent">헤더</div>
 <main>
 <div data-v-ec5a0c2c="" class="root-container">
 <div data-v-ec5a0c2c="" class="content-wrapper">
@@ -119,7 +120,7 @@
 			</li>
 			<li data-v-8ed31374="">
 				<strong data-v-8ed31374="" class="title">회차/수업시간 </strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dtime" id="dtime" value="${vo.dentertime }"></span>
+				<span data-v-8ed31374="" class="text"><input type="text" name="dentertime" id="dentertime" value="${vo.dentertime }"></span>
 			</li>
 			
 			<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
@@ -190,7 +191,7 @@
 	<script type="text/javascript"
 		src="/js/chunk-vendors.85a954b2b4f1348cc700.js"></script>
 	<script type="text/javascript" src="/js/index.85a954b2b4f1348cc700.js"></script> -->
-	<iframe src="footer.do" width="100%" height="550px" scrolling="no" frameborder=0></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 
 </body>
 </html>

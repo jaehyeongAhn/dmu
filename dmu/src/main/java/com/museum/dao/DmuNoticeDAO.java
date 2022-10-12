@@ -188,12 +188,17 @@ public class DmuNoticeDAO extends DBConn{
 	
 	public int totalCount_category(String ncategory) {
 		int result = 0;
-		
-		String sql = "select count(*) from dmu_notice where ncategory=?";
+		String category ="";
+		if(ncategory.equals("all")) {
+			category="";
+		}else {
+			category = "where ncategory='" + ncategory + "'";
+		}
+		String sql = "select count(*) from dmu_notice " + category;
 		
 		try {
 			getPreparedStatement(sql);
-			pstmt.setString(1, ncategory);
+			//pstmt.setString(1, ncategory);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				result=rs.getInt(1);
@@ -229,8 +234,9 @@ public class DmuNoticeDAO extends DBConn{
 				vo.setNid(rs.getString(2));
 				vo.setNcategory(rs.getString(3));
 				vo.setNtitle(rs.getString(4));
-				vo.setNcontent(rs.getString(5));
-				vo.setNdate(rs.getString(6));
+				vo.setNdate(rs.getString(5));
+				
+				clist.add(vo);
 			}
 			
 			
