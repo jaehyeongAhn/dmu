@@ -35,7 +35,7 @@
 												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
 											<li class="">
-												<a class="" href="#">예매관리</a>
+												<a class="" href="adminpage_reservation_list.do">예매관리</a>
 											</li>
 											<li class="">
 												<a class="" href="#">1대1 문의</a>

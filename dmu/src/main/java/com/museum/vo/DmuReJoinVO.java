@@ -5,10 +5,22 @@ public class DmuReJoinVO {
 
 	
 	int dprice, rtotal,rallprice,rprice;
-	String rid,did,mid, dtitle,dplace,rdate,rtime,rokdate,rcheck,faildate, dfile,dsfile,dpricech,rallpricech,rdateda,mname;
+	String rid,did,mid, dtitle,dplace,rdate,rtime,rokdate,rcheck,faildate, dfile,dsfile,dpricech,rallpricech,rdateda,mname,dcode,rokdatech;
 	
 	
 	 
+	public String getRokdatech() {
+		return rokdatech;
+	}
+	public void setRokdatech(String rokdatech) {
+		this.rokdatech = rokdatech;
+	}
+	public String getDcode() {
+		return dcode;
+	}
+	public void setDcode(String dcode) {
+		this.dcode = dcode;
+	}
 	public String getMname() {
 		return mname;
 	}

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.museum.dao.DmuAdminDAO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuReJoinVO;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -40,6 +41,18 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public DmuMemberVO memberContent(String mid) {
 		return adminDAO.memberContent(mid);
+	}
+
+	@Override
+	public ArrayList<DmuMemberVO> reservationList(int startCount, int endCount) {
+		 
+		return adminDAO.reservationList(startCount, endCount);
+	}
+
+	@Override
+	public DmuReJoinVO reservationContent(String mid) {
+	 
+		return adminDAO.reservationContent(mid);
 	}
 	
 	

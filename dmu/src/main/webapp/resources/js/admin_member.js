@@ -10,7 +10,9 @@ $(document).ready(function(){
     let index = $(this).parent().parent().index();
 
     let mid = $("tr").filter(":eq("+(index+1)+")").children(".memberId").text();
+ 
     //alert(mid);
+ 
         $.ajax({
             type : "post",
             data : {
@@ -44,6 +46,54 @@ $(document).ready(function(){
             	}else{
 	            	$(".popup_detail_table td.unregister").text("가입완료");
             	}
+            
+            	
+            }
+
+        });//ajax
+    });//click
+}); //ready    
+    
+    
+    
+    /****************************
+	admin_reservation
+*****************************/
+
+
+$(document).ready(function(){
+
+    $(".reservation_detail").click(function(){
+    //$(this).css("background", "black");
+    let index = $(this).parent().parent().index();
+
+    let rid = $("tr").filter(":eq("+(index+1)+")").children(".reservationId").text();
+     alert(rid);     
+      
+        $.ajax({
+            type : "post",
+            data : {
+                rid : rid
+            },
+            url : "adminpage_reservation_list_detail.do",
+            success : function(result){
+            	let data = JSON.parse(result);
+            	
+            	$(".popup_detail_table dt.dcode").text(data.dcode);
+            	$(".popup_detail_table dr.rid").text(data.rid);
+            	$(".popup_detail_table dt.dtitle").text(data.dtitle);
+            	$(".popup_detail_table dm.mname").text(data.mname);
+            	$(".popup_detail_table dpricech").text(data.dpricech);
+            	$(".popup_detail_table dr.rtotal").text(data.rtotal);
+            	$(".popup_detail_table rallpricech").text(data.rallpricech);
+            	$(".popup_detail_table dr.rokdate ").text(data.rokdate);
+             
+             
+            /*	if(data.unregister == 'n'){
+	            	$(".popup_detail_table td.unregister").text("탈퇴");
+            	}else{
+	            	$(".popup_detail_table td.unregister").text("가입완료");
+            	}*/
             
             	
             }
