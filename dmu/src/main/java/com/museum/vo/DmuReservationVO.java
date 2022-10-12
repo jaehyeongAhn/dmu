@@ -3,7 +3,7 @@ package com.museum.vo;
 public class DmuReservationVO {
 	
 	int rprice,rtotal,rallprice;
-	String rid,did,rdate,rokdate,rcheck,rfaildate,rtime,mid;
+	String rid,did,rdate,rokdate,rcheck,rfaildate,rtime,mid,rokdatech;
 	public int getRprice() {
 		return rprice;
 	}
@@ -70,6 +70,12 @@ public class DmuReservationVO {
 	}
 	public void setMid(String mid) {
 		this.mid = mid;
+	}
+	public String getRokdatech() {
+		return rokdatech;
+	}
+	public void setRokdatech(String rokdatech) {
+		this.rokdatech = rokdatech;
 	}
 	
 	

@@ -70,10 +70,10 @@
 	 
 	 <!-- ticket reservation -->
 	 <select id="CompleteContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
-	 	select  dt.dsfile, dt.dtitle, dt.dplace, dr.rid,dr.rdate, to_char(dr.rdate, 'YY-MM-DD') rdateda, dr.rtotal,to_char(dr.rallprice,'999,999')
-	  	rallpricech, dm.mname from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
-	 	where  dm.mid = dr.mid and dt.did = dr.did   and dr.rid= (select rid from(select rid from dmu_reservation order by rokdate desc)
-        where rownum = 1) 
+	 select  dt.dsfile, dt.dtitle, dt.dplace, dr.rid,dr.rdate, to_char(dr.rdate, 'YY-MM-DD') rdateda, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech, dm.mname, dt.dcode from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
+	 		where  dm.mid = dr.mid and dt.did = dr.did   and dr.rid= (select rid from
+                                      				  (select rid from dmu_reservation order by rokdate desc)
+                                 				 			  where rownum = 1) 
 	 </select>
 	 
 </mapper>

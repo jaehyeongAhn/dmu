@@ -27,6 +27,8 @@
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script> -->
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/notice.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
@@ -41,12 +43,14 @@
 $(document).ready(function(){
 	
 	//페이징 리스트 출력
+	function paging(dbcount, rpage, pageSize){
+		
 	var pager = jQuery('#ampaginationsm').pagination({
 	
 	    maxSize: 7,	    		// max page size
-	    totals: '${dbCount}',	// total rows	
-	    page: '${rpage}',		// initial page		
-	    pageSize: '${pageSize}',	// max number items per page
+	    totals: dbcount,	// total rows	
+	    page: rpage,		// initial page		
+	    pageSize: pageSize,	// max number items per page
 	
 	    // custom labels		
 	    lastText: '&raquo;&raquo;', 		
@@ -56,28 +60,39 @@ $(document).ready(function(){
 			     
 	    btnSize:'sm'	// 'sm'  or 'lg'		
 	});
+}
 	
 	//페이징 번호 클릭 시 이벤트 처리
-	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+/* 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
            $(location).attr('href', "http://localhost:9000/dmu/notice_list.do?rpage="+e.page);         
     });
-	
+	 */
 
 	
 	$(".snb-area .snb li a.tabbox").click(function(){
 		
 		//alert($(this).attr("id"));
+		$(".snb-area .snb li").removeClass("on");
+		$(this).parent().addClass("on");
 		var kind = $(this).attr("id");
+		
+		notice_search(kind, 1);
+		
+	});	
+	
+	notice_search("all", 1);
+	
+	function notice_search(kind, rpage){
 		
 		$.ajax({
 			url : 'notice_list_json.do',
 			type: 'post',
 			cache : false,
 			headers : {"cache-control":"no-cache", "pragma": "no-cache"},
-			data : {"ncategory" : kind},
+			data : {"ncategory" : kind, "rpage": rpage},
 			success : function(data){
-				console.log(data);
+				//console.log(data);
 				let dataset = JSON.parse(data);
 		
 				var output = "<div data-v-1b9c8af9='' data-v-080a389a='' class='notice-list'>";
@@ -90,28 +105,55 @@ $(document).ready(function(){
 					output += "<div data-v-1b9c8af9='' data-v-080a389a='' class='title-area'>";
 					output += "<strong data-v-1b9c8af9='' data-v-080a389a='' class='title'>"+obj.ntitle+"</strong>";
 					output += "<span data-v-1b9c8af9='' data-v-080a389a='' class='date'>"+obj.ndate+"</span>"
-					output += "</div></a></li></ul></div>"
+					output += "</div></a></li>";
 				}
 				
+				var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm'>"
+				paging_list +="</div>"
+				
+				output += "</ul></div>";
+				
+				if(dataset.list.length !=0){
+				
+				$(".no-result").css("display","none");
+					
 				$(".notice-list").remove();
 				$(".search-result").after(output);
-				
+				$(".notice-list").append(paging_list);
+				$("div.search-result strong.total").text(dataset.dbCount);
 				
 				//$('.notice-list').html(data);
+				
+				paging(dataset.dbCount, dataset.rpage, dataset.pageSize);
+				
+				//페이징 번호 클릭 시 이벤트 처리
+				jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+					   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+			           //$(location).attr('href', "http://localhost:9000/dmu/notice_list.do?rpage="+e.page);
+			           notice_search(kind, e.page);
+			    });
+				
+				}else{
+					$("div.search-result strong.total").text(dataset.dbCount);
+					$(".notice-list").remove();
+					$(".no-result").css("display","block");
+				}
+				
 			},
 			error : function(data){
 				alert('error');
 			}
 		});
 		
-	});	
+	}
 		
 });//ready
 
 </script>
 
 <body>
-	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<main>
 		<section data-v-1b9c8af9="" class="sub-contents-wrap">
 			<div data-v-0d03d759="" data-v-1b9c8af9=""
@@ -120,7 +162,7 @@ $(document).ready(function(){
 					<h2 data-v-0d03d759="">공지사항</h2>
 					<nav data-v-0d03d759="">
 						<ul data-v-0d03d759="">
-							<li data-v-0d03d759="" style="cursor: pointer;">HOME</li>
+							<li data-v-0d03d759="" style="cursor: pointer;"></li>
 							<!---->
 							<li data-v-0d03d759="">공지사항</li>
 							<!---->
@@ -184,7 +226,7 @@ $(document).ready(function(){
 					<div data-v-1b9c8af9="" data-v-080a389a="" slot=""
 						class="container">
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="search-result">
-							총 <strong>${dbCount}</strong>건
+							총 <strong class="total"></strong>건
 						</div>
 				
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="notice-list">
@@ -202,36 +244,10 @@ $(document).ready(function(){
 										</a>
 										</li>
 							</c:forEach>
-<!-- 								<li data-v-1b9c8af9="" data-v-080a389a=""><a
-									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="number">9</span><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="category">공통</span>
-										<div data-v-1b9c8af9="" data-v-080a389a="" class="title-area">
-											<strong data-v-1b9c8af9="" data-v-080a389a="" class="title">대림문화재단
-												개인정보처리방침 개정 안내</strong><span data-v-1b9c8af9="" data-v-080a389a=""
-												class="date">2022.08.22</span>
-										</div></a></li>
-								<li data-v-1b9c8af9="" data-v-080a389a=""><a
-									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="number">8</span><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="category">공통</span>
-										<div data-v-1b9c8af9="" data-v-080a389a="" class="title-area">
-											<strong data-v-1b9c8af9="" data-v-080a389a="" class="title">대림문화재단
-												영상정보처리기기 운영·관리방침 개정 안내</strong><span data-v-1b9c8af9=""
-												data-v-080a389a="" class="date">2022.08.01</span>
-										</div></a></li>
-								<li data-v-1b9c8af9="" data-v-080a389a=""><a
-									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="number">7</span><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="category">디뮤지엄</span>
-										<div data-v-1b9c8af9="" data-v-080a389a="" class="title-area">
-											<strong data-v-1b9c8af9="" data-v-080a389a="" class="title">성동·광진구
-												관내 교사 대상, 디뮤지엄 교사 워크숍 개최 안내</strong><span data-v-1b9c8af9=""
-												data-v-080a389a="" class="date">2022.05.13</span>
-										</div></a></li> -->
 							</ul>
 						</div>
-						<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area"
+						<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
+						<!-- <div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area"
 							data-v-080a389a="" id="ampaginationsm">
 							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-first">first</button>
@@ -249,7 +265,7 @@ $(document).ready(function(){
 								next</button>
 							<button data-v-650d6904="" type="button" class="btn-last">
 								last</button>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div data-v-080a389a="" class="sub-contents-area">
@@ -265,7 +281,7 @@ $(document).ready(function(){
 					<!---->
 				</div>
 			</div>
-			<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0></iframe>
+			<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 			<!-- built files will be auto injected -->
 			<footer>
 				<!-- 0510 네이버 공통 js 추가 -->

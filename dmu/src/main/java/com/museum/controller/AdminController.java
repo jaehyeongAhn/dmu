@@ -17,6 +17,7 @@ import com.museum.service.AdminServiceImpl;
 import com.museum.service.NoticeServiceImpl;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
+import com.museum.vo.DmuReJoinVO;
 @Controller
 public class AdminController {
 	
@@ -276,8 +277,71 @@ public class AdminController {
 		
 	}
 	
+	 
+		@RequestMapping(value = "/adminpage_reservation_list.do", method = RequestMethod.GET)
+		public ModelAndView adminpage_reservation_list(String rpage) {
+			ModelAndView mv = new ModelAndView();		 
+
+			//페이징 처리 - startCount, endCount 구하기
+			int startCount = 0;
+			int endCount = 0;
+			int pageSize = 5;	//한페이지당 게시물 수
+			int reqPage = 1;	//요청페이지	
+			int pageCount = 1;	//전체 페이지 수
+			int dbCount = adminService.getTotalCount();	//DB에서 가져온 전체 행수
+
+			//총 페이지 수 계산
+			if(dbCount % pageSize == 0){
+				pageCount = dbCount/pageSize;
+			}else{
+				pageCount = dbCount/pageSize+1;
+			}
+
+			//요청 페이지 계산
+			if(rpage != null){
+				reqPage = Integer.parseInt(rpage);
+				startCount = (reqPage-1) * pageSize+1;
+				endCount = reqPage *pageSize;
+			}else{
+				startCount = 1;
+				endCount = pageSize;
+			}
+
+
+			ArrayList<DmuMemberVO> mlist = adminService.reservationList(startCount, endCount);
+//			String address = mlist.get(0).getAddr1() + " " + mlist.get(0).getAddr2();
+			
+
+			mv.addObject("list", mlist);
+			mv.addObject("dbCount", dbCount);
+			mv.addObject("pageSize", pageSize);
+			mv.addObject("rpage", reqPage);
+//			mv.addObject("address", address);
+			mv.setViewName("/admin/admin_member/adminpage_reservation_list");
+
+			return mv;
+		}
 	
-	
-	
+		@ResponseBody
+		@RequestMapping(value="/adminpage_reservation_list_detail.do", method= RequestMethod.POST, produces="test/plain;charset=UTF-8")
+		public String adminpage_reservation_list_detail(String mid) {
+			DmuReJoinVO mvo = adminService.reservationContent(mid);
+			
+			JsonObject jo = new JsonObject();
+			Gson gson = new Gson();
+			jo.addProperty("mid", mid);
+			jo.addProperty("dt.dcode", mvo.getDcode());
+			jo.addProperty("dr.rid", mvo.getRid());
+			jo.addProperty("dt.dtitle", mvo.getDtitle());
+			jo.addProperty("dm.mname", mvo.getMname());
+			jo.addProperty("dpricech", mvo.getDpricech());
+			jo.addProperty("rallpricech", mvo.getRallpricech());
+			jo.addProperty("dr.rokdate", mvo.getRokdate());
+			 
+			
+			return gson.toJson(jo);
+			
+			
+		}
 	
 }

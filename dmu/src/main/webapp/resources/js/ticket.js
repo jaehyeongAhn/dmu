@@ -12,7 +12,8 @@ $(document).ready(function(){
 			$(location).attr("href","http://https://www.daelimmuseum.org/ticket/reservation/group?prgIdx=PRG202202230001&prgTypeCd=PG00101");
 			} */
 		});
-				 
+ 
+		
 		/*********************
 		관람일및 회차,관람인원 및 권종 버튼 토글
 		**********************/
@@ -103,12 +104,8 @@ $(document).ready(function(){
 			}
 				$('#field40').text(num);
 			});
-						 
-			
-									
 		
-									
-								
+ 
 								
 				
 		

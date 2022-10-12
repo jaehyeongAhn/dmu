@@ -18,11 +18,12 @@
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
-
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 </head>
 <body>
 	<!-- Header Include -->
-	<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
+<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+<div style="width:100%; height:17vh; color:transparent">헤더</div>
 <div data-v-ec5a0c2c="" class="root-container">
 <div data-v-ec5a0c2c="" class="content-wrapper">
 <div data-v-ec5a0c2c="" class="body-wrapper">
@@ -163,7 +164,7 @@
 	</div>
 	</div>
 	<!-- footer Include -->
-	<iframe src="http://localhost:9000/dmu/footer.do" width="100%" height="530px" scrolling="no" frameborder=0></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 	
 </body>
 </html>
