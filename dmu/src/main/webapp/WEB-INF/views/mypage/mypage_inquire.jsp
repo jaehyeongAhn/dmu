@@ -15,7 +15,9 @@
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 	$(document).ready(function(){
+		//문의 사항 작성하기
 		$(".review_write_btn").click(function(){
+			$(".check_join").remove();
 			$("body").css("overflow", "hidden");
 			$(".popup_inquire_write").scrollTop(0);
 			$(".inquire_category").val("default");
@@ -45,19 +47,98 @@
 		});
 		//<button type = "button" class = "review_ok
 		
-		//팝업창 사이즈
-		/* 문의사항 글쓰기 팝업창 */
+		
+		
+		/****************************************** 팝업창 사이즈 *****************************************/
+		function warningCheck(check, obj, coment){
+			let style_warning = "<div class = 'check_join'>"
+				style_warning += "<img src = 'http://localhost:9000/dmu/resources/images/warning.png' class = 'join_warning'>";
+				style_warning += "<span></span></div>";
+			if(check == true){
+				obj.next(".check_join").remove();
+				obj.after(style_warning);
+				
+				obj.next(".check_join").children(".join_warning").css({"height" : "15px", "margin-right" : "5px", "width" : "auto"});
+				obj.next(".check_join").children(".join_warning + span").text(coment).css({"color" : "#D92121", "letter-spacing" : "-0.08rem", "font-weight" : "400", "font-size" : "14px"});
+				$(".check_join").css({"height": "20px", "display" : "flex", "align-items" : "center", "justify-content" : "flex-start", "margin-bottom" : "10px"});
+			}else if(check == 'ok'){
+				
+				//$(".check_join").remove();
+				obj.next().remove();
+				obj.after(style_warning);
+				
+				obj.next().children(".join_warning").remove();
+
+				//$(".check_join span").text(coment).css({"color" : "black", "letter-spacing" : "-0.08rem",
+				obj.next().children("span").text(coment)
+						.css({"color" : "black", "letter-spacing" : "-0.08rem", "font-weight" : "400"});
+				$(".check_join").css({"height": "40px", "display" : "flex", "align-items" : "center", "justify-content" : "flex-start"});
+				
+			}else{
+				obj.next(".check_join").remove();
+			}
+		}
+		/***************** 문의사항 글쓰기 팝업창 *****************/
 		let height_wirte = $(".popup_inquire").height() - $(".popup_inquire_title").outerHeight() - $(".inquire_button_list").outerHeight();
 		$(".popup_inquire_write").css("height", height_wirte);
 		
-		/* 문의사항 글보기 팝업창 */
+		//문의 사항 글쓰기 팝업창 유효성 체크
+		$("div.popup_inquire_write select.inquire_category").change(function(){
+			if($("div.popup_inquire_write select.inquire_category").val() != "default"){
+				warningCheck(false, $("div.popup_inquire_write select.inquire_category"), "");
+				$("div.popup_inquire_write select.inquire_type option").css("display", "block");
+			}
+		});
+		
+		$("div.popup_inquire_write select.inquire_type").change(function(){
+			if($(this).val() != "default"){
+				warningCheck(false, $("div.popup_inquire_write select.inquire_type"), "");
+			}
+		});
+		
+		$("div.write_inquire_form input.iqtitle").keyup(function(){
+			if($(this).val() != ""){
+				warningCheck(false, $("div.write_inquire_form input.iqtitle"), "");
+			}
+		});
+		
+		$("div.write_inquire_form textarea.iqcontent").keyup(function(){
+			if($(this).val() != ""){
+				warningCheck(false, $("div.write_inquire_form textarea.iqcontent"), "");
+			}
+		});
+		
+		$("button.inquire_ok").click(function(){
+			if($("div.popup_inquire_write select.inquire_category").val() == "default") {
+				warningCheck(true, $("select.inquire_category"), "카테고리를 선택해주세요.");
+				return false;
+			}else if($("div.popup_inquire_write select.inquire_type").val() == "default") {
+				warningCheck(true, $("select.inquire_type"), "문의 유형을 선택해주세요.");
+				return false;
+			}else if($("div.write_inquire_form input.iqtitle").val() == ""){
+				warningCheck(true, $("div.write_inquire_form input.iqtitle"), "문의 제목을 입력해주세요.");
+				$("div.write_inquire_form input.iqtitle").focus();
+				return false;
+			}else if($("div.write_inquire_form textarea.iqcontent").val() == ""){
+				let content_scroll = $(".popup_inquire_write_form")[0].scrollHeight;
+				warningCheck(true, $("div.write_inquire_form .iqcontent"), "문의 내용을 입력해주세요.");
+				$(".popup_inquire_write").scrollTop(content_scroll);
+				$("div.write_inquire_form .iqcontent").focus();
+				return false;
+			}
+		});
+		
+		
+		
+		/***************** 문의사항 글보기 팝업창 *****************/
 		let height_content = $(".popup_inquire_detail").height() - $(".popup_inquire_detail_title").outerHeight() - $(".inquire_detail_button_list").outerHeight();
 		$(".popup_inquire_detail_form").css("height", height_content);
+		
 	});
 </script>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<iframe src="header.do" width="100%" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
 	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<!-- 사이드 메뉴 -->
 	<div class = "main">
@@ -111,7 +192,7 @@
 				<%-- 마이페이지 content --%>
 				<div class="sub-contents">
 					<div class="page-title title-page inquire-title">
-						<h2>나의 문의</h2>
+						<h2 class = "inquire_main_title">나의 문의</h2>
 						<div class = "inquire_wirte">
 							<button type = "button" class = "review_write_btn">
 								<div>+</div>
@@ -372,6 +453,9 @@
 		    letter-spacing: -0.05rem;
 	        margin-bottom: 10px;
 		}
+		div.popup_inquire div.popup_inquire_write select.inquire_type option:not(select.inquire_type option:first-child) {
+			display : none;
+		}
 		div.popup_inquire_write_form div.write_inquire_form ul {
 		    list-style:none;
 		    margin-top: 20px;
@@ -448,7 +532,7 @@
 									<option value = "디뮤지엄">디뮤지엄</option>
 									<option value = "대림미술관">대림미술관</option>
 									<option value = "구슬모아당구장">구슬모아당구장</option>
-									<option value = "뮤지엄샵">"뮤지엄샵"</option>
+									<option value = "뮤지엄샵">뮤지엄샵</option>
 								</select>
 								<label>문의 유형</label>
 								<select name ="" class = "inquire_type">
@@ -457,7 +541,7 @@
 									<option value = "전시">전시</option>
 									<option value = "교육 · 문화 프로그램">교육 · 문화 프로그램</option>
 									<option value = "이벤트 프로그램">이벤트 프로그램</option>
-									<option value = "뮤지엄샵">"뮤지엄샵"</option>
+									<option value = "뮤지엄샵">뮤지엄샵</option>
 									<option value = "사전답사 · 방문">사전답사 · 방문</option>
 									<option value = "기타">기타</option>
 								</select>
@@ -465,12 +549,12 @@
 									<ul>
 										<li>
 											<label>제목</label>
-											<input type = "text" name = ""
+											<input type = "text" name = "" class = "iqtitle"
 												placeholder = "제목은 50글자 내로 입력해주세요.">
 										</li>
 										<li>
 											<label>내용</label>
-											<textarea placeholder="문의 내용을 입력해주세요"></textarea>
+											<textarea placeholder="문의 내용을 입력해주세요" class = "iqcontent" maxlength = "500"></textarea>
 										</li>
 									</ul>
 								</div>
