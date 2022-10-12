@@ -25,6 +25,8 @@
 	<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 	<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
     <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel = "stylesheet" href = "http://localhost:9000/dmu/resources/css/font.css">
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
