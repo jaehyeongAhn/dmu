@@ -29,20 +29,22 @@ $(document).ready(function(){
 				<div data-v-ec5a0c2c="" class="body-wrapper">
 					<div data-v-7b1f57c8="" data-v-ec5a0c2c="">
 						<div data-v-7b1f57c8="" class="sub-contents-area">
-							<div data-v-6d324aa0="" data-v-7b1f57c8=""
-								class="step-process-area">
-								<ul data-v-6d324aa0="">
-											<li data-v-6d324aa0="" class="complete"><span
-												data-v-6d324aa0="" class="no">01</span><span
-												data-v-6d324aa0="" class="txt">ticket</span></li>
-											<li data-v-6d324aa0="" class="on"><span
-												data-v-6d324aa0="" class="no">02</span><span
-												data-v-6d324aa0="" class="txt">ticket content</span></li>
-											<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
-												class="no">03</span><span data-v-6d324aa0="" class="txt">수정/삭제
-													</span></li>
-										</ul>
-							</div>
+										<div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
+				<ul data-v-6d324aa0="">
+					<li data-v-6d324aa0="" class="complete">
+						<span data-v-6d324aa0="" class="no">01</span>
+						<span data-v-6d324aa0="" class="txt">ticket</span>
+					</li>
+					<li data-v-6d324aa0="" class="on">
+						<span data-v-6d324aa0="" class="no">02</span>
+						<span data-v-6d324aa0="" class="txt">ticket content</span>
+					</li>
+					<li data-v-6d324aa0="" class="">
+						<span data-v-6d324aa0="" class="no">03</span>
+						<span data-v-6d324aa0="" class="txt">수정/삭제</span>
+					</li>
+				</ul>
+			</div>
 							<div data-v-7b1f57c8="" class="container">
 								<div data-v-7b1f57c8="" class="ticket-list-area">
 									<div data-v-7b1f57c8="">
