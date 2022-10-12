@@ -292,6 +292,14 @@ body a, body a:hover, body a:visited {
     letter-spacing: -0.025rem;
     color: #666;
 }
+.notice-list ul li a .category[data-v-1b9c8af9]::before {
+    display: inline-block;
+    width: 0.0625rem;
+    height: 0.625rem;
+    margin: 0 1.25rem;
+    background: #ddd;
+    content: '';
+}
 .no-result[data-v-1b9c8af9] {
     padding: 9.375rem 0;
     border-top: 0.125rem solid #111;

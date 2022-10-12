@@ -142,6 +142,67 @@
 												data-v-e3917d8a="" class="title">[선셋 라이브] with
 												poclanos : 결(KYUL)</strong>
 										</div></a></li>
+										<li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
+									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
+											<img data-v-2fed1a9a="" data-v-e3917d8a=""
+												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
+												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
+										</div>
+										<div data-v-e3917d8a="" class="info">
+											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
+												data-v-e3917d8a="" class="title">[선셋 라이브] with
+												poclanos : 결(KYUL)</strong>
+										</div></a></li><li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
+									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
+											<img data-v-2fed1a9a="" data-v-e3917d8a=""
+												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
+												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
+										</div>
+										<div data-v-e3917d8a="" class="info">
+											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
+												data-v-e3917d8a="" class="title">[선셋 라이브] with
+												poclanos : 결(KYUL)</strong>
+										</div></a></li><li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
+									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
+											<img data-v-2fed1a9a="" data-v-e3917d8a=""
+												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
+												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
+										</div>
+										<div data-v-e3917d8a="" class="info">
+											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
+												data-v-e3917d8a="" class="title">[선셋 라이브] with
+												poclanos : 결(KYUL)</strong>
+										</div></a></li><li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
+									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
+											<img data-v-2fed1a9a="" data-v-e3917d8a=""
+												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
+												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
+										</div>
+										<div data-v-e3917d8a="" class="info">
+											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
+												data-v-e3917d8a="" class="title">[선셋 라이브] with
+												poclanos : 결(KYUL)</strong>
+										</div></a></li><li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
+									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
+											<img data-v-2fed1a9a="" data-v-e3917d8a=""
+												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
+												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
+										</div>
+										<div data-v-e3917d8a="" class="info">
+											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
+												data-v-e3917d8a="" class="title">[선셋 라이브] with
+												poclanos : 결(KYUL)</strong>
+										</div></a></li><li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
+									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
+											<img data-v-2fed1a9a="" data-v-e3917d8a=""
+												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
+												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
+										</div>
+										<div data-v-e3917d8a="" class="info">
+											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
+												data-v-e3917d8a="" class="title">[선셋 라이브] with
+												poclanos : 결(KYUL)</strong>
+										</div></a></li>
 										
 								 
 							</ul>

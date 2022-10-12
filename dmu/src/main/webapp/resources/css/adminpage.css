@@ -74,6 +74,7 @@ button.member_detail {
     font-size: 13px;
 }
 
+
 button.member_detail {
     border: 0.5px solid black;
     background: white;
@@ -87,6 +88,24 @@ button.member_detail {
     font-size: 13px;
 }
 button.member_detail a {
+    text-decoration: none;
+    color: black;
+}
+
+button.accept {
+    border: 0.5px solid black;
+    background: white;
+    color: black;
+    height: 80%;
+    font-size: 16px;
+    letter-spacing: -0.08rem;
+    /* margin: 0 10px; */
+    padding: 5px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+button.accept a {
     text-decoration: none;
     color: black;
 }
@@ -186,6 +205,82 @@ div.popup_button button.popup_close {
 div.popup_detail table {
     margin: 0 auto;
 }
+
+
+.background_accept {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.7);
+	opacity: 0;
+	z-index: -1;
+	top : 0;
+	left : 0;
+}
+
+.window_accept {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	top: 0;
+	left: 0;
+	min-width: 1200px;
+}
+
+.popup_accept {
+	width: 400px;
+	height: 170px;
+	background: white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -30%);
+	text-align: center;
+	z-index: -1;
+}
+
+#popup_acceptGuide {
+	margin: 2rem 0;
+	letter-spacing: -0.08rem;
+	color: #4b4b4b;
+}
+
+button#popup_acceptNo {
+    width: 45%;
+    height: 50px;
+    border: none;
+    background: black;
+    color: white;
+    font-size: 14px;
+    letter-spacing: -0.085rem;
+    font-weight: 500;
+}
+
+#popup_acceptOk {
+	width: 45%;
+	height: 50px;
+	border: none;
+	background: black;
+	color: white;
+	font-size: 14px;
+	letter-spacing: -0.085rem;
+	font-weight: 500;
+}
+
+.show_accept {
+	opacity: 1;
+	z-index: 10;
+	transition: all 0.3s;
+}
+
+.show_accept .popup_accept {
+	z-index: 10;
+	transform: translate(-50%, -50%);
+	transition: all 0.3s;
+}
+
+
+
 
 /***************
 	∆‰¿Ã¬°√≥∏Æ
