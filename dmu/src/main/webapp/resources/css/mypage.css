@@ -1,4 +1,4 @@
-
+@charset "utf-8";
 	* {
 		padding : 0;
 		margin : 0;
@@ -95,7 +95,7 @@
 	
 	/******* ****************/
 
-	/**** »çÀÌµå ¸Þ´º ****/
+	/**** mypage ****/
 	aside.mypage {
 		width : 190px;
 		padding : 20px;
@@ -324,6 +324,14 @@
 	}
 	div.page-title h2 {
 		margin : 0;
+	}
+	div.page-title h2.inquire_main_title::after {
+	    content: "답변 완료 시, 회원 가입 시 등록된 이메일로 답변을 전송해 드립니다.";
+	    font-size: 13px;
+	    font-weight: 500;
+	    letter-spacing: -0.08rem;
+	    margin: 0 13px;
+	    color: #605e5e;
 	}
 	div.page-title::after {
 	    content: "";
@@ -679,7 +687,7 @@
 	    align-items: center;
 	    color: #6e6e6e;
 	    font-size: 17.5px;
-	    font-weight: 200;
+	    font-weight: 300;
 	}
 	div.result_purchase {
 		border-top: 2px solid black;
@@ -808,7 +816,7 @@
 /************************** mypage_review.do ****************************/
 
 
-	/******* content ºÎºÐ **********/									
+	/******* content popup **********/									
 	button.review_write_btn{
 		background: black;
 	    color: white;
@@ -893,7 +901,6 @@
 
 
 	/********** mypage_review - set popup ************/
-	/* ÆË¾÷ ¿ÜºÎ */
 	div.background {
 		position : fixed;
 		width : 100%;
@@ -935,7 +942,7 @@
 	}
 	
 	
-	/* ÆË¾÷ ³»ºÎ */
+	/* popup content */
 	div.popup_title {
 		display: flex;
 		justify-content : space-between;
@@ -1076,4 +1083,307 @@
 	    letter-spacing: -0.08rem;
 	    margin: 0 10px;
 	    cursor : pointer;
+	}
+	
+	
+	/*********************** mypage_ticket_content.jsp ******************************/
+	
+	div.purchase-result-list-content table {
+		width: 100%;
+	    text-align: left;
+	    margin: 20px 0 20px 20px;
+	    letter-spacing : -0.08rem;
+	}
+	div.purchase-result-list-content table td.content_table_title {
+		font-size: 23px;
+	    font-weight: 700;
+	    padding-bottom: 15px;
+	}
+	div.purchase-result-list-content table td {
+		width : 270px;
+		font-weight : 500;
+	}
+	div.purchase-result-list-content table th {
+		font-weight: 400;
+					color: #898989;
+	}
+	
+	
+	div.payment div.payment-result-list-title h2::after{
+	    content: "";
+	    width: 100%;
+	    height: 1.3px;
+	    background: black;
+	    display: block;
+	    margin-top: 8px;
+	}
+	div.payment-result-list-content table {
+		width: 100%;
+					text-align: left;
+					border-collapse : collapse;
+	}
+	div.payment-result-list-content table tr:first-child {
+		display: flex;
+					justify-content: space-between;
+	}
+	div.payment-result-list-content table tr:first-child > td {
+		flex-grow : 1;
+		display: flex;
+	    justify-content: space-between;
+	    padding: 20px;
+	    align-items : center;
+	}
+	div.payment-result-list-content table tr:first-child > td:nth-child(2) {
+	    border-right : 0.5px solid #ddd;
+	    border-left : 0.5px solid #ddd;
+	}
+	div.payment-result-list-content table tr.card_result > td {
+	    padding: 20px;
+	    text-align: right;
+	    border-bottom: 0.5px solid #ddd;
+	    border-top: 0.5px solid #ddd;
+	    line-height: 30px;
+	    font-weight: 500;
+	}
+	
+	
+	div.ticket-result-list-title {
+		display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	}
+	div.ticket-result-list-content {
+		width: 100%;
+	    border-top: 2px solid black;
+	    margin-top: 8px;
+	}
+	div.ticket-result-list-content table{
+	    width : 100%;
+	    border-collapse: collapse;
+	}
+	div.ticket-result-list-content table tr {
+		border-bottom: 0.5px solid #ddd;
+	}
+	div.ticket-result-list-content table tr > *{
+	    padding: 16px;
+	    text-align: center;
+	    border : none;
+	    color: #383333;
+	}
+	div.ticket-result-list-content table input.ticket_list {
+		display : none;
+	}
+	div.ticket-result-list-content table input.ticket_list + label {
+	    width : 0px;
+	    display: block;
+	    margin: 0;
+	    padding: 0;
+	    position: relative;
+	    left: 50%;
+	    transform: translate(-50%, 0);
+	}
+	div.ticket-result-list-content table input.ticket_list + label::before {
+	    content: "";
+	    width: 20px;
+	    height: 20px;
+	    display: block;
+	    border: 0.5px solid #d2d2d2;
+	    position : relative;
+	    left: 50%;
+					transform: translate(-50%, 0);
+	    cursor : pointer;
+	}
+	div.ticket-result-list-content table input.ticket_list:checked + label {
+	    width : 0px;
+	}
+	div.ticket-result-list-content table input.ticket_list:checked + label::before {
+	    content: "";
+	    width: 20px;
+	    height: 20px;
+	    display: block;
+	    border: 0.5px solid black;
+	    background-image : url("http://localhost:9000/dmu/resources/images/check.png");
+	    background-repeat : no-repeat;
+	    background-size : contain;
+	    cursor : pointer;
+	}
+	div.ticket-result-list-title button {
+		width : 110px;
+		height : 40px;
+		border : 0.5px solid black;
+		background : white;
+		letter-spacing : -0.08rem;
+		cursor : pointer;
+	}
+	div.ticket-result-list-title button:hover {
+		background : black;
+		color : white;
+	}
+	
+	/**** mypage_ticket_content popup ****/
+	
+	div.background_refund {
+		position : fixed;
+		width : 100%;
+		height : 100vh;
+		background : rgba(0, 0, 0, 0.7);
+		top : 0;
+		left : 0;
+		opacity : 0;
+		z-index : -1;
+	}
+	div.window_refund {
+		position : relative;
+		width : 100%;
+		height : 100vh;
+		top : 0;
+		left : 0;
+	}
+	div.popup_refund {
+		position : absolute;
+		top : 50%;
+		left : 50%;
+		width : 550px;
+		height : 650px;
+		background : white;
+	    overflow: hidden;
+	    box-sizing: border-box;
+	    display: flex;
+   		flex-direction: column;
+		transform : translate(-50%, -30%);
+		z-index : -1;
+	}
+	div.background_refund.show_refund {
+		opacity : 1;
+		z-index : 10;
+		transition : all 0.3s;
+	}
+	div.background_refund.show_refund div.popup_refund {
+		z-index : 10;
+		transform : translate(-50%, -50%);
+		transition : all 0.3s;
+	}
+	
+	div.refund_title p{
+		width : 100%;
+		padding : 10px 20px;
+		box-sizing : border-box;
+		background : black;
+		color : white;
+		font-weight: 600;
+	    font-size: 17px;
+	    letter-spacing: -0.08rem;
+	}
+	
+	div.popup_refund div.refund_content {
+		padding: 30px;
+	    box-sizing: border-box;
+	    overflow : auto;
+   		height: 69vh;
+	}
+	div.popup_refund h3 {
+	 	letter-spacing : -0.08rem;
+	 	margin-bottom : 20px;
+	 	display : flex;
+	 	align-items : center;
+	}
+	div.refund_content h3.refund_img::before {
+		content : "";
+		width : 25px;
+		height : 25px;
+		display : inline-block;
+	 	background-image : url("http://localhost:9000/dmu/resources/images/refund.png");
+	 	background-repeat : no-repeat;
+	 	background-size : contain;
+	 	background-position-x : 50%;
+	 	background-position-y : 50%;
+	 	margin-right : 7px;
+	}
+	div.refund_content h3.ticket_img::before {
+		content : "";
+		width : 25px;
+		height : 25px;
+		display : inline-block;
+	 	background-image : url("http://localhost:9000/dmu/resources/images/ticket.svg");
+	 	background-repeat : no-repeat;
+	 	background-size : contain;
+	 	background-position-x : 50%;
+	 	background-position-y : 50%;
+	 	margin-right : 7px;
+	}
+	div.refund_ticket div.refund_ticket_list table{
+		width : 100%;
+		text-align : center;
+		margin-bottom : 40px;
+		border-collapse : collapse;
+		border-top : 1px solid black;
+		font-size : 15px;
+	}
+	div.refund_ticket div.refund_ticket_list tr {
+		border-bottom : 0.5px solid #e3e3e3;
+	}
+	div.refund_ticket div.refund_ticket_list tr > *{
+		padding : 15px 0;
+	}
+	div.refund_ticket div.refund_ticket_list tr:last-child {
+		text-align : right;
+	}
+	div.refund_ticket div.refund_ticket_list tr:last-child td{
+		padding-right: 8px;
+		color: #898989;
+   		letter-spacing: -0.08rem;
+	}
+	div.refund_ticket div.refund_ticket_list tr:last-child strong{
+		font-size: 20px;
+   		margin-left: 15px;
+   		color : black;
+	}
+	div.popup_refund ul.refund_terms {
+	    list-style: auto;
+   		list-style-position: inside;
+   	    margin-left: 20px;
+   		text-indent: -17px;
+   		font-size: 15px;
+	}
+	div.popup_refund ul.refund_terms li {
+		margin: 7px 0;
+	}
+	div.popup_refund div.refund_terms_comment {
+	    border: 0.5px solid #c5c5c5;
+	    padding: 20px;
+	    line-height: 23px;
+	}
+	
+	div.refund_btn_list {
+		height : 60px;
+		display : flex;
+		justify-content : center;    
+		box-shadow: 0px -10px 14px rgb(0 0 0 / 10%);
+	}
+	div.refund_btn_list button {
+		width: 120px;
+    	margin: 5px 5px;
+	}
+	div.refund_btn_list button.refund_popup_close {
+	    border: 0.5px solid black;
+	    background: white;
+	    font-size: 15px;
+	    letter-spacing: -0.08rem;
+	    cursor : pointer;
+	}
+	div.refund_btn_list button.refund_ticket_btn {
+	    border: 0.5px solid black;
+	    background: black;
+	    color : white;
+	    font-size: 15px;
+	    letter-spacing: -0.08rem;
+	    cursor : pointer;
+	}
+	div.refund_btn_list button.refund_popup_close:hover {
+	    background: black;
+	    color : white;
+	}
+	div.refund_btn_list button.refund_ticket_btn:hover {
+	    background: white;
+	    color : black;
 	}

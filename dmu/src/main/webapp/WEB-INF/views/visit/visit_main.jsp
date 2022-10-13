@@ -26,17 +26,21 @@
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script> -->
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/visit.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 </head>
 <body>
 	<div id="app">
 		<div id="contents">
-			<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
+			<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+			<div style="width:100%; height:17vh; color:transparent">헤더</div>
 			<main>
 				<section data-v-69c615d1="" class="sub-contents-wrap">
 					<div data-v-0d03d759="" data-v-69c615d1=""
@@ -45,7 +49,7 @@
 							<h2 data-v-0d03d759="">미술관 소개</h2>
 							<nav data-v-0d03d759="">
 								<ul data-v-0d03d759="">
-									<li data-v-0d03d759="" style="cursor: pointer;"></li>
+									<li data-v-0d03d759="" style="cursor: pointer;"><a href="index.do" style="opacity:0;">HOME</a></li>
 									<li data-v-0d03d759="">VISIT</li>
 									<li data-v-0d03d759="">미술관 소개</li>
 									<!---->
@@ -72,7 +76,7 @@
 								</span>
 							</div>
 							<div data-v-69c615d1="" class="row-box">
-								<img data-v-69c615d1="" src="/img/dmuseum-img.d9d1673f.png"
+								<img data-v-69c615d1="" src="http://localhost:9000/dmu/resources/images/visit_main_dmuseum.png"
 									alt="디뮤지엄" class="museum-img">
 								<div data-v-69c615d1="" class="museum-info-area">
 									<div data-v-69c615d1="" class="detail-txt">
@@ -104,7 +108,7 @@
 							</div>
 							<div data-v-69c615d1="" class="row-box">
 								<img data-v-69c615d1=""
-									src="/img/daelim-museum-img.0b9ddb05.png" alt="대림미술관"
+									src="http://localhost:9000/dmu/resources/images/visit_main_daelim.png" alt="대림미술관"
 									class="museum-img">
 								<div data-v-69c615d1="" class="museum-info-area">
 									<div data-v-69c615d1="" class="detail-txt">
@@ -356,7 +360,7 @@
 				</section>
 			</main>
 	
-	<iframe src="footer.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 	<script type="text/javascript"
 		src="/js/chunk-vendors.65f4f95d8b53aa7e7c6f.js"></script>
 	<script type="text/javascript" src="/js/index.65f4f95d8b53aa7e7c6f.js"></script>

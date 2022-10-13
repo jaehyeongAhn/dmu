@@ -16,6 +16,8 @@
 <!-- <meta name="twitter:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">
     <meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg"> -->
 <link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
@@ -27,6 +29,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <%--  jQuery UI CSS파일  --%>
 <%-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> --%>
 <link rel="stylesheet"
@@ -133,24 +136,24 @@
 
 </head>
 <body>
-	<iframe src="http://localhost:9000/dmu/header.do" width="100%"
-		height="160px" scrolling="no" frameborder=0></iframe>
+<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+<div style="width:100%; height:17vh; color:transparent">헤더</div>
 
 
 	<div class="content">
 
 		<form name="ticket_learnFrom" action="ticketReservationCheck.do" method="post">
 		
-		 <input type="text" name="did" value="${vo.did }"> 
-		 <input type="text" name="rprice" id="rprice" value=${vo.dprice }> 
-		 <input type="text" name="rdate" id="rdate" value=""> 
-		 <input type="text" name="rtime" id="rtime" value=""> 
-		 <input type="text" name="rtotal" id="rtotal" value="">  
-		 <input type="text" name="dplace" id="dplace" value=${vo.dplace }> 
-		 <input type="text" name="rallprice" id="rallprice" value=""> 
-		 <input type="text" name="mid" id="mid" value="mmww6443"> 
-		 <input type="text" name="dsfile" id="dsfile" value=${vo.dsfile }> 
-		 <input type="text" name="dfile" id="dfile" value=${vo.dfile }> 
+		 <input type="hidden" name="did" value="${vo.did }"> 
+		 <input type="hidden" name="rprice" id="rprice" value=${vo.dprice }> 
+		 <input type="hidden" name="rdate" id="rdate" value=""> 
+		 <input type="hidden" name="rtime" id="rtime" value=""> 
+		 <input type="hidden" name="rtotal" id="rtotal" value="">  
+		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
+		 <input type="hidden" name="rallprice" id="rallprice" value=""> 
+		 <input type="hidden" name="mid" id="mid" value="mmww6443"> 
+		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
+		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
 		
 	 
 		 
@@ -380,6 +383,7 @@
 	</div>
 	</div>
 	<!-- built files will be auto injected -->
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 	<footer>
 		<!-- 0510 네이버 공통 js 추가 -->
 		<script type="text/javascript" src="//wcs.naver.net/wcslog.js">
@@ -390,8 +394,6 @@
 	<script type="text/javascript"
 		src="/js/chunk-vendors.85a954b2b4f1348cc700.js"></script>
 	<script type="text/javascript" src="/js/index.85a954b2b4f1348cc700.js"></script>
-	<iframe src="footer.do" width="100%" height="550px" scrolling="no"
-		frameborder=0></iframe>
 
 </body>
 </html>

@@ -5,14 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
-<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/font.css">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/mypage.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <!-- 이미지 경로 수정하기 -->
 
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class = "header"></iframe>
+<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<!-- 사이드 메뉴 -->
 	<div class = "main">
 		<div class = "section">
@@ -32,7 +35,10 @@
 												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
 											<li class="">
-												<a class="" href="#">예매관리</a>
+												<a class="" href="adminpage_member_list.do">관리자승인</a>
+											</li>
+											<li class="">
+												<a class="" href="adminpage_reservation_list.do">예매관리</a>
 											</li>
 											<li class="">
 												<a class="" href="#">1대1 문의</a>
@@ -98,6 +104,6 @@
 			</div>
 		</div>
 	</div>
-	<iframe src="footer.do" width="100%" height="510px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px;"></iframe>
 </body>
 </html>

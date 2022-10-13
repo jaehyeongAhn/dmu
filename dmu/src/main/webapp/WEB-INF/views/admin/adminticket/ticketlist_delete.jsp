@@ -6,12 +6,15 @@
 <head>
 <meta charset="utf-8">
 <link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/join.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <style>
 	img{
@@ -20,7 +23,8 @@
 </style>
 </head>
 <body>
-	<iframe src="http://localhost:9000/dmu/header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	
 		
 	<main style="height:480px">
@@ -31,18 +35,20 @@
 						<div data-v-ec5a0c2c="" class="body-wrapper">
 							<div data-v-25f87e60="" data-v-ec5a0c2c="">
 								<div data-v-25f87e60="" class="sub-contents-area">
-									<div data-v-6d324aa0="" data-v-25f87e60=""
-										class="step-process-area">
+									<div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
 										<ul data-v-6d324aa0="">
-											<li data-v-6d324aa0="" class="complete"><span
-												data-v-6d324aa0="" class="no">01</span><span
-												data-v-6d324aa0="" class="txt">ticket</span></li>
-											<li data-v-6d324aa0="" class="on"><span
-												data-v-6d324aa0="" class="no">02</span><span
-												data-v-6d324aa0="" class="txt">ticket content</span></li>
-											<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
-												class="no">03</span><span data-v-6d324aa0="" class="txt">수정/삭제
-													</span></li>
+											<li data-v-6d324aa0="" class="complete">
+												<span data-v-6d324aa0="" class="no">01</span>
+												<span data-v-6d324aa0="" class="txt">ticket</span>
+											</li>
+											<li data-v-6d324aa0="" class="on">
+												<span data-v-6d324aa0="" class="no">02</span>
+												<span data-v-6d324aa0="" class="txt">ticket content</span>
+											</li>
+											<li data-v-6d324aa0="" class="">
+											<span data-v-6d324aa0="" class="no">03</span>
+											<span data-v-6d324aa0="" class="txt">수정/삭제</span>
+											</li>
 										</ul>
 									</div>
 						<div class = "section">
@@ -87,7 +93,7 @@
 
 
 	
-	<iframe src="footer.do" width="100%" height="550px" scrolling="no" frameborder=0></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 
 </body>
 </html>

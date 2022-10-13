@@ -18,6 +18,8 @@
 <link rel="icon" href="/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
@@ -25,6 +27,7 @@
 	src="https://www.google-analytics.com/analytics.js"></script>
 <script src="http://localhost:9000/mycgv/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
@@ -40,7 +43,8 @@
 
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	
 	 <div class="content">
 		 
@@ -169,7 +173,7 @@
 						</div>
 					</div>
 				</div>
-					<iframe src="footer.do" width="100%" height="530px" scrolling="no" frameborder=0></iframe>
+					<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 			</main>
 			<button class="goto-top">상단으로 이동</button>
 		</div>

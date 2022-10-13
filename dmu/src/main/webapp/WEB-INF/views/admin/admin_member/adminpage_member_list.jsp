@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
-<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/font.css">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/mypage.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/adminpage.css">
@@ -15,6 +16,7 @@
 <script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/admin_member.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 $(document).ready(function(){
 	
@@ -38,7 +40,7 @@ $(document).ready(function(){
 	//페이징 번호 클릭 시 이벤트 처리
 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-           $(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);         
+           $(location).attr('href', "http://localhost:9000/dmu/adminpage_public_list.do?rpage="+e.page);         
     });
 	
 	
@@ -62,7 +64,8 @@ $(document).ready(function(){
 </style>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<!-- 사이드 메뉴 -->
 	<div class = "main">
 		<div class = "section">
@@ -82,7 +85,10 @@ $(document).ready(function(){
 												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
 											<li class="">
-												<a class="" href="#">예매관리</a>
+												<a class="" href="adminpage_admin_list.do">관리자승인</a>
+											</li>
+											<li class="">
+												<a class="" href="adminpage_reservation_list.do">예매관리</a>
 											</li>
 											<li class="">
 												<a class="" href="#">1대1 문의</a>
@@ -154,9 +160,8 @@ $(document).ready(function(){
 										</tbody>
 									</table>
 								</div>
-				<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area"
-							data-v-080a389a="" id="ampaginationsm">
-							<button data-v-650d6904="" type="button" disabled="disabled"
+				<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm" style="text-align:center;">
+<!-- 							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-first">first</button>
 							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-prev">prev</button>
@@ -171,7 +176,7 @@ $(document).ready(function(){
 							<button data-v-650d6904="" type="button" class="btn-next">
 								next</button>
 							<button data-v-650d6904="" type="button" class="btn-last">
-								last</button>
+								last</button> -->
 						</div>
 						</div>
 					</div>
@@ -179,7 +184,7 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer" ></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 	
 	<div class = "background_member">
 		<div class = "window_member">

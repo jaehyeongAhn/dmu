@@ -6,13 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>dmu</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet"  href="http://localhost:9000/dmu/resources/css/tiket.css">
 <link rel="stylesheet"  href="http://localhost:9000/mycgv/resources/css/am-pagination.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<main>
 		<div data-v-ec5a0c2c="" class="root-container">
 			<div data-v-ec5a0c2c="" class="content-wrapper">
@@ -49,7 +53,7 @@
 										<div data-v-7b1f57c8="" class="sub-contents-area">
 											<div data-v-1e8092ec="" data-v-7b1f57c8="" class="container">
 												<div data-v-1e8092ec="" class="list-top-area">
-													<span data-v-1e8092ec="" class="total">총 <strong>3</strong>건
+													<span data-v-1e8092ec="" class="total">총 <strong>${dbCount}</strong>건
 													</span>
 													<ul data-v-1e8092ec="" class="order">
 														
@@ -108,6 +112,6 @@
 			</div>
 		</div>
 	</main>
-	<iframe src="footer.do" width="100%" height="160px" scrolling="no" frameborder=0 ></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 </body>
 </html>

@@ -1,12 +1,11 @@
 package com.museum.controller;
 
-import java.io.File;
+
 
  
 import java.util.ArrayList;
  
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -37,51 +36,36 @@ public class TicketController {
 	@Autowired
 	private FileServiceImpl  fileService;
 	
-
-	// ticketlist_write.do : 占쌉쏙옙占쏙옙 占쌜억옙占쏙옙 화占쏙옙
-		 
+		/**
+		 * ticketlist_write.do : 티켓 리스트 작성 
+		 */
 		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
 			return "admin/adminticket/ticketlist_write";
 		}
 		/**
-		 * ticketlist_write_check.do : 占쌉쏙옙占쏙옙 占쌜억옙占쏙옙 처占쏙옙
+		 * ticketlist_write_check.do : 티켓 리스트 작성 체크 
 		 */
 		@RequestMapping(value="/ticketlist_write_check.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
 			ModelAndView mv = new ModelAndView();
 			
-			if(vo.getFile1().getOriginalFilename().equals("")) {
-				vo.setDfile("");
-				vo.setDsfile("");
-			}else {
-				UUID uuid = UUID.randomUUID();
-				vo.setDfile(vo.getFile1().getOriginalFilename());
-				vo.setDsfile(uuid + "_" + vo.getFile1().getOriginalFilename());
-			}
-			
+			vo = fileService.update_fileCheck(vo);
 			int result = ticketService.getWriteResult(vo);
 			
-			if(result == 1){
-				if(!vo.getFile1().getOriginalFilename().equals("")) {
-					String path = request.getSession().getServletContext().getRealPath("/");
-					  path += "resources/upload/";
-					File file = new File(path+vo.getDsfile());
-					vo.getFile1().transferTo(file);
-				}
-				
 
-				//mv.setViewName("/board/board_list"); //�뿉�윭X, �븘臾대윴 寃뚯떆湲� 異쒕젰�릺吏� X
-				mv.setViewName("redirect:/adminexhibition_list.do"); //DB�뿰�룞�쓣 Controller�뿉�꽌 吏꾪뻾�븯誘�濡�, �깉濡쒖슫 �뿰寃곗쓣 �닔�뻾!!
-
+			if(result == 1){			
+				fileService.fileSave(vo, request);
+				mv.setViewName("redirect:/adminexhibition_list.do");
 			}else{
+
 				mv.setViewName("error_page");
-			}
+			}		
 			
 			return mv;
 		}
 		/**
-		 * exhibition_list.do : 占쏙옙占쏙옙회 占쏙옙체 占쏙옙占쏙옙트 
+		 * exhibition_list.do :  
 		 */
 		@RequestMapping(value="/exhibition_list.do", method=RequestMethod.GET)
 		public ModelAndView exhibition_list(String rpage) {
@@ -103,7 +87,7 @@ public class TicketController {
 			return mv;
 		}
 		/**
-		 * event_list.do : 占쏙옙占쏙옙회 占쏙옙체 占쏙옙占쏙옙트 
+		 * event_list.do :  
 		 */
 		@RequestMapping(value="/event_list.do", method=RequestMethod.GET)
 		public ModelAndView event_list(String rpage) {

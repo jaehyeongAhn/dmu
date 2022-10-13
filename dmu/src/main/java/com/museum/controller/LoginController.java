@@ -51,7 +51,7 @@ public class LoginController {
 		
 		//비밀번호 업데이트
 		DmuSessionVO pw_result = loginService.login(vo);
-		if(pw_result.getLoginresult() == 0){
+		if(pw_result == null){
 			int result = loginService.loginUpdate(vo);
 			if(result == 1) {
 				mv.addObject("result", result);
@@ -154,7 +154,7 @@ public class LoginController {
 		
 		if(member != null) {
 			//운영자 및 일반 회원 구분
-			if(!member.getStatus().equals("public")) {
+			if(!member.getStatus().equals("public") && !member.getStatus().equals("admin")) {
 				//운영자 확인
 				if(member.getStatus().equals("accept")) {
 					mv.addObject("login_result", "accept");
@@ -196,6 +196,20 @@ public class LoginController {
 			mv.setViewName("/login/login");
 		}
 
+		return mv;
+	}
+	
+	//logout.do : 로그아웃
+	@RequestMapping(value="/logout.do", method = RequestMethod.GET)
+	public ModelAndView logout(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		
+		if(session != null) {
+			session.invalidate();
+		}
+		
+		mv.setViewName("/index");
+		
 		return mv;
 	}
 }

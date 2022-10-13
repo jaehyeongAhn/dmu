@@ -23,7 +23,6 @@ public class EmailServiceImpl implements EmailService {
 		Random random = new Random();
 		int code = random.nextInt(888888) + 111111;
 		
-		System.out.println(code);
 		check_code = code;
 	}
 	

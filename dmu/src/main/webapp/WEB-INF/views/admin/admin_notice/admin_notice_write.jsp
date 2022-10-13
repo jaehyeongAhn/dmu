@@ -27,14 +27,18 @@
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script> -->
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/notice.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<form name="noticeWriteForm" action="admin_notice_write_check.do" method="post">
 	<main>
 		<section class="sub-contents-wrap">
@@ -73,7 +77,6 @@
 											<option value="디뮤지엄">디뮤지엄</option>
 											<option value="대림미술관">대림미술관</option>
 											<option value="구슬모아당구장">구슬모아당구장</option>
-											<option value="뮤지엄샵">뮤지엄샵</option>
 									</select>
 									</li>
 									<li>
@@ -102,8 +105,7 @@
 					</div>
 				</div>
 			</div>
-			<iframe src="footer.do" width="100%" height="530px" scrolling="no"
-				frameborder=0></iframe>
+		<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 			<!-- built files will be auto injected -->
 			<footer>
 				<!-- 0510 네이버 공통 js 추가 -->

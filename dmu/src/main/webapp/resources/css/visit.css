@@ -37,6 +37,9 @@ body button {
     -webkit-tap-highlight-color: transparent;
     color: inherit;
 }
+.sub-top-area.daelim[data-v-49e31b64], .sub-top-area.dmuseum[data-v-49e31b64], .sub-top-area.gusuelmoa[data-v-49e31b64] {
+    padding: 5.625rem 0 6.25rem 0;
+}
 .sub-top-area.aboutmuseum[data-v-69c615d1] {
     padding: 5.625rem 0 6.25rem 0;
 }
@@ -89,7 +92,7 @@ body button {
     overflow: hidden;
 }
 .visual.aboutmuseum {
-    background-image: url(/img/visual-aboutmuseum-pc.17df1253.png);
+    background-image: url(/images/visit_info.png);
     background-position: center;
     height: 67.5rem;
 }
@@ -211,7 +214,7 @@ svg:not(:root) {
     flex-direction: row-reverse;
 }
 .row-box:nth-of-type(3) .museum-img[data-v-69c615d1] {
-    margin-right: -15.625rem;
+    margin-right: -5.625rem;
     width: 43.5rem;
     height: 32.625rem;
 }
@@ -244,9 +247,19 @@ svg:not(:root) {
     font-size: 1rem;
     line-height: 1.75;
     letter-spacing: -0.025rem;
+    padding-left:20px;
 }
-
-
+.sub-top-area nav ul li + li[data-v-0d03d759]:before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0.0625rem;
+    height: 0.625rem;
+    margin-top: -0.3125rem;
+    background: #ccc;
+    content: '';
+}
 /******************************
 	visit_info
 *******************************/
@@ -310,7 +323,7 @@ td {
     vertical-align: inherit;
 }
 .visual.dmuseum[data-v-d39f43b8] {
-    background: url(/img/visual-dmuseum-pc.1351408a.png) no-repeat;
+    background: url("http://localhost:9000/dmu/resources/images/visit_info.png") no-repeat;
     background-position: center;
     background-size: cover;
     margin-bottom: 5rem;
@@ -508,6 +521,16 @@ col {
 [data-v-49e31b64] .note-list.star .note-title {
     padding: 0;
     font-size: 1.25rem;
+}
+[data-v-49e31b64] .note-list.star .dot-list > li::before {
+    top: 0.25rem;
+    background: none;
+    content: '*';
+    width: 0.25rem;
+    height: 0.25rem;
+    position: absolute;
+    left: 0;
+    top: 0.6875rem;
 }
 
 

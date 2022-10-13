@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  
@@ -17,6 +16,8 @@
 <!-- <meta name="twitter:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">
     <meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg"> -->
 <link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
@@ -35,7 +36,7 @@
 
 <%-- jQuery 기본 js파일 --%>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <%-- jQuery UI 라이브러리 js파일 --%>
 <%-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> --%>
 <script type="text/javascript"
@@ -134,9 +135,8 @@
 
 </head>
 <body>
-	<iframe src="http://localhost:9000/dmu/header.do" width="100%"
-		height="160px" scrolling="no" frameborder=0></iframe>
-
+<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+<div style="width:100%; height:17vh; color:transparent">헤더</div>
 
 	<div class="content">
 
@@ -381,6 +381,7 @@
 	</div>
 	</div>
 	<!-- built files will be auto injected -->
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 	<footer>
 		<!-- 0510 네이버 공통 js 추가 -->
 		<script type="text/javascript" src="//wcs.naver.net/wcslog.js">

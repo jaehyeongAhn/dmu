@@ -5,11 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/mypage.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <!-- 이미지 경로 수정하기 -->
 <script>
 	$(document).ready(function(){
@@ -37,7 +39,8 @@
 </style>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="160px" scrolling="no" frameborder=0 class = "header"></iframe>
+	<iframe src="header.do" width="100%" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<!-- 사이드 메뉴 -->
 	<div class = "main">
 		<div class = "section">
@@ -57,7 +60,7 @@
 												<strong><a class="" href="mypage_ticket.do" style = "color : black;">티켓예매 목록</a></strong>
 											</li>
 											<li class="">
-												<a class="" href="mypage_review.do">나의 문의</a>
+												<a class="" href="mypage_inquire.do">나의 문의</a>
 											</li>
 										</ul>
 									</div>
@@ -78,25 +81,6 @@
 				</aside>
 
 				<style>
-					div.purchase-result-list-content table {
-						width: 100%;
-					    text-align: left;
-					    margin: 20px 0 20px 20px;
-					    letter-spacing : -0.08rem;
-					}
-					div.purchase-result-list-content table td.content_table_title {
-						font-size: 23px;
-					    font-weight: 700;
-					    padding-bottom: 15px;
-					}
-					div.purchase-result-list-content table td {
-						width : 270px;
-						font-weight : 500;
-					}
-					div.purchase-result-list-content table th {
-						font-weight: 400;
-    					color: #898989;
-					}
 					
 				</style>
 				<%-- 마이페이지 content --%>
@@ -144,42 +128,6 @@
 					</div>
 					
 					<style>
-						div.payment div.payment-result-list-title h2::after{
-						    content: "";
-						    width: 100%;
-						    height: 1.3px;
-						    background: black;
-						    display: block;
-						    margin-top: 8px;
-						}
-						div.payment-result-list-content table {
-							width: 100%;
-    						text-align: left;
-    						border-collapse : collapse;
-						}
-						div.payment-result-list-content table tr:first-child {
-							display: flex;
-    						justify-content: space-between;
-						}
-						div.payment-result-list-content table tr:first-child > td {
-							flex-grow : 1;
-							display: flex;
-						    justify-content: space-between;
-						    padding: 20px;
-						    align-items : center;
-						}
-						div.payment-result-list-content table tr:first-child > td:nth-child(2) {
-						    border-right : 0.5px solid #ddd;
-						    border-left : 0.5px solid #ddd;
-						}
-						div.payment-result-list-content table tr.card_result > td {
-						    padding: 20px;
-						    text-align: right;
-						    border-bottom: 0.5px solid #ddd;
-						    border-top: 0.5px solid #ddd;
-						    line-height: 30px;
-						    font-weight: 500;
-						}
 					</style>
 					<%-- 결제 정보 --%>
 					<div class = "payment" style="margin:65px 0;">
@@ -209,78 +157,6 @@
 					</div>
 					
 					<style>
-						div.ticket-result-list-title {
-							display: flex;
-						    justify-content: space-between;
-						    align-items: center;
-						}
-						div.ticket-result-list-content {
-							width: 100%;
-						    border-top: 2px solid black;
-						    margin-top: 8px;
-						}
-						div.ticket-result-list-content table{
-						    width : 100%;
-						    border-collapse: collapse;
-						}
-						div.ticket-result-list-content table tr {
-							border-bottom: 0.5px solid #ddd;
-						}
-						div.ticket-result-list-content table tr > *{
-						    padding: 16px;
-						    text-align: center;
-						    border : none;
-						    color: #383333;
-						}
-						div.ticket-result-list-content table input.ticket_list {
-							display : none;
-						}
-						div.ticket-result-list-content table input.ticket_list + label {
-						    width : 0px;
-						    display: block;
-						    margin: 0;
-						    padding: 0;
-						    position: relative;
-						    left: 50%;
-						    transform: translate(-50%, 0);
-						}
-						div.ticket-result-list-content table input.ticket_list + label::before {
-						    content: "";
-						    width: 20px;
-						    height: 20px;
-						    display: block;
-						    border: 0.5px solid #d2d2d2;
-						    position : relative;
-						    left: 50%;
-    						transform: translate(-50%, 0);
-						    cursor : pointer;
-						}
-						div.ticket-result-list-content table input.ticket_list:checked + label {
-						    width : 0px;
-						}
-						div.ticket-result-list-content table input.ticket_list:checked + label::before {
-						    content: "";
-						    width: 20px;
-						    height: 20px;
-						    display: block;
-						    border: 0.5px solid black;
-						    background-image : url("http://localhost:9000/dmu/resources/images/check.png");
-						    background-repeat : no-repeat;
-						    background-size : contain;
-						    cursor : pointer;
-						}
-						div.ticket-result-list-title button {
-							width : 110px;
-							height : 40px;
-							border : 0.5px solid black;
-							background : white;
-							letter-spacing : -0.08rem;
-							cursor : pointer;
-						}
-						div.ticket-result-list-title button:hover {
-							background : black;
-							color : white;
-						}
 					</style>
 					<%-- 티켓 정보 --%>
 					<div class = "ticket">
@@ -365,7 +241,7 @@
 			</div>
 		</div>
 	</div>
-	<iframe src="footer.do" width="100%" height="500px" scrolling="no" frameborder=0 class = "footer" ></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 	
 	<div class = "background_join">
 		<div class = "window_join">
@@ -379,171 +255,6 @@
 	</div>
 	
 	<style>
-		div.background_refund {
-			position : fixed;
-			width : 100%;
-			height : 100vh;
-			background : rgba(0, 0, 0, 0.7);
-			top : 0;
-			left : 0;
-			opacity : 0;
-			z-index : -1;
-		}
-		div.window_refund {
-			position : relative;
-			width : 100%;
-			height : 100vh;
-			top : 0;
-			left : 0;
-		}
-		div.popup_refund {
-			position : absolute;
-			top : 50%;
-			left : 50%;
-			width : 550px;
-			height : 650px;
-			background : white;
-		    overflow: hidden;
-		    box-sizing: border-box;
-		    display: flex;
-    		flex-direction: column;
-			transform : translate(-50%, -30%);
-			z-index : -1;
-		}
-		div.background_refund.show_refund {
-			opacity : 1;
-			z-index : 10;
-			transition : all 0.3s;
-		}
-		div.background_refund.show_refund div.popup_refund {
-			z-index : 10;
-			transform : translate(-50%, -50%);
-			transition : all 0.3s;
-		}
-		
-		div.refund_title p{
-			width : 100%;
-			padding : 10px 20px;
-			box-sizing : border-box;
-			background : black;
-			color : white;
-			font-weight: 600;
-		    font-size: 17px;
-		    letter-spacing: -0.08rem;
-		}
-		
-		div.popup_refund div.refund_content {
-			padding: 30px;
-		    box-sizing: border-box;
-		    overflow : auto;
-    		height: 69vh;
-		}
-		div.popup_refund h3 {
-		 	letter-spacing : -0.08rem;
-		 	margin-bottom : 20px;
-		 	display : flex;
-		 	align-items : center;
-		}
-		div.refund_content h3.refund_img::before {
-			content : "";
-			width : 25px;
-			height : 25px;
-			display : inline-block;
-		 	background-image : url("http://localhost:9000/dmu/resources/images/refund.png");
-		 	background-repeat : no-repeat;
-		 	background-size : contain;
-		 	background-position-x : 50%;
-		 	background-position-y : 50%;
-		 	margin-right : 7px;
-		}
-		div.refund_content h3.ticket_img::before {
-			content : "";
-			width : 25px;
-			height : 25px;
-			display : inline-block;
-		 	background-image : url("http://localhost:9000/dmu/resources/images/ticket.svg");
-		 	background-repeat : no-repeat;
-		 	background-size : contain;
-		 	background-position-x : 50%;
-		 	background-position-y : 50%;
-		 	margin-right : 7px;
-		}
-		div.refund_ticket div.refund_ticket_list table{
-			width : 100%;
-			text-align : center;
-			margin-bottom : 40px;
-			border-collapse : collapse;
-			border-top : 1px solid black;
-			font-size : 15px;
-		}
-		div.refund_ticket div.refund_ticket_list tr {
-			border-bottom : 0.5px solid #e3e3e3;
-		}
-		div.refund_ticket div.refund_ticket_list tr > *{
-			padding : 15px 0;
-		}
-		div.refund_ticket div.refund_ticket_list tr:last-child {
-			text-align : right;
-		}
-		div.refund_ticket div.refund_ticket_list tr:last-child td{
-			padding-right: 8px;
-			color: #898989;
-    		letter-spacing: -0.08rem;
-		}
-		div.refund_ticket div.refund_ticket_list tr:last-child strong{
-			font-size: 20px;
-    		margin-left: 15px;
-    		color : black;
-		}
-		div.popup_refund ul.refund_terms {
-		    list-style: auto;
-    		list-style-position: inside;
-    	    margin-left: 20px;
-    		text-indent: -17px;
-    		font-size: 15px;
-		}
-		div.popup_refund ul.refund_terms li {
-			margin: 7px 0;
-		}
-		div.popup_refund div.refund_terms_comment {
-		    border: 0.5px solid #c5c5c5;
-		    padding: 20px;
-		    line-height: 23px;
-		}
-		
-		div.refund_btn_list {
-			height : 60px;
-			display : flex;
-			justify-content : center;    
-			box-shadow: 0px -10px 14px rgb(0 0 0 / 10%);
-		}
-		div.refund_btn_list button {
-			width: 120px;
-	    	margin: 5px 5px;
-		}
-		div.refund_btn_list button.refund_popup_close {
-		    border: 0.5px solid black;
-		    background: white;
-		    font-size: 15px;
-		    letter-spacing: -0.08rem;
-		    cursor : pointer;
-		}
-		div.refund_btn_list button.refund_ticket_btn {
-		    border: 0.5px solid black;
-		    background: black;
-		    color : white;
-		    font-size: 15px;
-		    letter-spacing: -0.08rem;
-		    cursor : pointer;
-		}
-		div.refund_btn_list button.refund_popup_close:hover {
-		    background: black;
-		    color : white;
-		}
-		div.refund_btn_list button.refund_ticket_btn:hover {
-		    background: white;
-		    color : black;
-		}
 	</style>
 	
 	<div class = "background_refund">

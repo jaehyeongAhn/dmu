@@ -6,10 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/login.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/join.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <style>
 </style>
 <script>
@@ -29,7 +31,8 @@
 </script>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<main class = "login_id">
 		<div class = "section">
 			<div class = "container">
@@ -152,6 +155,6 @@
 	</main>
 	
 
-	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer"></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 </body>
 </html>
