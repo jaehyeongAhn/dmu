@@ -17,23 +17,25 @@
 <!-- <meta name="twitter:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">
     <meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg"> -->
 <link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/event_page.css">
- 
-
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/event_page.css"> 
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/tag_page.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
+
  
  
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
 <body>
-	<iframe src="http://localhost:9000/dmu/header.do" width="100%"
-		height="160px" scrolling="no" frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 
  
 			<main>
@@ -166,7 +168,7 @@
 	<script type="text/javascript"
 		src="/js/chunk-vendors.85a954b2b4f1348cc700.js"></script>
 	<script type="text/javascript" src="/js/index.85a954b2b4f1348cc700.js"></script>
-	<iframe src="footer.do" width="100%" height="550px" scrolling="no" frameborder=0></iframe>
+<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 
 </body>
 </html>

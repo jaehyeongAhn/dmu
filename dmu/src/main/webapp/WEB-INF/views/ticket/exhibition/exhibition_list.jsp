@@ -39,18 +39,18 @@
 <div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
 			<ul data-v-6d324aa0="">
 				<li data-v-6d324aa0="" class="on">
-					<span data-v-6d324aa0=""  class="no">01</span>
-					<span data-v-6d324aa0="" class="txt">.티켓 선택</span>
+					<span data-v-6d324aa0=""  class="no">01</span>.
+					<span data-v-6d324aa0="" class="txt">티켓 선택</span>
 				</li>
 				
 				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">02</span>
-					<span data-v-6d324aa0="" class="txt">.관람일/인원 선택</span>
+					<span data-v-6d324aa0="" class="no">02</span>.
+					<span data-v-6d324aa0="" class="txt">관람일/인원 선택</span>
 				</li>
 				
 				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">03</span>
-					<span data-v-6d324aa0="" class="txt">.결제</span>
+					<span data-v-6d324aa0="" class="no">03</span>.
+					<span data-v-6d324aa0="" class="txt">결제</span>
 				</li>
 			</ul>
 		</div>

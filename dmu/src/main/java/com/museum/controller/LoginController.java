@@ -51,7 +51,7 @@ public class LoginController {
 		
 		//비밀번호 업데이트
 		DmuSessionVO pw_result = loginService.login(vo);
-		if(pw_result.getLoginresult() == 0){
+		if(pw_result == null){
 			int result = loginService.loginUpdate(vo);
 			if(result == 1) {
 				mv.addObject("result", result);

@@ -12,6 +12,8 @@
 <!-- <meta name="twitter:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">
     <meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg"> -->
 <link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
@@ -61,15 +63,15 @@
 	<div data-v-8ed31374="" class="img-ticket">
 	<ul>
 		<li>
-			<label>파일첨부</label>
-				<input type="file" name="file1">
-					
+			<input type="file" name="file1" id="file_list">
+			<label for = "file_list">파일첨부</label>
 			</li>
 		</ul>
 	</div>
 	
 	<div data-v-8ed31374="" class="title-ticket">
-		<h2 data-v-8ed31374="" class="title">제목 <input type="text" name="dtitle" id="dtitle" ></h2>
+		<h2 data-v-8ed31374="" class="title">제목</h2>
+			<input type="text" name="dtitle" id="dtitle" >
 			<span data-v-8ed31374="" class="explan"> </span>
 	</div>
 	
@@ -125,12 +127,12 @@
 			</li>
 			<li data-v-8ed31374="">
 				<strong data-v-8ed31374="" class="title">운영시간/교육시간</strong>
-				<textarea name="dtime"></textarea>
+				<textarea name="dtime" class="time_text"></textarea>
 			</li>
 		</ul>
 	</div>
 	
-		<strong data-v-8ed31374="" class="title">이용 정보</strong>
+		<strong data-v-8ed31374="" class="title" id="info">이용 정보</strong>
 			<div data-v-8ed31374="" class="organ-ticket">
 				<p data-v-8ed31374="" class="comment">
 					<div data-v-8ed31374="" class="contents">

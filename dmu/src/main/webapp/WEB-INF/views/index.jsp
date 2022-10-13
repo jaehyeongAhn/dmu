@@ -429,16 +429,16 @@
                                     <a href="visit_main.do"> VISIT </a>
                                 </li>
                                 <li class="exhibition">
-                                    <a href="javascript:void(0);"> EXHIBITION </a>
+                                    <a href="http://localhost:9000/dmu/exhibition_page.do" target="_parent"> EXHIBITION </a>
                                 </li>
                                 <li class="learn">
-                                    <a href="javascript:void(0);"> LEARN </a>
+                                    <a href="http://localhost:9000/dmu/learn_page.do" target="_parent"> LEARN </a>
                                 </li>
                                 <li class="event">
-                                    <a href="javascript:void(0);"> EVENT </a>
+                                    <a href="http://localhost:9000/dmu/event_page.do" target="_parent"> EVENT </a>
                                 </li>
                                 <li class="ticket">
-                                    <a href="exhibition_list.do"> TICKET </a>
+                                    <a href="http://localhost:9000/dmu/exhibition_list.do" target="_parent"> TICKET </a>
                                 </li>
                             </ul>
                             <div class="sub-menu" id="menu_visit" style="width: 100%;">
