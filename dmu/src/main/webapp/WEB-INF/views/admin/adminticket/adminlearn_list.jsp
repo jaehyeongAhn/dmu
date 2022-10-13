@@ -167,7 +167,7 @@
 <div data-v-41f56098="" class="division-list">
 			<ul data-v-41f56098="">
 				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" class="learn_target"  id="전체" >전체</a>
+					<a data-v-41f56098="" class="learn_targetall"  href="http://localhost:9000/dmu/adminlearn_list.do"  >전체</a>
 				</li>
 				
 				<li data-v-41f56098="" class="">

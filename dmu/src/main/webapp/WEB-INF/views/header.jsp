@@ -96,12 +96,10 @@
 						<div class="main-menu">
 							<ul>
 								<li class="visit"><a href="visit_main.do" target="_parent"> VISIT </a></li> 
-								<li class="exhibition"><a href="javascript:void(0);"> EXHIBITION</a></li>
-								<li class="learn"><a href="javascript:void(0);"> LEARN </a></li>
+								<li class="exhibition"><a href="http://localhost:9000/dmu/exhibition_page.do" target="_parent"> EXHIBITION</a></li>
+								<li class="learn"><a href="http://localhost:9000/dmu/learn_page.do" target="_parent"> LEARN </a></li>
 								<li class="event"><a href="http://localhost:9000/dmu/event_page.do" target="_parent"> EVENT </a></li>
-								<li class="ticket"><a
-									href="http://localhost:9000/dmu/exhibition_list.do"
-									target="_parent"> TICKET </a></li>
+								<li class="ticket"><a href="http://localhost:9000/dmu/exhibition_list.do" target="_parent"> TICKET </a></li>
 							</ul>
 							<div class="sub-menu" id="menu_visit" style="width: 100%;">
 								<div class="pannel">
@@ -155,8 +153,8 @@
 								<div>
 									<div class="menu-area">
 										<ul>
-											<li><a href="javascript:void(0);" style=""> 현재 전시 </a></li>
-											<li><a href="javascript:void(0);"> 지난 전시 </a></li>
+											<li><a href="http://localhost:9000/dmu/exhibition_page.do" style=""target="_parent"> 현재 전시 </a></li>
+											<li><a href="http://localhost:9000/dmu/exhibition_past_page.do"style=""target="_parent"> 지난 전시 </a></li>
 										</ul>
 									</div>
 								</div>
