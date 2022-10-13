@@ -324,11 +324,10 @@ button.ui-button::-moz-focus-inner {
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
 	position: absolute;
- 
-	top: 10px;
+	top: 4px;
 	width: 1.8em;
 	height: 1.8em;
-	font-size : 1.25rem;
+	font-size : 17px;
 }
 .ui-datepicker .ui-datepicker-prev-hover,
 .ui-datepicker .ui-datepicker-next-hover {
@@ -1368,8 +1367,8 @@ a.ui-button:active,
 	box-shadow: 0px 0px 5px #666666;
 }
 
-/** ìˆ˜ì •í•œ ë‚´ìš© **/
-/** datepickerë¥¼ (input type = "text")ì— ì ìš© ì‹œ **/
+/** º¯°æ »çÇ× **/
+/** datepicker °³ÀÎ ¼³Á¤ **/
 div#ui-datepicker-div {
     width: 353px;
     margin: 0 31px;
@@ -1381,14 +1380,14 @@ div#ui-datepicker-div {
 	color : gray;
 }
 
-/** datepickerë¥¼ <div>ì— ì ìš© ì‹œ **/
+/** datepicker inline **/
 div.ui-datepicker-inline {
     width: 337px;
     margin: 0 31px;
     padding: 20px 0 26px 0;
 }
 
-/* next, prev ìˆ˜ì • */
+/* next, prev º¯°æ */
 .ui-datepicker-next .ui-datepicker-next-hover {
 	color : #f2f2f2;
 }

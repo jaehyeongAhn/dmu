@@ -8,11 +8,7 @@ $(document).ready(function(){
 				style_warning += "<img src = 'http://localhost:9000/dmu/resources/images/warning.png' class = 'join_warning'>";
 				style_warning += "<span></span></div>";
 			if(check == true){
-				
-				/* $(".check_join").addClass(name);
-				if(document.querySelector(name) ) */
-				
-				//$(".check_join").remove();
+			
 				obj.next().remove();
 				obj.after(style_warning);
 				
@@ -96,39 +92,68 @@ $(document).ready(function(){
 				$("#popup_joinNo").text("확인");
 
 				return false;
-			}else if(!passRule.test($(".pass").val())){
-				$(".pass").focus();
-				return false;
-			}else if($(".passCheck").val() != $(".pass").val()){
-				warningCheck(true, $(".new-pass-check"), "비밀번호가 일치하지 않습니다.");
-				$(".new-pass").focus();
-				return false;
 			}else{
-				popup_login("변경사항을 저장하시겠습니까?");
-				$("#popup_joinOk").click(function(){
-					$("form").attr({
-						"name" : "updateMemberForm",
-						"action" : "update_info.do"
-					});
-					updateMemberForm.submit();
-				});
+				if(password != "" || pass_check != ""){
+					
+					if(!passRule.test($(".pass").val())){
+						$(".pass").focus();
+						return false;
+					}else if($(".passCheck").val() != $(".pass").val()){
+						warningCheck(true, $(".new-pass-check"), "비밀번호가 일치하지 않습니다.");
+						$(".new-pass").focus();
+						return false;
+					}else{
+						member_info_udpate("password");
+					}
+				}else if(zonecode != "" || addr1 != "" || addr2 != ""){
+					if(zonecode == "" || addr1 == "" || addr2 == "") {
+						popup_login("주소를 입력해주세요.");
+						$("#popup_joinOk").css("display", "none");
+						$("#popup_joinNo").text("확인");
+					}else{
+						member_info_udpate("address");
+					}
+				}
 			}
 		});
 		
+		//변경 내용 저장
+		function member_info_udpate(type){
+			popup_login("변경사항을 저장하시겠습니까?");
+			$("#popup_joinOk").click(function(){
+				$("form").attr({
+					"name" : "updateMemberForm",
+					"action" : "update_info.do"
+				});
+				$(".type_check").val(type);
+				updateMemberForm.submit();
+			});
+		}
+		
 		$(".pass").keyup(function(){
 			let password = $(".pass").val();
-			if(!passRule.test(password)){
-				warningCheck(true, $(".new-pass"), "10~14자 영문, 숫자, 특수문자를 조합하여 입력해 주세요.");
+			if($(this).val() != ""){
+				if(!passRule.test(password)){
+					warningCheck(true, $(".new-pass"), "10~14자 영문, 숫자, 특수문자를 조합하여 입력해 주세요.");
+				}else{
+					warningCheck(false, $(".new-pass"), "");
+				}
 			}else{
 				warningCheck(false, $(".new-pass"), "");
 			}
 		});
 	
 		$(".passCheck").keyup(function(){
-			if($(".passCheck").val() != $(".pass").val()){
-				warningCheck(true, $(".new-pass-check"), "비밀번호가 일치하지 않습니다.");
-			}else{
-				warningCheck(false, $(".new-pass-check"), "");
+			if($(".pass").val() != ""){
+				if($(".passCheck").val() != ""){
+					if($(".passCheck").val() != $(".pass").val()){
+						warningCheck(true, $(".new-pass-check"), "비밀번호가 일치하지 않습니다.");
+					}else{
+						warningCheck(false, $(".new-pass-check"), "");
+					}
+				}else{
+					warningCheck(false, $(".new-pass-check"), "");
+				}
 			}
 		});
 		

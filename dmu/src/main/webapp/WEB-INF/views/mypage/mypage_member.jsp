@@ -22,7 +22,7 @@
 </style>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<iframe src="header.do" width="100%" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
 	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<!-- 사이드 메뉴 -->
 	<div class = "main">
@@ -43,7 +43,7 @@
 												<a class="" href="mypage_ticket.do">티켓예매 목록</a>
 											</li>
 											<li class="">
-												<a class="" href="mypage_review.do">나의 문의</a>
+												<a class="" href="mypage_inquire.do">나의 문의</a>
 											</li>
 										</ul>
 									</div>
@@ -69,6 +69,8 @@
 						<h2>개인정보 변경/탈퇴</h2>
 					</div>
 					<form name = "updateMemberForm" action = "update_info.do" method = "post">
+						<input type = "hidden" name = "mid" value = "${ vo.mid }">
+						<input type = "hidden" name = "type" class = "type_check">
 						<div class="myinfo">
 							<div class="myinfo-box">
 								<div class="top-title">
@@ -78,36 +80,39 @@
 										<ul>
 											<li>
 												<div class="info-list-title">아이디</div>
-												<div class="info">tester***</div>
+												<div class="info">${ vo.mid_security }</div>
 											</li>
 											<li>
 												<div class="info-list-title">비밀번호</div>
-												<div class="info">**********</div>
+												<div class="info">${ vo.pass }</div>
 											</li>
 											<li>
 												<div class="info form">
 													<strong class="new-password"> 새 비밀번호 </strong>
-													<div class="password-area new-pass">
-														<input placeholder="새 비밀번호를 입력해 주세요." maxlength="14" 
-															type="password" name = "pass" class="pass">
+													<div>
+														<div class="password-area new-pass">
+															<input placeholder="새 비밀번호를 입력해 주세요." maxlength="14" 
+																type="password" name = "pass" class="pass">
+														</div>
 													</div>
-													<div></div><div></div>
 													<strong class="new-password check-pass"> 새 비밀번호 확인 </strong>
-													<div class="password-area new-pass-check">
-														<input placeholder="새 비밀번호를 재입력해 주세요." maxlength="14" 
-															type="password" name = "passCheck" class="passCheck">
+													<div>
+														<div class="password-area new-pass-check">
+															<input placeholder="새 비밀번호를 재입력해 주세요." maxlength="14" 
+																type="password" name = "passCheck" class="passCheck">
+														</div>
 													</div>
 												</div>
 											</li>
 											<li>
 												<div class="info-list-title">내/외국인</div>
-												<div class="info">내국인</div>
+												<div class="info">${ vo.nationality }</div>
 											</li>
 											
 											<li>
 												<div class="info-list-title">성별</div>
 												<div class="info info-gender">
-													남자
+													${ vo.gender }
 													<!-- <div class="radio-area">
 														<input id="m" type="radio" name="gender" value="m">
 														<label for="m"><span class="check"></span> 남자 </label>
@@ -120,24 +125,24 @@
 											</li>
 											<li>
 												<div class="info-list-title">이름</div>
-												<div class="info">테*터</div>
+												<div class="info">${ vo.mname }</div>
 											</li>
 											<li>
 												<div class="info-list-title">생년월일</div>
-												<div class="info">2000.10.**</div>
+												<div class="info">${ vo.birth }</div>
 											</li>
 											<li>
 												<div class="info-list-title">휴대폰 번호</div>
-												<div class="info">010-****-1234</div>
+												<div class="info">${ vo.pnumber }</div>
 											</li>
 											<li>
 												<div class="info-list-title">이메일</div>
-												<div class="info">test*****@google.com</div>
+												<div class="info">${ vo.email }</div>
 											</li>
 											<li>
 												<div class="info-list-title">주소</div>
 												<div class="info">
-													<p style = "margin-top : 0; margin-bottom: 15px;">서울특별시 강남구 한국대로 124-576 3층</p>
+													<p style = "margin-top : 0; margin-bottom: 15px;">${ vo.address }</p>
 													<div class = "addrSimple">
 														<input type = "text" name = "zonecode" id = "zonecode" placeholder = "새 우편번호">
 														<input type = "text" name = "addr1" id = "addr1">

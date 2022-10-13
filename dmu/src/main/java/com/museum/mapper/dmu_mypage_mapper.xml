@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "mapper.mypage">
+	<select id = "member_info" parameterType = "java.lang.String" resultType = "com.museum.vo.DmuMemberVO">
+		SELECT MID,
+			CONCAT(SUBSTR(MID, 1, 4), '***') MID_SECURITY,
+	        LPAD(' ', 10, '*') PASS,
+	        CASE WHEN NATIONALITY = 'local' THEN '내국인' ELSE '외국인' END AS NATIONALITY,
+	        CASE WHEN GENDER = 'm' THEN '남자' ELSE '여자' END AS GENDER,
+	        REPLACE(MNAME, SUBSTR(MNAME, 2, LENGTH(MNAME)-2), '*') MNAME,
+	        TO_CHAR(BIRTH, 'YYYY.MM.') || '**' AS BIRTH,
+	        SUBSTR(PNUMBER, 1, 4) || '****' || SUBSTR(PNUMBER, 9, 13) AS PNUMBER,
+	        SUBSTR(EMAIL, 1, 4) || '*****' || SUBSTR(EMAIL, INSTR(EMAIL, '@', 1), LENGTH(EMAIL)) AS EMAIL,
+	        ADDR1 || ' ' || ADDR2 AS ADDRESS
+		FROM DMU_MEMBER
+		WHERE MID = #{mid}
+	</select>
+	
+	<update id = "member_unregister" parameterType = "java.lang.String">
+		UPDATE DMU_MEMBER SET UNREGISTER = 'n' WHERE MID = #{mid}
+	</update>
+</mapper>
