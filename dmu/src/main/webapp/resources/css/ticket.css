@@ -1,4 +1,52 @@
+input#dstart, input#dend {
+    width: 100px;
+}
+div.editor-contents-area textarea {
+    resize: none;
+    width: 800px;
+    height: 200px;
+    padding: 16px;
+    overflow: auto;
+}
+input#dtitle {
+    width: 85%;
+    height: 40px;
+    margin-top: 0.5rem;
+}
 
+strong#info {
+    /* border: 1px solid; */
+    margin-top: 20px;
+    display: inline-block;
+    font-size: 25px;
+}
+
+textarea.time_text {
+    resize: none;
+    height: 100px;
+    width: 210px;
+}
+input#file_list {
+    display: none;
+}
+label[for="file_list"] {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.08rem;
+    cursor:pointer;
+}
+.editor-contents-area > ul {
+    font-size: 17px;
+    line-height: 30px;
+    letter-spacing: -0.05rem;
+    color: black;
+}
 .layer-dimmed[data-v-9a980cc6] {
 	position: fixed;
 	width: 100%;
@@ -20,7 +68,12 @@
 main[ticket_delte]{
     hight:550px;
 }
-
+.editor-contents-area > ul {
+    font-size: 17px !important;
+    line-height: 30px;
+    letter-spacing: -0.05rem;
+    color: black;
+}
 .layer-dimmed .layer .layer-header[data-v-9a980cc6] {
 	position: relative;
 	width: 100%;
@@ -16433,15 +16486,19 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 
 .reservation-area .title-ticket[data-v-8ed31374] {
 	margin-bottom: 1.25rem;
+	display:flex;
 }
 
 .reservation-area .title-ticket .title[data-v-8ed31374] {
-	margin-bottom: 0.5rem;
-	font-weight: 600;
-	font-size: 2.25rem;
-	line-height: 2.8125rem;
-	color: #111;
-	letter-spacing: -0.05625rem;
+	display: inline-block;
+    margin-right: 45px;
+    margin-bottom: 0.5rem;
+    margin-top: 5px;
+    font-weight: 600;
+    font-size: 2.25rem;
+    line-height: 2.8125rem;
+    color: #111;
+    letter-spacing: -0.05625rem;
 }
 
 .reservation-area .title-ticket .subtitle[data-v-8ed31374] {
@@ -16485,7 +16542,7 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 
 .reservation-area .info-ticket .title[data-v-8ed31374] {
 	display: inline-block;
-	width: 6.25rem;
+	width: 7.25rem;
 	font-weight: 500;
 	font-size: 1rem;
 	line-height: 1.63;
@@ -16510,7 +16567,7 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 
 .reservation-area .organ-ticket[data-v-8ed31374] {
 	display: flex;
-	padding: 2.625rem 0 2rem 0;
+	padding: 1.625rem 0 2rem 0;
 	border-bottom: 1px solid #ddd;
 }
 
@@ -22536,7 +22593,8 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
  
 /* mobile */
 .sub-contents-area .container[data-v-25f87e60] {
-	padding-top: 2.5rem;
+	padding-top: 4.5rem;
+	width:800px;
 }
 
 .error-msg[data-v-25f87e60] {
