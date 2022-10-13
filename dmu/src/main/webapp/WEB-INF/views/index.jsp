@@ -402,7 +402,7 @@
                         <c:otherwise>
                         <ul>
                             <li>
-                                <a href="login.do" class=""> LOGOUT </a>
+                                <a href="logout.do" class=""> LOGOUT </a>
                             </li>
                             <li>
                                 <a href="mypage_main.do" class=""> MY PAGE </a>
