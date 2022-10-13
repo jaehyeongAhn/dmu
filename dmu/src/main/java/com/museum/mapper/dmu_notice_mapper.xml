@@ -42,6 +42,7 @@
 	<select id="totalCount" parameterType="java.lang.Integer" resultType="int">
 		select count(*) from dmu_notice
 	</select>
+	
 
 
 </mapper>

@@ -39,7 +39,7 @@
 </style>
 </head>
 <body>
-	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<iframe src="header.do" width="100%" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
 	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<!-- 사이드 메뉴 -->
 	<div class = "main">
@@ -60,7 +60,7 @@
 												<strong><a class="" href="mypage_ticket.do" style = "color : black;">티켓예매 목록</a></strong>
 											</li>
 											<li class="">
-												<a class="" href="mypage_review.do">나의 문의</a>
+												<a class="" href="mypage_inquire.do">나의 문의</a>
 											</li>
 										</ul>
 									</div>

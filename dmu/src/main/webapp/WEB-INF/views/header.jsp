@@ -70,15 +70,15 @@
                         <c:otherwise>
                         <ul>
                             <li>
-                                <a href="login.do" class=""> LOGOUT </a>
+                                <a href="logout.do" class="" target="_parent"> LOGOUT </a>
                             </li>
                             <li>
-                                <a href="mypage_main.do" class=""> MY PAGE </a>
+                                <a href="mypage_main.do" class="" target="_parent"> MY PAGE </a>
                             </li>
                             <!---->
                             <!---->
                             <li>
-                                <a href="notice_list.do" class=""> NOTICE </a>
+                                <a href="notice_list.do" class="" target="_parent"> NOTICE </a>
                             </li>
                             <li>
                                 <a href="https://daelimculturalfoundation.org" target="_blank">

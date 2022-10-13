@@ -39,7 +39,7 @@ public class NoticeController {
 		int pageSize = 3;	//한페이지당 게시물 수
 		int reqPage = 1;	//요청페이지	
 		int pageCount = 1;	//전체 페이지 수
-		int dbCount = dao.totalCount();	//DB에서 가져온 전체 행수
+		int dbCount = noticeService.getTotalCount();	//DB에서 가져온 전체 행수
 		
 		//총 페이지 수 계산
 		if(dbCount % pageSize == 0){
@@ -100,7 +100,7 @@ public class NoticeController {
 		int pageSize = 3;	//한페이지당 게시물 수
 		int reqPage = 1;	//요청페이지	
 		int pageCount = 1;	//전체 페이지 수
-		int dbCount = dao.totalCount_category(ncategory);	//DB에서 가져온 전체 행수
+		int dbCount = noticeService.getTotalCount_category(ncategory);	//DB에서 가져온 전체 행수
 
 		//총 페이지 수 계산
 		if(dbCount % pageSize == 0){
