@@ -186,7 +186,7 @@ body a, body a:hover, body a:visited {
 	font-size: 0;
 	background-position: top center;
 }
-.sub-top-area nav ul li[data-v-0d03d759]:last-child:before {
+.sub-top-area nav ul li + li[data-v-0d03d759]:before {
     display: block;
     position: absolute;
     top: 50%;
