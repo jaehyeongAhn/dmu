@@ -9,11 +9,22 @@ public class DmuMemberVO {
 	//View에서 넘어오는 name
 	String email1, email2, pnum1, pnum2, pnum3, year, month, day;
 	
+	//암호화된 mid 받기
+	String mid_security;
+	
 	//회원 리스트용
 	String address;
 	
 	
-	 public String getAddress(){ 
+	public String getMid_security() {
+		return mid_security;
+	}
+
+	public void setMid_security(String mid_security) {
+		this.mid_security = mid_security;
+	}
+
+	public String getAddress(){ 
 		// if(addr1 == null) { 
 		//	 return addr1+ " " + addr2; 
 		// }else{

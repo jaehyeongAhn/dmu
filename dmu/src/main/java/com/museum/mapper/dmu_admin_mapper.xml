@@ -13,10 +13,34 @@
 				order by ddate))
 				where rno between #{start} and #{end}
 	</select>
+	
+	<select id="memberList_public" parameterType="map" resultType="com.museum.vo.DmuMemberVO">
+		select rno, mid, nationality, mname, gender, email, birth, pnumber, addr1, addr2, unregister, ddate, addr1||' '||addr2 address
+				from(select rownum rno, mid, nationality, mname, gender, email, to_char(birth, 'yyyy-mm-dd') birth, pnumber, addr1, addr2, unregister, to_char(ddate, 'yyyy-mm-dd') ddate
+				from(select mid, nationality, mname, gender, email, birth, pnumber, addr1, addr2, unregister, ddate from dmu_member where status in('public')
+				order by ddate))
+				where rno between #{start} and #{end}
+	</select>
 
+
+	<select id="memberList_admin" parameterType="map" resultType="com.museum.vo.DmuMemberVO">
+		select rno, mid, nationality, mname, gender, email, birth, pnumber, addr1, addr2, unregister, ddate, addr1||' '||addr2 address, status
+				from(select rownum rno, mid, nationality, mname, gender, email, to_char(birth, 'yyyy-mm-dd') birth, pnumber, addr1, addr2, unregister, to_char(ddate, 'yyyy-mm-dd') ddate, status
+				from(select mid, nationality, mname, gender, email, birth, pnumber, addr1, addr2, unregister, ddate, status from dmu_member where status not in('public')
+				order by ddate))
+				where rno between #{start} and #{end}
+	</select>
 	
 	<select id="totalCount" resultType="int">
 		select count(*) from dmu_member
+	</select>
+	
+	<select id="totalCount_public" resultType="int">
+		select count(*) from dmu_member where status='public'
+	</select>
+	
+	<select id="totalCount_admin" resultType="int">
+		select count(*) from dmu_member where status not in('public')
 	</select>
 
 	<select id="memberContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuMemberVO">
@@ -24,6 +48,16 @@
 				from dmu_member
 				where mid=#{mid}
 	</select>
+	
+	<select id="memberContent_admin" parameterType="java.lang.String" resultType="com.museum.vo.DmuMemberVO">
+		select mid, nationality, mname, gender, email, to_char(birth, 'yyyy-mm-dd') birth, pnumber, addr1||' '||addr2 address, unregister, ddate, status
+				from dmu_member
+				where mid=#{mid}
+	</select>
+	
+	<update id="updateStatus" parameterType="java.lang.String">
+		update dmu_member set status='admin' where mid=#{mid}
+	</update>
 	
 	<select id="reservationList" parameterType="map" resultType="com.museum.vo.DmuReJoinVO">
 		 select  dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech,to_char(dr.rdate, 'YYYY-MM-DD') rdateda,  to_char(dr.rokdate,'YYYY-MM-DD') rokdatech  from  dmu_ticket DT, dmu_reservation DR, dmu_member DM

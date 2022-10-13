@@ -186,7 +186,7 @@ body a, body a:hover, body a:visited {
 	font-size: 0;
 	background-position: top center;
 }
-.sub-top-area nav ul li[data-v-0d03d759]:last-child:before {
+.sub-top-area nav ul li + li[data-v-0d03d759]:before {
     display: block;
     position: absolute;
     top: 50%;
@@ -291,6 +291,14 @@ body a, body a:hover, body a:visited {
     line-height: 1.75rem;
     letter-spacing: -0.025rem;
     color: #666;
+}
+.notice-list ul li a .category[data-v-1b9c8af9]::before {
+    display: inline-block;
+    width: 0.0625rem;
+    height: 0.625rem;
+    margin: 0 1.25rem;
+    background: #ddd;
+    content: '';
 }
 .no-result[data-v-1b9c8af9] {
     padding: 9.375rem 0;

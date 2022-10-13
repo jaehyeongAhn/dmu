@@ -1,4 +1,4 @@
-
+@charset "utf-8";
 	* {
 		padding : 0;
 		margin : 0;
@@ -324,6 +324,14 @@
 	}
 	div.page-title h2 {
 		margin : 0;
+	}
+	div.page-title h2.inquire_main_title::after {
+	    content: "답변 완료 시, 회원 가입 시 등록된 이메일로 답변을 전송해 드립니다.";
+	    font-size: 13px;
+	    font-weight: 500;
+	    letter-spacing: -0.08rem;
+	    margin: 0 13px;
+	    color: #605e5e;
 	}
 	div.page-title::after {
 	    content: "";
@@ -679,7 +687,7 @@
 	    align-items: center;
 	    color: #6e6e6e;
 	    font-size: 17.5px;
-	    font-weight: 200;
+	    font-weight: 300;
 	}
 	div.result_purchase {
 		border-top: 2px solid black;
@@ -893,7 +901,6 @@
 
 
 	/********** mypage_review - set popup ************/
-	/* ÆË¾÷ ¿ÜºÎ */
 	div.background {
 		position : fixed;
 		width : 100%;
@@ -935,7 +942,7 @@
 	}
 	
 	
-	/* ÆË¾÷ ³»ºÎ */
+	/* popup content */
 	div.popup_title {
 		display: flex;
 		justify-content : space-between;

@@ -112,6 +112,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		DmuNoticeDAO dao = new DmuNoticeDAO();
 		DmuNoticeVO vo = noticeService.getContent(nid);
+		vo.setNcontent(vo.getNcontent().replace("\r\n", "<br/>"));
 		
 		mv.addObject("vo", vo);
 		mv.setViewName("/admin/admin_notice/admin_notice_content");
@@ -207,6 +208,7 @@ public class AdminController {
 		return "/admin/adminpage_main";
 	}
 	
+
 	
 	@RequestMapping(value = "/adminpage_member_list.do", method = RequestMethod.GET)
 	public ModelAndView adminpage_member_list(String rpage) {
@@ -220,7 +222,7 @@ public class AdminController {
 		int pageSize = 5;	//한페이지당 게시물 수
 		int reqPage = 1;	//요청페이지	
 		int pageCount = 1;	//전체 페이지 수
-		int dbCount = adminService.getTotalCount();	//DB에서 가져온 전체 행수
+		int dbCount = adminService.getTotalCount_public();	//DB에서 가져온 전체 행수
 
 		//총 페이지 수 계산
 		if(dbCount % pageSize == 0){
@@ -240,11 +242,11 @@ public class AdminController {
 		}
 
 
-		ArrayList<DmuMemberVO> mlist = adminService.memberList(startCount, endCount);
+		ArrayList<DmuMemberVO> plist = adminService.publicList(startCount, endCount);
 //		String address = mlist.get(0).getAddr1() + " " + mlist.get(0).getAddr2();
 		
 
-		mv.addObject("list", mlist);
+		mv.addObject("list", plist);
 		mv.addObject("dbCount", dbCount);
 		mv.addObject("pageSize", pageSize);
 		mv.addObject("rpage", reqPage);
@@ -277,7 +279,105 @@ public class AdminController {
 		
 	}
 	
-	 
+	@RequestMapping(value = "/adminpage_admin_list.do", method = RequestMethod.GET)
+	public ModelAndView adminpage_admin_list(String rpage) {
+		ModelAndView mv = new ModelAndView();
+
+		DmuAdminDAO dao = new DmuAdminDAO();
+
+		//페이징 처리 - startCount, endCount 구하기
+		int startCount = 0;
+		int endCount = 0;
+		int pageSize = 5;	//한페이지당 게시물 수
+		int reqPage = 1;	//요청페이지	
+		int pageCount = 1;	//전체 페이지 수
+		int dbCount = adminService.getTotalCount_admin();	//DB에서 가져온 전체 행수
+
+		//총 페이지 수 계산
+		if(dbCount % pageSize == 0){
+			pageCount = dbCount/pageSize;
+		}else{
+			pageCount = dbCount/pageSize+1;
+		}
+
+		//요청 페이지 계산
+		if(rpage != null){
+			reqPage = Integer.parseInt(rpage);
+			startCount = (reqPage-1) * pageSize+1;
+			endCount = reqPage *pageSize;
+		}else{
+			startCount = 1;
+			endCount = pageSize;
+		}
+
+
+		ArrayList<DmuMemberVO> alist = adminService.adminList(startCount, endCount);
+//		String address = mlist.get(0).getAddr1() + " " + mlist.get(0).getAddr2();
+		
+
+		mv.addObject("list", alist);
+		mv.addObject("dbCount", dbCount);
+		mv.addObject("pageSize", pageSize);
+		mv.addObject("rpage", reqPage);
+//		mv.addObject("address", address);
+		mv.setViewName("/admin/admin_member/adminpage_admin_list");
+
+		return mv;
+	}
+	
+	
+	/*
+	 * 어드민 회원 페이지 (관리자만)
+	 */
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/adminpage_admin_list_detail.do", method= RequestMethod.POST, produces="test/plain;charset=UTF-8")
+	public String adminpage_admin_list_detail(String mid) {
+		DmuMemberVO mvo = adminService.memberContent_admin(mid);
+		
+		JsonObject jo = new JsonObject();
+		Gson gson = new Gson();
+		jo.addProperty("mid", mid);
+		jo.addProperty("mname", mvo.getMname());
+		jo.addProperty("pnumber", mvo.getPnumber());
+		jo.addProperty("email", mvo.getEmail());
+		jo.addProperty("birth", mvo.getBirth());
+		jo.addProperty("address", mvo.getAddress());
+		jo.addProperty("gender", mvo.getGender());
+		jo.addProperty("nationality", mvo.getNationality());
+		jo.addProperty("unregister", mvo.getUnregister());
+		jo.addProperty("ddate", mvo.getDdate());
+		jo.addProperty("status", mvo.getStatus());
+		
+		return gson.toJson(jo);
+		
+		
+	}
+	
+	
+	@RequestMapping(value="/acceptUpdate.do", method= RequestMethod.POST)
+	public ModelAndView acceptUpdate(String mid) {
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		result = adminService.updateStatus(mid);
+		
+		if(result == 1) {
+			mv.setViewName("redirect:/adminpage_admin_list.do");
+		}else {
+			mv.setViewName("error_page");			
+		}
+		
+		return mv;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 		@RequestMapping(value = "/adminpage_reservation_list.do", method = RequestMethod.GET)
 		public ModelAndView adminpage_reservation_list(String rpage) {
 			ModelAndView mv = new ModelAndView();		 

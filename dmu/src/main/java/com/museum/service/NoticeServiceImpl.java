@@ -2,11 +2,17 @@ package com.museum.service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.museum.dao.DmuNoticeDAO;
 import com.museum.vo.DmuNoticeVO;
 
 public class NoticeServiceImpl implements NoticeService{
 
+	
+	
+	@Autowired
+	private DmuNoticeDAO noticeDAO;
 	
 	/*
 	 * 공지사항 총 로우 수
@@ -14,7 +20,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public int getTotalCount(){
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		int dbCount = dao.totalCount();
+		int dbCount = noticeDAO.totalCount();
 		return dbCount;
 	}
 	
@@ -24,7 +30,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public ArrayList<DmuNoticeVO> getList(int startCount, int endCount){
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		ArrayList<DmuNoticeVO> list = dao.select(startCount, endCount);
+		ArrayList<DmuNoticeVO> list = noticeDAO.select(startCount, endCount);
 		return list;
 	}
 	
@@ -34,7 +40,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public DmuNoticeVO getContent(String nid) {
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		DmuNoticeVO vo = dao.select(nid);
+		DmuNoticeVO vo = noticeDAO.select(nid);
 		return vo;
 	}
 	
@@ -44,7 +50,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public int getWriteResult(DmuNoticeVO vo) {
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		int result = dao.insert(vo);
+		int result = noticeDAO.insert(vo);
 		return result;
 	}
 	
@@ -54,7 +60,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public int getUpdateResult(DmuNoticeVO vo) {
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		int result = dao.update(vo);
+		int result = noticeDAO.update(vo);
 		return result;
 	}
 	
@@ -65,7 +71,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public int getDeleteResult(String nid) {
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		int result = dao.delete(nid);
+		int result = noticeDAO.delete(nid);
 		return result;
 	}
 	

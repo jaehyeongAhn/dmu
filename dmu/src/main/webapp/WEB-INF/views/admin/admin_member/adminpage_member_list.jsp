@@ -8,7 +8,6 @@
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
-<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/mypage.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/adminpage.css">
@@ -41,7 +40,7 @@ $(document).ready(function(){
 	//페이징 번호 클릭 시 이벤트 처리
 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-           $(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);         
+           $(location).attr('href', "http://localhost:9000/dmu/adminpage_public_list.do?rpage="+e.page);         
     });
 	
 	
@@ -84,6 +83,9 @@ $(document).ready(function(){
 										<ul>
 											<li class="">
 												<a class="" href="adminpage_member_list.do">회원관리</a>
+											</li>
+											<li class="">
+												<a class="" href="adminpage_admin_list.do">관리자승인</a>
 											</li>
 											<li class="">
 												<a class="" href="adminpage_reservation_list.do">예매관리</a>

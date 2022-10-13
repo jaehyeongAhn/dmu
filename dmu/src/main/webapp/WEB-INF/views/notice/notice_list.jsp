@@ -156,8 +156,7 @@ $(document).ready(function(){
 	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 	<main>
 		<section data-v-1b9c8af9="" class="sub-contents-wrap">
-			<div data-v-0d03d759="" data-v-1b9c8af9=""
-				class="sub-top-area notice">
+			<div data-v-0d03d759="" data-v-1b9c8af9="" class="sub-top-area notice">
 				<div data-v-0d03d759="" class="container">
 					<h2 data-v-0d03d759="">공지사항</h2>
 					<nav data-v-0d03d759="">
