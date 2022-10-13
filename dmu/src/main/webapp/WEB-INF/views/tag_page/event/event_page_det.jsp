@@ -33,7 +33,7 @@
 
 </head>
 <body>
-	<iframe src="http://localhost:9000/dmu/header.do" width="100%"
+	<iframe src="http://localhost:9000/dmu/header.do" width="100%" class="head"
 		height="160px" scrolling="no" frameborder=0></iframe>
 	
 	<main>
@@ -82,16 +82,17 @@
 								</div>
 								<div data-v-47166101="" class="program-view-contents">
 									<div data-v-080a389a="" data-v-47166101="">
-										<div data-v-080a389a="" class="snb-area">
-											<ul data-v-080a389a="" class="snb">
+										<div data-v-080a389a="" class="snb-area" id="snb">
+											
+											<ul data-v-080a389a="" class="snb"  >
 												<li data-v-080a389a="" class="on">
-													<a data-v-080a389a="" role="button" id="program" style="cursor: pointer;">프로그램소개</a>
+													<a data-v-080a389a="" role="button"   onclick="location.href='#program'" style="cursor: pointer;  ">프로그램소개</a>
 												</li>
 												<li data-v-080a389a="" class="">
-													<a data-v-080a389a="" role="button" id="brand" style="cursor: pointer;">참여브랜드</a>
+													<a data-v-080a389a="" role="button"  onclick="location.href='#brand'" style="cursor: pointer;">참여브랜드</a>
 												</li>
 												<li data-v-080a389a="" class="">
-													<a data-v-080a389a="" role="button" id="info" style="cursor: pointer;">이용안내</a>
+													<a data-v-080a389a="" role="button"   onclick="location.href='#info'" style="cursor: pointer;">이용안내</a>
 												</li>
 											</ul>
 										</div>
@@ -103,7 +104,7 @@
 													<div data-v-47166101="" data-v-080a389a=""
 														class="sub-title-area">
 														<h3 data-v-47166101="" data-v-080a389a=""
-															class="tit-underline" id="">프로그램소개</h3>
+															class="tit-underline" id="program">프로그램소개</h3>
 													</div>
 													<div data-v-47166101="" data-v-080a389a="">
 														<div class="editor-contents-area">
@@ -125,7 +126,7 @@
 													<div data-v-47166101="" data-v-080a389a=""
 														class="sub-title-area">
 														<h3 data-v-47166101="" data-v-080a389a=""
-															class="tit-underline">참여브랜드</h3>
+															class="tit-underline" id="brand">참여브랜드</h3>
 													</div>
 													<div data-v-47166101="" data-v-080a389a="">
 														<div class="editor-contents-area">
@@ -148,7 +149,7 @@
 													<div data-v-47166101="" data-v-080a389a=""
 														class="sub-title-area">
 														<h3 data-v-47166101="" data-v-080a389a=""
-															class="tit-underline">이용안내</h3>
+															class="tit-underline" id="info">이용안내</h3>
 													</div>
 													<div data-v-47166101="" data-v-080a389a="">
 														<div class="editor-contents-area">

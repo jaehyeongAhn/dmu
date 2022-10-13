@@ -15,7 +15,7 @@ function load(id, cnt, btn) {
         girls_total_cnt = cnt;
     } else {
         girls_total_cnt = girls_length;
-        $('.button').hide()
+        $("#btn50").hide()
     }
     $(girls_list + ":lt(" + girls_total_cnt + ")").addClass("active");
 }
@@ -34,6 +34,22 @@ $(document).ready(function(){
 		$("html").animate({scrollTop:$("#id2").offset().top},1000);
 		
 	});
-
+	
+	 
 });
+
+
+$( document ).ready( function() {
+  var Offset = $( '.snb-area' ).offset();
+  $( window ).scroll( function() {
+    if ( $( document ).scrollTop() > Offset.top ) {
+      $( '.snb-area' ).addClass( 'Fixed' );
+    }
+    else {
+      $( '.snb-area' ).removeClass( 'Fixed' );
+    }
+  });
+});
+ 
+
  

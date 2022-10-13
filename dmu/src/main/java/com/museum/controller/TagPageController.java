@@ -51,9 +51,7 @@ public class TagPageController {
 		
 	// event_page_det.do
 		@RequestMapping(value="/event_page_det.do", method=RequestMethod.GET)
-		public String event_page_det( ) {
-		 
-
+		public String event_page_det( ) {		 
 			return "tag_page/event/event_page_det";
 		}
 		 
