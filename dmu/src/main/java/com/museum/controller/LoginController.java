@@ -154,7 +154,7 @@ public class LoginController {
 		
 		if(member != null) {
 			//운영자 및 일반 회원 구분
-			if(!member.getStatus().equals("public")) {
+			if(!member.getStatus().equals("public") && !member.getStatus().equals("admin")) {
 				//운영자 확인
 				if(member.getStatus().equals("accept")) {
 					mv.addObject("login_result", "accept");

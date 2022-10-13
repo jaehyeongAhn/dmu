@@ -22,7 +22,7 @@
 	 	select count(*) from dmu_ticket where dcode= #{dcode}
 	 </select>
 	 
-	<!-- select list dcode dmu_ticket -->
+	<!-- select list dtarget dmu_ticket -->
 	<select id="listdtarget" parameterType="map" resultType="com.museum.vo.DmuTicketVO">
 		select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime 
         from(select rownum rno,did,dplace,dtitle,dstart ,
@@ -74,6 +74,11 @@
 	 		where  dm.mid = dr.mid and dt.did = dr.did   and dr.rid= (select rid from
                                       				  (select rid from dmu_reservation order by rokdate desc)
                                  				 			  where rownum = 1) 
+	 </select>
+	 
+	  <!-- tag_page = event -->
+	 <select id="EventContent"  parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">
+		 select did, dtitle, dplace, dfile,dsfile, dcode, dend from dmu_ticket where dend &lt; sysdate and dcode = #{dcode}
 	 </select>
 	 
 </mapper>

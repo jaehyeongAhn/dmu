@@ -35,12 +35,6 @@
 	<iframe src="http://localhost:9000/dmu/header.do" width="100%"
 		height="160px" scrolling="no" frameborder=0></iframe>
 
-
-	<div class="content">
-
-		<form name="ticket_exhibtionFrom" action="ticketReservationCheck.do" method="post">
-		
-		 
  
 			<main>
 	<div class="root-container">
@@ -88,8 +82,7 @@
 										</span>
 										<div data-v-e3917d8a="" class="btn-program-visual">
 											<div data-v-26e42198="" data-v-e3917d8a="" class="btn-area">
-												<button data-v-26e42198="" id="btn49" type="button"
-													class="secondary small">자세히 보기</button>
+												<a href="http://localhost:9000/dmu/event_page_det.do"><button data-v-26e42198="" id="btn49" type="button" class="secondary small">자세히 보기</button></a>
 											</div>
 											<!---->
 										</div>
@@ -131,79 +124,18 @@
 						<div data-v-e3917d8a="" class="container" id="js-load" class="main">
 							<ul data-v-e3917d8a="" class="program-list">
 								
-								<li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
-									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
-											<img data-v-2fed1a9a="" data-v-e3917d8a=""
-												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
-												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
-										</div>
-										<div data-v-e3917d8a="" class="info">
-											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
-												data-v-e3917d8a="" class="title">[선셋 라이브] with
-												poclanos : 결(KYUL)</strong>
-										</div></a></li>
-										<li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
-									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
-											<img data-v-2fed1a9a="" data-v-e3917d8a=""
-												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
-												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
-										</div>
-										<div data-v-e3917d8a="" class="info">
-											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
-												data-v-e3917d8a="" class="title">[선셋 라이브] with
-												poclanos : 결(KYUL)</strong>
-										</div></a></li><li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
-									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
-											<img data-v-2fed1a9a="" data-v-e3917d8a=""
-												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
-												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
-										</div>
-										<div data-v-e3917d8a="" class="info">
-											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
-												data-v-e3917d8a="" class="title">[선셋 라이브] with
-												poclanos : 결(KYUL)</strong>
-										</div></a></li><li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
-									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
-											<img data-v-2fed1a9a="" data-v-e3917d8a=""
-												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
-												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
-										</div>
-										<div data-v-e3917d8a="" class="info">
-											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
-												data-v-e3917d8a="" class="title">[선셋 라이브] with
-												poclanos : 결(KYUL)</strong>
-										</div></a></li><li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
-									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
-											<img data-v-2fed1a9a="" data-v-e3917d8a=""
-												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
-												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
-										</div>
-										<div data-v-e3917d8a="" class="info">
-											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
-												data-v-e3917d8a="" class="title">[선셋 라이브] with
-												poclanos : 결(KYUL)</strong>
-										</div></a></li><li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
-									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
-											<img data-v-2fed1a9a="" data-v-e3917d8a=""
-												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
-												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
-										</div>
-										<div data-v-e3917d8a="" class="info">
-											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
-												data-v-e3917d8a="" class="title">[선셋 라이브] with
-												poclanos : 결(KYUL)</strong>
-										</div></a></li><li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
-									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
-											<img data-v-2fed1a9a="" data-v-e3917d8a=""
-												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
-												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
-										</div>
-										<div data-v-e3917d8a="" class="info">
-											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
-												data-v-e3917d8a="" class="title">[선셋 라이브] with
-												poclanos : 결(KYUL)</strong>
-										</div></a></li>
-										
+								<c:forEach var="vo" items="${list}">
+									<li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
+										href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
+												<img data-v-2fed1a9a="" data-v-e3917d8a=""
+													src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"
+													alt="${vo.dtitle }" style="">
+											</div>
+											<div data-v-e3917d8a="" class="info">
+												<span data-v-e3917d8a="" class="place">${vo.dplace }</span><strong
+													data-v-e3917d8a="" class="title"> ${vo.dtitle }</strong>
+											</div></a></li>
+								</c:forEach>
 								 
 							</ul>
 							<div data-v-e3917d8a="" class="btn-program-more" >
@@ -218,7 +150,8 @@
 		</div>
 	</div>
 </main>
-		</form>
+		 
+ 
 
 		<button class="goto-top">상단으로 이동</button>
 	</div>	 

@@ -1,6 +1,8 @@
 package com.museum.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.museum.service.LoginServiceImpl;
+import com.museum.service.MypageServiceImpl;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuSessionVO;
 
@@ -21,6 +25,9 @@ public class MypageController {
 	@Autowired
 	private LoginServiceImpl loginService;
 	
+	@Autowired
+	private MypageServiceImpl mypageService;
+	
 	//mypage_main.do : 마이페이지 메인
 	@RequestMapping(value = "/mypage_main.do", method = RequestMethod.GET)
 	public String mypage_main() {
@@ -29,8 +36,20 @@ public class MypageController {
 	
 	//mypage_member.do : 마이페이지 개인정보 변경/탈퇴
 	@RequestMapping(value = "/mypage_member.do", method = RequestMethod.GET)
-	public String mypage_member() {
-		return "/mypage/mypage_member";
+	public ModelAndView mypage_member(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		
+		DmuSessionVO member = (DmuSessionVO)session.getAttribute("member");
+		DmuMemberVO vo = mypageService.memberContent(member.getMid());
+		
+		if(vo != null) {
+			mv.addObject("vo", vo);
+			mv.setViewName("/mypage/mypage_member");
+		}else {
+			mv.setViewName("/error_page");
+		}
+		
+		return mv;
 	}
 	
 	//mypage_member_check.do : 마이페이지 개인정보 변경/탈퇴 전 비밀번호 체크 페이지
@@ -93,4 +112,39 @@ public class MypageController {
 	public String mypage_review() {
 		return "/mypage/mypage_review";
 	}
+	
+	//delete_member.do : 회원 탈퇴
+	@RequestMapping(value = "/delete_member.do", method = RequestMethod.POST)
+	public ModelAndView delete_member(String mid, HttpServletRequest request, HttpServletResponse response)
+				throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result = mypageService.memberUnregister(mid);
+		if(result == 1) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			
+			//쿠키 삭제
+			Cookie[] cookieList = request.getCookies();
+			for(Cookie list : cookieList) {
+				if(list.getName().equals("rememberId")) {
+					list.setMaxAge(0);
+					response.addCookie(list);
+				}
+			}
+			
+			mv.setViewName("/mypage/mypage_member_unregister");
+		}else {
+			mv.setViewName("/error_page");
+		}
+		return mv;
+	}
+	
+	//회원 탈퇴 성공 안내 페이지
+	@RequestMapping(value = "/mypage_member_unregister.do", method = RequestMethod.GET)
+	public String delete_member() {
+		return "/mypage/mypage_member_unregister";
+	}
+	
+	//
 }

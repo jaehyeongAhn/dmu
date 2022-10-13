@@ -9,6 +9,9 @@
 main {
     min-height: calc(100vh - 43.375rem);
 }
+      .clicked {
+        color: gold;
+      }
 
 
 body * {
@@ -324,7 +327,7 @@ body img {
 }
 .division-list ul li.on a[data-v-41f56098] {
     font-weight: 500;
-    color: #111;
+   
 }
 .division-list ul li a[data-v-41f56098] {
     font-size: 0.9375rem;

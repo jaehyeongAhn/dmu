@@ -12,8 +12,13 @@
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script> 
 	$(document).ready(function(){
+	     
 		$(".learn_target").click(function(){
+			var test = $(this).attr("id"); 
+			$(".learn_target").css("color","#9999").css("font-weight","400");
+			$("#"+test).css("font-weight","bold").css("color","black");
 			
+			//.css("font-weight","bold");
 			var dtarget = $(this).attr("id");
 			
 			$.ajax({
@@ -21,16 +26,25 @@
 				type : "get" , //어떤 방식으로 보낼거야?
 				cache : false,
 				headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
-				//data : {"dtarget" : dtarget}, // 클릭해서 받은 dtarget값을 컨트롤로 보내준다. dtarget 이라는 이름으로 
 				success : function(data){
-					//alert(data);
 					//1. 서버에서 전송된 콜백함수의 파라미터값을 JSON 객체 변환 
 					let dataset = JSON.parse(data);
-					//alert(dataset);
 					//2. JSON 객체를 Dynamic HTML를 이용하여 화면에 결과 출력
-						var output = "<div class='ticket-list learn' id='ticket_list_learn'>";
-						//<div data-v-41f56098="" class="list-top-area">
-						//<span data-v-41f56098="" class="total">총 <strong>${dbCount}</strong>건</span>
+						var output2 ="<div data-v-7b1f57c8='' class='sub-contents-area'>"
+							output2 +="<div data-v-41f56098='' data-v-7b1f57c8='' class='container'>"
+						var output1 = "<div class='list-top-area'  id='list-top-area1' style='display:flex'>"
+							output1 +="<span data-v-41f56098='' class='total'>총 <strong>"+dataset.dbCount+"</strong>건</span>"
+							output1 +="<ul data-v-41f56098='' class='order' >"
+							output1 +="<li data-v-3c1f59cb='' class=''>"
+							output1 +="<a data-v-3c1f59cb='' href='ticketlist_write.do'>"
+							output1 +="<button type='button' class='btn_style'>글쓰기</button></a></li>"
+							output1 +="<li data-v-41f56098='' class='on'>"
+							output1 +="<a data-v-41f56098='' href='javascript:void(0);'>시작일 순</a></li>"
+							output1 +="<li data-v-41f56098='' class=''>"
+							output1 +="<a data-v-41f56098='' href='javascript:void(0);'>종료일 순</a></li></ul>"
+							output1 +="</div>"
+							
+						var	output = "<div class='ticket-list learn' id='ticket_list_learn'>";
 						for(aj of dataset.list){
 					   	output += "<ul data-v-41f56098=''>";
 						output +="<li data-v-41f56098=''>";
@@ -75,10 +89,14 @@
 						output +="</li>"
 						output +="</ul>" 
 					}//for
-						output +="</div>";
+						output +="</div>" 
+						output +="</div>" 
+						output +="</div>" 
 						//alert(output);
 					//3. 출력 
+					$("#list-top-area1").remove();
 					$("#ticket_list_learn").remove();
+					$(".division-list").after(output1); 
 					$(".list-top-area").after(output); 
 					
 				},
@@ -109,19 +127,22 @@
 <div data-v-ec5a0c2c="" class="body-wrapper">
 <div data-v-7b1f57c8="" data-v-ec5a0c2c="">
 <div data-v-7b1f57c8="" class="sub-contents-area">
-<div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
-			<ul data-v-6d324aa0="">
-				<li data-v-6d324aa0="" class="complete"><span
-					data-v-6d324aa0="" class="no">01</span><span
-					data-v-6d324aa0="" class="txt">ticket</span></li>
-				<li data-v-6d324aa0="" class="on"><span
-					data-v-6d324aa0="" class="no">02</span><span
-					data-v-6d324aa0="" class="txt">ticket content</span></li>
-				<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
-				class="no">03</span><span data-v-6d324aa0="" class="txt">
-						수정/삭제</span></li>
-			</ul>
-		</div>
+			<div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
+				<ul data-v-6d324aa0="">
+					<li data-v-6d324aa0="" class="complete">
+						<span data-v-6d324aa0="" class="no">01</span>
+						<span data-v-6d324aa0="" class="txt">ticket</span>
+					</li>
+					<li data-v-6d324aa0="" class="on">
+						<span data-v-6d324aa0="" class="no">02</span>
+						<span data-v-6d324aa0="" class="txt">ticket content</span>
+					</li>
+					<li data-v-6d324aa0="" class="">
+						<span data-v-6d324aa0="" class="no">03</span>
+						<span data-v-6d324aa0="" class="txt">수정/삭제</span>
+					</li>
+				</ul>
+			</div>
 <div data-v-7b1f57c8="" class="container">
 <div data-v-7b1f57c8="" class="ticket-list-area">
 <div data-v-7b1f57c8="">
@@ -145,12 +166,12 @@
 <div data-v-41f56098="" data-v-7b1f57c8="" class="container">
 <div data-v-41f56098="" class="division-list">
 			<ul data-v-41f56098="">
-				<li data-v-41f56098="" class="on">
-					<a data-v-41f56098="" class="learn_target"  id="전체" >전체</a>
+				<li data-v-41f56098="" class="">
+					<a data-v-41f56098="" class="learn_targetall"  href="http://localhost:9000/dmu/adminlearn_list.do"  >전체</a>
 				</li>
 				
 				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" class="learn_target" id="어른">유아</a>
+					<a data-v-41f56098="" class="learn_target" id="유아">유아</a>
 				</li>
 				
 				<li data-v-41f56098="" class="">
@@ -179,7 +200,7 @@
 			</ul>
 		</div>
 		
-<div data-v-41f56098="" class="list-top-area">
+<div data-v-41f56098="" class="list-top-area" id="list-top-area1">
 
 		<span data-v-41f56098="" class="total">총 <strong>${dbCount}</strong>건</span>
 			<ul data-v-41f56098="" class="order">

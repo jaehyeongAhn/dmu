@@ -139,7 +139,7 @@
  	/********************************************************
 	// content
 	********************************************************/
-  	div.content { width:980px; margin:0 auto; /* border:2px solid red; */ }
+  	div.content {  margin:0 auto; /* border:2px solid red; */ }
  	.carousel {margin-top:0px; width:100%; 
  				background-color:powderblue;
  				height:200px; text-align:center;			

@@ -101,4 +101,33 @@ public class DmuTicketDAO  {
    public DmuReJoinVO selectCompleteCheck(String did) {
       return sqlSession.selectOne("mapper.ticket.CompleteContent",did);
    }
+   
+   /*
+    * tag_page
+    */
+   public ArrayList<DmuTicketVO> getEventContent(String dcode) {
+	   List<DmuTicketVO> list = sqlSession.selectList("mapper.ticket.EventContent",dcode);
+		return (ArrayList<DmuTicketVO>)list;
+	     
+	   }
+   
+   
+   
+   
+  
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 }
