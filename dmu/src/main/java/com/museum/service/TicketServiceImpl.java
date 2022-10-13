@@ -64,6 +64,17 @@ public class TicketServiceImpl implements TicketService {
 	public DmuReJoinVO getcompletecontent(String did) {
 		return ticketDAO.selectCompleteCheck(did);
 	}
+	
+	/*
+	 * tag_page
+	 */
+	@Override
+	public ArrayList<DmuTicketVO> getEventContent(String dcode ) {
+		 
+		return ticketDAO.getEventContent(dcode);
+	}
+	
+	 
 }
  
 	

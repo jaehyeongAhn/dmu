@@ -142,16 +142,16 @@
 
 		<form name="ticket_learnFrom" action="ticketReservationCheck.do" method="post">
 		
-		 <input type="text" name="did" value="${vo.did }"> 
-		 <input type="text" name="rprice" id="rprice" value=${vo.dprice }> 
-		 <input type="text" name="rdate" id="rdate" value=""> 
-		 <input type="text" name="rtime" id="rtime" value=""> 
-		 <input type="text" name="rtotal" id="rtotal" value="">  
-		 <input type="text" name="dplace" id="dplace" value=${vo.dplace }> 
-		 <input type="text" name="rallprice" id="rallprice" value=""> 
-		 <input type="text" name="mid" id="mid" value="mmww6443"> 
-		 <input type="text" name="dsfile" id="dsfile" value=${vo.dsfile }> 
-		 <input type="text" name="dfile" id="dfile" value=${vo.dfile }> 
+		 <input type="hidden" name="did" value="${vo.did }"> 
+		 <input type="hidden" name="rprice" id="rprice" value=${vo.dprice }> 
+		 <input type="hidden" name="rdate" id="rdate" value=""> 
+		 <input type="hidden" name="rtime" id="rtime" value=""> 
+		 <input type="hidden" name="rtotal" id="rtotal" value="">  
+		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
+		 <input type="hidden" name="rallprice" id="rallprice" value=""> 
+		 <input type="hidden" name="mid" id="mid" value="mmww6443"> 
+		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
+		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
 		
 	 
 		 

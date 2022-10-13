@@ -76,6 +76,11 @@
                                  				 			  where rownum = 1) 
 	 </select>
 	 
+	  <!-- tag_page = event -->
+	 <select id="EventContent"  parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">
+		 select did, dtitle, dplace, dfile,dsfile, dcode, dend from dmu_ticket where dend &lt; sysdate and dcode = #{dcode}
+	 </select>
+	 
 </mapper>
 
   
