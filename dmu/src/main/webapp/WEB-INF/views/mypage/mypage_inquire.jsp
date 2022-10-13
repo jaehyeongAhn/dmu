@@ -111,13 +111,18 @@
 		$("button.inquire_ok").click(function(){
 			if($("div.popup_inquire_write select.inquire_category").val() == "default") {
 				warningCheck(true, $("select.inquire_category"), "카테고리를 선택해주세요.");
+				$(".popup_inquire_write").scrollTop(0);
 				return false;
 			}else if($("div.popup_inquire_write select.inquire_type").val() == "default") {
+				let scroll = $("div.popup_inquire_write select.inquire_category").offset().top - 130;
 				warningCheck(true, $("select.inquire_type"), "문의 유형을 선택해주세요.");
+				$(".popup_inquire_write").scrollTop(scroll);
 				return false;
 			}else if($("div.write_inquire_form input.iqtitle").val() == ""){
+				let scroll = $("div.write_inquire_form input.iqtitle").offset().top - 130;
 				warningCheck(true, $("div.write_inquire_form input.iqtitle"), "문의 제목을 입력해주세요.");
 				$("div.write_inquire_form input.iqtitle").focus();
+				$(".popup_inquire_write").scrollTop(scroll);
 				return false;
 			}else if($("div.write_inquire_form textarea.iqcontent").val() == ""){
 				let content_scroll = $(".popup_inquire_write_form")[0].scrollHeight;
