@@ -54,11 +54,40 @@ $(document).ready(function(){
 
 
 
-    $("iframe.header").on('mouseover', function(){
+    $("iframe.header").on('load', function(){
+    
+    	let mainMenu = this.contentWindow.document.body.offsetHeight;
+    	let search = $(this).contents().find(".side-links > ul li.search");
+    	
+    	let search_close = $("iframe.header").contents().find(".search-view-box .search-close");
+    	
+    	search.click(function(){
+    		let height = mainMenu;
+    		let search_submenu = $("iframe.header").contents().find(".search-view-box").outerHeight();
+    		height += search_submenu;
+    		
+    		$("iframe.header").css({"min-height" : height, "z-index" : "100"});
+    	});
+    	
+    	search_close.click(function(){
+    		$("iframe.header").css({"min-height" : 0, "z-index" : "100"});
+    	});
+    	
+    	let body = $(this).contents().find("body");
+    	body.on("mousewheel", function(e){
+    		let wheel = e.originalEvent.wheelDelta;
+    		if(wheel != 0){
+    			$(".search-view-box").hide();
+    			$("iframe.header").css({"min-height" : 0, "z-index" : "100"});
+    		}
+    	});
+    
+    
+
 
         if(this.contentDocument) {
-            let par = $(this).contents().find(".main-menu ul li");
-            let mainMenu = this.contentWindow.document.body.offsetHeight;
+            let par = $(this).contents().find(".main-menu > ul li");
+            //let mainMenu = this.contentWindow.document.body.offsetHeight;
             par.mouseover(function(){
                 let height = mainMenu;
                 let children = [];
@@ -72,12 +101,16 @@ $(document).ready(function(){
                 }
 
                 $("iframe.header").css({"min-height" : height, "z-index" : "100"});
+                
+                children[index].mouseleave(function(){
+                	$("iframe.header").css({"min-height" : 0, "z-index" : "0"});
+                });
 
             });
 
-            $(this).mouseleave(function(){
+            /*$(this).mouseleave(function(){
                 $("iframe.header").css({"min-height" :"0", "z-index" : "0"});
-            });
+            });*/
 
         }
 
