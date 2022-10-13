@@ -18,7 +18,7 @@ public class FileServiceImpl {
 	public void fileDelete(DmuTicketVO vo, HttpServletRequest request) throws Exception {
 		if (vo.getDsfile() != null) {
 			String path = request.getSession().getServletContext().getRealPath("/");
-			path += "\\resources\\upload\\";
+			path += "/resources/upload";
 
 			File old_file = new File(path + vo.getDsfile());
 			if (old_file.exists()) {
@@ -34,7 +34,7 @@ public class FileServiceImpl {
 		// 새로운 파일을 upload 폴더에 저장
 		if (!vo.getFile1().getOriginalFilename().equals("")) { // 새로운 파일선택 O
 			String path = request.getSession().getServletContext().getRealPath("/");
-			path += "\\resources\\upload\\";
+			path += "/resources/upload";
 			System.out.println(path);
 
 			File file = new File(path + vo.getDsfile());
@@ -76,7 +76,7 @@ public class FileServiceImpl {
 		// 2. upload 폴더에 nsfile 명으로 실제 파일 업로드 처리
 		if (!vo.getFile1().getOriginalFilename().equals("")) {
 			String path = request.getSession().getServletContext().getRealPath("/");
-			path += "\\resources\\upload\\";
+			path += "/resources/upload/";
 
 			File file = new File(path + vo.getDsfile());
 			vo.getFile1().transferTo(file);
