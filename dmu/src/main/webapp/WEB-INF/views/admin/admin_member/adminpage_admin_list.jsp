@@ -8,6 +8,7 @@
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
+<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/mypage.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/adminpage.css">
@@ -40,7 +41,7 @@ $(document).ready(function(){
 	//페이징 번호 클릭 시 이벤트 처리
 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-           $(location).attr('href', "http://localhost:9000/dmu/adminpage_public_list.do?rpage="+e.page);         
+           $(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);         
     });
 	
 	
@@ -54,10 +55,16 @@ $(document).ready(function(){
 		});
 	});
 	
+	$(".accept").click(function(){
+		$(".background_accept").addClass("show_accept");
+		$(".window_accept").addClass("show_accept");
+		$("#popup_acceptNo").click(function(){
+			$(".background_accept").removeClass("show_accept");
+			$(".window_accept").removeClass("show_accept");
+		});
+	});
 
-});
-
-
+});//ready
 
 </script>
 <style>
@@ -117,7 +124,7 @@ $(document).ready(function(){
 				<%-- 마이페이지 content --%>
 				<div class="sub-contents">
 					<div class="page-title">
-						<h2>회원관리</h2>
+						<h2>관리자승인</h2>
 					</div>
 					<div class="myinfo">
 						<div class="myinfo-box">
@@ -135,6 +142,7 @@ $(document).ready(function(){
 												<th>가입일자</th>
 												<th>상태</th>
 												<th>자세히보기</th>
+												<th>관리자승인</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -153,8 +161,17 @@ $(document).ready(function(){
 												<td>가입완료</td>
 											</c:otherwise>
 										</c:choose>
-											<td><button class="member_detail"><a href="#">자세히보기</a>
+											<td><button class="member_detail admin"><a href="#">자세히보기</a>
 											</button></td>
+										<c:choose>	
+											<c:when test="${vo.status == 'accept'}">
+											<td><button class="accept"><a href="#">관리자승인</a>
+											</button></td>
+											</c:when>
+											<c:otherwise>
+											<td>승인완료</td>
+											</c:otherwise>
+										</c:choose>
 											</tr>
 										</c:forEach>
 										</tbody>
@@ -233,6 +250,10 @@ $(document).ready(function(){
 												<th>상태</th>
 												<td class="unregister">${vo.unregister}</td>
 											</tr>
+											<tr>	
+												<th>승인여부</th>
+												<td class="status">${vo.status}</td>
+											</tr>
 										</thead>
 									</table>
 				
@@ -243,5 +264,19 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
+
+	<div class = "background_accept">
+		<div class = "window_accept">
+			<div class = "popup_accept">
+				<p id = "popup_acceptGuide">승인하시겠습니까?</p>
+				<form name="acceptForm" action="acceptUpdate.do" method="post">
+					<input type="hidden" name="mid" class="accept_input">
+					<button type = "button" id = "popup_acceptOk" style = "cursor:pointer;">확인</button>
+					<button type = "button" id = "popup_acceptNo" style = "cursor:pointer;">취소</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>

@@ -45,6 +45,7 @@
 	<beans:bean id="AdminDao" class="com.museum.dao.DmuAdminDAO"></beans:bean>
 	<beans:bean id="memberDao" class="com.museum.dao.DmuMemberDAO"></beans:bean>
 	<beans:bean id="mypageDao" class="com.museum.dao.DmuMypageDAO"></beans:bean>
+	<beans:bean id="noticeDao" class="com.museum.dao.DmuNoticeDAO"></beans:bean>
 
 	<!-- Interceptor -->
 	<interceptors>

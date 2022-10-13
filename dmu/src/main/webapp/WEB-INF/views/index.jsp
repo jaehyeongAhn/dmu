@@ -347,6 +347,22 @@
     	})
     	
     	
+
+        	
+
+        	$("body").on("mousewheel", function(e){
+        		let wheel = e.originalEvent.wheelDelta;
+        		if(wheel != 0){
+        			$(".search-view-box").hide();
+        			$("iframe.header").css({"min-height" : 0, "z-index" : "100"});
+        		}
+
+        });
+    	
+    	
+    	
+    	
+    	
     });//ready
     </script>
 </head>
