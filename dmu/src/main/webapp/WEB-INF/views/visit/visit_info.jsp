@@ -45,7 +45,7 @@
 							<h2 data-v-0d03d759="">관람안내</h2>
 							<nav data-v-0d03d759="">
 								<ul data-v-0d03d759="">
-									<li data-v-0d03d759="" style="cursor: pointer;">HOME</li>
+									<li data-v-0d03d759="" style="cursor: pointer;"></li>
 									<li data-v-0d03d759="">VISIT</li>
 									<li data-v-0d03d759="">관람안내</li>
 									<!---->

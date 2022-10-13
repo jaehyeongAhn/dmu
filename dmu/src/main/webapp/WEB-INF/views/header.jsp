@@ -156,8 +156,7 @@ header .header-web .main-menu-area .main-menu > ul > li.visit:hover > div#menu_v
 									<div>
 										<div class="menu-area">
                                             <ul>
-												<li><a href="http://localhost:9000/dmu/visit_main.do"
-													href="javascript:void(0);" style=""> 미술관 소개 </a></li>
+												<li><a href="visit_main.do" style=""> 미술관 소개 </a></li>
 												<li><a href="http://localhost:9000/dmu/visit_info.do"
 													href="javascript:void(0);"> 관람안내 </a></li>
 												<li><a href="http://localhost:9000/dmu/visit_map1.do"
