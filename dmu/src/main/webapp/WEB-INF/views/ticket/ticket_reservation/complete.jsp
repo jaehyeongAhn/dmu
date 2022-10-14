@@ -48,7 +48,7 @@
 	
 	 <div class="content">
 		 
-		<form name=""  action=""  method="post">  
+		 
 		
 		
 	<div id="app">

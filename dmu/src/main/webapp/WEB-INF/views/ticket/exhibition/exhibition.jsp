@@ -145,16 +145,16 @@
 
 		<form name="ticket_exhibtionFrom" action="ticketReservationCheck.do" method="post">
 		
-		 <input type="hidden" name="did" value="${vo.did }"> 
-		 <input type="hidden" name="rprice" id="rprice" value=${vo.dprice }> 
-		 <input type="hidden" name="rdate" id="rdate" value=""> 
-		 <input type="hidden" name="rtime" id="rtime" value=""> 
-		 <input type="hidden" name="rtotal" id="rtotal" value="">  
-		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
-		 <input type="hidden" name="rallprice" id="rallprice" value=""> 
-		 <input type="hidden" name="mid" id="mid" value="mmww6443"> 
-		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
-		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
+		 <input type="text" name="did" value="${vo.did }"> 
+		 <input type="text" name="rprice" id="rprice" value=${vo.dprice }> 
+		 <input type="text" name="rdate" id="rdate" value=""> 
+		 <input type="text" name="rtime" id="rtime" value=""> 
+		 <input type="text" name="rtotal" id="rtotal" value="">  
+		 <input type="text" name="dplace" id="dplace" value=${vo.dplace }> 
+		 <input type="text" name="rallprice" id="rallprice" value=""> 
+		 <input type="text" name="mid" id="mid" value=${ sessionScope.member.mid }> 
+		 <input type="text" name="dsfile" id="dsfile" value=${vo.dsfile }> 
+		 <input type="text" name="dfile" id="dfile" value=${vo.dfile }> 
 		 
  
 			<main>
@@ -356,7 +356,8 @@
 																<div data-v-26e42198="" data-v-8ed31374=""
 																	class="btn-area btn-reservation">
 																 
-																		<button data-v-26e42198="" id="btn32" type="submit" class="primary" disabled>예매하기</button>
+																 <a  href="http://localhost:9000/dmu/ticket_reservation.do?mid=${ vo.getMid()}" target="_parent"> 
+																		<button data-v-26e42198="" id="btn32" type="submit" class="primary" disabled>예매하기</button></a>
 																		
 																 <!--	 <div data-v-9a980cc6="" data-v-9dea2aa6="" id="popup" class="layer-dimmed all-terms-pop is-footer" style="  visibility:hidden ;">
  

@@ -39,8 +39,19 @@
 <div style="width:100%; height:17vh; color:transparent">헤더</div>
 	
   <div class="content">
-		 
+ 	 
 		<form name="ticket_reservationFrom"  action="ticketCompleteCheck.do"  method="post">  
+		
+		
+		 <input type="text" name="did" value="${vo.did }"> 
+		 <input type="text" name="dprice" id="dprice" value=${vo.rprice }> 
+		 <input type="text" name="rdate" id="rdate" value="${vo.rdate }"> 
+		 <input type="text" name="rtotal" id="rtotal" value="${vo.rtotal }">  
+		 <input type="text" name="dplace" id="dplace" value=${vo.dplace }> 
+		 <input type="text" name="rallprice" id="rallprice" value="${vo.rallpricech }"> 
+		 <input type="text" name="mid" id="mid" value=${ vo.mid }>  
+		 <input type="text" name="pdate" id="pdate" value="s"> 
+		 <input type="text" name="pcoin" id="pcoin" value="카드">  
 			 
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">
@@ -222,9 +233,11 @@
 													</ul>
 													<div data-v-26e42198="" data-v-a42e08ec=""
 														class="btn-area btn-reservation">
-														<a href="http://localhost:9000/dmu/complete.do?did=${ vo.getDid()}" target="_parent" >
-														<button data-v-26e42198="" id="btn289" type="button" class="primary" disabled> 결제하기 </button></a>
-														 <input type="hidden" name="did" value="${ vo.did }">
+														
+														
+														  <a  href="http://localhost:9000/dmu/complete.do?mid=${ vo.getMid()}" target="_parent"> 
+														<button data-v-26e42198="" id="btn289" type="button" class="primary" disabled> 결제하기 </button> </a>
+														 
 															<!-- disabled="disabled" -->
 													</div>
 												</div>
