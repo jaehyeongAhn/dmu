@@ -39,7 +39,7 @@ $(document).ready(function(){
 		
 		
 		
-		/*********************
+			/*********************
 		전시 등록폼 유효성 체크
 		**********************/
 		$("#btn_exhibition_Write").click(function(){
@@ -48,9 +48,32 @@ $(document).ready(function(){
 				alert("제목을 입력해주세요");
 				$("#dtitle").focus();
 				return false;
+			}else if($("#dcode").val() =="default"){
+				alert("코드를 선택해주세요")
+				$("#dcode").focus();
+				return false;
+			
+			}else if($("#dplace").val() =="default"){
+				alert("장소를 선택해주세요")
+				$("#dplace").focus();
+				return false;
+			
+				
+			}else if($("#dcode").val() =="learn"&& $("#dtarget").val() =="default"){
+				alert("대상을 선택해주세요")
+				$("#dtarget").focus();
+				return false;
+			}else if($("#dcode").val() !="learn"&& $("#dtarget").val() !="default"){
+				alert("learn일때만 대상을 선택할수 있습니다.")
+				$("#dtarget").focus();
+				return false;
+			}else if($("#dstart").val() !="learn"&& $("#dend").val() !="default"){
+				alert("learn일때만 대상을 선택할수 있습니다.")
+				$("#dtarget").focus();
+				return false;
 			}else{
-							//서버전송
-				ticketlistform.submit();
+					//서버전송
+					ticketlistform.submit();
 				} 
 		});
 					

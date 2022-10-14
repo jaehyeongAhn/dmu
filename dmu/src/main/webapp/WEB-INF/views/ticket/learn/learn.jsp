@@ -149,7 +149,7 @@
 		 <input type="hidden" name="rtotal" id="rtotal" value="">  
 		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
 		 <input type="hidden" name="rallprice" id="rallprice" value=""> 
-		 <input type="hidden" name="mid" id="mid" value="mmww6443"> 
+		 <input type="hidden" name="mid" id="mid" value=${ vo.mid }> 
 		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
 		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
 		
@@ -196,11 +196,11 @@
 														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육진행</strong><span data-v-b10d847a="" class="text">${ vo.dstart } ~ ${ vo.dend } ${ vo.dtime }</span></li>
 														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">장소</strong><span data-v-b10d847a="" class="text">${ vo.dplace }</span></li>
 														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">대상</strong><span data-v-b10d847a="" class="text">${ vo.dtarget }</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">교육시간</strong><span data-v-b10d847a="" class="text">교육시간vo 필요 </span></li>
-														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육횟수</strong><span data-v-b10d847a="" class="text">${ vo.dnum } num에서 string으로 변경해야됨</span></li>
+														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">교육시간</strong><span data-v-b10d847a="" class="text">${ vo.dentertime} </span></li>
+														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육횟수</strong><span data-v-b10d847a="" class="text">${ vo.dnum } </span></li>
 														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">정원 수</strong><span data-v-b10d847a="" class="text">${ vo.dpersonnel }</span></li>
 														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">참가비</strong><span data-v-b10d847a="" class="text">${vo.dprice} 원</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">문의</strong><span data-v-b10d847a="" class="text">문의 vo필요</span></li>
+														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">문의</strong><span data-v-b10d847a="" class="text">교육팀 (02-6233-7220)</span></li>
 													</ul>
 												</div>
 												<div data-v-8ed31374="" class=" "></div>

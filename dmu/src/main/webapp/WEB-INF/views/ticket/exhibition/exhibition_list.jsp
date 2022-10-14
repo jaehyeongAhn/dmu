@@ -100,7 +100,7 @@
 					</c:if>
 					</a>				 
 				<span data-v-3c1f59cb="" class="place"> ${vo.dplace } </span>
-					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do?did=${ vo.getDid()}" target="_parent" class="title"> ${vo.dtitle } </a>
+					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do?did=${ vo.getDid()} " target="_parent" class="title"> ${vo.dtitle } </a>
 						<p data-v-3c1f59cb="" class="explan"></p>
 						<span data-v-3c1f59cb="" class="term"> ${vo.dstart }~ ${vo.dend } </span></li>
 					</c:forEach>
