@@ -154,7 +154,11 @@ $(document).ready(function(){
 				}else{
 					warningCheck(false, $(".new-pass-check"), "");
 				}
-			}
+			}else{
+          	  if($(this).val() == ""){
+              	 warningCheck(false, $(".new-pass-check"), "");
+            }
+         }
 		});
 		
 		/********* address API *********/
