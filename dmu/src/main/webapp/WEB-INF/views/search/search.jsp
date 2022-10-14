@@ -10,8 +10,17 @@
 <link rel="stylesheet"  href="http://localhost:9000/dmu/resources/css/search.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
-<script src="http://localhost:9000/dmu/resources/js/search.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
+<script>
+$(document).ready(function(){
+	/************************* header_search ***************************/
+	let header_search = "${header_search}";
+	if(header_search != ""){
+		$(".search-bar").val(header_search);
+	}
+});
+</script>
+<script src="http://localhost:9000/dmu/resources/js/search.js"></script>
 </head>
 <body>
 <iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>

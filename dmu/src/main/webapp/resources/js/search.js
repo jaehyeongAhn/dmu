@@ -71,7 +71,7 @@
 					output += "<button id='btn95' type='button' class='secondary small'>자세히 보기</button>";
 					output += "</div>";
 					output += "<div class='btn-area search-hidden-btn'>";
-					output += "<button id='btn96' type='button' class='primary small'>예매하기</button>";
+					output += "<a href='#' class='link_ticket'><button id='btn96' type='button' class='primary small'>예매하기</button></a>";
 					output += "</div>";
 					output += "</div>";
 					output += "</dd>";
@@ -126,12 +126,15 @@
 						$("." + str + " dd.search" + index + " div.info-area p.title").text(dataset.dtitle);
 						$("." + str + " dd.search" + index + " div.info-area li:first-child span").text(dataset.dplace);
 						$("." + str + " dd.search" + index + " div.info-area li:last-child span").text(dataset.dstart + " ~ " + dataset.dend);
-
+						$("." + str + " dd.search" + index + " div.btn-group input.id_result").val(dataset.did);
+						$("." + str + " dd.search" + index + " div.btn-group a.link_ticket").attr("href", "http://localhost:9000/dmu/"+str+".do?did="+dataset.did);
+	
 						//.on 삭제
 						$("dd").removeClass("on");
 						
 						++index; 
 					}
+					
 				}
 			});//ajax
 		}//search function()
@@ -150,5 +153,12 @@
 
 				}//success
 			});//ajax
+		}
+		
+		
+	
+		/************************* header_search ***************************/
+		if($(".search-bar").val() != ""){
+			search("all");
 		}
 	});

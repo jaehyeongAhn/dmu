@@ -149,7 +149,7 @@
 		 <input type="hidden" name="rtotal" id="rtotal" value="">  
 		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
 		 <input type="hidden" name="rallprice" id="rallprice" value=""> 
-		 <input type="hidden" name="mid" id="mid" value="mmww6443"> 
+ 		 <input type="hidden" name="mid" id="mid" value=${ vo.mid }> 
 		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
 		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
 		 

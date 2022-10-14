@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -76,5 +77,20 @@ public class SearchController {
 		jobject.addProperty("total", total);
 		
 		return gson.toJson(jobject);
+	}
+	
+	//search_header.do : 헤더 검색 처리
+	@RequestMapping(value = "/search_header.do", method = RequestMethod.POST)
+	public ModelAndView search_header(String keyword) {
+		ModelAndView mv = new ModelAndView();
+
+		if(keyword != "") {
+			mv.addObject("header_search", keyword);
+			mv.setViewName("/search/search");
+		}else {
+			mv.setViewName("/error_page");
+		}
+		
+		return mv;
 	}
 }

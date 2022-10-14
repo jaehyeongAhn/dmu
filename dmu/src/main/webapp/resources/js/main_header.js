@@ -50,6 +50,7 @@ $(document).ready(function(){
        
        $(".search-close").click(function(){
           $(".search-view-box").hide();
+          $("input.search").val("");
        });
 
 
@@ -118,6 +119,35 @@ $(document).ready(function(){
     });
 
 
+	/*************************** header_search ********************************/
+		$(".search-submit").click(function(){
+			search_check();
+    	});
+    	
+    	$("input#field13").keyup(function(e){
+    		if(e.keyCode == 13){
+    			search_check();
+    		}
+    	});
+    	
+    	function search_check(){
+    		let keyword = $.trim($("input#field13").val());
+    		if(keyword.length < 2){
+    			$(".alert").css("display", "block");
+    		}else{
+    			let search_content = "<form name='searchForm' action='search_header.do' method = 'post' style='display:none;' target='_parent'>";
+    			search_content += "<input type='hidden' name = 'keyword' value = '" + keyword + "'></form>"
+    			
+    			//스타일 초기화
+    			$(".alert").css("display", "none");
+    			$("input#field13").val(keyword);
+				$("body").after(search_content);
+    			
+    			//submit
+    			searchForm.submit();
+    		}
+    	}
+    	
 });
 
 

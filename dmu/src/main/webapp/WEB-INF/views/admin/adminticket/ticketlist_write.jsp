@@ -69,6 +69,7 @@
 		</ul>
 	</div>
 	
+		
 	<div data-v-8ed31374="" class="title-ticket">
 		<h2 data-v-8ed31374="" class="title">제목</h2>
 			<input type="text" name="dtitle" id="dtitle" >
@@ -76,6 +77,7 @@
 	</div>
 	
 	<div data-v-8ed31374="" class="info-ticket">
+
    <div style = "margin-bottom: 20px;"><strong style="color:red;">*</strong>는 필수사항입니다.</div>
       <ul data-v-8ed31374="">
          <li data-v-8ed31374="">
@@ -115,6 +117,8 @@
             <p data-v-8ed31374="" class="price"><input type="text" name="dprice" id="dprice" ></p>
          </li>
 
+
+
          
          
          <li data-v-8ed31374="" class="">
@@ -146,7 +150,6 @@
          </li>
       </ul>
    </div>
-	
 		<strong data-v-8ed31374="" class="title">이용 정보</strong>
 			<div data-v-8ed31374="" class="organ-ticket">
 				<p data-v-8ed31374="" class="comment">
