@@ -89,7 +89,7 @@
 	<div id="app">
 		<div id="contents">
 		<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
-			<div style="width:100%; height:17vh; color:transparent">헤더</div>
+			<div style="width:100%; height:17vh; color:transparent">헤더</div>	
 			<main>
 				<section data-v-76e7a880="" class="sub-contents-wrap">
 					<div data-v-0d03d759="" data-v-76e7a880=""

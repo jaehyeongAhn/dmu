@@ -16,15 +16,15 @@
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script> 
-
-	$(document).ready(function(){
+$(document).ready(function(){
 	
-
-			
 	$('#more_button').click(function(){
 								
-	$(location).attr('href', "http://localhost:9000/dmu/exhibition_list.do?rpage="+${rpage+1});         
+								
+		$(location).attr('href', "http://localhost:9000/dmu/exhibition_list.do?rpage="+${rpage+1});         
 							    
+		});//click
+	});//ready					    
 </script>		
 </head>
 <body>

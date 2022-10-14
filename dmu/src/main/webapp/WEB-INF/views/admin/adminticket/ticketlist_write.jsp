@@ -55,16 +55,16 @@
 				</ul>
 			</div>
 
-<div data-v-25f87e60="" class="container">
+<div data-v-25f87e60="" class="container write">
 <div data-v-8ed31374="" data-v-25f87e60="" class="reservation-area">
 	<!---->
 <div data-v-8ed31374="" class="left">
 
-	<div data-v-8ed31374="" class="img-ticket">
+	<div data-v-8ed31374="" class="img-ticket write">
 	<ul>
 		<li>
+			<label style="margin-right: 20px;">파일첨부</label>
 			<input type="file" name="file1" id="file_list">
-			<label for = "file_list">파일첨부</label>
 			</li>
 		</ul>
 	</div>
@@ -77,77 +77,80 @@
 	</div>
 	
 	<div data-v-8ed31374="" class="info-ticket">
-		<ul data-v-8ed31374="">
-			<li data-v-8ed31374="">
-				<strong data-v-8ed31374="" class="title">코드</strong>
-				<select data-v-8ed31374="" name = "dcode" id = "dcode">
-												<option value = "default">선택하세요</option>
-												<option value = "exhibition">exhibition</option>
-												<option value = "learn">learn</option>
-												<option value = "event">event</option>
-											</select>
-			</li>
-			<li data-v-8ed31374="">
-				<strong data-v-8ed31374="" class="title">부제목</strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dtitle2" id="dtitle2" ></span>
-			</li>
-			<li data-v-8ed31374="">
-				<strong data-v-8ed31374="" class="title">장소</strong>
-				<select data-v-8ed31374="" name = "dplace" id = "dplace">
-												<option value = "default">선택하세요</option>
-												<option value = "디뮤지엄">디뮤지엄 </option>
-												<option value = "대림미술관">대림미술관 </option>
-												<option value = "구슬모아당구장">구슬모아당구장 </option>
-											</select>
-			</li>
-			<li data-v-8ed31374="">
-				<strong data-v-8ed31374="" class="title">회차/수업시간</strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dentertime" id="dentertime"></span>
-			</li>
-			
-			<li data-v-8ed31374="" class="">
-				<strong data-v-8ed31374="" class="title">전시기간</strong>
-				<span data-v-8ed31374="" class="text"><input type="date" name="dstart" id="dstart" > ~ <input type="date" name="dend" id="dend" ></span>
-			</li>
-			
-			
-			<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
-				<p data-v-8ed31374="" class="price"><input type="text" name="dprice" id="dprice" ></p>
-			</li>
 
-			
-			
-			<li data-v-8ed31374="" class="">
-				<strong data-v-8ed31374="" class="title">정원</strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dpersonnel" id="dpersonnel"></span>
-			</li>
-			
-			<li data-v-8ed31374="" class="">
-				<strong data-v-8ed31374="" class="title">대상</strong>
-				<select data-v-8ed31374="" name = "dtarget" id = "dtarget">
-												<option value = "default">선택하세요</option>
-												<option value = "유아">유아</option>
-												<option value = "어린이">어린이</option>
-												<option value = "청소년">청소년</option>
-												<option value = "대학생">대학생</option>
-												<option value = "성인">성인</option>
-												<option value = "교사">교사</option>
-												<option value = "전시해설">전시해설</option>
-											</select>
-			</li>
-			
-			<li data-v-8ed31374="" class="">
-				<strong data-v-8ed31374="" class="title">교육횟수</strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dnum" id="dnum" ></span>
-			</li>
-			<li data-v-8ed31374="">
-				<strong data-v-8ed31374="" class="title">운영시간/교육시간</strong>
-				<textarea name="dtime" class="time_text"></textarea>
-			</li>
-		</ul>
-	</div>
-	
-		<strong data-v-8ed31374="" class="title" id="info">이용 정보</strong>
+   <div style = "margin-bottom: 20px;"><strong style="color:red;">*</strong>는 필수사항입니다.</div>
+      <ul data-v-8ed31374="">
+         <li data-v-8ed31374="">
+            <strong data-v-8ed31374="" class="title">코드</strong>
+            <select data-v-8ed31374="" name = "dcode" id = "dcode">
+                                    <option value = "default">선택하세요</option>
+                                    <option value = "exhibition">exhibition</option>
+                                    <option value = "learn">learn</option>
+                                    <option value = "event">event</option>
+                                 </select>
+         </li>
+         <li data-v-8ed31374="">
+            <strong data-v-8ed31374="" class="title">부제목</strong>
+            <span data-v-8ed31374="" class="text"><input type="text" name="dtitle2" id="dtitle2" ></span>
+         </li>
+         <li data-v-8ed31374="">
+            <strong data-v-8ed31374="" class="title">장소</strong>
+            <select data-v-8ed31374="" name = "dplace" id = "dplace">
+                                    <option value = "default">선택하세요</option>
+                                    <option value = "디뮤지엄">디뮤지엄 </option>
+                                    <option value = "대림미술관">대림미술관 </option>
+                                    <option value = "구슬모아당구장">구슬모아당구장 </option>
+                                 </select>
+         </li>
+         <li data-v-8ed31374="">
+            <strong data-v-8ed31374="" class="title">회차/수업시간</strong>
+            <span data-v-8ed31374="" class="text"><input type="text" name="dentertime" id="dentertime"></span>
+         </li>
+         
+         <li data-v-8ed31374="" class="">
+            <strong data-v-8ed31374="" class="title">전시기간</strong>
+            <span data-v-8ed31374="" class="text"><input type="date" name="dstart" id="dstart" > ~ <input type="date" name="dend" id="dend" ></span>
+         </li>
+         
+         
+         <li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title must-do">이용요금</strong>
+            <p data-v-8ed31374="" class="price"><input type="text" name="dprice" id="dprice" ></p>
+         </li>
+
+
+
+         
+         
+         <li data-v-8ed31374="" class="">
+            <strong data-v-8ed31374="" class="title must-do">정원</strong>
+            <span data-v-8ed31374="" class="text"><input type="text" name="dpersonnel" id="dpersonnel"></span>
+         </li>
+         
+         <li data-v-8ed31374="" class="">
+            <strong data-v-8ed31374="" class="title">대상</strong>
+            <select data-v-8ed31374="" name = "dtarget" id = "dtarget">
+                                    <option value = "default">선택하세요</option>
+                                    <option value = "유아">유아</option>
+                                    <option value = "어린이">어린이</option>
+                                    <option value = "청소년">청소년</option>
+                                    <option value = "대학생">대학생</option>
+                                    <option value = "성인">성인</option>
+                                    <option value = "교사">교사</option>
+                                    <option value = "전시해설">전시해설</option>
+                                 </select>
+         </li>
+         
+         <li data-v-8ed31374="" class="">
+            <strong data-v-8ed31374="" class="title must-do">교육횟수</strong>
+            <span data-v-8ed31374="" class="text"><input type="text" name="dnum" id="dnum" ></span>
+         </li>
+         <li data-v-8ed31374="">
+            <strong data-v-8ed31374="" class="title">운영시간/교육시간</strong>
+            <textarea name="dtime"></textarea>
+         </li>
+      </ul>
+   </div>
+		<strong data-v-8ed31374="" class="title">이용 정보</strong>
 			<div data-v-8ed31374="" class="organ-ticket">
 				<p data-v-8ed31374="" class="comment">
 					<div data-v-8ed31374="" class="contents">

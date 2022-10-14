@@ -186,7 +186,7 @@ body a, body a:hover, body a:visited {
 	font-size: 0;
 	background-position: top center;
 }
-.sub-top-area nav ul li + li[data-v-0d03d759]:before {
+/* .sub-top-area nav ul li + li[data-v-0d03d759]:before {
     display: block;
     position: absolute;
     top: 50%;
@@ -196,7 +196,7 @@ body a, body a:hover, body a:visited {
     margin-top: -0.3125rem;
     background: #ccc;
     content: '';
-}
+} */
 .sub-top-area .container[data-v-0d03d759] {
     position: relative;
     width: 80rem;

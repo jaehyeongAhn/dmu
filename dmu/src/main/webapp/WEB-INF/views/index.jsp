@@ -529,8 +529,8 @@
 								<div>
 									<div class="menu-area">
 										<ul>
-											<li><a href="javascript:void(0);" style=""> 현재 전시 </a></li>
-											<li><a href="javascript:void(0);"> 지난 전시 </a></li>
+											<li><a href="http://localhost:9000/dmu/exhibition_page.do" style=""> 현재 전시 </a></li>
+											<li><a href="http://localhost:9000/dmu/exhibition_past_page.do"> 지난 전시 </a></li>
 										</ul>
 									</div>
 								</div>
@@ -700,7 +700,7 @@
                                                                 type="button" class="primary"> 자세히보기 </button></div>
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
                                                             style="display: none;"><button data-v-26e42198="" id="btn52"
-                                                                type="button" class="secondary"> 자세히보기 </button></div>
+                                                                type="button" class="secondary">자세히보기</button></div>
                                                     </a><a data-v-04a3ebf5="">
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
                                                             style="display: none;"><button data-v-26e42198="" id="btn53"
@@ -713,8 +713,8 @@
                                                         href="#">
                                                         <!---->
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area">
-                                                            <button data-v-26e42198="" id="btn55" type="button"
-                                                                class="secondary"> 자세히 보기 </button></div>
+                                                            <a href="http://localhost:9000/dmu/learn_page.do"><button data-v-26e42198="" id="btn55" type="button"
+                                                                class="secondary"> 자세히 보기 </button></a></div>
                                                     </a><a data-v-04a3ebf5=""
                                                         href="#">
                                                         <!---->
@@ -763,8 +763,8 @@
                                                 <div data-v-04a3ebf5="" class="btn-group" style=""><a data-v-04a3ebf5=""
                                                         href="#">
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
-                                                            style=""><button data-v-26e42198="" id="btn22" type="button"
-                                                                class="primary"> 자세히보기 </button></div>
+                                                            style=""><a href="http://localhost:9000/dmu/exhibition_page_det.do"><button data-v-26e42198="" id="btn22" type="button"
+                                                                class="primary"> 자세히보기 </button></a></div>
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
                                                             style="display: none;"><button data-v-26e42198="" id="btn23"
                                                                 type="button" class="secondary"> 자세히보기 </button></div>
@@ -774,8 +774,8 @@
                                                             style="display: none;"><button data-v-26e42198="" id="btn24"
                                                                 type="button" class="primary"> 예매하기 </button></div>
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
-                                                            style=""><button data-v-26e42198="" id="btn25" type="button"
-                                                                class="secondary"> 예매하기 </button></div>
+                                                            style=""><a href="http://localhost:9000/dmu/exhibition.do?did=d_51"><button data-v-26e42198="" id="btn25" type="button"
+                                                                class="secondary"> 예매하기 </button></a></div>
                                                     </a></div>
                                                 <div data-v-04a3ebf5="" class="btn-group" style="display: none;"><a
                                                         data-v-04a3ebf5="" style="display: none;">
@@ -834,7 +834,7 @@
                                                                 type="button" class="secondary"> 예매하기 </button></div>
                                                     </a></div>
                                                 <div data-v-04a3ebf5="" class="btn-group"><a data-v-04a3ebf5=""
-                                                        href="https://www.daelimmuseum.org/learn/education/snb/infant">
+                                                        href="http://localhost:9000/dmu/learn_page.do">
                                                         <!---->
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area">
                                                             <button data-v-26e42198="" id="btn55" type="button"
@@ -962,9 +962,10 @@
                                                 class="period">2022.04.01 ~ 2022.10.30</span><span data-v-77eacbc9=""
                                                 class="place"> 디뮤지엄 </span>
                                             <div data-v-77eacbc9="" class="btn-group">
-                                                <div data-v-26e42198="" data-v-77eacbc9="" class="btn-area"><button
+                                                <div data-v-26e42198="" data-v-77eacbc9="" class="btn-area"><a href="http://localhost:9000/dmu/learn_page_det.do">
+                                                <button
                                                         data-v-26e42198="" id="btn41" type="button" class="primary"> 더보기
-                                                    </button>
+                                                    </button></a>
                                                 </div>
                                                 <!---->
                                             </div>

@@ -70,12 +70,12 @@
 				</ul>
 			</div>
 
-<div data-v-25f87e60="" class="container">
+<div data-v-25f87e60="" class="container write">
 <div data-v-8ed31374="" data-v-25f87e60="" class="reservation-area">
 	<!---->
 <div data-v-8ed31374="" class="left">
 
-	<div data-v-8ed31374="" class="img-ticket">
+	<div data-v-8ed31374="" class="img-ticket write">
 	<ul>
 		<li>
 			<label>파일첨부</label>
@@ -94,7 +94,8 @@
 	</div>
 	
 	<div data-v-8ed31374="" class="title-ticket">
-		<h2 data-v-8ed31374="" class="title"><input type="text" name="dtitle" id="dtitle" value="${vo.dtitle }"></h2>
+		<h2 data-v-8ed31374="" class="title">제목</h2>
+		<input type="text" name="dtitle" id="dtitle" value="${vo.dtitle }">
 			<span data-v-8ed31374="" class="explan"> </span>
 	</div>
 	

@@ -190,10 +190,10 @@ $(document).ready(function(){
 								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
 									href="javascript:void(0);" role="button">3</a></li>
 							</ul>
-							<button data-v-650d6904="" type="button" class="btn-next">
+<!-- 							<button data-v-650d6904="" type="button" class="btn-next">
 								next</button>
 							<button data-v-650d6904="" type="button" class="btn-last">
-								last</button>
+								last</button> -->
 						</div>
 						</div>
 					</div>
