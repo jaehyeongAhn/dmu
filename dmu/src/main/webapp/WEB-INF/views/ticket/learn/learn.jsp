@@ -195,15 +195,15 @@
 												</div>
 												<div data-v-8ed31374="" class="info-ticket"> 
 													<ul data-v-8ed31374="">
-														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육진행</strong><span data-v-b10d847a="" class="text">${ vo.dstart } ~ ${ vo.dend } ${ vo.dtime }</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">장소</strong><span data-v-b10d847a="" class="text">${ vo.dplace }</span></li>
-														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">대상</strong><span data-v-b10d847a="" class="text">${ vo.dtarget }</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">교육시간</strong><span data-v-b10d847a="" class="text">교육시간vo 필요 </span></li>
-														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육횟수</strong><span data-v-b10d847a="" class="text">${ vo.dnum } num에서 string으로 변경해야됨</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">정원 수</strong><span data-v-b10d847a="" class="text">${ vo.dpersonnel }</span></li>
-														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">참가비</strong><span data-v-b10d847a="" class="text">${vo.dprice} 원</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">문의</strong><span data-v-b10d847a="" class="text">문의 vo필요</span></li>
-													</ul>
+                                          <li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육진행</strong><span data-v-b10d847a="" class="text">${ vo.dstart } ~ ${ vo.dend } ${ vo.dtime }</span></li>
+                                          <li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">장소</strong><span data-v-b10d847a="" class="text">${ vo.dplace }</span></li>
+                                          <li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">대상</strong><span data-v-b10d847a="" class="text">${ vo.dtarget }</span></li>
+                                          <li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">교육시간</strong><span data-v-b10d847a="" class="text">${ vo.dentertime} </span></li>
+                                          <li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육횟수</strong><span data-v-b10d847a="" class="text">${ vo.dnum } </span></li>
+                                          <li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">정원 수</strong><span data-v-b10d847a="" class="text">${ vo.dpersonnel }</span></li>
+                                          <li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">참가비</strong><span data-v-b10d847a="" class="text">${vo.dprice} 원</span></li>
+                                          <li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">문의</strong><span data-v-b10d847a="" class="text">교육팀 (02-6233-7220)</span></li>
+                                       </ul>
 												</div>
 												<div data-v-8ed31374="" class=" "></div>
 												<div data-v-8ed31374="" class="use-info-ticket">

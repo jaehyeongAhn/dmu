@@ -22,9 +22,6 @@
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket_reservation.css">
- 
-
-
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
  <script src="http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>

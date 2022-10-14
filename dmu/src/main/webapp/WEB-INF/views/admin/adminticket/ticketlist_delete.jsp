@@ -55,7 +55,8 @@
 								<div class = "joinContainer">
 									<div class = "content">
 										<div class = "container">
-											<img id="deleteimg" src = "http://localhost:9000/dmu/resources/images/join_ok.png">
+											<img id="deleteimg" src = "http://localhost:9000/dmu/resources/images/join_ok.png" 
+												style="width:150px; padding:10px; margin:20px;">
 										<h3>버튼을 누르면 삭제가 완료됩니다.</h3>
 												<div data-v-8ed31374="" class="use-info-ticket">
 													<div data-v-26e42198="" data-v-8ed31374="" class="btn-area">
