@@ -344,6 +344,7 @@
     	
     	$(".search-close").click(function(){
     		$(".search-view-box").hide();
+            $("input.search").val("");
     	})
     	
     	
@@ -361,6 +362,37 @@
     	
     	
     	
+    	
+    	
+    	/****************************** 검색 페이지 연결 **********************************/
+    	$(".search-submit").click(function(){
+			search_check();
+    	});
+    	
+    	$("input.search").keyup(function(e){
+    		if(e.keyCode == 13){
+    			search_check();
+    		}
+    	});
+    	
+    	function search_check(){
+    		let keyword = $.trim($("input.search").val());
+    		if(keyword.length < 2){
+    			$(".alert").css("display", "block");
+    		}else{
+    			let search_content = "<form name='searchForm' action='search_header.do' method = 'post' style='display:none;'>";
+    			search_content += "<input type='hidden' name = 'keyword' value = '" + keyword + "'></form>"
+    			
+    			//스타일 초기화
+    			$(".alert").css("display", "none");
+    			$("input.search").val(keyword);
+				$("body").after(search_content);
+    			
+    			//submit
+    			searchForm.submit();
+    		}
+    	}
+    	   	
     	
     	
     });//ready
@@ -535,7 +567,7 @@
                         <div class="search-view-box" style="display: none;">
                             <div>
                                 <div data-v-67ca82d2="" class="input-area"><input data-v-67ca82d2="" id="field13"
-                                        autocomplete="on" placeholder="검색어를 입력하세요." maxlength="-1" type="text" class="">
+                                        autocomplete="on" placeholder="검색어를 입력하세요." maxlength="-1" type="text" class="search">
                                     <!---->
                                     <!---->
                                     <!---->
@@ -545,6 +577,10 @@
                                     <!---->
                                 </div><button type="button" class="search-submit"> 검색 </button>
                             </div>
+                            <div style = "width : 844px; margin : 12px auto; position: relative; top: 11.4375rem;   left: 0;
+									    transform: translate(0, 10px); text-align: left;">			
+								<span class="alert" style="display: none; color:red;">2글자 이상의 검색어를 입력하세요.</span>
+							</div>
                             <button type="button" class="search-close"> 검색 닫기 </button>
                         </div>
                     </div>
