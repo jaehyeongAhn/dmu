@@ -90,7 +90,12 @@
 			</li>
 			<li data-v-8ed31374="">
 				<strong data-v-8ed31374="" class="title">장소</strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dplace" id="dplace" ></span>
+				<select data-v-8ed31374="" name = "dplace" id = "dplace">
+												<option value = "default">선택하세요</option>
+												<option value = "디뮤지엄">디뮤지엄 </option>
+												<option value = "대림미술관">대림미술관 </option>
+												<option value = "구슬모아당구장">구슬모아당구장 </option>
+											</select>
 			</li>
 			<li data-v-8ed31374="">
 				<strong data-v-8ed31374="" class="title">회차/수업시간</strong>
@@ -99,7 +104,7 @@
 			
 			<li data-v-8ed31374="" class="">
 				<strong data-v-8ed31374="" class="title">전시기간</strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dstart" id="dstart" > ~ <input type="text" name="dend" id="dend" ></span>
+				<span data-v-8ed31374="" class="text"><input type="date" name="dstart" id="dstart" > ~ <input type="date" name="dend" id="dend" ></span>
 			</li>
 			
 			
@@ -116,7 +121,16 @@
 			
 			<li data-v-8ed31374="" class="">
 				<strong data-v-8ed31374="" class="title">대상</strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dtarget" id="dtarget" ></span>
+				<select data-v-8ed31374="" name = "dtarget" id = "dtarget">
+												<option value = "default">선택하세요</option>
+												<option value = "유아">유아</option>
+												<option value = "어린이">어린이</option>
+												<option value = "청소년">청소년</option>
+												<option value = "대학생">대학생</option>
+												<option value = "성인">성인</option>
+												<option value = "교사">교사</option>
+												<option value = "전시해설">전시해설</option>
+											</select>
 			</li>
 			
 			<li data-v-8ed31374="" class="">

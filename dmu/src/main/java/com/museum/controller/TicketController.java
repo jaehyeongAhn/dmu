@@ -164,7 +164,7 @@ public class TicketController {
 		@RequestMapping(value="/adminlearn_ajaxlist.do", method =RequestMethod.GET,produces="text/plain;charset=UTF-8")
 		public String adminLearnAjaxList(String dtarget,String rpage){
 			
-
+			System.out.println(dtarget);
 			Map<String,Integer> param = pageService.getPageResult(rpage, dtarget, ticketService);
 			
 			ArrayList<DmuTicketVO> list = ticketService.getLists( param.get("startCount") ,param.get("endCount"),"learn",dtarget);

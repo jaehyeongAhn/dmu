@@ -35,9 +35,6 @@
 						var output1 = "<div class='list-top-area'  id='list-top-area1' style='display:flex'>"
 							output1 +="<span data-v-41f56098='' class='total'>총 <strong>"+dataset.dbCount+"</strong>건</span>"
 							output1 +="<ul data-v-41f56098='' class='order' >"
-							output1 +="<li data-v-3c1f59cb='' class=''>"
-							output1 +="<a data-v-3c1f59cb='' href='ticketlist_write.do'>"
-							output1 +="<button type='button' class='btn_style'>글쓰기</button></a></li>"
 							output1 +="<li data-v-41f56098='' class='on'>"
 							output1 +="<a data-v-41f56098='' href='javascript:void(0);'>시작일 순</a></li>"
 							output1 +="<li data-v-41f56098='' class=''>"
@@ -48,13 +45,13 @@
 						for(aj of dataset.list){
 					   	output += "<ul data-v-41f56098=''>";
 						output +="<li data-v-41f56098=''>";
-						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/ticketlist_content.do?did= "+ aj.did+" '  class='thumb'>"
+						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/learn.do?did= "+ aj.did+" '  class='thumb'>"
 						output +="<img data-v-2fed1a9a='' data-v-1e8092ec=''src='http://localhost:9000/dmu/resources/upload/"+aj.dsfile+" '>"
 						output +="</a>"
 						output +="<ul data-v-41f56098='' class='flag'>"
 						output +="<li data-v-41f56098=''>"+ aj.dnum + "회성 교육</li>"
 						output +="<li data-v-41f56098=''>"+ aj.dplace + "</li>"
-						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/ticketlist_content.do?did="+aj.did+"' class='title'>" +aj.dtitle +"</a>"
+						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/learn.do?did="+aj.did+"' class='title'>" +aj.dtitle +"</a>"
 						
 						output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
 						output +="</ul>"
@@ -149,14 +146,14 @@
 
 			<ul data-v-7b1f57c8="" class="snb">
 				<li data-v-7b1f57c8="" class="">
-					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/adminexhibition_list.do" role="button">EXHIBITION </a>
+					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/exhibition_list.do" role="button">EXHIBITION </a>
 				</li>
 				
 				<li data-v-7b1f57c8="" class="on">
-					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/adminlearn_list.do" role="button">LEARN </a>
+					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/learn_list.do" role="button">LEARN </a>
 				</li>
 				<li data-v-7b1f57c8="" class="">
-					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/adminevent_list.do" role="button">EVENT </a>
+					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/event_list.do" role="button">EVENT </a>
 				</li>
 			</ul>
 		</div>
@@ -166,7 +163,7 @@
 <div data-v-41f56098="" class="division-list">
 			<ul data-v-41f56098="">
 				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" class="learn_targetall"  href="http://localhost:9000/dmu/adminlearn_list.do"  >전체</a>
+					<a data-v-41f56098="" class="learn_targetall"  href="http://localhost:9000/dmu/learn_list.do"  >전체</a>
 				</li>
 				
 				<li data-v-41f56098="" class="">
@@ -203,11 +200,7 @@
 
 		<span data-v-41f56098="" class="total">총 <strong>${dbCount}</strong>건</span>
 			<ul data-v-41f56098="" class="order">
-				<li data-v-3c1f59cb="" class="">
-					<a data-v-3c1f59cb="" href="ticketlist_write.do">
-					<button type="button" class="btn_style">글쓰기</button>
-					</a>			
-				</li>
+			
 				<li data-v-41f56098="" class="on">
 					<a data-v-41f56098="" href="javascript:void(0);">시작일 순</a>
 				</li>
@@ -223,7 +216,7 @@
 			<ul data-v-41f56098="">
 				<li data-v-41f56098="">
 						<c:if test="${vo.dsfile != null }">
-					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" class="thumb">
+					<a data-v-41f56098="" href="http://localhost:9000/dmu/learn.do?did=${vo.did}" class="thumb">
 						<img data-v-2fed1a9a="" data-v-1e8092ec=""src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"></a>
 						</c:if>
 				
@@ -236,7 +229,7 @@
 			<!---->
 			</ul>
 				
-					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}"
+					<a data-v-41f56098="" href="http://localhost:9000/dmu/learn.do?did=${vo.did}"
 					class="title">${vo.dtitle}</a>
 					
 					<p data-v-41f56098="" class="explan">${vo.dtitle2 }</p>

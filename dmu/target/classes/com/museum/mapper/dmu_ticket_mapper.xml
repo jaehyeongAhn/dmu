@@ -14,7 +14,7 @@
 	</update>
 	<!-- ticket select dtarget totalcount -->
 	 <select id="dtargetCount" parameterType="java.lang.String" resultType="int">
-	 	select count(*) from dmu_ticket where dtarget= #{dtarget} 
+	 	select count(*) from dmu_ticket where dcode='learn' and dtarget= #{dtarget} 
 	 </select>
 	 
 	<!-- ticket select dcode totalcount -->
