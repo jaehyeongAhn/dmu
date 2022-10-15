@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>dmu</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet"  href="http://localhost:9000/dmu/resources/css/tiket.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
@@ -230,7 +232,6 @@
 				
 			<ul data-v-41f56098="" class="flag">
 				<li data-v-41f56098="">${vo.dnum}회성 교육</li>
-				<li data-v-41f56098="">${vo.dplace}</li>
 				<li data-v-41f56098="">${vo.dplace}</li>
 				
 			<!---->

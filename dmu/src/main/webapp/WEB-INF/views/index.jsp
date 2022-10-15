@@ -344,6 +344,7 @@
     	
     	$(".search-close").click(function(){
     		$(".search-view-box").hide();
+            $("input.search").val("");
     	})
     	
     	
@@ -361,6 +362,37 @@
     	
     	
     	
+    	
+    	
+    	/****************************** 검색 페이지 연결 **********************************/
+    	$(".search-submit").click(function(){
+			search_check();
+    	});
+    	
+    	$("input.search").keyup(function(e){
+    		if(e.keyCode == 13){
+    			search_check();
+    		}
+    	});
+    	
+    	function search_check(){
+    		let keyword = $.trim($("input.search").val());
+    		if(keyword.length < 2){
+    			$(".alert").css("display", "block");
+    		}else{
+    			let search_content = "<form name='searchForm' action='search_header.do' method = 'post' style='display:none;'>";
+    			search_content += "<input type='hidden' name = 'keyword' value = '" + keyword + "'></form>"
+    			
+    			//스타일 초기화
+    			$(".alert").css("display", "none");
+    			$("input.search").val(keyword);
+				$("body").after(search_content);
+    			
+    			//submit
+    			searchForm.submit();
+    		}
+    	}
+    	   	
     	
     	
     });//ready
@@ -402,7 +434,7 @@
                         <c:otherwise>
                         <ul>
                             <li>
-                                <a href="login.do" class=""> LOGOUT </a>
+                                <a href="logout.do" class=""> LOGOUT </a>
                             </li>
                             <li>
                                 <a href="mypage_main.do" class=""> MY PAGE </a>
@@ -429,16 +461,16 @@
                                     <a href="visit_main.do"> VISIT </a>
                                 </li>
                                 <li class="exhibition">
-                                    <a href="javascript:void(0);"> EXHIBITION </a>
+                                    <a href="http://localhost:9000/dmu/exhibition_page.do" target="_parent"> EXHIBITION </a>
                                 </li>
                                 <li class="learn">
-                                    <a href="javascript:void(0);"> LEARN </a>
+                                    <a href="http://localhost:9000/dmu/learn_page.do" target="_parent"> LEARN </a>
                                 </li>
                                 <li class="event">
-                                    <a href="javascript:void(0);"> EVENT </a>
+                                    <a href="http://localhost:9000/dmu/event_page.do" target="_parent"> EVENT </a>
                                 </li>
                                 <li class="ticket">
-                                    <a href="exhibition_list.do"> TICKET </a>
+                                    <a href="http://localhost:9000/dmu/exhibition_list.do" target="_parent"> TICKET </a>
                                 </li>
                             </ul>
                             <div class="sub-menu" id="menu_visit" style="width: 100%;">
@@ -497,8 +529,8 @@
 								<div>
 									<div class="menu-area">
 										<ul>
-											<li><a href="javascript:void(0);" style=""> 현재 전시 </a></li>
-											<li><a href="javascript:void(0);"> 지난 전시 </a></li>
+											<li><a href="http://localhost:9000/dmu/exhibition_page.do" style=""> 현재 전시 </a></li>
+											<li><a href="http://localhost:9000/dmu/exhibition_past_page.do"> 지난 전시 </a></li>
 										</ul>
 									</div>
 								</div>
@@ -535,7 +567,7 @@
                         <div class="search-view-box" style="display: none;">
                             <div>
                                 <div data-v-67ca82d2="" class="input-area"><input data-v-67ca82d2="" id="field13"
-                                        autocomplete="on" placeholder="검색어를 입력하세요." maxlength="-1" type="text" class="">
+                                        autocomplete="on" placeholder="검색어를 입력하세요." maxlength="-1" type="text" class="search">
                                     <!---->
                                     <!---->
                                     <!---->
@@ -545,6 +577,10 @@
                                     <!---->
                                 </div><button type="button" class="search-submit"> 검색 </button>
                             </div>
+                            <div style = "width : 844px; margin : 12px auto; position: relative; top: 11.4375rem;   left: 0;
+									    transform: translate(0, 10px); text-align: left;">			
+								<span class="alert" style="display: none; color:red;">2글자 이상의 검색어를 입력하세요.</span>
+							</div>
                             <button type="button" class="search-close"> 검색 닫기 </button>
                         </div>
                     </div>
@@ -664,7 +700,7 @@
                                                                 type="button" class="primary"> 자세히보기 </button></div>
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
                                                             style="display: none;"><button data-v-26e42198="" id="btn52"
-                                                                type="button" class="secondary"> 자세히보기 </button></div>
+                                                                type="button" class="secondary">자세히보기</button></div>
                                                     </a><a data-v-04a3ebf5="">
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
                                                             style="display: none;"><button data-v-26e42198="" id="btn53"
@@ -677,8 +713,8 @@
                                                         href="#">
                                                         <!---->
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area">
-                                                            <button data-v-26e42198="" id="btn55" type="button"
-                                                                class="secondary"> 자세히 보기 </button></div>
+                                                            <a href="http://localhost:9000/dmu/learn_page.do"><button data-v-26e42198="" id="btn55" type="button"
+                                                                class="secondary"> 자세히 보기 </button></a></div>
                                                     </a><a data-v-04a3ebf5=""
                                                         href="#">
                                                         <!---->
@@ -727,8 +763,8 @@
                                                 <div data-v-04a3ebf5="" class="btn-group" style=""><a data-v-04a3ebf5=""
                                                         href="#">
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
-                                                            style=""><button data-v-26e42198="" id="btn22" type="button"
-                                                                class="primary"> 자세히보기 </button></div>
+                                                            style=""><a href="http://localhost:9000/dmu/exhibition_page_det.do"><button data-v-26e42198="" id="btn22" type="button"
+                                                                class="primary"> 자세히보기 </button></a></div>
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
                                                             style="display: none;"><button data-v-26e42198="" id="btn23"
                                                                 type="button" class="secondary"> 자세히보기 </button></div>
@@ -738,8 +774,8 @@
                                                             style="display: none;"><button data-v-26e42198="" id="btn24"
                                                                 type="button" class="primary"> 예매하기 </button></div>
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
-                                                            style=""><button data-v-26e42198="" id="btn25" type="button"
-                                                                class="secondary"> 예매하기 </button></div>
+                                                            style=""><a href="http://localhost:9000/dmu/exhibition.do?did=d_51"><button data-v-26e42198="" id="btn25" type="button"
+                                                                class="secondary"> 예매하기 </button></a></div>
                                                     </a></div>
                                                 <div data-v-04a3ebf5="" class="btn-group" style="display: none;"><a
                                                         data-v-04a3ebf5="" style="display: none;">
@@ -798,7 +834,7 @@
                                                                 type="button" class="secondary"> 예매하기 </button></div>
                                                     </a></div>
                                                 <div data-v-04a3ebf5="" class="btn-group"><a data-v-04a3ebf5=""
-                                                        href="https://www.daelimmuseum.org/learn/education/snb/infant">
+                                                        href="http://localhost:9000/dmu/learn_page.do">
                                                         <!---->
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area">
                                                             <button data-v-26e42198="" id="btn55" type="button"
@@ -926,9 +962,10 @@
                                                 class="period">2022.04.01 ~ 2022.10.30</span><span data-v-77eacbc9=""
                                                 class="place"> 디뮤지엄 </span>
                                             <div data-v-77eacbc9="" class="btn-group">
-                                                <div data-v-26e42198="" data-v-77eacbc9="" class="btn-area"><button
+                                                <div data-v-26e42198="" data-v-77eacbc9="" class="btn-area"><a href="http://localhost:9000/dmu/learn_page_det.do">
+                                                <button
                                                         data-v-26e42198="" id="btn41" type="button" class="primary"> 더보기
-                                                    </button>
+                                                    </button></a>
                                                 </div>
                                                 <!---->
                                             </div>

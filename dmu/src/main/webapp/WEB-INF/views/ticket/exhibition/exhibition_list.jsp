@@ -16,15 +16,15 @@
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script> 
-
-	$(document).ready(function(){
+$(document).ready(function(){
 	
-
-			
 	$('#more_button').click(function(){
 								
-	$(location).attr('href', "http://localhost:9000/dmu/exhibition_list.do?rpage="+${rpage+1});         
+								
+		$(location).attr('href', "http://localhost:9000/dmu/exhibition_list.do?rpage="+${rpage+1});         
 							    
+		});//click
+	});//ready					    
 </script>		
 </head>
 <body>
@@ -39,18 +39,18 @@
 <div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
 			<ul data-v-6d324aa0="">
 				<li data-v-6d324aa0="" class="on">
-					<span data-v-6d324aa0=""  class="no">01</span>
-					<span data-v-6d324aa0="" class="txt">.티켓 선택</span>
+					<span data-v-6d324aa0=""  class="no">01</span>.
+					<span data-v-6d324aa0="" class="txt">티켓 선택</span>
 				</li>
 				
 				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">02</span>
-					<span data-v-6d324aa0="" class="txt">.관람일/인원 선택</span>
+					<span data-v-6d324aa0="" class="no">02</span>.
+					<span data-v-6d324aa0="" class="txt">관람일/인원 선택</span>
 				</li>
 				
 				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">03</span>
-					<span data-v-6d324aa0="" class="txt">.결제</span>
+					<span data-v-6d324aa0="" class="no">03</span>.
+					<span data-v-6d324aa0="" class="txt">결제</span>
 				</li>
 			</ul>
 		</div>
@@ -100,7 +100,7 @@
 					</c:if>
 					</a>				 
 				<span data-v-3c1f59cb="" class="place"> ${vo.dplace } </span>
-					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do?did=${ vo.getDid()}" target="_parent" class="title"> ${vo.dtitle } </a>
+					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do?did=${ vo.getDid()} " target="_parent" class="title"> ${vo.dtitle } </a>
 						<p data-v-3c1f59cb="" class="explan"></p>
 						<span data-v-3c1f59cb="" class="term"> ${vo.dstart }~ ${vo.dend } </span></li>
 					</c:forEach>

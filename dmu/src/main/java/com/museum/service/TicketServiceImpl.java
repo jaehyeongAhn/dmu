@@ -56,14 +56,32 @@ public class TicketServiceImpl implements TicketService {
 	public int getInsertDate(DmuReJoinVO vo) {
 		return ticketDAO.insertDate(vo);
 	}
+	
+	@Override
+	public int getInsertDateComplete(DmuReJoinVO vo) {
+		return ticketDAO.insertDate(vo);	 
+	}
 	@Override
 	public DmuReJoinVO getReservationcontent(String did) {
 		return ticketDAO.selectReservation(did);
 	}
 	@Override
-	public DmuReJoinVO getcompletecontent(String did) {
-		return ticketDAO.selectCompleteCheck(did);
+	public DmuReJoinVO getcompletecontent(String mid) {
+		return ticketDAO.selectCompleteCheck(mid);
 	}
+	
+	/*
+	 * tag_page
+	 */
+	@Override
+	public ArrayList<DmuTicketVO> getEventContent(String dcode ) {
+		 
+		return ticketDAO.getEventContent(dcode);
+	}
+	 
+ 
+	
+	 
 }
  
 	

@@ -144,11 +144,14 @@ $(document).ready(function(){
 
     $(".reservation_detail").click(function(){
     //$(this).css("background", "black");
-    let index = $(this).parent().parent().index();
-
-    let rid = $("tr").filter(":eq("+(index+1)+")").children(".reservationId").text();
-     alert(rid);     
-      
+    let index = $(this).parent().index();
+	//alert(index);
+    
+    //$("tr").filter(":eq("+(index+1)+")").css("background", "black"); //children(".reservationId").css("background", "black"); 
+    //$("tr").filter(":eq("+(index+1)+")").children("td.reservationId a").css("color", "red");
+    
+    let rid = $("tr").filter(":eq("+(index+1)+")").children("td.reservationId").text();
+    alert(rid);     
         $.ajax({
             type : "post",
             data : {

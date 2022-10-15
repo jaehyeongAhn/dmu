@@ -143,9 +143,9 @@ $(document).ready(function(){
 										</thead>
 										<tbody>
 										<c:forEach var="vo" items="${list}">
-											<tr>												 
+											<tr class = "name">												 
 												<td >${vo.dcode}</td>											 
-												<td class="reservation_detail" class="reservationId"><a href="#">${vo.rid}</a></td> <!-- 티켓번호 -->
+												<td  class="reservation_detail reservationId"><a href="#">${vo.rid}</a></td> <!-- 티켓번호 -->
 												<td>${vo.dtitle }</td>   <!-- 전시/이벤트 명 --> 
 												<td>${vo.mname }</td>   <!-- 예약자 명 -->
 												<td>${vo.dpricech }</td>   <!-- 티켓금액 -->
@@ -190,10 +190,10 @@ $(document).ready(function(){
 								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
 									href="javascript:void(0);" role="button">3</a></li>
 							</ul>
-							<button data-v-650d6904="" type="button" class="btn-next">
+<!-- 							<button data-v-650d6904="" type="button" class="btn-next">
 								next</button>
 							<button data-v-650d6904="" type="button" class="btn-last">
-								last</button>
+								last</button> -->
 						</div>
 						</div>
 					</div>

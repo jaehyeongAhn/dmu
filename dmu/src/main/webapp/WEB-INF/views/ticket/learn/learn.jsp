@@ -16,6 +16,8 @@
 <!-- <meta name="twitter:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">
     <meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg"> -->
 <link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
@@ -142,16 +144,16 @@
 
 		<form name="ticket_learnFrom" action="ticketReservationCheck.do" method="post">
 		
-		 <input type="text" name="did" value="${vo.did }"> 
-		 <input type="text" name="rprice" id="rprice" value=${vo.dprice }> 
-		 <input type="text" name="rdate" id="rdate" value=""> 
-		 <input type="text" name="rtime" id="rtime" value=""> 
-		 <input type="text" name="rtotal" id="rtotal" value="">  
-		 <input type="text" name="dplace" id="dplace" value=${vo.dplace }> 
-		 <input type="text" name="rallprice" id="rallprice" value=""> 
-		 <input type="text" name="mid" id="mid" value="mmww6443"> 
-		 <input type="text" name="dsfile" id="dsfile" value=${vo.dsfile }> 
-		 <input type="text" name="dfile" id="dfile" value=${vo.dfile }> 
+		 <input type="hidden" name="did" value="${vo.did }"> 
+		 <input type="hidden" name="rprice" id="rprice" value=${vo.dprice }> 
+		 <input type="hidden" name="rdate" id="rdate" value=""> 
+		 <input type="hidden" name="rtime" id="rtime" value=""> 
+		 <input type="hidden" name="rtotal" id="rtotal" value="">  
+		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
+		 <input type="hidden" name="rallprice" id="rallprice" value=""> 
+		 <input type="hidden" name="mid" id="mid" value=${ sessionScope.member.mid }> 
+		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
+		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
 		
 	 
 		 
@@ -196,11 +198,11 @@
 														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육진행</strong><span data-v-b10d847a="" class="text">${ vo.dstart } ~ ${ vo.dend } ${ vo.dtime }</span></li>
 														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">장소</strong><span data-v-b10d847a="" class="text">${ vo.dplace }</span></li>
 														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">대상</strong><span data-v-b10d847a="" class="text">${ vo.dtarget }</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">교육시간</strong><span data-v-b10d847a="" class="text">교육시간vo 필요 </span></li>
-														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육횟수</strong><span data-v-b10d847a="" class="text">${ vo.dnum } num에서 string으로 변경해야됨</span></li>
+														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">교육시간</strong><span data-v-b10d847a="" class="text">${ vo.dentertime} </span></li>
+														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">교육횟수</strong><span data-v-b10d847a="" class="text">${ vo.dnum } </span></li>
 														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">정원 수</strong><span data-v-b10d847a="" class="text">${ vo.dpersonnel }</span></li>
 														<li data-v-b10d847a=""><strong data-v-b10d847a="" class="title">참가비</strong><span data-v-b10d847a="" class="text">${vo.dprice} 원</span></li>
-														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">문의</strong><span data-v-b10d847a="" class="text">문의 vo필요</span></li>
+														<li data-v-b10d847a="" class=""><strong data-v-b10d847a="" class="title">문의</strong><span data-v-b10d847a="" class="text">교육팀 (02-6233-7220)</span></li>
 													</ul>
 												</div>
 												<div data-v-8ed31374="" class=" "></div>

@@ -15,9 +15,9 @@
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 	$(document).ready(function(){
-		let header_height = $(".header").outerHeight();
+/* 		let header_height = $(".header").outerHeight();
 		let main_height = $(".joinContainer").outerHeight(true);
-		$(".footer").css("top", header_height + main_height + 200);
+		$(".footer").css("top", header_height + main_height + 200); */
 	}); 
 </script>
 <style>

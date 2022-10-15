@@ -14,72 +14,86 @@ import com.museum.service.TicketServiceImpl;
 import com.museum.vo.DmuReJoinVO;
 import com.museum.vo.DmuReservationVO;
 import com.museum.vo.DmuTicketVO;
- 
 
 @Controller
 public class TicketReservationController {
-	
+
 	@Autowired
 	private TicketServiceImpl ticketService;
-	
+
 	/*
 	 * ticket_reservation.do 페이지 호출
 	 */
-	@RequestMapping(value="/ticket_reservation.do", method=RequestMethod.GET)
+	@RequestMapping(value = "/ticket_reservation.do", method = RequestMethod.GET)
 	public ModelAndView ticket_reservation(String did) {
-		 ModelAndView mv = new ModelAndView();
- 
-		 DmuReJoinVO vo = ticketService.getReservationcontent(did);
-		
-		 
-		mv.addObject("vo",vo);
+		ModelAndView mv = new ModelAndView();
+
+		DmuReJoinVO vo = ticketService.getReservationcontent(did);
+
+		mv.addObject("vo", vo);
 		mv.setViewName("ticket/ticket_reservation/ticket_reservation");
-	
+
 		return mv;
 	}
 
 	/*
 	 * ticketReservationCheck.do 페이지 호출
 	 */
-	
-	@RequestMapping(value="/ticketReservationCheck.do",  method=RequestMethod.POST)
-	public ModelAndView ticketReservationCheck(DmuReJoinVO vo) {   
-		ModelAndView mv = new ModelAndView();	
-  
+
+	@RequestMapping(value = "/ticketReservationCheck.do", method = RequestMethod.POST)
+	public ModelAndView ticketReservationCheck(DmuReJoinVO vo) {
+		ModelAndView mv = new ModelAndView();
+
 		int result = ticketService.getInsertDate(vo);
-		
-		if(result == 1){
-			
-		//	mv.addObject("join_result","ok");
+
+		if (result == 1) {
+
 			mv.setViewName("redirect:/ticket_reservation.do");
-		//	response.sendRedirect("../login/login.jsp?join=ok");  //방법 2
-		}else{
-  
+		} else {
+
 			mv.setViewName("error_page");
 		}
-	
-		return mv;   
-	
+
+		return mv;
+
 	}
-	
- 
-	
+
 	/*
 	 * ticket_complete.do 페이지 호출
 	 */
-	@RequestMapping(value="/complete.do", method=RequestMethod.GET)
-	public ModelAndView complete(String did) {
-		 ModelAndView mv = new ModelAndView();
-		 
-		 
-		 DmuReJoinVO vo = ticketService.getcompletecontent(did);
-		 
-	 	 mv.addObject("vo",vo);
-		 mv.setViewName("ticket/ticket_reservation/complete");
+	@RequestMapping(value = "/complete.do", method = RequestMethod.GET)
+	public ModelAndView complete(String mid) {
+		ModelAndView mv = new ModelAndView();
+
+		DmuReJoinVO vo = ticketService.getcompletecontent(mid);
+
+		mv.addObject("vo", vo);
+		mv.setViewName("ticket/ticket_reservation/complete");
 		return mv;
 	}
+
 	
-	
-	
-	
+	/* ticketCompletenCheck.do 페이지 호출 */
+	  
+	   
+	  @RequestMapping(value="/ticketCompletenCheck.do", method=RequestMethod.POST)
+	  public ModelAndView ticketCompletenCheck(DmuReJoinVO vo) { 
+		  ModelAndView mv =  new ModelAndView();
+	  
+	  
+	  int result = ticketService.getInsertDateComplete(vo);
+	  
+	  if(result == 1){
+	  
+	  mv.setViewName("redirect:/complete.do"); 
+	 
+	  }else{
+	  
+		  mv.setViewName("error_page"); }
+	  
+	  return mv;
+	  
+	  }
+	 
+
 }

@@ -35,6 +35,10 @@
 		select count(*) from dmu_member
 	</select>
 	
+	<select id="totalCount_reservation" resultType="int">
+		select count(*) from dmu_reservation
+	</select>
+	
 	<select id="totalCount_public" resultType="int">
 		select count(*) from dmu_member where status='public'
 	</select>
@@ -61,9 +65,9 @@
 	
 	<select id="reservationList" parameterType="map" resultType="com.museum.vo.DmuReJoinVO">
 		 select  dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech,to_char(dr.rdate, 'YYYY-MM-DD') rdateda,  to_char(dr.rokdate,'YYYY-MM-DD') rokdatech  from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
-	 		where  dm.mid = dr.mid and dt.did = dr.did   and dr.rid= (select rid from
-                                      				  (select rid from dmu_reservation order by rokdate desc)
-                                 				 			  where rownum = 1)                             				 			  
+	 		where  dm.mid = dr.mid and dt.did = dr.did   and dr.rid in (select rid from
+                                      				  (select rownum rno, rid from dmu_reservation order by rokdate desc)
+                                 				 			  where rno between #{start} and #{end})                             				 			  
 	</select>
 	
 	<select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">

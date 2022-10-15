@@ -190,7 +190,7 @@
 											<div data-v-67ca82d2="" class="input-area">
 												<input data-v-67ca82d2="" id="field13" autocomplete="on"
 													placeholder="검색어를 입력하세요." maxlength="-1" type="text"
-													class="">
+													class="search">
 												<!---->
 												<!---->
 												<!---->
@@ -200,6 +200,10 @@
 												<!---->
 											</div>
 											<button type="button" class="search-submit">검색</button>
+										</div>
+										<div style = "width : 844px; margin : 12px auto; position: relative; top: 11.4375rem;   left: 0;
+												    transform: translate(0, 10px); text-align: left;">			
+											<span class="alert" style="display: none; color:red;">2글자 이상의 검색어를 입력하세요.</span>
 										</div>
 										<button type="button" class="search-close">검색 닫기</button>
 									</div>

@@ -112,6 +112,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		DmuNoticeDAO dao = new DmuNoticeDAO();
 		DmuNoticeVO vo = noticeService.getContent(nid);
+		vo.setNcontent(vo.getNcontent().replace("\r\n", "<br/>"));
 		
 		mv.addObject("vo", vo);
 		mv.setViewName("/admin/admin_notice/admin_notice_content");
@@ -387,7 +388,7 @@ public class AdminController {
 			int pageSize = 5;	//한페이지당 게시물 수
 			int reqPage = 1;	//요청페이지	
 			int pageCount = 1;	//전체 페이지 수
-			int dbCount = adminService.getTotalCount();	//DB에서 가져온 전체 행수
+			int dbCount = adminService.getTotalCount_reservation();	//DB에서 가져온 전체 행수
 
 			//총 페이지 수 계산
 			if(dbCount % pageSize == 0){

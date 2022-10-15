@@ -1,4 +1,3 @@
-
 /*
 	exhbition
 */
@@ -130,7 +129,19 @@ html {
     font-weight: 500;
     color: #000;
 }
-
+.snb-area .snb li a[data-v-7b1f57c8] {
+    margin: 0 1.5625rem;
+    padding: 1.25rem 0.625rem;
+    font-weight: 300;
+    font-size: 1.125rem;
+    line-height: 1.2;
+    color: #999;
+    letter-spacing: -0.045em;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    text-decoration:none;
+}
 
 a:-webkit-any-link {
     color: -webkit-link;
@@ -197,11 +208,13 @@ body strong {
 }
 .list-top-area .order li.on a[data-v-3c1f59cb] {
     color: #111;
+    text-decoration: none;
 }
 .list-top-area .order li a[data-v-3c1f59cb] {
     font-size: 0.9375rem;
     color: #999;
     letter-spacing: -0.02187rem;
+    text-decoration: none;
 }
 body a, body a:hover, body a:visited {
     text-decoration: none;
@@ -226,6 +239,7 @@ body a, body a:hover, body a:visited {
     position: relative;
     min-height: 23rem;
     padding-left: 45.875rem;
+    margin: 30px 0;
 }
 .ticket-list > ul .thumb[data-v-3c1f59cb] {
     display: block;
@@ -322,8 +336,6 @@ body img {
     font-size: 0.9375rem;
     color: #999;
     letter-spacing: -0.02375rem;
-    text-decoration : none;
-    
 }
 .division-list ul li + li[data-v-41f56098] {
     padding-left: 1.875rem;
@@ -369,8 +381,14 @@ body strong {
 }
 .list-top-area .order li.on a[data-v-41f56098] {
     color: #111;
+    text-decoration:none;
 }
-
+.list-top-area .order li a[data-v-41f56098] {
+    font-size: 0.9375rem;
+    color: #999;
+    letter-spacing: -0.02187rem;
+    text-decoration:none;
+}
 .list-top-area .order li + li[data-v-41f56098] {
     padding-left: 1.875rem;
 }
@@ -388,7 +406,11 @@ body strong {
     background: #ddd;
     content: '';
 }
-
+.list-top-area .order li a[data-v-41f56098] {
+    font-size: 0.9375rem;
+    color: #999;
+    letter-spacing: -0.02187rem;
+}
 .ticket-list > ul > li[data-v-41f56098] {
     position: relative;
     min-height: 23rem;
@@ -560,8 +582,14 @@ body button {
 }
 .list-top-area .order li.on a[data-v-1e8092ec] {
     color: #111;
+    text-decoration: none;
 }
-
+.list-top-area .order li a[data-v-1e8092ec] {
+    font-size: 0.9375rem;
+    color: #999;
+    letter-spacing: -0.02187rem;
+    text-decoration: none;
+}
 .list-top-area .order li + li[data-v-1e8092ec] {
     padding-left: 1.875rem;
 }
@@ -578,6 +606,11 @@ body button {
     height: 0.8125rem;
     background: #ddd;
     content: '';
+}
+.list-top-area .order li a[data-v-1e8092ec] {
+    font-size: 0.9375rem;
+    color: #999;
+    letter-spacing: -0.02187rem;
 }
 .ticket-list-area .container[data-v-1e8092ec] {
     padding-top: 1.75rem;
@@ -608,7 +641,11 @@ body ol, body ul, body li {
     margin: 0;
     padding: 0;
 }
-
+.list-top-area .order li a[data-v-1e8092ec] {
+    font-size: 0.9375rem;
+    color: #999;
+    letter-spacing: -0.02187rem;
+}
 body a, body a:hover, body a:visited {
     text-decoration: none;
     color: #111;
@@ -627,6 +664,11 @@ body ol, body ul, body li {
     margin: 0;
     padding: 0;
 }
+.list-top-area .order li a[data-v-1e8092ec] {
+    font-size: 0.9375rem;
+    color: #999;
+    letter-spacing: -0.02187rem;
+}
 .list-top-area[data-v-1e8092ec] {
     display: flex;
     margin-bottom: 1.25rem;
@@ -635,6 +677,7 @@ body ol, body ul, body li {
     position: relative;
     min-height: 23rem;
     padding-left: 45.875rem;
+    margin: 30px 0;
 }
 .ticket-list > ul .thumb[data-v-1e8092ec] {
     display: block;
@@ -832,7 +875,6 @@ html {
     display: flex !important;
     justify-content: center;
     align-items: center;
-    text-decoration : none;
 }
 
 a:-webkit-any-link {
@@ -905,7 +947,6 @@ body strong {
     font-size: 0.9375rem;
     color: #999;
     letter-spacing: -0.02187rem;
-    text-decoration:none;
 }
 body a, body a:hover, body a:visited {
     text-decoration: none;
@@ -1071,12 +1112,13 @@ body strong {
 }
 .list-top-area .order li.on a[data-v-41f56098] {
     color: #111;
+    text-decoration: none;
 }
 .list-top-area .order li a[data-v-41f56098] {
     font-size: 0.9375rem;
     color: #999;
     letter-spacing: -0.02187rem;
-    text-decoration : none;
+    text-decoration: none;
 }
 .list-top-area .order li + li[data-v-41f56098] {
     padding-left: 1.875rem;
@@ -1248,6 +1290,7 @@ body button {
     position: relative;
     min-height: 23rem;
     padding-left: 45.875rem;
+    margin: 30px 0;
 }
 .ticket-list > ul > li + li[data-v-41f56098] {
     margin-top: 5rem;
@@ -1271,13 +1314,13 @@ body button {
 }
 .list-top-area .order li.on a[data-v-1e8092ec] {
     color: #111;
+    text-decoration: none;
 }
 .list-top-area .order li a[data-v-1e8092ec] {
     font-size: 0.9375rem;
     color: #999;
     letter-spacing: -0.02187rem;
-    text-decoration : none;
-    
+    text-decoration: none;
 }
 .list-top-area .order li + li[data-v-1e8092ec] {
     padding-left: 1.875rem;
@@ -1296,7 +1339,11 @@ body button {
     background: #ddd;
     content: '';
 }
-
+.list-top-area .order li a[data-v-1e8092ec] {
+    font-size: 0.9375rem;
+    color: #999;
+    letter-spacing: -0.02187rem;
+}
 .ticket-list-area .container[data-v-1e8092ec] {
     padding-top: 1.75rem;
     padding-bottom: 0;
@@ -1326,6 +1373,11 @@ body ol, body ul, body li {
     margin: 0;
     padding: 0;
 }
+.list-top-area .order li a[data-v-1e8092ec] {
+    font-size: 0.9375rem;
+    color: #999;
+    letter-spacing: -0.02187rem;
+}
 body a, body a:hover, body a:visited {
     text-decoration: none;
     color: #111;
@@ -1344,7 +1396,11 @@ body ol, body ul, body li {
     margin: 0;
     padding: 0;
 }
-
+.list-top-area .order li a[data-v-1e8092ec] {
+    font-size: 0.9375rem;
+    color: #999;
+    letter-spacing: -0.02187rem;
+}
 .list-top-area[data-v-1e8092ec] {
     display: flex;
     margin-bottom: 1.25rem;
@@ -1420,4 +1476,3 @@ ul ul {
 .ticket-list > ul > li + li[data-v-1e8092ec] {
     margin-top: 5rem;
 }
-

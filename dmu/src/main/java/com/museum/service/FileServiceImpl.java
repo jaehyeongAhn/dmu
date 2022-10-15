@@ -17,8 +17,8 @@ public class FileServiceImpl {
 	 */
 	public void fileDelete(DmuTicketVO vo, HttpServletRequest request) throws Exception {
 		if (vo.getDsfile() != null) {
-			String path = request.getSession().getServletContext().getRealPath("/");
-			path += "/resources/upload";
+			String path = request.getSession().getServletContext().getRealPath(File.separator);
+			path += File.separator + "resources" + File.separator + "upload" + File.separator;
 
 			File old_file = new File(path + vo.getDsfile());
 			if (old_file.exists()) {
@@ -33,8 +33,8 @@ public class FileServiceImpl {
 	public void update_filesave(DmuTicketVO vo, HttpServletRequest request, String old_filename) throws Exception {
 		// 새로운 파일을 upload 폴더에 저장
 		if (!vo.getFile1().getOriginalFilename().equals("")) { // 새로운 파일선택 O
-			String path = request.getSession().getServletContext().getRealPath("/");
-			path += "/resources/upload";
+			String path = request.getSession().getServletContext().getRealPath(File.separator);
+			path += File.separator + "resources" + File.separator + "upload" + File.separator;
 			System.out.println(path);
 
 			File file = new File(path + vo.getDsfile());
@@ -75,13 +75,14 @@ public class FileServiceImpl {
 	public void fileSave(DmuTicketVO vo, HttpServletRequest request) throws Exception {
 		// 2. upload 폴더에 nsfile 명으로 실제 파일 업로드 처리
 		if (!vo.getFile1().getOriginalFilename().equals("")) {
-			String path = request.getSession().getServletContext().getRealPath("/");
-			path += "/resources/upload/";
+			String path = request.getSession().getServletContext().getRealPath(File.separator);
+			path += File.separator + "resources" + File.separator + "upload" + File.separator;
 
 			File file = new File(path + vo.getDsfile());
 			vo.getFile1().transferTo(file);
 		}
 	}
+
 
 	 
 

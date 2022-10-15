@@ -17,30 +17,26 @@
 <!-- <meta name="twitter:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">
     <meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg"> -->
 <link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/event_page.css">
- 
-
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/event_page.css"> 
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/tag_page.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
+
  
  
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
 <body>
-	<iframe src="http://localhost:9000/dmu/header.do" width="100%"
-		height="160px" scrolling="no" frameborder=0></iframe>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
+	<div style="width:100%; height:17vh; color:transparent">헤더</div>
 
-
-	<div class="content">
-
-		<form name="ticket_exhibtionFrom" action="ticketReservationCheck.do" method="post">
-		
-		 
  
 			<main>
 	<div class="root-container">
@@ -88,8 +84,7 @@
 										</span>
 										<div data-v-e3917d8a="" class="btn-program-visual">
 											<div data-v-26e42198="" data-v-e3917d8a="" class="btn-area">
-												<button data-v-26e42198="" id="btn49" type="button"
-													class="secondary small">자세히 보기</button>
+												<a href="http://localhost:9000/dmu/event_page_det.do"><button data-v-26e42198="" id="btn49" type="button" class="secondary small">자세히 보기</button></a>
 											</div>
 											<!---->
 										</div>
@@ -131,18 +126,18 @@
 						<div data-v-e3917d8a="" class="container" id="js-load" class="main">
 							<ul data-v-e3917d8a="" class="program-list">
 								
-								<li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
-									href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
-											<img data-v-2fed1a9a="" data-v-e3917d8a=""
-												src="https://cdn.daelimmuseum.org/Program/Event/List/C/202208/20220823193304329001.jpg"
-												alt="[선셋 라이브] with poclanos : 결(KYUL)" style="">
-										</div>
-										<div data-v-e3917d8a="" class="info">
-											<span data-v-e3917d8a="" class="place">디뮤지엄</span><strong
-												data-v-e3917d8a="" class="title">[선셋 라이브] with
-												poclanos : 결(KYUL)</strong>
-										</div></a></li>
-										
+								<c:forEach var="vo" items="${list}">
+									<li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
+										href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
+												<img data-v-2fed1a9a="" data-v-e3917d8a=""
+													src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"
+													alt="${vo.dtitle }" style="">
+											</div>
+											<div data-v-e3917d8a="" class="info">
+												<span data-v-e3917d8a="" class="place">${vo.dplace }</span><strong
+													data-v-e3917d8a="" class="title"> ${vo.dtitle }</strong>
+											</div></a></li>
+								</c:forEach>
 								 
 							</ul>
 							<div data-v-e3917d8a="" class="btn-program-more" >
@@ -157,7 +152,8 @@
 		</div>
 	</div>
 </main>
-		</form>
+		 
+ 
 
 		<button class="goto-top">상단으로 이동</button>
 	</div>	 
@@ -172,7 +168,7 @@
 	<script type="text/javascript"
 		src="/js/chunk-vendors.85a954b2b4f1348cc700.js"></script>
 	<script type="text/javascript" src="/js/index.85a954b2b4f1348cc700.js"></script>
-	<iframe src="footer.do" width="100%" height="550px" scrolling="no" frameborder=0></iframe>
+<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 
 </body>
 </html>

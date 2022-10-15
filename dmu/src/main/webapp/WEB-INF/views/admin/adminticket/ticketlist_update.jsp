@@ -14,6 +14,8 @@
 <!-- <meta name="twitter:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">
     <meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg"> -->
 <link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
@@ -68,12 +70,12 @@
 				</ul>
 			</div>
 
-<div data-v-25f87e60="" class="container">
+<div data-v-25f87e60="" class="container write">
 <div data-v-8ed31374="" data-v-25f87e60="" class="reservation-area">
 	<!---->
 <div data-v-8ed31374="" class="left">
 
-	<div data-v-8ed31374="" class="img-ticket">
+	<div data-v-8ed31374="" class="img-ticket write">
 	<ul>
 		<li>
 			<label>파일첨부</label>
@@ -92,7 +94,8 @@
 	</div>
 	
 	<div data-v-8ed31374="" class="title-ticket">
-		<h2 data-v-8ed31374="" class="title"><input type="text" name="dtitle" id="dtitle" value="${vo.dtitle }"></h2>
+		<h2 data-v-8ed31374="" class="title">제목</h2>
+		<input type="text" name="dtitle" id="dtitle" value="${vo.dtitle }">
 			<span data-v-8ed31374="" class="explan"> </span>
 	</div>
 	

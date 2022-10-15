@@ -16,6 +16,8 @@
 <!-- <meta name="twitter:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">
     <meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg"> -->
 <link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
@@ -147,7 +149,7 @@
 		 <input type="hidden" name="rtotal" id="rtotal" value="">  
 		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
 		 <input type="hidden" name="rallprice" id="rallprice" value=""> 
-		 <input type="hidden" name="mid" id="mid" value="mmww6443"> 
+ 		 <input type="hidden" name="mid" id="mid" value=${ sessionScope.member.mid }> 
 		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
 		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
 		 
@@ -390,8 +392,6 @@
 	<script type="text/javascript"
 		src="/js/chunk-vendors.85a954b2b4f1348cc700.js"></script>
 	<script type="text/javascript" src="/js/index.85a954b2b4f1348cc700.js"></script>
-	<iframe src="footer.do" width="100%" height="550px" scrolling="no"
-		frameborder=0></iframe>
 
 </body>
 </html>

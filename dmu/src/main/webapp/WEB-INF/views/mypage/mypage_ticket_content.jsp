@@ -32,6 +32,10 @@
 				});
 			}
 		});
+		
+		/*** content size ****/
+		let height = $(".popup_refund").height() - $(".refund_title").outerHeight() - $(".refund_btn_list").outerHeight();
+		$(".refund_content").height(height);
 	});
 </script>
 <style>
@@ -80,9 +84,6 @@
 					</div>
 				</aside>
 
-				<style>
-					
-				</style>
 				<%-- 마이페이지 content --%>
 				<div class="sub-contents">
 					<div class="page-title" style = "margin: 10px 0 0 0;">
@@ -127,8 +128,6 @@
 						</div>
 					</div>
 					
-					<style>
-					</style>
 					<%-- 결제 정보 --%>
 					<div class = "payment" style="margin:65px 0;">
 						<div class = "payment_information">

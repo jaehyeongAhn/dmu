@@ -6,6 +6,8 @@
 <head>
 <meta charset="utf-8">
 <link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
@@ -53,7 +55,8 @@
 								<div class = "joinContainer">
 									<div class = "content">
 										<div class = "container">
-											<img id="deleteimg" src = "http://localhost:9000/dmu/resources/images/join_ok.png">
+											<img id="deleteimg" src = "http://localhost:9000/dmu/resources/images/join_ok.png" 
+												style="width:150px; padding:10px; margin:20px;">
 										<h3>버튼을 누르면 삭제가 완료됩니다.</h3>
 												<div data-v-8ed31374="" class="use-info-ticket">
 													<div data-v-26e42198="" data-v-8ed31374="" class="btn-area">

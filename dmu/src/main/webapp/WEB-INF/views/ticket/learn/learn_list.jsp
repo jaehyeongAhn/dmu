@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>dmu</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet"  href="http://localhost:9000/dmu/resources/css/tiket.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
@@ -51,7 +53,7 @@
 						output +="<ul data-v-41f56098='' class='flag'>"
 						output +="<li data-v-41f56098=''>"+ aj.dnum + "회성 교육</li>"
 						output +="<li data-v-41f56098=''>"+ aj.dplace + "</li>"
-						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/learn.do?did="+aj.did+"' class='title'>" +aj.dtitle +"</a>"
+						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/learn.do?did= "+aj.did+" ' class='title'>" +aj.dtitle +"</a>"
 						
 						output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
 						output +="</ul>"
@@ -124,18 +126,18 @@
 <div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
 			<ul data-v-6d324aa0="">
 				<li data-v-6d324aa0="" class="on">
-					<span data-v-6d324aa0="" class="no">01</span>
-					<span data-v-6d324aa0="" class="txt">.티켓 선택</span>
+					<span data-v-6d324aa0="" class="no">01</span>.
+					<span data-v-6d324aa0="" class="txt">티켓 선택</span>
 				</li>
 				
 				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">02</span>
-					<span data-v-6d324aa0="" class="txt">.관람일/인원 선택</span>
+					<span data-v-6d324aa0="" class="no">02</span>.
+					<span data-v-6d324aa0="" class="txt">관람일/인원 선택</span>
 				</li>
 				
 				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">03</span>
-					<span data-v-6d324aa0="" class="txt">.결제</span>
+					<span data-v-6d324aa0="" class="no">03</span>.
+					<span data-v-6d324aa0="" class="txt">결제</span>
 				</li>
 			</ul>
 		</div>
@@ -200,7 +202,6 @@
 
 		<span data-v-41f56098="" class="total">총 <strong>${dbCount}</strong>건</span>
 			<ul data-v-41f56098="" class="order">
-			
 				<li data-v-41f56098="" class="on">
 					<a data-v-41f56098="" href="javascript:void(0);">시작일 순</a>
 				</li>

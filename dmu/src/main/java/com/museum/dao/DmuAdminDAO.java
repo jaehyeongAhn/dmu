@@ -87,6 +87,11 @@ public class DmuAdminDAO extends DBConn{
 		return sqlSession.selectOne("mapper.admin.totalCount_admin");
 	}
 	
+	public int totalCount_reservation() {
+
+		return sqlSession.selectOne("mapper.admin.totalCount_reservation");
+	}
+	
 	/*
 	 * adminpage_member_content : 어드민 페이지 회원 상세내용
 	 */
