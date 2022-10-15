@@ -32,11 +32,12 @@ public class ExhibitionController {
 	 */
 	@RequestMapping(value="/exhibition.do", method=RequestMethod.GET)
 	public ModelAndView exhibition(String did) {
-		System.out.println(did);
+		 
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
- 	 
+		vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
+		vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		mv.addObject("vo",vo);
 		mv.setViewName("ticket/exhibition/exhibition");
 		
@@ -48,7 +49,8 @@ public class ExhibitionController {
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
- 	 
+		vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
+		vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		mv.addObject("vo",vo);
 		mv.setViewName("ticket/learn/learn");
 		
@@ -63,7 +65,8 @@ public class ExhibitionController {
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
- 	 
+		vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
+		vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		mv.addObject("vo",vo);
 		mv.setViewName("ticket/event/event");
 		

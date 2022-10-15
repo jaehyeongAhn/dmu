@@ -143,7 +143,7 @@
 
 	<div class="content">
 
-		<form name="ticket_exhibtionFrom" action="ticketReservationCheck.do" method="post">
+	 
 		
 		 <input type="text" name="did" value="${vo.did }"> 
 		 <input type="text" name="rprice" id="rprice" value=${vo.dprice }> 
@@ -236,18 +236,18 @@
 											</div>
 											<div data-v-8ed31374="" class="right">
 												<ul data-v-8ed31374="" class="ticketing-list-area">
-													<li data-v-8ed31374="" class="item-ticketing">
+													<li data-v-8ed31374="" class="item-ticketing" >
 														<div data-v-8ed31374="" name="btn_toggle"
 															id="data-v-8ed31374_btn" role="button"
 															class="title-area btn-toggle on">관람일</div>
-														<div data-v-8ed31374="" class="field-area"></div>
+														<div data-v-8ed31374="" class="field-area"  ></div>
 														<div data-v-8ed31374="" class="datepicker_wrap"></div>
 														<div class="vdp-datepicker small"
 															allowed-to-show-view="function() {}"></div>
 														<div class=""></div> 
 														
 														<!-- 달력 코딩 -->
-														<div id="calendar" class="ticketing-list-area"></div>
+														<div id="calendar" class="ticketing-list-area" ></div>
 													   
 														
 														
@@ -255,9 +255,9 @@
 														<div data-v-8ed31374="" class="decision-area">
 															2022.08.31</div></li> -->
 													<li data-v-8ed31374="" class="item-ticketing">
-														<div data-v-8ed31374="" id="btn_toggle" role="button"
+														<div data-v-8ed31374="" id="btn_toggle1" role="button"
 															class="title-area btn-toggle on">회차</div>
-														<div data-v-8ed31374="" class="field-area">
+														<div data-v-8ed31374="" class="field-area" id="content1" style="display: block;">
 															<ul data-v-8ed31374="" class="round-list">
 																<li data-v-8ed31374="" class="">
 																	<button data-v-8ed31374="" type="button" disabled="disabled" class="round-selection" id="entertime"  onclick="myFunction()">
@@ -355,9 +355,8 @@
 																</ul>
 																<div data-v-26e42198="" data-v-8ed31374=""
 																	class="btn-area btn-reservation">
-																 
 																 <a  href="http://localhost:9000/dmu/ticket_reservation.do?mid=${ vo.getMid()}" target="_parent"> 
-																		<button data-v-26e42198="" id="btn32" type="submit" class="primary" disabled>예매하기</button></a>
+																		<button data-v-26e42198="" id="btn32" type="button" class="primary" disabled>예매하기</button></a>
 																		
 																 <!--	 <div data-v-9a980cc6="" data-v-9dea2aa6="" id="popup" class="layer-dimmed all-terms-pop is-footer" style="  visibility:hidden ;">
  
@@ -414,7 +413,7 @@
 					</div>
 				</div>
 			</main>
-		</form>
+		 
 
 		<button class="goto-top">상단으로 이동</button>
 	</div>

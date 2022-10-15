@@ -73,10 +73,10 @@ public class TicketReservationController {
 	}
 
 	
-	/* ticketCompletenCheck.do 페이지 호출 */
+	/* ticketCompleteCheck.do 페이지 호출 */
 	  
 	   
-	  @RequestMapping(value="/ticketCompletenCheck.do", method=RequestMethod.POST)
+	  @RequestMapping(value="/ticketCompleteCheck.do", method=RequestMethod.POST)
 	  public ModelAndView ticketCompletenCheck(DmuReJoinVO vo) { 
 		  ModelAndView mv =  new ModelAndView();
 	  

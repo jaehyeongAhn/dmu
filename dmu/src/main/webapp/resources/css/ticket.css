@@ -16697,9 +16697,7 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 }
 
 .ticketing-list-area .title-area.btn-toggle.on[data-v-8ed31374] {
-	background:
-		url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="17.414" height="10.121" viewBox="0 0 17.414 10.121"%3E%3Cpath d="m726.813 5560.342 8 8-8 8" transform="rotate(-90 -2411.704 3147.932)" style="fill:none;stroke:%23111;stroke-width:2px"/%3E%3C/svg%3E')
-		center center no-repeat;
+	 
 	background-position: center right 2.5rem;
 }
 
