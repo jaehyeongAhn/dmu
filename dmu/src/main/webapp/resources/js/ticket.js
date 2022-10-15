@@ -59,11 +59,11 @@ $(document).ready(function(){
 				return false;
 			
 				
-			}else if($("#dcode").val() =="learn"&& $("#dtarget").val() =="default"){
+			}else if($("#dcode").val() =="learn" && $("#dtarget").val() =="default"){
 				alert("대상을 선택해주세요")
 				$("#dtarget").focus();
 				return false;
-			}else if($("#dcode").val() !="learn"&& $("#dtarget").val() !="default"){
+			}else if($("#dcode").val() !="learn"  && $("#dtarget").val() !="default"){
 				alert("learn일때만 대상을 선택할수 있습니다.")
 				$("#dtarget").focus();
 				return false;
