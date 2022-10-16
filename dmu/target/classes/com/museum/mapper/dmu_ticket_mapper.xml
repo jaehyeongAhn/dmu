@@ -64,7 +64,7 @@
 	 <!-- ticket reservationContent  -->
 	 <select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
 		select dt.did, dt.dtitle,dt.dplace, to_char(dt.dprice,'999,999') dpricech ,dr.rdate, to_char(dr.rdate, 'YY-MM-DD') rdateda ,
-		dr.RTOTAL, to_char(dr.rallprice,'999,999') rallpricech, dm.mid, dr.rprice         from dmu_ticket DT , dmu_reservation DR , dmu_member DM
+		dr.RTOTAL, to_char(dr.rallprice,'999,999') rallpricech, dr.rallprice, dm.mid, dr.rprice         from dmu_ticket DT , dmu_reservation DR , dmu_member DM
 		where dm.mid = dr.mid and dt.did = dr.did  and dr.rid= (select rid from (select rid from dmu_reservation order by rokdate desc) where rownum = 1)
 	 </select>
 	 

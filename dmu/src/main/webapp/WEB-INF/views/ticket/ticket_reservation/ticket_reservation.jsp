@@ -45,7 +45,7 @@
 		 <input type="text" name="rdate" id="rdate" value="${vo.rdateda }"> 
 		 <input type="text" name="rtotal" id="rtotal" value="${vo.rtotal }">  
 		 <input type="text" name="dplace" id="dplace" value=${vo.dplace }> 
-		 <input type="text" name="rallprice" id="rallprice" value=""> 
+		 <input type="text" name="rallprice" id="rallprice" value="${vo.rallprice }"> 
  		 <input type="text" name="mid" id="mid" value=${ sessionScope.member.mid }> 
 		 <input type="text" name="pdate" id="pdate" value=""> 
 		 <input type="text" name="pcoin" id="pcoin" value="카드">  

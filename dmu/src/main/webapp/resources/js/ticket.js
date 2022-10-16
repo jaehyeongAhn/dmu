@@ -167,36 +167,53 @@ $(document).ready(function(){
 	            return false;
         	}else if($("#rtotal").val() != ""){		 	
         	    $("#btn32").prop("disabled", !this.checked); 
-        	    $("#rallprice").val($("#rprice").val()*$("#rtotal").val());      	    
+        	     $("#rallprice").val($("#rprice").val()*$("#rtotal").val());      	    	    
 	        }else{ 	 	
 		 
 			 }
 			 
 		});	
-		 
- 	/*********************
-	 예매하기 클릭 시 비로그인일때 유효성 체크
-	**********************/
-	$("#btn32").click(function(){
-		 if($("#mid").val() == ""){
-      	  alert("로그인 후 예매 가능합니다.")
-       	$(location).attr("href","http://localhost:9000/dmu/login.do");
-            return false;   
-		}else {			 	
-			ticket_reservationFrom.submit();
-		 }			 
-	});		 
-					
-/***********03.결제***********/		
-	/*********************
-	예약 티켓 정보에 대한 동의 후 결제하기 클릭 이벤트
-	**********************/
-	$("#check287").click(function(){
-		$( '.check287' ).prop( 'checked', this.checked );
-		$("#btn289").prop("disabled", !this.checked);
-		$("#rallprice").val($("#rprice").val()*$("#rtotal").val());        	
-	});
 		
+		/*********************
+		 관람인원 변경시 체크박스 해제
+		**********************/
+		$("#countpeople").click(function(){		 
+			$("input:checkbox[id='check30']").prop("checked", false );				 
+		}); 
+		
+		$("#increaseQuantity").click(function(){		 
+			$("input:checkbox[id='check30']").prop("checked", false );				 
+		}); 
+		
+		
+		
+			
+	 	/*********************
+		 예매하기 클릭 시 비로그인일때 유효성 체크
+		**********************/
+		$("#btn32").click(function(){
+			 if($("#mid").val() == ""){
+	      	  alert("로그인 후 예매 가능합니다.")
+	       	$(location).attr("href","http://localhost:9000/dmu/login.do");
+	            return false;   
+			}else {			 	
+				ticket_reservationFrom.submit();
+			 }			 
+		});		
+		 
+ 	
+		/***********03.결제***********/		
+		/*********************
+		예약 티켓 정보에 대한 동의 후 결제하기 클릭 이벤트
+		**********************/
+		$("#check287").click(function(){
+	 
+		 
+			$( '.check287' ).prop( 'checked', this.checked );
+			$("#btn289").prop("disabled", !this.checked);
+			$("#rallprice").val($("#rprice").val()*$("#rtotal").val());      		 
+		});
+			
 					
 					
 		 
