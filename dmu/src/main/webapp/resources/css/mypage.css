@@ -639,6 +639,13 @@
 	div.date-area input:focus {
 		outline: none;
 	}
+	div.input-area.date-area:first-child::after {
+	    content: "~";
+	    display: flex;
+	    align-items: center;
+	    text-indent: -100%;
+	    /* margin-right: 10px; */
+	}
 	img.ui-datepicker-trigger {
 	    position: relative;
 	    left : -45px;

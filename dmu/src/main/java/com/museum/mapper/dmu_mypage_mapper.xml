@@ -5,6 +5,33 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace = "mapper.mypage">
+
+	<!-- mypage inquiry insert -->
+	<insert id = "inquiry_insert" parameterType = "com.museum.vo.DmuInquiryVO">
+		INSERT INTO DMU_INQUIRY 
+		VALUES('iq_' || SEQU_DMU_INQUIRY.NEXTVAL, #{mid}, #{iqcategory}, #{iqtype}, #{iqtitle}, #{iqcontent}, 'n', SYSDATE)   
+	</insert>
+	
+	<!-- mypage inquiry totalCount -->
+	<select id = "inquiry_totalCount" parameterType = "java.lang.String" resultType = "int">
+		SELECT COUNT(*) FROM DMU_INQUIRY WHERE MID = #{mid}
+	</select>
+	
+	<!-- mypage inquiry list -->
+	<select id = "inquiry_list" parameterType = "map" resultType = "com.museum.vo.DmuInquiryVO">
+		SELECT RNO, IQID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, TO_CHAR(IQDATE, 'YYYY-MM-DD') IQDATE
+		FROM (SELECT ROWNUM RNO, IQID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, IQDATE
+		FROM (SELECT IQID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, IQDATE
+		     FROM DMU_INQUIRY WHERE MID = #{mid} ORDER BY IQDATE DESC))
+		WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id = "inquiry_content" parameterType = "java.lang.String" resultType = "com.museum.vo.DmuInquiryVO">
+		SELECT IQID, IQCATEGORY, IQTYPE, IQTITLE, IQCONTENT, IQANSWER, TO_CHAR(IQDATE, 'YYYY-MM-DD') IQDATE
+		FROM DMU_INQUIRY WHERE IQID = #{iqid}
+	</select>
+
+	<!-- member content -->
 	<select id = "member_info" parameterType = "java.lang.String" resultType = "com.museum.vo.DmuMemberVO">
 		SELECT MID,
 			CONCAT(SUBSTR(MID, 1, 4), '***') MID_SECURITY,
@@ -20,6 +47,20 @@
 		WHERE MID = #{mid}
 	</select>
 	
+	<!-- member info update -->
+	<update id = "member_info_update" parameterType = "map">
+		<choose>
+			<when test = 'type == "password"'>
+				UPDATE DMU_MEMBER SET PASS = #{vo.pass} WHERE MID = #{vo.mid}
+			</when>
+			<when test = 'type == "address"'>
+				UPDATE DMU_MEMBER SET ZONECODE = #{vo.zonecode}, ADDR1 = #{vo.addr1}, ADDR2 = #{vo.addr2} 
+				WHERE MID = #{vo.mid}
+			</when>
+		</choose>
+	</update>
+	
+	<!-- member unregister -->
 	<update id = "member_unregister" parameterType = "java.lang.String">
 		UPDATE DMU_MEMBER SET UNREGISTER = 'n' WHERE MID = #{mid}
 	</update>

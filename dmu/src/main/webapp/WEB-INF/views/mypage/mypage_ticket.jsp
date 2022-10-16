@@ -118,7 +118,7 @@
 												<strong><a class="" href="mypage_ticket.do" style = "color : black;">티켓예매 목록</a></strong>
 											</li>
 											<li class="">
-												<a class="" href="mypage_inquire.do">나의 문의</a>
+												<a class="" href="mypage_inquiry.do">나의 문의</a>
 											</li>
 										</ul>
 									</div>
@@ -187,7 +187,6 @@
 														<a class=""></a>
 														<!---->
 													</div>
-													<span> ~ </span>
 													<div class="input-area date-area">
 														<input type="text" id="datepicker2"readonly>
 														<a class=""></a>

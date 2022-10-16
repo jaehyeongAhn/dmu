@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,12 +11,39 @@
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/mypage.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/jquery-ui.css">
+<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 	$(document).ready(function(){
+		
+		//페이징 리스트 출력
+		var pager = jQuery('#ampaginationsm').pagination({
+		
+		    maxSize: 7,	    		// max page size
+		    totals: '${dbCount}',	// total rows	
+		    page: '${rpage}',		// initial page		
+		    pageSize: '${pageSize}',	// max number items per page
+		
+		    // custom labels		
+		    lastText: '&raquo;&raquo;', 		
+		    firstText: '&laquo;&laquo;',		
+		    prevText: '&laquo;',		
+		    nextText: '&raquo;',
+				     
+		    btnSize:'sm'	// 'sm'  or 'lg'		
+		});
+		
+		//페이징 번호 클릭 시 이벤트 처리
+		jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+	           $(location).attr('href', "http://localhost:9000/dmu/mypage_inquiry.do?rpage="+e.page);         
+	    });
+		
+		
 		//문의 사항 작성하기
 		$(".review_write_btn").click(function(){
 			$(".check_join").remove();
@@ -35,6 +64,7 @@
 		
 		//문의 내역 상세 보기
 		$("div.inquire_title .detail").click(function(){
+			//팝업창 띄우기
 			$("body").css("overflow", "hidden");
 			$(".popup_inquire_detail_form").scrollTop(0);
 			$(".background_inquire_detail").addClass("show");
@@ -44,8 +74,46 @@
 				$(".background_inquire_detail").removeClass("show");
 				$(".window_inquire_detail").removeClass("show");
 			});
+			
+			//문의 상세 정보 불러오기
+			let iqid = $(this).parent().parent().prev().val();
+			$.ajax({
+				type : "post",
+				data : {
+					iqid : iqid
+				},
+				url : "mypage_inquiry_content.do",
+				success : function(result) {
+					let data = JSON.parse(result);
+					let inquiry_answer_status = $(".popup_inquire_detail_content div.inquiry_answer p.inquiry_answer_status");
+					
+					if(data.iqanswer == "n"){
+						inquiry_answer_status.css("display", "none");
+					}else{
+						inquiry_answer_status.css("display", "flex");
+					}
+					$(".popup_inquire_detail_content div.category_list span.category > span.second").text(data.iqcategory);
+					$(".popup_inquire_detail_content div.category_list span.first:nth-child(2) span.second").text(data.iqtype);
+					$(".popup_inquire_detail_content div.inquire_write_date span").text(data.iqdate);
+					$(".popup_inquire_detail_content div.inquire_write_content p").html(data.iqtitle);
+					$(".popup_inquire_detail_content div.inquire_write_content div").html(data.iqcontent);
+				},
+				error : function(e){
+					alert("정보를 불러올 수 없습니다.");
+				}
+			});
 		});
-		//<button type = "button" class = "review_ok
+
+		//문의 사항 등록 안내
+		let inquiry_write_result = "${inquiry_write_result}";
+		if(inquiry_write_result == "ok"){
+			$(".background_inquiry_result").addClass("show_result");
+			$(".window_inquiry_result").addClass("show_result");
+			$(".inquiry_result_ok").click(function(){
+				$(".background_inquiry_result").removeClass("show_result");
+				$(".window_inquiry_reuslt").removeClass("show_result");
+			});
+		}
 		
 		
 		
@@ -130,6 +198,8 @@
 				$(".popup_inquire_write").scrollTop(content_scroll);
 				$("div.write_inquire_form .iqcontent").focus();
 				return false;
+			}else{
+				inquireWriteForm.submit();
 			}
 		});
 		
@@ -164,7 +234,7 @@
 												<a class="" href="mypage_ticket.do">티켓예매 목록</a>
 											</li>
 											<li class="">
-												<strong><a class="" href="mypage_inquire.do" style = "color : black;">나의 문의</a></strong>
+												<strong><a class="" href="mypage_inquiry.do" style = "color : black;">나의 문의</a></strong>
 											</li>
 										</ul>
 									</div>
@@ -192,6 +262,7 @@
 						border-bottom: 2px solid black;
 						margin : 4px 0;
 						padding : 0 0 8px 0;
+					    width: 1076px;
 					}
 				</style>
 				<%-- 마이페이지 content --%>
@@ -293,47 +364,73 @@
 					<div class="contents">
 						<div style = "width: 1076px; box-sizing: border-box;">
 							<div class = "inquire">
-								<div class = "inquire_content">
-									<div class = "inquire_title">
-										<div>
-											<span><strong>문의 등록일</strong><span style = "margin-left : 10px;">2022.09.27</span></span>
+								<c:choose>
+									<c:when test = "${ fn:length(list) == 0 }">
+										<div class="no-result_purchase" style = "border-top:none;">
+											<div class="no-result">
+												<p>문의 하신 내역이 없습니다.</p>
+											</div>
 										</div>
-										<a href = "#" class = "detail">상세보기</a>
-									</div>
-									<div class = "inquire_content_list">
-										<div class = "inquire_content_list_information">
-											<span class = "category first">미술관<span class = "second">디뮤지엄</span></span>
-											<span class = "first">문의유형<span class = "second"> 전시회/관람</span></span>
-											<h2>디뮤지엄의 정확한 위치가 어디인지 알려주실 수 있으신가요?</h2>
-										</div>
-										<div class = "inquire_content_list_answer">
-											<span>답변<br>완료</span>
-										</div>
-									</div>
-								</div>
-								<div class = "inquire_content">
-									<div class = "inquire_title">
-										<div>
-											<span><strong>문의 등록일</strong><span style = "margin-left : 10px;">2022.09.27</span></span>
-										</div>
-										<a href = "#" class = "detail">상세보기</a>
-									</div>
-									<div class = "inquire_content_list">
-										<div class = "inquire_content_list_information">
-											<span class = "category first">미술관<span class = "second">디뮤지엄</span></span>
-											<span class = "first">문의유형<span class = "second"> 전시회/관람</span></span>
-											<h2>디뮤지엄의 정확한 위치가 어디인지 알려주실 수 있으신가요?</h2>
-										</div>
-										<div class = "inquire_content_list_answer" style = "background:#9b9b9b;">
-											<span>답변<br>대기</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="no-result_purchase">
-								<div class="no-result">
-									<p>문의 하신 내역이 없습니다.</p>
-								</div>
+									</c:when>
+									<c:otherwise>
+										<ul style="list-style: none;">
+											<c:forEach var = "list" items = "${ list }">
+												<li>
+													<input type = "hidden" value = "${ list.iqid }" class = "iqid">
+													<div class = "inquire_content">
+														<div class = "inquire_title">
+															<div>
+																<span><strong>문의 등록일</strong><span style = "margin-left : 10px;">${ list.iqdate }</span></span>
+															</div>
+															<a href = "#" class = "detail">상세보기</a>
+														</div>
+														<div class = "inquire_content_list">
+															<div class = "inquire_content_list_information">
+																<span class = "category first">미술관<span class = "second">${ list.iqcategory }</span></span>
+																<span class = "first">문의유형<span class = "second"> ${ list.iqtype }</span></span>
+																<h2>${ list.iqtitle }</h2>
+															</div>
+															<c:choose>
+																<c:when test = "${ list.iqanswer == 'y' }">
+																	<div class = "inquire_content_list_answer">
+																		<span>답변<br>완료</span>
+																	</div>
+																</c:when>
+																<c:otherwise>
+																	<div class = "inquire_content_list_answer" style = "background:#9b9b9b;">
+																		<span>답변<br>대기</span>
+																	</div>
+																</c:otherwise>
+															</c:choose>
+														</div>
+													</div>
+												</li>
+											</c:forEach>
+											<!-- <li>
+												<div class = "inquire_content">
+													<div class = "inquire_title">
+														<div>
+															<span><strong>문의 등록일</strong><span style = "margin-left : 10px;">2022.09.27</span></span>
+														</div>
+														<a href = "#" class = "detail">상세보기</a>
+													</div>
+													<div class = "inquire_content_list">
+														<div class = "inquire_content_list_information">
+															<span class = "category first">미술관<span class = "second">디뮤지엄</span></span>
+															<span class = "first">문의유형<span class = "second"> 전시회/관람</span></span>
+															<h2>디뮤지엄의 정확한 위치가 어디인지 알려주실 수 있으신가요?</h2>
+														</div>
+														<div class = "inquire_content_list_answer" style = "background:#9b9b9b;">
+															<span>답변<br>대기</span>
+														</div>
+													</div>
+												</div>
+											</li> -->
+										</ul>
+										
+										<div id="ampaginationsm" style="text-align:center;"></div>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>
@@ -374,12 +471,12 @@
 		}
 		div.background_inquire.show {
 			opacity : 1;
-			z-index : 10;
+			z-index : 200;
 			transition : all 0.3s;
 		}
 		div.background_inquire.show div.popup_inquire {
 			transform : translate(-50%, -50%);
-			z-index : 10;
+			z-index : 200;
 			transition : all 0.3s;
 		}
 		
@@ -527,12 +624,12 @@
 				</div>
 				<div class = "popup_inquire_write">
 					<div class = "popup_inquire_write_form">
-						<form name = "inquireWriteForm" action = "#" method = "post">
+						<form name = "inquireWriteForm" action = "mypage_inquiry_write.do" method = "post">
 							<p class = "title_comment">문의하기</p>
 							<p class = "comment">표시는 필수 입력 항목입니다.</p>
 							<div class = "write_form">
 								<label>미술관</label>
-								<select name ="" class = "inquire_category">
+								<select name ="iqcategory" class = "inquire_category">
 									<option value = "default">미술관을 선택해주세요.</option>
 									<option value = "디뮤지엄">디뮤지엄</option>
 									<option value = "대림미술관">대림미술관</option>
@@ -540,7 +637,7 @@
 									<option value = "뮤지엄샵">뮤지엄샵</option>
 								</select>
 								<label>문의 유형</label>
-								<select name ="" class = "inquire_type">
+								<select name ="iqtype" class = "inquire_type">
 									<option value = "default">문의 유형을 선택해주세요.</option>
 									<option value = "회원가입 · 정보변경">회원가입 · 정보변경</option>
 									<option value = "전시">전시</option>
@@ -554,12 +651,12 @@
 									<ul>
 										<li>
 											<label>제목</label>
-											<input type = "text" name = "" class = "iqtitle"
+											<input type = "text" name = "iqtitle" class = "iqtitle"
 												placeholder = "제목은 50글자 내로 입력해주세요.">
 										</li>
 										<li>
 											<label>내용</label>
-											<textarea placeholder="문의 내용을 입력해주세요" class = "iqcontent" maxlength = "500"></textarea>
+											<textarea name = "iqcontent" placeholder="문의 내용을 입력해주세요" class = "iqcontent" maxlength = "500"></textarea>
 										</li>
 									</ul>
 								</div>
@@ -604,14 +701,14 @@
 			overflow : hidden;
 			z-index : -1;
 		}
-		div.background_inquire_detail.show{
+		div.background_inquire_detail.show {
 			opacity : 1;
-			z-index : 10;
+			z-index : 200;
 			transition : all 0.3s;
 		}
 		div.background_inquire_detail.show div.popup_inquire_detail {
 			transform : translate(-50%, -50%);
-			z-index : 10;
+			z-index : 200;
 			transition : all 0.3s;
 		}
 		
@@ -627,14 +724,19 @@
 		    /* height : 52.5vh; */
 		    box-sizing : border-box;
 		}
-		div.popup_inquire_detail_content > p:first-child {
+		div.popup_inquire_detail_content div.inquiry_answer {
+			display : flex;
+			justify-content : space-between;
+			align-items : center;
+		}
+		div.popup_inquire_detail_content div.inquiry_answer > p:first-child {
 			display : flex;
 			align-items : center;
 			font-size : 20px;
 			font-weight : 700;
-		    margin-bottom: 25px;
+		    margin-bottom: 20px;
 		}
-		div.popup_inquire_detail_content > p:first-child::before {
+		div.popup_inquire_detail_content div.inquiry_answer > p:first-child::before {
 			content : "";
 			width : 20px;
 			height : 20px;
@@ -643,6 +745,32 @@
 		    background-repeat: no-repeat;
 		    background-size: contain;
 		    margin-right : 5px;
+		}
+		div.popup_inquire_detail_content div.inquiry_answer > p.inquiry_answer_status {
+		    margin-bottom: 20px;
+		    font-size: 20px;
+		    font-weight: 600;
+		    color: white;
+		    letter-spacing: -0.08rem;
+		    display: flex;
+    		align-items: center;
+		    background: black;
+		    padding: 2px 21px;
+		    clip-path: polygon(5% 0%, 100% 0%, 100% 100%, 0% 100%);
+		    display : none;
+		}
+		div.popup_inquire_detail_content div.inquiry_answer > p.inquiry_answer_status::after {
+		    content: "";
+		    width: 20px;
+		    height: 20px;
+		    display: flex;
+		    align-items: center;
+		    background-image: url(http://localhost:9000/dmu/resources/images/join_ok.png);
+		    background-repeat: no-repeat;
+		    background-size: contain;
+		    background-position : 50% 50%;
+		    filter : invert(1);
+		    margin-left : 5px;
 		}
 		div.popup_inquire_detail_content div.category_list {
 			margin : 10px 0;
@@ -672,6 +800,7 @@
 		div.popup_inquire_detail_content div.inquire_write_content div {
 			border: 0.5px solid #dbdbdb;
     		padding: 15px;
+    		line-height : 22px;
 		}
 		
 		div.inquire_detail_button_list {
@@ -708,38 +837,95 @@
 				</div>
 				<div class = "popup_inquire_detail_form">
 					<div class = "popup_inquire_detail_content">
-						<p>문의 내역</p>
+						<div class = "inquiry_answer">
+							<p>문의 내역</p>
+							<p class = "inquiry_answer_status">답변 완료</p>
+						</div>
 						<div class = "category_list">
-							<span class = "category first">미술관<span class = "second">디뮤지엄</span></span>
-							<span class = "first">문의유형<span class = "second"> 전시회/관람</span></span>
+							<span class = "category first">미술관<span class = "second"></span></span>
+							<span class = "first">문의유형<span class = "second"></span></span>
 						</div>
 						<div class = "inquire_write_date">
-							<p>등록일자<span style = "color : black; margin-left : 10px;">2022.09.27</span></p>
+							<p>등록일자<span style = "color : black; margin-left : 10px;"></span></p>
 						</div>
 						<div class = "inquire_write_content">
-							<p>디뮤지엄의 정확한 위치가 어디인지 알려주실 수 있으신가요?</p>
-							<div>
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-								디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.디뮤지엄의 정확한 위치를 알고 싶습니다.
-							</div>
+							<p></p>
+							<div></div>
 						</div>
 					</div>
 				</div>
 				<div class = "inquire_detail_button_list">
 					<button type = "button" class = "inquire_detail_close">닫기</button>
 				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<style>
+		div.background_inquiry_result {
+			position : fixed;
+			top : 0;
+			left : 0;
+			background : rgba(0, 0, 0, 0.7);
+			width : 100%;
+			height : 100vh;
+			opacity : 0;
+			z-index : -1;
+		}
+		div.window_inquiry_result {
+			position : relative;
+			top : 0;
+			left : 0;
+			width : 100%;
+			height : 100vh;
+		}
+		div.popup_inquiry_result {
+			position : absolute;
+			top : 50%;
+			left : 50%;
+			width : 300px;
+			height : 200px;
+			background : white;
+			display : flex;
+			justify-content : center;
+			align-items : center;
+			flex-direction : column;
+			transform : translate(-50%, -30%);
+			z-index : -1;
+		}
+		div.background_inquiry_result.show_result {
+			opacity : 1;
+			z-index : 200;
+			transition : all 0.3s;
+		}
+		div.background_inquiry_result.show_result div.popup_inquiry_result {
+			transform : translate(-50%, -50%);
+			z-index : 200;
+			transition : all 0.3s;
+		}
+		
+		button.inquiry_result_ok {
+		    background: black;
+		    color: white;
+		    width: 50%;
+		    height: 40px;
+		    cursor: pointer;
+		    margin-bottom: -30px;
+		    margin-top: 30px;
+		}
+		button.inquiry_result_ok:hover {
+		    background: white;
+		    color: black;
+		    border : 0.5px solid black;
+		}
+	</style>
+	<!-- 문의 사항 등록 안내 -->
+	<div class = "background_inquiry_result">
+		<div class = "window_inquiry_result">
+			<div class = "popup_inquiry_result">
+				<span style = "letter-spacing: -0.05rem;">문의사항이 정상적으로 등록되었습니다.</span>
+				<button type = "button" class = "inquiry_result_ok">확인</button>
 			</div>
 		</div>
 	</div>

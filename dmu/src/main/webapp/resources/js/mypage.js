@@ -54,6 +54,16 @@ $(document).ready(function(){
 
 		//비밀번호 유효성 체크
 		$("button.member_check").click(function(){
+			member_check_ajax();
+		});//click
+		
+		$("input.passwordCheck").keyup(function(e){
+			if(e.keyCode == 13) {
+				member_check_ajax();
+			}
+		});//key-up
+		
+		function member_check_ajax(){
 			if($(".passwordCheck").val() == ""){
 				warningCheck(true, $("div.myinfo-box div.check_normal_area div.pass_check_area"), "비밀번호를 입력해주세요.");
 			}else{
@@ -75,7 +85,7 @@ $(document).ready(function(){
 					}
 				});//ajax
 			}//if~else
-		});//click
+		}
 		
 		
 		/************************ mypage_member.do **********************************/
@@ -121,12 +131,37 @@ $(document).ready(function(){
 		function member_info_udpate(type){
 			popup_login("변경사항을 저장하시겠습니까?");
 			$("#popup_joinOk").click(function(){
-				$("form").attr({
+				$(".background_join").removeClass("show_join");
+				$(".window_join").removeClass("show_join");
+				
+				$(".type_check").val(type);
+				let formData = $(".mypage_member_form").serialize();
+				$.ajax({
+					type : "post",
+					data : formData,
+					url : "update_info.do",
+					success : function(result){
+						let data = JSON.parse(result);
+						if(data.update_result == "exist"){
+							warningCheck(true, $(".new-pass"), "직전 비밀번호는 사용하실 수 없습니다.");
+							$(".pass").focus();
+							return false;
+						}else if(data.update_result == "success"){
+							popup_login("변경이 완료되었습니다.");
+							$("#popup_joinOk").css("display", "none");
+							$("#popup_joinNo").text("확인");
+							$("#popup_joinNo").click(function() {
+								$(location).attr("href", "http://localhost:9000/dmu/mypage_member.do");
+							});
+						}
+					}
+				});
+				
+				/*$("form").attr({
 					"name" : "updateMemberForm",
 					"action" : "update_info.do"
 				});
-				$(".type_check").val(type);
-				updateMemberForm.submit();
+				updateMemberForm.submit();*/
 			});
 		}
 		
@@ -140,6 +175,9 @@ $(document).ready(function(){
 				}
 			}else{
 				warningCheck(false, $(".new-pass"), "");
+				if($(".passCheck").val() == "") {
+					warningCheck(false, $(".new-pass-check"), "");
+				}
 			}
 		});
 	
