@@ -36,7 +36,9 @@ public class ExhibitionController {
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
- 	 
+		if(vo.getDinformation() != null) {
+			vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
+		}
 		mv.addObject("vo",vo);
 		mv.setViewName("ticket/exhibition/exhibition");
 		
@@ -48,7 +50,9 @@ public class ExhibitionController {
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
- 	 
+		if(vo.getDinformation() != null) {
+			vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
+		}
 		mv.addObject("vo",vo);
 		mv.setViewName("ticket/learn/learn");
 		
@@ -63,7 +67,9 @@ public class ExhibitionController {
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
- 	 
+		if(vo.getDinformation() != null) {
+			vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
+		}
 		mv.addObject("vo",vo);
 		mv.setViewName("ticket/event/event");
 		
