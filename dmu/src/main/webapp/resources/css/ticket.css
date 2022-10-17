@@ -27,11 +27,7 @@ textarea.time_text {
     width: 210px;
 }
 input#file_list {
-<<<<<<< HEAD
-    /* display: none; */
-=======
   /*   display: none; */
->>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
 }
 label[for="file_list"] {
     width: 100%;
