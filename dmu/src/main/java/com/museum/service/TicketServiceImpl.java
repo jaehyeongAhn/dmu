@@ -50,7 +50,7 @@ public class TicketServiceImpl implements TicketService {
 	}
 
 	/**
-	 * calinder 달력 
+	 * calendar 달력 
 	 */
 	@Override
 	public int getInsertDate(DmuReJoinVO vo) {

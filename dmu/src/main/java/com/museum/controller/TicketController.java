@@ -254,7 +254,9 @@ public class TicketController {
 			ModelAndView mv = new ModelAndView();
 			
 			DmuTicketVO vo = ticketService.getContent(did);
-			
+			if(vo.getDinformation() != null) {
+				vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
+			}
 			mv.addObject("vo", vo);
 			mv.setViewName("/admin/adminticket/ticketlist_content");
 			
