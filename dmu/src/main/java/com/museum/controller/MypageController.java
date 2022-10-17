@@ -239,7 +239,6 @@ public class MypageController {
 			}
 		}
 			
-		System.out.println("어디까지 왔나");
 		return gson.toJson(jobject);
 	}
 	

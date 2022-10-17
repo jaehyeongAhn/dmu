@@ -444,4 +444,10 @@ public class AdminController {
 			
 		}
 	
+		
+	/*********************************** 1대1 문의 사항 ***********************************/
+	@RequestMapping(value = "/adminpage_inquiry_list.do", method = RequestMethod.GET)
+	public String adminpage_inquiry() {
+		return "/admin/admin_member/adminpage_inquiry_list";
+	}
 }

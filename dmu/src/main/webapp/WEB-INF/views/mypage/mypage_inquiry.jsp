@@ -19,7 +19,7 @@
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 	$(document).ready(function(){
-		
+
 		//페이징 리스트 출력
 		var pager = jQuery('#ampaginationsm').pagination({
 		
@@ -61,7 +61,7 @@
 				$(".window_inquire").removeClass("show");
 			});
 		});
-		
+
 		//문의 내역 상세 보기
 		$("div.inquire_title .detail").click(function(){
 			//팝업창 띄우기
@@ -371,6 +371,7 @@
 												<p>문의 하신 내역이 없습니다.</p>
 											</div>
 										</div>
+										<div id="ampaginationsm" style="text-align:center;display:none;"></div>
 									</c:when>
 									<c:otherwise>
 										<ul style="list-style: none;">
@@ -427,7 +428,6 @@
 												</div>
 											</li> -->
 										</ul>
-										
 										<div id="ampaginationsm" style="text-align:center;"></div>
 									</c:otherwise>
 								</c:choose>
