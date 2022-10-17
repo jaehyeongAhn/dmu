@@ -233,7 +233,6 @@
 			<ul data-v-41f56098="" class="flag">
 				<li data-v-41f56098="">${vo.dnum}회성 교육</li>
 				<li data-v-41f56098="">${vo.dplace}</li>
-				<li data-v-41f56098="">${vo.dplace}</li>
 				
 			<!---->
 			<!---->

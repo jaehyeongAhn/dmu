@@ -6,7 +6,7 @@ public class DmuTicketVO {
 	
  
 	int rno,dpersonnel, dprice;
-	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate,dtitle2,dentertime,dnum,dpricech;
+	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate,dtitle2,dentertime,dnum,dpricech,mid,rdate,rtime,rtotal,rallprice,rprice;
 
  
 	
@@ -17,6 +17,45 @@ public class DmuTicketVO {
 	}
 	public void setFile1(CommonsMultipartFile file1) {
 		this.file1 = file1;
+	}
+	
+	
+	
+	public String getRprice() {
+		return rprice;
+	}
+	public void setRprice(String rprice) {
+		this.rprice = rprice;
+	}
+	public String getRallprice() {
+		return rallprice;
+	}
+	public void setRallprice(String rallprice) {
+		this.rallprice = rallprice;
+	}
+	public String getRtotal() {
+		return rtotal;
+	}
+	public void setRtotal(String rtotal) {
+		this.rtotal = rtotal;
+	}
+	public String getRtime() {
+		return rtime;
+	}
+	public void setRtime(String rtime) {
+		this.rtime = rtime;
+	}
+	public String getRdate() {
+		return rdate;
+	}
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
+	}
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 	public int getRno() {
 		return rno;

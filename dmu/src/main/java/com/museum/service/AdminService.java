@@ -11,6 +11,7 @@ public interface AdminService {
 	int getTotalCount();
 	int getTotalCount_public();
 	int getTotalCount_admin();
+	int getTotalCount_reservation();
 	ArrayList<DmuMemberVO> memberList(int startCount, int endCount);
 	ArrayList<DmuMemberVO> publicList(int startCount, int endCount);
 	ArrayList<DmuMemberVO> adminList(int startCount, int endCount);

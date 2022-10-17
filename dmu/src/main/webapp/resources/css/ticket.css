@@ -27,7 +27,11 @@ textarea.time_text {
     width: 210px;
 }
 input#file_list {
+<<<<<<< HEAD
     /* display: none; */
+=======
+  /*   display: none; */
+>>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
 }
 label[for="file_list"] {
     width: 100%;
@@ -41,6 +45,23 @@ label[for="file_list"] {
     letter-spacing: -0.08rem;
     cursor:pointer;
 }
+div.container[data-v-25f87e60].write {
+    padding-top: 5.5rem;
+    width: 800px;
+}
+div.img-ticket.write{
+	width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+strong.title.must-do::after {
+       content: "*";
+       color: red;
+       margin-left: 5px;
+       vertical-align: middle;
+   }
 .editor-contents-area > ul {
     font-size: 17px;
     line-height: 30px;
@@ -16469,8 +16490,8 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 
 .reservation-area .img-ticket[data-v-8ed31374] {
 	margin-bottom: 1.5rem;
-	background: #f2f2f2;
-	text-align: center;
+    background: #f2f2f2;
+    text-align: center;
 }
 
 .reservation-area .img-ticket img[data-v-8ed31374] {
@@ -22594,7 +22615,7 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 /* mobile */
 .sub-contents-area .container[data-v-25f87e60] {
 	padding-top: 4.5rem;
-	width:800px;
+	width:1350px;
 }
 
 .error-msg[data-v-25f87e60] {

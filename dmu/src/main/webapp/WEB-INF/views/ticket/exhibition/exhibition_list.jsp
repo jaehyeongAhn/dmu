@@ -16,15 +16,15 @@
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script> 
-
-	$(document).ready(function(){
+$(document).ready(function(){
 	
-
-			
 	$('#more_button').click(function(){
 								
-	$(location).attr('href', "http://localhost:9000/dmu/exhibition_list.do?rpage="+${rpage+1});         
+								
+		$(location).attr('href', "http://localhost:9000/dmu/exhibition_list.do?rpage="+${rpage+1});         
 							    
+		});//click
+	});//ready					    
 </script>		
 </head>
 <body>
@@ -100,7 +100,7 @@
 					</c:if>
 					</a>				 
 				<span data-v-3c1f59cb="" class="place"> ${vo.dplace } </span>
-					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do?did=${ vo.getDid()}" target="_parent" class="title"> ${vo.dtitle } </a>
+					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/exhibition.do?did=${ vo.getDid()} " target="_parent" class="title"> ${vo.dtitle } </a>
 						<p data-v-3c1f59cb="" class="explan"></p>
 						<span data-v-3c1f59cb="" class="term"> ${vo.dstart }~ ${vo.dend } </span></li>
 					</c:forEach>

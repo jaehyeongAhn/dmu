@@ -31,6 +31,9 @@ public class AdminServiceImpl implements AdminService{
 	public int getTotalCount_admin() {
 		return adminDAO.totalCount_admin();
 	}
+	public int getTotalCount_reservation() {
+		return adminDAO.totalCount_reservation();
+	}
 	
 	/*
 	 * Admin 회원 리스트

@@ -14,7 +14,7 @@
 	</update>
 	<!-- ticket select dtarget totalcount -->
 	 <select id="dtargetCount" parameterType="java.lang.String" resultType="int">
-	 	select count(*) from dmu_ticket where dtarget= #{dtarget} 
+	 	select count(*) from dmu_ticket where dcode='learn' and dtarget= #{dtarget} 
 	 </select>
 	 
 	<!-- ticket select dcode totalcount -->
@@ -63,14 +63,14 @@
 	 
 	 <!-- ticket reservationContent  -->
 	 <select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
-		select dt.dtitle,dt.dplace, to_char(dt.dprice,'999,999') dpricech ,dr.rdate, to_char(dr.rdate, 'YY-MM-DD') rdateda ,
-		dr.RTOTAL, to_char(dr.rallprice,'999,999') rallpricech from dmu_ticket DT , dmu_reservation DR 
-		where dt.did = dr.did  and dr.rid= (select rid from (select rid from dmu_reservation order by rokdate desc) where rownum = 1)
+		select dt.did, dt.dtitle,dt.dplace, to_char(dt.dprice,'999,999') dpricech ,dr.rdate, to_char(dr.rdate, 'YY-MM-DD') rdateda ,
+		dr.RTOTAL, to_char(dr.rallprice,'999,999') rallpricech, dm.mid, dr.rprice         from dmu_ticket DT , dmu_reservation DR , dmu_member DM
+		where dm.mid = dr.mid and dt.did = dr.did  and dr.rid= (select rid from (select rid from dmu_reservation order by rokdate desc) where rownum = 1)
 	 </select>
 	 
-	 <!-- ticket reservation -->
+	 <!-- ticket Complete -->
 	 <select id="CompleteContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
-	 select  dt.dsfile, dt.dtitle, dt.dplace, dr.rid,dr.rdate, to_char(dr.rdate, 'YY-MM-DD') rdateda, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech, dm.mname, dt.dcode from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
+	 select   dt.dsfile, dt.dtitle, dt.dplace, dr.rid,dr.rdate, to_char(dr.rdate, 'YY-MM-DD') rdateda, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech, dm.mname,dm.mid,  dt.dcode from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
 	 		where  dm.mid = dr.mid and dt.did = dr.did   and dr.rid= (select rid from
                                       				  (select rid from dmu_reservation order by rokdate desc)
                                  				 			  where rownum = 1) 
@@ -80,6 +80,8 @@
 	 <select id="EventContent"  parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">
 		 select did, dtitle, dplace, dfile,dsfile, dcode, dend from dmu_ticket where dend &lt; sysdate and dcode = #{dcode}
 	 </select>
+	 
+	 
 	 
 </mapper>
 

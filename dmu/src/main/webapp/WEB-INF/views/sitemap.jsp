@@ -71,9 +71,9 @@
                                 </li>
                                 <li data-v-36112f05=""><span data-v-36112f05="" class="category"> EXHIBITION </span>
                                     <ul data-v-36112f05="">
-                                        <li data-v-36112f05=""><a data-v-36112f05="" href="/exhibition/current"
+                                        <li data-v-36112f05=""><a data-v-36112f05="" href="http://localhost:9000/dmu/exhibition_page.do"
                                                 class=""> 현재 전시 </a></li>
-                                        <li data-v-36112f05=""><a data-v-36112f05="" href="/exhibition/past" class="">
+                                        <li data-v-36112f05=""><a data-v-36112f05="" href="http://localhost:9000/dmu/exhibition_past_page.do" class="">
                                                 지난 전시 </a></li>
                                     </ul>
                                 </li>
@@ -95,7 +95,7 @@
                                                 href="/learn/education/snb/commentary" class=""> 전시해설 </a></li>
                                     </ul>
                                 </li>
-                                <li data-v-36112f05=""><a data-v-36112f05="" href="javascript:void(0);"
+                                <li data-v-36112f05=""><a data-v-36112f05="" href="http://localhost:9000/dmu/event_page.do"
                                         class="category link"> EVENT </a>
                                     <!---->
                                 </li>

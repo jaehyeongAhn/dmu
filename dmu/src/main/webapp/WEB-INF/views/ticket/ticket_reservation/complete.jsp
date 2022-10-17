@@ -40,6 +40,7 @@
  <script src="http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/mycgv/resources/js/am-pagination.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 
 </head>
 <body>
@@ -48,7 +49,7 @@
 	
 	 <div class="content">
 		 
-		<form name=""  action=""  method="post">  
+		 
 		
 		
 	<div id="app">
