@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuReJoinVO;
 
@@ -126,4 +127,23 @@ public class DmuAdminDAO extends DBConn{
 		return sqlSession.selectOne("mapper.admin.reservationContent", mid);
 	}
 
+	
+	
+	
+	/******************************* 1대1 문의 ************************************/
+	//문의 사항 전체 리스트
+	public List<DmuInquiryVO> inquiryList(String answerType, int startCount, int endCount) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("answerType", answerType);
+		param.put("start", String.valueOf(startCount));
+		param.put("end", String.valueOf(endCount));
+		return sqlSession.selectList("mapper.admin.inquiryList", param);
+	}
+	
+	//문의 사항 총 개수
+	public int inquiryTotalCount(String answerType) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("answerType", answerType);
+		return sqlSession.selectOne("mapper.admin.inquiryTotalCount", param);
+	}
 }

@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.museum.dao.DmuAdminDAO;
 import com.museum.dao.DmuNoticeDAO;
 import com.museum.service.AdminServiceImpl;
 import com.museum.service.NoticeServiceImpl;
+import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuReJoinVO;
@@ -446,8 +448,64 @@ public class AdminController {
 	
 		
 	/*********************************** 1대1 문의 사항 ***********************************/
+	//adminpage_inquiry_list.do : 문의 사항 페이지
 	@RequestMapping(value = "/adminpage_inquiry_list.do", method = RequestMethod.GET)
 	public String adminpage_inquiry() {
 		return "/admin/admin_member/adminpage_inquiry_list";
+	}
+	
+	//adminpage_inquiry_list_ajax.do : 문의 사항 리스트
+	@ResponseBody
+	@RequestMapping(value = "/adminpage_inquiry_list_ajax.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String adminpage_inquiry_list_ajax(String rpage, String answerType) {
+		//페이징 처리
+		int startCount = 0;
+		int endCount = 0;
+		int pageSize = 5;
+		int reqPage = 1;
+		int pageCount = 1;
+		int dbCount = adminService.getInquiryTotalCount(answerType);
+		
+		if(dbCount % pageSize == 0) {
+			pageCount = dbCount/pageSize;
+		}else {
+			pageCount = dbCount/pageSize + 1;
+		}
+		
+		if(rpage != null) {
+			reqPage = Integer.parseInt(rpage);
+			startCount = (reqPage - 1) * pageSize + 1;
+			endCount = reqPage * pageSize;
+		}else {
+			startCount = 1;
+			endCount = pageSize;
+		}
+		
+		//리스트 처리
+		ArrayList<DmuInquiryVO> list = (ArrayList<DmuInquiryVO>) adminService.getIquiryList(answerType, startCount, endCount);
+		
+		JsonObject jobject = new JsonObject();
+		JsonArray jarray = new JsonArray();
+		Gson gson = new Gson();
+
+		for(DmuInquiryVO vo : list) {
+			JsonObject jo = new JsonObject();
+			jo.addProperty("iqid", vo.getIqid());
+			jo.addProperty("mid", vo.getMid());
+			jo.addProperty("iqcategory", vo.getIqcategory());
+			jo.addProperty("iqtype", vo.getIqtype());
+			jo.addProperty("iqtitle", vo.getIqtitle());
+			jo.addProperty("iqanswer", vo.getIqanswer());
+			jo.addProperty("iqdate", vo.getIqdate());
+			
+			jarray.add(jo);
+		}
+		
+		jobject.add("list", jarray);
+		jobject.addProperty("dbCount", dbCount);
+		jobject.addProperty("pageSize", pageSize);
+		jobject.addProperty("rpage", reqPage);
+		
+		return gson.toJson(jobject);
 	}
 }

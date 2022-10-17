@@ -19,18 +19,130 @@
 <script src = "http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 $(document).ready(function(){
+
+	//페이징 리스트 출력
+	function page(dbCount, rpage, pageSize){
+		var pager = jQuery('#ampaginationsm').pagination({
+			
+		    maxSize: 7,	    		// max page size
+		    totals: dbCount,	// total rows	
+		    page: rpage,		// initial page		
+		    pageSize: pageSize,	// max number items per page
+		
+		    // custom labels		
+		    lastText: '&raquo;&raquo;', 		
+		    firstText: '&laquo;&laquo;',		
+		    prevText: '&laquo;',		
+		    nextText: '&raquo;',
+				     
+		    btnSize:'sm'	// 'sm'  or 'lg'		
+		});
+	}
+	
 	//답변하기 팝업창
 	let height = $(".popup_admin_inquiry").height() - $(".popup_admin_inquiry_title").outerHeight() - $(".admin_inquiry_button_list").outerHeight();
 	$(".popup_admin_inquiry_form").css("height", height);
 	
-	$(".admin-inquiry-answer").click(function(){
+	function inquiry_popup_set(){
 		$(".background_admin_inquiry").addClass("show");
 		$(".window_admin_inquiry").addClass("show");
 		$(".admin_inquiry_detail_close").click(function(){
 			$(".background_admin_inquiry").removeClass("show");
 			$(".window_admin_inquiry").removeClass("show");
 		});
+	}
+	
+	
+	//탭 메뉴
+	$(".admin-inquiry-search div").click(function(){
+		$(".admin-inquiry-search div").removeClass("inquiry_on");
+		$(this).addClass("inquiry_on");
+		inquiry_ajax(1);
 	});
+	
+	//list ajax
+	
+	inquiry_ajax(1);
+	function inquiry_ajax(rpage){
+		$.ajax({
+			type : "post",
+			data : {
+				rpage : rpage,
+				answerType : $(".inquiry_on").attr("data-type")
+			},
+			url : "adminpage_inquiry_list_ajax.do",
+			success : function(result){
+				let data = JSON.parse(result);
+				
+				let output = "";
+				//결과 값이 없을 경우
+				if(data.list.length == 0){
+					output += "<div class = 'inquiry-info-list-no'>";
+					output += "<div class='no-result'>";
+					output += "<p>문의 사항이 없습니다.</p></div></div>";
+				}else{
+					//결과 값이 있을 경우
+					output += "<div data-v-1b9c8af9='' data-v-080a389a='' class='search-result'>";
+					output += "총 <strong>" + data.dbCount + "</strong>건";
+					output += "</div>";
+					output += "<div class = 'inquiry-info-list'>";
+				
+					output += "<ul style='list-style:none;' class = 'inquiry_list_ajax'>";
+					for(dataset of data.list) {
+						output += "<li>";
+						output += "<div class = 'admin-inquiry-author'>";
+						output += "<img src='http://localhost:9000/dmu/resources/images/public.svg'>";
+						output += "<div style = 'margin: 10px 0 0 0;'>"
+						output += "<span class = 'author'>작성자</span><span>" + dataset.mid + "</span>";
+						output += "</div></div>";
+						output += "<div class = 'admin-inquiry-info-list'>";
+						output += "<div>";
+						output += "<div class = 'admin-inquiry-category'>";
+						output += "<div><span>미술관</span><span class = 'category'>" + dataset.iqcategory + "</span>";
+						output += "<span>문의 유형</span><span class = 'type'>" + dataset.iqtype + "</span></div>";
+						output += "<div><span>문의 등록일</span><span>" + dataset.iqdate +"</span></div></div>";
+						output += "<div><h2>" + dataset.iqtitle + "</h2></div>";
+						output += "</div></div>";
+						
+						if(dataset.iqanswer == 'n') {
+							output += "<button type = 'button' class = 'admin-inquiry-answer'>";
+							output += "<img src = 'http://localhost:9000/dmu/resources/images/airplane.png'>";
+							output += "<div>답변 보내기</div><hr class = 'back_hr1'><hr class = 'back_hr2'><hr class = 'back_hr3'>";
+							output += "</button>";
+							output += "</li>";
+						}else{
+							output += "<button type = 'button' class = 'admin-inquiry-answer-ok'>";
+							output += "<div>답변 완료</div></button>";
+						}
+					}
+					output += "</ul></div>";
+					output += "<div id='ampaginationsm' style='text-align:center;'></div>";
+				}
+				
+				$(".myinfo-box div.inquiry-info-list-no").remove();
+				$(".myinfo-box div.search-result").remove();
+				$(".inquiry_list_ajax").remove();
+				$("#ampaginationsm").remove();
+				$(".myinfo-box").append(output);
+			
+				//문의사항 상세보기 및 답변 팝업창
+				$(".admin-inquiry-answer").click(function(){
+					inquiry_popup_set();
+				});
+				
+				if(data.list.length != 0){
+					//페이징 처리
+					page(data.dbCount, data.rpage, data.pageSize);
+					
+					//페이징 번호 클릭 시 이벤트 처리
+					jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+						    jQuery('.showlabelsm').text('The selected page no: '+e.page);;
+							inquiry_ajax(e.page);      
+				    });
+				}
+			}
+		});
+	}
 });
 </script>
 <style>
@@ -161,7 +273,7 @@ $(document).ready(function(){
 					div.admin-inquiry-info-list {    
 						clip-path: polygon(3% 0%, 100% 0%, 100% 100%, 3% 100%, 3% 65%, 0% 50%, 3% 32%);
 					    background: #f5f5f5;
-					    padding: 17px 20px 17px 50px;
+					    padding: 20px 20px 20px 50px;
 					    width : 66%;
 					}
 					div.admin-inquiry-info-list span {
@@ -180,7 +292,7 @@ $(document).ready(function(){
 					    cursor : pointer;
 					    transition : all 0.3s;
 					    overflow: hidden;
-					    
+					    position : relative;
 					}
 					button.admin-inquiry-answer:hover {
 						background : black;
@@ -196,7 +308,7 @@ $(document).ready(function(){
 					button.admin-inquiry-answer:hover img {
 						filter : invert(1);
 						transform : rotate(45deg);
-						animation : sunday 2s 0s infinite alternate;
+						animation : airplane 2s 0s infinite alternate;
 					}
 					button.admin-inquiry-answer div {
 						color : #898989;
@@ -204,16 +316,44 @@ $(document).ready(function(){
 					button.admin-inquiry-answer:hover div {
 						color : white;
 					}
-					@keyframes sunday {
+					@keyframes airplane {
 					  0%{transform : rotate(45deg) translate(0, 0);}
 					  25%{transform : rotate(45deg) translate(5px, -5px);}
 					  50%{transform : rotate(55deg) translate(0, 0);}
 					  45%{transform : rotate(55deg) translate(-5px, 5px);}
 					  100%{transform : rotate(45deg) translate(0, 0);}
 					}
-					@keyframes test {
-						0%{transform: translate(99px, 0);}
-						100%{transform: translate(-97px, 0);}
+					hr.back_hr1, hr.back_hr2, hr.back_hr3 {
+					    position: absolute;
+					    border: 0.5px solid #b0b0b0d4;
+					}
+					hr.back_hr1 {
+					    width: 30px;
+					    transform: translateX(100px);
+					    top: 20%;
+					}
+					button.admin-inquiry-answer:hover hr.back_hr1 {
+					    animation : back1 2s 0s infinite normal;
+					}
+					hr.back_hr2 {
+					 	width : 40px;
+					    transform: translateX(100px);
+					    top: 53%;
+					}
+					button.admin-inquiry-answer:hover hr.back_hr2 {
+						animation : back1 2s 0.7s infinite normal;
+					} 
+					hr.back_hr3 {
+					    width: 10px;
+					    transform: translateX(100px);
+					    top : 40%;
+					}
+					button.admin-inquiry-answer:hover hr.back_hr3 {
+						animation : back1 2s 1.2s infinite normal;
+					}
+					@keyframes back1 {
+						0%{rigth : transform: translateX(100px);}
+						100%{transform: translateX(-100px); border : 0.5px dotted #b0b0b0d4; width : 0px;}
 					}
 					div.admin-inquiry-author img {
 						width : 40px;
@@ -230,7 +370,7 @@ $(document).ready(function(){
 						font-weight : 600;
 					}
 					div.admin-inquiry-category {
-						margin : 5px 0 10px 0;
+						margin : 5px 0 15px 0;
 						display: flex;
     					justify-content: space-between;
 					}
@@ -275,28 +415,22 @@ $(document).ready(function(){
 						<h2>회원관리</h2>
 					</div>
 					<div class = "admin-inquiry-search">
-						<div class = "admin-inquiry-answer-no inquiry_on">답변 대기 중</div>
-						<div class = "admin-inquiry-answer-yes">답변 완료</div>
+						<div class = "admin-inquiry-answer-no inquiry_on" data-type = "stand-by">답변 대기 중</div>
+						<div class = "admin-inquiry-answer-yes" data-type = "finish">답변 완료</div>
 					</div>
 					
-					<div class = "inquiry-info-list-no">
-						<div class="no-result">
-							<p>문의 사항이 없습니다.</p>
-						</div>
-					</div>
+					
 					<div class="myinfo">
 						<div class="myinfo-box">
+							<!-- <div class = "inquiry-info-list-no">
+								<div class="no-result">
+									<p>문의 사항이 없습니다.</p>
+								</div>
+							</div>
 							<div data-v-1b9c8af9="" data-v-080a389a="" class="search-result">
 								총 <strong></strong>건
 							</div>
 							<div class = "inquiry-info-list">
-												<!-- <th>미술관</th>
-												<th>문의유형</th>
-												<th>제목</th>
-												<th>이메일</th>
-												<th>문의 등록일</th>
-												<th>답변 여부</th>
-												<th>자세히보기</th> -->
 									<ul style="list-style:none;">
 										<li>
 											<div class = "admin-inquiry-author">
@@ -326,6 +460,9 @@ $(document).ready(function(){
 											<button type = "button" class = "admin-inquiry-answer">
 												<img src = "http://localhost:9000/dmu/resources/images/airplane.png">
 												<div>답변 보내기</div>
+												<hr class = "back_hr1">
+												<hr class = "back_hr2">
+												<hr class = "back_hr3">
 											</button>
 										</li>
 										<li>
@@ -356,6 +493,9 @@ $(document).ready(function(){
 											<button type = "button" class = "admin-inquiry-answer">
 												<img src = "http://localhost:9000/dmu/resources/images/airplane.png">
 												<div>답변 보내기</div>
+												<hr class = "back_hr1">
+												<hr class = "back_hr2">
+												<hr class = "back_hr3">
 											</button>
 										</li>
 										<li>
@@ -388,8 +528,8 @@ $(document).ready(function(){
 											</button>
 										</li>
 									</ul>
-								</div>
-								<div class="pagination-area" id="ampaginationsm" style="text-align:center;">
+								</div> 
+								<div class="pagination-area" id="ampaginationsm" style="text-align:center;">-->
 							</div>
 						</div>
 					</div>
