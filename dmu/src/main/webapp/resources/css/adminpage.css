@@ -206,6 +206,47 @@ div.popup_detail table {
     margin: 0 auto;
 }
 
+.background_reservation.show {
+    z-index: 10;
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+div.background_reservation {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    z-index: -1;
+}
+
+div.background_reservation .show {
+    z-index: 10;
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+div.window_reservation {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+div.popup_reservation {
+    position: absolute;
+    width: 700px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: -1;
+    box-shadow: 10px 10px 5px rgb(0 0 0 / 50%);
+}
 
 .background_accept {
 	position: fixed;

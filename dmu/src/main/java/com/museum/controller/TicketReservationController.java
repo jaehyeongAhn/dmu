@@ -20,12 +20,9 @@ public class TicketReservationController {
 	/*
 	 * ticket_reservation.do 페이지 호출
 	 */
-	@RequestMapping(value = "/ticket_reservation.do", method = RequestMethod.GET)
-	public ModelAndView ticket_reservation(String did) {
-		
+	@RequestMapping(value = "/ticket_reservation.do", method = RequestMethod.POST)
+	public ModelAndView ticket_reservation(DmuReJoinVO vo) {		
 		  ModelAndView mv = new ModelAndView();
-		 
-		  DmuReJoinVO vo = ticketService.getReservationcontent(did);
 		  
 		  mv.addObject("vo", vo);
 		  mv.setViewName("ticket/ticket_reservation/ticket_reservation");
@@ -46,7 +43,7 @@ public class TicketReservationController {
 
 		if (result == 1) {
 
-			mv.setViewName("redirect:/ticket_reservation.do");
+			mv.setViewName("redirect:/complete.do");
 		} else {
 
 			mv.setViewName("error_page");
@@ -71,27 +68,7 @@ public class TicketReservationController {
 	}
 
 	
-	/* ticketCompleteCheck.do 페이지 호출 */
-	  
-	   
-	  @RequestMapping(value="/ticketCompleteCheck.do", method=RequestMethod.POST)
-	  public ModelAndView ticketCompletenCheck(DmuReJoinVO vo) { 
-		  ModelAndView mv =  new ModelAndView();
-	  
-	  
-	  int result = ticketService.getInsertDateComplete(vo);
-	  
-	  if(result == 1){
-	  
-	  mv.setViewName("redirect:/complete.do"); 
 	 
-	  }else{
-	  
-		  mv.setViewName("error_page"); }
-	  
-	  return mv;
-	  
-	  }
 	 
 
 }

@@ -154,8 +154,8 @@ $(document).ready(function(){
 												<td>${vo.rdateda }</td>   <!-- 관람일 -->
 												<td>${vo.rokdatech }</td>   <!-- 예약일 -->
 												<c:choose>
-														<c:when test="${vo.rid == 'n'}">  <!-- 예약취소 진행 -->  
-															<td>취소완료</td>
+													<c:when test="${vo.rid == 'n'}">  <!-- 예약취소 진행 -->  
+														<td>취소완료</td>
 													</c:when>
 														<c:otherwise>
 															<td><button class="member_detail"><a href="#">예매취소</a></button></td>
@@ -169,8 +169,7 @@ $(document).ready(function(){
 														<c:otherwise>
 															<td>-</td>
 													</c:otherwise>
-												</c:choose>		 
-									 										 
+												</c:choose>		 			 										 
 											</tr>
 										</c:forEach>
 										</tbody>

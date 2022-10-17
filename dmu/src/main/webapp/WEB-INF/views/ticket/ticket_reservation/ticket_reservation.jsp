@@ -27,7 +27,33 @@
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/mycgv/resources/js/am-pagination.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
- 
+ <script>
+ $(window).on('load', function(){
+	    $('.price').each(function(){
+	        var txt = $(this).text();
+	        $(this).html(txt.replace(/,/g, ''));
+
+	        var len = $(this).text().length;
+	        for (i = 0; i < len; i ++){
+	            $(this).eq(i).text(commaNum($(this).eq(i).text()));
+	        }
+	    });
+
+	    function commaNum(num){
+	        var len, point, str;
+	        num = num + '';
+	        point = num.length % 3
+	        len = num.length;
+	        str = num.substring(0, point);
+	        while (point < len){
+	            if (str != '') str += ',';
+	            str += num.substring(point, point + 3);
+	            point += 3;
+	        }
+	        return str;
+	    }
+	});
+ </script>
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
@@ -37,18 +63,20 @@
 	
   <div class="content">
  	 
-		<form name="ticket_reservationFrom"  action="ticketCompleteCheck.do"  method="post">  
+		<form name="ticket_reservationFrom"  action="ticketReservationCheck.do"  method="post">  
 		
-		
-		 <input type="text" name="did" value="${vo.did }"> 
-		 <input type="text" name="dprice" id="dprice" value=${vo.rprice }> 
-		 <input type="text" name="rdate" id="rdate" value="${vo.rdateda }"> 
-		 <input type="text" name="rtotal" id="rtotal" value="${vo.rtotal }">  
-		 <input type="text" name="dplace" id="dplace" value=${vo.dplace }> 
-		 <input type="text" name="rallprice" id="rallprice" value="${vo.rallprice }"> 
- 		 <input type="text" name="mid" id="mid" value=${ sessionScope.member.mid }> 
-		 <input type="text" name="pdate" id="pdate" value=""> 
-		 <input type="text" name="pcoin" id="pcoin" value="카드">  
+		 <input type="hidden" name="dtitle" value="${vo.dtitle }"> 
+		 <input type="hidden" name="did" value="${vo.did }"> 
+		 <input type="hidden" name="rprice" id="rprice" value=${vo.rprice }> 
+		 <input type="hidden" name="rtime" id="rtime" value="${vo.rtime }"> 
+		 <input type="hidden" name="rdate" id="rdate" value="${vo.rdate }"> 
+		 <input type="hidden" name="rtotal" id="rtotal" value="${vo.rtotal }">  
+		 <input type="hidden" name="rallprice" id="rallprice" value="${vo.rallprice }"> 
+		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
+ 		 <input type="hidden" name="mid" id="mid" value=${ sessionScope.member.mid }> 
+ 		 <input type="hidden" name="rokdate" id="rokdate" value=""> 
+		 <input type="hidden" name="pdate" id="pdate" value=""> 
+		 <input type="hidden" name="pcoin" id="pcoin" value="">  
 		
 		 	 
 			<main>
@@ -82,7 +110,7 @@
 															class="txt"><strong data-v-a42e08ec="">${ vo.dtitle }</strong></span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">관람일시</span><span data-v-a42e08ec=""
-															class="txt">${vo.rdateda}</span></li>
+															class="txt">${vo.rdate}</span></li>
 														<li data-v-a42e08ec=""><span data-v-a42e08ec=""
 															class="tit">장소</span><span data-v-a42e08ec="" class="txt">${ vo.dplace }</span></li>
 													</ul>
@@ -208,7 +236,7 @@
 														<div data-v-a42e08ec="" class="field-payment-area">
 															<ul data-v-a42e08ec="" class="payment-list">
 																<li data-v-a42e08ec=""><strong data-v-a42e08ec="" class="title">총금액 / ${ vo.rtotal }매</strong> 
-																<span data-v-a42e08ec="" class="price">${vo.rallpricech} </span></li>
+																<span data-v-a42e08ec="" class="price">${vo.rallprice}</span></li>
 																<!---->
 																<li data-v-a42e08ec=""><strong data-v-a42e08ec=""
 																	class="title"></strong><span data-v-a42e08ec=""
@@ -216,7 +244,7 @@
 															</ul>
 															<div data-v-a42e08ec="" class="payment-result">
 																<strong data-v-a42e08ec="" class="title">최종 결제금액</strong><span
-																	data-v-a42e08ec="" class="price">${vo.rallpricech}</span>
+																	data-v-a42e08ec="" class="price">${vo.rallprice}</span>
 															</div>
 														</div></li>
 												</ul>

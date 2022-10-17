@@ -49,22 +49,13 @@ public class TicketServiceImpl implements TicketService {
 		return ticketDAO.select(did);
 	}
 
-	/**
-	 * calinder 달력 
-	 */
+	 
 	@Override
 	public int getInsertDate(DmuReJoinVO vo) {
 		return ticketDAO.insertDate(vo);
 	}
-	
-	@Override
-	public int getInsertDateComplete(DmuReJoinVO vo) {
-		return ticketDAO.insertDate(vo);	 
-	}
-	@Override
-	public DmuReJoinVO getReservationcontent(String did) {
-		return ticketDAO.selectReservation(did);
-	}
+ 
+	 
 	@Override
 	public DmuReJoinVO getcompletecontent(String mid) {
 		return ticketDAO.selectCompleteCheck(mid);
