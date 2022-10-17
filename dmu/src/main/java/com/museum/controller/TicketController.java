@@ -39,14 +39,14 @@ public class TicketController {
 		/**
 		 * ticketlist_write.do : 티켓 리스트 작성 
 		 */
-		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
+		@RequestMapping(value="/adminticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
-			return "admin/adminticket/ticketlist_write";
+			return "admin/adminticket/adminticketlist_write";
 		}
 		/**
 		 * ticketlist_write_check.do : 티켓 리스트 작성 체크 
 		 */
-		@RequestMapping(value="/ticketlist_write_check.do", method=RequestMethod.POST)
+		@RequestMapping(value="/adminticketlist_write_check.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
 			ModelAndView mv = new ModelAndView();
 			
@@ -249,7 +249,7 @@ public class TicketController {
 		/**
 		 * ticketlist_content :
 		 */
-		@RequestMapping(value="/ticketlist_content.do", method=RequestMethod.GET)
+		@RequestMapping(value="/adminticketlist_content.do", method=RequestMethod.GET)
 		public ModelAndView ticketlist_content(String did) {
 			ModelAndView mv = new ModelAndView();
 			
@@ -258,7 +258,7 @@ public class TicketController {
 				vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 			}
 			mv.addObject("vo", vo);
-			mv.setViewName("/admin/adminticket/ticketlist_content");
+			mv.setViewName("/admin/adminticket/adminticketlist_content");
 			
 			return mv;
 		}
@@ -297,7 +297,7 @@ public class TicketController {
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("/admin/adminticket/ticketlist_update");
+			mv.setViewName("/admin/adminticket/adminticketlist_update");
 			
 			return mv;
 		}
@@ -309,7 +309,7 @@ public class TicketController {
 		public ModelAndView admin_ticket_delete(String did) {
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("did", did);
-			mv.setViewName("/admin/adminticket/ticketlist_delete");
+			mv.setViewName("/admin/adminticket/adminticketlist_delete");
 			
 			return mv;
 		}

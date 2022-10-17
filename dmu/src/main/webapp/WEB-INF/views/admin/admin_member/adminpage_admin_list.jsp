@@ -41,7 +41,7 @@ $(document).ready(function(){
 	//페이징 번호 클릭 시 이벤트 처리
 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-           $(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);         
+           $(location).attr('href', "http://localhost:9000/dmu/adminpage_admin_list.do?rpage="+e.page);         
     });
 	
 	
@@ -63,6 +63,17 @@ $(document).ready(function(){
 			$(".window_accept").removeClass("show_accept");
 		});
 	});
+	
+	
+	$("#popup_acceptOk").click(function(){
+		$(".background_ok").addClass("show");
+		$(".window_ok").addClass("show");
+		$("#popup_close").click(function(){
+			$(".background_ok").removeClass("show");
+			$(".window_ok").removeClass("show");
+		});
+	});
+	
 
 });//ready
 
@@ -91,9 +102,11 @@ $(document).ready(function(){
 											<li class="">
 												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
+											<c:if test="${sessionScope.member.mid == 'master'}">
 											<li class="">
 												<a class="" href="adminpage_admin_list.do" style="color:black; font-weight:700;">관리자승인</a>
 											</li>
+											</c:if>
 											<li class="">
 												<a class="" href="adminpage_reservation_list.do">예매관리</a>
 											</li>
@@ -264,19 +277,27 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-
 	<div class = "background_accept">
 		<div class = "window_accept">
 			<div class = "popup_accept">
 				<p id = "popup_acceptGuide">승인하시겠습니까?</p>
-				<form name="acceptForm" action="acceptUpdate.do" method="post">
-					<input type="hidden" name="mid" class="accept_input">
 					<button type = "button" id = "popup_acceptOk" style = "cursor:pointer;">확인</button>
 					<button type = "button" id = "popup_acceptNo" style = "cursor:pointer;">취소</button>
+			</div>
+		</div>
+	</div>
+	<div class = "background_ok">
+		<div class = "window_ok">
+			<div class = "popup_ok">
+				<p id = "popup_ok">승인완료되었습니다</p>
+				<form name="acceptForm" action="acceptUpdate.do" method="post">
+					<input type="hidden" name="mid" class="accept_input">
+				<div class="popup_buttonok">
+					<button type = "button" id = "popup_close" style = "cursor:pointer;">확인</button>
+				</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	
 </body>
 </html>

@@ -69,7 +69,7 @@ $(document).ready(function(){
 													</span>
 													<ul data-v-1e8092ec="" class="order">
 														<li data-v-3c1f59cb="" class="">
-															<a data-v-3c1f59cb="" href="ticketlist_write.do">
+															<a data-v-3c1f59cb="" href="adminticketlist_write.do">
 															<button type="button" class="btn_style">글쓰기</button>
 															</a>			
 														</li>
@@ -88,7 +88,7 @@ $(document).ready(function(){
 															<c:if test="${vo.dsfile != null }">
 														<a data-v-1e8092ec=""
 
-															href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" class="thumb">
+															href="http://localhost:9000/dmu/adminticketlist_content.do?did=${vo.did}" class="thumb">
 
 															<img
 																data-v-2fed1a9a="" data-v-1e8092ec=""
@@ -96,7 +96,7 @@ $(document).ready(function(){
 															</c:if>
 																<a
 
-															data-v-1e8092ec="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}"
+															data-v-1e8092ec="" href="http://localhost:9000/dmu/adminticketlist_content.do?did=${vo.did}"
 
 															class="title"> ${vo.dtitle } </a>
 														<ul data-v-1e8092ec="" class="info">

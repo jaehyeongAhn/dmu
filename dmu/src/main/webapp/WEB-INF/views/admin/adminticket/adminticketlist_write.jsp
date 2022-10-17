@@ -36,7 +36,7 @@
 	<!--------------- Content ----------------------->
 	<!---------------------------------------------->
 	<div class="content">
-		<form name="ticketlistform" action="ticketlist_write_check.do" method="post" enctype="multipart/form-data" >
+		<form name="ticketlistform" action="adminticketlist_write_check.do" method="post" enctype="multipart/form-data" >
 
 			<div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
 				<ul data-v-6d324aa0="">

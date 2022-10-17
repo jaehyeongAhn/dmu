@@ -147,6 +147,17 @@ $(document).ready(function(){
 		
 	}
 		
+	
+	$(".search-button").click(function(){
+		if($(".select-list").css("display") == "none"){
+			$(".select-list").css("display", "block");
+		}else{
+			$(".select-list").css("display", "none");
+		}
+	});
+	
+	
+	
 });//ready
 
 </script>
@@ -177,7 +188,7 @@ $(document).ready(function(){
 							<div data-v-0f105554="" id="select21" class=""
 								style="width: 11.875rem;">
 								<button data-v-0f105554="" type="button" data-value="title"
-									class="">제목</button>
+									class="search-button">제목</button>
 								<ul data-v-0f105554="" class="select-list"
 									style="display: none;">
 									<li data-v-0f105554="" class="on"><button

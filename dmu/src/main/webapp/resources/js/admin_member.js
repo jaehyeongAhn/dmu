@@ -121,7 +121,7 @@ $(document).ready(function(){
 
 })//accept
     
-    $("#popup_acceptOk").click(function(){
+    $("#popup_close").click(function(){
 		$("form").attr({
             "name" : "acceptForm",
             "action" : "acceptUpdate.do"

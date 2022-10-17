@@ -306,6 +306,7 @@ $(document).ready(function(){
 					</div>
 				</div>
 			</div>
+						
 			<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 			<!-- built files will be auto injected -->
 			<footer>

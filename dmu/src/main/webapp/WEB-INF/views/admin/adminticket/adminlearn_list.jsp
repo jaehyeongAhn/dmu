@@ -207,7 +207,7 @@
 		<span data-v-41f56098="" class="total">총 <strong>${dbCount}</strong>건</span>
 			<ul data-v-41f56098="" class="order">
 				<li data-v-3c1f59cb="" class="">
-					<a data-v-3c1f59cb="" href="ticketlist_write.do">
+					<a data-v-3c1f59cb="" href="adminticketlist_write.do">
 					<button type="button" class="btn_style">글쓰기</button>
 					</a>			
 				</li>
@@ -226,7 +226,7 @@
 			<ul data-v-41f56098="">
 				<li data-v-41f56098="">
 						<c:if test="${vo.dsfile != null }">
-					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" class="thumb">
+					<a data-v-41f56098="" href="http://localhost:9000/dmu/adminticketlist_content.do?did=${vo.did}" class="thumb">
 						<img data-v-2fed1a9a="" data-v-1e8092ec=""src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"></a>
 						</c:if>
 				
@@ -238,7 +238,7 @@
 			<!---->
 			</ul>
 				
-					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}"
+					<a data-v-41f56098="" href="http://localhost:9000/dmu/adminticketlist_content.do?did=${vo.did}"
 					class="title">${vo.dtitle}</a>
 					
 					<p data-v-41f56098="" class="explan">${vo.dtitle2 }</p>
