@@ -79,45 +79,46 @@ $(document).ready(function(){
 	/*********************
 	관람일및 회차,관람인원 및 권종 버튼 토글
 	**********************/
-		$("#data-v-8ed31374_btn").click(function() {						
-   							 
-			$("#calendar").toggle();  
-   							 
+		$("#data-v-8ed31374_btn").click(function() {												 
+			$("#calendar").toggle();  							 
   		});
- 
-		
-		$("#btn_toggle1").click(function() {						
-   				 	 
-   			$("#content1").toggle();
-   			
+
+		$("#btn_toggle1").click(function() {									 	 
+   			$("#content1").toggle(); 			
   		});
-  						
-  						
+  		
 		$("#btb_toggle_hide").click(function() {						
-						 
-			$("#content_hide").toggle();  
-			
+							 
+				$("#content_hide").toggle();  
+				
 		});
-	
+
 	/*********************
 	 달력 일자 클릭시 회차 버튼 활성화
 	**********************/
-		$("#content").click(function(){
+		$("#entertime").click(function(){
  
 			$( '.entertime' ).prop( 'selection', this.selection );
 			$("#entertime").prop("disabled", !this.checked);
 						
 			$("#rtime").val($("#content").text());
 						
-		});				
-					
-				
+		});	
+		
+	/*********************
+	회차 클릭시 관람인원 버튼 활성화
+	**********************/
+	$("#content").click(function(){
+ 			$("#content_hide").show();				
+		});	
+		
+	 
 	/*********************
 	카운트 체크
 	**********************/
 		 	 
 	$('#decreaseQuantity').click(function(e) {
-		
+		alert("aaa");
 		e.preventDefault();
 		var stat = $('#field40').text();
 		var num = parseInt(stat, 10);
@@ -147,42 +148,33 @@ $(document).ready(function(){
 		});
 		
 		
-		/*********************
-			관람시 유의사항 동의 체크 후 예매하기 클릭 이벤트
-		**********************/
-		$("#check30").click(function(){
-		 
-			
-			 if($("#rdate").val() == ""){
-	            alert("날짜를 선택해 주세요");
-	            $("#data-v-8ed31374_btn").focus();
-	            return false;
-	         }else if($("#rtime").val() == ""){
-	            alert("회차를 선택해주세요")
-	            $("#content1").focus();
-	            return false;
-            }else if($("#rtotal").val() == ""){
-	            alert("인원을 선택해주세요")
-	            $("#inptext").focus();
-	            return false;
-        	}else if($("#rtotal").val() != ""){		 	
-        	    $("#btn32").prop("disabled", !this.checked); 
-        	     $("#rallprice").val($("#rprice").val()*$("#rtotal").val());      	    	    
-	        }else{ 	 	
-			 }
-			 
-		});	
+	/*********************
+		관람시 유의사항 동의 체크 후 예매하기 클릭 이벤트
+	**********************/
+	$("#check30").click(function(){
+ 	    	     
+	    if($("#rdate").val() == ""){	         	           
+            return false;
+         }else if($("#rtime").val() == ""){	             	            
+            return false;
+        }else if($("#rtotal").val() == ""){	            
+            return false;
+    	}else if($("#rtotal").val() != ""){		 	
+    	    $("#btn32").prop("disabled", !this.checked); 
+    	    $("#rallprice").val($("#rprice").val()*$("#rtotal").val());      	    	    
+        }else{ }
+	});	
 		
-		/*********************
-		 관람인원 변경시 체크박스 해제
-		**********************/
-		$("#countpeople").click(function(){		 
-			$("input:checkbox[id='check30']").prop("checked", false );				 
-		}); 
-		
-		$("#increaseQuantity").click(function(){		 
-			$("input:checkbox[id='check30']").prop("checked", false );				 
-		}); 
+	/*********************
+	 관람인원 변경시 체크박스 해제
+	**********************/
+	$("#countpeople").click(function(){		 
+		$("input:checkbox[id='check30']").prop("checked", false );				 
+	}); 
+	
+	$("#increaseQuantity").click(function(){		 
+		$("input:checkbox[id='check30']").prop("checked", false );				 
+	}); 
 		
 		
 		
@@ -192,9 +184,20 @@ $(document).ready(function(){
 		**********************/
 		$("#btn32").click(function(){
 			 if($("#mid").val() == ""){
-	      	  alert("로그인 후 예매 가능합니다.")
-	       	$(location).attr("href","http://localhost:9000/dmu/login.do");
+				$(".background_LoginCheck").addClass("show");
+			$(".window_LoginCheck").addClass("show");
+			$(".popup_home").click(function(){
+				$(".background_LoginCheck").removeClass("show");
+				$(".window_LoginCheck").removeClass("show");
+				location.href="http://localhost:9000/dmu/index.do";
+			});
+			$(".popup_login").click(function(){
+				$(".background_LoginCheck").removeClass("show");
+				$(".window_LoginCheck").removeClass("show");
+				location.href="http://localhost:9000/dmu/login.do";		 
 	            return false;   
+		}) 
+	       
 			}else {				 		 			 		 	
 				ticket_exhibitionFrom.submit();
 			 }			 

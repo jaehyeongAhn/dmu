@@ -60,10 +60,14 @@
 	$(".primary").click(function(){
 		$(".background_reservation").addClass("show");
 		$(".window_reservation").addClass("show");
-		$(".popup_close").click(function(){
+		$(".popup_payment").click(function(){
 			$(".background_reservation").removeClass("show");
 			$(".window_reservation").removeClass("show");
 			ticket_reservationFrom.submit();
+		});
+		$(".popup_close").click(function(){
+			$(".background_reservation").removeClass("show");
+			$(".window_reservation").removeClass("show");	 
 		});
 	});
 	
@@ -303,25 +307,11 @@
 		<div class = "window_reservation">
 			<div class = "popup_reservation">
 				<p class = "popup_title">결제</p>
-				<div class="popup_detail">
-								<table class="popup_detail_table">
-										<div data-v-9a980cc6="" class="layer-body">
-				<div data-v-9dea2aa6="" data-v-9a980cc6="">
-					<div data-v-9dea2aa6="" data-v-9a980cc6="" class="title-area">
-						<strong data-v-9dea2aa6="" data-v-9a980cc6="" class="title">결제</strong>
-					</div>
-					<div data-v-9dea2aa6="" data-v-9a980cc6="" class="contents-area">
-						 
-						 
-					</div>
-				</div>
-			</div>
-       </table>
-				
-					</div>
+				<div class="popup_detail">				 
 				<div class = "popup_button">
-					<button type = "button" class = "popup_close1">취소</button>
-					<button type = "button" class = "popup_close">결제</button>							 
+					<button type = "button" class = "popup_close">취소</button>
+					<button type = "button" class = "popup_payment">결제</button>	
+					</div>						 
 				</div>
 			</div>
 		</div>

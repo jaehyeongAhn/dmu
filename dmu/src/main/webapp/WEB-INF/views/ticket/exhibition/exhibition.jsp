@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!-- JSTL 태그 추가  -->
 
 <!DOCTYPE html>
@@ -17,32 +16,25 @@
 <!-- <meta name="twitter:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">
     <meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg"> -->
 <link rel="icon" href="/favicon.ico">
-<link
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
-	rel="stylesheet">
-	<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/ticket.css">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/comment.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/comment.css">
 
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <%--  jQuery UI CSS파일  --%>
 <%-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> --%>
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/jquery-ui.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/jquery-ui.css">
 
 <%-- jQuery 기본 js파일 --%>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 
 <%-- jQuery UI 라이브러리 js파일 --%>
 <%-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> --%>
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 	function onlyNumber() {
 		var str = 0;
@@ -81,7 +73,8 @@
 			}, 4);
 		});
 	});
-	
+</script>
+<script>	
 	$(document).ready(function() {
 	//popup
 	$(".icon").click(function(){
@@ -93,6 +86,7 @@
 		});
 	});
 	
+	 
 
 });
 	
@@ -211,7 +205,6 @@
 
 													<img data-v-2fed1a9a="" data-v-8ed31374=""   src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }" alt=${ vo.dtitle } style="">
 
-
 												</div>
 												<div data-v-8ed31374="" class="title-ticket">
 													<h2 data-v-8ed31374="" class="title">${ vo.dtitle }</h2>
@@ -228,8 +221,7 @@
 														<li data-v-8ed31374=""><strong data-v-8ed31374="" class="title">운영시간</strong> 
 														<span data-v-8ed31374="" class="text">${ vo.dtime }</span></li>
 														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
-															<p data-v-8ed31374="" class="price" >${ vo.dpricech }원</p></li>
-															
+															<p data-v-8ed31374="" class="price" >${ vo.dpricech }원</p></li>														
 													</ul>
 												</div>
 												<div data-v-8ed31374="" class=" "></div>
@@ -276,16 +268,14 @@
 													   
 														
 														
-														 <!-- 
-														<div data-v-8ed31374="" class="decision-area">
-															2022.08.31</div></li> -->
+														
 													<li data-v-8ed31374="" class="item-ticketing">
 														<div data-v-8ed31374="" id="btn_toggle1" role="button"
 															class="title-area btn-toggle on">회차</div>
-														<div data-v-8ed31374="" class="field-area" id="content1" style="display: block;">
+														<div data-v-8ed31374="" class="field-area" id="content1" style=" ">
 															<ul data-v-8ed31374="" class="round-list">
 																<li data-v-8ed31374="" class="">
-																	<button data-v-8ed31374="" type="button" disabled="disabled" class="round-selection" id="entertime"  onclick="myFunction()">
+																	<button data-v-8ed31374="" type="button"   class="round-selection" id="entertime"  onclick="myFunction()">
 																		<span data-v-8ed31374="" name="rtime" id="content" class="ContentEnter" value="${vo.dentertime }"> ${vo.dentertime }</span>
 																	 	
 																		 
@@ -303,8 +293,7 @@
 																<!---->
 															</div>
 														</div>
-														<div data-v-8ed31374="" class="field-area" style=""
-															id="content_hide">
+														<div data-v-8ed31374="" class="field-area" style="display: none;" id="content_hide">
 															<p data-v-8ed31374="" class="error-msg">한 개의 ID로 회당
 																최대 4매까지 예매 가능합니다.</p>
 															<ul data-v-8ed31374="" class="personnel-list">
@@ -319,7 +308,6 @@
 																			
 																				<input data-v-67ca82d2="" id="inptext" name="rtotal" type="text" value="0" onfocusout="onlyNumber();" autocomplete="on" placeholder="" readonly="readonly" maxlength="-1">
 																			 
-																				<!-- <a data-v-67ca82d2="" href="javascript:void(0);" class=""></a>-->
 																			</div>
 
 																			<button data-v-1dc6379c="" type="button" class="btn-plus" id="increaseQuantity"></button>
@@ -368,9 +356,9 @@
 																		<div data-v-34230fe0="" data-v-8ed31374=""
 																			class="check-area reservation">
 																			<input data-v-34230fe0="" id="check30"
-																				type="checkbox" class=""> <label
-																				data-v-34230fe0="" for="check30"> <span
-																				data-v-34230fe0="" class="check" id="check30"></span>관람시 유의사항 동의
+																				type="checkbox" class=""> 
+																				<label data-v-34230fe0="" for="check30"> 
+																				<span data-v-34230fe0="" class="check" id="check30"></span>관람시 유의사항 동의
 																			</label>
 																		</div>
 																		<div data-v-26e42198="" data-v-8ed31374="" class="btn-area link" id="btn-area link">
@@ -485,6 +473,21 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class = "background_LoginCheck">
+		<div class = "window_LoginCheck">
+			<div class = "popup_LoginCheck">
+				<p class = "popup_title">로그인</p>
+				<div class="popup_detail1">				 
+				<div class = "popup_button1">
+					<button type = "button" class = "popup_home">홈으로</button>
+					<button type = "button" class = "popup_login">로그인 페이지 </button>	
+					</div>						 
+				</div>
+			</div>
+		</div>
+	</div>
+	 
 			</main>
 		 </form>
 

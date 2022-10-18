@@ -39,7 +39,7 @@ div.window_reservation {
 }
 div.popup_reservation {
     position: absolute;
-    width: 700px;
+    width: 400px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -75,9 +75,19 @@ div.popup_button {
     align-items: center;
     width: 100%;
     height: 60px;
-    border-top: 0.5px solid #ddd;
     background: white;
     flex-grow: 1;
+}
+div.popup_button button.popup_payment {
+    border: 0.5px solid black;
+    background: black;
+    color: white;
+    width: 20%;
+    height: 80%;
+    font-size: 16px;
+    letter-spacing: -0.08rem;
+    margin: 0 10px;
+    cursor: pointer;
 }
 div.popup_button button.popup_close {
     border: 0.5px solid black;
