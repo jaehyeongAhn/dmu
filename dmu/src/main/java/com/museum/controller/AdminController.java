@@ -430,14 +430,19 @@ public class AdminController {
 			JsonObject jo = new JsonObject();
 			Gson gson = new Gson();
 			jo.addProperty("mid", mid);
-			jo.addProperty("dt.dcode", mvo.getDcode());
-			jo.addProperty("dr.rid", mvo.getRid());
-			jo.addProperty("dt.dtitle", mvo.getDtitle());
-			jo.addProperty("dm.mname", mvo.getMname());
+			jo.addProperty("dcode", mvo.getDcode());
+			jo.addProperty("rid", mvo.getRid());
+			
+			jo.addProperty("dtitle", mvo.getDtitle());
+			jo.addProperty("mname", mvo.getMname());
 			jo.addProperty("dpricech", mvo.getDpricech());
+			jo.addProperty("rtotal", mvo.getRtotal());
 			jo.addProperty("rallpricech", mvo.getRallpricech());
-			jo.addProperty("dr.rokdate", mvo.getRokdate());
+			jo.addProperty("rdateda", mvo.getRdateda());
+			jo.addProperty("rokdatech", mvo.getRokdatech());
 			 
+			
+			
 			
 			return gson.toJson(jo);
 			

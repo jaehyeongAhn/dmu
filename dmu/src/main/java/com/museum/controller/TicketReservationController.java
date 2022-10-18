@@ -23,7 +23,6 @@ public class TicketReservationController {
 	@RequestMapping(value = "/ticket_reservation.do", method = RequestMethod.POST)
 	public ModelAndView ticket_reservation(DmuReJoinVO vo) {		
 		  ModelAndView mv = new ModelAndView();
-		  
 		  mv.addObject("vo", vo);
 		  mv.setViewName("ticket/ticket_reservation/ticket_reservation");
 		 

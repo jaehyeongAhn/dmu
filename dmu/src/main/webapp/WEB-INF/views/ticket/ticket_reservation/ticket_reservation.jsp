@@ -53,6 +53,22 @@
 	        return str;
 	    }
 	});
+ 
+
+	$(document).ready(function() {
+	//popup
+	$(".primary").click(function(){
+		$(".background_reservation").addClass("show");
+		$(".window_reservation").addClass("show");
+		$(".popup_close").click(function(){
+			$(".background_reservation").removeClass("show");
+			$(".window_reservation").removeClass("show");
+			ticket_reservationFrom.submit();
+		});
+	});
+	
+
+});
  </script>
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
@@ -76,7 +92,7 @@
  		 <input type="hidden" name="mid" id="mid" value=${ sessionScope.member.mid }> 
  		 <input type="hidden" name="rokdate" id="rokdate" value=""> 
 		 <input type="hidden" name="pdate" id="pdate" value=""> 
-		 <input type="hidden" name="pcoin" id="pcoin" value="">  
+		 <input type="hidden" name="pcoin" id="pcoin" value="카드">  
 		
 		 	 
 			<main>
@@ -261,8 +277,8 @@
 														class="btn-area btn-reservation">
 														
 														
-														  <a  href="http://localhost:9000/dmu/complete.do?mid=${ vo.getMid()}" target="_parent"> 
-														<button data-v-26e42198="" id="btn289" type="submit" class="primary" disabled> 결제하기 </button> </a>
+														  <a  href="#" target="_parent"> 
+														<button data-v-26e42198="" id="btn289" type="button" class="primary" disabled> 결제하기 </button> </a>
 														 
 															<!-- disabled="disabled" -->
 													</div>
@@ -282,6 +298,34 @@
 						</div>
 					</div>
 				</div>
+				
+	<div class = "background_reservation">
+		<div class = "window_reservation">
+			<div class = "popup_reservation">
+				<p class = "popup_title">결제</p>
+				<div class="popup_detail">
+								<table class="popup_detail_table">
+										<div data-v-9a980cc6="" class="layer-body">
+				<div data-v-9dea2aa6="" data-v-9a980cc6="">
+					<div data-v-9dea2aa6="" data-v-9a980cc6="" class="title-area">
+						<strong data-v-9dea2aa6="" data-v-9a980cc6="" class="title">결제</strong>
+					</div>
+					<div data-v-9dea2aa6="" data-v-9a980cc6="" class="contents-area">
+						 
+						 
+					</div>
+				</div>
+			</div>
+       </table>
+				
+					</div>
+				<div class = "popup_button">
+					<button type = "button" class = "popup_close1">취소</button>
+					<button type = "button" class = "popup_close">결제</button>							 
+				</div>
+			</div>
+		</div>
+	</div>
 			</main>
 			</form>
 			<button class="goto-top"> 상단으로 이동 </button>

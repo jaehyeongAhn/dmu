@@ -70,11 +70,12 @@
                                  				 			  where rno between #{start} and #{end})                             				 			  
 	</select>
 	
-	<select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
-		select dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rokdate,'YYYY-MM-DD') rokdatech   from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
+	<select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">                            				 			  
+       select dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rokdate,'YYYY-MM-DD') rokdatech, to_char(dr.rdate,'YYYY-MM-DD') rdateda   
+       from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
 		where dt.did = dr.did  and dm.mid = dr.mid  and dr.rid= (select rid from
                                       				  (select rid from dmu_reservation order by rokdate desc)
-                                 				 			  where rownum = 1)   
+                                 				 			  where rownum = 1)                                				 			   
 	</select>
-
+ 
 </mapper>

@@ -84,20 +84,17 @@
 	
 	$(document).ready(function() {
 	//popup
-	$(".icon go-page").click(function(){	 
-		$(".background_member").addClass("show");
-		$(".window_member").addClass("show");
+	$(".icon").click(function(){
+		$(".background_exhibition").addClass("show");
+		$(".window_exhibition").addClass("show");
 		$(".popup_close").click(function(){
-			$(".background_member").removeClass("show");
-			$(".window_member").removeClass("show");
+			$(".background_exhibition").removeClass("show");
+			$(".window_exhibition").removeClass("show");
 		});
 	});
 	
-	$(".ticket_test").click(function(){
-		ticket_exhibitionFrom.submit();
-	});
-	
-});	
+
+});
 	
 </script>
 
@@ -383,8 +380,7 @@
 																</ul>
 																<div data-v-26e42198="" data-v-8ed31374=""
 																	class="btn-area btn-reservation">
-																 <%-- <a  href="http://localhost:9000/dmu/ticket_reservation.do?did=${ vo.getDid()}" target="_parent"> --%> 
-																 <a class = "ticket_test" href="#" target="_parent"> 
+																 <a  href="#" target="_parent"> 																
 																		<button data-v-26e42198="" id="btn32" type="button" class="primary" disabled>예매하기</button></a>
 																 
 																</div>
@@ -404,13 +400,13 @@
 					</div>
 				</div>
 				
- <div class = "background_reservation">
-		<div class = "window_reservation">
-			<div class = "popup_reservation">
-			<div data-v-9a980cc6="" class="layer-header" class = "popup_title"> 전문보기
-				<button data-v-9a980cc6="" type="button" class="layer-close"> 닫기</button>
-			</div>
-			<div data-v-9a980cc6="" class="layer-body">
+  <div class = "background_exhibition">
+		<div class = "window_exhibition">
+			<div class = "popup_exhibition">
+				<p class = "popup_title">전문보기</p>
+				<div class="popup_detail">
+								<table class="popup_detail_table">
+										<div data-v-9a980cc6="" class="layer-body">
 				<div data-v-9dea2aa6="" data-v-9a980cc6="">
 					<div data-v-9dea2aa6="" data-v-9a980cc6="" class="title-area">
 						<strong data-v-9dea2aa6="" data-v-9a980cc6="" class="title">관람
@@ -480,20 +476,15 @@
 					</div>
 				</div>
 			</div>
-			<div data-v-9a980cc6="" class="layer-footer">
-				<div data-v-9dea2aa6="" data-v-9a980cc6="">
-					<div data-v-9dea2aa6="" data-v-9a980cc6="" class="btn-group">
-						<div data-v-26e42198="" data-v-9dea2aa6="" class="btn-area"
-							data-v-9a980cc6="">
-							<button data-v-26e42198="" id="btn96" type="button"
-								class="primary full">확인</button>
-						</div>
+									</table>
+				
 					</div>
+				<div class = "popup_button">
+					<button type = "button" class = "popup_close">확인</button>						 
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 			</main>
 		 </form>
 

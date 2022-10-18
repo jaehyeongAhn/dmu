@@ -169,7 +169,6 @@ $(document).ready(function(){
         	    $("#btn32").prop("disabled", !this.checked); 
         	     $("#rallprice").val($("#rprice").val()*$("#rtotal").val());      	    	    
 	        }else{ 	 	
-		 
 			 }
 			 
 		});	
@@ -196,8 +195,8 @@ $(document).ready(function(){
 	      	  alert("로그인 후 예매 가능합니다.")
 	       	$(location).attr("href","http://localhost:9000/dmu/login.do");
 	            return false;   
-			}else {			 	
-				ticket_reservationFrom.submit();
+			}else {				 		 			 		 	
+				ticket_exhibitionFrom.submit();
 			 }			 
 		});		
 		 

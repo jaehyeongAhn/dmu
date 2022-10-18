@@ -175,9 +175,8 @@ $(document).ready(function(){
 										</tbody>
 									</table>
 								</div>
-				<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area"
-							data-v-080a389a="" id="ampaginationsm">
-							<button data-v-650d6904="" type="button" disabled="disabled"
+				<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm" style="text-align:center;">
+<!-- 							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-first">first</button>
 							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-prev">prev</button>
@@ -189,7 +188,7 @@ $(document).ready(function(){
 								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
 									href="javascript:void(0);" role="button">3</a></li>
 							</ul>
-<!-- 							<button data-v-650d6904="" type="button" class="btn-next">
+							<button data-v-650d6904="" type="button" class="btn-next">
 								next</button>
 							<button data-v-650d6904="" type="button" class="btn-last">
 								last</button> -->
@@ -219,7 +218,7 @@ $(document).ready(function(){
 											</tr>
 											<tr>
 												<th>티켓번호</th>
-												<td class="tid">${vo.rid}</td>
+												<td class="tid">tid 랜덤생성</td>
 											</tr>
 											<tr>
 												<th>전시/이벤트 명</th>
@@ -255,15 +254,15 @@ $(document).ready(function(){
 											</tr>
 											<tr>	
 												<th>결제일</th>
-												<td class=""> </td>
+												<td class="pdate">${vo.pdate}</td>
 											</tr>
 											<tr>	
 												<th>결제수단</th>
-												<td class=""> </td>
+												<td class="pcoin">${vo.pcoin}</td>
 											</tr>
 											<tr>	
 												<th>상태</th>
-												<td class=""> </td>
+												<td class="tcheck">${vo.tcheck}</td>
 											</tr>
 										</thead>
 									</table>
