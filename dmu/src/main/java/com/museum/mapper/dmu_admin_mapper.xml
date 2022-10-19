@@ -112,4 +112,20 @@
 		</choose>
 	</select>
 	
+	<!-- inquiry content -->
+	<select id = "inquiryContent" parameterType = "java.lang.String" resultType = "com.museum.vo.DmuInquiryVO">
+		SELECT IQID, MID, IQCATEGORY, IQTYPE, IQTITLE, IQCONTENT, IQANSWER, TO_CHAR(IQDATE, 'YYYY-MM-DD') IQDATE
+		FROM DMU_INQUIRY
+		WHERE IQID = #{iqid}
+	</select>
+	
+	<!-- inquiry response -->
+	<select id = "inquiryResponse" parameterType = "java.lang.String" resultType = "java.lang.String">
+		SELECT EMAIL FROM DMU_MEMBER WHERE MID = #{mid}
+	</select>
+	
+	<!-- inquiry response success update -->
+	<update id = "inquiryUpdate" parameterType = "java.lang.String">
+		UPDATE DMU_INQUIRY SET IQANSWER = 'y' WHERE IQID = #{iqid}
+	</update>
 </mapper>

@@ -917,7 +917,7 @@ body .ui-tooltip {
 	font-size: 1em;
 }
 .ui-widget.ui-widget-content {
- 
+     border: none;
 /* 	border: 1px solid #c5c5c5; */
 }
 .ui-widget-content {

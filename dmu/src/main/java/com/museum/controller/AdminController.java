@@ -15,6 +15,7 @@ import com.google.gson.JsonObject;
 import com.museum.dao.DmuAdminDAO;
 import com.museum.dao.DmuNoticeDAO;
 import com.museum.service.AdminServiceImpl;
+import com.museum.service.EmailServiceImpl;
 import com.museum.service.NoticeServiceImpl;
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
@@ -28,6 +29,8 @@ public class AdminController {
 	@Autowired
 	private AdminServiceImpl adminService;
 
+	@Autowired
+	private EmailServiceImpl emailService;
 	/******************
 	 * 
 	 * admin_notice
@@ -505,6 +508,51 @@ public class AdminController {
 		jobject.addProperty("dbCount", dbCount);
 		jobject.addProperty("pageSize", pageSize);
 		jobject.addProperty("rpage", reqPage);
+		
+		return gson.toJson(jobject);
+	}
+	
+	//adminpage_inquiry_content_ajax.do : 문의 사항 상세 보기
+	@ResponseBody
+	@RequestMapping(value = "/adminpage_inquiry_content_ajax.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String adminpage_inquiry_content_ajax(String iqid) {
+		DmuInquiryVO vo = adminService.getInquiryContent(iqid);
+		
+		JsonObject jobject = new JsonObject();
+		Gson gson = new Gson();
+		
+		jobject.addProperty("iqid", vo.getIqid());
+		jobject.addProperty("mid", vo.getMid());
+		jobject.addProperty("iqcategory", vo.getIqcategory());
+		jobject.addProperty("iqtype", vo.getIqtype());
+		jobject.addProperty("iqtitle", vo.getIqtitle());
+		jobject.addProperty("iqcontent", vo.getIqcontent());
+		jobject.addProperty("iqanswer", vo.getIqanswer());
+		jobject.addProperty("iqdate", vo.getIqdate());
+		
+		return gson.toJson(jobject);
+	}
+	
+	//inquiry_response.do : 문의 사항 답변 전송
+	@ResponseBody
+	@RequestMapping(value = "/inquiry_response.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String inquiry_response(String answer, String iqid, String mid) {
+		DmuInquiryVO vo = adminService.getInquiryContent(iqid);
+		String email = adminService.getInquiryEmail(mid);
+		
+		String result = emailService.emailForm_inquiry(email, answer, vo);
+		
+		JsonObject jobject = new JsonObject();
+		Gson gson = new Gson();
+		
+		if(result == "success") {
+			int success_result = adminService.getInquiryUpdate(iqid);
+			if(success_result == 1) {
+				jobject.addProperty("email_response", result);					
+			}
+		}else {
+			jobject.addProperty("email_response", "fail");
+		}		
 		
 		return gson.toJson(jobject);
 	}

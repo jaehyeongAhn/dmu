@@ -113,4 +113,22 @@ public class AdminServiceImpl implements AdminService{
 	public int getInquiryTotalCount(String answerType) {
 		return adminDAO.inquiryTotalCount(answerType);
 	}
+	
+	//문의 사항 상세 보기
+	@Override
+	public DmuInquiryVO getInquiryContent(String iqid) {
+		return adminDAO.inquiryContent(iqid);
+	}
+	
+	//문의 사항 이메일
+	@Override
+	public String getInquiryEmail(String mid) {
+		return adminDAO.inquiryEmail(mid);
+	}
+	
+	//문의 사항 상태 업데이트
+	@Override
+	public int getInquiryUpdate(String iqid) {
+		return adminDAO.inquiryUpdate(iqid);
+	}
 }

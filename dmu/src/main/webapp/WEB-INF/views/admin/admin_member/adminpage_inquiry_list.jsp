@@ -44,15 +44,29 @@ $(document).ready(function(){
 	$(".popup_admin_inquiry_form").css("height", height);
 	
 	function inquiry_popup_set(){
+		//스타일 초기화
+		$(".popup_admin_inquiry_form").scrollTop(0);
 		$(".background_admin_inquiry").addClass("show");
 		$(".window_admin_inquiry").addClass("show");
 		$(".admin_inquiry_detail_close").click(function(){
-			$(".background_admin_inquiry").removeClass("show");
-			$(".window_admin_inquiry").removeClass("show");
+			close_inquiry_popup();
+		});
+		$("#inquiry_check").click(function(){
+			if($("#inquiry_check").is(":checked")){
+				$(".admin_inquiry_detail_ok").attr("disabled", false);
+			}else{
+				$(".admin_inquiry_detail_ok").attr("disabled", true);
+			}
 		});
 	}
 	
-	
+	function close_inquiry_popup(){
+		$(".background_admin_inquiry").removeClass("show");
+		$(".window_admin_inquiry").removeClass("show");
+		$("div.popup_admin_inquiry_answer_content textarea").val("");
+		$("#inquiry_check").prop("checked", false);
+		$(".admin_inquiry_detail_ok").attr("disabled", true);
+	}
 	//탭 메뉴
 	$(".admin-inquiry-search div").click(function(){
 		$(".admin-inquiry-search div").removeClass("inquiry_on");
@@ -105,7 +119,7 @@ $(document).ready(function(){
 						output += "</div></div>";
 						
 						if(dataset.iqanswer == 'n') {
-							output += "<button type = 'button' class = 'admin-inquiry-answer'>";
+							output += "<button type = 'button' class = 'admin-inquiry-answer' data-id = '" + dataset.iqid +"'>";
 							output += "<img src = 'http://localhost:9000/dmu/resources/images/airplane.png'>";
 							output += "<div>답변 보내기</div><hr class = 'back_hr1'><hr class = 'back_hr2'><hr class = 'back_hr3'>";
 							output += "</button>";
@@ -127,7 +141,9 @@ $(document).ready(function(){
 			
 				//문의사항 상세보기 및 답변 팝업창
 				$(".admin-inquiry-answer").click(function(){
+					//alert($(this).attr("data-id"));
 					inquiry_popup_set();
+					inquiry_content_popup($(this).attr("data-id"));
 				});
 				
 				if(data.list.length != 0){
@@ -139,10 +155,80 @@ $(document).ready(function(){
 						    jQuery('.showlabelsm').text('The selected page no: '+e.page);;
 							inquiry_ajax(e.page);      
 				    });
+				}//페이징-if
+			}//success
+		});//ajax-list
+	}//function-list
+	
+	
+	//문의사항 상세 보기
+	function inquiry_content_popup(iqid){
+		$.ajax({
+			type : "post",
+			data : {
+				iqid : iqid
+			},
+			url : "adminpage_inquiry_content_ajax.do",
+			success : function(result) {
+				let data = JSON.parse(result);
+				
+				$("div.popup_admin_inquiry_form div.admin_category_list span.category > span.second").text(data.iqcategory);
+				$("div.popup_admin_inquiry_form div.admin_category_list span:nth-child(2) > span.second").text(data.iqtype);
+				$("div.popup_admin_inquiry_form div.admin_inquiry_write_date p > span").text(data.iqdate);
+				$("div.popup-admin-inquiry-author span:nth-child(2)").text(data.mid);
+				$("div.popup_admin_inquiry_form div.admin_inquiry_write_content p").text(data.iqtitle);
+				$("div.popup_admin_inquiry_form div.admin_inquiry_write_content div").text(data.iqcontent);
+
+
+				//답변하기 전송 버튼
+				$(".admin_inquiry_detail_ok").click(function(){
+					if($(".inquiry_response").val() == "") {
+						$("div.popup_admin_inquiry_answer_content div").css("display", "flex");
+						$(".inquiry_response").focus();
+						return false;
+					}else{
+						//textarea 줄바꿈 변환
+						let answer = $(".inquiry_response").val().replace(/(?:\r\n|\r|\n)/g, "<br/>");
+						inquiry_email_response(answer, iqid, data.mid);
+					}
+				});
+			}//success
+		});//ajax-content
+	}//function
+	
+	//유효성 체크
+	$(".inquiry_response").keyup(function(){
+		if($(".inquiry_response").val() != "") {
+			$("div.popup_admin_inquiry_answer_content div").css("display", "none");
+			return false;
+		}
+	});
+	
+	
+	//이메일 전송 및 반환
+	function inquiry_email_response(answer, iqid, mid){
+		$.ajax({
+			type : "post",
+			data : {
+				answer : answer,
+				iqid : iqid,
+				mid : mid
+			},
+			url : "inquiry_response.do",
+			success : function(result) {
+				let data = JSON.parse(result);
+
+				if(data.email_response == "success") {
+					close_inquiry_popup();
+					$(".background_inquiry_result").addClass("show");
+					$(".window_inquiry_result").addClass("show");
+					$(".inquiry_result_success").click(function(){
+						$(location).attr("href", "http://localhost:9000/dmu/adminpage_inquiry_list.do");
+					});
 				}
-			}
-		});
-	}
+			}//success
+		});//ajax
+	}//function
 });
 </script>
 <style>
@@ -698,6 +784,49 @@ $(document).ready(function(){
 		    font-size: 17px;
 		    height: 400px;
 		}
+		div.popup_admin_inquiry_response_check {
+			display: flex;
+		    align-items: center;
+		    justify-content: center;
+		    margin: 10px 0 0 0;
+		}
+		input#inquiry_check {
+		    display: none;
+		}
+		input#inquiry_check + label[for="inquiry_check"] {
+			display : flex;
+			align-items : center;    
+			letter-spacing: -0.05rem;
+    		font-size: 17px;
+			cursor : pointer;
+		}
+		input#inquiry_check + label[for="inquiry_check"]::before{
+			content : "";
+			width : 20px;
+			height : 20px;
+			display : inline-block;
+			border : 0.5px solid black;
+			margin-right: 10px;
+		}
+		input#inquiry_check:checked + label[for="inquiry_check"]::before{
+			content : "";
+			width : 20px;
+			height : 20px;
+			display : inline-block;
+			border : 0.5px solid black;
+			margin-right: 10px;
+			background-image : url("http://localhost:9000/dmu/resources/images/check.png");
+			background-repeat : no-repeat;
+			background-size : contain;
+			background-position-x : center;
+			background-position-y : center;
+		}
+		button.admin_inquiry_detail_ok:disabled {
+		    background: #c5c5c5 !important;
+		    color: #8d8d8d !important;
+		    border: 0.5px solid #c5c5c5 !important;
+		    cursor: default !important;
+		}
 	</style>
 	<div class = "background_admin_inquiry">
 		<div class = "window_admin_inquiry">
@@ -712,16 +841,71 @@ $(document).ready(function(){
 							<div class = "admin_inquiry_answer">
 								<p>문의 내역</p>
 							</div>
+							<style>
+								div.admin_inquiry_write_date {
+									display : flex;
+								}
+								div.admin_inquiry_write_date p::after {
+								    content: "|";
+								    font-size: 14px;
+								    margin: 0 10px;
+								    font-weight: 100;
+								}
+								div.popup-admin-inquiry-author {
+									display : flex;
+									align-items : center;
+								}
+								div.popup-admin-inquiry-author img {
+									width: 15px;
+								    height: 15px;
+								    border: 0.5px solid #ddd;
+								    border-radius: 50%;
+								    filter: opacity(0.5);
+								    margin-right: 5px;
+								}
+								div.popup-admin-inquiry-author div {
+								    display: flex;
+								    /* flex-direction: column;
+								    margin-left: 20px; */
+								}
+								div.popup-admin-inquiry-author span.popup_author {
+								    color : #9f9d9d;
+								}
+								div.popup-admin-inquiry-author span:nth-child(2) {
+								    margin-left : 10px;
+								}
+								div.popup_admin_inquiry_answer_content div {
+								    display: flex;
+								    align-items: center;
+								    margin: 5px 0 15px 0;
+								}
+								div.popup_admin_inquiry_answer_content img {
+									width: 20px;
+    								height: 20px;
+								}
+								div.popup_admin_inquiry_answer_content div span {
+									margin-left: 10px;
+								    color: #E2574C;
+								    font-weight: 500;
+								    letter-spacing: -0.05rem;
+								}
+							</style>
 							<div class = "admin_category_list">
-								<span class = "category first">미술관<span class = "second">대림미술관</span></span>
-								<span class = "first">문의유형<span class = "second">교육 · 문화 프로그램</span></span>
+								<span class = "category first">미술관<span class = "second"></span></span>
+								<span class = "first">문의유형<span class = "second"></span></span>
 							</div>
 							<div class = "admin_inquiry_write_date">
-								<p>등록일자<span style = "color : black; margin-left : 10px;">2022-10-12</span></p>
+								<p>등록일자<span style = "color : black; margin-left : 10px;"></span></p>
+								<div class = "popup-admin-inquiry-author">
+									<img src="http://localhost:9000/dmu/resources/images/public.svg">
+									<div>
+										<span class = "popup_author">작성자</span><span></span>
+									</div>
+								</div>
 							</div>
 							<div class = "admin_inquiry_write_content">
-								<p>디뮤지엄의 정확한 위치는 어디인가요?</p>
-								<div>디뮤지엄의 정확한 위치를 알고 싶습니다.</div>
+								<p></p>
+								<div></div>
 							</div>
 						</div>
 						<div class = "hr-text-line"></div>
@@ -731,15 +915,98 @@ $(document).ready(function(){
 								<p>답변 작성</p>
 							</div>
 							<div class = "popup_admin_inquiry_answer_content" style = "width: 100%;">
-								<textarea placeholder = "답변을 입력해주세요."></textarea>
+								<textarea placeholder = "답변을 입력해주세요." name = "inquiry_response" class = "inquiry_response"></textarea>
+								<div style = "display : none;">
+									<img src = "http://localhost:9000/dmu/resources/images/warning.png">
+									<span>답변을 입력해주세요.</span>
+								</div>
+							</div>
+							<div class = "popup_admin_inquiry_response_check">
+								<input type = "checkbox" class = "inquiry_response_check" id = "inquiry_check">
+								<label for = "inquiry_check">위의 내용으로 답변을 전송하겠습니다.</label>
 							</div>
 						</div>
 					</div>
 					<div class = "admin_inquiry_button_list">
 						<button type = "button" class = "admin_inquiry_detail_close">닫기</button>
-						<button type = "button" class = "admin_inquiry_detail_ok">전송</button>
+						<button type = "button" class = "admin_inquiry_detail_ok" disabled>전송</button>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 전송 완료 -->
+	<style>
+		
+		div.background_inquiry_result {
+			position : fixed;
+			top : 0;
+			left : 0;
+			width : 100%;
+			height : 100vh;
+			background : rgba(0, 0, 0, 0.7);
+			opacity : 0;
+			z-index : -1;
+		}
+		div.window_inquiry_result {
+			position : relative;
+			top : 0;
+			left : 0;
+			width : 100%;
+			height : 100vh;
+		}
+		div.popup_inquiry_result {
+			position : absolute;
+			top : 50%;
+			left : 50%;
+			transform : translate(-50%, -30%);
+			width : 300px;
+			height : 200px;
+			background : white;
+			overflow : hidden;
+			display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    justify-content: center;
+			z-index : -1;
+		}
+		div.background_inquiry_result.show {
+			opacity : 1;
+			z-index : 10;
+			transition : all 0.3s;
+		}
+		
+		div.background_inquiry_result.show div.popup_inquiry_result {
+			transform : translate(-50%, -50%);
+			z-index : 10;
+			transition : all 0.3s;
+		}
+		div.popup_inquiry_result div {
+		    margin-bottom: 20px;
+		    font-size: 19px;
+		    letter-spacing: -0.05rem;
+		}
+		div.popup_inquiry_result button.inquiry_result_success {
+			width: 200px;
+		    height: 50px;
+		    background: black;
+		    color: white;
+		    font-size: 17px;
+		    border: 0.5px solid black;
+		    margin-bottom: -20px;
+		    cursor : pointer;
+		}
+		div.popup_inquiry_result button.inquiry_result_success:hover {
+		    background: white;
+		    color: black;
+		}
+	</style>
+	<div class = "background_inquiry_result">
+		<div class = "window_inquiry_result">
+			<div class = "popup_inquiry_result">
+				<div>답변이 완료되었습니다.</div>
+				<button type = "button" class = "inquiry_result_success">확인</button>
 			</div>
 		</div>
 	</div>

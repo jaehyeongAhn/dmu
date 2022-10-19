@@ -146,4 +146,19 @@ public class DmuAdminDAO extends DBConn{
 		param.put("answerType", answerType);
 		return sqlSession.selectOne("mapper.admin.inquiryTotalCount", param);
 	}
+	
+	//문의 사항 상세 보기
+	public DmuInquiryVO inquiryContent(String iqid) {
+		return sqlSession.selectOne("mapper.admin.inquiryContent", iqid);
+	}
+	
+	//문의 사항 이메일 반환
+	public String inquiryEmail(String mid) {
+		return sqlSession.selectOne("mapper.admin.inquiryResponse", mid);
+	}
+	
+	//문의 사항 상태 업데이트
+	public int inquiryUpdate(String iqid) {
+		return sqlSession.update("mapper.admin.inquiryUpdate", iqid);
+	}
 }

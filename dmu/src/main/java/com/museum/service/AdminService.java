@@ -28,4 +28,7 @@ public interface AdminService {
 	/******* 1´ë1 ¹®ÀÇ ***********/
 	public List<DmuInquiryVO> getIquiryList(String answerType, int startCount, int endCount);
 	public int getInquiryTotalCount(String answerType);
+	public DmuInquiryVO getInquiryContent(String iqid);
+	public String getInquiryEmail(String mid);
+	public int getInquiryUpdate(String iqid);
 }
