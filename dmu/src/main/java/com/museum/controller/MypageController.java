@@ -2,6 +2,7 @@ package com.museum.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,6 +24,7 @@ import com.museum.service.LoginServiceImpl;
 import com.museum.service.MypageServiceImpl;
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuPurchaseTicketVO;
 import com.museum.vo.DmuPurchaseVO;
 import com.museum.vo.DmuSessionVO;
 
@@ -40,7 +43,7 @@ public class MypageController {
 	public String mypage_main() {
 		return "/mypage/mypage_main";
 	}
-	
+
 	
 	
 	/******************** 예매 목록 ***********************/
@@ -60,6 +63,36 @@ public class MypageController {
 		mv.setViewName("/mypage/mypage_ticket_content");
 		
 		return mv;
+	}
+	
+	//mypage_ticket_cancel.do : 마이페이지 티켓 삭제하기
+	@ResponseBody
+	@RequestMapping(value = "/mypage_ticket_cancel.do", method = RequestMethod.POST)
+	public String mypage_ticket_cancel(@RequestParam(value = "ticketList[]") List<String> ticketList, int rtotal, String rid) {
+		String total_result = "";
+		
+		//선택한 티켓 정보(환불) 업데이트
+		int result = mypageService.getPurchaseCancel(ticketList);
+
+		//티켓을 모두 취소했는지 확인
+		if(result == ticketList.size()) {
+			int totalCount = mypageService.getPurchaseCancelTotalCount(rid);
+			if(rtotal == totalCount) {
+				//총 티켓 매수와 취소된 티켓 매수가 동일하면 수행
+				int update_result = mypageService.getReservationCancel(rid);
+				if(update_result == 1) {
+					//예매까지 취소된 경우
+					total_result = "update_success";
+				}else {
+					//티켓을 전부 취소하지 않아 예매는 취소되지 않은 경우
+					total_result = "success";
+				}
+			}
+		}else {
+			total_result = "fail";
+		}
+		
+		return String.valueOf(total_result);
 	}
 	
 	

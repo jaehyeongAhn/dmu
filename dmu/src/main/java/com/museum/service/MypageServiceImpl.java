@@ -3,12 +3,15 @@ package com.museum.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.museum.dao.DmuMypageDAO;
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuPurchaseTicketVO;
 import com.museum.vo.DmuPurchaseVO;
 
+@Service
 public class MypageServiceImpl implements MypageService {
 	
 	@Autowired
@@ -21,6 +24,35 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDao.purchaseContent(rid);
 	}
 	
+	//예매 기한 만료
+	@Override
+	public int getReservationExpire(String rid) {
+		return mypageDao.reservationExpire(rid);
+	}
+	
+	//예매 티켓 기한 만료
+	@Override
+	public int getTicketExpire(String rid) {
+		return mypageDao.ticketExpire(rid);
+	}
+	
+	//예매 취소 신청
+	@Override
+	public int getPurchaseCancel(List<String> ticketList) {
+		return mypageDao.purchaseCancel(ticketList);
+	}
+
+	//예매 취소 티켓 카운팅
+	@Override
+	public int getPurchaseCancelTotalCount(String rid) {
+		return mypageDao.purchaseCancelTotalCount(rid);	
+	}
+	
+	//예매 정보 업데이트
+	@Override
+	public int getReservationCancel(String rid) {
+		return mypageDao.reservationCancel(rid);
+	}
 	
 	/********************* 나의 문의 ************************/
 	//문의 사항 등록

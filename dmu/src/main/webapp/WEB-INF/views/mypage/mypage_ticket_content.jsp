@@ -27,11 +27,13 @@
 				});
 			}else {
 				$(".refund_content").scrollTop(0);
+				$("body").css("overflow", "hidden");
 				$("#refund_ticket_check_box").prop("checked", false);
 				$(".refund_ticket_btn").prop("disabled", true);
 				$(".background_refund").addClass("show_refund");
 				$(".window_refund").addClass("show_refund");
 				$(".refund_popup_close").click(function(){
+					$("body").css("overflow", "auto");
 					$(".background_refund").removeClass("show_refund");
 					$(".window_refund").removeClass("show_refund");
 				});
@@ -40,7 +42,7 @@
 				/* 선택한 티켓 정보 받기*/
 				function style_table(index_result){
 					let output = "<tr class='ticket_info purchase_result" + index_result + "'>";
-					output += "<input type = 'hidden' name='tid' class='input_tidlist'>";
+					output += "<input type = 'hidden' name = 'ticket_list' id = 'ticket_id'>";
 					output += "<td class='ticket_num'></td>";
 					output += "<td class='ticket_date'></td>";
 					output += "<td class='ticket_status'><strong></strong></td>";
@@ -51,6 +53,7 @@
 				}
 				
 				let total = 0;
+				let ticket_list = [];
 				$(".ticket_info").remove();
 				
 				$(".ticket-result-list-content table input.ticket_list:checked").each(function(index, el){
@@ -74,8 +77,47 @@
 					total += intChange(price);
 					$(".total_count").text(numberFormat(total) + "원");
 					
+					
+					//티켓 번호 전송
+					ticket_list.push(tid);
+					$("tr.purchase_result" + index_tr + " input#ticket_id").val(tid);
 				});//each
-			}
+				
+
+				//티켓 정보 전송
+				$(".refund_ticket_btn").click(function(){
+					//refundForm.submit();
+					
+					$.ajax({
+						type : "post",
+						data : {
+							"ticketList" : ticket_list,
+							"rtotal" : $("#reservation_ticket_total").val(),
+							"rid" : $("#reservation_ticket_rid").val()
+						},
+						url : "mypage_ticket_cancel.do",
+						success : function(result){
+
+							if(result == "update_success"){
+								$("div.popup_ticket_refund_result p").text("예매 취소가 완료되었습니다.");
+							}else if(result == "fail") {
+								$("div.popup_ticket_refund_result p").text("환불에 실패했습니다.");
+							}else{
+								$("div.popup_ticket_refund_result p").text("선택하신 티켓의 취소가 완료되었습니다.");
+							}
+							$(".background_refund").removeClass("show_refund");
+							$(".window_refund").removeClass("show_refund");
+							$(".background_ticket_refund_result").addClass("show");
+							$(".window_ticket_refund_result").addClass("show");
+							$("#ticket_refund_result_btn").click(function(){
+								$(location).attr("href", "http://localhost:9000/dmu/mypage_ticket.do");
+							});
+						}//success
+						
+					});//ajax
+				});//click-function
+				
+			}//else
 		});//click-function
 		
 		function intChange(price) {
@@ -155,6 +197,8 @@
 						<div class = "ticket_detail">
 							<div class="result_purchase" style = "margin : 0; border-top : none;">
 								<div class="purchase_result_list">
+									<input type = "hidden" name = "rid" id = "reservation_ticket_rid" value = "${ list.rid }">
+									<input type = "hidden" name = "rtotal" id = "reservation_ticket_total" value = "${ list.rtotal }">
 									<div class="purchase-result-list-title">
 										<p>예매번호 <strong> ${ list.rid }</strong></p>
 									</div>
@@ -180,7 +224,7 @@
 														<td>${ list.ticketVo.dplace }</td>
 														<th>상태</th>
 														<c:choose>
-															<c:when test = "${ list.rcheck == 'n' }">
+															<c:when test = "${ list.rcheck == 'y' }">
 																<td>예매 완료</td>
 															</c:when>
 															<c:otherwise>
@@ -230,8 +274,6 @@
 						</div>
 					</div>
 					
-					<style>
-					</style>
 					<%-- 티켓 정보 --%>
 					<div class = "ticket">
 						<div class = "ticket_information">
@@ -240,7 +282,9 @@
 									<div class="ticket-result-list-title">
 										<h2>티켓목록</h2>
 										<div>
-											<button type = "button" class="ticket_cancle">예매취소</button>
+											<c:if test = "${ list.rcheck == 'y' }">
+												<button type = "button" class="ticket_cancle">예매취소</button>
+											</c:if>
 										</div>
 									</div>
 									<div class="ticket-result-list-content">
@@ -249,22 +293,31 @@
 												<tr style = "background:#efefef;">
 													<th>선택</th>
 													<th>티켓번호</th>
-													<th>권종</th>
+													<th>이용시간</th>
 													<th>관람일</th>
 													<th>상태</th>
 												</tr>
 												<c:set var = "index" value = "1"/>
 												<c:forEach var = "ticket_list" items = "${ list.ticketList }">
 												<tr>
-													<td><input type="checkbox" id="check${ index }" class="ticket_list">
+													<c:choose>
+														<c:when test = "${ ticket_list.tcheck ne 'y' }">
+															<c:set var = "check_disabled" value = "disabled"/>
+														</c:when>
+														<c:otherwise>
+															<c:set var = "check_disabled" value = ""/>
+														</c:otherwise>
+													</c:choose>
+													
+													<td><input type="checkbox" id="check${ index }" class="ticket_list" ${ check_disabled }>
 														<label for="check${ index }"></label>
 													</td>
 													<td class = "purchase_tid">${ ticket_list.tid }</td>
-													<td class = "purchase_dtitle">${ list.ticketVo.dtitle }</td>
+													<td class = "purchase_dtitle">${ list.ticketVo.dtime }</td>
 													<fmt:parseDate var = "rdate" value = "${ list.rdate }" type = "date" pattern = "YYYY-MM-dd"/>
 													<td class ="purchase_rdate"><fmt:formatDate value = "${ rdate }" pattern = "YYYY-MM-dd"/></td>
 													<c:choose>
-														<c:when test = "${ ticket_list.tcheck == 'n' }">
+														<c:when test = "${ ticket_list.tcheck == 'y' }">
 															<td class = "ticket_list_status"><strong>사용가능</strong></td>	
 														</c:when>
 														<c:when test="${ ticket_list.tcheck == 'ex' }">
@@ -291,7 +344,6 @@
 									</div>
 								</div>
 							</div>
-							
 						</div>
 					</div>
 					</c:forEach>
@@ -326,7 +378,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -373,7 +424,7 @@
 		    height: 20px;
 		    display: inline-block;
 		    border: 0.5px solid black;
-		   	background-image : url("http://localhost:9000/dmu2/resources/images/check.png");
+		   	background-image : url("http://localhost:9000/dmu/resources/images/check.png");
 		   	background-size : contain;
 		   	background-repeat : no-repeat;
 		    margin-right: 10px;
@@ -401,29 +452,25 @@
 					<div class = "refund_ticket">
 						<h3 class="refund_img">환불목록</h3>
 						<div class="refund_ticket_list">
-							<table>
-								<tr style = "background:#efefef;">
-									<th>티켓번호</th>
-									<th>관람일</th>
-									<th>상태</th>
-									<th>가격</th>
-								</tr>
-								<!-- <tr>
-									<td>22082800783812132132</td>
-									<td>2022.10.31</td>
-									<td><strong>취소가능</strong></td>
-									<td>12,000원</td>
-								</tr>
-								<tr>
-									<td>22082800783812132132</td>
-									<td>2022.10.31</td>
-									<td><strong>취소가능</strong></td>
-									<td>12,000원</td>
-								</tr> -->
-								<tr>
-									<td colspan="4">환불 예상금액: <strong class = "total_count">24,000원</strong></td>
-								</tr>
-							</table>
+							<form name = "refundForm" action = "mypage_ticket_cancel.do" method = "post">
+								<table>
+									<tr style = "background:#efefef;">
+										<th>티켓번호</th>
+										<th>관람일</th>
+										<th>상태</th>
+										<th>가격</th>
+									</tr>
+									<!-- <tr>
+										<td>22082800783812132132</td>
+										<td>2022.10.31</td>
+										<td><strong>취소가능</strong></td>
+										<td>12,000원</td>
+									</tr> -->
+									<tr>
+										<td colspan="4">환불 예상금액: <strong class = "total_count">24,000원</strong></td>
+									</tr>
+								</table>
+							</form>
 						</div>
 					</div>
 					<div class = "refund_terms_div">
@@ -457,6 +504,76 @@
 					<button type="button" class="refund_popup_close">닫기</button>
 					<button type="button" class="refund_ticket_btn" disabled>예매취소</button>
 				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 환불 안내 -->
+	<style>
+		div.background_ticket_refund_result {
+			position : fixed;
+			width : 100%;
+			height : 100vh;
+			background : rgba(0, 0, 0, 0.7);
+			top : 0;
+			left : 0;
+			opacity : 0;
+			z-index : -1;
+		}
+		div.window_ticket_refund_result {
+			position : relative;
+			width : 100%;
+			height : 100vh;
+			top : 0;
+			left : 0;
+		}
+		div.popup_ticket_refund_result {
+			position : absolute;
+			width : 300px;
+			height : 200px;
+			background : white;
+			top : 50%;
+			left : 50%;
+			display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    justify-content: center;
+			transform : translate(-50%, -30%);
+			z-index : -1;
+		}
+		div.background_ticket_refund_result.show {
+			opacity : 1;
+			z-index : 10;
+			transition : all 0.3s;
+		}
+		div.background_ticket_refund_result.show div.popup_ticket_refund_result {
+			transform : translate(-50%, -50%);
+			z-index : 10;
+			transition : all 0.3s;
+		}
+		
+		div.popup_ticket_refund_result p {
+			margin-bottom : 30px;
+		}
+		button#ticket_refund_result_btn {
+			width : 200px;
+			height : 50px;
+			background : black;
+			border : 0.5px solid black;
+			color : white;
+			cursor : pointer;
+			margin-bottom : -30px;
+		}
+		button#ticket_refund_result_btn:hover {
+			background : white;
+			color : black;
+		}
+	</style>
+	<div class = "background_ticket_refund_result">
+		<div class = "window_ticket_refund_result">
+			<div class = "popup_ticket_refund_result">
+				<p>선택하신 티켓의 취소가 완료되었습니다.</p>
+				<button type = "button" id = "ticket_refund_result_btn">확인</button>
 			</div>
 		</div>
 	</div>

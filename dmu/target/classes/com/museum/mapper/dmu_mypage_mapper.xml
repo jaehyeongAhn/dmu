@@ -48,23 +48,41 @@
 	</resultMap>
 	
 	<select id = "purchaseList" parameterType = "map" resultMap = "purchaseInfo">
-		SELECT DT.DID, DR.RID, DT.DTITLE, TO_CHAR(DR.ROKDATE, 'YYYY-MM-DD HH24:MI:SS') ROKDATE, DR.RTOTAL, 
-		        DT.DPLACE, DR.RPRICE, DR.RCHECK, DT.DSFILE, DP.PDATE, DP.PALLPRICE, DP.PCOIN, DR.RDATE, DT.DCODE
+		SELECT DT.DID, DR.RID, DT.DTITLE, DT.DTIME, DT.DPLACE, DT.DSFILE, TO_CHAR(DR.ROKDATE, 'YYYY-MM-DD HH24:MI:SS') ROKDATE, 
+		       DR.RTOTAL, DR.RPRICE, DR.RCHECK, DR.RDATE, DP.PDATE, DP.PALLPRICE, DP.PCOIN, DT.DCODE
 		FROM DMU_TICKET DT, DMU_RESERVATION DR, DMU_PAYINFO DP
 		WHERE DT.DID = DR.DID AND DR.RID = DP.RID AND DR.RID = #{rid}
 	</select>
 	
 	<select id = "purchaseTicketList" parameterType = "com.museum.vo.DmuPurchaseVO" resultType = "com.museum.vo.DmuPurchaseTicketVO">
-		SELECT DP.PDATE, DP.PALLPRICE, DTI.TID, CASE WHEN DR.RDATE > SYSDATE THEN DTI.TCHECK ELSE 'ex' END AS TCHECK
+		SELECT DP.PDATE, DP.PALLPRICE, DTI.TID, CASE WHEN DR.RDATE > SYSDATE AND DTI.TCHECK != 'n' THEN DTI.TCHECK ELSE 'expire' END AS TCHECK
 		FROM DMU_TICKETINFO DTI, DMU_PAYINFO DP, DMU_RESERVATION DR
 		WHERE DTI.RID = DP.RID AND DTI.RID = DR.RID AND  DTI.RID = #{rid}
 	</select>
 	
+	<!-- RESERVATION EXPIRE -->
+	<update id = "reservation_expire" parameterType = "java.lang.String">
+		UPDATE DMU_RESERVATION SET RCHECK = 'ex' WHERE RID = #{rid}
+	</update>
+	
+	<!-- RESERVATION TICKETINFO EXPIRE -->
+	<update id = "reservation_ticket_expire" parameterType = "java.lang.String">
+		UPDATE DMU_TICKETINFO SET TCHECK = 'ex' WHERE RID = #{rid}
+	</update>
+	
 	<!-- TICKET UPDATE -->
-	<update id = "ticket_expire" parameterType = "java.lang.String">
-		<foreach collection = "array" item = "item" index = "index">
-			UPDATE DMU_TICKETINFO SET TCHECK = 'ex' WHERE TID = #{mid}		
-		</foreach>
+	<update id = "ticket_update" parameterType = "java.util.List">
+		UPDATE DMU_TICKETINFO SET TCHECK = 'n' WHERE TID = #{tid}		
+	</update>
+	
+	<!-- TICKET COUNTING -->
+	<select id = "ticket_cancle_totalCount" parameterType = "java.lang.String" resultType = "int">
+		SELECT COUNT(*) FROM DMU_TICKETINFO WHERE RID = #{rid} AND TCHECK = 'n'
+	</select>
+	
+	<!-- TICKET RESERVATION UPDATE -->
+	<update id = "ticket_reservation_update" parameterType = "java.lang.String">
+		UPDATE DMU_RESERVATION SET RCHECK = 'n' WHERE RID = #{rid}
 	</update>
 	
 	<!-- ///////////////////////////// mypage_inquiry ///////////////////////////// -->

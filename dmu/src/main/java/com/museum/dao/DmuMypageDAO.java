@@ -6,11 +6,14 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuPurchaseTicketVO;
 import com.museum.vo.DmuPurchaseVO;
 
+@Repository
 public class DmuMypageDAO {
 	
 	@Autowired
@@ -31,6 +34,35 @@ public class DmuMypageDAO {
 		param.put("rid", rid);
 		
 		return sqlSession.selectList(namespace + ".purchaseList", rid);
+	}
+	
+	//예매 기한 만료
+	public int reservationExpire(String rid) {
+		return sqlSession.update(namespace + ".reservation_expire", rid);
+	}
+	
+	//예매 티켓 기한 만료
+	public int ticketExpire(String rid) {
+		return sqlSession.update(namespace + ".reservation_ticket_expire", rid);
+	}
+	
+	//예매 취소 신청
+	public int purchaseCancel(List<String> ticketList) {
+		int result = 0;
+		for(String tid : ticketList) {
+			result += sqlSession.update(namespace + ".ticket_update", tid);
+		}
+		return result;
+	}
+	
+	//예매 취소 티켓 카운팅
+	public int purchaseCancelTotalCount(String rid) {
+		return sqlSession.selectOne(namespace + ".ticket_cancle_totalCount", rid);
+	}
+	
+	//예매 정보 업데이트
+	public int reservationCancel(String rid) {
+		return sqlSession.update(namespace + ".ticket_reservation_update", rid);
 	}
 	
 	/************ 나의 문의 **************/

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuPurchaseTicketVO;
 import com.museum.vo.DmuPurchaseVO;
 
 public interface MypageService {
@@ -11,8 +12,24 @@ public interface MypageService {
 	/*************** 예매 목록 ***************/
 	//예매 리스트
 	
+	
 	//예매 정보 상세 보기
 	public List<DmuPurchaseVO> getPurchaseContent(String rid);
+	
+	//예매 기한 만료
+	public int getReservationExpire(String rid);
+	
+	//예매 티켓 기한 만료
+	public int getTicketExpire(String rid);
+
+	//예매 취소 신청
+	public int getPurchaseCancel(List<String> ticketList);
+	
+	//예매 취소 티켓 카운팅
+	public int getPurchaseCancelTotalCount(String rid);
+	
+	//예매 정보 업데이트
+	public int getReservationCancel(String rid);
 	
 	/*************** 나의 문의 ***************/
 	//문의 사항 등록
