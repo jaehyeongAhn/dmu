@@ -20,46 +20,153 @@
 <script>
 $(document).ready(function(){
 	
-	//페이징 리스트 출력
-	var pager = jQuery('#ampaginationsm').pagination({
+	let dbCount = '${dbCount}'
+	let rpage = '${rpage}'
+	let pageSize = '${pageSize}'
 	
-	    maxSize: 7,	    		// max page size
-	    totals: '${dbCount}',	// total rows	
-	    page: '${rpage}',		// initial page		
-	    pageSize: '${pageSize}',	// max number items per page
-	
-	    // custom labels		
-	    lastText: '&raquo;&raquo;', 		
-	    firstText: '&laquo;&laquo;',		
-	    prevText: '&laquo;',		
-	    nextText: '&raquo;',
-			     
-	    btnSize:'sm'	// 'sm'  or 'lg'		
-	});
+	function paging(dbCount, rpage, pageSize){
+		//페이징 리스트 출력
+		var pager = jQuery('#ampaginationsm').pagination({
+		
+		    maxSize: 7,	    		// max page size
+		    totals: dbCount,	// total rows	
+		    page: rpage,		// initial page		
+		    pageSize: pageSize,	// max number items per page
+		
+		    // custom labels		
+		    lastText: '&raquo;&raquo;', 		
+		    firstText: '&laquo;&laquo;',		
+		    prevText: '&laquo;',		
+		    nextText: '&raquo;',
+				     
+		    btnSize:'sm'	// 'sm'  or 'lg'		
+		});
+		
+	}
+
+	paging(dbCount, rpage, pageSize);
 	
 	//페이징 번호 클릭 시 이벤트 처리
-	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+  	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
            $(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);         
-    });
+    });  
 	
 	
-	//popup
-	$(".member_detail").click(function(){
-		$(".background_member").addClass("show");
-		$(".window_member").addClass("show");
-		$(".popup_close").click(function(){
-			$(".background_member").removeClass("show");
-			$(".window_member").removeClass("show");
+/* 	//popup
+	function member_popup(){
+		$(".member_detail").click(function(){
+			$(".background_member").addClass("show");
+			$(".window_member").addClass("show");
+			$(".popup_close").click(function(){
+				$(".background_member").removeClass("show");
+				$(".window_member").removeClass("show");
+			});
 		});
+	}
+	
+	member_popup();
+	
+	//검색기능
+	
+	$(".search-btn").click(function(){
+		admin_search_public(1);
 	});
 	
 	
+	$(".search-bar").keyup(function(e){
+		if(e.keyCode == 13){
+			admin_search_public(1);
+		}
+	});
+	
+	
+	function admin_search_public(rpage){
+	    $(".search-bar").val($(".search-bar").val().trim());
+	    let keyword = $(".search-bar").val().trim();
+	    $.ajax({
+	        
+	        url : 'admin_search_public_json.do',
+	        type: 'get',
+	        cache : false,
+	        headers : {"cache-control":"no-cache", "pragma": "no-cache"},
+	        data : {"keyword" : keyword, "rpage": rpage},
+	        success : function(data){
+	            let dataset = JSON.parse(data);
+	            
+	           	var output ="<table class='info-table'><thead><tr>";
+	            output +="<th>아이디</th>";
+	            output +="<th>회원명</th>";
+	            output +="<th>전화번호</th>";
+	            output +="<th>이메일</th>";
+	            output +="<th>가입일자</th>";
+	            output +="<th>상태</th>";
+	            output +="<th>자세히보기</th>";
+	            output +="</tr></thead>";
+	            
+	            for(obj of dataset.list){
+	                output += "<tbody><tr>";
+	                output += "<td class='memberId'>" + obj.mid + "</td>";
+	                output += "<td>" + obj.mname + "</td>";
+	                output += "<td>" + obj.pnumber + "</td>";
+	                output += "<td>" + obj.email + "</td>";
+	                output += "<td>" + obj.ddate + "</td>";
+	                if(obj.unregister == 'n'){
+	                    output += "<td>탈퇴</td>"
+	                }else{
+	                    output +="<td>가입완료</td>"
+	                }
+	                output += "<td><button class='member_detail'><a href='#'>자세히보기</a></button></td>"
+	            }
+	                output += "</tr></tbody></table>";	
+	            
+	            var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm' style='text-align:center;''> "
+	            paging_list +="</div>"
+	            
+	            if(dataset.list.length !=0){
+	                
+	            $(".no-result").css("display","none");
+	            	            
+	            $(".info-table").remove();
+	            $("#ampaginationsm").remove();
+	            $(".info-list").append(output);
+	            $(".info-list").after(paging_list);
+	            $("div.search-result strong.total").text(dataset.dbCount);
+	            
+	            member_popup();
+	            paging(dataset.dbCount, dataset.rpage, dataset.pageSize);
+	            
+	            //페이징 번호 클릭 시 이벤트 처리
+ 	            jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+	                   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+	                   //$(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);
+	                   admin_search_public(e.page);
+	                
+	            });  
+	            
+	            }else{
+	                $("div.search-result strong.total").text(dataset.dbCount);
+	                $(".info-table").remove();
+	                $(".no-result").css("display","block");
+	                
+	            }
+	        
+	        },
+	        error : function(data){
+	            alert('error');
+	        }
+	        
+	        
+	    }); //ajax
+	    
+
+	}//function - admin_search_public
+	 */
 	
 	
 	
 
-});
+});//ready
 
 
 
@@ -135,8 +242,9 @@ $(document).ready(function(){
 							<input type="text" name="search" placeholder="검색어를 입력하세요." class="search-bar">
 							<button class="search-btn">검색</button>
 						</div>
+								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
 								<div class="info-list">
-									<table>
+									<table class="info-table">
 										<thead>
 											<tr>
 												<th>아이디</th>
@@ -171,8 +279,8 @@ $(document).ready(function(){
 										</tbody>
 									</table>
 								</div>
-				<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm" style="text-align:center;">
-<!-- 							<button data-v-650d6904="" type="button" disabled="disabled"
+				 <div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm" style="text-align:center;"> 
+<!--  							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-first">first</button>
 							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-prev">prev</button>
@@ -187,7 +295,7 @@ $(document).ready(function(){
 							<button data-v-650d6904="" type="button" class="btn-next">
 								next</button>
 							<button data-v-650d6904="" type="button" class="btn-last">
-								last</button> -->
+								last</button>  -->
 						</div>
 						</div>
 					</div>

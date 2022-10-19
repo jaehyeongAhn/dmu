@@ -126,8 +126,13 @@ $(document).ready(function(){
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="search-result">
 							총 <strong>${dbCount}</strong>건
 						</div>
+						<div>
+							<input type="text" name="search" placeholder="검색어를 입력하세요." class="search-bar">
+							<button class="search-btn">검색</button>
+						</div>
+								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
 								<div class="info-list">
-									<table>
+									<table class="info-table">
 										<thead>
 											<tr>
 												<th>분류</th>

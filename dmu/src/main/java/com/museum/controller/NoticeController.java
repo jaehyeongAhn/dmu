@@ -184,7 +184,6 @@ public class NoticeController {
 									throws Exception{
 		
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		System.out.println(rpage + keyword + "ww");
 		//String kind = request.getParameter("ncategory");
 			//其捞隆贸府
 			//其捞隆 贸府 - startCount, endCount 备窍扁

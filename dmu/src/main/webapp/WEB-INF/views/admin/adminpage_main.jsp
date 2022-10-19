@@ -79,7 +79,7 @@
 							<div class="purchase-title">
 								<div>
 									<p><strong style = "font-size : 20px; color:black;">최근 예매 리스트</strong></p>
-									<a href="#" class="booking_detail"><p>더보기</p></a>
+									<a href="http://localhost:9000/dmu/adminpage_reservation_list.do" class="booking_detail"><p>더보기</p></a>
 								</div>
 							</div>
 							<div class="purchase-result">

@@ -364,35 +364,7 @@ $(document).ready(function(){
 								</li>
 							</c:forEach>
 						</div>
-						<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
-						
-<!-- 								<li data-v-1b9c8af9="" data-v-080a389a=""><a
-									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="number">9</span><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="category">공통</span>
-										<div data-v-1b9c8af9="" data-v-080a389a="" class="title-area">
-											<strong data-v-1b9c8af9="" data-v-080a389a="" class="title">대림문화재단
-												개인정보처리방침 개정 안내</strong><span data-v-1b9c8af9="" data-v-080a389a=""
-												class="date">2022.08.22</span>
-										</div></a></li>
-								<li data-v-1b9c8af9="" data-v-080a389a=""><a
-									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="number">8</span><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="category">공통</span>
-										<div data-v-1b9c8af9="" data-v-080a389a="" class="title-area">
-											<strong data-v-1b9c8af9="" data-v-080a389a="" class="title">대림문화재단
-												영상정보처리기기 운영·관리방침 개정 안내</strong><span data-v-1b9c8af9=""
-												data-v-080a389a="" class="date">2022.08.01</span>
-										</div></a></li>
-								<li data-v-1b9c8af9="" data-v-080a389a=""><a
-									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="number">7</span><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="category">디뮤지엄</span>
-										<div data-v-1b9c8af9="" data-v-080a389a="" class="title-area">
-											<strong data-v-1b9c8af9="" data-v-080a389a="" class="title">성동·광진구
-												관내 교사 대상, 디뮤지엄 교사 워크숍 개최 안내</strong><span data-v-1b9c8af9=""
-												data-v-080a389a="" class="date">2022.05.13</span>
-										</div></a></li> -->
+						<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>						
 							</ul>
 						</div>
 <!-- 						<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area"
