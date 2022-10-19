@@ -54,6 +54,10 @@ $(document).ready(function(){
 		});
 	});
 	
+	
+	
+	
+	
 
 });
 
@@ -125,6 +129,11 @@ $(document).ready(function(){
 						<div class="myinfo-box">
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="search-result">
 							총 <strong>${dbCount}</strong>건
+						</div>
+					<div class="top-search-area">
+						<div>
+							<input type="text" name="search" placeholder="검색어를 입력하세요." class="search-bar">
+							<button class="search-btn">검색</button>
 						</div>
 								<div class="info-list">
 									<table>
