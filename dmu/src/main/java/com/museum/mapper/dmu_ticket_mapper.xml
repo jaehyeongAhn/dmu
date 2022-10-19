@@ -61,6 +61,22 @@
 	 	insert into dmu_reservation values('R_'||sequ_dmu_reservation.nextval,#{did},#{rprice},#{rtime},#{rdate},#{rtotal},#{rallprice},sysdate,'','',#{mid})
 	 </insert>
 	 
+	 <select id = "ridnew" resultType = "java.lang.String">
+	 	select 'R_' || sequ_dmu_reservation.currval rid from dual
+	 </select>
+	 
+	  <insert id="reservationdatePay" parameterType="com.museum.vo.DmuReJoinVO">
+	 	insert into dmu_payinfo values('P_'||sequ_DMU_PAYINFO.nextval,#{did},#{mid},#{rid}, sysdate,#{pcoin})
+	 </insert>
+	 
+	 <select id = "pidnew" resultType = "java.lang.String">
+	 	select 'P_' || sequ_DMU_PAYINFO.currval pid from dual
+	 </select>
+	 
+	 <insert id = "insert_ticket" parameterType="com.museum.vo.DmuReJoinVO">
+	 	insert into dmu_ticketinfo values('T_' || sequ_DMU_TICKETINFO.nextval, #{did}, #{rid}, 'y', #{pid}, #{mid})
+	 </insert>
+
 	 <!-- ticket reservationContent  -->
 	 <select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
 		select dt.did, dt.dtitle,dt.dplace, to_char(dt.dprice,'999,999') dpricech ,dr.rdate, to_char(dr.rdate, 'YY-MM-DD') rdateda ,
@@ -75,6 +91,8 @@
                                       				  (select rid from dmu_reservation order by rokdate desc)
                                  				 			  where rownum = 1) 
 	 </select>
+	 
+	 
 	 
 	  <!-- tag_page = event -->
 	 <select id="EventContent"  parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">

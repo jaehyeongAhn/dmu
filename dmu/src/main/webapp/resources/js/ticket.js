@@ -87,12 +87,7 @@ $(document).ready(function(){
    			$("#content1").toggle(); 			
   		});
   		
-		$("#btb_toggle_hide").click(function() {						
-							 
-				$("#content_hide").toggle();  
-				
-		});
-
+		 
 	/*********************
 	 달력 일자 클릭시 회차 버튼 활성화
 	**********************/
@@ -109,8 +104,8 @@ $(document).ready(function(){
 	회차 클릭시 관람인원 버튼 활성화
 	**********************/
 	$("#content").click(function(){
- 			$("#content_hide").show();				
-		});	
+		$("#content_hide").show();				
+	});	
 		
 	 
 	/*********************
@@ -183,26 +178,28 @@ $(document).ready(function(){
 		 예매하기 클릭 시 비로그인일때 유효성 체크
 		**********************/
 		$("#btn32").click(function(){
-			 if($("#mid").val() == ""){
-				$(".background_LoginCheck").addClass("show");
-			$(".window_LoginCheck").addClass("show");
-			$(".popup_home").click(function(){
-				$(".background_LoginCheck").removeClass("show");
-				$(".window_LoginCheck").removeClass("show");
-				location.href="http://localhost:9000/dmu/index.do";
-			});
-			$(".popup_login").click(function(){
-				$(".background_LoginCheck").removeClass("show");
-				$(".window_LoginCheck").removeClass("show");
-				location.href="http://localhost:9000/dmu/login.do";		 
-	            return false;   
-		}) 
-	       
-			}else {				 		 			 		 	
-				ticket_exhibitionFrom.submit();
-			 }			 
-		});		
-		 
+		 if($("#mid").val() == ""){
+      	 
+       	 $(location).attr("href","http://localhost:9000/dmu/login.do");
+            return false;   
+		}else {			 	
+			ticket_exhibitionFrom.submit();
+		 }			 
+	});		
+
+
+	/*********************
+	 결제 팝업ㅡ 결제시 결제정보 넘기기
+	**********************/
+    
+    $("#popup_payment").click(function(){
+		$("form").attr({
+            "name" : "paymentForm",
+            "action" : "paymenInsert.do"
+        })
+     	paymentForm.submit();
+    });
+ 
  	
 		/***********03.결제***********/		
 		/*********************

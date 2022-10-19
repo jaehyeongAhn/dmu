@@ -138,7 +138,7 @@ $(document).ready(function(){
 												<th>관람일</th>
 												<th>예약일</th>
 												<th>예약취소  진행</th>
-												<th>예약취소  일자</th>
+												 
 											</tr>
 										</thead>
 										<tbody>
@@ -162,14 +162,7 @@ $(document).ready(function(){
 													</c:otherwise>
 												</c:choose>
 											 	
-											 	<c:choose>
-														<c:when test="${vo.rid == 'n'}">  <!-- 예약취소 일자 -->
-															<td>${vo.rokdate }</td>
-													</c:when>
-														<c:otherwise>
-															<td>-</td>
-													</c:otherwise>
-												</c:choose>		 			 										 
+											 	 	 										 
 											</tr>
 										</c:forEach>
 										</tbody>

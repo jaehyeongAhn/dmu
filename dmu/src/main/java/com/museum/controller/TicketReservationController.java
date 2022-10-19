@@ -34,15 +34,32 @@ public class TicketReservationController {
 	 * ticketReservationCheck.do 페이지 호출
 	 */
 
-	@RequestMapping(value = "/ticketReservationCheck.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/paymenInsert.do", method = RequestMethod.POST)
 	public ModelAndView ticketReservationCheck(DmuReJoinVO vo) {
 		ModelAndView mv = new ModelAndView();
 
 		int result = ticketService.getInsertDate(vo);
+		
+			vo.setRid(ticketService.ridNew());
+			result += ticketService.getreservationdatePay(vo);
 
-		if (result == 1) {
+		if (result == 2) {
 
-			mv.setViewName("redirect:/complete.do");
+			/*
+			 * String dd = ticketService.pidNew(); System.out.println(dd);
+			 */
+			vo.setPid(ticketService.pidNew());
+			for(int i=0; i<vo.getRtotal(); i++) {
+				result += ticketService.getTicketinfo(vo);
+			}
+			
+			int total_count = vo.getRtotal() + 2;
+			if(result == total_count) {
+				mv.setViewName("redirect:/complete.do");					
+			}else {
+				mv.setViewName("error_page");				
+			}
+			
 		} else {
 
 			mv.setViewName("error_page");
@@ -65,9 +82,7 @@ public class TicketReservationController {
 		mv.setViewName("ticket/ticket_reservation/complete");
 		return mv;
 	}
-
-	
-	 
+ 
 	 
 
 }

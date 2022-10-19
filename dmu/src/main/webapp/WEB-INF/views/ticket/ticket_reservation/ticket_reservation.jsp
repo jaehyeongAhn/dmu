@@ -63,7 +63,7 @@
 		$(".popup_payment").click(function(){
 			$(".background_reservation").removeClass("show");
 			$(".window_reservation").removeClass("show");
-			ticket_reservationFrom.submit();
+			paymentForm.submit();
 		});
 		$(".popup_close").click(function(){
 			$(".background_reservation").removeClass("show");
@@ -83,20 +83,10 @@
 	
   <div class="content">
  	 
-		<form name="ticket_reservationFrom"  action="ticketReservationCheck.do"  method="post">  
+		 
 		
-		 <input type="hidden" name="dtitle" value="${vo.dtitle }"> 
-		 <input type="hidden" name="did" value="${vo.did }"> 
-		 <input type="hidden" name="rprice" id="rprice" value=${vo.rprice }> 
-		 <input type="hidden" name="rtime" id="rtime" value="${vo.rtime }"> 
-		 <input type="hidden" name="rdate" id="rdate" value="${vo.rdate }"> 
-		 <input type="hidden" name="rtotal" id="rtotal" value="${vo.rtotal }">  
-		 <input type="hidden" name="rallprice" id="rallprice" value="${vo.rallprice }"> 
-		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
- 		 <input type="hidden" name="mid" id="mid" value=${ sessionScope.member.mid }> 
- 		 <input type="hidden" name="rokdate" id="rokdate" value=""> 
-		 <input type="hidden" name="pdate" id="pdate" value=""> 
-		 <input type="hidden" name="pcoin" id="pcoin" value="카드">  
+		 
+		 
 		
 		 	 
 			<main>
@@ -303,25 +293,12 @@
 					</div>
 				</div>
 				
-	<div class = "background_reservation">
-		<div class = "window_reservation">
-			<div class = "popup_reservation">
-				<p class = "popup_title">결제</p>
-				<div class="popup_detail">				 
-				<div class = "popup_button">
-					<button type = "button" class = "popup_close">취소</button>
-					<button type = "button" class = "popup_payment">결제</button>	
-					</div>						 
-				</div>
-			</div>
-		</div>
-	</div>
+	 
 			</main>
-			</form>
+			 
 			<button class="goto-top"> 상단으로 이동 </button>
 		</div>
-	</div>
-	
+	 
     <!-- built files will be auto injected -->
     <footer>
        <!-- 0510 네이버 공통 js 추가 -->
@@ -335,5 +312,32 @@
 	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 
 </body>
-
+		<div class = "background_reservation">
+				<div class = "window_reservation">
+					<div class = "popup_reservation">
+						<div class="popup_detail">				 
+							<p id = "popup_reservation">결제하시겠습니까?</p> 
+						<div class = "popup_button">
+							<form name="paymentForm" action="paymenInsert.do" method="post">
+							<input type="text" name="did" value="${vo.did }"> 
+							<input type="text" name="mid" id="mid" value=${ sessionScope.member.mid }> 
+							 <input type="text" name="pdate" id="pdate" value=""> 
+							 <input type="text" name="pcoin" id="pcoin" value="카드">  
+							 <input type="hidden" name="dtitle" value="${vo.dtitle }"> 
+							 <input type="hidden" name="rprice" id="rprice" value=${vo.rprice }> 
+							 <input type="hidden" name="rtime" id="rtime" value="${vo.rtime }"> 
+							 <input type="hidden" name="rdate" id="rdate" value="${vo.rdate }"> 
+							 <input type="hidden" name="rtotal" id="rtotal" value="${vo.rtotal }">  
+							 <input type="hidden" name="rallprice" id="rallprice" value="${vo.rallprice }"> 
+							 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
+					 		 <input type="hidden" name="rokdate" id="rokdate" value=""> 
+								
+								<button type = "button" class = "popup_close">취소</button>
+								<button type = "button" class = "popup_payment">결제</button>	
+							</form>
+							</div>	   				 
+						</div>
+					</div>
+				</div>
+			</div>
 </html>

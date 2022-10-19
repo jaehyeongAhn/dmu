@@ -74,26 +74,7 @@
 		});
 	});
 </script>
-<script>	
-	$(document).ready(function() {
-	//popup
-	$(".icon").click(function(){
-		$(".background_exhibition").addClass("show");
-		$(".window_exhibition").addClass("show");
-		$(".popup_close").click(function(){
-			$(".background_exhibition").removeClass("show");
-			$(".window_exhibition").removeClass("show");
-		});
-	});
-	
-	 
-
-});
-	
-</script>
-
-  
-
+ 
 <script src="http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
 
 <script>
@@ -476,20 +457,7 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class = "background_LoginCheck">
-		<div class = "window_LoginCheck">
-			<div class = "popup_LoginCheck">
-				<p class = "popup_title">로그인</p>
-				<div class="popup_detail1">				 
-				<div class = "popup_button1">
-					<button type = "button" class = "popup_home">홈으로</button>
-					<button type = "button" class = "popup_login">로그인 페이지 </button>	
-					</div>						 
-				</div>
-			</div>
-		</div>
-	</div>				
+ 
 			</main>
 		</form>
 

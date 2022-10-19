@@ -89,7 +89,19 @@ public class DmuTicketDAO  {
    public int insertDate(DmuReJoinVO vo) {
       return sqlSession.insert("mapper.ticket.reservationdate",vo);
    }
- 
+   public String ridNew() {
+	   return sqlSession.selectOne("mapper.ticket.ridnew");
+   }
+   public int getreservationdatePay(DmuReJoinVO vo) {
+	   return sqlSession.insert("mapper.ticket.reservationdatePay",vo);
+   }
+   public String pidNew() {
+	   return sqlSession.selectOne("mapper.ticket.pidnew");
+   }
+   public int getTicketinfo(DmuReJoinVO vo) {
+	   return sqlSession.insert("mapper.ticket.insert_ticket", vo);
+   }
+   
    /** 03.관람일/인원선택
     *   select : 결제하기
     */
@@ -97,7 +109,7 @@ public class DmuTicketDAO  {
       return sqlSession.selectOne("mapper.ticket.CompleteContent",mid);
    }
   
-   
+ 
    /*
     * tag_page
     */
