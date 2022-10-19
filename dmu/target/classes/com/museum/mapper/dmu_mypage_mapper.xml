@@ -6,6 +6,68 @@
 
 <mapper namespace = "mapper.mypage">
 
+	<!-- ///////////////////////////// mypage_reservation ///////////////////////////// -->
+	<!-- mypage reservation, ticket content -->
+	<resultMap id = "purchaseInfo" type = "com.museum.vo.DmuPurchaseVO">
+		<id property = "rid" column = "RID"/>
+		<id property = "pid" column = "PID"/>
+		<result property = "did" column = "DID"/>
+		<result property = "mid" column = "MID"/>
+		<result property = "rdate" column = "RDATE"/>
+		<result property = "rtotal" column = "RTOTAL"/>
+		<result property = "rcheck" column = "RCHECK"/>
+		<result property = "mid" column = "MID"/>
+		<result property = "rokdate" column = "ROKDATE"/>
+		<result property = "rfaildate" column = "RFAILEDATE"/>
+		<result property = "rprice" column = "RPRICE"/>
+		<result property = "rallprice" column = "RALLPRICE"/>
+		<result property = "pcoin" column = "PCOIN"/>
+		<result property = "pdate" column = "PDATE"/>
+		<result property = "pallprice" column = "PALLPRICE"/>
+		<association property = "ticketVo" resultMap = "ticketInfo"/>
+		<collection column = "rid = rid" property = "ticketList" ofType = "com.museum.vo.DmuPurchaseTicketVO"
+			select = "purchaseTicketList"></collection>
+	</resultMap>
+	
+	<resultMap id = "ticketInfo" type = "com.museum.vo.DmuTicketVO">
+		<id property = "did" column = "DID"/>
+		<result property = "dnum" column = "DNUM"/>
+		<result property = "dtitle" column = "DTITLE"/>
+		<result property = "dstart" column = "DSTART"/>
+		<result property = "dend" column = "DEND"/>
+		<result property = "dprice" column = "DPRICE"/>
+		<result property = "dplace" column = "DPLACE"/>
+		<result property = "dtime" column = "DTIME"/>
+		<result property = "dfile" column = "DFILE"/>
+		<result property = "dsfile" column = "DSFILE"/>
+		<result property = "dcode" column = "DCODE"/>
+		<result property = "dinformation" column = "DINFORMATION"/>
+		<result property = "dtarget" column = "DTARGET"/>
+		<result property = "dtitle2" column = "DTITLE2"/>
+		<result property = "dpersonnel" column = "DPERSONNEL"/>
+	</resultMap>
+	
+	<select id = "purchaseList" parameterType = "map" resultMap = "purchaseInfo">
+		SELECT DT.DID, DR.RID, DT.DTITLE, TO_CHAR(DR.ROKDATE, 'YYYY-MM-DD HH24:MI:SS') ROKDATE, DR.RTOTAL, 
+		        DT.DPLACE, DR.RPRICE, DR.RCHECK, DT.DSFILE, DP.PDATE, DP.PALLPRICE, DP.PCOIN, DR.RDATE, DT.DCODE
+		FROM DMU_TICKET DT, DMU_RESERVATION DR, DMU_PAYINFO DP
+		WHERE DT.DID = DR.DID AND DR.RID = DP.RID AND DR.RID = #{rid}
+	</select>
+	
+	<select id = "purchaseTicketList" parameterType = "com.museum.vo.DmuPurchaseVO" resultType = "com.museum.vo.DmuPurchaseTicketVO">
+		SELECT DP.PDATE, DP.PALLPRICE, DTI.TID, CASE WHEN DR.RDATE > SYSDATE THEN DTI.TCHECK ELSE 'ex' END AS TCHECK
+		FROM DMU_TICKETINFO DTI, DMU_PAYINFO DP, DMU_RESERVATION DR
+		WHERE DTI.RID = DP.RID AND DTI.RID = DR.RID AND  DTI.RID = #{rid}
+	</select>
+	
+	<!-- TICKET UPDATE -->
+	<update id = "ticket_expire" parameterType = "java.lang.String">
+		<foreach collection = "array" item = "item" index = "index">
+			UPDATE DMU_TICKETINFO SET TCHECK = 'ex' WHERE TID = #{mid}		
+		</foreach>
+	</update>
+	
+	<!-- ///////////////////////////// mypage_inquiry ///////////////////////////// -->
 	<!-- mypage inquiry insert -->
 	<insert id = "inquiry_insert" parameterType = "com.museum.vo.DmuInquiryVO">
 		INSERT INTO DMU_INQUIRY 
@@ -31,6 +93,8 @@
 		FROM DMU_INQUIRY WHERE IQID = #{iqid}
 	</select>
 
+
+	<!-- ///////////////////////////// mypage_member ///////////////////////////// -->
 	<!-- member content -->
 	<select id = "member_info" parameterType = "java.lang.String" resultType = "com.museum.vo.DmuMemberVO">
 		SELECT MID,

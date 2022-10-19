@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuPurchaseVO;
 
 public class DmuMypageDAO {
 	
@@ -16,6 +17,21 @@ public class DmuMypageDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	private String namespace = "mapper.mypage";
+	
+	
+	/************ 예매 목록 **************/
+	//예매 목록 출력
+	/*public List<DmuPurchaseVO> purchaseList(){
+		
+	}*/
+	
+	//예매 정보 상세 보기
+	public List<DmuPurchaseVO> purchaseContent(String rid) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("rid", rid);
+		
+		return sqlSession.selectList(namespace + ".purchaseList", rid);
+	}
 	
 	/************ 나의 문의 **************/
 	//문의 사항 등록

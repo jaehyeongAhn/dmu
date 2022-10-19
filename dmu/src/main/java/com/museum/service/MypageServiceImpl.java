@@ -7,12 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.museum.dao.DmuMypageDAO;
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuPurchaseVO;
 
 public class MypageServiceImpl implements MypageService {
 	
 	@Autowired
 	private DmuMypageDAO mypageDao;
+
+	/********************* 예매 목록 ************************/
+	//예매 정보 상세 보기
+	@Override
+	public List<DmuPurchaseVO> getPurchaseContent(String rid) {
+		return mypageDao.purchaseContent(rid);
+	}
 	
+	
+	/********************* 나의 문의 ************************/
 	//문의 사항 등록
 	@Override
 	public int inquiryInsert(DmuInquiryVO vo) {
@@ -36,6 +46,8 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDao.inquiryContent(iqid);
 	}
 	
+	
+	/********************* 개인정보 변경/탈퇴 ************************/
 	//회원 정보 상세 조회
 	@Override
 	public DmuMemberVO memberContent(String mid) {

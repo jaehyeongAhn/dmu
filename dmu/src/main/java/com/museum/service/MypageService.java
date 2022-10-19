@@ -4,9 +4,17 @@ import java.util.List;
 
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuPurchaseVO;
 
 public interface MypageService {
 	
+	/*************** 예매 목록 ***************/
+	//예매 리스트
+	
+	//예매 정보 상세 보기
+	public List<DmuPurchaseVO> getPurchaseContent(String rid);
+	
+	/*************** 나의 문의 ***************/
 	//문의 사항 등록
 	public int inquiryInsert(DmuInquiryVO vo);
 
@@ -19,6 +27,8 @@ public interface MypageService {
 	//문의 사항 상세 조회
 	public DmuInquiryVO getInquiryContent(String iqid);
 	
+	
+	/************** 개인정보 변경/탈퇴 ***************/
 	//회원 정보 조회
 	public DmuMemberVO memberContent(String mid);
 

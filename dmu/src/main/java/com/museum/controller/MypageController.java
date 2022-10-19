@@ -22,6 +22,7 @@ import com.museum.service.LoginServiceImpl;
 import com.museum.service.MypageServiceImpl;
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuPurchaseVO;
 import com.museum.vo.DmuSessionVO;
 
 @Controller
@@ -51,8 +52,14 @@ public class MypageController {
 	
 	//mypage_ticket_content.do : 마이페이지 티켓 예매 상세보기
 	@RequestMapping(value = "/mypage_ticket_content.do", method = RequestMethod.GET)
-	public String mypage_ticket_content() {
-		return "/mypage/mypage_ticket_content";
+	public ModelAndView mypage_ticket_content(String rid) {
+		ModelAndView mv = new ModelAndView();
+		
+		ArrayList<DmuPurchaseVO> list = (ArrayList<DmuPurchaseVO>)mypageService.getPurchaseContent(rid);
+		mv.addObject("list", list);
+		mv.setViewName("/mypage/mypage_ticket_content");
+		
+		return mv;
 	}
 	
 	
