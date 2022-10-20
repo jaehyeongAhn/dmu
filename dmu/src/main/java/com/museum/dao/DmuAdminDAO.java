@@ -301,7 +301,7 @@ public class DmuAdminDAO extends DBConn{
 		ArrayList<DmuReJoinVO> reserveSearch = new ArrayList<DmuReJoinVO>();
 		
 		String sql = "select  dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal, "
-				+ " to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rdate, 'YYYY-MM-DD') rdateda,  to_char(dr.rokdate,'YYYY-MM-DD') rokdatech "
+				+ " to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rdate, 'YYYY-MM-DD') rdateda, to_char(dr.rokdate,'YYYY-MM-DD') rokdatech "
 				+ " from dmu_ticket DT, dmu_reservation DR, dmu_member DM "
 				+ " where  dm.mid = dr.mid and dt.did = dr.did and dr.rid in "
 				+ " (select rid from (select rownum rno, rid, rokdate from (select rid, rokdate from dmu_reservation order by rokdate desc)) "
