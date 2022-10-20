@@ -58,7 +58,6 @@ public class MypageController {
 		param.put("dcode", "all");
 		
 		ArrayList<DmuPurchaseVO> list = (ArrayList<DmuPurchaseVO>) mypageService.getPurchaseList(param);
-		
 		mv.addObject("list", list);
 		mv.setViewName("/mypage/mypage_main");
 		
@@ -89,7 +88,7 @@ public class MypageController {
 		//전체 행 수
 		int totalCount = mypageService.getPurchaseListTotalCount(list_param);
 		HashMap<String, Integer> param = (HashMap<String, Integer>)getPageResult(totalCount, rpage);
-		
+
 		list_param.put("start", param.get("startCount"));
 		list_param.put("end", param.get("endCount"));
 		

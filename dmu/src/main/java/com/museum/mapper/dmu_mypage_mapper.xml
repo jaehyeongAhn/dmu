@@ -74,14 +74,24 @@
 		FROM DMU_TICKET DT, DMU_RESERVATION DR
 		WHERE DT.DID = DR.DID AND DR.MID = #{mid} 
 		<if test = "dcode != null">
-			<if test = '!dcode.equals("all")'>
+			<if test = '!dcode.equals("all") and !dcode.equals("")'>
 				AND DT.DCODE = #{dcode}		
 			</if>
 		</if>
 		<choose>
 			<when test = 'startdate != null and enddate != null'>
-				AND ROKDATE BETWEEN #{startdate} AND TO_DATE(#{enddate}, 'YYYY-MM-DD')+1
+				<choose>
+					<when test = 'startdate != "" and enddate != ""'>
+						AND ROKDATE BETWEEN #{startdate} AND TO_DATE(#{enddate}, 'YYYY-MM-DD')+1
+					</when>
+					<otherwise>
+						AND ROKDATE BETWEEN (SYSDATE-7) AND SYSDATE
+					</otherwise>
+				</choose>
 			</when>
+			<otherwise>
+				AND ROKDATE BETWEEN (SYSDATE-7) AND SYSDATE
+			</otherwise>
 		</choose>
 	</select>
 	
