@@ -77,5 +77,13 @@
                                       				  (select rid from dmu_reservation order by rokdate desc)
                                  				 			  where rownum = 1)                                				 			   
 	</select>
+	
+	<select id="reservationDet" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
+		select dt.dsfile, dt.dtitle, to_char(dr.rokdate, 'YY-MM-DD') rokdatech, dr.rtotal, dt.dplace, dr.rcheck, to_char(dt.dprice,'999,999') dpricech, dr.rtotal, to_char(dr.rallprice,'999,999') rallpricech, dp.pcoin, dp.pdate, dti.tid, to_char(dr.rdate, 'YY-MM-DD') rdateda, dti.tcheck, dm.mid   
+		from  dmu_ticket DT, dmu_reservation DR, dmu_member DM, dmu_payinfo DP, dmu_ticketinfo DTI
+		 where dt.did = dr.did  and dm.mid = dr.mid and dr.rid = dp.rid and dp.pid = dti.pid                       				 			  
+	</select>
+	
+	
  
 </mapper>

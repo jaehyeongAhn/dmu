@@ -17,7 +17,18 @@
 <script src = "http://localhost:9000/dmu/resources/js/admin_member.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/main_header.js"></script>
- 
+<style>
+	div.flag_content ul {
+		list-style : "-";
+		list-style-position :inside;
+		margin-top : 30px;
+	}
+	div.flag_content ul li {
+		line-height: 30px;
+	    color: #4c4c4c;
+	    letter-spacing: -0.08rem;
+	}
+</style>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
@@ -85,24 +96,23 @@
 										<div style="border-bottom: 0.5px solid #ddd;">
 											<div class="purchase-result-content-title" style = "width : 100%;">
 												<a href="#">
-													<img src="http://localhost:9000/dmu/resources/images/ticket.svg"
-														style = "width : 250px;">
+													<img src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }" style = "width : 250px;">
 												</a>
 												<table>
 													<tr>
-														<td colspan = "4" class = "content_table_title">어쨌든, 사랑</td>
+														<td colspan = "4" class = "content_table_title">${vo.dtitle}</td>
 													</tr>
 													<tr>
 														<th>예매 일시</th>
-														<td>2022-02-05</td>
+														<td>${vo.rokdatech}</td>
 														<th>예약 매수</th>
-														<td>1매(성인 1)</td>
+														<td>${vo.rtotal}매</td>
 													</tr>
 													<tr>
 														<th>장소</th>
-														<td>디뮤지엄</td>
+														<td>${vo.dplace}</td>
 														<th>상태</th>
-														<td>예매 완료</td>
+														<td>${vo.rcheck}</td>
 													</tr>
 												</table>
 											</div>
@@ -125,12 +135,12 @@
 										<div>
 											<table>
 												<tr>
-													<td>티켓금액<strong>18,000원</strong></td>
-													<td>티켓<strong>1매</strong></td>
-													<td>최종 결제금액<strong style="font-size:20px;">18,000원</strong></td>
+													<td>티켓금액<strong>${vo.dpricech}원</strong></td>
+													<td>티켓<strong>${vo.rtotal}매</strong></td>
+													<td>최종 결제금액<strong style="font-size:20px;">${vo.rallpricech}원</strong></td>
 												</tr>
 												<tr class="card_result">
-													<td colspan = "6">카드(국민/일시불)<br>결제일:2022.09.20</td>
+													<td colspan = "6">${vo.pcoin}<br>결제일:${vo.pdate}</td>
 												</tr>
 											</table>
 										</div>
@@ -140,8 +150,7 @@
 						</div>
 					</div>
 					
-					<style>
-					</style>
+				 
 					<%-- 티켓 정보 --%>
 					<div class = "ticket">
 						<div class = "ticket_information">
@@ -163,24 +172,17 @@
 													<th>관람일</th>
 													<th>상태</th>
 												</tr>
-												<tr>
-													<td><input type="checkbox" id="check1" class="ticket_list">
-														<label for="check1"></label>
-													</td>
-													<td>22082800783812132132</td>
-													<td>성인</td>
-													<td>2022.10.31</td>
-													<td><strong>사용가능</strong></td>
-												</tr>
-												<tr>
-													<td><input type="checkbox"  id="check2" class="ticket_list">
-														<label for="check2"></label>
-													</td>
-													<td>22082800783812132132</td>
-													<td>성인</td>
-													<td>2022.10.31</td>
-													<td><strong>사용가능</strong></td>
-												</tr>
+												<c:forEach var="vo" items="${list}">
+													<tr class = "ticket" id="${vo.tid}">
+														<td><input type="checkbox"  id="check" class="ticket_list">
+															<label for="check"></label>
+														</td>
+														<td>${vo.tid}</td>
+														<td>일반</td>
+														<td>${vo.rdateda}</td>
+														<td><strong>${vo.tcheck}</strong></td>
+													</tr>
+												 </c:forEach>
 											</table>
 										</div>
 									</div>
@@ -189,19 +191,6 @@
 							
 						</div>
 					</div>
-					
-					<style>
-						div.flag_content ul {
-							list-style : "-";
-							list-style-position :inside;
-							margin-top : 30px;
-						}
-						div.flag_content ul li {
-							line-height: 30px;
-						    color: #4c4c4c;
-						    letter-spacing: -0.08rem;
-						}
-					</style>
 			</div>
 		</div>
 	</div>

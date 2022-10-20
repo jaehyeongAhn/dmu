@@ -118,7 +118,7 @@ $(document).ready(function(){
 	
     $(".accept_input").val(mid);
 
-
+ 
 })//accept
     
     $("#popup_acceptOk").click(function(){
@@ -186,6 +186,14 @@ $(document).ready(function(){
         });//ajax
     });//click
   
+	 $('.member_detail').click(function(){
+	    var id_check = $(this).attr("id");
+	 	 alert($(this).attr('id'));
+	 	 location.href = 'http://localhost:9000/dmu/adminpage_reservation_list_det.do?rid=${ vo.getRid()}';
+	 	 
+	 	 
+		});
+ 
   
 }); //ready
 

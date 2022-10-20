@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuReJoinVO;
+import com.museum.vo.DmuTicketVO;
 
 @Repository
 public class DmuAdminDAO extends DBConn{
@@ -124,6 +125,15 @@ public class DmuAdminDAO extends DBConn{
 	
 	public DmuReJoinVO reservationContent(String mid) {
 		return sqlSession.selectOne("mapper.admin.reservationContent", mid);
+	}
+	
+	/*
+	 * adminpage_reservation_det : 어드민 페이지 예약취소 진행
+	 */
+	
+	public ArrayList<DmuReJoinVO> reservationDet(String tid) {
+		List<DmuReJoinVO> list = sqlSession.selectList("mapper.admin.reservationContent", tid);
+		return (ArrayList<DmuReJoinVO>)list;
 	}
 
 }

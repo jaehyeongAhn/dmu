@@ -5,10 +5,16 @@ public class DmuReJoinVO {
 
 	
 	int dprice, rtotal,rallprice,rprice;
-	String rid,did,mid,pid, dtitle,dplace,rdate,rtime,rokdate,rcheck,faildate, dfile,dsfile,dpricech,rallpricech,rdateda,mname,dcode,rokdatech,pdate,pcoin,tcheck;
+	String rid,did,mid,pid, dtitle,dplace,rdate,rtime,rokdate,rcheck,faildate, dfile,dsfile,dpricech,rallpricech,rdateda,mname,dcode,rokdatech,pdate,pcoin,tcheck,tid;
 	
 	
 	 
+	public String getTid() {
+		return tid;
+	}
+	public void setTid(String tid) {
+		this.tid = tid;
+	}
 	public String getTcheck() {
 		return tcheck;
 	}

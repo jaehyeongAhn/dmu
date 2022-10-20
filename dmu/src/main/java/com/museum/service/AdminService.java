@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuReJoinVO;
+import com.museum.vo.DmuTicketVO;
 
 public interface AdminService {
 	
@@ -22,4 +23,6 @@ public interface AdminService {
 	
 	ArrayList<DmuMemberVO> reservationList(int startCount, int endCount);
 	DmuReJoinVO reservationContent(String mid);
+	
+	ArrayList<DmuReJoinVO> reservationDet(String tid);
 }

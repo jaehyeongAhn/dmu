@@ -18,6 +18,7 @@ import com.museum.service.NoticeServiceImpl;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuReJoinVO;
+import com.museum.vo.DmuTicketVO;
 @Controller
 public class AdminController {
 	
@@ -452,8 +453,16 @@ public class AdminController {
 		
 		//adminpage_reservation_list_det.do
 		@RequestMapping(value = "/adminpage_reservation_list_det.do", method = RequestMethod.GET)
-		public String adminpage_reservation_list_det() {
-			return "/admin/admin_member/adminpage_reservation_list_det";
+		
+		public ModelAndView adminpage_reservation_list_det() {
+			ModelAndView mv = new ModelAndView();
+			
+			ArrayList<DmuReJoinVO> rlist = adminService.reservationDet("reservation");
+		 
+			mv.addObject("list", rlist);
+			mv.setViewName("/admin/admin_member/adminpage_reservation_list_det");
+			
+			return mv;
 		}
 	
 		
