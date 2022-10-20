@@ -333,8 +333,8 @@ public class DmuAdminDAO extends DBConn{
 				vo.setDpricech(rs.getString(5));	
 				vo.setRtotal(rs.getInt(6));
 				vo.setRallpricech(rs.getString(7));
-				vo.setRdateda(rs.getString(7));
-				vo.setRokdatech(rs.getString(7));
+				vo.setRdateda(rs.getString(8));
+				vo.setRokdatech(rs.getString(9));
 				
 				reserveSearch.add(vo);
 				

@@ -67,6 +67,7 @@ $(document).ready(function(){
     
     
     function paging(dbCount, rpage, pageSize){
+    
 		//페이징 리스트 출력
 		var pager = jQuery('#ampaginationsm').pagination({
 		
@@ -724,7 +725,7 @@ $(document).ready(function(){
 	            }
 	                output += "</tr></tbody></table>";	
 	            
-	            var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm' style='text-align:center;''> "
+	            var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm' style='text-align:center;'> "
 	            paging_list +="</div>"
 	            
 	            if(dataset.list.length !=0){
@@ -754,7 +755,7 @@ $(document).ready(function(){
 	            //페이징 번호 클릭 시 이벤트 처리
  	            jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 	                   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	                   //$(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);
+	                   //$(location).attr('href', "http://localhost:9000/dmu/adminpage_reservation_list.do?rpage="+e.page);
 	                   admin_search_reserve(e.page);
 	                
 	            });  
