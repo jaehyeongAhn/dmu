@@ -267,7 +267,22 @@ $(document).ready(function() {
 				popup_setup("아이디 중복 체크를 진행해주세요.", $("#did"));
 				return false;
 			}else{
-				joinFrom.submit();
+				//joinForm.submit();
+				let member = $("form[name='joinForm']").serialize();
+				$.ajax({
+					type : "post",
+					context : this,
+					cache : false,
+					data : member,
+					url : "joinController.do",
+					success : function(result){
+						if(result == 0){
+							popup_setup("이미 가입된 계정입니다.", $("#email1"));
+						}else{
+							$(location).attr("href", "http://localhost:9000/dmu/join_ok.do");
+						}
+					}//success
+				});//ajax
 			}
 
 		});

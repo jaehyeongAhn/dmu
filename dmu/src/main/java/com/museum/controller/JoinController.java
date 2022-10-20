@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.museum.dao.DmuMemberDAO;
 import com.museum.service.JoinServiceImpl;
+import com.museum.service.LoginServiceImpl;
 import com.museum.vo.DmuMemberVO;
 
 @Controller
@@ -16,6 +16,10 @@ public class JoinController {
 	
 	@Autowired
 	private JoinServiceImpl joinService;
+	
+	@Autowired
+	private LoginServiceImpl loginService;
+	
 	/*
 	 * join_ok.do : 회원 가입 성공 페이지
 	 */
@@ -27,17 +31,24 @@ public class JoinController {
 	/*
 	 * joinController.do : 회원 가입 성공
 	 */
-	@RequestMapping(value = "/joinController.do", method = RequestMethod.POST)
-	public ModelAndView joinController(DmuMemberVO vo) {
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	@RequestMapping(value = "/joinController.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String joinController(DmuMemberVO vo) {
+		//ModelAndView mv = new ModelAndView();
 		
-		int result = joinService.join(vo);
-		if(result == 1) {
-			mv.setViewName("/join/join_ok");
-		}else {
-			mv.setViewName("error_page");
+		int result = 0;
+		int account_exist_result = loginService.emailCheckId(vo.getEmail(), vo.getMname());
+		if(account_exist_result == 0) {
+			//계정이 존재하지 않을 떄
+			result = joinService.join(vo);
+			/*if(result == 1) {
+				mv.setViewName("/join/join_ok");
+			}else {
+				mv.setViewName("error_page");
+			}*/
 		}
-		return mv;
+		
+		return String.valueOf(result);
 	}
 	
 	//idCheck.do : 아이디 중복 확인
