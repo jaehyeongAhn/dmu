@@ -282,22 +282,19 @@ $(document).ready(function(){
     
     $(".accept").click(function(){
 
-	    let index = $(this).parent().parent().index();
-	    let mid = $(this).attr("id");
-
-	
-    $(".accept_input").val(mid);
+//		alert("accept123");
 
 
-})//accept
+
+	})//accept
     
-    $("#popup_close").click(function(){
+ /*   $("#popup_close").click(function(){
 		$("form").attr({
             "name" : "acceptForm",
             "action" : "acceptUpdate.do"
         })
         acceptForm.submit();
-    });
+    }); */
     
     
     //popup
@@ -314,24 +311,95 @@ $(document).ready(function(){
 	
 	admin_popup();
 	
-	$(".accept").click(function(){
+	/* $(".accept").click(function(){
+		alert("123accept");
+		let index = $(this).parent().parent().index();
+	    let mid = $(this).attr("id");
+	
+   		$(".accept_input").val(mid);
+
+		
+
 		$(".background_accept").addClass("show_accept");
 		$(".window_accept").addClass("show_accept");
 		$("#popup_acceptNo").click(function(){
 			$(".background_accept").removeClass("show_accept");
 			$(".window_accept").removeClass("show_accept");
 		});
-	});
+		
+	}); */
+	
+	
+	
+							$(".accept").click(function(){
+								$(".background_accept").addClass("show_accept");
+								$(".window_accept").addClass("show_accept");
+								$("#popup_acceptNo").click(function(){
+									$(".background_accept").removeClass("show_accept");
+									$(".window_accept").removeClass("show_accept");
+								});
+								
+								let index = $(this).parent().parent().index();
+						   		let mid = $(this).parent().parent().children(".memberId").text();
+						   		
+						   		//alert(mid);
+						    	$(".accept_input").val(mid);
+						    	
+					    	
+							
+							}); 
+	
 	
 	
 	$("#popup_acceptOk").click(function(){
-		$(".background_ok").addClass("show");
+		//alert("22");
+		popup_accept();
+									 $.ajax({
+								url : "acceptUpdate.do?mid="+$(".accept_input").val(),
+								success: function(result){
+									alert(result);
+							
+									if(result == 1){
+									
+										
+											$(".background_ok").addClass("show");
+											$(".window_ok").addClass("show");
+										
+											$("#popup_close").click(function(){
+											$(location).attr("href", "http://localhost:9000/dmu/adminpage_admin_list.do")
+											});
+									
+									
+									}
+							
+								}
+								
+							
+							});  //ajax
+		
+		
+		/*$(".background_ok").addClass("show");
 		$(".window_ok").addClass("show");
 		$("#popup_close").click(function(){
 			$(".background_ok").removeClass("show");
 			$(".window_ok").removeClass("show");
+		});*/
+	}); 
+	
+	function popup_accept(){
+		//$("#popup_acceptOk").click(function(){
+		$(".background_ok").addClass("show");
+		$(".window_ok").addClass("show");
+		//});
+	}
+	
+		$("#popup_close").click(function(){
+			$(".background_ok").removeClass("show");
+			$(".window_ok").removeClass("show");
 		});
-	});
+	
+	
+	
 	
 	
 	//검색기능
@@ -355,6 +423,7 @@ $(document).ready(function(){
 	        url : 'admin_search_admin_json.do',
 	        type: 'get',
 	        cache : false,
+	        context : this,
 	        headers : {"cache-control":"no-cache", "pragma": "no-cache"},
 	        data : {"keyword" : keyword, "rpage": rpage},
 	        success : function(data){
@@ -395,6 +464,8 @@ $(document).ready(function(){
 	            var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm' style='text-align:center;''> "
 	            paging_list +="</div>"
 	            
+	            
+	            
 	            if(dataset.list.length !=0){
 	                
 	            $(".no-result").css("display","none");
@@ -421,7 +492,7 @@ $(document).ready(function(){
 					    
 					
 					
-						$(".accept").click(function(){
+						 $(".accept").click(function(){
 							$(".background_accept").addClass("show_accept");
 							$(".window_accept").addClass("show_accept");
 							$("#popup_acceptNo").click(function(){
@@ -430,39 +501,56 @@ $(document).ready(function(){
 							});
 							
 							let index = $(this).parent().parent().index();
-					   		let mid = $(this).attr("id");
-					
-						
-					    $(".accept_input").val(mid);
+					   		let mid = $(this).parent().parent().children(".memberId").text();
+					   		
+					   		//alert(mid);
+					    	$(".accept_input").val(mid);
 							
-						});
+						}); 
 						
 						
-						$("#popup_acceptOk").click(function(){
+						/* $("#popup_acceptOk").click(function(){
+							alert("ee");
+							popup_accept();
 							$(".background_ok").addClass("show");
 							$(".window_ok").addClass("show");
 							$("#popup_close").click(function(){
 								$(".background_ok").removeClass("show");
 								$(".window_ok").removeClass("show");
 							});
-						});
+						});*/
 	
 							
-						$("#popup_close").click(function(){
-							//alert($(".admin").attr("id"));
-							$.ajax({
-								url : 'acceptUpdate.do?mid="+$(".admin").attr("id")',
+						$("#popup_acceptOk").click(function(){
+							//update_admin($(".admin").attr("id"));
+							alert($(".accept_input").val());
+							 $.ajax({
+								url : "acceptUpdate.do?mid="+$(".accept_input").val(),
 								success: function(result){
 									alert(result);
+							
+									if(result == 1){
+									
+										
+											$(".background_ok").addClass("show");
+											$(".window_ok").addClass("show");
+										
+											$("#popup_close").click(function(){
+											$(location).attr("href", "http://localhost:9000/dmu/adminpage_admin_list.do")
+											});
+									
+									
+									}
+							
 								}
 								
 							
-							}); //ajax
+							});  //ajax
 							//$(location).attr("href", "http://localhost:9000/dmu/acceptUpdate.do?mid="+$(".admin").attr("id")+"&status='admin'");
-						});
+						}); 
 							
 									
-/*					    $("#popup_close").click(function(){
+				   /* $("#popup_close").click(function(){
 							$("form").attr({
 					            "name" : "acceptForm",
 					            "action" : "acceptUpdate.do"
@@ -477,7 +565,7 @@ $(document).ready(function(){
 	            //페이징 번호 클릭 시 이벤트 처리
  	            jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 	                   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	                   //$(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);
+	                   //$(location).attr('href', "http://localhost:9000/dmu/adminpage_admin_list.do?rpage="+e.page);
 	                   admin_search_admin(e.page);
 	                
 	            });  
@@ -495,6 +583,20 @@ $(document).ready(function(){
 	        
 	        
 	    }); //ajax
+	    
+	    
+/*	    function update_admin(){
+	    alert("admin");
+					$.ajax({
+				url : 'acceptUpdate.do?mid="+$(".accept").attr("id")',
+				success: function(result){
+					alert(result);
+				}
+				
+			
+			}); //ajax
+	    } */
+	    
 	    
 
 	}//function - admin_search_admin
@@ -517,6 +619,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
+	function popup_reserve_detail(){
     $(".reservation_detail").click(function(){
     //$(this).css("background", "black");
     let index = $(this).parent().index();
@@ -557,5 +660,129 @@ $(document).ready(function(){
 
         });//ajax
     });//click
+	
+	}
+	/*
+	** 검색기능
+	*/
+	
+	$(".search-btn-reserve").click(function(){
+		admin_search_reserve(1);
+	});
+	
+	
+	$(".search-bar-reserve").keyup(function(e){
+		if(e.keyCode == 13){
+			admin_search_reserve(1);
+		}
+	});
+
+
+	function admin_search_reserve(rpage){
+
+		$(".search-bar-reserve").val($(".search-bar-reserve").val().trim());
+	    let keyword = $(".search-bar-reserve").val().trim();
+	    $.ajax({
+	        
+	        url : 'admin_search_reserve_json.do',
+	        type: 'get',
+	        cache : false,
+	        headers : {"cache-control":"no-cache", "pragma": "no-cache"},
+	        data : {"keyword" : keyword, "rpage": rpage},
+	        success : function(data){
+	            let dataset = JSON.parse(data);
+	            
+	           	var output ="<table class='info-table'><thead><tr>";
+	            output +="<th>분류</th>";
+	            output +="<th>티켓번호</th>";
+	            output +="<th>이벤트명</th>";
+	            output +="<th>예약자명</th>";
+	            output +="<th>티켓금액</th>";
+	            output +="<th>티켓매수</th>";
+	            output +="<th>총 금액</th>";
+	            output +="<th>관람일</th>";
+	            output +="<th>예약일</th>";
+	            output +="<th>예약취소  진행</th>";
+	            output +="</tr></thead>";
+	            
+	            for(obj of dataset.list){
+	                output += "<tbody><tr class='name'>";
+	                output += "<td>" + obj.dcode + "</td>";
+	                output += "<td  class='reservation_detail reservationId'><a href='#'>" + obj.rid + "</a></td>";
+	                output += "<td>" + obj.dtitle + "</td>";
+	                output += "<td>" + obj.mname + "</td>";
+	                output += "<td>" + obj.dpricech + "</td>";
+	                output += "<td>" + obj.rtotal + "</td>";
+	                output += "<td>" + obj.rallpricech + "</td>";
+	                output += "<td>" + obj.rdateda + "</td>";
+	                output += "<td>" + obj.rokdatech + "</td>";
+	                if(obj.rid == 'n'){
+	                    output += "<td>취소완료</td>"
+	                }else{
+	                    output +="<td><button class='member_detail'>예매취소</button></td>"
+	                }
+	            }
+	                output += "</tr></tbody></table>";	
+	            
+	            var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm' style='text-align:center;''> "
+	            paging_list +="</div>"
+	            
+	            if(dataset.list.length !=0){
+	                
+	            $(".no-result").css("display","none");
+	            	            
+	            $(".info-table").remove();
+	            $("#ampaginationsm").remove();
+	            $(".info-list").append(output);
+	            $(".info-list").after(paging_list);
+	            $("div.search-result strong.total").text(dataset.dbCount);
+	            
+	            popup_reserve_detail();
+	                $(".member_detail").click(function(){
+	                //alert("ajax");
+					    //$(this).css("background", "black");
+					    	let index = $(this).parent().parent().index();
+					    	let mid = $(this).attr("id");
+					 
+					    //alert(mid);
+					 
+					 		popup_public_detail(mid);
+					 	
+					    });//member click
+	            paging(dataset.dbCount, dataset.rpage, dataset.pageSize);
+	            
+	            //페이징 번호 클릭 시 이벤트 처리
+ 	            jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+	                   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+	                   //$(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);
+	                   admin_search_reserve(e.page);
+	                
+	            });  
+	            
+	            }else{
+	                $("div.search-result strong.total").text(dataset.dbCount);
+	                $(".info-table").remove();
+	                $(".no-result").css("display","block");
+	                
+	            }
+	        
+	        },
+	        error : function(data){
+	            alert('error');
+	        }
+	        
+	        
+	    }); //ajax
+
+	}//finction - admin_search_reserve
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }); //ready

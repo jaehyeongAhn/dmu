@@ -368,10 +368,12 @@ public class AdminController {
 		int result = 0;
 		result = adminService.updateStatus(mid);
 		
+		
 		/*
-		 * if(result == 1) { mv.setViewName("redirect:/adminpage_admin_list.do?"); }else
-		 * { mv.setViewName("error_page"); }
+		 * if(result == 1) { mv.setViewName("redirect:/adminpage_admin_list.do?");
+		 * }else{ mv.setViewName("error_page"); }
 		 */
+		 
 		return String.valueOf(result);
 	}
 	
@@ -590,5 +592,79 @@ public class AdminController {
 		}
 		
 		
+	
+	/*
+	 * 검색기능 (reservation)
+	 */
+		
+		@ResponseBody
+		@RequestMapping(value = "/admin_search_reserve_json.do", method = RequestMethod.GET, produces="text/plain;charset=UTF-8")
+		public String admin_search_reserve_json(String rpage, String keyword, HttpServletRequest request, HttpServletResponse response) 
+										throws Exception{
+			
+			DmuAdminDAO dao = new DmuAdminDAO();
+			//String kind = request.getParameter("ncategory");
+				//페이징처리
+				//페이징 처리 - startCount, endCount 구하기
+				int startCount = 0;
+				int endCount = 0;
+				int pageSize = 5;	//한페이지당 게시물 수
+				int reqPage = 1;	//요청페이지	
+				int pageCount = 1;	//전체 페이지 수
+				int dbCount = dao.totalCount_reserve(keyword);	//DB에서 가져온 전체 행수
+				
+
+				//총 페이지 수 계산
+				if(dbCount % pageSize == 0){
+					pageCount = dbCount/pageSize;
+				}else{
+					pageCount = dbCount/pageSize+1;
+				}
+
+				//요청 페이지 계산
+				if(rpage != null){
+					reqPage = Integer.parseInt(rpage);
+					startCount = (reqPage-1) * pageSize+1;
+					endCount = reqPage *pageSize;
+				}else{
+					startCount = 1;
+					endCount = pageSize;
+				}
+				
+
+				ArrayList<DmuReJoinVO> reserveSearchList = dao.member_search_reserve(startCount, endCount, keyword);
+
+				
+				JsonObject job = new JsonObject();
+				JsonArray jarray = new JsonArray();
+				Gson gson = new Gson();
+				
+				for(DmuReJoinVO vo : reserveSearchList) {
+					JsonObject jo = new JsonObject();
+					jo.addProperty("dcode", vo.getDcode());
+					jo.addProperty("rid", vo.getRid());
+					jo.addProperty("dtitle", vo.getDtitle());
+					jo.addProperty("mname", vo.getMname());
+					jo.addProperty("dpricech", vo.getDpricech());
+					jo.addProperty("rtotal", vo.getRtotal());
+					jo.addProperty("rallpricech", vo.getRallpricech());
+					jo.addProperty("rdateda", vo.getRdateda());
+					jo.addProperty("rokdatech", vo.getRokdatech());
+					
+					jarray.add(jo);
+				}
+				
+				job.add("list", jarray);
+				job.addProperty("dbCount", dbCount);
+				job.addProperty("rpage", rpage);
+				job.addProperty("pageSize", pageSize);
+				
+				return gson.toJson(job);
+				
+		
+		}
+	
+		
+
 		
 }
