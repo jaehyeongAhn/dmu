@@ -1,6 +1,7 @@
 package com.museum.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,22 +19,40 @@ public class MypageServiceImpl implements MypageService {
 	private DmuMypageDAO mypageDao;
 
 	/********************* 예매 목록 ************************/
-	//예매 정보 상세 보기
+	//예매 기한 만료 티켓 조회
 	@Override
-	public List<DmuPurchaseVO> getPurchaseContent(String rid) {
-		return mypageDao.purchaseContent(rid);
+	public List<String> getPurchaseExpire() {
+		return mypageDao.purchaseExpire();
 	}
 	
 	//예매 기한 만료
 	@Override
-	public int getReservationExpire(String rid) {
-		return mypageDao.reservationExpire(rid);
+	public int getReservationExpire(List<String> expireList) {
+		return mypageDao.reservationExpire(expireList);
 	}
 	
 	//예매 티켓 기한 만료
 	@Override
-	public int getTicketExpire(String rid) {
-		return mypageDao.ticketExpire(rid);
+	public int getTicketExpire(List<String> expireList) {
+		return mypageDao.ticketExpire(expireList);
+	}
+	
+	//예매 리스트
+	@Override
+	public List<DmuPurchaseVO> getPurchaseList(Map<String, Object> list_param){
+		return mypageDao.purchaseList(list_param);		
+	}
+
+	//예매 목록 총 갯수
+	@Override
+	public int getPurchaseListTotalCount(Map<String, Object> list_param) {
+		return mypageDao.purchaseListTotalCount(list_param);
+	}
+	
+	//예매 정보 상세 보기
+	@Override
+	public List<DmuPurchaseVO> getPurchaseContent(String rid) {
+		return mypageDao.purchaseContent(rid);
 	}
 	
 	//예매 취소 신청

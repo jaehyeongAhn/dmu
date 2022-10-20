@@ -21,88 +21,31 @@
 	$(document).ready(function(){
 
 		//페이징 리스트 출력
-		var pager = jQuery('#ampaginationsm').pagination({
-		
-		    maxSize: 7,	    		// max page size
-		    totals: '${dbCount}',	// total rows	
-		    page: '${rpage}',		// initial page		
-		    pageSize: '${pageSize}',	// max number items per page
-		
-		    // custom labels		
-		    lastText: '&raquo;&raquo;', 		
-		    firstText: '&laquo;&laquo;',		
-		    prevText: '&laquo;',		
-		    nextText: '&raquo;',
-				     
-		    btnSize:'sm'	// 'sm'  or 'lg'		
-		});
-		
-		//페이징 번호 클릭 시 이벤트 처리
-		jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
-			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           $(location).attr('href', "http://localhost:9000/dmu/mypage_inquiry.do?rpage="+e.page);         
-	    });
-		
-		
-		//문의 사항 작성하기
-		$(".review_write_btn").click(function(){
-			$(".check_join").remove();
-			$("body").css("overflow", "hidden");
-			$(".popup_inquire_write").scrollTop(0);
-			$(".inquire_category").val("default");
-			$(".inquire_type").val("default");
-			$("div.write_inquire_form input").val("");
-			$("div.write_inquire_form textarea").val("");
-			$(".background_inquire").addClass("show");
-			$(".window_inquire").addClass("show");
-			$(".inquire_close").click(function(){
-				$("body").css("overflow", "auto");
-				$(".background_inquire").removeClass("show");
-				$(".window_inquire").removeClass("show");
-			});
-		});
-
-		//문의 내역 상세 보기
-		$("div.inquire_title .detail").click(function(){
-			//팝업창 띄우기
-			$("body").css("overflow", "hidden");
-			$(".popup_inquire_detail_form").scrollTop(0);
-			$(".background_inquire_detail").addClass("show");
-			$(".window_inquire_detail").addClass("show");
-			$(".inquire_detail_close").click(function(){
-				$("body").css("overflow", "auto");
-				$(".background_inquire_detail").removeClass("show");
-				$(".window_inquire_detail").removeClass("show");
-			});
+			var pager = jQuery('#ampaginationsm').pagination({
 			
-			//문의 상세 정보 불러오기
-			let iqid = $(this).parent().parent().prev().val();
-			$.ajax({
-				type : "post",
-				data : {
-					iqid : iqid
-				},
-				url : "mypage_inquiry_content.do",
-				success : function(result) {
-					let data = JSON.parse(result);
-					let inquiry_answer_status = $(".popup_inquire_detail_content div.inquiry_answer p.inquiry_answer_status");
-					
-					if(data.iqanswer == "n"){
-						inquiry_answer_status.css("display", "none");
-					}else{
-						inquiry_answer_status.css("display", "flex");
-					}
-					$(".popup_inquire_detail_content div.category_list span.category > span.second").text(data.iqcategory);
-					$(".popup_inquire_detail_content div.category_list span.first:nth-child(2) span.second").text(data.iqtype);
-					$(".popup_inquire_detail_content div.inquire_write_date span").text(data.iqdate);
-					$(".popup_inquire_detail_content div.inquire_write_content p").html(data.iqtitle);
-					$(".popup_inquire_detail_content div.inquire_write_content div").html(data.iqcontent);
-				},
-				error : function(e){
-					alert("정보를 불러올 수 없습니다.");
-				}
+			    maxSize: 7,	    		// max page size
+			    totals: '${dbCount}',	// total rows	
+			    page: '${rpage}',		// initial page		
+			    pageSize: '${pageSize}',	// max number items per page
+			
+			    // custom labels		
+			    lastText: '&raquo;&raquo;', 		
+			    firstText: '&laquo;&laquo;',		
+			    prevText: '&laquo;',		
+			    nextText: '&raquo;',
+					     
+			    btnSize:'sm'	// 'sm'  or 'lg'		
 			});
-		});
+
+			//페이징 번호 클릭 시 이벤트 처리
+			jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+				   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+		           $(location).attr('href', "http://localhost:9000/dmu/mypage_inquiry.do?rpage="+e.page);         
+		    });
+		
+		let height_wirte = $(".popup_inquire").height() - $(".popup_inquire_title").outerHeight() - $(".inquire_button_list").outerHeight();
+		$(".popup_inquire_write").css("height", height_wirte);
+		
 
 		//문의 사항 등록 안내
 		let inquiry_write_result = "${inquiry_write_result}";
@@ -114,101 +57,6 @@
 				$(".window_inquiry_reuslt").removeClass("show_result");
 			});
 		}
-		
-		
-		
-		/****************************************** 팝업창 사이즈 *****************************************/
-		function warningCheck(check, obj, coment){
-			let style_warning = "<div class = 'check_join'>"
-				style_warning += "<img src = 'http://localhost:9000/dmu/resources/images/warning.png' class = 'join_warning'>";
-				style_warning += "<span></span></div>";
-			if(check == true){
-				obj.next(".check_join").remove();
-				obj.after(style_warning);
-				
-				obj.next(".check_join").children(".join_warning").css({"height" : "15px", "margin-right" : "5px", "width" : "auto"});
-				obj.next(".check_join").children(".join_warning + span").text(coment).css({"color" : "#D92121", "letter-spacing" : "-0.08rem", "font-weight" : "400", "font-size" : "14px"});
-				$(".check_join").css({"height": "20px", "display" : "flex", "align-items" : "center", "justify-content" : "flex-start", "margin-bottom" : "10px"});
-			}else if(check == 'ok'){
-				
-				//$(".check_join").remove();
-				obj.next().remove();
-				obj.after(style_warning);
-				
-				obj.next().children(".join_warning").remove();
-
-				//$(".check_join span").text(coment).css({"color" : "black", "letter-spacing" : "-0.08rem",
-				obj.next().children("span").text(coment)
-						.css({"color" : "black", "letter-spacing" : "-0.08rem", "font-weight" : "400"});
-				$(".check_join").css({"height": "40px", "display" : "flex", "align-items" : "center", "justify-content" : "flex-start"});
-				
-			}else{
-				obj.next(".check_join").remove();
-			}
-		}
-		/***************** 문의사항 글쓰기 팝업창 *****************/
-		let height_wirte = $(".popup_inquire").height() - $(".popup_inquire_title").outerHeight() - $(".inquire_button_list").outerHeight();
-		$(".popup_inquire_write").css("height", height_wirte);
-		
-		//문의 사항 글쓰기 팝업창 유효성 체크
-		$("div.popup_inquire_write select.inquire_category").change(function(){
-			if($("div.popup_inquire_write select.inquire_category").val() != "default"){
-				warningCheck(false, $("div.popup_inquire_write select.inquire_category"), "");
-				$("div.popup_inquire_write select.inquire_type option").css("display", "block");
-			}
-		});
-		
-		$("div.popup_inquire_write select.inquire_type").change(function(){
-			if($(this).val() != "default"){
-				warningCheck(false, $("div.popup_inquire_write select.inquire_type"), "");
-			}
-		});
-		
-		$("div.write_inquire_form input.iqtitle").keyup(function(){
-			if($(this).val() != ""){
-				warningCheck(false, $("div.write_inquire_form input.iqtitle"), "");
-			}
-		});
-		
-		$("div.write_inquire_form textarea.iqcontent").keyup(function(){
-			if($(this).val() != ""){
-				warningCheck(false, $("div.write_inquire_form textarea.iqcontent"), "");
-			}
-		});
-		
-		$("button.inquire_ok").click(function(){
-			if($("div.popup_inquire_write select.inquire_category").val() == "default") {
-				warningCheck(true, $("select.inquire_category"), "카테고리를 선택해주세요.");
-				$(".popup_inquire_write").scrollTop(0);
-				return false;
-			}else if($("div.popup_inquire_write select.inquire_type").val() == "default") {
-				let scroll = $("div.popup_inquire_write select.inquire_category").offset().top - 130;
-				warningCheck(true, $("select.inquire_type"), "문의 유형을 선택해주세요.");
-				$(".popup_inquire_write").scrollTop(scroll);
-				return false;
-			}else if($("div.write_inquire_form input.iqtitle").val() == ""){
-				let scroll = $("div.write_inquire_form input.iqtitle").offset().top - 130;
-				warningCheck(true, $("div.write_inquire_form input.iqtitle"), "문의 제목을 입력해주세요.");
-				$("div.write_inquire_form input.iqtitle").focus();
-				$(".popup_inquire_write").scrollTop(scroll);
-				return false;
-			}else if($("div.write_inquire_form textarea.iqcontent").val() == ""){
-				let content_scroll = $(".popup_inquire_write_form")[0].scrollHeight;
-				warningCheck(true, $("div.write_inquire_form .iqcontent"), "문의 내용을 입력해주세요.");
-				$(".popup_inquire_write").scrollTop(content_scroll);
-				$("div.write_inquire_form .iqcontent").focus();
-				return false;
-			}else{
-				inquireWriteForm.submit();
-			}
-		});
-		
-		
-		
-		/***************** 문의사항 글보기 팝업창 *****************/
-		let height_content = $(".popup_inquire_detail").height() - $(".popup_inquire_detail_title").outerHeight() - $(".inquire_detail_button_list").outerHeight();
-		$(".popup_inquire_detail_form").css("height", height_content);
-		
 	});
 </script>
 </head>
@@ -254,17 +102,6 @@
 					</div>
 				</aside>
 
-				<style>
-					div.inquire-title {
-						display : flex;
-						justify-content : space-between;
-						align-items : center;
-						border-bottom: 2px solid black;
-						margin : 4px 0;
-						padding : 0 0 8px 0;
-					    width: 1076px;
-					}
-				</style>
 				<%-- 마이페이지 content --%>
 				<div class="sub-contents">
 					<div class="page-title title-page inquire-title">
@@ -277,90 +114,6 @@
 						</div>
 					</div>
 					
-					<style>
-						div.inquire_content {
-						    margin: 20px 0;
-						    border-bottom: 1px solid black;
-						    /* border-top: 1px dashed #adadad; */
-						}
-						div.inquire_title,
-						div.inquire_content_list {
-							display : flex;
-							justify-content : space-between;
-							align-items : center;
-						}
-						
-						div.inquire_title {
-							padding: 10px 0;
-						    font-size: 17px;
-						    color: #323232;
-					        position: relative;
-						}
-						div.inquire_title::after {
-							content : "";
-							width : 100%;
-							height : 1px;
-							background: #dbdbdb;
-						    display: block;
-						    position: absolute;
-						    bottom: 0px;
-						}
-						div.inquire_title a.detail {
-							color : black;
-							text-decoration : none;
-							display: flex;
-    						align-items: center;
-						}
-						div.inquire_title a.detail::after {
-							content: ">";
-						    display: flex;
-						    width: 20px;
-						    height: 20px;
-						    font-size: 14px;
-						    margin-left: 2px;
-						    text-align: center;
-						    justify-content: center;
-						    align-items: center;
-						}
-						
-						div.inquire_content_list {
-							position : relative;
-							padding : 40px 0;
-							letter-spacing : -0.03rem;
-						}
-						div.inquire_content_list h2{
-							margin : 15px 0;
-						}
-						div.inquire_content_list_information span.first {
-							color: #9f9d9d;
-						}
-						div.inquire_content_list_information span.second {
-							color: black;
-							margin-left : 5px;
-						}
-						div.inquire_content_list_information span.category::after {
-							content : "|";
-							font-size : 13px;
-							margin : 0 10px;
-						}
-						div.inquire_content_list_answer {
-							width: 170px;
-						    height: 100%;
-						    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
-						    background-color: black;
-						    color: white;
-						    text-align: center;
-						    font-size: 20px;
-						    position: absolute;
-						    top: 0;
-						    right: 0;
-						    display: flex;
-						    justify-content: center;
-						    align-items: center;
-						    padding-left: 20px;
-						    box-sizing: border-box;
-						}
-					</style>
 					<div class="contents">
 						<div style = "width: 1076px; box-sizing: border-box;">
 							<div class = "inquire">
@@ -440,181 +193,6 @@
 	</div>
 	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 
-	<style>
-		div.background_inquire {
-			position : fixed;
-			top : 0;
-			left : 0;
-			background : rgba(0, 0, 0, 0.7);
-			width : 100%;
-			height : 100vh;
-			opacity : 0;
-			z-index : -1;
-		}
-		div.window_inquire {
-			position : relative;
-			top : 0;
-			left : 0;
-			width : 100%;
-			height : 100vh;
-		}
-		div.popup_inquire {
-			position : absolute;
-			top : 50%;
-			left : 50%;
-			width : 500px;
-			height : 70vh;
-			background-color : white;
-			overflow : hidden;
-			transform : translate(-50%, -30%);
-			z-index : -1;
-		}
-		div.background_inquire.show {
-			opacity : 1;
-			z-index : 200;
-			transition : all 0.3s;
-		}
-		div.background_inquire.show div.popup_inquire {
-			transform : translate(-50%, -50%);
-			z-index : 200;
-			transition : all 0.3s;
-		}
-		
-		div.popup_inquire_title {
-		    padding: 10px 16px;
-		    background: black;
-		    color: white;
-		    font-size: 17px;
-	        letter-spacing: -0.08rem;
-		}
-		div.popup_inquire_write {
-			position: absolute;
-		    width: 100%;
-		    overflow: auto;
-		}
-		div.popup_inquire_write_form {
-			overflow : auto;
-		    padding: 26px;
-		    box-sizing : border-box;
-		    /*height : 53vh;*/
-		}
-		div.popup_inquire_write_form p.title_comment {
-			display : flex;
-			align-items : center;
-			font-size : 20px;
-			font-weight : 700;
-		    letter-spacing : -0.08rem;
-		    margin-bottom: 10px;
-		}
-		div.popup_inquire_write_form p.title_comment::before {
-			content : "";
-			width : 20px;
-			height : 20px;
-			display : inline-block;
-			margin-right : 10px;
-			background-image : url("http://localhost:9000/dmu/resources/images/review.svg");
-			background-repeat : no-repeat;
-			background-size : contain;
-			background-position-x : 50%;
-			background-position-y : 50%;
-		}
-		div.popup_inquire_write_form p.comment {
-		    font-weight : 300;
-		    margin-bottom: 15px;
-		    font-size : 14px;
-		    letter-spacing : -0.08rem;
-		}
-		div.popup_inquire_write_form p.comment::before {
-		    content: "*";
-		    color: red;
-		    margin-right: 7px;
-		}
-		
-		div.popup_inquire_write_form div.write_form {
-		    display: flex;
-    		flex-direction: column;
-		}
-		div.popup_inquire_write_form div.write_form label {
-			color: #7e7e7e;
-		    letter-spacing: -0.05rem;
-		    font-weight: 500;
-		    font-size: 15px;
-		    margin: 7px 0;
-		}
-		div.popup_inquire_write_form div.write_form label::after {
-		    content: "*";
-		    color: red;
-		    font-size: 14px;
-		    vertical-align: 3px;
-		    margin-left: 3px;
-		}
-		div.popup_inquire_write_form div.write_form select {
-			border: 0.5px solid #bdbdbd;
-		    padding: 16px;
-		    font-size: 15px;
-		    letter-spacing: -0.05rem;
-	        margin-bottom: 10px;
-		}
-		div.popup_inquire div.popup_inquire_write select.inquire_type option:not(select.inquire_type option:first-child) {
-			display : none;
-		}
-		div.popup_inquire_write_form div.write_inquire_form ul {
-		    list-style:none;
-		    margin-top: 20px;
-		}
-		div.popup_inquire_write_form div.write_inquire_form ul li {
-		    display: flex;
-		    flex-direction: column;
-		}
-		div.popup_inquire_write_form div.write_inquire_form input {
-		    font-size: 15px;
-		    padding: 16px;
-		    border: 0.5px solid #bdbdbd;
-		    margin-bottom: 10px;
-		    letter-spacing: -0.08rem;
-		}
-		div.popup_inquire_write_form div.write_inquire_form textarea {
-		    height: 300px;
-		    resize: none;
-		    border: 0.5px solid #bdbdbd;
-		    padding: 16px;
-		}
-		
-		div.popup_inquire div.inquire_button_list {
-			height: 55px;
-		    box-shadow: -1px 7px 30px rgb(0 0 0 / 30%);
-		    display: flex;
-		    justify-content: center;
-		    align-items: center;
-		    position: absolute;
-		    bottom : 0;
-		    width : 100%;
-		}
-		div.popup_inquire div.inquire_button_list button {
-			width: 120px;
-	    	margin: 5px;
-	    	height : 80%;
-		}
-		div.popup_inquire div.inquire_button_list button.inquire_close {
-			background : white;
-			border : 0.5px solid black;
-			cursor : pointer;
-		}
-		div.popup_inquire div.inquire_button_list button.inquire_ok {
-			background : black;
-			border : 0.5px solid black;
-			color : white;
-			cursor : pointer;
-		}
-		div.popup_inquire div.inquire_button_list button.inquire_close:hover {
-			background : black;
-			color : white;
-		}
-		div.popup_inquire div.inquire_button_list button.inquire_ok:hover {
-			background : white;
-			color : black;
-		}
-	</style>
 	<div class = "background_inquire">
 		<div class = "window_inquire">
 			<div class = "popup_inquire">
@@ -671,162 +249,7 @@
 			</div>
 		</div>
 	</div>
-	
-	<style>
-		div.background_inquire_detail {
-			position : fixed;
-			top : 0;
-			left : 0;
-			background : rgba(0, 0, 0, 0.7);
-			width : 100%;
-			height : 100vh;
-			opacity : 0;
-			z-index : -1;
-		}
-		div.window_inquire_detail {
-			position : relative;
-			top : 0;
-			left : 0;
-			width : 100%;
-			height : 100vh;
-		}
-		div.popup_inquire_detail {
-			position : absolute;
-			top : 50%;
-			left : 50%;
-			transform : translate(-50%, -30%);
-			width : 500px;
-			height : 70vh;
-			background : white;
-			overflow : hidden;
-			z-index : -1;
-		}
-		div.background_inquire_detail.show {
-			opacity : 1;
-			z-index : 200;
-			transition : all 0.3s;
-		}
-		div.background_inquire_detail.show div.popup_inquire_detail {
-			transform : translate(-50%, -50%);
-			z-index : 200;
-			transition : all 0.3s;
-		}
-		
-		div.popup_inquire_detail_title {
-		    padding: 10px 16px;
-		    background: black;
-		    color: white;
-		    font-size: 17px;
-		}
-		div.popup_inquire_detail_form {
-			overflow : auto;
-		    padding: 26px;
-		    /* height : 52.5vh; */
-		    box-sizing : border-box;
-		}
-		div.popup_inquire_detail_content div.inquiry_answer {
-			display : flex;
-			justify-content : space-between;
-			align-items : center;
-		}
-		div.popup_inquire_detail_content div.inquiry_answer > p:first-child {
-			display : flex;
-			align-items : center;
-			font-size : 20px;
-			font-weight : 700;
-		    margin-bottom: 20px;
-		}
-		div.popup_inquire_detail_content div.inquiry_answer > p:first-child::before {
-			content : "";
-			width : 20px;
-			height : 20px;
-			display : inline-block;
-		    background-image: url(http://localhost:9000/dmu/resources/images/review.svg);
-		    background-repeat: no-repeat;
-		    background-size: contain;
-		    margin-right : 5px;
-		}
-		div.popup_inquire_detail_content div.inquiry_answer > p.inquiry_answer_status {
-		    margin-bottom: 20px;
-		    font-size: 20px;
-		    font-weight: 600;
-		    color: white;
-		    letter-spacing: -0.08rem;
-		    display: flex;
-    		align-items: center;
-		    background: black;
-		    padding: 2px 21px;
-		    clip-path: polygon(5% 0%, 100% 0%, 100% 100%, 0% 100%);
-		    display : none;
-		}
-		div.popup_inquire_detail_content div.inquiry_answer > p.inquiry_answer_status::after {
-		    content: "";
-		    width: 20px;
-		    height: 20px;
-		    display: flex;
-		    align-items: center;
-		    background-image: url(http://localhost:9000/dmu/resources/images/join_ok.png);
-		    background-repeat: no-repeat;
-		    background-size: contain;
-		    background-position : 50% 50%;
-		    filter : invert(1);
-		    margin-left : 5px;
-		}
-		div.popup_inquire_detail_content div.category_list {
-			margin : 10px 0;
-		}
-		div.popup_inquire_detail_content span.first {
-			color: #9f9d9d;
-		}
-		div.popup_inquire_detail_content span.category::after {
-			content : "|";
-			font-size : 14px;
-			margin : 0 10px;
-		}
-		div.popup_inquire_detail_content span.second {
-			color: black;
-			margin-left : 15px;
-		}
-		div.popup_inquire_detail_content div.inquire_write_date {
-			margin : 10px 0;
-			color : #9f9d9d;
-		}
-		
-		div.popup_inquire_detail_content div.inquire_write_content p {
-			font-size: 20px;
-		    margin: 20px 0;
-		    font-weight: 700;
-		}
-		div.popup_inquire_detail_content div.inquire_write_content div {
-			border: 0.5px solid #dbdbdb;
-    		padding: 15px;
-    		line-height : 22px;
-		}
-		
-		div.inquire_detail_button_list {
-			width : 100%;
-			height : 60px;
-			display : flex;
-			justify-content : center;    
-			box-shadow: 0px -10px 14px rgb(0 0 0 / 10%);
-			position : absolute;
-			bottom : 0;
-		}
-		div.inquire_detail_button_list button.inquire_detail_close {
-		    border: 0.5px solid black;
-		    background: black;
-		    color : white;
-		    font-size: 15px;
-			width: 120px;
-	    	margin: 5px;
-		    letter-spacing: -0.08rem;
-		    cursor : pointer;
-		}
-		div.inquire_detail_button_list button.inquire_detail_close:hover {
-		    background: white;
-		    color : black;
-		}
-	</style>
+
 	<!-- 문의 상세 내역 보기 -->
 	<div class = "background_inquire_detail">
 		<div class = "window_inquire_detail">
@@ -860,66 +283,7 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	<style>
-		div.background_inquiry_result {
-			position : fixed;
-			top : 0;
-			left : 0;
-			background : rgba(0, 0, 0, 0.7);
-			width : 100%;
-			height : 100vh;
-			opacity : 0;
-			z-index : -1;
-		}
-		div.window_inquiry_result {
-			position : relative;
-			top : 0;
-			left : 0;
-			width : 100%;
-			height : 100vh;
-		}
-		div.popup_inquiry_result {
-			position : absolute;
-			top : 50%;
-			left : 50%;
-			width : 300px;
-			height : 200px;
-			background : white;
-			display : flex;
-			justify-content : center;
-			align-items : center;
-			flex-direction : column;
-			transform : translate(-50%, -30%);
-			z-index : -1;
-		}
-		div.background_inquiry_result.show_result {
-			opacity : 1;
-			z-index : 200;
-			transition : all 0.3s;
-		}
-		div.background_inquiry_result.show_result div.popup_inquiry_result {
-			transform : translate(-50%, -50%);
-			z-index : 200;
-			transition : all 0.3s;
-		}
-		
-		button.inquiry_result_ok {
-		    background: black;
-		    color: white;
-		    width: 50%;
-		    height: 40px;
-		    cursor: pointer;
-		    margin-bottom: -30px;
-		    margin-top: 30px;
-		}
-		button.inquiry_result_ok:hover {
-		    background: white;
-		    color: black;
-		    border : 0.5px solid black;
-		}
-	</style>
+
 	<!-- 문의 사항 등록 안내 -->
 	<div class = "background_inquiry_result">
 		<div class = "window_inquiry_result">

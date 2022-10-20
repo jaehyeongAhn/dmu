@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
-import com.museum.vo.DmuPurchaseTicketVO;
 import com.museum.vo.DmuPurchaseVO;
 
 @Repository
@@ -23,10 +22,38 @@ public class DmuMypageDAO {
 	
 	
 	/************ 예매 목록 **************/
+	//예매 기한 만료 티켓 조회
+	public List<String> purchaseExpire(){
+		return sqlSession.selectList(namespace + ".reservation_expire_check");
+	}
+	
+	//예매 기한 만료
+	public int reservationExpire(List<String> expireList) {
+		int result = 0;
+		for(String rid : expireList) {
+			result += sqlSession.update(namespace + ".reservation_expire", rid);
+		}
+		return result;
+	}
+	
+	//예매 티켓 기한 만료
+	public int ticketExpire(List<String> expireList) {
+		int result = 0;
+		for(String rid : expireList) {
+			result += sqlSession.update(namespace + ".reservation_ticket_expire", rid);
+		}
+		return result;
+	}
+	
 	//예매 목록 출력
-	/*public List<DmuPurchaseVO> purchaseList(){
-		
-	}*/
+	public List<DmuPurchaseVO> purchaseList(Map<String, Object> list_param){
+		return sqlSession.selectList(namespace + ".reservationList", list_param);
+	}
+	
+	//예매 목록 총 갯수
+	public int purchaseListTotalCount(Map<String, Object> list_param) {
+		return sqlSession.selectOne(namespace + ".reservationTotalCount", list_param);
+	}
 	
 	//예매 정보 상세 보기
 	public List<DmuPurchaseVO> purchaseContent(String rid) {
@@ -34,16 +61,6 @@ public class DmuMypageDAO {
 		param.put("rid", rid);
 		
 		return sqlSession.selectList(namespace + ".purchaseList", rid);
-	}
-	
-	//예매 기한 만료
-	public int reservationExpire(String rid) {
-		return sqlSession.update(namespace + ".reservation_expire", rid);
-	}
-	
-	//예매 티켓 기한 만료
-	public int ticketExpire(String rid) {
-		return sqlSession.update(namespace + ".reservation_ticket_expire", rid);
 	}
 	
 	//예매 취소 신청

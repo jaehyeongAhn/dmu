@@ -7,7 +7,85 @@
 <mapper namespace = "mapper.mypage">
 
 	<!-- ///////////////////////////// mypage_reservation ///////////////////////////// -->
-	<!-- mypage reservation, ticket content -->
+	<!-- MYPAGE RESERVATION LIST -->
+	<resultMap id = "reservationInfo" type = "com.museum.vo.DmuPurchaseVO">
+		<id property = "rid" column = "RID"/>
+		<id property = "pid" column = "PID"/>
+		<result property = "rdate" column = "RDATE"/>
+		<result property = "rokdate" column = "ROKDATE"/>
+		<result property = "rtotal" column = "RTOTAL"/>
+		<result property = "rcheck" column = "RCHECK"/>
+		<result property = "rfaildate" column = "RFAILDATE"/>
+		<result property = "rprice" column = "RPRICE"/>
+		<result property = "pcoin" column = "PCOIN"/>
+		<association property = "ticketVo" resultMap = "ticketInfo"/>
+	</resultMap>
+	
+	<!-- MYPAGE RESERVATION EXPIRE CHECK-->
+	<select id = "reservation_expire_check" resultType = "java.lang.String">
+		SELECT RID FROM DMU_RESERVATION WHERE RDATE &lt; (SYSDATE - 1)
+	</select>
+		
+	<!-- MYPAGE RESERVATION EXPIRE -->
+	<update id = "reservation_expire" parameterType = "java.lang.String">
+		UPDATE DMU_RESERVATION SET RCHECK = 'ex' WHERE RID = #{rid}
+	</update>
+	
+	<!-- MYPAGE RESERVATION TICKETINFO EXPIRE -->
+	<update id = "reservation_ticket_expire" parameterType = "java.lang.String">
+		UPDATE DMU_TICKETINFO SET TCHECK = 'ex' WHERE RID = #{rid}
+	</update>
+	
+	<!-- MYPAGE RESERVATION LIST -->
+	<select id = "reservationList" parameterType = "map" resultMap = "reservationInfo">
+		SELECT RNO, DID, DTITLE, DSFILE, DCODE, RID, TO_CHAR(RDATE, 'YYYY-MM-DD') RDATE, 
+				TO_CHAR(ROKDATE, 'YYYY-MM-DD') ROKDATE, RTOTAL, RCHECK
+		FROM (SELECT ROWNUM RNO, DID, DTITLE, DSFILE, DCODE, RID, RDATE, ROKDATE, RTOTAL, RCHECK
+		        FROM (SELECT DT.DID, DT.DTITLE, DT.DSFILE, DT.DCODE, DR.RID, DR.RDATE, DR.ROKDATE, DR.RTOTAL, DR.RCHECK
+		                FROM DMU_TICKET DT, DMU_RESERVATION DR
+		                WHERE DT.DID = DR.DID AND DR.MID = #{mid}
+		                ORDER BY ROKDATE DESC))
+		WHERE RNO BETWEEN #{start} AND #{end}
+		<if test = 'dcode != null'>
+			<if test = '!dcode.equals("all")'>
+				AND DCODE = #{dcode}
+			</if>
+		</if>
+		<choose>
+			<when test = 'startdate != null and enddate != null'>
+				<choose>
+					<when test = 'startdate != "" and enddate != ""'>
+						AND ROKDATE BETWEEN #{startdate} AND TO_DATE(#{enddate}, 'YYYY-MM-DD')+1
+					</when>
+					<otherwise>
+						AND ROKDATE BETWEEN (SYSDATE-7) AND SYSDATE
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				AND ROKDATE BETWEEN (SYSDATE-7) AND SYSDATE
+			</otherwise>
+		</choose>
+	</select>
+	
+	<!-- MYPAGE RESERVATION LIST TOTALCOUNT -->
+	<select id = "reservationTotalCount" parameterType = "map" resultType = "int">
+		SELECT COUNT(*) 
+		FROM DMU_TICKET DT, DMU_RESERVATION DR
+		WHERE DT.DID = DR.DID AND DR.MID = #{mid} 
+		<if test = "dcode != null">
+			<if test = '!dcode.equals("all")'>
+				AND DT.DCODE = #{dcode}		
+			</if>
+		</if>
+		<choose>
+			<when test = 'startdate != null and enddate != null'>
+				AND ROKDATE BETWEEN #{startdate} AND TO_DATE(#{enddate}, 'YYYY-MM-DD')+1
+			</when>
+		</choose>
+	</select>
+	
+	<!-- MYPAGE RESERVATION INFO LIST -->
 	<resultMap id = "purchaseInfo" type = "com.museum.vo.DmuPurchaseVO">
 		<id property = "rid" column = "RID"/>
 		<id property = "pid" column = "PID"/>
@@ -55,23 +133,13 @@
 	</select>
 	
 	<select id = "purchaseTicketList" parameterType = "com.museum.vo.DmuPurchaseVO" resultType = "com.museum.vo.DmuPurchaseTicketVO">
-		SELECT DP.PDATE, DP.PALLPRICE, DTI.TID, CASE WHEN DR.RDATE > SYSDATE AND DTI.TCHECK != 'n' THEN DTI.TCHECK ELSE 'expire' END AS TCHECK
+		SELECT DP.PDATE, DP.PALLPRICE, DTI.TID, DTI.TCHECK
 		FROM DMU_TICKETINFO DTI, DMU_PAYINFO DP, DMU_RESERVATION DR
 		WHERE DTI.RID = DP.RID AND DTI.RID = DR.RID AND  DTI.RID = #{rid}
 	</select>
 	
-	<!-- RESERVATION EXPIRE -->
-	<update id = "reservation_expire" parameterType = "java.lang.String">
-		UPDATE DMU_RESERVATION SET RCHECK = 'ex' WHERE RID = #{rid}
-	</update>
-	
-	<!-- RESERVATION TICKETINFO EXPIRE -->
-	<update id = "reservation_ticket_expire" parameterType = "java.lang.String">
-		UPDATE DMU_TICKETINFO SET TCHECK = 'ex' WHERE RID = #{rid}
-	</update>
-	
 	<!-- TICKET UPDATE -->
-	<update id = "ticket_update" parameterType = "java.util.List">
+	<update id = "ticket_update" parameterType = "java.lang.String">
 		UPDATE DMU_TICKETINFO SET TCHECK = 'n' WHERE TID = #{tid}		
 	</update>
 	
@@ -82,8 +150,10 @@
 	
 	<!-- TICKET RESERVATION UPDATE -->
 	<update id = "ticket_reservation_update" parameterType = "java.lang.String">
-		UPDATE DMU_RESERVATION SET RCHECK = 'n' WHERE RID = #{rid}
+		UPDATE DMU_RESERVATION SET RCHECK = 'n', RFAILDATE = SYSDATE WHERE RID = #{rid}
 	</update>
+	
+	
 	
 	<!-- ///////////////////////////// mypage_inquiry ///////////////////////////// -->
 	<!-- mypage inquiry insert -->
@@ -110,6 +180,7 @@
 		SELECT IQID, IQCATEGORY, IQTYPE, IQTITLE, IQCONTENT, IQANSWER, TO_CHAR(IQDATE, 'YYYY-MM-DD') IQDATE
 		FROM DMU_INQUIRY WHERE IQID = #{iqid}
 	</select>
+
 
 
 	<!-- ///////////////////////////// mypage_member ///////////////////////////// -->

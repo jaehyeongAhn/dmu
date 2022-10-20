@@ -17,128 +17,8 @@
 <!-- 이미지 경로 수정하기 -->
 <script>
 	$(document).ready(function(){
-		$(".ticket_cancle").click(function(){
-			if($(".ticket_list:checked").length == 0){
-				$(".background_join").addClass("show_join");
-				$(".window_join").addClass("show_join");
-				$("#popup_joinOk").click(function(){
-					$(".background_join").removeClass("show_join");
-					$(".window_join").removeClass("show_join");
-				});
-			}else {
-				$(".refund_content").scrollTop(0);
-				$("body").css("overflow", "hidden");
-				$("#refund_ticket_check_box").prop("checked", false);
-				$(".refund_ticket_btn").prop("disabled", true);
-				$(".background_refund").addClass("show_refund");
-				$(".window_refund").addClass("show_refund");
-				$(".refund_popup_close").click(function(){
-					$("body").css("overflow", "auto");
-					$(".background_refund").removeClass("show_refund");
-					$(".window_refund").removeClass("show_refund");
-				});
-				
-
-				/* 선택한 티켓 정보 받기*/
-				function style_table(index_result){
-					let output = "<tr class='ticket_info purchase_result" + index_result + "'>";
-					output += "<input type = 'hidden' name = 'ticket_list' id = 'ticket_id'>";
-					output += "<td class='ticket_num'></td>";
-					output += "<td class='ticket_date'></td>";
-					output += "<td class='ticket_status'><strong></strong></td>";
-					output += "<td class='ticket_price'></td>";
-					output += "</tr>";
-					
-					return output;
-				}
-				
-				let total = 0;
-				let ticket_list = [];
-				$(".ticket_info").remove();
-				
-				$(".ticket-result-list-content table input.ticket_list:checked").each(function(index, el){
-					let index_tr = $(el).parent().parent().index();
-					let table = $(".ticket-result-list-content table tr:nth-child(" +  (index_tr + 1) + ")");
-					let standard = $(".refund_ticket_list table tr:last-child");
-
-					standard.before(style_table(index_tr));
-
-					let tid = table.children(".purchase_tid").text();
-					let dtitle = table.children(".purchase_dtitle").text();
-					let rdate = table.children(".purchase_rdate").text();
-					let status = table.children(".ticket_list_status strong").text();
-					let price = $(".ticket_purchase strong").text();
-					
-					$("tr.purchase_result" + index_tr + " td.ticket_num").text(tid);
-					$("tr.purchase_result" + index_tr + " td.ticket_date").text(rdate);
-					$("tr.purchase_result" + index_tr + " td.ticket_status").text("취소가능");
-					$("tr.purchase_result" + index_tr + " td.ticket_price").text(price);
-
-					total += intChange(price);
-					$(".total_count").text(numberFormat(total) + "원");
-					
-					
-					//티켓 번호 전송
-					ticket_list.push(tid);
-					$("tr.purchase_result" + index_tr + " input#ticket_id").val(tid);
-				});//each
-				
-
-				//티켓 정보 전송
-				$(".refund_ticket_btn").click(function(){
-					//refundForm.submit();
-					
-					$.ajax({
-						type : "post",
-						data : {
-							"ticketList" : ticket_list,
-							"rtotal" : $("#reservation_ticket_total").val(),
-							"rid" : $("#reservation_ticket_rid").val()
-						},
-						url : "mypage_ticket_cancel.do",
-						success : function(result){
-
-							if(result == "update_success"){
-								$("div.popup_ticket_refund_result p").text("예매 취소가 완료되었습니다.");
-							}else if(result == "fail") {
-								$("div.popup_ticket_refund_result p").text("환불에 실패했습니다.");
-							}else{
-								$("div.popup_ticket_refund_result p").text("선택하신 티켓의 취소가 완료되었습니다.");
-							}
-							$(".background_refund").removeClass("show_refund");
-							$(".window_refund").removeClass("show_refund");
-							$(".background_ticket_refund_result").addClass("show");
-							$(".window_ticket_refund_result").addClass("show");
-							$("#ticket_refund_result_btn").click(function(){
-								$(location).attr("href", "http://localhost:9000/dmu/mypage_ticket.do");
-							});
-						}//success
-						
-					});//ajax
-				});//click-function
-				
-			}//else
-		});//click-function
-		
-		function intChange(price) {
-			return parseInt(price.replace(",", "").replace("원", ""));
-		}
-		
-		function numberFormat(num) {
-			return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		}
-		
-		/*** content size ****/
 		let height = $(".popup_refund").height() - $(".refund_title").outerHeight() - $(".refund_btn_list").outerHeight();
 		$(".refund_content").css("height", height);
-		
-		$("#refund_ticket_check_box").change(function(){
-			if($(this).is(":checked")){
-				$(".refund_ticket_btn").prop("disabled", false);
-			}else{
-				$(".refund_ticket_btn").prop("disabled", true);
-			}
-		});
 	});
 </script>
 <style>
@@ -227,6 +107,9 @@
 															<c:when test = "${ list.rcheck == 'y' }">
 																<td>예매 완료</td>
 															</c:when>
+															<c:when test = "${ list.rcheck == 'ex' }">
+																<td>기간 만료</td>
+															</c:when>
 															<c:otherwise>
 																<td>예매 취소</td>
 															</c:otherwise>
@@ -262,9 +145,9 @@
 													</strong></td>
 												</tr>
 												<tr class="card_result">
-													<fmt:parseDate var = "pdate" value = "${ list.pdate }" type = "date" pattern = "YYYY-MM-dd"/>
+													<fmt:parseDate var = "pdate" value = "${ list.pdate }" type = "date" pattern = "yyyy-MM-dd"/>
 													<td colspan = "6">${ list.pcoin }<br>
-														결제일 : <fmt:formatDate value="${ pdate }" pattern = "YYYY-MM-dd"/></td>
+														결제일 : <fmt:formatDate value="${ pdate }" pattern = "yyyy-MM-dd"/></td>
 												</tr>
 											</table>
 										</div>
@@ -314,8 +197,9 @@
 													</td>
 													<td class = "purchase_tid">${ ticket_list.tid }</td>
 													<td class = "purchase_dtitle">${ list.ticketVo.dtime }</td>
-													<fmt:parseDate var = "rdate" value = "${ list.rdate }" type = "date" pattern = "YYYY-MM-dd"/>
-													<td class ="purchase_rdate"><fmt:formatDate value = "${ rdate }" pattern = "YYYY-MM-dd"/></td>
+													
+													<fmt:parseDate var = "rdate" value = "${ list.rdate }" type = "date" pattern = "yyyy-MM-dd"/>
+													<td class ="purchase_rdate"><fmt:formatDate pattern="yyyy-MM-dd" value="${rdate}"/></td>
 													<c:choose>
 														<c:when test = "${ ticket_list.tcheck == 'y' }">
 															<td class = "ticket_list_status"><strong>사용가능</strong></td>	
@@ -348,16 +232,6 @@
 					</div>
 					</c:forEach>
 					<style>
-						div.flag_content ul {
-							list-style : "-";
-							list-style-position :inside;
-							margin-top : 30px;
-						}
-						div.flag_content ul li {
-							line-height: 30px;
-						    color: #4c4c4c;
-						    letter-spacing: -0.08rem;
-						}
 					</style>
 					<%-- 유의 사항 --%>
 					<div class = "flag" style = "margin:75px 0 20px 0;">
@@ -393,54 +267,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<style>
-	
-		div.popup_refund div.refund_checkbox {
-		    display: flex;
-		    justify-content: center;
-		    align-items: center;
-	        padding: 15px 0;	
-            letter-spacing: -0.03rem;
-		}
-		div.refund_checkbox input#refund_ticket_check_box {
-			display : none;
-		}
-		div.refund_checkbox input#refund_ticket_check_box + label {
-		    display : flex;
-		    cursor : pointer;
-		}
-		div.refund_checkbox input#refund_ticket_check_box + label::before {
-		    content: "";
-		    width: 20px;
-		    height: 20px;
-		    display: inline-block;
-		    border: 0.5px solid #bfbfbf;
-		    margin-right: 10px;
-		}
-		div.refund_checkbox input#refund_ticket_check_box:checked + label::before {
-		    content: "";
-		    width: 20px;
-		    height: 20px;
-		    display: inline-block;
-		    border: 0.5px solid black;
-		   	background-image : url("http://localhost:9000/dmu/resources/images/check.png");
-		   	background-size : contain;
-		   	background-repeat : no-repeat;
-		    margin-right: 10px;
-		}
-		div.refund_btn_list button.refund_ticket_btn:disabled {
-		    border: 0.5px solid #dfdfdf;
-	        background: #dfdfdf;
-    		color: #a5a5a5;
-		}
-		div.refund_btn_list button.refund_ticket_btn:disabled:hover {
-		    border: 0.5px solid #dfdfdf;
-	        background: #dfdfdf;
-    		color: #a5a5a5;
-    		cursor : default;
-		}
-	</style>
 	
 	<div class = "background_refund">
 		<div class = "window_refund">
@@ -509,66 +335,6 @@
 	</div>
 	
 	<!-- 환불 안내 -->
-	<style>
-		div.background_ticket_refund_result {
-			position : fixed;
-			width : 100%;
-			height : 100vh;
-			background : rgba(0, 0, 0, 0.7);
-			top : 0;
-			left : 0;
-			opacity : 0;
-			z-index : -1;
-		}
-		div.window_ticket_refund_result {
-			position : relative;
-			width : 100%;
-			height : 100vh;
-			top : 0;
-			left : 0;
-		}
-		div.popup_ticket_refund_result {
-			position : absolute;
-			width : 300px;
-			height : 200px;
-			background : white;
-			top : 50%;
-			left : 50%;
-			display: flex;
-		    flex-direction: column;
-		    align-items: center;
-		    justify-content: center;
-			transform : translate(-50%, -30%);
-			z-index : -1;
-		}
-		div.background_ticket_refund_result.show {
-			opacity : 1;
-			z-index : 10;
-			transition : all 0.3s;
-		}
-		div.background_ticket_refund_result.show div.popup_ticket_refund_result {
-			transform : translate(-50%, -50%);
-			z-index : 10;
-			transition : all 0.3s;
-		}
-		
-		div.popup_ticket_refund_result p {
-			margin-bottom : 30px;
-		}
-		button#ticket_refund_result_btn {
-			width : 200px;
-			height : 50px;
-			background : black;
-			border : 0.5px solid black;
-			color : white;
-			cursor : pointer;
-			margin-bottom : -30px;
-		}
-		button#ticket_refund_result_btn:hover {
-			background : white;
-			color : black;
-		}
-	</style>
 	<div class = "background_ticket_refund_result">
 		<div class = "window_ticket_refund_result">
 			<div class = "popup_ticket_refund_result">

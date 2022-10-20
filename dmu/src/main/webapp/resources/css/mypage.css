@@ -291,7 +291,7 @@
 		border: 0.5px solid #d9d9d9;
 	}
 	div.purchase-result-content img {
-		width: 200px;
+		width: 250px;
 	    height: 150px;
 	    background: gray;
 	}
@@ -694,8 +694,9 @@
 	    justify-content: center;
 	    align-items: center;
 	    color: #6e6e6e;
-	    font-size: 17.5px;
+	    font-size: 22.5px;
 	    font-weight: 300;
+	    line-height: 30px;
 	}
 	div.result_purchase {
 		border-top: 2px solid black;
@@ -713,6 +714,15 @@
 	}
 	div.purchase-result-list-title p:nth-child(2){
 		margin-left : 40px;
+		cursor : pointer;
+	}
+	div.purchase-result-list-title p:nth-child(2)::after {
+	    content: ">";
+	    margin: 0 10px;
+	}
+	div.purchase-result-list-title p:nth-child(2) a {
+		text-decoration : none;
+		color : black;
 	}
 	div.purchase-result-list-content::before {
 	    content: "";
@@ -727,7 +737,7 @@
 		justify-content: space-between;
 	}
 	div.purchase-result-list-content > div img {
-	    width: 230px;
+	    width: 250px;
 	    height: 150px;
 	    background: gray;
 	}
@@ -1113,10 +1123,8 @@
 	}
 	div.purchase-result-list-content table th {
 		font-weight: 400;
-					color: #898989;
+		color: #898989;
 	}
-	
-	
 	div.payment div.payment-result-list-title h2::after{
 	    content: "";
 	    width: 100%;
@@ -1127,12 +1135,12 @@
 	}
 	div.payment-result-list-content table {
 		width: 100%;
-					text-align: left;
-					border-collapse : collapse;
+		text-align: left;
+		border-collapse : collapse;
 	}
 	div.payment-result-list-content table tr:first-child {
 		display: flex;
-					justify-content: space-between;
+		justify-content: space-between;
 	}
 	div.payment-result-list-content table tr:first-child > td {
 		flex-grow : 1;
@@ -1153,8 +1161,6 @@
 	    line-height: 30px;
 	    font-weight: 500;
 	}
-	
-	
 	div.ticket-result-list-title {
 		display: flex;
 	    justify-content: space-between;
@@ -1235,6 +1241,119 @@
 	div.ticket-result-list-title button:hover {
 		background : black;
 		color : white;
+	}
+	
+	div.flag_content ul {
+		list-style : "-";
+		list-style-position :inside;
+		margin-top : 30px;
+	}
+	div.flag_content ul li {
+		line-height: 30px;
+	    color: #4c4c4c;
+	    letter-spacing: -0.08rem;
+	}
+	div.popup_refund div.refund_checkbox {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+        padding: 15px 0;	
+           letter-spacing: -0.03rem;
+	}
+	div.refund_checkbox input#refund_ticket_check_box {
+		display : none;
+	}
+	div.refund_checkbox input#refund_ticket_check_box + label {
+	    display : flex;
+	    cursor : pointer;
+	}
+	div.refund_checkbox input#refund_ticket_check_box + label::before {
+	    content: "";
+	    width: 20px;
+	    height: 20px;
+	    display: inline-block;
+	    border: 0.5px solid #bfbfbf;
+	    margin-right: 10px;
+	}
+	div.refund_checkbox input#refund_ticket_check_box:checked + label::before {
+	    content: "";
+	    width: 20px;
+	    height: 20px;
+	    display: inline-block;
+	    border: 0.5px solid black;
+	   	background-image : url("http://localhost:9000/dmu/resources/images/check.png");
+	   	background-size : contain;
+	   	background-repeat : no-repeat;
+	    margin-right: 10px;
+	}
+	div.refund_btn_list button.refund_ticket_btn:disabled {
+	    border: 0.5px solid #dfdfdf;
+        background: #dfdfdf;
+   		color: #a5a5a5;
+	}
+	div.refund_btn_list button.refund_ticket_btn:disabled:hover {
+	    border: 0.5px solid #dfdfdf;
+        background: #dfdfdf;
+   		color: #a5a5a5;
+   		cursor : default;
+	}
+	div.background_ticket_refund_result {
+		position : fixed;
+		width : 100%;
+		height : 100vh;
+		background : rgba(0, 0, 0, 0.7);
+		top : 0;
+		left : 0;
+		opacity : 0;
+		z-index : -1;
+	}
+	div.window_ticket_refund_result {
+		position : relative;
+		width : 100%;
+		height : 100vh;
+		top : 0;
+		left : 0;
+	}
+	div.popup_ticket_refund_result {
+		position : absolute;
+		width : 300px;
+		height : 200px;
+		background : white;
+		top : 50%;
+		left : 50%;
+		display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    justify-content: center;
+		transform : translate(-50%, -30%);
+		z-index : -1;
+	}
+	div.background_ticket_refund_result.show {
+		opacity : 1;
+		z-index : 10;
+		transition : all 0.3s;
+	}
+	div.background_ticket_refund_result.show div.popup_ticket_refund_result {
+		transform : translate(-50%, -50%);
+		z-index : 10;
+		transition : all 0.3s;
+	}
+	
+	div.popup_ticket_refund_result p {
+		margin-bottom : 30px;
+	}
+	button#ticket_refund_result_btn {
+		width : 200px;
+		height : 50px;
+		background : black;
+		border : 0.5px solid black;
+		color : white;
+		cursor : pointer;
+		margin-bottom : -30px;
+	}
+	button#ticket_refund_result_btn:hover {
+		background : white;
+		color : black;
 	}
 	
 	/**** mypage_ticket_content popup ****/
@@ -1408,4 +1527,483 @@
 	div.refund_btn_list button.refund_ticket_btn:hover {
 	    background: white;
 	    color : black;
+	}
+	
+	
+	/************************************* mypage_inquiry ***************************************/
+	
+	div.inquire-title {
+		display : flex;
+		justify-content : space-between;
+		align-items : center;
+		border-bottom: 2px solid black;
+		margin : 4px 0;
+		padding : 0 0 8px 0;
+	    width: 1076px;
+	}
+	
+	div.inquire_content {
+	    margin: 20px 0;
+	    border-bottom: 1px solid black;
+	    /* border-top: 1px dashed #adadad; */
+	}
+	div.inquire_title,
+	div.inquire_content_list {
+		display : flex;
+		justify-content : space-between;
+		align-items : center;
+	}
+	
+	div.inquire_title {
+		padding: 10px 0;
+	    font-size: 17px;
+	    color: #323232;
+        position: relative;
+	}
+	div.inquire_title::after {
+		content : "";
+		width : 100%;
+		height : 1px;
+		background: #dbdbdb;
+	    display: block;
+	    position: absolute;
+	    bottom: 0px;
+	}
+	div.inquire_title a.detail {
+		color : black;
+		text-decoration : none;
+		display: flex;
+					align-items: center;
+	}
+	div.inquire_title a.detail::after {
+		content: ">";
+	    display: flex;
+	    width: 20px;
+	    height: 20px;
+	    font-size: 14px;
+	    margin-left: 2px;
+	    text-align: center;
+	    justify-content: center;
+	    align-items: center;
+	}
+	
+	div.inquire_content_list {
+		position : relative;
+		padding : 40px 0;
+		letter-spacing : -0.03rem;
+	}
+	div.inquire_content_list h2{
+		margin : 15px 0;
+	}
+	div.inquire_content_list_information span.first {
+		color: #9f9d9d;
+	}
+	div.inquire_content_list_information span.second {
+		color: black;
+		margin-left : 5px;
+	}
+	div.inquire_content_list_information span.category::after {
+		content : "|";
+		font-size : 13px;
+		margin : 0 10px;
+	}
+	div.inquire_content_list_answer {
+		width: 170px;
+	    height: 100%;
+	    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+	    background-color: black;
+	    color: white;
+	    text-align: center;
+	    font-size: 20px;
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    padding-left: 20px;
+	    box-sizing: border-box;
+	}
+	div.background_inquire {
+		position : fixed;
+		top : 0;
+		left : 0;
+		background : rgba(0, 0, 0, 0.7);
+		width : 100%;
+		height : 100vh;
+		opacity : 0;
+		z-index : -1;
+	}
+	div.window_inquire {
+		position : relative;
+		top : 0;
+		left : 0;
+		width : 100%;
+		height : 100vh;
+	}
+	div.popup_inquire {
+		position : absolute;
+		top : 50%;
+		left : 50%;
+		width : 500px;
+		height : 70vh;
+		background-color : white;
+		overflow : hidden;
+		transform : translate(-50%, -30%);
+		z-index : -1;
+	}
+	div.background_inquire.show {
+		opacity : 1;
+		z-index : 200;
+		transition : all 0.3s;
+	}
+	div.background_inquire.show div.popup_inquire {
+		transform : translate(-50%, -50%);
+		z-index : 200;
+		transition : all 0.3s;
+	}
+	
+	div.popup_inquire_title {
+	    padding: 10px 16px;
+	    background: black;
+	    color: white;
+	    font-size: 17px;
+        letter-spacing: -0.08rem;
+	}
+	div.popup_inquire_write {
+		position: absolute;
+	    width: 100%;
+	    overflow: auto;
+	}
+	div.popup_inquire_write_form {
+		overflow : auto;
+	    padding: 26px;
+	    box-sizing : border-box;
+	    /*height : 53vh;*/
+	}
+	div.popup_inquire_write_form p.title_comment {
+		display : flex;
+		align-items : center;
+		font-size : 20px;
+		font-weight : 700;
+	    letter-spacing : -0.08rem;
+	    margin-bottom: 10px;
+	}
+	div.popup_inquire_write_form p.title_comment::before {
+		content : "";
+		width : 20px;
+		height : 20px;
+		display : inline-block;
+		margin-right : 10px;
+		background-image : url("http://localhost:9000/dmu/resources/images/review.svg");
+		background-repeat : no-repeat;
+		background-size : contain;
+		background-position-x : 50%;
+		background-position-y : 50%;
+	}
+	div.popup_inquire_write_form p.comment {
+	    font-weight : 300;
+	    margin-bottom: 15px;
+	    font-size : 14px;
+	    letter-spacing : -0.08rem;
+	}
+	div.popup_inquire_write_form p.comment::before {
+	    content: "*";
+	    color: red;
+	    margin-right: 7px;
+	}
+	
+	div.popup_inquire_write_form div.write_form {
+	    display: flex;
+   		flex-direction: column;
+	}
+	div.popup_inquire_write_form div.write_form label {
+		color: #7e7e7e;
+	    letter-spacing: -0.05rem;
+	    font-weight: 500;
+	    font-size: 15px;
+	    margin: 7px 0;
+	}
+	div.popup_inquire_write_form div.write_form label::after {
+	    content: "*";
+	    color: red;
+	    font-size: 14px;
+	    vertical-align: 3px;
+	    margin-left: 3px;
+	}
+	div.popup_inquire_write_form div.write_form select {
+		border: 0.5px solid #bdbdbd;
+	    padding: 16px;
+	    font-size: 15px;
+	    letter-spacing: -0.05rem;
+        margin-bottom: 10px;
+	}
+	div.popup_inquire div.popup_inquire_write select.inquire_type option:not(select.inquire_type option:first-child) {
+		display : none;
+	}
+	div.popup_inquire_write_form div.write_inquire_form ul {
+	    list-style:none;
+	    margin-top: 20px;
+	}
+	div.popup_inquire_write_form div.write_inquire_form ul li {
+	    display: flex;
+	    flex-direction: column;
+	}
+	div.popup_inquire_write_form div.write_inquire_form input {
+	    font-size: 15px;
+	    padding: 16px;
+	    border: 0.5px solid #bdbdbd;
+	    margin-bottom: 10px;
+	    letter-spacing: -0.08rem;
+	}
+	div.popup_inquire_write_form div.write_inquire_form textarea {
+	    height: 300px;
+	    resize: none;
+	    border: 0.5px solid #bdbdbd;
+	    padding: 16px;
+	}
+	
+	div.popup_inquire div.inquire_button_list {
+		height: 55px;
+	    box-shadow: -1px 7px 30px rgb(0 0 0 / 30%);
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    position: absolute;
+	    bottom : 0;
+	    width : 100%;
+	}
+	div.popup_inquire div.inquire_button_list button {
+		width: 120px;
+    	margin: 5px;
+    	height : 80%;
+	}
+	div.popup_inquire div.inquire_button_list button.inquire_close {
+		background : white;
+		border : 0.5px solid black;
+		cursor : pointer;
+	}
+	div.popup_inquire div.inquire_button_list button.inquire_ok {
+		background : black;
+		border : 0.5px solid black;
+		color : white;
+		cursor : pointer;
+	}
+	div.popup_inquire div.inquire_button_list button.inquire_close:hover {
+		background : black;
+		color : white;
+	}
+	div.popup_inquire div.inquire_button_list button.inquire_ok:hover {
+		background : white;
+		color : black;
+	}
+	
+	div.background_inquire_detail {
+		position : fixed;
+		top : 0;
+		left : 0;
+		background : rgba(0, 0, 0, 0.7);
+		width : 100%;
+		height : 100vh;
+		opacity : 0;
+		z-index : -1;
+	}
+	div.window_inquire_detail {
+		position : relative;
+		top : 0;
+		left : 0;
+		width : 100%;
+		height : 100vh;
+	}
+	div.popup_inquire_detail {
+		position : absolute;
+		top : 50%;
+		left : 50%;
+		transform : translate(-50%, -30%);
+		width : 500px;
+		height : 70vh;
+		background : white;
+		overflow : hidden;
+		z-index : -1;
+	}
+	div.background_inquire_detail.show {
+		opacity : 1;
+		z-index : 200;
+		transition : all 0.3s;
+	}
+	div.background_inquire_detail.show div.popup_inquire_detail {
+		transform : translate(-50%, -50%);
+		z-index : 200;
+		transition : all 0.3s;
+	}
+	
+	div.popup_inquire_detail_title {
+	    padding: 10px 16px;
+	    background: black;
+	    color: white;
+	    font-size: 17px;
+	}
+	div.popup_inquire_detail_form {
+		overflow : auto;
+	    padding: 26px;
+	    /* height : 52.5vh; */
+	    box-sizing : border-box;
+	}
+	div.popup_inquire_detail_content div.inquiry_answer {
+		display : flex;
+		justify-content : space-between;
+		align-items : center;
+	}
+	div.popup_inquire_detail_content div.inquiry_answer > p:first-child {
+		display : flex;
+		align-items : center;
+		font-size : 20px;
+		font-weight : 700;
+	    margin-bottom: 20px;
+	}
+	div.popup_inquire_detail_content div.inquiry_answer > p:first-child::before {
+		content : "";
+		width : 20px;
+		height : 20px;
+		display : inline-block;
+	    background-image: url(http://localhost:9000/dmu/resources/images/review.svg);
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    margin-right : 5px;
+	}
+	div.popup_inquire_detail_content div.inquiry_answer > p.inquiry_answer_status {
+	    margin-bottom: 20px;
+	    font-size: 20px;
+	    font-weight: 600;
+	    color: white;
+	    letter-spacing: -0.08rem;
+	    display: flex;
+   		align-items: center;
+	    background: black;
+	    padding: 2px 21px;
+	    clip-path: polygon(5% 0%, 100% 0%, 100% 100%, 0% 100%);
+	    display : none;
+	}
+	div.popup_inquire_detail_content div.inquiry_answer > p.inquiry_answer_status::after {
+	    content: "";
+	    width: 20px;
+	    height: 20px;
+	    display: flex;
+	    align-items: center;
+	    background-image: url(http://localhost:9000/dmu/resources/images/join_ok.png);
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    background-position : 50% 50%;
+	    filter : invert(1);
+	    margin-left : 5px;
+	}
+	div.popup_inquire_detail_content div.category_list {
+		margin : 10px 0;
+	}
+	div.popup_inquire_detail_content span.first {
+		color: #9f9d9d;
+	}
+	div.popup_inquire_detail_content span.category::after {
+		content : "|";
+		font-size : 14px;
+		margin : 0 10px;
+	}
+	div.popup_inquire_detail_content span.second {
+		color: black;
+		margin-left : 15px;
+	}
+	div.popup_inquire_detail_content div.inquire_write_date {
+		margin : 10px 0;
+		color : #9f9d9d;
+	}
+	
+	div.popup_inquire_detail_content div.inquire_write_content p {
+		font-size: 20px;
+	    margin: 20px 0;
+	    font-weight: 700;
+	}
+	div.popup_inquire_detail_content div.inquire_write_content div {
+		border: 0.5px solid #dbdbdb;
+   		padding: 15px;
+   		line-height : 22px;
+	}
+	
+	div.inquire_detail_button_list {
+		width : 100%;
+		height : 60px;
+		display : flex;
+		justify-content : center;    
+		box-shadow: 0px -10px 14px rgb(0 0 0 / 10%);
+		position : absolute;
+		bottom : 0;
+	}
+	div.inquire_detail_button_list button.inquire_detail_close {
+	    border: 0.5px solid black;
+	    background: black;
+	    color : white;
+	    font-size: 15px;
+		width: 120px;
+    	margin: 5px;
+	    letter-spacing: -0.08rem;
+	    cursor : pointer;
+	}
+	div.inquire_detail_button_list button.inquire_detail_close:hover {
+	    background: white;
+	    color : black;
+	}
+	div.background_inquiry_result {
+		position : fixed;
+		top : 0;
+		left : 0;
+		background : rgba(0, 0, 0, 0.7);
+		width : 100%;
+		height : 100vh;
+		opacity : 0;
+		z-index : -1;
+	}
+	div.window_inquiry_result {
+		position : relative;
+		top : 0;
+		left : 0;
+		width : 100%;
+		height : 100vh;
+	}
+	div.popup_inquiry_result {
+		position : absolute;
+		top : 50%;
+		left : 50%;
+		width : 300px;
+		height : 200px;
+		background : white;
+		display : flex;
+		justify-content : center;
+		align-items : center;
+		flex-direction : column;
+		transform : translate(-50%, -30%);
+		z-index : -1;
+	}
+	div.background_inquiry_result.show_result {
+		opacity : 1;
+		z-index : 200;
+		transition : all 0.3s;
+	}
+	div.background_inquiry_result.show_result div.popup_inquiry_result {
+		transform : translate(-50%, -50%);
+		z-index : 200;
+		transition : all 0.3s;
+	}
+	
+	button.inquiry_result_ok {
+	    background: black;
+	    color: white;
+	    width: 50%;
+	    height: 40px;
+	    cursor: pointer;
+	    margin-bottom: -30px;
+	    margin-top: 30px;
+	}
+	button.inquiry_result_ok:hover {
+	    background: white;
+	    color: black;
+	    border : 0.5px solid black;
 	}

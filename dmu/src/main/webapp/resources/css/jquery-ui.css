@@ -1372,7 +1372,7 @@ a.ui-button:active,
 div#ui-datepicker-div {
     width: 353px;
     margin: 0 31px;
-    padding: 20px 0 26px 0;
+    padding: 20px 10px 26px 10px;
 }
 
 .ui-state-disabled span.ui-state-default {

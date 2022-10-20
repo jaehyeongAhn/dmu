@@ -50,8 +50,7 @@
 	<!-- Interceptor -->
 	<interceptors>
 		<interceptor>
-			<mapping path="/mypage_inquiry.do"/>
-			<mapping path="/mypage_member*"/>
+			<mapping path="/mypage*"/>
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 	</interceptors>

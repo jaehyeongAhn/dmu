@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.museum.service.LoginServiceImpl;
 import com.museum.service.MypageServiceImpl;
@@ -40,8 +41,28 @@ public class MypageController {
 	/**************** 메인 ******************/
 	//mypage_main.do : 마이페이지 메인
 	@RequestMapping(value = "/mypage_main.do", method = RequestMethod.GET)
-	public String mypage_main() {
-		return "/mypage/mypage_main";
+	public ModelAndView mypage_main(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+
+		DmuSessionVO member = (DmuSessionVO)session.getAttribute("member");
+		//예매 기한 만료 티켓 조회 및 업데이트
+		List<String> expireList = mypageService.getPurchaseExpire();
+		int result = mypageService.getReservationExpire(expireList);
+			result += mypageService.getTicketExpire(expireList);
+		
+		//리스트 출력
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("mid", member.getMid());
+		param.put("start", 1);
+		param.put("end", 3);
+		param.put("dcode", "all");
+		
+		ArrayList<DmuPurchaseVO> list = (ArrayList<DmuPurchaseVO>) mypageService.getPurchaseList(param);
+		
+		mv.addObject("list", list);
+		mv.setViewName("/mypage/mypage_main");
+		
+		return mv;
 	}
 
 	
@@ -52,6 +73,54 @@ public class MypageController {
 	public String mypage_ticket() {
 		return "/mypage/mypage_ticket";
 	}
+	
+	//mypage_ticket_list.do : 마이페이지 티켓 예매 리스트
+	@ResponseBody
+	@RequestMapping(value = "/mypage_ticket_list.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String mypage_ticket_list(HttpSession session, String rpage, String dcode, String startdate, String enddate) {
+		DmuSessionVO member = (DmuSessionVO)session.getAttribute("member");
+		
+		Map<String, Object> list_param = new HashMap<String, Object>();
+		list_param.put("mid", member.getMid());
+		list_param.put("dcode", dcode);
+		list_param.put("startdate", startdate);
+		list_param.put("enddate", enddate);
+
+		//전체 행 수
+		int totalCount = mypageService.getPurchaseListTotalCount(list_param);
+		HashMap<String, Integer> param = (HashMap<String, Integer>)getPageResult(totalCount, rpage);
+		
+		list_param.put("start", param.get("startCount"));
+		list_param.put("end", param.get("endCount"));
+		
+		ArrayList<DmuPurchaseVO> list = (ArrayList<DmuPurchaseVO>)mypageService.getPurchaseList(list_param);
+		
+		JsonObject jobject = new JsonObject();
+		JsonArray jarray = new JsonArray();
+		Gson gson = new Gson();
+		
+		for(DmuPurchaseVO vo : list) {
+			JsonObject jo = new JsonObject();
+			jo.addProperty("did", vo.getTicketVo().getDid());
+			jo.addProperty("dtitle", vo.getTicketVo().getDtitle());
+			jo.addProperty("dsfile", vo.getTicketVo().getDsfile());
+			jo.addProperty("dcode", vo.getTicketVo().getDcode());
+			jo.addProperty("rid", vo.getRid());
+			jo.addProperty("rdate", vo.getRdate());
+			jo.addProperty("rokdate", vo.getRokdate());
+			jo.addProperty("rtotal", vo.getRtotal());
+			jo.addProperty("rcheck", vo.getRcheck());
+			
+			jarray.add(jo);
+		}
+		jobject.add("list", jarray);
+		jobject.addProperty("rpage", param.get("rpage"));
+		jobject.addProperty("dbCount", param.get("dbCount"));
+		jobject.addProperty("pageSize", param.get("pageSize"));
+		
+		return gson.toJson(jobject);
+	}
+
 	
 	//mypage_ticket_content.do : 마이페이지 티켓 예매 상세보기
 	@RequestMapping(value = "/mypage_ticket_content.do", method = RequestMethod.GET)
@@ -103,7 +172,9 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView();
 		
 		DmuSessionVO member = (DmuSessionVO)session.getAttribute("member");
-		HashMap<String, Integer> param = (HashMap<String, Integer>)getPageResult(member.getMid(), rpage);
+		int totalCount = mypageService.getInquiryTotalCount(member.getMid());
+
+		HashMap<String, Integer> param = (HashMap<String, Integer>)getPageResult(totalCount, rpage);
 		ArrayList<DmuInquiryVO> list = (ArrayList<DmuInquiryVO>)mypageService.getInquiryList(param.get("startCount"), param.get("endCount"), member.getMid());
 		
 		mv.addObject("list", list);
@@ -137,7 +208,7 @@ public class MypageController {
 		return mv;
 	}
 	
-	//mypage_inquiry_content.do : 마이페이지
+	//mypage_inquiry_content.do : 마이페이지 문의 상세 보기
 	@ResponseBody
 	@RequestMapping(value = "/mypage_inquiry_content.do", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")
 	public String mypage_inquiry_content(String iqid) {
@@ -289,7 +360,7 @@ public class MypageController {
 	}
 	
 	//pageService - Session 처리가 필요하므로 별도로 메소드 생성
-	public Map<String,Integer> getPageResult(String mid, String rpage) {
+	public Map<String,Integer> getPageResult(int totalCount, String rpage) {
 		Map<String,Integer> param =new HashMap<String,Integer>();
 
 		int startCount = 0;
@@ -297,7 +368,7 @@ public class MypageController {
 		int pageSize = 3;	 
 		int reqPage = 1;	
 		int pageCount = 1;	
-		int dbCount = mypageService.getInquiryTotalCount(mid);	
+		int dbCount = totalCount;
 		
 		if(dbCount % pageSize == 0){
 			pageCount = dbCount/pageSize;

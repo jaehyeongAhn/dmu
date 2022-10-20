@@ -1,6 +1,7 @@
 package com.museum.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
@@ -10,17 +11,23 @@ import com.museum.vo.DmuPurchaseVO;
 public interface MypageService {
 	
 	/*************** 예매 목록 ***************/
-	//예매 리스트
+	//예매 기한 만료 티켓 조회
+	public List<String> getPurchaseExpire();
+
+	//예매 기한 만료
+	public int getReservationExpire(List<String> expireList);
 	
+	//예매 티켓 기한 만료
+	public int getTicketExpire(List<String> expireList);
+	
+	//예매 리스트
+	public List<DmuPurchaseVO> getPurchaseList(Map<String, Object> list_param);
+
+	//예매 목록 총 갯수
+	public int getPurchaseListTotalCount(Map<String, Object> list_param);
 	
 	//예매 정보 상세 보기
 	public List<DmuPurchaseVO> getPurchaseContent(String rid);
-	
-	//예매 기한 만료
-	public int getReservationExpire(String rid);
-	
-	//예매 티켓 기한 만료
-	public int getTicketExpire(String rid);
 
 	//예매 취소 신청
 	public int getPurchaseCancel(List<String> ticketList);
