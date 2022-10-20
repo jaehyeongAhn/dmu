@@ -87,6 +87,7 @@ $(document).ready(function(){
 		
 	}
     
+
     
     
     	//popup
@@ -667,6 +668,28 @@ $(document).ready(function(){
 	** 검색기능
 	*/
 	
+	function paging1(dbCount, rpage, pageSize){
+    
+		//페이징 리스트 출력
+		var pager = jQuery('#ampaginationsm1').pagination({
+		
+		    maxSize: 7,	    		// max page size
+		    totals: dbCount,	// total rows	
+		    page: rpage,		// initial page		
+		    pageSize: pageSize,	// max number items per page
+		
+		    // custom labels		
+		    lastText: '&raquo;&raquo;', 		
+		    firstText: '&laquo;&laquo;',		
+		    prevText: '&laquo;',		
+		    nextText: '&raquo;',
+				     
+		    btnSize:'sm'	// 'sm'  or 'lg'		
+		});
+		
+	}
+	
+	
 	$(".search-btn-reserve").click(function(){
 		admin_search_reserve(1);
 	});
@@ -725,7 +748,7 @@ $(document).ready(function(){
 	            }
 	                output += "</tr></tbody></table>";	
 	            
-	            var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm' style='text-align:center;'> "
+	            var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm1' style='text-align:center;'> "
 	            paging_list +="</div>"
 	            
 	            if(dataset.list.length !=0){
@@ -734,6 +757,7 @@ $(document).ready(function(){
 	            	            
 	            $(".info-table").remove();
 	            $("#ampaginationsm").remove();
+	            $("#ampaginationsm1").remove();
 	            $(".info-list").append(output);
 	            $(".info-list").after(paging_list);
 	            $("div.search-result strong.total").text(dataset.dbCount);
@@ -750,10 +774,10 @@ $(document).ready(function(){
 					 		popup_public_detail(mid);
 					 	
 					    });//member click
-	            paging(dataset.dbCount, dataset.rpage, dataset.pageSize);
+	            paging1(dataset.dbCount, dataset.rpage, dataset.pageSize);
 	            
 	            //페이징 번호 클릭 시 이벤트 처리
- 	            jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+ 	            jQuery('#ampaginationsm1').on('am.pagination.change',function(e){		
 	                   jQuery('.showlabelsm').text('The selected page no: '+e.page);
 	                   //$(location).attr('href', "http://localhost:9000/dmu/adminpage_reservation_list.do?rpage="+e.page);
 	                   admin_search_reserve(e.page);
