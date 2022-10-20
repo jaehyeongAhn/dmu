@@ -1,4 +1,397 @@
 $(document).ready(function(){
+		/********************************** mypage_ticket ************************************/
+		
+		$(".ticket_cancle").click(function(){
+			if($(".ticket_list:checked").length == 0){
+				$(".background_join").addClass("show_join");
+				$(".window_join").addClass("show_join");
+				$("#popup_joinOk").click(function(){
+					$(".background_join").removeClass("show_join");
+					$(".window_join").removeClass("show_join");
+				});
+			}else {
+				$(".refund_content").scrollTop(0);
+				$("body").css("overflow", "hidden");
+				$("#refund_ticket_check_box").prop("checked", false);
+				$(".refund_ticket_btn").prop("disabled", true);
+				$(".background_refund").addClass("show_refund");
+				$(".window_refund").addClass("show_refund");
+				$(".refund_popup_close").click(function(){
+					$("body").css("overflow", "auto");
+					$(".background_refund").removeClass("show_refund");
+					$(".window_refund").removeClass("show_refund");
+				});
+				
+
+				/* 선택한 티켓 정보 받기*/
+				function style_table(index_result){
+					let output = "<tr class='ticket_info purchase_result" + index_result + "'>";
+					output += "<input type = 'hidden' name = 'ticket_list' id = 'ticket_id'>";
+					output += "<td class='ticket_num'></td>";
+					output += "<td class='ticket_date'></td>";
+					output += "<td class='ticket_status'><strong></strong></td>";
+					output += "<td class='ticket_price'></td>";
+					output += "</tr>";
+					
+					return output;
+				}
+				
+				let total = 0;
+				let ticket_list = [];
+				$(".ticket_info").remove();
+				
+				$(".ticket-result-list-content table input.ticket_list:checked").each(function(index, el){
+					let index_tr = $(el).parent().parent().index();
+					let table = $(".ticket-result-list-content table tr:nth-child(" +  (index_tr + 1) + ")");
+					let standard = $(".refund_ticket_list table tr:last-child");
+
+					standard.before(style_table(index_tr));
+
+					let tid = table.children(".purchase_tid").text();
+					let dtitle = table.children(".purchase_dtitle").text();
+					let rdate = table.children(".purchase_rdate").text();
+					let status = table.children(".ticket_list_status strong").text();
+					let price = $(".ticket_purchase strong").text();
+					
+					$("tr.purchase_result" + index_tr + " td.ticket_num").text(tid);
+					$("tr.purchase_result" + index_tr + " td.ticket_date").text(rdate);
+					$("tr.purchase_result" + index_tr + " td.ticket_status").text("취소가능");
+					$("tr.purchase_result" + index_tr + " td.ticket_price").text(price);
+
+					total += intChange(price);
+					$(".total_count").text(numberFormat(total) + "원");
+					
+					
+					//티켓 번호 전송
+					ticket_list.push(tid);
+					$("tr.purchase_result" + index_tr + " input#ticket_id").val(tid);
+				});//each
+				
+
+				//티켓 정보 전송
+				$(".refund_ticket_btn").click(function(){
+					//refundForm.submit();
+					
+					$.ajax({
+						type : "post",
+						data : {
+							"ticketList" : ticket_list,
+							"rtotal" : $("#reservation_ticket_total").val(),
+							"rid" : $("#reservation_ticket_rid").val()
+						},
+						url : "mypage_ticket_cancel.do",
+						success : function(result){
+
+							if(result == "update_success"){
+								$("div.popup_ticket_refund_result p").text("예매 취소가 완료되었습니다.");
+							}else if(result == "fail") {
+								$("div.popup_ticket_refund_result p").text("환불에 실패했습니다.");
+							}else{
+								$("div.popup_ticket_refund_result p").text("선택하신 티켓의 취소가 완료되었습니다.");
+							}
+							$(".background_refund").removeClass("show_refund");
+							$(".window_refund").removeClass("show_refund");
+							$(".background_ticket_refund_result").addClass("show");
+							$(".window_ticket_refund_result").addClass("show");
+							$("#ticket_refund_result_btn").click(function(){
+								$(location).attr("href", "http://localhost:9000/dmu/mypage_ticket.do");
+							});
+						}//success
+						
+					});//ajax
+				});//click-function
+				
+			}//else
+		});//click-function
+		
+		function intChange(price) {
+			return parseInt(price.replace(",", "").replace("원", ""));
+		}
+		
+		function numberFormat(num) {
+			return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+		
+		/*** content size ****/
+		$("#refund_ticket_check_box").change(function(){
+			if($(this).is(":checked")){
+				$(".refund_ticket_btn").prop("disabled", false);
+			}else{
+				$(".refund_ticket_btn").prop("disabled", true);
+			}
+		});
+		
+		
+		
+		/*************************************** mypage_ticket **************************************/
+		
+		
+		
+		/************************** 조회 기능  ***************************/
+		//카테고리 선택
+		$("div.snb-area ul.snb li").click(function(){
+			$("div.snb-area ul.snb li").removeClass("show_ticket");
+			$(this).addClass("show_ticket");
+			ticket_reservation_ajax(1, $(this).attr("data-dcode"), $("#datepicker1").val(), $("#datepicker2").val());
+		});
+		
+		//날짜 검색	
+		$("#search_date").click(function(){
+			ticket_reservation_ajax(1, $(".show_ticket").attr("data-dcode"), $("#datepicker1").val(), $("#datepicker2").val());
+		});
+		
+		//ajax 실행
+		ticket_reservation_ajax(1, $(".show_ticket").attr("data-dcode"), $("#datepicker1").val(), $("#datepicker2").val());
+
+		function ticket_reservation_ajax(rpage, dcode, startdate, enddate){
+			$.ajax({
+				type : "post",
+				data : {
+					rpage : rpage,
+					dcode : dcode,
+					startdate : startdate,
+					enddate : enddate
+				},
+				url : "mypage_ticket_list.do",
+				success : function(result) {
+					let data = JSON.parse(result);
+					let output = "";
+					
+					if(data.list.length == 0){
+						output += "<div class='no-result_purchase' style='margin: 0 15px 0 0;'>";
+						output += "<div class='no-result'>";
+						output += "<p>예매 내역이 없습니다.</p></div></div>";
+					}else{
+						output += "<ul id = 'reservation_list_ul' style = 'list-style:none;'>"
+						
+						for(dataset of data.list){
+							output += "<li>"
+							output += "<div class='result_purchase'>";
+							output += "<div class='purchase_result_list'>";
+							output += "<div class='purchase-result-list-title'>";
+							output += "<p>예매일시 <strong> " + dataset.rokdate + "</strong></p>";
+							output += "<p>예매번호 <a href = 'mypage_ticket_content.do?rid=" + dataset.rid + "'>" + dataset.rid + "</a></p>";
+							output += "</div>";
+							output += "<div class='purchase-result-list-content'>";
+							output += "<div>";
+							output += "<div class='purchase-result-content-title'>";
+							output += "<a href='mypage_ticket_content.do?rid=" + dataset.rid + "'>";
+							output += "<img src='http://localhost:9000/dmu/resources/upload/" + dataset.dsfile + "'>";
+							output += "</a>";
+							output += "<div class='purchase-result-list-content-text'>";
+							output += "<a href='mypage_ticket_content.do?rid=" + dataset.rid + "'><strong style = 'font-weight : 800;'>" + dataset.dtitle + "</strong></a>";
+							output += "<div>";
+							output += "<span class='date'>" + dataset.dcode + "</span><span>" + dataset.rtotal + "매</span>";
+							output += "</div></div></div>";
+							output += "<div class='purchase-result-list-content-status'>";
+							if(dataset.rcheck == 'y'){
+								output += "<strong>예매완료</strong>";
+							}else if(dataset.rcheck == 'ex'){
+								output += "<strong>기간만료</strong>";
+							}else{
+								output += "<strong>예매취소</strong>";
+							}
+							output += "</div></div></div></div></div></li>";
+						}
+						output += "</ul>";
+						output += "<div id='ampaginationsm' style='text-align:center;'></div>";
+					}
+					
+					$(".no-result_purchase").remove();
+					$("#reservation_list_ul").remove();
+					$("#ampaginationsm").remove();
+					$(".search-area").append(output);
+					
+					paging_ajax(data.dbCount, data.rpage, data.pageSize);
+
+					//페이징 번호 클릭 시 이벤트 처리
+					jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+						   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+						   ticket_reservation_ajax(e.page, $(".show_ticket").attr("data-dcode"), $("#datepicker1").val(), $("#datepicker2").val());
+				    });
+					
+				}//success
+			});//ajax
+		}//funtion
+		
+		//페이징 리스트 출력
+		function paging_ajax(dbCount, rpage, pageSize){
+			var pager = jQuery('#ampaginationsm').pagination({
+				
+			    maxSize: 7,	    		// max page size
+			    totals: dbCount,	// total rows	
+			    page: rpage,		// initial page		
+			    pageSize: pageSize,	// max number items per page
+			
+			    // custom labels		
+			    lastText: '&raquo;&raquo;', 		
+			    firstText: '&laquo;&laquo;',		
+			    prevText: '&laquo;',		
+			    nextText: '&raquo;',
+					     
+			    btnSize:'sm'	// 'sm'  or 'lg'		
+			});
+		}
+		
+
+		
+		/************************************ mypage_inquiry ***************************************/
+		
+		//문의 사항 작성하기
+		$(".review_write_btn").click(function(){
+			$(".check_join").remove();
+			$("body").css("overflow", "hidden");
+			$(".popup_inquire_write").scrollTop(0);
+			$(".inquire_category").val("default");
+			$(".inquire_type").val("default");
+			$("div.write_inquire_form input").val("");
+			$("div.write_inquire_form textarea").val("");
+			$(".background_inquire").addClass("show");
+			$(".window_inquire").addClass("show");
+			$(".inquire_close").click(function(){
+				$("body").css("overflow", "auto");
+				$(".background_inquire").removeClass("show");
+				$(".window_inquire").removeClass("show");
+			});
+		});
+
+		//문의 내역 상세 보기
+		$("div.inquire_title .detail").click(function(){
+			//팝업창 띄우기
+			$("body").css("overflow", "hidden");
+			$(".popup_inquire_detail_form").scrollTop(0);
+			$(".background_inquire_detail").addClass("show");
+			$(".window_inquire_detail").addClass("show");
+			$(".inquire_detail_close").click(function(){
+				$("body").css("overflow", "auto");
+				$(".background_inquire_detail").removeClass("show");
+				$(".window_inquire_detail").removeClass("show");
+			});
+			
+			//문의 상세 정보 불러오기
+			let iqid = $(this).parent().parent().prev().val();
+			$.ajax({
+				type : "post",
+				data : {
+					iqid : iqid
+				},
+				url : "mypage_inquiry_content.do",
+				success : function(result) {
+					let data = JSON.parse(result);
+					let inquiry_answer_status = $(".popup_inquire_detail_content div.inquiry_answer p.inquiry_answer_status");
+					
+					if(data.iqanswer == "n"){
+						inquiry_answer_status.css("display", "none");
+					}else{
+						inquiry_answer_status.css("display", "flex");
+					}
+					$(".popup_inquire_detail_content div.category_list span.category > span.second").text(data.iqcategory);
+					$(".popup_inquire_detail_content div.category_list span.first:nth-child(2) span.second").text(data.iqtype);
+					$(".popup_inquire_detail_content div.inquire_write_date span").text(data.iqdate);
+					$(".popup_inquire_detail_content div.inquire_write_content p").html(data.iqtitle);
+					$(".popup_inquire_detail_content div.inquire_write_content div").html(data.iqcontent);
+				},
+				error : function(e){
+					alert("정보를 불러올 수 없습니다.");
+				}
+			});
+		});
+		
+		
+		/****************************************** 팝업창 사이즈 *****************************************/
+		function warningCheck_inquiry(check, obj, coment){
+			let style_warning = "<div class = 'check_join'>"
+				style_warning += "<img src = 'http://localhost:9000/dmu/resources/images/warning.png' class = 'join_warning'>";
+				style_warning += "<span></span></div>";
+			if(check == true){
+				obj.next(".check_join").remove();
+				obj.after(style_warning);
+				
+				obj.next(".check_join").children(".join_warning").css({"height" : "15px", "margin-right" : "5px", "width" : "auto"});
+				obj.next(".check_join").children(".join_warning + span").text(coment).css({"color" : "#D92121", "letter-spacing" : "-0.08rem", "font-weight" : "400", "font-size" : "14px"});
+				$(".check_join").css({"height": "20px", "display" : "flex", "align-items" : "center", "justify-content" : "flex-start", "margin-bottom" : "10px"});
+			}else if(check == 'ok'){
+				
+				//$(".check_join").remove();
+				obj.next().remove();
+				obj.after(style_warning);
+				
+				obj.next().children(".join_warning").remove();
+
+				//$(".check_join span").text(coment).css({"color" : "black", "letter-spacing" : "-0.08rem",
+				obj.next().children("span").text(coment)
+						.css({"color" : "black", "letter-spacing" : "-0.08rem", "font-weight" : "400"});
+				$(".check_join").css({"height": "40px", "display" : "flex", "align-items" : "center", "justify-content" : "flex-start"});
+				
+			}else{
+				obj.next(".check_join").remove();
+			}
+		}
+		
+		
+		/***************** 문의사항 글쓰기 팝업창 *****************/
+		
+		//문의 사항 글쓰기 팝업창 유효성 체크
+		$("div.popup_inquire_write select.inquire_category").change(function(){
+			if($("div.popup_inquire_write select.inquire_category").val() != "default"){
+				warningCheck_inquiry(false, $("div.popup_inquire_write select.inquire_category"), "");
+				$("div.popup_inquire_write select.inquire_type option").css("display", "block");
+			}
+		});
+		
+		$("div.popup_inquire_write select.inquire_type").change(function(){
+			if($(this).val() != "default"){
+				warningCheck_inquiry(false, $("div.popup_inquire_write select.inquire_type"), "");
+			}
+		});
+		
+		$("div.write_inquire_form input.iqtitle").keyup(function(){
+			if($(this).val() != ""){
+				warningCheck_inquiry(false, $("div.write_inquire_form input.iqtitle"), "");
+			}
+		});
+		
+		$("div.write_inquire_form textarea.iqcontent").keyup(function(){
+			if($(this).val() != ""){
+				warningCheck_inquiry(false, $("div.write_inquire_form textarea.iqcontent"), "");
+			}
+		});
+		
+		$("button.inquire_ok").click(function(){
+			if($("div.popup_inquire_write select.inquire_category").val() == "default") {
+				warningCheck_inquiry(true, $("select.inquire_category"), "카테고리를 선택해주세요.");
+				$(".popup_inquire_write").scrollTop(0);
+				return false;
+			}else if($("div.popup_inquire_write select.inquire_type").val() == "default") {
+				let scroll = $("div.popup_inquire_write select.inquire_category").offset().top - 130;
+				warningCheck_inquiry(true, $("select.inquire_type"), "문의 유형을 선택해주세요.");
+				$(".popup_inquire_write").scrollTop(scroll);
+				return false;
+			}else if($("div.write_inquire_form input.iqtitle").val() == ""){
+				let scroll = $("div.write_inquire_form input.iqtitle").offset().top - 130;
+				warningCheck_inquiry(true, $("div.write_inquire_form input.iqtitle"), "문의 제목을 입력해주세요.");
+				$("div.write_inquire_form input.iqtitle").focus();
+				$(".popup_inquire_write").scrollTop(scroll);
+				return false;
+			}else if($("div.write_inquire_form textarea.iqcontent").val() == ""){
+				let content_scroll = $(".popup_inquire_write_form")[0].scrollHeight;
+				warningCheck_inquiry(true, $("div.write_inquire_form .iqcontent"), "문의 내용을 입력해주세요.");
+				$(".popup_inquire_write").scrollTop(content_scroll);
+				$("div.write_inquire_form .iqcontent").focus();
+				return false;
+			}else{
+				inquireWriteForm.submit();
+			}
+		});
+		
+		
+		
+		/***************** 문의사항 글보기 팝업창 *****************/
+		let height_content = $(".popup_inquire_detail").height() - $(".popup_inquire_detail_title").outerHeight() - $(".inquire_detail_button_list").outerHeight();
+		$(".popup_inquire_detail_form").css("height", height_content);
+		
+		
+
 
 		/********* function list *********/
 		
@@ -54,6 +447,16 @@ $(document).ready(function(){
 
 		//비밀번호 유효성 체크
 		$("button.member_check").click(function(){
+			member_check_ajax();
+		});//click
+		
+		$("input.passwordCheck").keyup(function(e){
+			if(e.keyCode == 13) {
+				member_check_ajax();
+			}
+		});//key-up
+		
+		function member_check_ajax(){
 			if($(".passwordCheck").val() == ""){
 				warningCheck(true, $("div.myinfo-box div.check_normal_area div.pass_check_area"), "비밀번호를 입력해주세요.");
 			}else{
@@ -75,7 +478,7 @@ $(document).ready(function(){
 					}
 				});//ajax
 			}//if~else
-		});//click
+		}
 		
 		
 		/************************ mypage_member.do **********************************/
@@ -121,12 +524,37 @@ $(document).ready(function(){
 		function member_info_udpate(type){
 			popup_login("변경사항을 저장하시겠습니까?");
 			$("#popup_joinOk").click(function(){
-				$("form").attr({
+				$(".background_join").removeClass("show_join");
+				$(".window_join").removeClass("show_join");
+				
+				$(".type_check").val(type);
+				let formData = $(".mypage_member_form").serialize();
+				$.ajax({
+					type : "post",
+					data : formData,
+					url : "update_info.do",
+					success : function(result){
+						let data = JSON.parse(result);
+						if(data.update_result == "exist"){
+							warningCheck(true, $(".new-pass"), "직전 비밀번호는 사용하실 수 없습니다.");
+							$(".pass").focus();
+							return false;
+						}else if(data.update_result == "success"){
+							popup_login("변경이 완료되었습니다.");
+							$("#popup_joinOk").css("display", "none");
+							$("#popup_joinNo").text("확인");
+							$("#popup_joinNo").click(function() {
+								$(location).attr("href", "http://localhost:9000/dmu/mypage_member.do");
+							});
+						}
+					}
+				});
+				
+				/*$("form").attr({
 					"name" : "updateMemberForm",
 					"action" : "update_info.do"
 				});
-				$(".type_check").val(type);
-				updateMemberForm.submit();
+				updateMemberForm.submit();*/
 			});
 		}
 		
@@ -140,6 +568,9 @@ $(document).ready(function(){
 				}
 			}else{
 				warningCheck(false, $(".new-pass"), "");
+				if($(".passCheck").val() == "") {
+					warningCheck(false, $(".new-pass-check"), "");
+				}
 			}
 		});
 	

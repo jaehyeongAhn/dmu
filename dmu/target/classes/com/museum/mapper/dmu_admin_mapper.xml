@@ -80,4 +80,55 @@
                                  				 			  where rownum = 1)   
 	</select>
 
+
+	<!-- adminpage_inquiry_list.do -->
+	<!-- inquiry list -->
+	<select id = "inquiryList" parameterType = "map" resultType = "com.museum.vo.DmuInquiryVO">
+		SELECT RNO, IQID, MID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, TO_CHAR(IQDATE, 'YYYY-MM-DD') IQDATE
+		FROM (SELECT ROWNUM RNO, IQID, MID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, IQDATE
+		        FROM (SELECT IQID, MID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, IQDATE
+		                FROM DMU_INQUIRY 
+						<where>
+							<choose>
+								<when test = 'answerType.equals("stand-by")'>
+									AND IQANSWER = 'n'
+								</when>
+								<otherwise>
+									AND IQANSWER = 'y'
+								</otherwise>
+							</choose>
+						</where>
+				ORDER BY IQDATE DESC))
+		WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- inquiry list totalCount -->
+	<select id = "inquiryTotalCount" parameterType = "map" resultType = "int">
+		SELECT COUNT(*) FROM DMU_INQUIRY
+		<choose>
+			<when test = 'answerType.equals("stand-by")'>
+				WHERE IQANSWER = 'n'
+			</when>
+			<otherwise>
+				WHERE IQANSWER = 'y'
+			</otherwise>
+		</choose>
+	</select>
+	
+	<!-- inquiry content -->
+	<select id = "inquiryContent" parameterType = "java.lang.String" resultType = "com.museum.vo.DmuInquiryVO">
+		SELECT IQID, MID, IQCATEGORY, IQTYPE, IQTITLE, IQCONTENT, IQANSWER, TO_CHAR(IQDATE, 'YYYY-MM-DD') IQDATE
+		FROM DMU_INQUIRY
+		WHERE IQID = #{iqid}
+	</select>
+	
+	<!-- inquiry response -->
+	<select id = "inquiryResponse" parameterType = "java.lang.String" resultType = "java.lang.String">
+		SELECT EMAIL FROM DMU_MEMBER WHERE MID = #{mid}
+	</select>
+	
+	<!-- inquiry response success update -->
+	<update id = "inquiryUpdate" parameterType = "java.lang.String">
+		UPDATE DMU_INQUIRY SET IQANSWER = 'y' WHERE IQID = #{iqid}
+	</update>
 </mapper>

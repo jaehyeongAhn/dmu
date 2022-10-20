@@ -5,6 +5,186 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace = "mapper.mypage">
+
+	<!-- ///////////////////////////// mypage_reservation ///////////////////////////// -->
+	<!-- MYPAGE RESERVATION LIST -->
+	<resultMap id = "reservationInfo" type = "com.museum.vo.DmuPurchaseVO">
+		<id property = "rid" column = "RID"/>
+		<id property = "pid" column = "PID"/>
+		<result property = "rdate" column = "RDATE"/>
+		<result property = "rokdate" column = "ROKDATE"/>
+		<result property = "rtotal" column = "RTOTAL"/>
+		<result property = "rcheck" column = "RCHECK"/>
+		<result property = "rfaildate" column = "RFAILDATE"/>
+		<result property = "rprice" column = "RPRICE"/>
+		<result property = "pcoin" column = "PCOIN"/>
+		<association property = "ticketVo" resultMap = "ticketInfo"/>
+	</resultMap>
+	
+	<!-- MYPAGE RESERVATION EXPIRE CHECK-->
+	<select id = "reservation_expire_check" resultType = "java.lang.String">
+		SELECT RID FROM DMU_RESERVATION WHERE RDATE &lt; (SYSDATE - 1)
+	</select>
+		
+	<!-- MYPAGE RESERVATION EXPIRE -->
+	<update id = "reservation_expire" parameterType = "java.lang.String">
+		UPDATE DMU_RESERVATION SET RCHECK = 'ex' WHERE RID = #{rid}
+	</update>
+	
+	<!-- MYPAGE RESERVATION TICKETINFO EXPIRE -->
+	<update id = "reservation_ticket_expire" parameterType = "java.lang.String">
+		UPDATE DMU_TICKETINFO SET TCHECK = 'ex' WHERE RID = #{rid}
+	</update>
+	
+	<!-- MYPAGE RESERVATION LIST -->
+	<select id = "reservationList" parameterType = "map" resultMap = "reservationInfo">
+		SELECT RNO, DID, DTITLE, DSFILE, DCODE, RID, TO_CHAR(RDATE, 'YYYY-MM-DD') RDATE, 
+				TO_CHAR(ROKDATE, 'YYYY-MM-DD') ROKDATE, RTOTAL, RCHECK
+		FROM (SELECT ROWNUM RNO, DID, DTITLE, DSFILE, DCODE, RID, RDATE, ROKDATE, RTOTAL, RCHECK
+		        FROM (SELECT DT.DID, DT.DTITLE, DT.DSFILE, DT.DCODE, DR.RID, DR.RDATE, DR.ROKDATE, DR.RTOTAL, DR.RCHECK
+		                FROM DMU_TICKET DT, DMU_RESERVATION DR
+		                WHERE DT.DID = DR.DID AND DR.MID = #{mid}
+		                ORDER BY ROKDATE DESC))
+		WHERE RNO BETWEEN #{start} AND #{end}
+		<if test = 'dcode != null'>
+			<if test = '!dcode.equals("all")'>
+				AND DCODE = #{dcode}
+			</if>
+		</if>
+		<choose>
+			<when test = 'startdate != null and enddate != null'>
+				<choose>
+					<when test = 'startdate != "" and enddate != ""'>
+						AND ROKDATE BETWEEN #{startdate} AND TO_DATE(#{enddate}, 'YYYY-MM-DD')+1
+					</when>
+					<otherwise>
+						AND ROKDATE BETWEEN (SYSDATE-7) AND SYSDATE
+					</otherwise>
+				</choose>
+			</when>
+			<otherwise>
+				AND ROKDATE BETWEEN (SYSDATE-7) AND SYSDATE
+			</otherwise>
+		</choose>
+	</select>
+	
+	<!-- MYPAGE RESERVATION LIST TOTALCOUNT -->
+	<select id = "reservationTotalCount" parameterType = "map" resultType = "int">
+		SELECT COUNT(*) 
+		FROM DMU_TICKET DT, DMU_RESERVATION DR
+		WHERE DT.DID = DR.DID AND DR.MID = #{mid} 
+		<if test = "dcode != null">
+			<if test = '!dcode.equals("all")'>
+				AND DT.DCODE = #{dcode}		
+			</if>
+		</if>
+		<choose>
+			<when test = 'startdate != null and enddate != null'>
+				AND ROKDATE BETWEEN #{startdate} AND TO_DATE(#{enddate}, 'YYYY-MM-DD')+1
+			</when>
+		</choose>
+	</select>
+	
+	<!-- MYPAGE RESERVATION INFO LIST -->
+	<resultMap id = "purchaseInfo" type = "com.museum.vo.DmuPurchaseVO">
+		<id property = "rid" column = "RID"/>
+		<id property = "pid" column = "PID"/>
+		<result property = "did" column = "DID"/>
+		<result property = "mid" column = "MID"/>
+		<result property = "rdate" column = "RDATE"/>
+		<result property = "rtotal" column = "RTOTAL"/>
+		<result property = "rcheck" column = "RCHECK"/>
+		<result property = "mid" column = "MID"/>
+		<result property = "rokdate" column = "ROKDATE"/>
+		<result property = "rfaildate" column = "RFAILEDATE"/>
+		<result property = "rprice" column = "RPRICE"/>
+		<result property = "rallprice" column = "RALLPRICE"/>
+		<result property = "pcoin" column = "PCOIN"/>
+		<result property = "pdate" column = "PDATE"/>
+		<result property = "pallprice" column = "PALLPRICE"/>
+		<association property = "ticketVo" resultMap = "ticketInfo"/>
+		<collection column = "rid = rid" property = "ticketList" ofType = "com.museum.vo.DmuPurchaseTicketVO"
+			select = "purchaseTicketList"></collection>
+	</resultMap>
+	
+	<resultMap id = "ticketInfo" type = "com.museum.vo.DmuTicketVO">
+		<id property = "did" column = "DID"/>
+		<result property = "dnum" column = "DNUM"/>
+		<result property = "dtitle" column = "DTITLE"/>
+		<result property = "dstart" column = "DSTART"/>
+		<result property = "dend" column = "DEND"/>
+		<result property = "dprice" column = "DPRICE"/>
+		<result property = "dplace" column = "DPLACE"/>
+		<result property = "dtime" column = "DTIME"/>
+		<result property = "dfile" column = "DFILE"/>
+		<result property = "dsfile" column = "DSFILE"/>
+		<result property = "dcode" column = "DCODE"/>
+		<result property = "dinformation" column = "DINFORMATION"/>
+		<result property = "dtarget" column = "DTARGET"/>
+		<result property = "dtitle2" column = "DTITLE2"/>
+		<result property = "dpersonnel" column = "DPERSONNEL"/>
+	</resultMap>
+	
+	<select id = "purchaseList" parameterType = "map" resultMap = "purchaseInfo">
+		SELECT DT.DID, DR.RID, DT.DTITLE, DT.DTIME, DT.DPLACE, DT.DSFILE, TO_CHAR(DR.ROKDATE, 'YYYY-MM-DD HH24:MI:SS') ROKDATE, 
+		       DR.RTOTAL, DR.RPRICE, DR.RCHECK, DR.RDATE, DP.PDATE, DP.PALLPRICE, DP.PCOIN, DT.DCODE
+		FROM DMU_TICKET DT, DMU_RESERVATION DR, DMU_PAYINFO DP
+		WHERE DT.DID = DR.DID AND DR.RID = DP.RID AND DR.RID = #{rid}
+	</select>
+	
+	<select id = "purchaseTicketList" parameterType = "com.museum.vo.DmuPurchaseVO" resultType = "com.museum.vo.DmuPurchaseTicketVO">
+		SELECT DP.PDATE, DP.PALLPRICE, DTI.TID, DTI.TCHECK
+		FROM DMU_TICKETINFO DTI, DMU_PAYINFO DP, DMU_RESERVATION DR
+		WHERE DTI.RID = DP.RID AND DTI.RID = DR.RID AND  DTI.RID = #{rid}
+	</select>
+	
+	<!-- TICKET UPDATE -->
+	<update id = "ticket_update" parameterType = "java.lang.String">
+		UPDATE DMU_TICKETINFO SET TCHECK = 'n' WHERE TID = #{tid}		
+	</update>
+	
+	<!-- TICKET COUNTING -->
+	<select id = "ticket_cancle_totalCount" parameterType = "java.lang.String" resultType = "int">
+		SELECT COUNT(*) FROM DMU_TICKETINFO WHERE RID = #{rid} AND TCHECK = 'n'
+	</select>
+	
+	<!-- TICKET RESERVATION UPDATE -->
+	<update id = "ticket_reservation_update" parameterType = "java.lang.String">
+		UPDATE DMU_RESERVATION SET RCHECK = 'n', RFAILDATE = SYSDATE WHERE RID = #{rid}
+	</update>
+	
+	
+	
+	<!-- ///////////////////////////// mypage_inquiry ///////////////////////////// -->
+	<!-- mypage inquiry insert -->
+	<insert id = "inquiry_insert" parameterType = "com.museum.vo.DmuInquiryVO">
+		INSERT INTO DMU_INQUIRY 
+		VALUES('iq_' || SEQU_DMU_INQUIRY.NEXTVAL, #{mid}, #{iqcategory}, #{iqtype}, #{iqtitle}, #{iqcontent}, 'n', SYSDATE)   
+	</insert>
+	
+	<!-- mypage inquiry totalCount -->
+	<select id = "inquiry_totalCount" parameterType = "java.lang.String" resultType = "int">
+		SELECT COUNT(*) FROM DMU_INQUIRY WHERE MID = #{mid}
+	</select>
+	
+	<!-- mypage inquiry list -->
+	<select id = "inquiry_list" parameterType = "map" resultType = "com.museum.vo.DmuInquiryVO">
+		SELECT RNO, IQID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, TO_CHAR(IQDATE, 'YYYY-MM-DD') IQDATE
+		FROM (SELECT ROWNUM RNO, IQID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, IQDATE
+		FROM (SELECT IQID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, IQDATE
+		     FROM DMU_INQUIRY WHERE MID = #{mid} ORDER BY IQDATE DESC))
+		WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id = "inquiry_content" parameterType = "java.lang.String" resultType = "com.museum.vo.DmuInquiryVO">
+		SELECT IQID, IQCATEGORY, IQTYPE, IQTITLE, IQCONTENT, IQANSWER, TO_CHAR(IQDATE, 'YYYY-MM-DD') IQDATE
+		FROM DMU_INQUIRY WHERE IQID = #{iqid}
+	</select>
+
+
+
+	<!-- ///////////////////////////// mypage_member ///////////////////////////// -->
+	<!-- member content -->
 	<select id = "member_info" parameterType = "java.lang.String" resultType = "com.museum.vo.DmuMemberVO">
 		SELECT MID,
 			CONCAT(SUBSTR(MID, 1, 4), '***') MID_SECURITY,
@@ -20,6 +200,20 @@
 		WHERE MID = #{mid}
 	</select>
 	
+	<!-- member info update -->
+	<update id = "member_info_update" parameterType = "map">
+		<choose>
+			<when test = 'type == "password"'>
+				UPDATE DMU_MEMBER SET PASS = #{vo.pass} WHERE MID = #{vo.mid}
+			</when>
+			<when test = 'type == "address"'>
+				UPDATE DMU_MEMBER SET ZONECODE = #{vo.zonecode}, ADDR1 = #{vo.addr1}, ADDR2 = #{vo.addr2} 
+				WHERE MID = #{vo.mid}
+			</when>
+		</choose>
+	</update>
+	
+	<!-- member unregister -->
 	<update id = "member_unregister" parameterType = "java.lang.String">
 		UPDATE DMU_MEMBER SET UNREGISTER = 'n' WHERE MID = #{mid}
 	</update>

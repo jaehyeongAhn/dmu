@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,27 +17,8 @@
 <!-- 이미지 경로 수정하기 -->
 <script>
 	$(document).ready(function(){
-		$(".ticket_cancle").click(function(){
-			if($(".ticket_list:checked").length == 0){
-				$(".background_join").addClass("show_join");
-				$(".window_join").addClass("show_join");
-				$("#popup_joinOk").click(function(){
-					$(".background_join").removeClass("show_join");
-					$(".window_join").removeClass("show_join");
-				});
-			}else {
-				$(".background_refund").addClass("show_refund");
-				$(".window_refund").addClass("show_refund");
-				$(".refund_popup_close").click(function(){
-					$(".background_refund").removeClass("show_refund");
-					$(".window_refund").removeClass("show_refund");
-				});
-			}
-		});
-		
-		/*** content size ****/
 		let height = $(".popup_refund").height() - $(".refund_title").outerHeight() - $(".refund_btn_list").outerHeight();
-		$(".refund_content").height(height);
+		$(".refund_content").css("height", height);
 	});
 </script>
 <style>
@@ -64,7 +47,7 @@
 												<strong><a class="" href="mypage_ticket.do" style = "color : black;">티켓예매 목록</a></strong>
 											</li>
 											<li class="">
-												<a class="" href="mypage_inquire.do">나의 문의</a>
+												<a class="" href="mypage_inquiry.do">나의 문의</a>
 											</li>
 										</ul>
 									</div>
@@ -85,6 +68,7 @@
 				</aside>
 
 				<%-- 마이페이지 content --%>
+				<c:forEach var = "list" items = "${ list }">
 				<div class="sub-contents">
 					<div class="page-title" style = "margin: 10px 0 0 0;">
 						<h2>예매 상세 내역</h2>
@@ -93,31 +77,43 @@
 						<div class = "ticket_detail">
 							<div class="result_purchase" style = "margin : 0; border-top : none;">
 								<div class="purchase_result_list">
+									<input type = "hidden" name = "rid" id = "reservation_ticket_rid" value = "${ list.rid }">
+									<input type = "hidden" name = "rtotal" id = "reservation_ticket_total" value = "${ list.rtotal }">
 									<div class="purchase-result-list-title">
-										<p>예매번호 <strong> 220828007838</strong></p>
+										<p>예매번호 <strong> ${ list.rid }</strong></p>
 									</div>
 									<div class="purchase-result-list-content" style = "width : 100%;">
 										<div style="border-bottom: 0.5px solid #ddd;">
 											<div class="purchase-result-content-title" style = "width : 100%;">
-												<a href="#">
-													<img src="http://localhost:9000/dmu/resources/images/ticket.svg"
+												<a href="${ list.ticketVo.dcode }.do?did=${ list.ticketVo.did }">
+													<img src="http://localhost:9000/dmu/resources/upload/${ list.ticketVo.dsfile }"
 														style = "width : 250px;">
 												</a>
 												<table>
 													<tr>
-														<td colspan = "4" class = "content_table_title">어쨌든, 사랑</td>
+														<td colspan = "4" class = "content_table_title">${ list.ticketVo.dtitle }</td>
 													</tr>
 													<tr>
 														<th>예매 일시</th>
-														<td>2022-02-05</td>
+														<td>${ list.rokdate }</td>
 														<th>예약 매수</th>
-														<td>1매(성인 1)</td>
+														<td>${ list.rtotal } 매</td>
 													</tr>
 													<tr>
 														<th>장소</th>
-														<td>디뮤지엄</td>
+														<td>${ list.ticketVo.dplace }</td>
 														<th>상태</th>
-														<td>예매 완료</td>
+														<c:choose>
+															<c:when test = "${ list.rcheck == 'y' }">
+																<td>예매 완료</td>
+															</c:when>
+															<c:when test = "${ list.rcheck == 'ex' }">
+																<td>기간 만료</td>
+															</c:when>
+															<c:otherwise>
+																<td>예매 취소</td>
+															</c:otherwise>
+														</c:choose>
 													</tr>
 												</table>
 											</div>
@@ -140,12 +136,18 @@
 										<div>
 											<table>
 												<tr>
-													<td>티켓금액<strong>18,000원</strong></td>
-													<td>티켓<strong>1매</strong></td>
-													<td>최종 결제금액<strong style="font-size:20px;">18,000원</strong></td>
+													<td class = "ticket_purchase">티켓금액
+														<strong><fmt:formatNumber value="${ list.rprice }" pattern = "#,###"/>원</strong>
+													</td>
+													<td>티켓<strong>${ list.rtotal }매</strong></td>
+													<td>최종 결제금액<strong style="font-size:20px;">
+														<fmt:formatNumber value="${ list.pallprice }" pattern = "#,###"/>원
+													</strong></td>
 												</tr>
 												<tr class="card_result">
-													<td colspan = "6">카드(국민/일시불)<br>결제일:2022.09.20</td>
+													<fmt:parseDate var = "pdate" value = "${ list.pdate }" type = "date" pattern = "yyyy-MM-dd"/>
+													<td colspan = "6">${ list.pcoin }<br>
+														결제일 : <fmt:formatDate value="${ pdate }" pattern = "yyyy-MM-dd"/></td>
 												</tr>
 											</table>
 										</div>
@@ -155,8 +157,6 @@
 						</div>
 					</div>
 					
-					<style>
-					</style>
 					<%-- 티켓 정보 --%>
 					<div class = "ticket">
 						<div class = "ticket_information">
@@ -165,7 +165,9 @@
 									<div class="ticket-result-list-title">
 										<h2>티켓목록</h2>
 										<div>
-											<button type = "button" class="ticket_cancle">예매취소</button>
+											<c:if test = "${ list.rcheck == 'y' }">
+												<button type = "button" class="ticket_cancle">예매취소</button>
+											</c:if>
 										</div>
 									</div>
 									<div class="ticket-result-list-content">
@@ -174,20 +176,45 @@
 												<tr style = "background:#efefef;">
 													<th>선택</th>
 													<th>티켓번호</th>
-													<th>권종</th>
+													<th>이용시간</th>
 													<th>관람일</th>
 													<th>상태</th>
 												</tr>
+												<c:set var = "index" value = "1"/>
+												<c:forEach var = "ticket_list" items = "${ list.ticketList }">
 												<tr>
-													<td><input type="checkbox" id="check1" class="ticket_list">
-														<label for="check1"></label>
+													<c:choose>
+														<c:when test = "${ ticket_list.tcheck ne 'y' }">
+															<c:set var = "check_disabled" value = "disabled"/>
+														</c:when>
+														<c:otherwise>
+															<c:set var = "check_disabled" value = ""/>
+														</c:otherwise>
+													</c:choose>
+													
+													<td><input type="checkbox" id="check${ index }" class="ticket_list" ${ check_disabled }>
+														<label for="check${ index }"></label>
 													</td>
-													<td>22082800783812132132</td>
-													<td>성인</td>
-													<td>2022.10.31</td>
-													<td><strong>사용가능</strong></td>
+													<td class = "purchase_tid">${ ticket_list.tid }</td>
+													<td class = "purchase_dtitle">${ list.ticketVo.dtime }</td>
+													
+													<fmt:parseDate var = "rdate" value = "${ list.rdate }" type = "date" pattern = "yyyy-MM-dd"/>
+													<td class ="purchase_rdate"><fmt:formatDate pattern="yyyy-MM-dd" value="${rdate}"/></td>
+													<c:choose>
+														<c:when test = "${ ticket_list.tcheck == 'y' }">
+															<td class = "ticket_list_status"><strong>사용가능</strong></td>	
+														</c:when>
+														<c:when test="${ ticket_list.tcheck == 'ex' }">
+															<td class = "ticket_list_status"><strong>기간만료</strong></td>		
+														</c:when>
+														<c:otherwise>
+															<td class = "ticket_list_status"><strong>예매취소</strong></td>		
+														</c:otherwise>
+													</c:choose>
 												</tr>
-												<tr>
+													<c:set var = "index" value = "${ index+1 }"/>
+												</c:forEach>
+												<!-- <tr>
 													<td><input type="checkbox"  id="check2" class="ticket_list">
 														<label for="check2"></label>
 													</td>
@@ -195,27 +222,16 @@
 													<td>성인</td>
 													<td>2022.10.31</td>
 													<td><strong>사용가능</strong></td>
-												</tr>
+												</tr> -->
 											</table>
 										</div>
 									</div>
 								</div>
 							</div>
-							
 						</div>
 					</div>
-					
+					</c:forEach>
 					<style>
-						div.flag_content ul {
-							list-style : "-";
-							list-style-position :inside;
-							margin-top : 30px;
-						}
-						div.flag_content ul li {
-							line-height: 30px;
-						    color: #4c4c4c;
-						    letter-spacing: -0.08rem;
-						}
 					</style>
 					<%-- 유의 사항 --%>
 					<div class = "flag" style = "margin:75px 0 20px 0;">
@@ -236,7 +252,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -253,9 +268,6 @@
 		</div>
 	</div>
 	
-	<style>
-	</style>
-	
 	<div class = "background_refund">
 		<div class = "window_refund">
 			<div class = "popup_refund">
@@ -266,29 +278,25 @@
 					<div class = "refund_ticket">
 						<h3 class="refund_img">환불목록</h3>
 						<div class="refund_ticket_list">
-							<table>
-								<tr style = "background:#efefef;">
-									<th>티켓번호</th>
-									<th>관람일</th>
-									<th>상태</th>
-									<th>가격</th>
-								</tr>
-								<tr>
-									<td>22082800783812132132</td>
-									<td>2022.10.31</td>
-									<td><strong>취소가능</strong></td>
-									<td>12,000원</td>
-								</tr>
-								<tr>
-									<td>22082800783812132132</td>
-									<td>2022.10.31</td>
-									<td><strong>취소가능</strong></td>
-									<td>12,000원</td>
-								</tr>
-								<tr>
-									<td colspan="4">환불 예상금액: <strong>24,000원</strong></td>
-								</tr>
-							</table>
+							<form name = "refundForm" action = "mypage_ticket_cancel.do" method = "post">
+								<table>
+									<tr style = "background:#efefef;">
+										<th>티켓번호</th>
+										<th>관람일</th>
+										<th>상태</th>
+										<th>가격</th>
+									</tr>
+									<!-- <tr>
+										<td>22082800783812132132</td>
+										<td>2022.10.31</td>
+										<td><strong>취소가능</strong></td>
+										<td>12,000원</td>
+									</tr> -->
+									<tr>
+										<td colspan="4">환불 예상금액: <strong class = "total_count">24,000원</strong></td>
+									</tr>
+								</table>
+							</form>
 						</div>
 					</div>
 					<div class = "refund_terms_div">
@@ -310,13 +318,28 @@
 										구체적인 내용은 각 해당 페이지에 명시된 취소 및 환불 규정을 따릅니다.</li>
 								</ul>
 							</div>
+							<div class = "refund_checkbox">
+								<input type = "checkbox" id = "refund_ticket_check_box">
+								<label for = "refund_ticket_check_box">예매취소에 대한 환불정책을 확인했습니다.</label>
+								<p></p>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="refund_btn_list">
 					<button type="button" class="refund_popup_close">닫기</button>
-					<button type="button" class="refund_ticket_btn">예매취소</button>
+					<button type="button" class="refund_ticket_btn" disabled>예매취소</button>
 				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 환불 안내 -->
+	<div class = "background_ticket_refund_result">
+		<div class = "window_ticket_refund_result">
+			<div class = "popup_ticket_refund_result">
+				<p>선택하신 티켓의 취소가 완료되었습니다.</p>
+				<button type = "button" id = "ticket_refund_result_btn">확인</button>
 			</div>
 		</div>
 	</div>
