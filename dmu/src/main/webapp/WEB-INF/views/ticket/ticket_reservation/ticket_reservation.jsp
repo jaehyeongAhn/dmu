@@ -315,14 +315,12 @@
 		<div class = "background_reservation">
 				<div class = "window_reservation">
 					<div class = "popup_reservation">
-						<div class="popup_detail">				 
 							<p id = "popup_reservation">결제하시겠습니까?</p> 
-						<div class = "popup_button">
 							<form name="paymentForm" action="paymenInsert.do" method="post">
-							<input type="text" name="did" value="${vo.did }"> 
-							<input type="text" name="mid" id="mid" value=${ sessionScope.member.mid }> 
-							 <input type="text" name="pdate" id="pdate" value=""> 
-							 <input type="text" name="pcoin" id="pcoin" value="카드">  
+							 <input type=hidden name="did" value="${vo.did }"> 
+							 <input type="hidden" name="mid" id="mid" value=${ sessionScope.member.mid }> 
+							 <input type="hidden" name="pdate" id="pdate" value=""> 
+							 <input type="hidden" name="pcoin" id="pcoin" value="카드">  
 							 <input type="hidden" name="dtitle" value="${vo.dtitle }"> 
 							 <input type="hidden" name="rprice" id="rprice" value=${vo.rprice }> 
 							 <input type="hidden" name="rtime" id="rtime" value="${vo.rtime }"> 
@@ -332,12 +330,11 @@
 							 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
 					 		 <input type="hidden" name="rokdate" id="rokdate" value=""> 
 								
-								<button type = "button" class = "popup_close">취소</button>
-								<button type = "button" class = "popup_payment">결제</button>	
+						 	 <button type = "button" id="popup_close" class = "popup_close">취소</button>
+						 	 <button type = "button" id="popup_payment" class = "popup_payment">결제</button>	
 							</form>
-							</div>	   				 
-						</div>
+						</div>	   				 
 					</div>
 				</div>
-			</div>
+				 
 </html>

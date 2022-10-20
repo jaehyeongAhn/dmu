@@ -60,8 +60,7 @@ $(document).ready(function(){
 
 
 </script>
-<style>
-</style>
+ 
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
@@ -125,7 +124,7 @@ $(document).ready(function(){
 							총 <strong>${dbCount}</strong>건
 						</div>
 								<div class="info-list">
-									<table>
+									<table id="report">
 										<thead>
 											<tr>
 												<th>분류</th>
@@ -143,7 +142,7 @@ $(document).ready(function(){
 										</thead>
 										<tbody>
 										<c:forEach var="vo" items="${list}">
-											<tr class = "name">												 
+											<tr class = "name" id="${vo.rid}">												 
 												<td >${vo.dcode}</td>											 
 												<td  class="reservation_detail reservationId"><a href="#">${vo.rid}</a></td> <!-- 티켓번호 -->
 												<td>${vo.dtitle }</td>   <!-- 전시/이벤트 명 --> 
@@ -153,38 +152,21 @@ $(document).ready(function(){
 												<td>${vo.rallpricech }</td>   <!-- 총 금액 -->
 												<td>${vo.rdateda }</td>   <!-- 관람일 -->
 												<td>${vo.rokdatech }</td>   <!-- 예약일 -->
-												<c:choose>
-													<c:when test="${vo.rid == 'n'}">  <!-- 예약취소 진행 -->  
-														<td>취소완료</td>
-													</c:when>
-														<c:otherwise>
-															<td><button class="member_detail"><a href="#">예매취소</a></button></td>
-													</c:otherwise>
-												</c:choose>
-											 	
-											 	 	 										 
+													<c:choose>
+														<c:when test="${vo.rid == 'n'}">  <!-- 예약취소 진행 -->  
+															<td>취소완료</td>
+														</c:when>
+															<c:otherwise>
+																<td><button class="member_detail"><a href="http://localhost:9000/dmu/adminpage_reservation_list_det.do?mid=${ vo.getMid()}">관리자 모드</a></button></td>
+														</c:otherwise>
+													</c:choose>
 											</tr>
+											
 										</c:forEach>
 										</tbody>
 									</table>
 								</div>
 				<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm" style="text-align:center;">
-<!-- 							<button data-v-650d6904="" type="button" disabled="disabled"
-								class="btn-first">first</button>
-							<button data-v-650d6904="" type="button" disabled="disabled"
-								class="btn-prev">prev</button>
-							<ul data-v-650d6904="">
-								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
-									href="javascript:void(0);" role="button">1</a></li>
-								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
-									href="javascript:void(0);" role="button">2</a></li>
-								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
-									href="javascript:void(0);" role="button">3</a></li>
-							</ul>
-							<button data-v-650d6904="" type="button" class="btn-next">
-								next</button>
-							<button data-v-650d6904="" type="button" class="btn-last">
-								last</button> -->
 						</div>
 						</div>
 					</div>

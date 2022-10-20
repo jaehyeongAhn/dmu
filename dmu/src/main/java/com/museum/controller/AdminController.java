@@ -448,5 +448,27 @@ public class AdminController {
 			
 			
 		}
+		
+		
+		//adminpage_reservation_list_det.do
+		@RequestMapping(value = "/adminpage_reservation_list_det.do", method = RequestMethod.GET)
+		public String adminpage_reservation_list_det() {
+			return "/admin/admin_member/adminpage_reservation_list_det";
+		}
 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }

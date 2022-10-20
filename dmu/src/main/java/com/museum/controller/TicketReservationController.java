@@ -44,10 +44,7 @@ public class TicketReservationController {
 			result += ticketService.getreservationdatePay(vo);
 
 		if (result == 2) {
-
-			/*
-			 * String dd = ticketService.pidNew(); System.out.println(dd);
-			 */
+		 
 			vo.setPid(ticketService.pidNew());
 			for(int i=0; i<vo.getRtotal(); i++) {
 				result += ticketService.getTicketinfo(vo);

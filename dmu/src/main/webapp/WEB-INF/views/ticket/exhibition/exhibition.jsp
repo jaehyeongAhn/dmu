@@ -74,7 +74,22 @@
 		});
 	});
 </script>
- 
+ <script>	
+	$(document).ready(function() {
+	//popup
+	$(".icon").click(function(){
+		$(".background_exhibition").addClass("show");
+		$(".window_exhibition").addClass("show");
+		$(".popup_close").click(function(){
+			$(".background_exhibition").removeClass("show");
+			$(".window_exhibition").removeClass("show");
+		});
+	});
+	
+	 
+});
+	
+</script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
 
 <script>

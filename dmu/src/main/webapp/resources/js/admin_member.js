@@ -185,5 +185,9 @@ $(document).ready(function(){
 
         });//ajax
     });//click
-	
+  
+  
 }); //ready
+
+//펼치기//
+ 
