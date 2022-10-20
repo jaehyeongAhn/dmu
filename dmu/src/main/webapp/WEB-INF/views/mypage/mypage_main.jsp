@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +37,7 @@
 												<a class="" href="mypage_ticket.do">티켓예매 목록</a>
 											</li>
 											<li class="">
-												<a class="" href="mypage_inquire.do">나의 문의</a>
+												<a class="" href="mypage_inquiry.do">나의 문의</a>
 											</li>
 										</ul>
 									</div>
@@ -70,50 +72,53 @@
 									<p>회원님께서 최근 전시 또는 프로그램 티켓을 예매하신 내역입니다.</p>
 								</div>
 							</div>
-							<div class="purchase-result">
-								<div class = "purchase-result-box">
-									<div class="no-result_purchase">
-										<div class="no-result">
-											<p>예매 내역이 없습니다.</p>
+							<c:choose>
+								<c:when test = "${ fn.length(list) == 0 }">
+									<div class="purchase-result">
+										<div class = "purchase-result-box">
+											<div class="no-result_purchase">
+												<div class="no-result">
+													<p>최근 예매 내역이 없습니다.<br>빠른 시일 내에 다시 만나요.</p>
+												</div>
+											</div>		
 										</div>
 									</div>
-									<%-- <p>최근 예매 내역이 없습니다.<br>빠른 시일 내에 다시 만나요.</p> --%>	
-									<!-- <div class = "purchase-result-title">
-										<p><span>예매번호 :</span> 220828007829</p>
-										<strong>예매완료</strong>
-									</div>			
-									<div class = "purchase-result-content">
-										<a href = "#"><img src = "http://localhost:9000/dmu/resources/images/ticket.svg"></a>
-										<div class = "purchase-result-content-text">
-											<a href = "#"><strong>어쨌든, 사랑</strong></a>
-											<div>
-												<span class = "date">2022.08.28 12:47</span>
-												<span>1매</span>
+								</c:when>
+								<c:otherwise>
+									<c:forEach var = "list" items = "${ list }">
+										<div class="purchase-result">
+											<div class = "purchase-result-box">
+												<div class = "purchase-result-title">
+													<p><span>예매번호 :</span> ${ list.rid }</p>
+													<c:choose>
+													 	<c:when test = "${ list.rcheck == 'y' }">
+															<strong>예매완료</strong>
+														</c:when>
+														<c:when test = "${ list.rcheck == 'ex' }">
+															<strong>기간만료</strong>
+														</c:when>
+														<c:otherwise>
+															<strong>예매취소</strong>
+														</c:otherwise>
+													</c:choose>
+												</div>			
+												<div class = "purchase-result-content">
+													<a href = "mypage_ticket_content.do?rid=${ list.rid }">
+														<img src = "http://localhost:9000/dmu/resources/upload/${ list.ticketVo.dsfile }">
+													</a>
+													<div class = "purchase-result-content-text">
+														<a href = "mypage_ticket_content.do?rid=${ list.rid }"><strong>${ list.ticketVo.dtitle }</strong></a>
+														<div>
+															<span class = "date">${ list.rokdate }</span>
+															<span>${ list.rtotal }매</span>
+														</div>
+													</div>
+												</div>			
 											</div>
 										</div>
-									</div>	 -->		
-								</div>
-							</div>
-							
-							<div class="purchase-result">
-								<div class = "purchase-result-box">
-									<%-- <p>최근 예매 내역이 없습니다.<br>빠른 시일 내에 다시 만나요.</p> --%>	
-									<div class = "purchase-result-title">
-										<p><span>예매번호 :</span> 220828007829</p>
-										<strong>예매완료</strong>
-									</div>			
-									<div class = "purchase-result-content">
-										<a href = "#"><img src = "http://localhost:9000/dmu/resources/images/ticket.svg"></a>
-										<div class = "purchase-result-content-text">
-											<a href = "#"><strong>어쨌든, 사랑</strong></a>
-											<div>
-												<span class = "date">2022.08.28 12:47</span>
-												<span>1매</span>
-											</div>
-										</div>
-									</div>			
-								</div>
-							</div>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>

@@ -10,11 +10,14 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
+import com.museum.vo.DmuInquiryVO;
+
 @Component
 public class EmailServiceImpl implements EmailService {
 	
 	@Autowired
 	private JavaMailSenderImpl mailSender;
+	private String hostEmail = "호스트 이메일";
 	int check_code;
 
 	//인증번호 난수 발생 (111111 ~ 999999)
@@ -31,7 +34,7 @@ public class EmailServiceImpl implements EmailService {
 	public String emailForm(String email) {
 		getCode();
 		//호스트 이메일에 자신의 계정을 넣을 것! 자신의 계정(발신자)에서 String email(수신자)로 받은 사용자 이메일로 메시지가 전송됨.
-		String fromMail = "호스트 이메일";
+		String fromMail = hostEmail;
 		String toMail = email;
 		String title = "[D'MUSEUM] 인증 번호 입니다.";
 		String content = "[D'MUSEUM] 홈페이지를 이용해주셔서 감사합니다.<br><br>"
@@ -59,5 +62,26 @@ public class EmailServiceImpl implements EmailService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	/*********************** 1대1 문의 **************************/
+	//이메일 형식
+	public String emailForm_inquiry(String email, String inquiry_response, DmuInquiryVO vo) {
+		String fromMail = hostEmail;
+		String toMail = email;
+		String title = "[D'MUSEME] 문의 사항 답변";
+		String content = "[From] : " + email + "<br>"
+				+ "[Sent] : " + vo.getIqdate() + "<br>"
+				+ "[To] : " + fromMail + "<br>"
+				+ "[Type] : " + vo.getIqcategory() + " / " + vo.getIqtype() + "<br>"
+				+ "[Subject] : " + vo.getIqtitle() + "<br><br>"
+				+ vo.getIqcontent() + "<br><br><br><hr>"
+				+ "<h2>[D'MUSEUM] 에서 답변해드립니다.</h2><br>"
+				+ inquiry_response;
+		
+		mailSend(fromMail, toMail, title, content);
+		
+		return "success";
 	}
 }

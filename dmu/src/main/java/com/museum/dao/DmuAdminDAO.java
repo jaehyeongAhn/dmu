@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuReJoinVO;
@@ -127,7 +128,6 @@ public class DmuAdminDAO extends DBConn{
 		return sqlSession.selectOne("mapper.admin.reservationContent", mid);
 	}
 
-	
 	/*
 	 * 검색기능 (member)
 	 */
@@ -384,6 +384,41 @@ public class DmuAdminDAO extends DBConn{
 		
 		
 	}
+	
+	
+	
+	/******************************* 1대1 문의 ************************************/
+	//문의 사항 전체 리스트
+	public List<DmuInquiryVO> inquiryList(String answerType, int startCount, int endCount) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("answerType", answerType);
+		param.put("start", String.valueOf(startCount));
+		param.put("end", String.valueOf(endCount));
+		return sqlSession.selectList("mapper.admin.inquiryList", param);
+	}
+	
+	//문의 사항 총 개수
+	public int inquiryTotalCount(String answerType) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("answerType", answerType);
+		return sqlSession.selectOne("mapper.admin.inquiryTotalCount", param);
+	}
+	
+	//문의 사항 상세 보기
+	public DmuInquiryVO inquiryContent(String iqid) {
+		return sqlSession.selectOne("mapper.admin.inquiryContent", iqid);
+	}
+	
+	//문의 사항 이메일 반환
+	public String inquiryEmail(String mid) {
+		return sqlSession.selectOne("mapper.admin.inquiryResponse", mid);
+	}
+	
+	//문의 사항 상태 업데이트
+	public int inquiryUpdate(String iqid) {
+		return sqlSession.update("mapper.admin.inquiryUpdate", iqid);
+	}
+
 	
 	
 }
