@@ -149,6 +149,117 @@ $(document).ready(function(){
 		
 	}
 		
+	/* 
+	* 검색기능
+	*/
+	
+	
+	$(".search-button").click(function(){
+		if($(".select-list").css("display") == "none"){
+			$(".select-list").css("display", "block");
+			
+		}else{
+			$(".select-list").css("display", "none");
+		}
+	});
+	
+ 	$("#title_button").click(function(){
+		$(".select-list").css("display", "none");
+		$(".search-button").text("제목");
+	});
+ 	
+	$("#content_button").click(function(){
+		$(".select-list").css("display", "none");
+		$(".search-button").text("내용");
+		
+	});
+	
+	
+	$(".btn-search").click(function(){
+		notice_search_list(1);
+	});
+	
+	
+	$("#field22").keyup(function(e){
+		if(e.keyCode == 13){
+			notice_search_list(1);
+		}
+	});
+
+	
+	function notice_search_list(rpage){
+		$("#field22").val($("#field22").val().trim());
+		let keyword = $("#field22").val().trim();
+		$.ajax({
+			
+			url : 'notice_search_json.do',
+			type: 'get',
+			cache : false,
+			headers : {"cache-control":"no-cache", "pragma": "no-cache"},
+			data : {"keyword" : keyword, "rpage": rpage},
+			success : function(data){
+				let dataset = JSON.parse(data);
+				
+				var output ="<div data-v-1b9c8af9='' data-v-080a389a='' class='notice-list'>";
+				output +="<ul data-v-1b9c8af9='' data-v-080a389a=''>";
+				for(obj of dataset.list){
+	                output += "<li data-v-1b9c8af9='' data-v-080a389a=''>";
+	                output += "<a href='admin_notice_content.do?nid="+obj.nid+"' data-v-1b9c8af9='' data-v-080a389a='' href='javascript:void(0)'>";
+	                output += "<span data-v-1b9c8af9='' data-v-080a389a='' class='number'>"+obj.rno+"</span>";
+	                output += "<span data-v-1b9c8af9='' data-v-080a389a='' class='category'>"+obj.ncategory+"</span>";
+	                output += "<div data-v-1b9c8af9='' data-v-080a389a='' class='title-area'>";
+	                output += "<strong data-v-1b9c8af9='' data-v-080a389a='' class='title'>"+obj.ntitle+"</strong>";
+	                output += "<span data-v-1b9c8af9='' data-v-080a389a='' class='date'>"+obj.ndate+"</span>"
+	                output += "</div></a></li>";	
+				}
+				
+				var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm'>"
+				paging_list +="</div>"
+				
+				output += "</ul></div>";
+				
+				
+				if(dataset.list.length !=0){
+					
+	            $(".no-result").css("display","none");
+                
+	            $(".notice-list").remove();
+	            $(".search-result").after(output);
+	            $(".notice-list").append(paging_list);
+	            $("div.search-result strong.total").text(dataset.dbCount);
+	            
+				paging(dataset.dbCount, dataset.rpage, dataset.pageSize);
+	            
+				//페이징 번호 클릭 시 이벤트 처리
+				jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
+					   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+			           //$(location).attr('href', "http://localhost:9000/dmu/notice_list.do?rpage="+e.page);
+			           notice_search_list(e.page);
+					
+			    }); 
+				
+				}else{
+					$("div.search-result strong.total").text(dataset.dbCount);
+					$(".notice-list").remove();
+					$(".no-result").css("display","block");
+					
+				}
+			
+			},
+			error : function(data){
+				alert('error');
+			}
+			
+		}); //ajax
+		
+	
+	}//function - notice_search_list
+	
+	
+	
+	
+	
+	
 });//ready
 
 </script>
@@ -183,9 +294,9 @@ $(document).ready(function(){
 									class="">제목</button>
 								<ul data-v-0f105554="" class="select-list"
 									style="display: none;">
-									<li data-v-0f105554="" class="on"><button
+									<li data-v-0f105554="" class="on" id="title_button"><button
 											data-v-0f105554="" type="button">제목</button></li>
-									<li data-v-0f105554="" class=""><button data-v-0f105554=""
+									<li data-v-0f105554="" class="" id="content_button"><button data-v-0f105554=""
 											type="button">내용</button></li>
 								</ul>
 							</div>
@@ -253,35 +364,7 @@ $(document).ready(function(){
 								</li>
 							</c:forEach>
 						</div>
-						<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
-						
-<!-- 								<li data-v-1b9c8af9="" data-v-080a389a=""><a
-									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="number">9</span><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="category">공통</span>
-										<div data-v-1b9c8af9="" data-v-080a389a="" class="title-area">
-											<strong data-v-1b9c8af9="" data-v-080a389a="" class="title">대림문화재단
-												개인정보처리방침 개정 안내</strong><span data-v-1b9c8af9="" data-v-080a389a=""
-												class="date">2022.08.22</span>
-										</div></a></li>
-								<li data-v-1b9c8af9="" data-v-080a389a=""><a
-									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="number">8</span><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="category">공통</span>
-										<div data-v-1b9c8af9="" data-v-080a389a="" class="title-area">
-											<strong data-v-1b9c8af9="" data-v-080a389a="" class="title">대림문화재단
-												영상정보처리기기 운영·관리방침 개정 안내</strong><span data-v-1b9c8af9=""
-												data-v-080a389a="" class="date">2022.08.01</span>
-										</div></a></li>
-								<li data-v-1b9c8af9="" data-v-080a389a=""><a
-									data-v-1b9c8af9="" data-v-080a389a="" href="javascript:void(0)"><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="number">7</span><span
-										data-v-1b9c8af9="" data-v-080a389a="" class="category">디뮤지엄</span>
-										<div data-v-1b9c8af9="" data-v-080a389a="" class="title-area">
-											<strong data-v-1b9c8af9="" data-v-080a389a="" class="title">성동·광진구
-												관내 교사 대상, 디뮤지엄 교사 워크숍 개최 안내</strong><span data-v-1b9c8af9=""
-												data-v-080a389a="" class="date">2022.05.13</span>
-										</div></a></li> -->
+						<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>						
 							</ul>
 						</div>
 <!-- 						<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area"
@@ -306,6 +389,7 @@ $(document).ready(function(){
 					</div>
 				</div>
 			</div>
+						
 			<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 			<!-- built files will be auto injected -->
 			<footer>

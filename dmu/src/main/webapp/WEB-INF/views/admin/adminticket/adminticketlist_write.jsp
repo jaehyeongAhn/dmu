@@ -36,7 +36,7 @@
 	<!--------------- Content ----------------------->
 	<!---------------------------------------------->
 	<div class="content">
-		<form name="ticketlistform" action="ticketlist_write_check.do" method="post" enctype="multipart/form-data" >
+		<form name="ticketlistform" action="adminticketlist_write_check.do" method="post" enctype="multipart/form-data" >
 
 			<div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
 				<ul data-v-6d324aa0="">
@@ -146,11 +146,11 @@
          </li>
          <li data-v-8ed31374="">
             <strong data-v-8ed31374="" class="title">운영시간/교육시간</strong>
-            <textarea name="dtime"></textarea>
+            <textarea name="dtime" class="time_text"></textarea>
          </li>
       </ul>
    </div>
-		<strong data-v-8ed31374="" class="title">이용 정보</strong>
+		<strong data-v-8ed31374="" class="title" id="info">이용 정보</strong>
 			<div data-v-8ed31374="" class="organ-ticket">
 				<p data-v-8ed31374="" class="comment">
 					<div data-v-8ed31374="" class="contents">

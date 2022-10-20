@@ -48,12 +48,31 @@
 	<beans:bean id="noticeDao" class="com.museum.dao.DmuNoticeDAO"></beans:bean>
 
 	<!-- Interceptor -->
+	<beans:bean id="AdminAuthinterceptor" class="com.museum.interceptor.AdminAuthInterceptor"></beans:bean>
+	<beans:bean id="MasterAuthinterceptor" class="com.museum.interceptor.MasterAuthInterceptor"></beans:bean>
+
+
 	<interceptors>
 		<interceptor>
 			<mapping path="/mypage*"/>
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 	</interceptors>
+	
+		<interceptors>
+		<interceptor>
+			<mapping path="/admin*"/>
+			<beans:ref bean="AdminAuthinterceptor"/>
+		</interceptor>
+	</interceptors>
+
+		<interceptors>
+		<interceptor>
+			<mapping path="/adminpage_admin_list.do"/>
+			<beans:ref bean="MasterAuthinterceptor"/>
+		</interceptor>
+	</interceptors>
+
 	
 	<context:component-scan base-package="com.museum.dmu" />
 	<context:component-scan base-package="com.museum.controller" />

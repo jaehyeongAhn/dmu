@@ -64,10 +64,13 @@
 	</update>
 	
 	<select id="reservationList" parameterType="map" resultType="com.museum.vo.DmuReJoinVO">
-		 select  dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech,to_char(dr.rdate, 'YYYY-MM-DD') rdateda,  to_char(dr.rokdate,'YYYY-MM-DD') rokdatech  from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
-	 		where  dm.mid = dr.mid and dt.did = dr.did   and dr.rid in (select rid from
-                                      				  (select rownum rno, rid from dmu_reservation order by rokdate desc)
-                                 				 			  where rno between #{start} and #{end})                             				 			  
+			select  dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,
+			to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rdate, 'YYYY-MM-DD') rdateda,  to_char(dr.rokdate,'YYYY-MM-DD') rokdatech 
+			from dmu_ticket DT, dmu_reservation DR, dmu_member DM
+			where  dm.mid = dr.mid and dt.did = dr.did and dr.rid in 
+			(select rid from (select rownum rno, rid, rokdate from (select rid, rokdate from dmu_reservation order by rokdate desc))
+			where rno between #{start} and #{end})
+			order by rokdate desc                           				 			  
 	</select>
 	
 	<select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
