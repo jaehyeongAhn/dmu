@@ -23,7 +23,7 @@
 				from(select rownum rno, nid, ncategory, ntitle, to_char(ndate, 'yyyy-mm-dd') ndate
 				from(select nid, ncategory, ntitle, ndate from dmu_notice where ncategory=?
 				order by ndate desc))
-				where rno between ? and ? 
+				where rno between #{start} and #{end} 
 	</select>
 	
 	

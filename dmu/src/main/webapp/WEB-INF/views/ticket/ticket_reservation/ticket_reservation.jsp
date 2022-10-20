@@ -40,15 +40,15 @@
 		<form name="ticket_reservationFrom"  action="ticketCompleteCheck.do"  method="post">  
 		
 		
-		 <input type="text" name="did" value="${vo.did }"> 
-		 <input type="text" name="dprice" id="dprice" value=${vo.rprice }> 
-		 <input type="text" name="rdate" id="rdate" value="${vo.rdate }"> 
-		 <input type="text" name="rtotal" id="rtotal" value="${vo.rtotal }">  
-		 <input type="text" name="dplace" id="dplace" value=${vo.dplace }> 
-		 <input type="text" name="rallprice" id="rallprice" value="${vo.rallpricech }"> 
-		 <input type="text" name="mid" id="mid" value=${ vo.mid }>  
-		 <input type="text" name="pdate" id="pdate" value="s"> 
-		 <input type="text" name="pcoin" id="pcoin" value="카드">  
+		 <input type="hidden" name="did" value="${vo.did }"> 
+		 <input type="hidden" name="dprice" id="dprice" value=${vo.rprice }> 
+		 <input type="hidden" name="rdate" id="rdate" value="${vo.rdate }"> 
+		 <input type="hidden" name="rtotal" id="rtotal" value="${vo.rtotal }">  
+		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
+		 <input type="hidden" name="rallprice" id="rallprice" value="${vo.rallpricech }"> 
+		 <input type="hidden" name="mid" id="mid" value=${ vo.mid }>  
+		 <input type="hidden" name="pdate" id="pdate" value="s"> 
+		 <input type="hidden" name="pcoin" id="pcoin" value="카드">  
 			 
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">

@@ -54,6 +54,12 @@ $(document).ready(function(){
 		});
 	});
 	
+	
+	
+	
+	
+	
+	
 
 });
 
@@ -84,11 +90,13 @@ $(document).ready(function(){
 											<li class="">
 												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
+											<c:if test="${sessionScope.member.mid == 'master'}">
 											<li class="">
 												<a class="" href="adminpage_admin_list.do">관리자승인</a>
 											</li>
+											</c:if>
 											<li class="">
-												<a class="" href="adminpage_reservation_list.do">예매관리</a>
+												<a class="" href="adminpage_reservation_list.do" style="color:black; font-weight:700;">예매관리</a>
 											</li>
 											<li class="">
 												<a class="" href="#">1대1 문의</a>
@@ -101,10 +109,10 @@ $(document).ready(function(){
 									<div class="sub-menu-list">
 										<ul>
 											<li class="">
-												<a class="" href="adminexhibition_list.do">상품 리스트 작성</a>
+												<a class="" href="adminexhibition_list.do" target="_blank">상품 리스트 작성</a>
 											</li>
 											<li class="">
-												<a class="" href="admin_notice_list.do">공지사항 작성</a>
+												<a class="" href="admin_notice_list.do" target="_blank">공지사항 작성</a>
 											</li>
 										</ul>
 									</div>
@@ -121,11 +129,18 @@ $(document).ready(function(){
 					</div>
 					<div class="myinfo">
 						<div class="myinfo-box">
+						<div style="display:flex; justify-content:space-between;">
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="search-result">
-							총 <strong>${dbCount}</strong>건
+							총 <strong class='total'>${dbCount}</strong>건
 						</div>
+						<div>
+							<input type="text" name="search" placeholder="검색어를 입력하세요." class="search-bar-reserve">
+							<button class="search-btn-reserve">검색</button>
+						</div>
+						</div>
+								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
 								<div class="info-list">
-									<table>
+									<table class="info-table">
 										<thead>
 											<tr>
 												<th>분류</th>
@@ -176,8 +191,7 @@ $(document).ready(function(){
 										</tbody>
 									</table>
 								</div>
-				<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area"
-							data-v-080a389a="" id="ampaginationsm">
+				 <div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm" style="text-align:center;"> 
 							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-first">first</button>
 							<button data-v-650d6904="" type="button" disabled="disabled"

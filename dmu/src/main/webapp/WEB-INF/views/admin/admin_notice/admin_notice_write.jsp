@@ -97,7 +97,7 @@
 					<div class="btn-bottom-area">
 						<div data-v-26e42198="" class="btn-area">
 							<button data-v-26e42198="" id="btn50" type="button"
-								class="secondary">등록</button>
+								class="secondary submit">등록</button>
 						<a href="admin_notice_list.do">
 							<button data-v-26e42198="" id="btn50" type="button"
 								class="secondary">목록</button></a>
@@ -105,6 +105,16 @@
 					</div>
 				</div>
 			</div>
+	<div class = "background_notice">
+		<div class = "window_notice">
+			<div class = "popup_notice">
+				<p id = "popup_noticeUpdate"></p>
+				<div class="popup_button">
+					<button type = "button" id = "popup_close" style = "cursor:pointer;">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
 		<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 			<!-- built files will be auto injected -->
 			<footer>

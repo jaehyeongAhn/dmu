@@ -56,10 +56,10 @@
 						output +="<ul data-v-41f56098='' class='flag'>"
 						output +="<li data-v-41f56098=''>"+ aj.dnum + "회성 교육</li>"
 						output +="<li data-v-41f56098=''>"+ aj.dplace + "</li>"
+						output +="</ul>"
 						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/ticketlist_content.do?did="+aj.did+"' class='title'>" +aj.dtitle +"</a>"
 						
 						output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
-						output +="</ul>"
 						
 						output +="<ul data-v-41f56098='' class='info'>"
 						
@@ -79,13 +79,13 @@
 						output +="</li>"
 						
 						output +="<li data-v-41f56098=''>"
-						output +="<span data-v-41f56098='' class='tit'> 교육시 </span>"
+						output +="<span data-v-41f56098='' class='tit'> 교육시간 </span>"
 						output +="<span data-v-41f56098='' class='txt'>"+ aj.dtime +"</span>"
 						output +="</li>"
 						
 						output +="<li data-v-41f56098=''>"
 						output +="<span data-v-41f56098='' class='tit'> 참가비 </span>"
-						output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice +"</span>"
+						output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice +" 원" +"</span>"
 						output +="</li>"
 						output +="</ul>"
 						output +="</li>"
@@ -207,7 +207,7 @@
 		<span data-v-41f56098="" class="total">총 <strong>${dbCount}</strong>건</span>
 			<ul data-v-41f56098="" class="order">
 				<li data-v-3c1f59cb="" class="">
-					<a data-v-3c1f59cb="" href="ticketlist_write.do">
+					<a data-v-3c1f59cb="" href="adminticketlist_write.do">
 					<button type="button" class="btn_style">글쓰기</button>
 					</a>			
 				</li>
@@ -226,7 +226,7 @@
 			<ul data-v-41f56098="">
 				<li data-v-41f56098="">
 						<c:if test="${vo.dsfile != null }">
-					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" class="thumb">
+					<a data-v-41f56098="" href="http://localhost:9000/dmu/adminticketlist_content.do?did=${vo.did}" class="thumb">
 						<img data-v-2fed1a9a="" data-v-1e8092ec=""src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"></a>
 						</c:if>
 				
@@ -238,7 +238,7 @@
 			<!---->
 			</ul>
 				
-					<a data-v-41f56098="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}"
+					<a data-v-41f56098="" href="http://localhost:9000/dmu/adminticketlist_content.do?did=${vo.did}"
 					class="title">${vo.dtitle}</a>
 					
 					<p data-v-41f56098="" class="explan">${vo.dtitle2 }</p>
@@ -246,7 +246,7 @@
 			<ul data-v-41f56098="" class="info">
 					<li data-v-41f56098="">
 						<span data-v-41f56098="" class="tit">교육진행</span>
-						<span data-v-41f56098="" class="txt">${vo.dstart}~ ${vo.dend}</span>
+						<span data-v-41f56098="" class="txt">${vo.dstart}~${vo.dend}</span>
 					</li>
 					<li data-v-41f56098="">
 						<span data-v-41f56098="" class="tit">장소</span>
