@@ -23,7 +23,7 @@
 	
 	<!-- MYPAGE RESERVATION EXPIRE CHECK-->
 	<select id = "reservation_expire_check" resultType = "java.lang.String">
-		SELECT RID FROM DMU_RESERVATION WHERE RDATE &lt; (SYSDATE - 1)
+		SELECT RID FROM DMU_RESERVATION WHERE RDATE &lt; (SYSDATE - 1) AND RCHECK = 'y'
 	</select>
 		
 	<!-- MYPAGE RESERVATION EXPIRE -->

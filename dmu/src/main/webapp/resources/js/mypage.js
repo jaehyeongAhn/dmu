@@ -188,9 +188,12 @@ $(document).ready(function(){
 								output += "<strong>예매완료</strong>";
 							}else if(dataset.rcheck == 'ex'){
 								output += "<strong>기간만료</strong>";
-							}else{
+							}else if(dataset.rcheck == 'n'){
 								output += "<strong>예매취소</strong>";
+							}else{
+								output += "<strong>사용불가</strong>";
 							}
+							
 							output += "</div></div></div></div></div></li>";
 						}
 						output += "</ul>";

@@ -118,7 +118,7 @@
 						<div style = "width: 1076px; box-sizing: border-box;">
 							<div class = "inquire">
 								<c:choose>
-									<c:when test = "${ fn:length(list) == 0 }">
+									<c:when test = "${ empty list }">
 										<div class="no-result_purchase" style = "border-top:none;">
 											<div class="no-result">
 												<p>문의 하신 내역이 없습니다.</p>
