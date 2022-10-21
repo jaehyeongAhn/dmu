@@ -20,13 +20,18 @@
 <script>
 $(document).ready(function(){
 	
+	let dbCount = '${dbCount}'
+	let rpage = '${rpage}'
+	let pageSize = '${pageSize}'
+	
 	//페이징 리스트 출력
+	function paging(dbCount, rpage, pageSize) {
 	var pager = jQuery('#ampaginationsm').pagination({
 	
 	    maxSize: 7,	    		// max page size
-	    totals: '${dbCount}',	// total rows	
-	    page: '${rpage}',		// initial page		
-	    pageSize: '${pageSize}',	// max number items per page
+	    totals: dbCount,	// total rows	
+	    page: rpage,		// initial page		
+	    pageSize: pageSize,	// max number items per page
 	
 	    // custom labels		
 	    lastText: '&raquo;&raquo;', 		
@@ -36,6 +41,10 @@ $(document).ready(function(){
 			     
 	    btnSize:'sm'	// 'sm'  or 'lg'		
 	});
+	
+	}
+	
+	paging(dbCount, rpage, pageSize);
 	
 	//페이징 번호 클릭 시 이벤트 처리
 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
@@ -53,12 +62,6 @@ $(document).ready(function(){
 			$(".window_reservation").removeClass("show");
 		});
 	});
-	
-	
-	
-	
-	
-	
 	
 
 });
@@ -192,7 +195,7 @@ $(document).ready(function(){
 									</table>
 								</div>
 				 <div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm" style="text-align:center;"> 
-							<button data-v-650d6904="" type="button" disabled="disabled"
+							<!-- <button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-first">first</button>
 							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-prev">prev</button>
@@ -204,7 +207,7 @@ $(document).ready(function(){
 								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
 									href="javascript:void(0);" role="button">3</a></li>
 							</ul>
-<!-- 							<button data-v-650d6904="" type="button" class="btn-next">
+							<button data-v-650d6904="" type="button" class="btn-next">
 								next</button>
 							<button data-v-650d6904="" type="button" class="btn-last">
 								last</button> -->
