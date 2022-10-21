@@ -1,6 +1,7 @@
 package com.museum.dao;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,23 +39,19 @@ public class DmuTicketDAO  {
    /**
     * select : dcode로 티켓 리스트 출력 
     */
-   public ArrayList<DmuTicketVO> select( int startCount,int endCount , String dcode){
+   public ArrayList<DmuTicketVO> listdcode( String dcode){
 	   	Map<String,String> param = new HashMap<String,String>();
 	   	param.put("dcode",dcode);
-		param.put("start",Integer.toString(startCount));
-		param.put("end",Integer.toString(endCount));
 		List<DmuTicketVO> list = sqlSession.selectList("mapper.ticket.listdcode",param);
 		return (ArrayList<DmuTicketVO>)list;
    }
    /**
     * select : dtarget으로 티켓 리스트 출력 
     */
-   public ArrayList<DmuTicketVO> selects( int startCount,int endCount , String dcode,String dtarget){
+   public ArrayList<DmuTicketVO> listdtarget( String dcode,String dtarget){
 	   Map<String,String> param = new HashMap<String,String>();
 	   param.put("dcode",dcode);
 	   param.put("dtarget",dtarget);
-		param.put("start",Integer.toString(startCount));
-		param.put("end",Integer.toString(endCount));
 		
 		List<DmuTicketVO> list = sqlSession.selectList("mapper.ticket.listdtarget",param);
 		return (ArrayList<DmuTicketVO>)list;
@@ -107,36 +104,8 @@ public class DmuTicketDAO  {
    public DmuReJoinVO selectCompleteCheck(String mid) {
       return sqlSession.selectOne("mapper.ticket.CompleteContent",mid);
    }
-   
-   
-   
-   /*
-    * tag_page
-    */
-   public ArrayList<DmuTicketVO> getEventContent(String dcode) {
-	   
-	   List<DmuTicketVO> list = sqlSession.selectList("mapper.ticket.EventContent",dcode);
-		return (ArrayList<DmuTicketVO>)list;
-	     
-	   }
-   
-   
-   
-   
+
+
   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+  
 }

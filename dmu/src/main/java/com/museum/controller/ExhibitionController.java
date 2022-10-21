@@ -28,11 +28,11 @@ public class ExhibitionController {
 	
 	
 	/*
-	 *  exhibition.do ÆäÀÌÁö È£Ãâ
+	 *  exhibition.do ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½
 	 */
 	@RequestMapping(value="/exhibition.do", method=RequestMethod.GET)
 	public ModelAndView exhibition(String did) {
-		//System.out.println(did);
+
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);

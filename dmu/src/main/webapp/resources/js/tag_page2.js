@@ -1,9 +1,9 @@
  
  $(window).on('load', function () {
-    load('#js-load', '6');
+    load('#js-load', '3');
     $("#btn50").on("click", function () {
   
-        load('#js-load', '6', '#js-btn-wrap');
+        load('#js-load', '3', '#js-btn-wrap');
     })
 });
  

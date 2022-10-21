@@ -28,6 +28,7 @@
 	</beans:bean> 
 	<!-- service 객체 생성 -->
 	<beans:bean id="ticketService" class="com.museum.service.TicketServiceImpl"></beans:bean>
+	<beans:bean id="tagpageService" class="com.museum.service.TagPageServiceImpl"></beans:bean>
 	<beans:bean id="pageService" class="com.museum.service.PageServiceImpl"></beans:bean>
 	<beans:bean id="emailService" class="com.museum.service.EmailServiceImpl"></beans:bean>
 	<beans:bean id="loginService" class="com.museum.service.LoginServiceImpl"></beans:bean>
@@ -41,6 +42,7 @@
 	<!-- Dao 객체 생성 -->
 	<beans:bean id="searchDao" class="com.museum.dao.DmuSearchDAO"></beans:bean>
 	<beans:bean id="ticketDao" class="com.museum.dao.DmuTicketDAO"></beans:bean>
+	<beans:bean id="tagpageDao" class="com.museum.dao.DmuTagPageDAO"></beans:bean>
 	<beans:bean id="AdminDao" class="com.museum.dao.DmuAdminDAO"></beans:bean>
 	<beans:bean id="memberDao" class="com.museum.dao.DmuMemberDAO"></beans:bean>
 	<beans:bean id="mypageDao" class="com.museum.dao.DmuMypageDAO"></beans:bean>

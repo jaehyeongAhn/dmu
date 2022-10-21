@@ -18,8 +18,10 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="http://localhost:9000/dmu/resources/css/exhibition_past_page.css">
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
-<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
+<link rel="stylesheet" as="style" crossorigin
+	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet"
+	href="http://localhost:9000/dmu/resources/css/font.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/tag_page2.js"></script>
@@ -36,7 +38,7 @@
 			var day = $(this).attr("id");
 			
 			$.ajax({
-				url : 'exhibition_past_ajaxlist.do?day='+day, // 이주소로 보낼건데 
+				url : 'exhibition_past_ajaxlist1.do?day='+day, // 이주소로 보낼건데 
 				type : "get" , //어떤 방식으로 보낼거야?
 				cache : false,
 				headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
@@ -44,9 +46,8 @@
 					//1. 서버에서 전송된 콜백함수의 파라미터값을 JSON 객체 변환 
 					let dataset = JSON.parse(data);
 					
-					//2. JSON 객체를 Dynamic HTML를 이용하여 화면에 결과 출력							
+					//2. JSON 객체를 Dynamic HTML를 이용하여 화면에 결과 출력	
 							if(dataset.list.length !=0){
-								
 							var output ="<ul data-v-0157d8cb=''id='exhibitionpast'>";
 							for(aj of dataset.list){
 							output +="<div data-v-0157d8cb='' class='item-previous' id='itemprevious' >"
@@ -64,10 +65,10 @@
 							}
 							output +="</ul>"
 							}else{
-									var output =	"<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='learn_list1'>"
-									 output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";
-									 output +="<p data-v-e20ce500='' data-v-080a389a=''>지금은 전시를 준비 중입니다.</p></div></div>"
-								}
+							var output =	"<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='learn_list1'>"
+							 output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";
+							 output +="<p data-v-e20ce500='' data-v-080a389a=''>지금은 전시를 준비 중입니다.</p></div></div>"
+							}
 					//3. 출력 
 					$(".item-previous").remove();
 					$("#exhibitionpast").remove();
@@ -94,8 +95,10 @@
 </head>
 <body class="">
 	<!-- header  -->
-	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
-	<div style="width:100%; height:17vh; color:transparent">헤더</div>
+	<iframe src="header.do" width="100%" height="200px" scrolling="no"
+		frameborder=0 class="header"
+		style="position: absolute; overflow: hidden;"></iframe>
+	<div style="width: 100%; height: 17vh; color: transparent">헤더</div>
 	<main>
 		<section data-v-0157d8cb="" class="sub-contents-wrap">
 			<div data-v-0d03d759="" data-v-0157d8cb=""
@@ -115,19 +118,22 @@
 			<div data-v-080a389a="" data-v-0157d8cb="">
 				<div data-v-080a389a="" class="snb-area">
 					<ul data-v-080a389a="" class="snb">
+						<li data-v-080a389a="" class=""><a data-v-080a389a=""
+							href="exhibition_past_page.do" role="button"
+							style="cursor: pointer;">전체</a></li>
 						<li data-v-080a389a="" class="on"><a data-v-080a389a=""
-							href="exhibition_past_page.do" role="button" style="cursor: pointer;">전체</a></li>
+							href="exhibition_past_page1.do" role="button"
+							style="cursor: pointer;">대림미술관 &amp; 디뮤지엄</a></li>
 						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							href="exhibition_past_page1.do"role="button" style="cursor: pointer;">대림미술관 &amp; 디뮤지엄</a></li>
-						<li data-v-080a389a="" class=""><a data-v-080a389a=""
-							href="exhibition_past_page2.do"role="button" style="cursor: pointer;">구슬모아당구장</a></li>
+							href="exhibition_past_page2.do" role="button"
+							style="cursor: pointer;">구슬모아당구장</a></li>
 					</ul>
 				</div>
 				<div data-v-080a389a="" class="sub-contents-area"></div>
 				<div data-v-080a389a="" class="sub-contents-area">
 					<!---->
 				</div>
-				<div data-v-080a389a="" class="sub-contents-area" id="sub-contents-area">
+				<div data-v-080a389a="" class="sub-contents-area">
 					<!---->
 				</div>
 			</div>
@@ -138,12 +144,12 @@
 						<div data-v-bc272086="" data-v-0157d8cb=""
 							class="select-year-area" id="select-year-area">
 							<div data-v-bc272086="" class="select-slide">
-								
+
 								<div data-v-bc272086="" class="year-list-box">
 									<ul data-v-bc272086="" class="year-list"
 										style="width: 832px; margin-left: 0px;">
 										<li data-v-bc272086="" class=""><a data-v-bc272086=""
-											id="" href="exhibition_past_page.do" role="button">전체</a></li>
+											id="" href="exhibition_past_page1.do" role="button">전체</a></li>
 										<li data-v-bc272086="" class=""><a data-v-bc272086=""
 											id="2022-01-01" class="day_target" role="button">2022</a></li>
 										<li data-v-bc272086="" class=""><a data-v-bc272086=""
@@ -154,23 +160,23 @@
 											id="2019-01-01" class="day_target" role="button">2019</a></li>
 									</ul>
 								</div>
-								
+
 							</div>
 						</div>
-							<c:if test="${not empty list}">
+						<c:if test="${not empty list}">
 						<ul data-v-0157d8cb="" id="exhibitionpast">
 							<c:forEach var="vo" items="${list}">
-							<div data-v-0157d8cb="" class="item-previous">
-										<c:if test="${vo.dsfile != null }">
-									<a data-v-0157d8cb="" href="javascript:;" class="thumb"
-										style="cursor: pointer;"><img data-v-2fed1a9a=""
-										data-v-0157d8cb=""
-										src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"
-										alt="TONG’s VINTAGE : 기묘한 통의 만물상" class="pc" style=""><img
-										data-v-2fed1a9a="" data-v-0157d8cb=""
-										src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"
-										alt="TONG’s VINTAGE : 기묘한 통의 만물상" class="mo" style=""></a>
-										</c:if>
+								<div data-v-0157d8cb="" class="item-previous">
+									<c:if test="${vo.dsfile != null }">
+										<a data-v-0157d8cb="" href="javascript:;" class="thumb"
+											style="cursor: pointer;"><img data-v-2fed1a9a=""
+											data-v-0157d8cb=""
+											src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"
+											alt="TONG’s VINTAGE : 기묘한 통의 만물상" class="pc" style=""><img
+											data-v-2fed1a9a="" data-v-0157d8cb=""
+											src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"
+											alt="TONG’s VINTAGE : 기묘한 통의 만물상" class="mo" style=""></a>
+									</c:if>
 									<div data-v-0157d8cb="" class="info">
 										<span data-v-0157d8cb="" class="place">${vo.dplace }</span>
 										<div data-v-0157d8cb="" style="cursor: pointer;">
@@ -181,33 +187,37 @@
 											${vo.dend } </span>
 									</div>
 								</div>
-								</c:forEach>
-								</ul>
-								</c:if>
-								<c:if test="${empty list }">
+							</c:forEach>
+						</ul>
+						</c:if>
+						<c:if test="${empty list }">
 										<div data-v-97ddc3ec="" class="item-previous">
 											<div data-v-e20ce500="" data-v-080a389a=""
 														class="item-previous">
 														<p data-v-e20ce500="" data-v-080a389a="">지금은 전시를 준비 중입니다.
 														</p>
-											</div>
 										</div>
-									</c:if>
 								</div>
-								
-								<div data-v-e3917d8a="" class="btn-program-more" >
-								<div data-v-26e42198="" data-v-e3917d8a="" class="btn-area" id="js-btn-wrap" class="btn-wrap">
-									<button data-v-26e42198="" id="btn50" name="btn50" type="button" class="secondary more"  >더보기</button>
-								</div>
-							</div>
-							
+							</c:if>
+					</div>
+
+					<div data-v-e3917d8a="" class="btn-program-more">
+						<div data-v-26e42198="" data-v-e3917d8a="" class="btn-area"
+							id="js-btn-wrap" class="btn-wrap">
+							<button data-v-26e42198="" id="btn50" name="btn50" type="button"
+								class="secondary more">더보기</button>
 						</div>
 					</div>
+
+				</div>
+			</div>
+			
 		</section>
 	</main>
 
 
 	<!-- footer -->
-<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no"
+		frameborder=0 class="footer" style="margin-bottom: -5px"></iframe>
 </body>
 </html>
