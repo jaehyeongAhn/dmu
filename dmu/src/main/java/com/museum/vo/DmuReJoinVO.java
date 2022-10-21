@@ -4,10 +4,17 @@ package com.museum.vo;
 public class DmuReJoinVO {
 
 	
-	int dprice, rtotal,rallprice,rprice;
+	int dprice, rtotal,rallprice,rprice, rno;
 	String rid,did,mid, dtitle,dplace,rdate,rtime,rokdate,rcheck,faildate, dfile,dsfile,dpricech,rallpricech,rdateda,mname,dcode,rokdatech;
 	
 	
+	
+	public int getRno() {
+		return rno;
+	}
+	public void setRno(int rno) {
+		this.rno = rno;
+	}
 	 
 	public String getRokdatech() {
 		return rokdatech;

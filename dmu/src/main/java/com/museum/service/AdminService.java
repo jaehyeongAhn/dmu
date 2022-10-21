@@ -1,7 +1,9 @@
 package com.museum.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuReJoinVO;
@@ -22,4 +24,11 @@ public interface AdminService {
 	
 	ArrayList<DmuMemberVO> reservationList(int startCount, int endCount);
 	DmuReJoinVO reservationContent(String mid);
+	
+	/******* 1´ë1 ¹®ÀÇ ***********/
+	public List<DmuInquiryVO> getIquiryList(String answerType, int startCount, int endCount);
+	public int getInquiryTotalCount(String answerType);
+	public DmuInquiryVO getInquiryContent(String iqid);
+	public String getInquiryEmail(String mid);
+	public int getInquiryUpdate(String iqid);
 }

@@ -35,7 +35,7 @@
 					<h3>회원가입</h3>
 				</div>
 				<div class="join_style">
-					<form name="joinFrom" action="joinController.do" method="post">
+					<form name="joinForm" action="joinController.do" method="post">
 						<input type = "hidden" name = "status" value = "${ vo.status }">
 						<input type = "hidden" name = "older" value = "${ vo.older }">
 						<input type = "hidden" name = "terms" value = "${ vo.terms }">

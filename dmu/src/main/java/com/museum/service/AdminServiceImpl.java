@@ -1,11 +1,13 @@
 package com.museum.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.museum.dao.DmuAdminDAO;
+import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuReJoinVO;
 
@@ -97,5 +99,36 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	
+	/**
+	 * 1대1 문의 사항
+	 */
+	//문의 사항 전체 리스트
+	@Override
+	public List<DmuInquiryVO> getIquiryList(String answerType, int startCount, int endCount) {
+		return adminDAO.inquiryList(answerType, startCount, endCount);
+	}
+
+	//문의 사항 총 개수
+	@Override
+	public int getInquiryTotalCount(String answerType) {
+		return adminDAO.inquiryTotalCount(answerType);
+	}
 	
+	//문의 사항 상세 보기
+	@Override
+	public DmuInquiryVO getInquiryContent(String iqid) {
+		return adminDAO.inquiryContent(iqid);
+	}
+	
+	//문의 사항 이메일
+	@Override
+	public String getInquiryEmail(String mid) {
+		return adminDAO.inquiryEmail(mid);
+	}
+	
+	//문의 사항 상태 업데이트
+	@Override
+	public int getInquiryUpdate(String iqid) {
+		return adminDAO.inquiryUpdate(iqid);
+	}
 }

@@ -33,9 +33,8 @@
 				cache : false,
 				headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
 				success : function(data){
-					//1. 서버에서 전송된 콜백함수의 파라미터값을 JSON 객체 변환 
 					let dataset = JSON.parse(data);
-					//2. JSON 객체를 Dynamic HTML를 이용하여 화면에 결과 출력
+					
 						var output2 ="<div data-v-7b1f57c8='' class='sub-contents-area'>"
 							output2 +="<div data-v-41f56098='' data-v-7b1f57c8='' class='container'>"
 						var output1 = "<div class='list-top-area'  id='list-top-area1' style='display:flex'>"
@@ -105,11 +104,10 @@
 						output +="</div>" 
 						//alert(output);
 					//3. 출력 
-					$("#list-top-area1").remove();
-					$("#ticket_list_learn").remove();
-					$("#learn_list1").remove();
-					$(".division-list").after(output1); 
-					$(".list-top-area").after(output); 
+							$("#list-top-area1").remove();
+						$("#ticket_list_learn").remove();
+						$(".division-list").after(output1); 
+						$(".list-top-area").after(output);
 					
 				},
 			 	error : function(data){
@@ -212,13 +210,13 @@
 															href="javascript:void(0);">종료일 순</a></li>
 													</ul>
 												</div>
-												<div data-v-41f56098="" class="ticket-list learn js-load"
+												<div data-v-41f56098="" class="ticket-list learn"
 													id="ticket_list_learn">
 													<c:if test="${not empty list}">
 														<c:forEach var="vo" items="${list}">
 
 															<ul data-v-41f56098="" >
-																<li data-v-41f56098="" class="lists__item js-load" ><c:if
+																<li data-v-41f56098="" class="lists__item" ><c:if
 																		test="${vo.dsfile != null }">
 																		<a data-v-41f56098=""
 																			href="http://localhost:9000/dmu/learn.do?did=${vo.did}"

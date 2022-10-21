@@ -64,10 +64,13 @@
 	</update>
 	
 	<select id="reservationList" parameterType="map" resultType="com.museum.vo.DmuReJoinVO">
-		 select  dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech,to_char(dr.rdate, 'YYYY-MM-DD') rdateda,  to_char(dr.rokdate,'YYYY-MM-DD') rokdatech  from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
-	 		where  dm.mid = dr.mid and dt.did = dr.did   and dr.rid in (select rid from
-                                      				  (select rownum rno, rid from dmu_reservation order by rokdate desc)
-                                 				 			  where rno between #{start} and #{end})                             				 			  
+			select  dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,
+			to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rdate, 'YYYY-MM-DD') rdateda,  to_char(dr.rokdate,'YYYY-MM-DD') rokdatech 
+			from dmu_ticket DT, dmu_reservation DR, dmu_member DM
+			where  dm.mid = dr.mid and dt.did = dr.did and dr.rid in 
+			(select rid from (select rownum rno, rid, rokdate from (select rid, rokdate from dmu_reservation order by rokdate desc))
+			where rno between #{start} and #{end})
+			order by rokdate desc                           				 			  
 	</select>
 	
 	<select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
@@ -77,4 +80,55 @@
                                  				 			  where rownum = 1)   
 	</select>
 
+
+	<!-- adminpage_inquiry_list.do -->
+	<!-- inquiry list -->
+	<select id = "inquiryList" parameterType = "map" resultType = "com.museum.vo.DmuInquiryVO">
+		SELECT RNO, IQID, MID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, TO_CHAR(IQDATE, 'YYYY-MM-DD') IQDATE
+		FROM (SELECT ROWNUM RNO, IQID, MID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, IQDATE
+		        FROM (SELECT IQID, MID, IQCATEGORY, IQTYPE, IQTITLE, IQANSWER, IQDATE
+		                FROM DMU_INQUIRY 
+						<where>
+							<choose>
+								<when test = 'answerType.equals("stand-by")'>
+									AND IQANSWER = 'n'
+								</when>
+								<otherwise>
+									AND IQANSWER = 'y'
+								</otherwise>
+							</choose>
+						</where>
+				ORDER BY IQDATE DESC))
+		WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	
+	<!-- inquiry list totalCount -->
+	<select id = "inquiryTotalCount" parameterType = "map" resultType = "int">
+		SELECT COUNT(*) FROM DMU_INQUIRY
+		<choose>
+			<when test = 'answerType.equals("stand-by")'>
+				WHERE IQANSWER = 'n'
+			</when>
+			<otherwise>
+				WHERE IQANSWER = 'y'
+			</otherwise>
+		</choose>
+	</select>
+	
+	<!-- inquiry content -->
+	<select id = "inquiryContent" parameterType = "java.lang.String" resultType = "com.museum.vo.DmuInquiryVO">
+		SELECT IQID, MID, IQCATEGORY, IQTYPE, IQTITLE, IQCONTENT, IQANSWER, TO_CHAR(IQDATE, 'YYYY-MM-DD') IQDATE
+		FROM DMU_INQUIRY
+		WHERE IQID = #{iqid}
+	</select>
+	
+	<!-- inquiry response -->
+	<select id = "inquiryResponse" parameterType = "java.lang.String" resultType = "java.lang.String">
+		SELECT EMAIL FROM DMU_MEMBER WHERE MID = #{mid}
+	</select>
+	
+	<!-- inquiry response success update -->
+	<update id = "inquiryUpdate" parameterType = "java.lang.String">
+		UPDATE DMU_INQUIRY SET IQANSWER = 'y' WHERE IQID = #{iqid}
+	</update>
 </mapper>

@@ -100,6 +100,7 @@
 	</div>
 	
 	<div data-v-8ed31374="" class="info-ticket">
+	   <div style = "margin-bottom: 20px;"><strong style="color:red;">*</strong>는 필수사항입니다.</div>
 		<ul data-v-8ed31374="">
 			<li data-v-8ed31374="">
 				<strong data-v-8ed31374="" class="title">부제목</strong>
@@ -112,7 +113,7 @@
 			
 			<li data-v-8ed31374="" class="">
 				<strong data-v-8ed31374="" class="title">전시기간</strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dstart" id="dstart" value="${vo.dstart }"> ~ <input type="text" name="dend" id="dend" value="${vo.dend }"></span>
+				<span data-v-8ed31374="" class="text"><input type="date" name="dstart" id="dstart" value="${vo.dstart }"> ~ <input type="date" name="dend" id="dend" value="${vo.dend }"></span>
 			</li>
 			
 			<li data-v-8ed31374="">
@@ -124,12 +125,12 @@
 				<span data-v-8ed31374="" class="text"><input type="text" name="dentertime" id="dentertime" value="${vo.dentertime }"></span>
 			</li>
 			
-			<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
+			<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title must-do">이용요금</strong>
 				<p data-v-8ed31374="" class="price"><input type="text" name="dprice" id="dprice" value="${vo.dprice }"></p>
 			</li>
 			
 			<li data-v-8ed31374="" class="">
-				<strong data-v-8ed31374="" class="title">정원</strong>
+				<strong data-v-8ed31374="" class="title must-do">정원</strong>
 				<span data-v-8ed31374="" class="text"><input type="text" name="dpersonnel" id="dpersonnel" value="${ vo.dpersonnel }"></span>
 			</li>
 			

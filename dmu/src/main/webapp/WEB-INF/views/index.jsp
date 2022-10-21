@@ -436,9 +436,18 @@
                             <li>
                                 <a href="logout.do" class=""> LOGOUT </a>
                             </li>
-                            <li>
-                                <a href="mypage_main.do" class=""> MY PAGE </a>
+                            <c:choose>
+                            <c:when test="${sessionScope.member.status == 'admin'}">
+							<li>
+                                <a href="adminpage_main.do" class="" target="_parent"> ADMIN </a>
                             </li>
+							</c:when>
+							<c:otherwise>
+							<li>
+                                <a href="mypage_main.do" class="" target="_parent"> MY PAGE </a>
+                            </li>
+							</c:otherwise>
+                            </c:choose>
                             <!---->
                             <!---->
                             <li>

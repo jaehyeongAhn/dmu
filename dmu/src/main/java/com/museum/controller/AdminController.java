@@ -2,6 +2,9 @@ package com.museum.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,11 +13,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.museum.dao.DmuAdminDAO;
+import com.museum.dao.DmuMemberDAO;
 import com.museum.dao.DmuNoticeDAO;
 import com.museum.service.AdminServiceImpl;
+import com.museum.service.EmailServiceImpl;
 import com.museum.service.NoticeServiceImpl;
+import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuReJoinVO;
@@ -26,6 +33,8 @@ public class AdminController {
 	@Autowired
 	private AdminServiceImpl adminService;
 
+	@Autowired
+	private EmailServiceImpl emailService;
 	/******************
 	 * 
 	 * admin_notice
@@ -112,8 +121,9 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		DmuNoticeDAO dao = new DmuNoticeDAO();
 		DmuNoticeVO vo = noticeService.getContent(nid);
-		vo.setNcontent(vo.getNcontent().replace("\r\n", "<br/>"));
-		
+		if(vo.getNcontent() != null) {
+			vo.setNcontent(vo.getNcontent().replace("\r\n", "<br/>"));
+		}
 		mv.addObject("vo", vo);
 		mv.setViewName("/admin/admin_notice/admin_notice_content");
 		
@@ -355,28 +365,26 @@ public class AdminController {
 		
 	}
 	
-	
-	@RequestMapping(value="/acceptUpdate.do", method= RequestMethod.POST)
-	public ModelAndView acceptUpdate(String mid) {
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	@RequestMapping(value="/acceptUpdate.do", method= RequestMethod.GET)
+	public String acceptUpdate(String mid) {
+		//ModelAndView mv = new ModelAndView();
 		int result = 0;
 		result = adminService.updateStatus(mid);
 		
-		if(result == 1) {
-			mv.setViewName("redirect:/adminpage_admin_list.do");
-		}else {
-			mv.setViewName("error_page");			
-		}
 		
-		return mv;
+		/*
+		 * if(result == 1) { mv.setViewName("redirect:/adminpage_admin_list.do?");
+		 * }else{ mv.setViewName("error_page"); }
+		 */
+		 
+		return String.valueOf(result);
 	}
 	
 	
-	
-	
-	
-	
-	
+	/*
+	 * reservation list
+	 */
 	
 		@RequestMapping(value = "/adminpage_reservation_list.do", method = RequestMethod.GET)
 		public ModelAndView adminpage_reservation_list(String rpage) {
@@ -443,5 +451,328 @@ public class AdminController {
 			
 			
 		}
+
+		/*
+		 * 검색기능 (member)	
+		 */
+		
+			
+			@ResponseBody
+			@RequestMapping(value = "/admin_search_public_json.do", method = RequestMethod.GET, produces="text/plain;charset=UTF-8")
+			public String admin_search_public_json(String rpage, String keyword, HttpServletRequest request, HttpServletResponse response) 
+											throws Exception{
+				
+				DmuAdminDAO dao = new DmuAdminDAO();
+				//String kind = request.getParameter("ncategory");
+					//페이징처리
+					//페이징 처리 - startCount, endCount 구하기
+					int startCount = 0;
+					int endCount = 0;
+					int pageSize = 5;	//한페이지당 게시물 수
+					int reqPage = 1;	//요청페이지	
+					int pageCount = 1;	//전체 페이지 수
+					int dbCount = dao.totalCount_publicSearch(keyword);	//DB에서 가져온 전체 행수
+					
+
+					//총 페이지 수 계산
+					if(dbCount % pageSize == 0){
+						pageCount = dbCount/pageSize;
+					}else{
+						pageCount = dbCount/pageSize+1;
+					}
+
+					//요청 페이지 계산
+					if(rpage != null){
+						reqPage = Integer.parseInt(rpage);
+						startCount = (reqPage-1) * pageSize+1;
+						endCount = reqPage *pageSize;
+					}else{
+						startCount = 1;
+						endCount = pageSize;
+					}
+					
+
+					ArrayList<DmuMemberVO> publicSearchList = dao.member_search_public(startCount, endCount, keyword);
+
+					
+					JsonObject job = new JsonObject();
+					JsonArray jarray = new JsonArray();
+					Gson gson = new Gson();
+					
+					for(DmuMemberVO vo : publicSearchList) {
+						JsonObject jo = new JsonObject();
+						jo.addProperty("rno", vo.getRno());
+						jo.addProperty("mid", vo.getMid());
+						jo.addProperty("mname", vo.getMname());
+						jo.addProperty("pnumber", vo.getPnumber());
+						jo.addProperty("email", vo.getEmail());
+						jo.addProperty("ddate", vo.getDdate());
+						jo.addProperty("unregister", vo.getUnregister());
+						
+						jarray.add(jo);
+					}
+					
+					job.add("list", jarray);
+					job.addProperty("dbCount", dbCount);
+					job.addProperty("rpage", rpage);
+					job.addProperty("pageSize", pageSize);
+					
+					return gson.toJson(job);
+					
+			
+			}
+			
+		
+		/*
+		 * 검색기능 (admin)	
+		 */
+		
+			@ResponseBody
+			@RequestMapping(value = "/admin_search_admin_json.do", method = RequestMethod.GET, produces="text/plain;charset=UTF-8")
+			public String admin_search_admin_json(String rpage, String keyword, HttpServletRequest request, HttpServletResponse response) 
+											throws Exception{
+				
+				DmuAdminDAO dao = new DmuAdminDAO();
+				//String kind = request.getParameter("ncategory");
+					//페이징처리
+					//페이징 처리 - startCount, endCount 구하기
+					int startCount = 0;
+					int endCount = 0;
+					int pageSize = 5;	//한페이지당 게시물 수
+					int reqPage = 1;	//요청페이지	
+					int pageCount = 1;	//전체 페이지 수
+					int dbCount = dao.totalCount_adminSearch(keyword);	//DB에서 가져온 전체 행수
+					
+
+					//총 페이지 수 계산
+					if(dbCount % pageSize == 0){
+						pageCount = dbCount/pageSize;
+					}else{
+						pageCount = dbCount/pageSize+1;
+					}
+
+					//요청 페이지 계산
+					if(rpage != null){
+						reqPage = Integer.parseInt(rpage);
+						startCount = (reqPage-1) * pageSize+1;
+						endCount = reqPage *pageSize;
+					}else{
+						startCount = 1;
+						endCount = pageSize;
+					}
+					
+
+					ArrayList<DmuMemberVO> adminSearchList = dao.member_search_admin(startCount, endCount, keyword);
+
+					
+					JsonObject job = new JsonObject();
+					JsonArray jarray = new JsonArray();
+					Gson gson = new Gson();
+					
+					for(DmuMemberVO vo : adminSearchList) {
+						JsonObject jo = new JsonObject();
+						jo.addProperty("rno", vo.getRno());
+						jo.addProperty("mid", vo.getMid());
+						jo.addProperty("mname", vo.getMname());
+						jo.addProperty("pnumber", vo.getPnumber());
+						jo.addProperty("email", vo.getEmail());
+						jo.addProperty("ddate", vo.getDdate());
+						jo.addProperty("unregister", vo.getUnregister());
+						jo.addProperty("status", vo.getStatus());
+						
+						jarray.add(jo);
+					}
+					
+					job.add("list", jarray);
+					job.addProperty("dbCount", dbCount);
+					job.addProperty("rpage", rpage);
+					job.addProperty("pageSize", pageSize);
+					
+					return gson.toJson(job);
+					
+			
+			}
+			
+			
+		
+		/*
+		 * 검색기능 (reservation)
+		 */
+			
+	@ResponseBody
+	@RequestMapping(value = "/admin_search_reserve_json.do", method = RequestMethod.GET, produces="text/plain;charset=UTF-8")
+	public String admin_search_reserve_json(String rpage, String keyword, HttpServletRequest request, HttpServletResponse response) 
+									throws Exception{
+		
+		DmuAdminDAO dao = new DmuAdminDAO();
+		//String kind = request.getParameter("ncategory");
+			//페이징처리
+			//페이징 처리 - startCount, endCount 구하기
+			int startCount = 0;
+			int endCount = 0;
+			int pageSize = 5;	//한페이지당 게시물 수
+			int reqPage = 1;	//요청페이지	
+			int pageCount = 1;	//전체 페이지 수
+			int dbCount = dao.totalCount_reserve(keyword);	//DB에서 가져온 전체 행수
+			
+
+			//총 페이지 수 계산
+			if(dbCount % pageSize == 0){
+				pageCount = dbCount/pageSize;
+			}else{
+				pageCount = dbCount/pageSize+1;
+			}
+
+			//요청 페이지 계산
+			if(rpage != null){
+				reqPage = Integer.parseInt(rpage);
+				startCount = (reqPage-1) * pageSize+1;
+				endCount = reqPage *pageSize;
+			}else{
+				startCount = 1;
+				endCount = pageSize;
+			}
+			
+
+			ArrayList<DmuReJoinVO> reserveSearchList = dao.member_search_reserve(startCount, endCount, keyword);
+
+			
+			JsonObject job = new JsonObject();
+			JsonArray jarray = new JsonArray();
+			Gson gson = new Gson();
+			
+			for(DmuReJoinVO vo : reserveSearchList) {
+				JsonObject jo = new JsonObject();
+				jo.addProperty("dcode", vo.getDcode());
+				jo.addProperty("rid", vo.getRid());
+				jo.addProperty("dtitle", vo.getDtitle());
+				jo.addProperty("mname", vo.getMname());
+				jo.addProperty("dpricech", vo.getDpricech());
+				jo.addProperty("rtotal", vo.getRtotal());
+				jo.addProperty("rallpricech", vo.getRallpricech());
+				jo.addProperty("rdateda", vo.getRdateda());
+				jo.addProperty("rokdatech", vo.getRokdatech());
+				
+				jarray.add(jo);
+			}
+			
+			job.add("list", jarray);
+			job.addProperty("dbCount", dbCount);
+			job.addProperty("rpage", rpage);
+			job.addProperty("pageSize", pageSize);
+			
+			return gson.toJson(job);
+			
 	
+	}
+		
+	/*********************************** 1대1 문의 사항 ***********************************/
+	//adminpage_inquiry_list.do : 문의 사항 페이지
+	@RequestMapping(value = "/adminpage_inquiry_list.do", method = RequestMethod.GET)
+	public String adminpage_inquiry() {
+		return "/admin/admin_member/adminpage_inquiry_list";
+	}
+	
+	//adminpage_inquiry_list_ajax.do : 문의 사항 리스트
+	@ResponseBody
+	@RequestMapping(value = "/adminpage_inquiry_list_ajax.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String adminpage_inquiry_list_ajax(String rpage, String answerType) {
+		//페이징 처리
+		int startCount = 0;
+		int endCount = 0;
+		int pageSize = 5;
+		int reqPage = 1;
+		int pageCount = 1;
+		int dbCount = adminService.getInquiryTotalCount(answerType);
+		
+		if(dbCount % pageSize == 0) {
+			pageCount = dbCount/pageSize;
+		}else {
+			pageCount = dbCount/pageSize + 1;
+		}
+		
+		if(rpage != null) {
+			reqPage = Integer.parseInt(rpage);
+			startCount = (reqPage - 1) * pageSize + 1;
+			endCount = reqPage * pageSize;
+		}else {
+			startCount = 1;
+			endCount = pageSize;
+		}
+		
+		//리스트 처리
+		ArrayList<DmuInquiryVO> list = (ArrayList<DmuInquiryVO>) adminService.getIquiryList(answerType, startCount, endCount);
+		
+		JsonObject jobject = new JsonObject();
+		JsonArray jarray = new JsonArray();
+		Gson gson = new Gson();
+
+		for(DmuInquiryVO vo : list) {
+			JsonObject jo = new JsonObject();
+			jo.addProperty("iqid", vo.getIqid());
+			jo.addProperty("mid", vo.getMid());
+			jo.addProperty("iqcategory", vo.getIqcategory());
+			jo.addProperty("iqtype", vo.getIqtype());
+			jo.addProperty("iqtitle", vo.getIqtitle());
+			jo.addProperty("iqanswer", vo.getIqanswer());
+			jo.addProperty("iqdate", vo.getIqdate());
+			
+			jarray.add(jo);
+		}
+		
+		jobject.add("list", jarray);
+		jobject.addProperty("dbCount", dbCount);
+		jobject.addProperty("pageSize", pageSize);
+		jobject.addProperty("rpage", reqPage);
+		
+		return gson.toJson(jobject);
+	}
+	
+	//adminpage_inquiry_content_ajax.do : 문의 사항 상세 보기
+	@ResponseBody
+	@RequestMapping(value = "/adminpage_inquiry_content_ajax.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String adminpage_inquiry_content_ajax(String iqid) {
+		DmuInquiryVO vo = adminService.getInquiryContent(iqid);
+		
+		JsonObject jobject = new JsonObject();
+		Gson gson = new Gson();
+		
+		jobject.addProperty("iqid", vo.getIqid());
+		jobject.addProperty("mid", vo.getMid());
+		jobject.addProperty("iqcategory", vo.getIqcategory());
+		jobject.addProperty("iqtype", vo.getIqtype());
+		jobject.addProperty("iqtitle", vo.getIqtitle());
+		jobject.addProperty("iqcontent", vo.getIqcontent());
+		jobject.addProperty("iqanswer", vo.getIqanswer());
+		jobject.addProperty("iqdate", vo.getIqdate());
+		
+		return gson.toJson(jobject);
+	}
+	
+	//inquiry_response.do : 문의 사항 답변 전송
+	@ResponseBody
+	@RequestMapping(value = "/inquiry_response.do", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String inquiry_response(String answer, String iqid, String mid) {
+		DmuInquiryVO vo = adminService.getInquiryContent(iqid);
+		String email = adminService.getInquiryEmail(mid);
+		
+		String result = emailService.emailForm_inquiry(email, answer, vo);
+		
+		JsonObject jobject = new JsonObject();
+		Gson gson = new Gson();
+		
+		if(result == "success") {
+			int success_result = adminService.getInquiryUpdate(iqid);
+			if(success_result == 1) {
+				jobject.addProperty("email_response", result);					
+			}
+		}else {
+			jobject.addProperty("email_response", "fail");
+		}		
+		
+		return gson.toJson(jobject);
+	}
+	
+
+		
 }
