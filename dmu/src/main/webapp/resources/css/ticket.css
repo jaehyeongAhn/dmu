@@ -205,6 +205,7 @@ div.editor-contents-area textarea {
     height: 200px;
     padding: 16px;
     overflow: auto;
+    line-height : 20px;
 }
 input#dtitle {
     width: 85%;
@@ -223,6 +224,8 @@ textarea.time_text {
     resize: none;
     height: 100px;
     width: 210px;
+    padding: 16px;
+    line-height : 20px;
 }
 input#file_list {
   /*   display: none; */

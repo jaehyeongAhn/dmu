@@ -13,20 +13,24 @@
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/adminpage.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/admin_member.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 $(document).ready(function(){
 	
+	let dbCount = '${dbCount}'
+	let rpage = '${rpage}'
+	let pageSize = '${pageSize}'
+	
 	//페이징 리스트 출력
+	function paging(dbCount, rpage, pageSize) {
 	var pager = jQuery('#ampaginationsm').pagination({
 	
 	    maxSize: 7,	    		// max page size
-	    totals: '${dbCount}',	// total rows	
-	    page: '${rpage}',		// initial page		
-	    pageSize: '${pageSize}',	// max number items per page
+	    totals: dbCount,	// total rows	
+	    page: rpage,		// initial page		
+	    pageSize: pageSize,	// max number items per page
 	
 	    // custom labels		
 	    lastText: '&raquo;&raquo;', 		
@@ -36,6 +40,10 @@ $(document).ready(function(){
 			     
 	    btnSize:'sm'	// 'sm'  or 'lg'		
 	});
+	
+	}
+	
+	paging(dbCount, rpage, pageSize);
 	
 	//페이징 번호 클릭 시 이벤트 처리
 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
@@ -83,14 +91,16 @@ $(document).ready(function(){
 											<li class="">
 												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
+											<c:if test="${sessionScope.member.mid == 'master'}">
 											<li class="">
 												<a class="" href="adminpage_admin_list.do">관리자승인</a>
 											</li>
+											</c:if>
 											<li class="">
-												<a class="" href="adminpage_reservation_list.do">예매관리</a>
+												<a class="" href="adminpage_reservation_list.do" style="color:black; font-weight:700;">예매관리</a>
 											</li>
 											<li class="">
-												<a class="" href="#">1대1 문의</a>
+												<a class="" href="adminpage_inquiry_list.do">1대1 문의</a>
 											</li>
 										</ul>
 									</div>
@@ -100,10 +110,10 @@ $(document).ready(function(){
 									<div class="sub-menu-list">
 										<ul>
 											<li class="">
-												<a class="" href="adminexhibition_list.do">상품 리스트 작성</a>
+												<a class="" href="adminexhibition_list.do" target="_blank">상품 리스트 작성</a>
 											</li>
 											<li class="">
-												<a class="" href="admin_notice_list.do">공지사항 작성</a>
+												<a class="" href="admin_notice_list.do" target="_blank">공지사항 작성</a>
 											</li>
 										</ul>
 									</div>
@@ -120,11 +130,19 @@ $(document).ready(function(){
 					</div>
 					<div class="myinfo">
 						<div class="myinfo-box">
+						<div style="display:flex; justify-content:space-between;">
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="search-result">
-							총 <strong>${dbCount}</strong>건
+							총 <strong class='total'>${dbCount}</strong>건
 						</div>
+						<div>
+							<input type="text" name="search" placeholder="검색어를 입력하세요." class="search-bar-reserve">
+							<button class="search-btn-reserve">검색</button>
+						</div>
+						</div>
+								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
 								<div class="info-list">
 									<table id="report">
+									<table class="info-table">
 										<thead>
 											<tr>
 												<th>분류</th>

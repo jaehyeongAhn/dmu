@@ -39,6 +39,16 @@ $(document).ready(function(){
 
 	
 	$("#loginOk").click(function(){
+		login();
+	});
+	
+	$("#login_pass").keyup(function(e){
+		if(e.keyCode == 13){
+			login();
+		}
+	});
+	
+	function login(){
 		if($("#login_id").val().trim() == ""){
 			warningCheck(false, $("#passInput"), "");
 			warningCheck(true, $("#idInput"), "아이디를 입력해주세요.");
@@ -49,6 +59,6 @@ $(document).ready(function(){
 			warningCheck(false, $("#passInput"), "");
 			loginForm.submit();
 		}
-	});
+	}
 	
 });

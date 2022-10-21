@@ -81,7 +81,7 @@ $(document).ready(function(){
 					
 			<ul data-v-3c1f59cb="" class="order">
 				<li data-v-3c1f59cb="" class="">
-					<a data-v-3c1f59cb="" href="ticketlist_write.do">
+					<a data-v-3c1f59cb="" href="adminticketlist_write.do">
 					<button type="button" class="btn_style">글쓰기</button>
 					</a>			
 				</li>
@@ -98,7 +98,7 @@ $(document).ready(function(){
 					<c:forEach var="vo" items="${list}">
 						<li data-v-3c1f59cb="">
 
-						<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" target="_parent" class="thumb">
+						<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/adminticketlist_content.do?did=${vo.did}" target="_parent" class="thumb">
 
 					<c:if test="${vo.dsfile != null }">
 						<img data-v-2fed1a9a="" data-v-1e8092ec="" src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"> 
@@ -106,7 +106,7 @@ $(document).ready(function(){
 					</a>				 
 				<span data-v-3c1f59cb="" class="place"> ${vo.dplace } </span>
 
-					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/ticketlist_content.do?did=${vo.did}" target="_parent" class="title"> ${vo.dtitle } </a>
+					<a data-v-3c1f59cb="" href="http://localhost:9000/dmu/adminticketlist_content.do?did=${vo.did}" target="_parent" class="title"> ${vo.dtitle } </a>
 
 						<p data-v-3c1f59cb="" class="explan"></p>
 						<span data-v-3c1f59cb="" class="term"> ${vo.dstart }~ ${vo.dend } </span></li>

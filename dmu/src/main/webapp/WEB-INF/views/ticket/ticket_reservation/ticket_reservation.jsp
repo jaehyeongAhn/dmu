@@ -88,7 +88,20 @@
 		 
 		 
 		
+<<<<<<< HEAD
 		 	 
+=======
+		 <input type="hidden" name="did" value="${vo.did }"> 
+		 <input type="hidden" name="dprice" id="dprice" value=${vo.rprice }> 
+		 <input type="hidden" name="rdate" id="rdate" value="${vo.rdate }"> 
+		 <input type="hidden" name="rtotal" id="rtotal" value="${vo.rtotal }">  
+		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
+		 <input type="hidden" name="rallprice" id="rallprice" value="${vo.rallpricech }"> 
+		 <input type="hidden" name="mid" id="mid" value=${ vo.mid }>  
+		 <input type="hidden" name="pdate" id="pdate" value="s"> 
+		 <input type="hidden" name="pcoin" id="pcoin" value="카드">  
+			 
+>>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">
 					<div data-v-ec5a0c2c="" class="content-wrapper">

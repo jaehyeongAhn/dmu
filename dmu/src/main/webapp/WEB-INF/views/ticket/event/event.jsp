@@ -151,7 +151,11 @@
 		 <input type="hidden" name="rtotal" id="rtotal" value="">  
 		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
 		 <input type="hidden" name="rallprice" id="rallprice" value=""> 
+<<<<<<< HEAD
 		 <input type="hidden" name="mid" id="mid" value=${ sessionScope.member.mid }> 
+=======
+ 		 <input type="hidden" name="mid" id="mid" value=${ sessionScope.member.mid }> 
+>>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
 		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
 		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
 		 

@@ -49,7 +49,20 @@ $( document ).ready( function() {
       $( '.snb-area' ).removeClass( 'Fixed' );
     }
   });
+  
+  function myFunction1() {
+	    const element = document.getElementById("program");
+	    element.scrollIntoView({ behavior: 'smooth' });      
+	  } 
+	   function myFunction2() {
+	   const element = document.getElementById("brand");
+	    element.scrollIntoView({ behavior: 'smooth' });    
+	  } 
+	  function myFunction3() {
+	     const element = document.getElementById("info");
+	    element.scrollIntoView({ behavior: 'smooth' });
+	  } 
+	 
+  
 });
- 
-
  

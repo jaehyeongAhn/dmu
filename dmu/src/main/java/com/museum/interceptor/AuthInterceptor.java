@@ -1,4 +1,4 @@
-package com.museum.service;
+package com.museum.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

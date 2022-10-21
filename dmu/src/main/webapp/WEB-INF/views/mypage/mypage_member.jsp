@@ -43,7 +43,7 @@
 												<a class="" href="mypage_ticket.do">티켓예매 목록</a>
 											</li>
 											<li class="">
-												<a class="" href="mypage_inquire.do">나의 문의</a>
+												<a class="" href="mypage_inquiry.do">나의 문의</a>
 											</li>
 										</ul>
 									</div>
@@ -68,7 +68,7 @@
 					<div class="page-title">
 						<h2>개인정보 변경/탈퇴</h2>
 					</div>
-					<form name = "updateMemberForm" action = "update_info.do" method = "post">
+					<form name = "updateMemberForm" action = "update_info.do" method = "post" class = "mypage_member_form">
 						<input type = "hidden" name = "mid" value = "${ vo.mid }">
 						<input type = "hidden" name = "type" class = "type_check">
 						<div class="myinfo">

@@ -9,9 +9,11 @@
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/mypage.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/jquery-ui.css">
+<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <!-- 이미지 경로 수정하기 -->
 <script>
@@ -19,13 +21,12 @@
 		// Getter
 		let weekend = $("#datepicker1").datepicker('setDate', '-7D');
 		let today = $("#datepicker2").datepicker('setDate', 'today');
-		
-		 $( "#datepicker1" ).datepicker({
+		$( "#datepicker1" ).datepicker({
 			//datepicker 초기 설정
 			dayNames : [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
 			dayNamesMin : [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
 			monthNames : [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
-			showMonthAfterYear : true,
+			showMonthAfterYear : false,
 		    showOn: "button",
 		    buttonImage: "http://localhost:9000/dmu/resources/images/calendar.svg",
 		    buttonImageOnly: true,
@@ -38,7 +39,7 @@
 			dayNames : [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
 			dayNamesMin : [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
 			monthNames : [ "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
-			showMonthAfterYear : true,
+			showMonthAfterYear : false,
 		    showOn: "button",
 		    buttonImage: "http://localhost:9000/dmu/resources/images/calendar.svg",
 		    buttonImageOnly: true,
@@ -76,7 +77,7 @@
 		}
 		
 		$(".show .btn_date_week").click(function(){
-			date_setup("-2w");
+			date_setup("-1w");
 			show_setup(this);
 		});
 		$(".btn_date_one").click(function(){
@@ -94,6 +95,9 @@
 	});
 </script>
 <style>
+	.ui-widget.ui-widget-content {
+	     border: 1px solid #c5c5c5;
+	}
 </style>
 </head>
 <body>
@@ -118,7 +122,7 @@
 												<strong><a class="" href="mypage_ticket.do" style = "color : black;">티켓예매 목록</a></strong>
 											</li>
 											<li class="">
-												<a class="" href="mypage_inquire.do">나의 문의</a>
+												<a class="" href="mypage_inquiry.do">나의 문의</a>
 											</li>
 										</ul>
 									</div>
@@ -147,17 +151,17 @@
 						<div style = "width: 1076px; box-sizing: border-box;">
 							<div class="snb-area">
 								<ul class="snb">
-									<li class="ticket_tab show_ticket">
-										<a role="button" style="cursor: pointer;" href = "#">전체</a>
+									<li class="ticket_tab show_ticket" data-dcode = "all">
+										<a role="button" style="cursor: pointer;">전체</a>
 									</li>
-									<li class="ticket_tab">
-										<a role="button" style="cursor: pointer;" href = "#">EXHIBITION</a>
+									<li class="ticket_tab" data-dcode = "exhibition">
+										<a role="button" style="cursor: pointer;">EXHIBITION</a>
 									</li>
-									<li class="ticket_tab">
-										<a role="button" style="cursor: pointer;" href = "#">LEARN</a>
+									<li class="ticket_tab" data-dcode = "learn">
+										<a role="button" style="cursor: pointer;">LEARN</a>
 									</li>
-									<li class="ticket_tab">
-										<a role="button" style="cursor: pointer;" href = "#">EVENT</a>
+									<li class="ticket_tab" data-dcode = "event">
+										<a role="button" style="cursor: pointer;">EVENT</a>
 									</li>
 								</ul>
 							</div>
@@ -187,7 +191,6 @@
 														<a class=""></a>
 														<!---->
 													</div>
-													<span> ~ </span>
 													<div class="input-area date-area">
 														<input type="text" id="datepicker2"readonly>
 														<a class=""></a>
@@ -196,63 +199,6 @@
 												</div>
 												<div class="search-date">
 													<button id="search_date" type="button" class="search_date">검색</button>
-												</div>
-											</div>
-										</div>
-										<div class="no-result_purchase" style="margin: 0 15px 0 0;">
-											<div class="no-result">
-												<p>예매 내역이 없습니다.</p>
-											</div>
-										</div>
-										<div class="result_purchase">
-											<div class="purchase_result_list">
-												<div class="purchase-result-list-title">
-													<p>예매일시 <strong> 2022.08.28 22:50</strong></p>
-													<p>예매번호 220828007838</p>
-												</div>
-												<div class="purchase-result-list-content">
-													<div>
-														<div class="purchase-result-content-title">
-															<a href="mypage_ticket_content.do">
-																<img src="http://localhost:9000/dmu2/resources/images/ticket.svg">
-															</a>
-															<div class="purchase-result-list-content-text">
-																<a href="#"><strong style = "font-weight : 800;">어쨌든, 사랑</strong></a>
-																<div>
-																	<span class="date">Exhibition</span> <span>1매</span>
-																</div>
-															</div>
-														</div>
-														<div class="purchase-result-list-content-status">
-															<strong>예매완료</strong>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="result_purchase">
-											<div class="purchase_result_list">
-												<div class="purchase-result-list-title">
-													<p>예매일시 <strong> 2022.08.28 22:50</strong></p>
-													<p>예매번호 220828007838</p>
-												</div>
-												<div class="purchase-result-list-content">
-													<div>
-														<div class="purchase-result-content-title">
-															<a href="mypage_ticket_content.do">
-																<img src="http://localhost:9000/dmu2/resources/images/ticket.svg">
-															</a>
-															<div class="purchase-result-list-content-text">
-																<a href="#"><strong style = "font-weight : 800;">어쨌든, 사랑</strong></a>
-																<div>
-																	<span class="date">Exhibition</span> <span>1매</span>
-																</div>
-															</div>
-														</div>
-														<div class="purchase-result-list-content-status">
-															<strong>예매완료</strong>
-														</div>
-													</div>
 												</div>
 											</div>
 										</div>

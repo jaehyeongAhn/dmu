@@ -1,0 +1,519 @@
+	.inquiry-info-list-no {
+		text-align: center;
+	    padding: 150px 0 175px 0;
+	    font-size: 20px;
+	    font-weight: 400;
+	    border-bottom: 0.5px solid #afafaf;
+	}
+	.admin-inquiry-title::after {
+		content: "" !important;
+	    display: block !important;
+	    background: white !important;
+	    height: 0 !important;
+	}
+	div.admin-inquiry-search {
+	    display: flex;
+	    justify-content: space-between;
+	    height: 50px;
+	    align-items: center;
+	    font-size : 17px;
+	    letter-spacing: -0.05rem;
+	    margin-bottom : 25px;
+	}
+	div.admin-inquiry-answer-no {
+		display : flex;
+		text-align : center;
+		border : 0.5px solid #ddd;
+		flex-grow : 1;
+		height : 100%;
+		align-items : center;
+		justify-content : center;
+		color : #999;
+		cursor : pointer;
+	}
+	div.admin-inquiry-answer-yes {
+		display : flex;
+		text-align : center;
+		border : 0.5px solid #ddd;
+		flex-grow : 1;
+		height : 100%;
+		align-items : center;
+		justify-content : center;
+		color : #999;
+		cursor : pointer;
+	}
+	div.inquiry_on {
+		background : black;
+		color : white;
+		border : 0.5px solid black;
+	}
+	div.inquiry-info-list li {
+		display : flex;
+		/* justify-content : space-between; */
+		margin: 30px 20px;
+	}
+	div.admin-inquiry-author {
+		width: 150px;
+		display : flex;
+		flex-direction : column;
+		align-items : center;
+		justify-content : center;
+	}
+	div.admin-inquiry-author span.author {
+		font-weight : 600;
+	}
+	div.admin-inquiry-author span.author::after {
+	    content: "|";
+	    color: #767676;
+	    margin: 0 5px;
+	    font-weight : 400;
+	}
+	div.admin-inquiry-info-list {    
+		clip-path: polygon(3% 0%, 100% 0%, 100% 100%, 3% 100%, 3% 65%, 0% 50%, 3% 32%);
+	    background: #f5f5f5;
+	    padding: 20px 20px 20px 50px;
+	    width : 66%;
+	}
+	div.admin-inquiry-info-list span {
+		/* font-size : 14px; */
+	}
+	button.admin-inquiry-answer {
+		width: 150px;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    background: #c7c7c7;
+	    color: white;
+	    font-size: 17px;
+	    flex-direction: column;
+	    border : none;
+	    cursor : pointer;
+	    transition : all 0.3s;
+	    overflow: hidden;
+	    position : relative;
+	}
+	button.admin-inquiry-answer:hover {
+		background : black;
+		color : white;
+	}
+	button.admin-inquiry-answer img {
+	    width: 40px;
+	    height: 40px;
+	    filter: invert(0.5);
+	    margin: 5px 0;
+	    transition : all 0.3s;
+	}
+	button.admin-inquiry-answer:hover img {
+		filter : invert(1);
+		transform : rotate(45deg);
+		animation : airplane 2s 0s infinite alternate;
+	}
+	button.admin-inquiry-answer div {
+		color : #898989;
+	}
+	button.admin-inquiry-answer:hover div {
+		color : white;
+	}
+	@keyframes airplane {
+	  0%{transform : rotate(45deg) translate(0, 0);}
+	  25%{transform : rotate(45deg) translate(5px, -5px);}
+	  50%{transform : rotate(55deg) translate(0, 0);}
+	  45%{transform : rotate(55deg) translate(-5px, 5px);}
+	  100%{transform : rotate(45deg) translate(0, 0);}
+	}
+	hr.back_hr1, hr.back_hr2, hr.back_hr3 {
+	    position: absolute;
+	    border: 0.5px solid #b0b0b0d4;
+	}
+	hr.back_hr1 {
+	    width: 30px;
+	    transform: translateX(100px);
+	    top: 20%;
+	}
+	button.admin-inquiry-answer:hover hr.back_hr1 {
+	    animation : back1 2s 0s infinite normal;
+	}
+	hr.back_hr2 {
+	 	width : 40px;
+	    transform: translateX(100px);
+	    top: 53%;
+	}
+	button.admin-inquiry-answer:hover hr.back_hr2 {
+		animation : back1 2s 0.7s infinite normal;
+	} 
+	hr.back_hr3 {
+	    width: 10px;
+	    transform: translateX(100px);
+	    top : 40%;
+	}
+	button.admin-inquiry-answer:hover hr.back_hr3 {
+		animation : back1 2s 1.2s infinite normal;
+	}
+	@keyframes back1 {
+		0%{rigth : transform: translateX(100px);}
+		100%{transform: translateX(-100px); border : 0.5px dotted #b0b0b0d4; width : 0px;}
+	}
+	div.admin-inquiry-author img {
+		width : 40px;
+		height : 40px;
+		border : 0.5px solid #ddd;
+		border-radius : 50%;
+		filter : opacity(0.5);
+		padding: 10px;
+	}
+	div.admin-inquiry-date {
+		margin : 5px 0;
+	}
+	div.admin-inquiry-date span:first-child {
+		font-weight : 600;
+	}
+	div.admin-inquiry-category {
+		margin : 5px 0 15px 0;
+		display: flex;
+					justify-content: space-between;
+	}
+	div.admin-inquiry-category span:nth-child(odd){
+		font-weight : 600;
+		margin-right : 10px;
+	}
+	div.admin-inquiry-date span:first-child::after,
+	div.admin-inquiry-category span.category::after {
+	    content: "|";
+	    color: #767676;
+	    margin: 0 10px;
+	    font-weight : 400;
+	}
+	
+	button.admin_inquiry_answer_btn {
+	    background: black;
+	    color: white;
+	    padding: 5px 20px;
+	    font-size: 16px;
+	    margin-top: 10px;
+	    border : 0.5px solid black;
+	    cursor : pointer;
+	}
+	button.admin-inquiry-answer-ok {
+	    width: 150px;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    background: black;
+	    color: white;
+	    font-size: 17px;
+	    flex-direction: column;
+	    border: none;
+	    transition: all 0.3s;
+	    overflow: hidden;
+	}
+	div.background_admin_inquiry {
+		position : fixed;
+		top : 0;
+		left : 0;
+		width : 100%;
+		height : 100vh;
+		background : rgba(0, 0, 0, 0.7);
+		opacity : 0;
+		z-index : -1;
+	}
+	div.window_admin_inquiry {
+		position : relative;
+		top : 0;
+		left : 0;
+		width : 100%;
+		height : 100vh;
+	}
+	div.popup_admin_inquiry {
+		position : absolute;
+		top : 50%;
+		left : 50%;
+		transform : translate(-50%, -30%);
+		width : 500px;
+		height : 70vh;
+		background : white;
+		overflow : hidden;
+		z-index : -1;
+	}
+	div.background_admin_inquiry.show {
+		opacity : 1;
+		z-index : 10;
+		transition : all 0.3s;
+	}
+	
+	div.background_admin_inquiry.show div.popup_admin_inquiry {
+		transform : translate(-50%, -50%);
+		z-index : 10;
+		transition : all 0.3s;
+	}
+	
+	div.popup_admin_inquiry_title {
+	    padding: 10px 16px;
+	    background: black;
+	    color: white;
+	    font-size: 17px;
+	    letter-spacing: -0.08rem;
+	}
+	div.popup_admin_inquiry_form {
+		overflow: auto;
+	    padding: 26px;
+	    box-sizing: border-box;
+	}
+	div.popup_admin_inquiry_form div.admin_inquiry_answer,
+	div.popup_admin_inquiry_form div.popup_admin_inquiry_answer_title {
+		display: flex;
+	    align-items: center;
+	    font-size: 20px;
+	    font-weight: 700;
+	    letter-spacing: -0.08rem;
+	    margin-bottom: 20px;
+	}
+	div.popup_admin_inquiry_form div.admin_inquiry_answer::before {
+		content: "";
+	    width: 20px;
+	    height: 20px;
+	    display: inline-block;
+	    margin-right: 10px;
+	    background-image: url("http://localhost:9000/dmu/resources/images/inquiry.png");
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    background-position-x: 50%;
+	    background-position-y: 50%;
+	}
+	div.popup_admin_inquiry_answer_title::before {
+		content: "";
+	    width: 20px;
+	    height: 20px;
+	    display: inline-block;
+	    margin-right: 10px;
+	    background-image: url("http://localhost:9000/dmu/resources/images/review.svg");
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    background-position-x: 50%;
+	    background-position-y: 50%;
+	}
+	div.admin_category_list {
+		margin: 10px 0;
+	}
+	div.admin_category_list span.first {
+	    color: #9f9d9d;
+	}
+	div.admin_category_list span.second {
+	    color: black;
+	  		margin-left: 15px;
+	}
+	div.admin_category_list span.category::after {
+	    content: "|";
+	    font-size: 14px;
+	    margin: 0 10px;
+	}
+	div.admin_inquiry_write_date p {
+	    color: #9f9d9d;
+	}
+	
+	div.admin_inquiry_button_list {
+	    width: 100%;
+	    height: 60px;
+	    display: flex;
+	    justify-content: center;
+	    box-shadow: 0px -10px 14px rgb(0 0 0 / 10%);
+	    position: absolute;
+	    bottom: 0;
+	    background: white;
+	}
+	div.admin_inquiry_button_list button.admin_inquiry_detail_close {
+		border: 0.5px solid black;
+	    background: black;
+	    color: white;
+	    font-size: 15px;
+	    width: 120px;
+	    margin: 5px;
+	    letter-spacing: -0.08rem;
+	    cursor: pointer;
+	}
+	div.admin_inquiry_button_list button.admin_inquiry_detail_ok {
+		border : 0.5px solid black;
+		background : white;
+	    font-size: 15px;
+	    width: 120px;
+	    margin: 5px;
+	    letter-spacing: -0.08rem;
+	    cursor: pointer;
+	}
+	div.admin_inquiry_write_content p {
+		font-size: 20px;
+	    margin: 20px 0;
+	    font-weight: 700;
+	}
+	div.admin_inquiry_write_content div {
+	    border: 0.5px solid #dbdbdb;
+	    padding: 15px;
+	    line-height: 22px;
+	}
+	div.hr-text-line {
+		margin: 25px auto;
+	    width: 95%;
+	    height: 0px;
+	    border: 0.5px dashed #d1d1d1;
+	}
+	div.popup_admin_inquiry_answer_content textarea {
+		resize: none;
+	    border: 0.5px solid #cdcdcd;
+	    padding: 16px;
+	    width: inherit;
+	    box-sizing: border-box;
+	    font-size: 17px;
+	    height: 400px;
+	}
+	div.popup_admin_inquiry_response_check {
+		display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    margin: 10px 0 0 0;
+	}
+	input#inquiry_check {
+	    display: none;
+	}
+	input#inquiry_check + label[for="inquiry_check"] {
+		display : flex;
+		align-items : center;    
+		letter-spacing: -0.05rem;
+  		font-size: 17px;
+		cursor : pointer;
+	}
+	input#inquiry_check + label[for="inquiry_check"]::before{
+		content : "";
+		width : 20px;
+		height : 20px;
+		display : inline-block;
+		border : 0.5px solid black;
+		margin-right: 10px;
+	}
+	input#inquiry_check:checked + label[for="inquiry_check"]::before{
+		content : "";
+		width : 20px;
+		height : 20px;
+		display : inline-block;
+		border : 0.5px solid black;
+		margin-right: 10px;
+		background-image : url("http://localhost:9000/dmu/resources/images/check.png");
+		background-repeat : no-repeat;
+		background-size : contain;
+		background-position-x : center;
+		background-position-y : center;
+	}
+	button.admin_inquiry_detail_ok:disabled {
+	    background: #c5c5c5 !important;
+	    color: #8d8d8d !important;
+	    border: 0.5px solid #c5c5c5 !important;
+	    cursor: default !important;
+	}
+	
+	div.admin_inquiry_write_date {
+		display : flex;
+	}
+	div.admin_inquiry_write_date p::after {
+	    content: "|";
+	    font-size: 14px;
+	    margin: 0 10px;
+	    font-weight: 100;
+	}
+	div.popup-admin-inquiry-author {
+		display : flex;
+		align-items : center;
+	}
+	div.popup-admin-inquiry-author img {
+		width: 15px;
+	    height: 15px;
+	    border: 0.5px solid #ddd;
+	    border-radius: 50%;
+	    filter: opacity(0.5);
+	    margin-right: 5px;
+	}
+	div.popup-admin-inquiry-author div {
+	    display: flex;
+	    /* flex-direction: column;
+	    margin-left: 20px; */
+	}
+	div.popup-admin-inquiry-author span.popup_author {
+	    color : #9f9d9d;
+	}
+	div.popup-admin-inquiry-author span:nth-child(2) {
+	    margin-left : 10px;
+	}
+	div.popup_admin_inquiry_answer_content div {
+	    display: flex;
+	    align-items: center;
+	    margin: 5px 0 15px 0;
+	}
+	div.popup_admin_inquiry_answer_content img {
+		width: 20px;
+					height: 20px;
+	}
+	div.popup_admin_inquiry_answer_content div span {
+		margin-left: 10px;
+	    color: #E2574C;
+	    font-weight: 500;
+	    letter-spacing: -0.05rem;
+	}
+	div.background_inquiry_result {
+		position : fixed;
+		top : 0;
+		left : 0;
+		width : 100%;
+		height : 100vh;
+		background : rgba(0, 0, 0, 0.7);
+		opacity : 0;
+		z-index : -1;
+	}
+	div.window_inquiry_result {
+		position : relative;
+		top : 0;
+		left : 0;
+		width : 100%;
+		height : 100vh;
+	}
+	div.popup_inquiry_result {
+		position : absolute;
+		top : 50%;
+		left : 50%;
+		transform : translate(-50%, -30%);
+		width : 300px;
+		height : 200px;
+		background : white;
+		overflow : hidden;
+		display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    justify-content: center;
+		z-index : -1;
+	}
+	div.background_inquiry_result.show {
+		opacity : 1;
+		z-index : 10;
+		transition : all 0.3s;
+	}
+	
+	div.background_inquiry_result.show div.popup_inquiry_result {
+		transform : translate(-50%, -50%);
+		z-index : 10;
+		transition : all 0.3s;
+	}
+	div.popup_inquiry_result div {
+	    margin-bottom: 20px;
+	    font-size: 19px;
+	    letter-spacing: -0.05rem;
+	}
+	div.popup_inquiry_result button.inquiry_result_success {
+		width: 200px;
+	    height: 50px;
+	    background: black;
+	    color: white;
+	    font-size: 17px;
+	    border: 0.5px solid black;
+	    margin-bottom: -20px;
+	    cursor : pointer;
+	}
+	div.popup_inquiry_result button.inquiry_result_success:hover {
+	    background: white;
+	    color: black;
+	}

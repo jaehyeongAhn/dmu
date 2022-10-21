@@ -47,13 +47,13 @@
 	<div data-v-080a389a="" class="snb-area">
 		<ul data-v-080a389a="" class="snb">
 			<li data-v-080a389a="" class="on">
-				<a data-v-080a389a="" role="button" style="cursor: pointer;">전체</a>
+				<a data-v-080a389a="" href="exhibition_page.do" role="button" style="cursor: pointer;">전체</a>
 			</li>
 			<li data-v-080a389a="" class="">
-				<a data-v-080a389a="" role="button" style="cursor: pointer;">디뮤지엄</a>
+				<a data-v-080a389a="" href="exhibition_page1.do" role="button" style="cursor: pointer;">디뮤지엄</a>
 			</li>
 			<li data-v-080a389a="" class="">
-				<a data-v-080a389a="" role="button" style="cursor: pointer;">대림미술관</a>
+				<a data-v-080a389a=""href="exhibition_page2.do" role="button" style="cursor: pointer;">대림미술관</a>
 			</li>
 		</ul>
 	</div>
@@ -73,15 +73,15 @@
 						<div data-v-97ddc3ec="" class="thumb">
 							<img data-v-2fed1a9a="" data-v-97ddc3ec="" src="http://localhost:9000/dmu/resources/images/exhibition1.png" alt="어쨌든, 사랑" class="pc" style="">
 						</div>
-						
+	
 <div data-v-97ddc3ec="" class="info">
-	<span data-v-97ddc3ec="" class="place"> 디뮤지엄 </span>
+	<span data-v-97ddc3ec="" class="place"> ${vo.dplace } </span>
 	<span data-v-97ddc3ec="" class="title">Romantic Days</span>
-	<span data-v-97ddc3ec="" class="subtitle">어쨌든, 사랑</span>
+	<span data-v-97ddc3ec="" class="subtitle">${vo.dtitle }</span>
 	<p data-v-97ddc3ec="" class="explain"></p>
 		
 	<div data-v-97ddc3ec="" class="term-share">
-			<span data-v-97ddc3ec="" class="term"> 2022.03.16 ~ 2022.11.27</span>
+			<span data-v-97ddc3ec="" class="term"> ${vo.dstart } ~ ${vo.dend }</span>
 		<div data-v-26e42198="" data-v-97ddc3ec="" class="btn-area">
 			<button data-v-26e42198="" id="btn2965" type="button" class="btn-share"> 공유하기 </button>
 		</div>
@@ -92,7 +92,7 @@
 			<a href="exhibition_page_det.do"><button data-v-26e42198="" id="btn2966" type="button" class="secondary"> 자세히보기 </button></a>
 		</div> 
 		<div data-v-26e42198="" data-v-97ddc3ec="" class="btn-area">
-			<button data-v-26e42198="" id="btn2967" type="button" class="primary"> 예매하기 </button>
+			<a href="exhibition.do?did=${vo.did }"><button data-v-26e42198="" id="btn2967" type="button" class="primary"> 예매하기 </button></a>
 		</div>
 	</div>
 </div>

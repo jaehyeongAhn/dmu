@@ -436,9 +436,18 @@
                             <li>
                                 <a href="logout.do" class=""> LOGOUT </a>
                             </li>
-                            <li>
-                                <a href="mypage_main.do" class=""> MY PAGE </a>
+                            <c:choose>
+                            <c:when test="${sessionScope.member.status == 'admin'}">
+							<li>
+                                <a href="adminpage_main.do" class="" target="_parent"> ADMIN </a>
                             </li>
+							</c:when>
+							<c:otherwise>
+							<li>
+                                <a href="mypage_main.do" class="" target="_parent"> MY PAGE </a>
+                            </li>
+							</c:otherwise>
+                            </c:choose>
                             <!---->
                             <!---->
                             <li>
@@ -464,7 +473,7 @@
                                     <a href="http://localhost:9000/dmu/exhibition_page.do" target="_parent"> EXHIBITION </a>
                                 </li>
                                 <li class="learn">
-                                    <a href="http://localhost:9000/dmu/learn_page.do" target="_parent"> LEARN </a>
+                                    <a href="http://localhost:9000/dmu/learn_page.do?dtarget=유아" target="_parent"> LEARN </a>
                                 </li>
                                 <li class="event">
                                     <a href="http://localhost:9000/dmu/event_page.do" target="_parent"> EVENT </a>
@@ -752,14 +761,14 @@
                                             <div data-v-04a3ebf5="" class="info-area"><span data-v-04a3ebf5=""
                                                     class="subject"
                                                     style="color: rgb(255, 255, 255); background-color: rgb(0, 0, 0);">
-                                                    디뮤지엄 </span><span data-v-04a3ebf5="" class="subject"
+                                                    ${vo.dplace } </span><span data-v-04a3ebf5="" class="subject"
                                                     style="display: none; color: rgb(255, 255, 255); background-color: rgb(0, 0, 0);">
                                                     D MUSEUM </span><span data-v-04a3ebf5="" class="period"
-                                                    style="color: rgb(255, 255, 255);"> 2022.03.16 ~ 2022.10.30 </span>
+                                                    style="color: rgb(255, 255, 255);"> ${vo.dstart } ~ ${vo.dend } </span>
                                                 <div data-v-04a3ebf5="" class="title-area"><strong data-v-04a3ebf5=""
                                                         class="title" style="color: rgb(255, 255, 255);"> Romantic Days
                                                     </strong><span data-v-04a3ebf5=""
-                                                        style="color: rgb(255, 255, 255);"> 어쨌든, 사랑 </span></div>
+                                                        style="color: rgb(255, 255, 255);"> ${vo.dtitle } </span></div>
                                                 <div data-v-04a3ebf5="" class="btn-group" style=""><a data-v-04a3ebf5=""
                                                         href="#">
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
@@ -774,7 +783,7 @@
                                                             style="display: none;"><button data-v-26e42198="" id="btn24"
                                                                 type="button" class="primary"> 예매하기 </button></div>
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
-                                                            style=""><a href="http://localhost:9000/dmu/exhibition.do?did=d_51"><button data-v-26e42198="" id="btn25" type="button"
+                                                            style=""><a href="http://localhost:9000/dmu/exhibition.do?did=${vo.did }"><button data-v-26e42198="" id="btn25" type="button"
                                                                 class="secondary"> 예매하기 </button></a></div>
                                                     </a></div>
                                                 <div data-v-04a3ebf5="" class="btn-group" style="display: none;"><a

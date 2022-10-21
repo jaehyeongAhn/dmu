@@ -72,9 +72,18 @@
                             <li>
                                 <a href="logout.do" class="" target="_parent"> LOGOUT </a>
                             </li>
-                            <li>
+                            <c:choose>
+                            <c:when test="${sessionScope.member.status == 'admin'}">
+							<li>
+                                <a href="adminpage_main.do" class="" target="_parent"> ADMIN </a>
+                            </li>
+							</c:when>
+							<c:otherwise>
+							<li>
                                 <a href="mypage_main.do" class="" target="_parent"> MY PAGE </a>
                             </li>
+							</c:otherwise>
+                            </c:choose>
                             <!---->
                             <!---->
                             <li>
@@ -97,7 +106,7 @@
 							<ul>
 								<li class="visit"><a href="visit_main.do" target="_parent"> VISIT </a></li> 
 								<li class="exhibition"><a href="http://localhost:9000/dmu/exhibition_page.do" target="_parent"> EXHIBITION</a></li>
-								<li class="learn"><a href="http://localhost:9000/dmu/learn_page.do" target="_parent"> LEARN </a></li>
+								<li class="learn"><a href="http://localhost:9000/dmu/learn_page.do?dtarget=유아" target="_parent"> LEARN </a></li>
 								<li class="event"><a href="http://localhost:9000/dmu/event_page.do" target="_parent"> EVENT </a></li>
 								<li class="ticket"><a href="http://localhost:9000/dmu/exhibition_list.do" target="_parent"> TICKET </a></li>
 							</ul>
@@ -165,13 +174,13 @@
 								<div>
 									<div class="menu-area">
 										<ul>
-											<li><a href="javascript:void(0);" style=""> 유아 </a></li>
-											<li><a href="javascript:void(0);"> 어린이 </a></li>
-											<li><a href="javascript:void(0);"> 청소년 </a></li>
-											<li><a href="javascript:void(0);"> 대학생 </a></li>
-											<li><a href="javascript:void(0);"> 성인 </a></li>
-											<li><a href="javascript:void(0);"> 교사 </a></li>
-											<li><a href="javascript:void(0);"> 전시해설 </a></li>
+											<li><a  style="" href="learn_page.do?dtarget=유아" target="_parent"> 유아 </a></li>
+											<li><a  href="learn_page.do?dtarget=어린이" target="_parent"> 어린이 </a></li>
+											<li><a  href="learn_page.do?dtarget=청소년" target="_parent"> 청소년 </a></li>
+											<li><a  href="learn_page.do?dtarget=대학생" target="_parent"> 대학생 </a></li>
+											<li><a  href="learn_page.do?dtarget=성인" target="_parent"> 성인 </a></li>
+											<li><a  href="learn_page.do?dtarget=교사" target="_parent"> 교사 </a></li>
+											<li><a  href="learn_page.do?dtarget=전시해설" target="_parent"> 전시해설 </a></li>
 										</ul>
 									</div>
 								</div>

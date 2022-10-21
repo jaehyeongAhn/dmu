@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,14 +35,16 @@
 											<li class="">
 												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
+											<c:if test="${sessionScope.member.mid == 'master'}">
 											<li class="">
-												<a class="" href="adminpage_member_list.do">관리자승인</a>
+												<a class="" href="adminpage_admin_list.do">관리자승인</a>
 											</li>
+											</c:if>
 											<li class="">
 												<a class="" href="adminpage_reservation_list.do">예매관리</a>
 											</li>
 											<li class="">
-												<a class="" href="#">1대1 문의</a>
+												<a class="" href="adminpage_inquiry_list.do">1대1 문의</a>
 											</li>
 										</ul>
 									</div>
@@ -51,10 +54,10 @@
 									<div class="sub-menu-list">
 										<ul>
 											<li class="">
-												<a class="" href="adminexhibition_list.do">상품 리스트 작성</a>
+												<a class="" href="adminexhibition_list.do" target="_blank">상품 리스트 작성</a>
 											</li>
 											<li class="">
-												<a class="" href="admin_notice_list.do">공지사항 작성</a>
+												<a class="" href="admin_notice_list.do" target="_blank">공지사항 작성</a>
 											</li>
 										</ul>
 									</div>
@@ -76,7 +79,7 @@
 							<div class="purchase-title">
 								<div>
 									<p><strong style = "font-size : 20px; color:black;">최근 예매 리스트</strong></p>
-									<a href="#" class="booking_detail"><p>더보기</p></a>
+									<a href="http://localhost:9000/dmu/adminpage_reservation_list.do" class="booking_detail"><p>더보기</p></a>
 								</div>
 							</div>
 							<div class="purchase-result">
