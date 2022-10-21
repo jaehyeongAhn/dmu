@@ -73,7 +73,7 @@
 								</div>
 							</div>
 							<c:choose>
-								<c:when test = "${ fn.length(list) == 0 }">
+								<c:when test = "${ empty list }">
 									<div class="purchase-result">
 										<div class = "purchase-result-box">
 											<div class="no-result_purchase">
@@ -97,8 +97,11 @@
 														<c:when test = "${ list.rcheck == 'ex' }">
 															<strong>기간만료</strong>
 														</c:when>
-														<c:otherwise>
+														<c:when test = "${ list.rcheck == 'n' }">
 															<strong>예매취소</strong>
+														</c:when>
+														<c:otherwise>
+															<strong>사용불가</strong>
 														</c:otherwise>
 													</c:choose>
 												</div>			

@@ -11,10 +11,10 @@
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/jquery-ui.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
-<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <!-- 이미지 경로 수정하기 -->
 <script>
 	$(document).ready(function(){

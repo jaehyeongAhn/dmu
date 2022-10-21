@@ -37,7 +37,6 @@
 	<beans:bean id="fileService"  class="com.museum.service.FileServiceImpl"></beans:bean>
 	<beans:bean id="searchService" class="com.museum.service.SearchServiceImpl"></beans:bean>
 	<beans:bean id="mypageService" class="com.museum.service.MypageServiceImpl"></beans:bean>
-	<beans:bean id="authInterceptor" class="com.museum.service.AuthInterceptor"></beans:bean>
 	
 	<!-- Dao 객체 생성 -->
 	<beans:bean id="searchDao" class="com.museum.dao.DmuSearchDAO"></beans:bean>
@@ -48,6 +47,7 @@
 	<beans:bean id="noticeDao" class="com.museum.dao.DmuNoticeDAO"></beans:bean>
 
 	<!-- Interceptor -->
+	<beans:bean id="authInterceptor" class="com.museum.interceptor.AuthInterceptor"></beans:bean>
 	<beans:bean id="AdminAuthinterceptor" class="com.museum.interceptor.AdminAuthInterceptor"></beans:bean>
 	<beans:bean id="MasterAuthinterceptor" class="com.museum.interceptor.MasterAuthInterceptor"></beans:bean>
 

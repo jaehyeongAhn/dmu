@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,35 +13,12 @@
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/jquery-ui.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/mypage_inquiry.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 	$(document).ready(function(){
-
-		//페이징 리스트 출력
-			var pager = jQuery('#ampaginationsm').pagination({
-			
-			    maxSize: 7,	    		// max page size
-			    totals: '${dbCount}',	// total rows	
-			    page: '${rpage}',		// initial page		
-			    pageSize: '${pageSize}',	// max number items per page
-			
-			    // custom labels		
-			    lastText: '&raquo;&raquo;', 		
-			    firstText: '&laquo;&laquo;',		
-			    prevText: '&laquo;',		
-			    nextText: '&raquo;',
-					     
-			    btnSize:'sm'	// 'sm'  or 'lg'		
-			});
-
-			//페이징 번호 클릭 시 이벤트 처리
-			jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
-				   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-		           $(location).attr('href', "http://localhost:9000/dmu/mypage_inquiry.do?rpage="+e.page);         
-		    });
 		
 		let height_wirte = $(".popup_inquire").height() - $(".popup_inquire_title").outerHeight() - $(".inquire_button_list").outerHeight();
 		$(".popup_inquire_write").css("height", height_wirte);
@@ -57,6 +34,30 @@
 				$(".window_inquiry_reuslt").removeClass("show_result");
 			});
 		}
+		
+
+		//페이징 리스트 출력
+		 var pager = jQuery('#ampaginationsm1').pagination({
+		
+		    maxSize: 7,	    		// max page size
+		    totals: '${dbCount}',	// total rows	
+		    page: '${rpage}',		// initial page		
+		    pageSize: '${pageSize}',	// max number items per page
+		
+		    // custom labels		
+		    lastText: '&raquo;&raquo;', 		
+		    firstText: '&laquo;&laquo;',		
+		    prevText: '&laquo;',		
+		    nextText: '&raquo;',
+				     
+		    btnSize:'sm'	// 'sm'  or 'lg'		
+		});
+
+		//페이징 번호 클릭 시 이벤트 처리
+		jQuery('#ampaginationsm1').on('am.pagination.change',function(e){		
+			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+	           $(location).attr('href', "http://localhost:9000/dmu/mypage_inquiry.do?rpage="+e.page);         
+	    }); 
 	});
 </script>
 </head>
@@ -113,12 +114,11 @@
 							</button>
 						</div>
 					</div>
-					
 					<div class="contents">
 						<div style = "width: 1076px; box-sizing: border-box;">
 							<div class = "inquire">
 								<c:choose>
-									<c:when test = "${ fn:length(list) == 0 }">
+									<c:when test = "${ empty list }">
 										<div class="no-result_purchase" style = "border-top:none;">
 											<div class="no-result">
 												<p>문의 하신 내역이 없습니다.</p>
@@ -160,28 +160,8 @@
 													</div>
 												</li>
 											</c:forEach>
-											<!-- <li>
-												<div class = "inquire_content">
-													<div class = "inquire_title">
-														<div>
-															<span><strong>문의 등록일</strong><span style = "margin-left : 10px;">2022.09.27</span></span>
-														</div>
-														<a href = "#" class = "detail">상세보기</a>
-													</div>
-													<div class = "inquire_content_list">
-														<div class = "inquire_content_list_information">
-															<span class = "category first">미술관<span class = "second">디뮤지엄</span></span>
-															<span class = "first">문의유형<span class = "second"> 전시회/관람</span></span>
-															<h2>디뮤지엄의 정확한 위치가 어디인지 알려주실 수 있으신가요?</h2>
-														</div>
-														<div class = "inquire_content_list_answer" style = "background:#9b9b9b;">
-															<span>답변<br>대기</span>
-														</div>
-													</div>
-												</div>
-											</li> -->
 										</ul>
-										<div id="ampaginationsm" style="text-align:center;"></div>
+										<div id="ampaginationsm1" style="text-align:center;"></div>
 									</c:otherwise>
 								</c:choose>
 							</div>
