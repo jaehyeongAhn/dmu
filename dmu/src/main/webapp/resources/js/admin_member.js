@@ -118,7 +118,7 @@ $(document).ready(function(){
 	
     $(".accept_input").val(mid);
 
- 
+
 })//accept
     
     $("#popup_acceptOk").click(function(){
@@ -145,7 +145,6 @@ $(document).ready(function(){
     $(".reservation_detail").click(function(){
     //$(this).css("background", "black");
     let index = $(this).parent().index();
-	 ;
     
     let rid = $("tr").filter(":eq("+(index+1)+")").children("td.reservationId").text();
      
@@ -186,14 +185,14 @@ $(document).ready(function(){
         });//ajax
     });//click
   
-	 $('.member_detail').click(function(){
-	    var id_check = $(this).attr("id");
-	 	 alert($(this).attr('id'));
-	 	 location.href = 'http://localhost:9000/dmu/adminpage_reservation_list_det.do?rid=${ vo.getRid()}';
-	 	 
-	 	 
-		});
- 
+  
+   $(".reservation_detail_admin").click(function(){
+   		 var id_check = $(this).attr("id");
+   		 alert($(this).attr('id'));
+   
+   		$(location).attr('href', "http://localhost:9000/dmu/adminpage_reservation_list_det.do?rid="+ id_check);  
+   		
+   });
   
 }); //ready
 

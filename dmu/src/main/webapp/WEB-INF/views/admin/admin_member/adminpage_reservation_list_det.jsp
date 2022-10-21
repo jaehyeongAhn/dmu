@@ -90,17 +90,17 @@
 							<div class="result_purchase" style = "margin : 0; border-top : none;">
 								<div class="purchase_result_list">
 									<div class="purchase-result-list-title">
-										<p>예매번호 <strong> ${vo.rid}</strong></p>
+										<p>예매번호 <strong> ${list.vo.rid}</strong></p>
 									</div>
 									<div class="purchase-result-list-content" style = "width : 100%;">
 										<div style="border-bottom: 0.5px solid #ddd;">
 											<div class="purchase-result-content-title" style = "width : 100%;">
 												<a href="#">
-													<img src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }" style = "width : 250px;">
+													<img src="http://localhost:9000/dmu/resources/upload/${list.vo.dsfile }" style = "width : 250px;">
 												</a>
 												<table>
 													<tr>
-														<td colspan = "4" class = "content_table_title">${vo.dtitle}</td>
+														<td colspan = "4" class = "content_table_title">${list.vo.dtitle}</td>
 													</tr>
 													<tr>
 														<th>예매 일시</th>

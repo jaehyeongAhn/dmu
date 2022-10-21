@@ -53,7 +53,12 @@ $(document).ready(function(){
 			$(".window_reservation").removeClass("show");
 		});
 	});
- 
+	
+
+});
+
+
+
 </script>
  
 </head>
@@ -152,11 +157,10 @@ $(document).ready(function(){
 															<td>취소완료</td>
 														</c:when>
 															<c:otherwise>
-																<td><button class="member_detail" id="${vo.rid}" > 관리자 모드 </button></td>
+																<td >  <button class="reservation_detail_admin" type="button" id="${vo.rid}"> 관리자 모드 </button> </td>
 														</c:otherwise>
 													</c:choose>
 											</tr>
-											
 										</c:forEach>
 										</tbody>
 									</table>

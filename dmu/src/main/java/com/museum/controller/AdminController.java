@@ -451,22 +451,39 @@ public class AdminController {
 		}
 		
 		
-		//adminpage_reservation_list_det.do
-		@RequestMapping(value = "/adminpage_reservation_list_det.do", method = RequestMethod.GET)
 		
-		public ModelAndView adminpage_reservation_list_det() {
-			ModelAndView mv = new ModelAndView();
-			
-			ArrayList<DmuReJoinVO> rlist = adminService.reservationDet("reservation");
+		  //adminpage_reservation_list_det.do
+		  
+		  @RequestMapping(value = "/adminpage_reservation_list_det.do", method =
+		  RequestMethod.GET)
+		  
+		  public ModelAndView adminpage_reservation_list_det(String rid) { ModelAndView
+		  mv = new ModelAndView();
+		  
+		  ArrayList<DmuReJoinVO> rlist = adminService.reservationDet(rid);
+		  
+		  mv.addObject("list", rlist);
+		  mv.setViewName("/admin/admin_member/adminpage_reservation_list_det");
+		  
+		  return mv; }
 		 
-			mv.addObject("list", rlist);
-			mv.setViewName("/admin/admin_member/adminpage_reservation_list_det");
-			
-			return mv;
-		}
 	
 		
-		
+		//adminpage_reservation_list_det.do
+		/*
+		 * @RequestMapping(value = "/adminpage_reservation_list_det.do", method =
+		 * RequestMethod.GET)
+		 * 
+		 * public ModelAndView adminpage_reservation_list_det(String rid) { ModelAndView
+		 * mv = new ModelAndView();
+		 * 
+		 * DmuReJoinVO vo = adminService.reservationDet(rid);
+		 * 
+		 * mv.addObject("vo", vo);
+		 * mv.setViewName("/admin/admin_member/adminpage_reservation_list_det");
+		 * 
+		 * return mv; }
+		 */
 		
 		
 		
