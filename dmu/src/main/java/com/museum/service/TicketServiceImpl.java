@@ -50,6 +50,7 @@ public class TicketServiceImpl implements TicketService {
 		return ticketDAO.select(did);
 	}
 
+ 
 	/**
 	 * calendar 달력 
 	 */
@@ -57,24 +58,31 @@ public class TicketServiceImpl implements TicketService {
 	public int getInsertDate(DmuReJoinVO vo) {
 		return ticketDAO.insertDate(vo);
 	}
-	
 	@Override
-	public int getInsertDateComplete(DmuReJoinVO vo) {
-		return ticketDAO.insertDate(vo);	 
+	public String ridNew() {
+		return ticketDAO.ridNew();
 	}
 	@Override
-	public DmuReJoinVO getReservationcontent(String did) {
-		return ticketDAO.selectReservation(did);
+	public int getreservationdatePay(DmuReJoinVO vo) {
+		return ticketDAO.getreservationdatePay(vo);
 	}
+	@Override
+	public String pidNew() {
+		return ticketDAO.pidNew();
+	}
+	@Override
+	public int getTicketinfo(DmuReJoinVO vo) {
+		return ticketDAO.getTicketinfo(vo);
+	}
+
+	 
 	@Override
 	public DmuReJoinVO getcompletecontent(String mid) {
 		return ticketDAO.selectCompleteCheck(mid);
 	}
 	
-	
  
-	
-	 
+ 
 }
  
 	

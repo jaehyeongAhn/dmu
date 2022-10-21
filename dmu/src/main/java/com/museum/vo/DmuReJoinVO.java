@@ -3,19 +3,40 @@ package com.museum.vo;
  
 public class DmuReJoinVO {
 
-	
-	int dprice, rtotal,rallprice,rprice, rno;
-	String rid,did,mid, dtitle,dplace,rdate,rtime,rokdate,rcheck,faildate, dfile,dsfile,dpricech,rallpricech,rdateda,mname,dcode,rokdatech;
-	
-	
-	
-	public int getRno() {
-		return rno;
+	int dprice, rtotal,rallprice,rprice;
+	String rid,did,mid,pid, dtitle,dplace,rdate,rtime,rokdate,rcheck,faildate, dfile,dsfile,dpricech,rallpricech,rdateda,mname,dcode,rokdatech,pdate,pcoin,tcheck,tid;
+ 
+ 
+	public String getTid() {
+		return tid;
 	}
-	public void setRno(int rno) {
-		this.rno = rno;
+	public void setTid(String tid) {
+		this.tid = tid;
 	}
-	 
+	public String getTcheck() {
+		return tcheck;
+	}
+	public void setTcheck(String tcheck) {
+		this.tcheck = tcheck;
+	}
+	public String getPid() {
+		return pid;
+	}
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
+	public String getPdate() {
+		return pdate;
+	}
+	public void setPdate(String pdate) {
+		this.pdate = pdate;
+	}
+	public String getPcoin() {
+		return pcoin;
+	}
+	public void setPcoin(String pcoin) {
+		this.pcoin = pcoin;
+	}
 	public String getRokdatech() {
 		return rokdatech;
 	}

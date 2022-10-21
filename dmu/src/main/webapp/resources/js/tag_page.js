@@ -20,23 +20,23 @@ function load(id, cnt, btn) {
     $(girls_list + ":lt(" + girls_total_cnt + ")").addClass("active");
 }
  
-  
-$(document).ready(function(){
+ 
+ 
+	function myFunction1() {
+ 	 const element = document.getElementById("program");
+ 	 element.scrollIntoView({ behavior: 'smooth' });  	 
+	} 
+ 	function myFunction2() {
+ 	const element = document.getElementById("brand");
+ 	 element.scrollIntoView({ behavior: 'smooth' });	 
+	} 
+	function myFunction3() {
+ 	  const element = document.getElementById("info");
+ 	 element.scrollIntoView({ behavior: 'smooth' });
+	} 
 
-	$("#program").click(function(){
-		
-		$("html ").animate({scrollTop:$("#id1").offset().top},1000);
-		
-		});
-		
-		$("#btn2").click(function(){
-		
-		$("html").animate({scrollTop:$("#id2").offset().top},1000);
-		
-	});
-	
-	 
-});
+
+
 
 
 $( document ).ready( function() {

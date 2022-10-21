@@ -625,13 +625,9 @@ $(document).ready(function(){
     $(".reservation_detail").click(function(){
     //$(this).css("background", "black");
     let index = $(this).parent().index();
-	//alert(index);
-    
-    //$("tr").filter(":eq("+(index+1)+")").css("background", "black"); //children(".reservationId").css("background", "black"); 
-    //$("tr").filter(":eq("+(index+1)+")").children("td.reservationId a").css("color", "red");
     
     let rid = $("tr").filter(":eq("+(index+1)+")").children("td.reservationId").text();
-    alert(rid);     
+     
         $.ajax({
             type : "post",
             data : {
@@ -641,14 +637,20 @@ $(document).ready(function(){
             success : function(result){
             	let data = JSON.parse(result);
             	
-            	$(".popup_detail_table dt.dcode").text(data.dcode);
-            	$(".popup_detail_table dr.rid").text(data.rid);
-            	$(".popup_detail_table dt.dtitle").text(data.dtitle);
-            	$(".popup_detail_table dm.mname").text(data.mname);
-            	$(".popup_detail_table dpricech").text(data.dpricech);
-            	$(".popup_detail_table dr.rtotal").text(data.rtotal);
-            	$(".popup_detail_table rallpricech").text(data.rallpricech);
-            	$(".popup_detail_table dr.rokdate ").text(data.rokdate);
+            	$(".popup_detail_table td.dcode").text(data.dcode);
+            	$(".popup_detail_table td.rid").text(data.rid);
+            	//tid
+            	$(".popup_detail_table td.dtitle").text(data.dtitle);
+            	$(".popup_detail_table td.mid").text(data.mname);
+            	$(".popup_detail_table td.dprice").text(data.dpricech);
+            	$(".popup_detail_table td.rtotal").text(data.rtotal);
+            	$(".popup_detail_table td.rallprice").text(data.rallpricech);
+            	$(".popup_detail_table td.rdate").text(data.rdateda);
+            	$(".popup_detail_table td.rokdate").text(data.rokdatech);
+            	//결제번호
+            	$(".popup_detail_table td.pdate").text(data.pdate);
+            	$(".popup_detail_table td.pcoin ").text(data.pcoin);
+            	$(".popup_detail_table td.tcheck ").text(data.tcheck);
              
              
             /*	if(data.unregister == 'n'){
@@ -662,8 +664,21 @@ $(document).ready(function(){
 
         });//ajax
     });//click
+  
+  //펼치기//
+   $(".reservation_detail_admin").click(function(){
+   		 var id_check = $(this).attr("id");
+   		 alert($(this).attr('id'));
+   
+   		$(location).attr('href', "http://localhost:9000/dmu/adminpage_reservation_list_det.do?rid="+ id_check);  
+   		
+   });
+  
+
+ 
+ 
 	
-	}
+	 
 	/*
 	** 검색기능
 	*/
@@ -801,13 +816,5 @@ $(document).ready(function(){
 
 	}//finction - admin_search_reserve
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+ }
 }); //ready

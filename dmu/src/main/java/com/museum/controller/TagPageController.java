@@ -50,7 +50,7 @@ public class TagPageController {
 			
 		 
 			mv.addObject("list", list);
-			mv.setViewName("tag_page/event/event_page");
+			mv.setViewName("/tag_page/event/event_page");
 			return mv;
  
 		}
