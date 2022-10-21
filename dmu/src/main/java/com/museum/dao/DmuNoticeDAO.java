@@ -155,62 +155,29 @@ public class DmuNoticeDAO extends DBConn{
 	 */
 	
 	
-	public int totalCount_search(String keyword) {
-		int result = 0;
-		String sql = "select count(*) from dmu_notice where ntitle like ?";
+	public int totalCount_search(String keyword, String searchList) {
+		Map<String, String> param = new HashMap<String, String>();
+	    param.put("keyword", keyword);
+	    param.put("searchList", searchList);
+	    
 		
-		try {
-			getPreparedStatement(sql);
-			pstmt.setString(1, "%" + keyword + "%");
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				result = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
+		return sqlSession.selectOne("mapper.notice.totalCount_search", param);
 	}
 	
 	
 	/*
-	 * 검색기능 (제목검색)
+	 * 검색기능
 	 */
 	
-	public ArrayList<DmuNoticeVO> titleSearch(int startCount, int endCount, String keyword){
-		ArrayList<DmuNoticeVO> titleList = new ArrayList<DmuNoticeVO>();
-		
-		String sql = "select rno, nid, ncategory, ntitle, ndate "
-				+ " from (select rownum rno, nid, ncategory, ntitle, to_char(ndate, 'yy-mm-dd') ndate "
-				+ " from (select nid, ncategory, ntitle, ndate from dmu_notice where ntitle like ? "
-				+ " order by ndate desc))"
-				+ " where rno between ? and ?";
-		
+	public ArrayList<DmuNoticeVO> noticeSearch(int startCount, int endCount, String keyword, String searchList){
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("start", String.valueOf(startCount));
+		param.put("start", String.valueOf(endCount));
+		param.put("keyword",  keyword );
+		param.put("searchList", searchList);
 	
-		try {
-			getPreparedStatement(sql);
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setInt(2, startCount);
-			pstmt.setInt(3, endCount);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				DmuNoticeVO vo = new DmuNoticeVO();
-				vo.setRno(rs.getInt(1));
-				vo.setNid(rs.getString(2));
-				vo.setNcategory(rs.getString(3));
-				vo.setNtitle(rs.getString(4));
-				vo.setNdate(rs.getString(5));
-				
-				titleList.add(vo);
-				
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	
-		return titleList;
+		List<DmuNoticeVO> searchListresult = sqlSession.selectList("mapper.notice.searchList", param);
+		return (ArrayList<DmuNoticeVO>)searchListresult;
 		
 	}
 	

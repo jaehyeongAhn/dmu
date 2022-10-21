@@ -13,7 +13,6 @@
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/adminpage.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/admin_member.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/main_header.js"></script>
@@ -282,7 +281,7 @@ $(document).ready(function(){
 									</table>
 								</div>
 				 <div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm" style="text-align:center;"> 
-<!--  							<button data-v-650d6904="" type="button" disabled="disabled"
+  							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-first">first</button>
 							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-prev">prev</button>
@@ -294,7 +293,7 @@ $(document).ready(function(){
 								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
 									href="javascript:void(0);" role="button">3</a></li>
 							</ul>
-							<button data-v-650d6904="" type="button" class="btn-next">
+						<!-- <button data-v-650d6904="" type="button" class="btn-next">
 								next</button>
 							<button data-v-650d6904="" type="button" class="btn-last">
 								last</button>  -->

@@ -295,9 +295,9 @@ $(document).ready(function(){
 								<ul data-v-0f105554="" class="select-list"
 									style="display: none;">
 									<li data-v-0f105554="" class="on" id="title_button"><button
-											data-v-0f105554="" type="button">제목</button></li>
+											data-v-0f105554="" type="button" value="title">제목</button></li>
 									<li data-v-0f105554="" class="" id="content_button"><button data-v-0f105554=""
-											type="button">내용</button></li>
+											type="button" value="content">내용</button></li>
 								</ul>
 							</div>
 						</div>

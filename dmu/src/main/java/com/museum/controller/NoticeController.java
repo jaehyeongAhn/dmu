@@ -180,10 +180,16 @@ public class NoticeController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/notice_search_json.do", method = RequestMethod.GET, produces="text/plain;charset=UTF-8")
-	public String notice_search_json(String rpage, String keyword, HttpServletRequest request, HttpServletResponse response) 
+	public String notice_search_json(String rpage, String keyword, String searchList, HttpServletRequest request, HttpServletResponse response) 
 									throws Exception{
 		
 		DmuNoticeDAO dao = new DmuNoticeDAO();
+		
+		if(searchList.equals("제목")) {
+			searchList = "title";
+		}else {
+			searchList = "content";
+		}
 		//String kind = request.getParameter("ncategory");
 			//페이징처리
 			//페이징 처리 - startCount, endCount 구하기
@@ -192,9 +198,9 @@ public class NoticeController {
 			int pageSize = 3;	//한페이지당 게시물 수
 			int reqPage = 1;	//요청페이지	
 			int pageCount = 1;	//전체 페이지 수
-			int dbCount = dao.totalCount_search(keyword);	//DB에서 가져온 전체 행수
-			
-
+			int dbCount = noticeService.getTotalCount_search(keyword, searchList);	//DB에서 가져온 전체 행수
+			//System.out.println(noticeService.getTotalCount_search(keyword, searchList));
+			//System.out.println(dbCount);
 			//총 페이지 수 계산
 			if(dbCount % pageSize == 0){
 				pageCount = dbCount/pageSize;
@@ -211,16 +217,14 @@ public class NoticeController {
 				startCount = 1;
 				endCount = pageSize;
 			}
-			
-
-			ArrayList<DmuNoticeVO> titleList = dao.titleSearch(startCount, endCount, keyword);
-
+			ArrayList<DmuNoticeVO> noticeList = noticeService.noticeSearch(startCount, endCount, keyword, searchList);
+			System.out.println(noticeList+"151");
 			
 			JsonObject job = new JsonObject();
 			JsonArray jarray = new JsonArray();
 			Gson gson = new Gson();
 			
-			for(DmuNoticeVO vo : titleList) {
+			for(DmuNoticeVO vo : noticeList) {
 				JsonObject jo = new JsonObject();
 				jo.addProperty("rno", vo.getRno());
 				jo.addProperty("nid", vo.getNid());
@@ -231,6 +235,7 @@ public class NoticeController {
 				jarray.add(jo);
 			}
 			
+			System.out.println(jarray+"11");
 			job.add("list", jarray);
 			job.addProperty("dbCount", dbCount);
 			job.addProperty("rpage", rpage);

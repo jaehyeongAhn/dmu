@@ -191,13 +191,14 @@ $(document).ready(function(){
 	function notice_search_list(rpage){
 		$("#field22").val($("#field22").val().trim());
 		let keyword = $("#field22").val().trim();
+		alert($(".search-button").text());
 		$.ajax({
 			
 			url : 'notice_search_json.do',
 			type: 'get',
 			cache : false,
 			headers : {"cache-control":"no-cache", "pragma": "no-cache"},
-			data : {"keyword" : keyword, "rpage": rpage},
+			data : {"searchList" : $(".search-button").text(), "keyword" : keyword, "rpage": rpage},
 			success : function(data){
 				let dataset = JSON.parse(data);
 				
@@ -290,9 +291,9 @@ $(document).ready(function(){
 								<ul data-v-0f105554="" class="select-list"
 									style="display: none;">
 									<li data-v-0f105554="" class="" id="title_button"><button
-											data-v-0f105554="" type="button">제목</button></li>
+											data-v-0f105554="" type="button" value="title">제목</button></li>
 									<li data-v-0f105554="" class="" id="content_button"><button data-v-0f105554=""
-											type="button">내용</button></li>
+											type="button" value="content">내용</button></li>
 								</ul>
 							</div>
 						</div>
