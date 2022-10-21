@@ -278,6 +278,7 @@ $(document).ready(function() {
 					success : function(result){
 						if(result == 0){
 							popup_setup("이미 가입된 계정입니다.", $("#email1"));
+							warningCheck(true, $(".emailTable"), "이미 존재하는 이메일입니다.");
 						}else{
 							$(location).attr("href", "http://localhost:9000/dmu/join_ok.do");
 						}
