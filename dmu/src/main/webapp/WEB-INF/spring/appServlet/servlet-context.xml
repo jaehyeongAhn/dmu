@@ -28,6 +28,7 @@
 	</beans:bean> 
 	<!-- service 객체 생성 -->
 	<beans:bean id="ticketService" class="com.museum.service.TicketServiceImpl"></beans:bean>
+	<beans:bean id="tagpageService" class="com.museum.service.TagPageServiceImpl"></beans:bean>
 	<beans:bean id="pageService" class="com.museum.service.PageServiceImpl"></beans:bean>
 	<beans:bean id="emailService" class="com.museum.service.EmailServiceImpl"></beans:bean>
 	<beans:bean id="loginService" class="com.museum.service.LoginServiceImpl"></beans:bean>
@@ -37,17 +38,18 @@
 	<beans:bean id="fileService"  class="com.museum.service.FileServiceImpl"></beans:bean>
 	<beans:bean id="searchService" class="com.museum.service.SearchServiceImpl"></beans:bean>
 	<beans:bean id="mypageService" class="com.museum.service.MypageServiceImpl"></beans:bean>
-	<beans:bean id="authInterceptor" class="com.museum.service.AuthInterceptor"></beans:bean>
 	
 	<!-- Dao 객체 생성 -->
 	<beans:bean id="searchDao" class="com.museum.dao.DmuSearchDAO"></beans:bean>
 	<beans:bean id="ticketDao" class="com.museum.dao.DmuTicketDAO"></beans:bean>
+	<beans:bean id="tagpageDao" class="com.museum.dao.DmuTagPageDAO"></beans:bean>
 	<beans:bean id="AdminDao" class="com.museum.dao.DmuAdminDAO"></beans:bean>
 	<beans:bean id="memberDao" class="com.museum.dao.DmuMemberDAO"></beans:bean>
 	<beans:bean id="mypageDao" class="com.museum.dao.DmuMypageDAO"></beans:bean>
 	<beans:bean id="noticeDao" class="com.museum.dao.DmuNoticeDAO"></beans:bean>
 
 	<!-- Interceptor -->
+	<beans:bean id="authInterceptor" class="com.museum.interceptor.AuthInterceptor"></beans:bean>
 	<beans:bean id="AdminAuthinterceptor" class="com.museum.interceptor.AdminAuthInterceptor"></beans:bean>
 	<beans:bean id="MasterAuthinterceptor" class="com.museum.interceptor.MasterAuthInterceptor"></beans:bean>
 

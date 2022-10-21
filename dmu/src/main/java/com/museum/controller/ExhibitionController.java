@@ -28,14 +28,16 @@ public class ExhibitionController {
 	
 	
 	/*
-	 *  exhibition.do ÆäÀÌÁö È£Ãâ
+	 *  exhibition.do ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½
 	 */
 	@RequestMapping(value="/exhibition.do", method=RequestMethod.GET)
 	public ModelAndView exhibition(String did) {
-		//System.out.println(did);
+ 
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
+		vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
+		vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		if(vo.getDinformation() != null) {
 			vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		}
@@ -50,6 +52,8 @@ public class ExhibitionController {
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
+		vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
+		vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		if(vo.getDinformation() != null) {
 			vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		}
@@ -67,6 +71,8 @@ public class ExhibitionController {
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
+		vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
+		vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		if(vo.getDinformation() != null) {
 			vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		}

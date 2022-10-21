@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace = "mapper.tagpage">
+	
+	  <!-- exhibition_past_pag -->
+	 <select id="EventContent"  parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">
+		 select did, dtitle, dplace, dfile,dsfile, dcode,dstart, dend ,dtitle2 from dmu_ticket where dend &lt; sysdate and dcode = #{dcode} order by dstart desc
+	 </select>
+	  <!-- exhibition_past_page years -->
+	 <select id="dayContent"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
+		 select did, dtitle, dplace, dfile,dsfile, dcode,dstart, dend ,dtitle2 from dmu_ticket where 
+		 dend &lt; sysdate and dcode = #{dcode} and  dstart &gt; #{day} order by dstart
+		 
+	 </select>
+	  <!-- exhibition_past_page1 -->
+	 <select id="exhibitionPast"  parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">
+		 select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtitle2 from
+		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtitle2 from dmu_ticket where dend &lt; sysdate and dcode = #{dcode})
+		 where dplace='디뮤지엄' or dplace='대림미술관' order by dstart desc
+	 </select>
+	  <!-- exhibition_past_page1 year -->
+	 <select id="exhibitionPastYear"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
+		 select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtitle2 from
+		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtitle2 from dmu_ticket where dend &lt; sysdate and dcode = #{dcode} and  dstart &gt; #{day})
+		where dplace='디뮤지엄' or dplace='대림미술관'  order by dstart
+	 </select>
+	  <!-- exhibition_past_page2 -->
+	 <select id="exhibitionPast1"  parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">
+		 select did, dtitle, dplace, dfile,dsfile, dcode, dend , dstart,dtitle2 from
+		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtitle2 from dmu_ticket where dend &lt; sysdate and dcode = #{dcode})
+		where dplace='구슬모아당구장' order by dstart desc
+	 </select>
+	  <!-- exhibition_past_page2 year-->
+	 <select id="exhibitionPast1Year"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
+		 select did, dtitle, dplace, dfile,dsfile, dcode, dend , dstart,dtitle2 from
+		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtitle2 from dmu_ticket where dend &lt; sysdate and dcode = #{dcode}  and  dstart &gt; #{day})
+		where dplace='구슬모아당구장'  order by dstart
+	 </select>
+	  <!-- learn_past_page year-->
+	 <select id="learnPastYear"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
+		 select did, dtitle, dplace, dfile,dsfile, dcode, dend , dstart,dtarget,dinformation,dtitle2 from
+		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtarget ,dinformation,dtitle2 from dmu_ticket where dend &lt; sysdate and  dcode = #{dcode}  and  dstart &gt; #{day})
+		where dtarget=#{dtarget}  order by dstart
+	 </select>
+	  <!-- learn_past_page year-->
+	 <select id="learnPastAll"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
+		 select did, dtitle, dplace, dfile,dsfile, dcode, dend , dstart,dtarget,dinformation,dprice from
+		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtarget,dinformation,dprice from dmu_ticket where dend &lt; sysdate and  dcode = #{dcode})
+		where dtarget=#{dtarget}  order by dstart desc
+	 </select>
+	<!-- tag exhibition_page -->
+	 <select id="exhibitionselect"   resultType="com.museum.vo.DmuTicketVO">
+		 select  did, dtitle,dplace, dprice,to_char(dprice,'999,999') dpricech,dpersonnel ,
+	 	dinformation,dtime,dtarget,dnum,dfile,dsfile,dstart,dend,TRUNC(TO_DATE(dend, 'YY-MM-DD') - SYSDATE)+1 ENDDATE,dentertime,dcode,dtitle2 from dmu_ticket where  dtitle = '어쨌든, 사랑'
+	 </select> 
+	 <!-- select list dtarget learn_page -->
+	<select id="listdtarget" parameterType="map" resultType="com.museum.vo.DmuTicketVO">
+		select * from
+		(select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum ,dpersonnel,dtitle2,dentertime from dmu_ticket where dcode =#{dcode}
+		and dtarget= #{dtarget}) where dend &gt; sysdate   order by dstart asc
+	</select>
+	<select id="listdtarget2" parameterType="map" resultType="com.museum.vo.DmuTicketVO">
+		select * from
+		(select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum ,dpersonnel,dtitle2,dentertime from dmu_ticket where dcode =#{dcode}
+		and dtarget= #{dtarget}) where dend &gt; sysdate   order by dstart desc
+	</select>
+	<!--  select dtarget totalcount -->
+	 <select id="dtargetCount" parameterType="java.lang.String" resultType="int">
+	 	select count(*) from dmu_ticket where dend &gt; sysdate and dcode='learn' and dtarget= #{dtarget} 
+	 </select>
+	 
+	 
+</mapper>

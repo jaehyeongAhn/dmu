@@ -6,7 +6,7 @@ public class DmuTicketVO {
 	
  
 	int rno,dpersonnel, dprice;
-	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate,dtitle2,dentertime,dnum,dpricech,mid,rdate,rtime,rtotal,rallprice,rprice;
+	String did, dtitle, dstart, dend ,dplace, dinformation,dtime,dfile,dsfile,dcode,dtarget,enddate,dtitle2,dentertime,dnum,dpricech,mid,rdate,rtime,rtotal,rallprice,rprice,startdate;
 
  
 	
@@ -21,6 +21,12 @@ public class DmuTicketVO {
 	
 	
 	
+	public String getStartdate() {
+		return startdate;
+	}
+	public void setStartdate(String startdate) {
+		this.startdate = startdate;
+	}
 	public String getRprice() {
 		return rprice;
 	}

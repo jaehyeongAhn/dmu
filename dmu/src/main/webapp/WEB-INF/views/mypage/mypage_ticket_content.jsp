@@ -207,8 +207,11 @@
 														<c:when test="${ ticket_list.tcheck == 'ex' }">
 															<td class = "ticket_list_status"><strong>기간만료</strong></td>		
 														</c:when>
-														<c:otherwise>
+														<c:when test = "${ ticket_list.tcheck == 'n' }">
 															<td class = "ticket_list_status"><strong>예매취소</strong></td>		
+														</c:when>
+														<c:otherwise>
+															<td class = "ticket_list_status"><strong>사용불가</strong></td>		
 														</c:otherwise>
 													</c:choose>
 												</tr>

@@ -73,12 +73,27 @@
 			order by rokdate desc                           				 			  
 	</select>
 	
-	<select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
-		select dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rokdate,'YYYY-MM-DD') rokdatech   from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
+	<select id="reservationContent" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">                            				 			  
+       select dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rokdate,'YYYY-MM-DD') rokdatech, to_char(dr.rdate,'YYYY-MM-DD') rdateda   
+       from  dmu_ticket DT, dmu_reservation DR, dmu_member DM
 		where dt.did = dr.did  and dm.mid = dr.mid  and dr.rid= (select rid from
                                       				  (select rid from dmu_reservation order by rokdate desc)
-                                 				 			  where rownum = 1)   
+                                 				 			  where rownum = 1)                                				 			   
 	</select>
+	
+	<select id="reservationDet" parameterType="map" resultType="com.museum.vo.DmuReJoinVO">
+		select dt.dsfile, dt.dtitle, to_char(dr.rokdate, 'YY-MM-DD') rokdatech, dr.rtotal, dt.dplace, dr.rcheck, to_char(dt.dprice,'999,999') dpricech, dr.rtotal, to_char(dr.rallprice,'999,999') rallpricech, dp.pcoin, dp.pdate, dti.tid, to_char(dr.rdate, 'YY-MM-DD') rdateda, dti.tcheck, dm.mid   
+		from  dmu_ticket DT, dmu_reservation DR, dmu_member DM, dmu_payinfo DP, dmu_ticketinfo DTI
+		 where dt.did = dr.did  and dm.mid = dr.mid and dr.rid = dp.rid and dp.pid = dti.pid and dr.rid = #{dr.rid}                         				 			  
+	</select>
+	<select id="reservationDet1" parameterType="java.lang.String" resultType="com.museum.vo.DmuReJoinVO">
+		select dt.dsfile, dt.dtitle, to_char(dr.rokdate, 'YY-MM-DD') rokdatech, dr.rtotal, dt.dplace, dr.rcheck, to_char(dt.dprice,'999,999') dpricech, dr.rtotal, to_char(dr.rallprice,'999,999') rallpricech, dp.pcoin, dp.pdate, dti.tid, to_char(dr.rdate, 'YY-MM-DD') rdateda, dti.tcheck, dm.mid   
+		from  dmu_ticket DT, dmu_reservation DR, dmu_member DM, dmu_payinfo DP, dmu_ticketinfo DTI
+		 where dt.did = dr.did  and dm.mid = dr.mid and dr.rid = dp.rid and dp.pid = dti.pid and dr.rid = #{dr.rid}                         				 			  
+	</select>
+	
+	
+ 
 
 
 	<!-- adminpage_inquiry_list.do -->
@@ -131,4 +146,5 @@
 	<update id = "inquiryUpdate" parameterType = "java.lang.String">
 		UPDATE DMU_INQUIRY SET IQANSWER = 'y' WHERE IQID = #{iqid}
 	</update>
+	
 </mapper>

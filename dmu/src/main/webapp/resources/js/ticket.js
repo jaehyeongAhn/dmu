@@ -1,45 +1,28 @@
+$(window).on('load', function () {
+    load('#js-load', '3');
+    $("#btn50").on("click", function () {
+  
+        load('#js-load', '3', '#js-btn-wrap');
+    })
+});
+ 
+function load(id, cnt, btn) {
+    var girls_list = id + " .js-load:not(.active)";
+    var girls_length = $(girls_list).length;
+    var girls_total_cnt;
+    if (cnt < girls_length) {
+        girls_total_cnt = cnt;
+    } else {
+        girls_total_cnt = girls_length;
+        $("#btn50").hide()
+    }
+    $(girls_list + ":lt(" + girls_total_cnt + ")").addClass("active");
+}
+
+
+
 $(document).ready(function(){
-
-		//exhibition 단체예매 신청 --> login 페이지 이동
-		$("#btn25").click(function(){
-		// alert("bb");
-			$(location).attr("href","http://localhost:9000/dmu/login.do");
-		/*	const id = document.getElementById("did");
-						
-			if(did.value == ""){
-			$(location).attr("href","http://localhost:9000/dmu/login.do");
-			}else{
-			$(location).attr("href","http://https://www.daelimmuseum.org/ticket/reservation/group?prgIdx=PRG202202230001&prgTypeCd=PG00101");
-			} */
-		});
  
-		
-		/*********************
-		관람일및 회차,관람인원 및 권종 버튼 토글
-		**********************/
-		$("#data-v-8ed31374_btn").click(function() {						
-   							 
-			$("#calendar").toggle();  
-   							 
-  		});
- 
-		
-		$("#btn_toggle").click(function() {						
-   							 
-   			$("#content").toggle();
-   			
-  		});
-  						
-  						
-		$("#btb_toggle_hide").click(function() {						
-						 
-			$("#content_hide").toggle();  
-			
-		});
-		
-		
-		
-
 	/*********************
       전시 등록폼 유효성 체크
       **********************/
@@ -98,127 +81,162 @@ $(document).ready(function(){
          
          } 
       });
+      
+  /*********************
+	티켓리스트 수정폼 유효성 체크
+	**********************/
+	$("#btnTicketUpdate").click(function(){
+		
+		if($("#dtitle").val() == ""){
+			alert("제목을 입력해주세요");
+			$("#dtitle").focus();
+			return false;
+		}else{
+			//서버전송
+		ticketUpdateForm.submit();
+			}
+	});
+	
+	
+/***********02.관람일/인원선택 페이지***********/
+	/*********************
+	관람일및 회차,관람인원 및 권종 버튼 토글
+	**********************/
+		$("#data-v-8ed31374_btn").click(function() {												 
+			$("#calendar").toggle();  							 
+  		});
 
-
-					
-					
-		/*********************
-		티켓리스트 수정폼 유효성 체크
-		**********************/
-		$("#btnTicketUpdate").click(function(){
+		$("#btn_toggle1").click(function() {									 	 
+   			$("#content1").toggle(); 			
+  		});
+  		
+		 
+	/*********************
+	 달력 일자 클릭시 회차 버튼 활성화
+	**********************/
+		$("#entertime").click(function(){
+ 
+			$( '.entertime' ).prop( 'selection', this.selection );
+			$("#entertime").prop("disabled", !this.checked);
+						
+			$("#rtime").val($("#content").text());
+						
+		});	
+		
+	/*********************
+	회차 클릭시 관람인원 버튼 활성화
+	**********************/
+	$("#content").click(function(){
+		$("#content_hide").show();				
+	});	
+		
+	 
+	/*********************
+	카운트 체크
+	**********************/
+		 	 
+	$('#decreaseQuantity').click(function(e) {
+		alert("aaa");
+		e.preventDefault();
+		var stat = $('#field40').text();
+		var num = parseInt(stat, 10);
+		num--;
+		
+		if (num <= 0) {
+			alert('더이상 줄일수 없습니다.');
+			num = 1;
 			
-			if($("#dtitle").val() == ""){
-				alert("제목을 입력해주세요");
-				$("#dtitle").focus();
-				return false;
-			}else{
-				//서버전송
-			ticketUpdateForm.submit();
-				}
+		}
+		$('#numberUpDown').text(num);
+		
 		});
 	
-					
-		/*********************
-		카운트 체크
-		**********************/
-			 	 
-		$('#decreaseQuantity').click(function(e) {
+		$('#increaseQuantity').click(function(e) {
 			
 			e.preventDefault();
 			var stat = $('#field40').text();
 			var num = parseInt(stat, 10);
-			num--;
-			
-			if (num <= 0) {
-				alert('더이상 줄일수 없습니다.');
-				num = 1;
-				
-			}
-			$('#numberUpDown').text(num);
-			
-			});
+			num++;
+						
+		if (num > 5) {
+			alert('더이상 늘릴수 없습니다.');
+			num = 5;
+		}
+			$('#field40').text(num);
+		});
 		
-			$('#increaseQuantity').click(function(e) {
-				
-				e.preventDefault();
-				var stat = $('#field40').text();
-				var num = parseInt(stat, 10);
-				num++;
-							
-			if (num > 5) {
-				alert('더이상 늘릴수 없습니다.');
-				num = 5;
-			}
-				$('#field40').text(num);
-			});
 		
- 					/*********************
-						관람시 유의사항 동의 체크 후 예매하기 클릭 이벤트
-					**********************/
-					$("#check30").click(function(){
-						/*$( '.check30' ).prop( 'checked', this.checked );*/
-						
-						$( '.check30' ).prop( 'checked', function(){
-						/*	if($(this).checked){*/
-							
-								alert("aaa");
-							/*}*/
-						
-						});
-						$("#btn32").prop("disabled", !this.checked);
-						
-						$("#rallprice").val($("#rprice").val()*$("#rtotal").val());
-						
-						
-						
-					});
-					
-					
-					/*********************
-					예약 티켓 정보에 대한 동의 후 결제하기 클릭 이벤트
-					**********************/
-					$("#check287").click(function(){
-						$( '.check287' ).prop( 'checked', this.checked );
-						$("#btn289").prop("disabled", !this.checked);
-					});
-					
-					
-					
-					/*********************
-					 달력 일자 클릭시 회차 버튼 활성화
-					**********************/
-					$("#content").click(function(){
- 
-						$( '.entertime' ).prop( 'selection', this.selection );
-						$("#entertime").prop("disabled", !this.checked);
-						
-						$("#rtime").val($("#content").text());
-						
-					});
-					
-				 
-					
-					
-					
-					/*********************
-					 예매하기 클릭 시 관람일,회차,관람인원
-					**********************/
-					$("#btn32").click(function(){
- 
-					 
-					ticket_reservationFrom.submit();
-					});
-					
-					
-					/*********************
-					 전문 보기
-					**********************/
-					
- 	
+	/*********************
+		관람시 유의사항 동의 체크 후 예매하기 클릭 이벤트
+	**********************/
+	$("#check30").click(function(){
+ 	    	     
+	    if($("#rdate").val() == ""){	         	           
+            return false;
+         }else if($("#rtime").val() == ""){	             	            
+            return false;
+        }else if($("#rtotal").val() == ""){	            
+            return false;
+    	}else if($("#rtotal").val() != ""){		 	
+    	    $("#btn32").prop("disabled", !this.checked); 
+    	    $("#rallprice").val($("#rprice").val()*$("#rtotal").val());      	    	    
+        }else{ }
+	});	
+		
+	/*********************
+	 관람인원 변경시 체크박스 해제
+	**********************/
+	$("#countpeople").click(function(){		 
+		$("input:checkbox[id='check30']").prop("checked", false );				 
+	}); 
+	
+	$("#increaseQuantity").click(function(){		 
+		$("input:checkbox[id='check30']").prop("checked", false );				 
+	}); 
+		
+		
+		
+			
+	 	/*********************
+		 예매하기 클릭 시 비로그인일때 유효성 체크
+		**********************/
+		$("#btn32").click(function(){
+		 if($("#mid").val() == ""){
+      	 
+       	 $(location).attr("href","http://localhost:9000/dmu/login.do");
+            return false;   
+		}else {			 	
+			ticket_exhibitionFrom.submit();
+		 }			 
+	});		
 
-								
-				
-		
-		}); //ready
+
+	/*********************
+	 결제 팝업ㅡ 결제시 결제정보 넘기기
+	**********************/
+    
+    $("#popup_payment").click(function(){
+		$("form").attr({
+            "name" : "paymentForm",
+            "action" : "paymenInsert.do"
+        })
+     	paymentForm.submit();
+    });
+ 
+ 	
+		/***********03.결제***********/		
+		/*********************
+		예약 티켓 정보에 대한 동의 후 결제하기 클릭 이벤트
+		**********************/
+		$("#check287").click(function(){
+	 
+		 
+			$( '.check287' ).prop( 'checked', this.checked );
+			$("#btn289").prop("disabled", !this.checked);
+			$("#rallprice").val($("#rprice").val()*$("#rtotal").val());      		 
+		});
+			
+ 			
+ }); //ready
 
 		

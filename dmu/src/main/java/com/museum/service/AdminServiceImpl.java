@@ -10,6 +10,7 @@ import com.museum.dao.DmuAdminDAO;
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuReJoinVO;
+import com.museum.vo.DmuTicketVO;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -97,6 +98,18 @@ public class AdminServiceImpl implements AdminService{
 	 
 		return adminDAO.reservationContent(mid);
 	}
+	
+	  @Override public ArrayList<DmuReJoinVO> reservationDet(String rid) {
+	  ArrayList<DmuReJoinVO> list = adminDAO.reservationDet(rid);
+	  return list; }
+	 
+	
+	
+	  @Override public DmuReJoinVO reservationDet1(String rid) { 
+		  return  adminDAO.reservationDet1(rid); 
+		  
+	  }
+	 
 	
 	
 	/**

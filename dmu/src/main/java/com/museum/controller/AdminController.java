@@ -25,6 +25,7 @@ import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuReJoinVO;
+import com.museum.vo.DmuTicketVO;
 @Controller
 public class AdminController {
 	
@@ -438,14 +439,19 @@ public class AdminController {
 			JsonObject jo = new JsonObject();
 			Gson gson = new Gson();
 			jo.addProperty("mid", mid);
-			jo.addProperty("dt.dcode", mvo.getDcode());
-			jo.addProperty("dr.rid", mvo.getRid());
-			jo.addProperty("dt.dtitle", mvo.getDtitle());
-			jo.addProperty("dm.mname", mvo.getMname());
+			jo.addProperty("dcode", mvo.getDcode());
+			jo.addProperty("rid", mvo.getRid());
+			
+			jo.addProperty("dtitle", mvo.getDtitle());
+			jo.addProperty("mname", mvo.getMname());
 			jo.addProperty("dpricech", mvo.getDpricech());
+			jo.addProperty("rtotal", mvo.getRtotal());
 			jo.addProperty("rallpricech", mvo.getRallpricech());
-			jo.addProperty("dr.rokdate", mvo.getRokdate());
+			jo.addProperty("rdateda", mvo.getRdateda());
+			jo.addProperty("rokdatech", mvo.getRokdatech());
 			 
+			
+			
 			
 			return gson.toJson(jo);
 			
@@ -662,8 +668,7 @@ public class AdminController {
 			job.addProperty("pageSize", pageSize);
 			
 			return gson.toJson(job);
-			
-	
+ 
 	}
 		
 	/*********************************** 1대1 문의 사항 ***********************************/
@@ -774,5 +779,37 @@ public class AdminController {
 	}
 	
 
+	
+	  //adminpage_reservation_list_det.do
+	  
+	  @RequestMapping(value = "/adminpage_reservation_list_det.do", method =
+	  RequestMethod.GET)
+	  
+	  public ModelAndView adminpage_reservation_list_det(String rid) { ModelAndView
+	  mv = new ModelAndView();
+	  
+	  ArrayList<DmuReJoinVO> rlist = adminService.reservationDet(rid);
+	  
+	  mv.addObject("list", rlist);
+	  mv.setViewName("/admin/admin_member/adminpage_reservation_list_det");
+	  
+	  return mv; }
+	  
+	//adminpage_reservation_list_det.do
+			/*
+			 * @RequestMapping(value = "/adminpage_reservation_list_det.do", method =
+			 * RequestMethod.GET)
+			 * 
+			 * public ModelAndView adminpage_reservation_list_det(String rid) { ModelAndView
+			 * mv = new ModelAndView();
+			 * 
+			 * DmuReJoinVO vo = adminService.reservationDet(rid);
+			 * 
+			 * mv.addObject("vo", vo);
+			 * mv.setViewName("/admin/admin_member/adminpage_reservation_list_det");
+			 * 
+			 * return mv; }
+			 */
+	 
 		
 }

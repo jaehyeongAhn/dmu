@@ -68,8 +68,7 @@ $(document).ready(function(){
 
 
 </script>
-<style>
-</style>
+ 
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
@@ -142,6 +141,7 @@ $(document).ready(function(){
 						</div>
 								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
 								<div class="info-list">
+									<table id="report">
 									<table class="info-table">
 										<thead>
 											<tr>
@@ -155,12 +155,12 @@ $(document).ready(function(){
 												<th>관람일</th>
 												<th>예약일</th>
 												<th>예약취소  진행</th>
-												<th>예약취소  일자</th>
+												 
 											</tr>
 										</thead>
 										<tbody>
 										<c:forEach var="vo" items="${list}">
-											<tr class = "name">												 
+											<tr class = "name" id="${vo.rid}">												 
 												<td >${vo.dcode}</td>											 
 												<td  class="reservation_detail reservationId"><a href="#">${vo.rid}</a></td> <!-- 티켓번호 -->
 												<td>${vo.dtitle }</td>   <!-- 전시/이벤트 명 --> 
@@ -170,24 +170,14 @@ $(document).ready(function(){
 												<td>${vo.rallpricech }</td>   <!-- 총 금액 -->
 												<td>${vo.rdateda }</td>   <!-- 관람일 -->
 												<td>${vo.rokdatech }</td>   <!-- 예약일 -->
-												<c:choose>
+													<c:choose>
 														<c:when test="${vo.rid == 'n'}">  <!-- 예약취소 진행 -->  
 															<td>취소완료</td>
-													</c:when>
-														<c:otherwise>
-															<td><button class="member_detail"><a href="#">예매취소</a></button></td>
-													</c:otherwise>
-												</c:choose>
-											 	
-											 	<c:choose>
-														<c:when test="${vo.rid == 'n'}">  <!-- 예약취소 일자 -->
-															<td>${vo.rokdate }</td>
-													</c:when>
-														<c:otherwise>
-															<td>-</td>
-													</c:otherwise>
-												</c:choose>		 
-									 										 
+														</c:when>
+															<c:otherwise>
+																<td >  <button class="reservation_detail_admin" type="button" id="${vo.rid}"> 관리자 모드 </button> </td>
+														</c:otherwise>
+													</c:choose>
 											</tr>
 										</c:forEach>
 										</tbody>
@@ -236,7 +226,7 @@ $(document).ready(function(){
 											</tr>
 											<tr>
 												<th>티켓번호</th>
-												<td class="tid">${vo.rid}</td>
+												<td class="tid">tid 랜덤생성</td>
 											</tr>
 											<tr>
 												<th>전시/이벤트 명</th>
@@ -272,15 +262,15 @@ $(document).ready(function(){
 											</tr>
 											<tr>	
 												<th>결제일</th>
-												<td class=""> </td>
+												<td class="pdate">${vo.pdate}</td>
 											</tr>
 											<tr>	
 												<th>결제수단</th>
-												<td class=""> </td>
+												<td class="pcoin">${vo.pcoin}</td>
 											</tr>
 											<tr>	
 												<th>상태</th>
-												<td class=""> </td>
+												<td class="tcheck">${vo.tcheck}</td>
 											</tr>
 										</thead>
 									</table>

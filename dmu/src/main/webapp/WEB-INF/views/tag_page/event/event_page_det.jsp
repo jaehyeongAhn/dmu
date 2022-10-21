@@ -88,13 +88,13 @@
 											
 											<ul data-v-080a389a="" class="snb"  >
 												<li data-v-080a389a="" class="on">
-													<a data-v-080a389a="" role="button"   onclick="location.href='#program'" style="cursor: pointer;  ">프로그램소개</a>
+													<a data-v-080a389a="" role="button"   onclick="myFunction1()"  style="cursor: pointer;  ">프로그램소개</a>
 												</li>
 												<li data-v-080a389a="" class="">
-													<a data-v-080a389a="" role="button"  onclick="location.href='#brand'" style="cursor: pointer;">참여브랜드</a>
+													<a data-v-080a389a="" role="button"  onclick="myFunction2()"  style="cursor: pointer;">참여브랜드</a>
 												</li>
 												<li data-v-080a389a="" class="">
-													<a data-v-080a389a="" role="button"   onclick="location.href='#info'" style="cursor: pointer;">이용안내</a>
+													<a data-v-080a389a="" role="button"   onclick="myFunction3()"  style="cursor: pointer;">이용안내</a>
 												</li>
 											</ul>
 										</div>

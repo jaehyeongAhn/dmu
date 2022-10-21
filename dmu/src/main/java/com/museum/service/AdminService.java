@@ -7,6 +7,7 @@ import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuReJoinVO;
+import com.museum.vo.DmuTicketVO;
 
 public interface AdminService {
 	
@@ -25,10 +26,15 @@ public interface AdminService {
 	ArrayList<DmuMemberVO> reservationList(int startCount, int endCount);
 	DmuReJoinVO reservationContent(String mid);
 	
+ 
+	 ArrayList<DmuReJoinVO> reservationDet(String rid); 
+	 DmuReJoinVO reservationDet1(String rid);
+ 
 	/******* 1´ë1 ¹®ÀÇ ***********/
 	public List<DmuInquiryVO> getIquiryList(String answerType, int startCount, int endCount);
 	public int getInquiryTotalCount(String answerType);
 	public DmuInquiryVO getInquiryContent(String iqid);
 	public String getInquiryEmail(String mid);
 	public int getInquiryUpdate(String iqid);
+ 
 }
