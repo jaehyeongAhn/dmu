@@ -1,6 +1,39 @@
 #contents > header, #contents > main, #contents > footer {
     min-width: 80rem;
 }
+.current-list[data-v-97ddc3ec] {
+    padding: 6.25rem 3.75rem 12.5rem 3.75rem;
+}
+.current-list[data-v-97ddc3ec] {
+    padding: 7.5rem 0 9.375rem 0;
+}
+.current-list .no-data[data-v-97ddc3ec] {
+    padding-top: 6.25rem;
+}
+.current-list .no-data[data-v-97ddc3ec] {
+    padding-top: 1.875rem;
+    text-align: center;
+}
+.current-list .no-data strong[data-v-97ddc3ec] {
+    font-size: 2.25rem;
+}
+.current-list .no-data strong[data-v-97ddc3ec] {
+    display: block;
+    font-weight: 300;
+    font-size: 1.75rem;
+    color: #111;
+}
+.current-list .no-data span[data-v-97ddc3ec] {
+    margin-top: 2.5rem;
+    font-size: 1.625rem;
+}
+.current-list .no-data span[data-v-97ddc3ec] {
+    display: block;
+    font-weight: 300;
+    margin-top: 1.875rem;
+    font-size: 1rem;
+    color: #666;
+}
 body * {
     padding: 0;
     margin: 0;

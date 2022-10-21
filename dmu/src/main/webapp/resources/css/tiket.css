@@ -1,29 +1,30 @@
-/*
-	exhbition
-*/
+
 #contents > header, #contents > main, #contents > footer {
     min-width: 80rem;
 }
 
+
 main {
     min-height: calc(100vh - 43.375rem);
 }
-      .clicked {
+ .clicked {
         color: gold;
       }
 
-
-body * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    line-height: 1;
-    -webkit-tap-highlight-color: transparent;
-    font-family: 'Geogrotesque', 'YoonGothic', sans-serif;
-    font-weight: inherit;
-    font-size: inherit;
+.js-load:nth-child(n+2) {
+    display: none;
+}
+.js-load.active {
+    display: block;
 }
 
+
+.no-result p[data-v-e20ce500] {
+    font-size: 2.25rem;
+    line-height: 3.125rem;
+    text-align: center; margin: 0 auto; 
+  
+}
 img[data-v-2fed1a9a]{
 	width:300px;
 	height:300px;
@@ -297,7 +298,6 @@ body img {
     color: #111;
     letter-spacing: -0.03375rem;
 }
--------------------------------------------------------------------------------------
 .ticket-list-area .container[data-v-41f56098] {
     padding-top: 1.75rem;
     padding-bottom: 0;
@@ -332,11 +332,7 @@ body img {
     font-weight: 500;
    
 }
-.division-list ul li a[data-v-41f56098] {
-    font-size: 0.9375rem;
-    color: #999;
-    letter-spacing: -0.02375rem;
-}
+
 .division-list ul li + li[data-v-41f56098] {
     padding-left: 1.875rem;
 }
@@ -563,7 +559,6 @@ body button {
 .ticket-list > ul > li + li[data-v-41f56098] {
     margin-top: 5rem;
 }
----------------------------------------------------------------------
 .list-top-area[data-v-1e8092ec] {
     display: flex;
     margin-bottom: 1.25rem;
@@ -758,16 +753,6 @@ main {
 }
 
 
-body * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    line-height: 1;
-    -webkit-tap-highlight-color: transparent;
-    font-family: 'Geogrotesque', 'YoonGothic', sans-serif;
-    font-weight: inherit;
-    font-size: inherit;
-}
 
 main {
     display: block;
@@ -1028,7 +1013,6 @@ body img {
     color: #111;
     letter-spacing: -0.03375rem;
 }
--------------------------------------------------------------------------------------
 .ticket-list-area .container[data-v-41f56098] {
     padding-top: 1.75rem;
     padding-bottom: 0;
@@ -1067,6 +1051,7 @@ body img {
     font-size: 0.9375rem;
     color: #999;
     letter-spacing: -0.02375rem;
+   	text-decoration: none;
 }
 .division-list ul li + li[data-v-41f56098] {
     padding-left: 1.875rem;
@@ -1295,7 +1280,6 @@ body button {
 .ticket-list > ul > li + li[data-v-41f56098] {
     margin-top: 5rem;
 }
----------------------------------------------------------------------
 .list-top-area[data-v-1e8092ec] {
     display: flex;
     margin-bottom: 1.25rem;

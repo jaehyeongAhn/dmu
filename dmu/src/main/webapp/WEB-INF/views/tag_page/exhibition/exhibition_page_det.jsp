@@ -40,18 +40,18 @@
 			<section data-v-6e774a1a="" class="sub-contents-wrap">
 				<div data-v-6e774a1a="" class="current-view-top">
 					<h2 data-v-6e774a1a="">Romantic Days</h2>
-					<span data-v-6e774a1a="" class="subtitle">어쨌든, 사랑</span>
+					<span data-v-6e774a1a="" class="subtitle">${vo.dtitle }</span>
 					<div data-v-6e774a1a="" class="info">
-						<span data-v-6e774a1a="" class="place">디뮤지엄</span><span
-							data-v-6e774a1a="" class="term"> 2022.03.16 ~ 2022.11.27 </span>
+						<span data-v-6e774a1a="" class="place">${vo.dplace }</span><span
+							data-v-6e774a1a="" class="term"> ${vo.dstart } ~ ${vo.dend } </span>
 						<div data-v-6e774a1a="" class="btn-exhibition">
 							<div data-v-26e42198="" data-v-6e774a1a="" class="btn-area">
 								<button data-v-26e42198="" id="btn216" type="button"
 									class="btn-share">공유하기</button>
 							</div>
 							<div data-v-26e42198="" data-v-6e774a1a="" class="btn-area">
-								<button data-v-26e42198="" id="btn219" type="button"
-									class="btn-ticketing primary">예매하기</button>
+								<a href="exhibition.do?did=${vo.did }"><button data-v-26e42198="" id="btn219" type="button"
+									class="btn-ticketing primary">예매하기</button></a>
 							</div>
 						</div>
 					</div>

@@ -46,10 +46,10 @@
 <div data-v-080a389a="" data-v-97ddc3ec="">
 	<div data-v-080a389a="" class="snb-area">
 		<ul data-v-080a389a="" class="snb">
-			<li data-v-080a389a="" class="on">
+			<li data-v-080a389a="" class="">
 				<a data-v-080a389a="" href="exhibition_page.do" role="button" style="cursor: pointer;">전체</a>
 			</li>
-			<li data-v-080a389a="" class="">
+			<li data-v-080a389a="" class="on">
 				<a data-v-080a389a="" href="exhibition_page1.do" role="button" style="cursor: pointer;">디뮤지엄</a>
 			</li>
 			<li data-v-080a389a="" class="">

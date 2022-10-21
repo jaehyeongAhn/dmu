@@ -1,14 +1,18 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>dmu</title>
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
-<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
-<link rel="stylesheet"  href="http://localhost:9000/dmu/resources/css/tiket.css">
+<link rel="stylesheet" as="style" crossorigin
+	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet"
+	href="http://localhost:9000/dmu/resources/css/font.css">
+<link rel="stylesheet"
+	href="http://localhost:9000/dmu/resources/css/tiket.css">
+
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
@@ -43,6 +47,7 @@
 							output1 +="<a data-v-41f56098='' href='javascript:void(0);'>종료일 순</a></li></ul>"
 							output1 +="</div>"
 							
+						if(dataset.list.length !=0){	
 						var	output = "<div class='ticket-list learn' id='ticket_list_learn'>";
 						for(aj of dataset.list){
 					   	output += "<ul data-v-41f56098=''>";
@@ -88,6 +93,13 @@
 						output +="</li>"
 						output +="</ul>" 
 					}//for
+					
+						output +=	"</ul></div>"		
+					}else{
+					var output =	"<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='learn_list1'>"
+						output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";	
+				 		output +="<p data-v-e20ce500='' data-v-080a389a=''>해당 연도의 지난 프로그램이 없습니다.</p></div></div>"
+					}//else
 						output +="</div>" 
 						output +="</div>" 
 						output +="</div>" 
@@ -95,6 +107,7 @@
 					//3. 출력 
 					$("#list-top-area1").remove();
 					$("#ticket_list_learn").remove();
+					$("#learn_list1").remove();
 					$(".division-list").after(output1); 
 					$(".list-top-area").after(output); 
 					
@@ -105,187 +118,183 @@
 			})//ajax
 		});//click
 
-			
-	$('#more_button').click(function(){
-								
-	$(location).attr('href', "http://localhost:9000/dmu/learn_list.do?rpage="+${rpage+1});         
-							    
-			});  
+	
 });  
 </script>
 </head>
 <body>
-<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
-<div style="width:100%; height:17vh; color:transparent">헤더</div>
-<main>
-<div data-v-ec5a0c2c="" class="root-container">
-<div data-v-ec5a0c2c="" class="content-wrapper">
-<div data-v-ec5a0c2c="" class="body-wrapper">
-<div data-v-7b1f57c8="" data-v-ec5a0c2c="">
-<div data-v-7b1f57c8="" class="sub-contents-area">
-<div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
-			<ul data-v-6d324aa0="">
-				<li data-v-6d324aa0="" class="on">
-					<span data-v-6d324aa0="" class="no">01</span>.
-					<span data-v-6d324aa0="" class="txt">티켓 선택</span>
-				</li>
-				
-				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">02</span>.
-					<span data-v-6d324aa0="" class="txt">관람일/인원 선택</span>
-				</li>
-				
-				<li data-v-6d324aa0="" class="">
-					<span data-v-6d324aa0="" class="no">03</span>.
-					<span data-v-6d324aa0="" class="txt">결제</span>
-				</li>
-			</ul>
-		</div>
-<div data-v-7b1f57c8="" class="container">
-<div data-v-7b1f57c8="" class="ticket-list-area">
-<div data-v-7b1f57c8="">
-<div data-v-7b1f57c8="" class="snb-area">
+	<iframe src="header.do" width="100%" height="200px" scrolling="no"
+		frameborder=0 class="header"
+		style="position: absolute; overflow: hidden;"></iframe>
+	<div style="width: 100%; height: 17vh; color: transparent">헤더</div>
+	<main>
+		<div data-v-ec5a0c2c="" class="root-container">
+			<div data-v-ec5a0c2c="" class="content-wrapper">
+				<div data-v-ec5a0c2c="" class="body-wrapper">
+					<div data-v-7b1f57c8="" data-v-ec5a0c2c="">
+						<div data-v-7b1f57c8="" class="sub-contents-area">
+							<div data-v-6d324aa0="" data-v-7b1f57c8=""
+								class="step-process-area">
+								<ul data-v-6d324aa0="">
+									<li data-v-6d324aa0="" class="on"><span data-v-6d324aa0=""
+										class="no">01</span>. <span data-v-6d324aa0="" class="txt">티켓
+											선택</span></li>
 
-			<ul data-v-7b1f57c8="" class="snb">
-				<li data-v-7b1f57c8="" class="">
-					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/exhibition_list.do" role="button">EXHIBITION </a>
-				</li>
-				
-				<li data-v-7b1f57c8="" class="on">
-					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/learn_list.do" role="button">LEARN </a>
-				</li>
-				<li data-v-7b1f57c8="" class="">
-					<a data-v-7b1f57c8="" href="http://localhost:9000/dmu/event_list.do" role="button">EVENT </a>
-				</li>
-			</ul>
-		</div>
-		
-<div data-v-7b1f57c8="" class="sub-contents-area">
-<div data-v-41f56098="" data-v-7b1f57c8="" class="container">
-<div data-v-41f56098="" class="division-list">
-			<ul data-v-41f56098="">
-				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" class="learn_targetall"  href="http://localhost:9000/dmu/learn_list.do"  >전체</a>
-				</li>
-				
-				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" class="learn_target" id="유아">유아</a>
-				</li>
-				
-				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" class="learn_target" id="어린이" >어린이</a>
-				</li>
-				
-				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" class="learn_target" id="청소년" >청소년</a>
-				</li>
-				
-				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" class="learn_target" id="대학생" >대학생</a>
-				</li>
-				
-				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" class="learn_target" id="성인" >성인</a>
-				</li>
-				
-				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" class="learn_target" id="교사" >교사</a>
-				</li>
-				
-				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" class="learn_target" id="전시해설">전시해설</a>
-				</li>
-			</ul>
-		</div>
-		
-<div data-v-41f56098="" class="list-top-area" id="list-top-area1">
+									<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
+										class="no">02</span>. <span data-v-6d324aa0="" class="txt">관람일/인원
+											선택</span></li>
 
-		<span data-v-41f56098="" class="total">총 <strong>${dbCount}</strong>건</span>
-			<ul data-v-41f56098="" class="order">
-				<li data-v-41f56098="" class="on">
-					<a data-v-41f56098="" href="javascript:void(0);">시작일 순</a>
-				</li>
-				
-				<li data-v-41f56098="" class="">
-					<a data-v-41f56098="" href="javascript:void(0);">종료일 순</a>
-				</li>
-			</ul>
-		</div>
-	<div data-v-41f56098="" class="ticket-list learn" id="ticket_list_learn">
-			<c:forEach var="vo" items="${list}">
-			
-			<ul data-v-41f56098="">
-				<li data-v-41f56098="">
-						<c:if test="${vo.dsfile != null }">
-					<a data-v-41f56098="" href="http://localhost:9000/dmu/learn.do?did=${vo.did}" class="thumb">
-						<img data-v-2fed1a9a="" data-v-1e8092ec=""src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"></a>
-						</c:if>
-				
-			<ul data-v-41f56098="" class="flag">
-				<li data-v-41f56098="">${vo.dnum}회성 교육</li>
-				<li data-v-41f56098="">${vo.dplace}</li>
-				<li data-v-41f56098="">${vo.dplace}</li>
-				
-			<!---->
-			<!---->
-			</ul>
-				
-					<a data-v-41f56098="" href="http://localhost:9000/dmu/learn.do?did=${vo.did}"
-					class="title">${vo.dtitle}</a>
-					
-					<p data-v-41f56098="" class="explan">${vo.dtitle2 }</p>
-					
-			<ul data-v-41f56098="" class="info">
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">교육진행</span>
-						<span data-v-41f56098="" class="txt">${vo.dstart}~ ${vo.dend}</span>
-					</li>
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">장소</span>
-						<span data-v-41f56098="" class="txt">${vo.dplace}</span>
-					</li>
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">대상</span>
-						<span data-v-41f56098="" class="txt">${vo.dtarget}</span></li>
-					<li data-v-41f56098="">
-						<span data-v-41f56098=""class="tit">교육시간</span>
-						<span data-v-41f56098="" class="txt">${vo.dtime}</span>
-					</li>
-					<li data-v-41f56098="">
-						<span data-v-41f56098="" class="tit">참가비</span>
-						<span data-v-41f56098="" class="txt">${vo.dprice} 원</span>
-					</li>
-				</ul>
-				</li>
-			</ul>
-			
-			</c:forEach>								
-				
-			
-		
-	</div>
-	
-			 <c:if test= "${ rpage lt pageCount }"> 
-				<div data-v-41f56098="" class="btn-more-area">
-				<div data-v-26e42198="" data-v-41f56098="" class="btn-area" >
-							<button data-v-26e42198="" id="more_button" 
-							class="secondary more">더보기</button>
+									<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
+										class="no">03</span>. <span data-v-6d324aa0="" class="txt">결제</span>
+									</li>
+								</ul>
+							</div>
+							<div data-v-7b1f57c8="" class="container">
+								<div data-v-7b1f57c8="" class="ticket-list-area">
+									<div data-v-7b1f57c8="">
+										<div data-v-7b1f57c8="" class="snb-area">
+
+											<ul data-v-7b1f57c8="" class="snb">
+												<li data-v-7b1f57c8="" class=""><a data-v-7b1f57c8=""
+													href="http://localhost:9000/dmu/exhibition_list.do"
+													role="button">EXHIBITION </a></li>
+
+												<li data-v-7b1f57c8="" class="on"><a data-v-7b1f57c8=""
+													href="http://localhost:9000/dmu/learn_list.do"
+													role="button">LEARN </a></li>
+												<li data-v-7b1f57c8="" class=""><a data-v-7b1f57c8=""
+													href="http://localhost:9000/dmu/event_list.do"
+													role="button">EVENT </a></li>
+											</ul>
+										</div>
+
+										<div data-v-7b1f57c8="" class="sub-contents-area">
+											<div data-v-41f56098="" data-v-7b1f57c8="" class="container">
+												<div data-v-41f56098="" class="division-list">
+													<ul data-v-41f56098="">
+														<li data-v-41f56098="" class=""><a data-v-41f56098=""
+															class="learn_targetall"
+															href="http://localhost:9000/dmu/learn_list.do">전체</a></li>
+
+														<li data-v-41f56098="" class=""><a data-v-41f56098=""
+															class="learn_target" id="유아">유아</a></li>
+
+														<li data-v-41f56098="" class=""><a data-v-41f56098=""
+															class="learn_target" id="어린이">어린이</a></li>
+
+														<li data-v-41f56098="" class=""><a data-v-41f56098=""
+															class="learn_target" id="청소년">청소년</a></li>
+
+														<li data-v-41f56098="" class=""><a data-v-41f56098=""
+															class="learn_target" id="대학생">대학생</a></li>
+
+														<li data-v-41f56098="" class=""><a data-v-41f56098=""
+															class="learn_target" id="성인">성인</a></li>
+
+														<li data-v-41f56098="" class=""><a data-v-41f56098=""
+															class="learn_target" id="교사">교사</a></li>
+
+														<li data-v-41f56098="" class=""><a data-v-41f56098=""
+															class="learn_target" id="전시해설">전시해설</a></li>
+													</ul>
+												</div>
+
+												<div data-v-41f56098="" class="list-top-area"
+													id="list-top-area1">
+
+													<span data-v-41f56098="" class="total">총 <strong>${dbCount}</strong>건
+													</span>
+													<ul data-v-41f56098="" class="order">
+														<li data-v-41f56098="" class="on"><a
+															data-v-41f56098="" href="javascript:void(0);">시작일 순</a></li>
+
+														<li data-v-41f56098="" class=""><a data-v-41f56098=""
+															href="javascript:void(0);">종료일 순</a></li>
+													</ul>
+												</div>
+												<div data-v-41f56098="" class="ticket-list learn js-load"
+													id="ticket_list_learn">
+													<c:if test="${not empty list}">
+														<c:forEach var="vo" items="${list}">
+
+															<ul data-v-41f56098="" >
+																<li data-v-41f56098="" class="lists__item js-load" ><c:if
+																		test="${vo.dsfile != null }">
+																		<a data-v-41f56098=""
+																			href="http://localhost:9000/dmu/learn.do?did=${vo.did}"
+																			class="thumb"> <img data-v-2fed1a9a=""
+																			data-v-1e8092ec=""
+																			src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"></a>
+																	</c:if>
+
+																	<ul data-v-41f56098="" class="flag">
+																		<li data-v-41f56098="">${vo.dnum}회성교육</li>
+																		<li data-v-41f56098="">${vo.dplace}</li>
+																		<li data-v-41f56098="">${vo.dplace}</li>
+
+																		<!---->
+																		<!---->
+																	</ul> <a data-v-41f56098=""
+																	href="http://localhost:9000/dmu/learn.do?did=${vo.did}"
+																	class="title">${vo.dtitle}</a>
+
+																	<p data-v-41f56098="" class="explan">${vo.dtitle2 }</p>
+
+																	<ul data-v-41f56098="" class="info">
+																		<li data-v-41f56098=""><span data-v-41f56098=""
+																			class="tit">교육진행</span> <span data-v-41f56098=""
+																			class="txt">${vo.dstart}~ ${vo.dend}</span></li>
+																		<li data-v-41f56098=""><span data-v-41f56098=""
+																			class="tit">장소</span> <span data-v-41f56098=""
+																			class="txt">${vo.dplace}</span></li>
+																		<li data-v-41f56098=""><span data-v-41f56098=""
+																			class="tit">대상</span> <span data-v-41f56098=""
+																			class="txt">${vo.dtarget}</span></li>
+																		<li data-v-41f56098=""><span data-v-41f56098=""
+																			class="tit">교육시간</span> <span data-v-41f56098=""
+																			class="txt">${vo.dtime}</span></li>
+																		<li data-v-41f56098=""><span data-v-41f56098=""
+																			class="tit">참가비</span> <span data-v-41f56098=""
+																			class="txt">${vo.dprice} 원</span></li>
+																	</ul></li>
+															</ul>
+
+														</c:forEach>
+													</c:if>
+													<c:if test="${empty list }">
+														<div data-v-97ddc3ec="" class="no-data">
+															<div data-v-e20ce500="" data-v-080a389a=""
+																class="no-result" id="learn_list1">
+																<p data-v-e20ce500="" data-v-080a389a="">지금은 프로그램을
+																	준비중입니다.</p>
+															</div>
+														</div>
+													</c:if>
+
+
+												</div>
+
+													<div data-v-e3917d8a="" class="btn-program-more" >
+								<div data-v-26e42198="" data-v-e3917d8a="" class="btn-area" id="js-btn-wrap" class="btn-wrap">
+									<button data-v-26e42198="" id="btn50" name="btn50" type="button" class="secondary more"  >더보기</button>
+								</div>
+										</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				</div>
-			</c:if> 
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
+			</div>
+		</div>
+	</main>
 
-		<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
-	</body>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no"
+		frameborder=0 class="footer" style="margin-bottom: -5px"></iframe>
+</body>
 
 </html>

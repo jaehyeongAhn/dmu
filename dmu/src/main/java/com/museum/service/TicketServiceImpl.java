@@ -14,6 +14,7 @@ public class TicketServiceImpl implements TicketService {
 	
 	@Autowired
 	private DmuTicketDAO ticketDAO;
+
 	@Override
 	public int getWriteResult(DmuTicketVO vo) {
 		return ticketDAO.insert(vo);
@@ -23,13 +24,13 @@ public class TicketServiceImpl implements TicketService {
 		return ticketDAO.ticketlearnCount(dtarget);
 	}
 	@Override
-	public ArrayList<DmuTicketVO> getLists( int startCount,int endCount ,String dcode,String dtarget) {
-		ArrayList<DmuTicketVO> list = ticketDAO.selects( startCount,endCount,dcode,dtarget);
+	public ArrayList<DmuTicketVO> getLists( String dcode,String dtarget) {
+		ArrayList<DmuTicketVO> list = ticketDAO.listdtarget(dcode,dtarget);
 		return list;
 	}
 	@Override
-	public ArrayList<DmuTicketVO> getList( int startCount,int endCount ,String dcode) {
-		ArrayList<DmuTicketVO> list = ticketDAO.select( startCount,endCount,dcode);
+	public ArrayList<DmuTicketVO> getList( String dcode) {
+		ArrayList<DmuTicketVO> list = ticketDAO.listdcode( dcode);
 		return list;
 	}
 	@Override
@@ -70,15 +71,7 @@ public class TicketServiceImpl implements TicketService {
 		return ticketDAO.selectCompleteCheck(mid);
 	}
 	
-	/*
-	 * tag_page
-	 */
-	@Override
-	public ArrayList<DmuTicketVO> getEventContent(String dcode ) {
-		 
-		return ticketDAO.getEventContent(dcode);
-	}
-	 
+	
  
 	
 	 

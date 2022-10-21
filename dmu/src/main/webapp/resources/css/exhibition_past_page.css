@@ -1,3 +1,4 @@
+
 .layer-dimmed[data-v-9a980cc6] {
 	position: fixed;
 	width: 100%;
@@ -7,6 +8,15 @@
 	left: 0;
 	overflow: hidden;
 	z-index: 1000;
+}
+.previous-list .no-result[data-v-e20ce500] {
+    padding: 9.375rem 0;
+    text-align: center;
+}
+.previous-list .no-result p[data-v-e20ce500] {
+    font-size: 1.75rem;
+    line-height: 2.125rem;
+    letter-spacing: -0.04375rem;
 }
 
 .layer-dimmed .layer[data-v-9a980cc6] {
@@ -20241,6 +20251,7 @@ table td .btn-area button[data-v-65d27eab] {
 
 .previous-list ul[data-v-0157d8cb] {
 	margin-top: 4rem;
+	
 }
 
 .previous-list ul li[data-v-0157d8cb] {
