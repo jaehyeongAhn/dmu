@@ -210,7 +210,7 @@ $(document).ready(function(){
 											</tr>
 											<tr>
 												<th>티켓번호</th>
-												<td class="tid">tid 랜덤생성</td>
+												<td class="tid">${vo.tid}</td>
 											</tr>
 											<tr>
 												<th>전시/이벤트 명</th>
@@ -238,11 +238,11 @@ $(document).ready(function(){
 											</tr>
 											<tr>	
 												<th>예약일</th>
-												<td class="rokdate">${vo.rokdatech}</td>
+												<td class="rokdate">${vo.rokdate}</td>
 											</tr>
 											<tr>	
 												<th>결제번호</th>
-												<td class="unregister"> </td>
+												<td class="pid">${vo.pid}</td>
 											</tr>
 											<tr>	
 												<th>결제일</th>

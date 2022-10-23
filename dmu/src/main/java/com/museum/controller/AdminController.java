@@ -441,21 +441,20 @@ public class AdminController {
 			jo.addProperty("mid", mid);
 			jo.addProperty("dcode", mvo.getDcode());
 			jo.addProperty("rid", mvo.getRid());
-			
+			jo.addProperty("tid", mvo.getTid());
 			jo.addProperty("dtitle", mvo.getDtitle());
 			jo.addProperty("mname", mvo.getMname());
 			jo.addProperty("dpricech", mvo.getDpricech());
 			jo.addProperty("rtotal", mvo.getRtotal());
 			jo.addProperty("rallpricech", mvo.getRallpricech());
 			jo.addProperty("rdateda", mvo.getRdateda());
-			jo.addProperty("rokdatech", mvo.getRokdatech());
-			 
-			
-			
+			jo.addProperty("rokdate", mvo.getRokdate());
+			jo.addProperty("pid", mvo.getPid());
+			jo.addProperty("pdate", mvo.getPdate());
+			jo.addProperty("pcoin", mvo.getPcoin());
+			jo.addProperty("tcheck", mvo.getTcheck());
 			
 			return gson.toJson(jo);
-			
-			
 		}
 
 		/*

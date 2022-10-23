@@ -621,7 +621,6 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
-	function popup_reserve_detail(){
     $(".reservation_detail").click(function(){
     //$(this).css("background", "black");
     let index = $(this).parent().index();
@@ -639,15 +638,15 @@ $(document).ready(function(){
             	
             	$(".popup_detail_table td.dcode").text(data.dcode);
             	$(".popup_detail_table td.rid").text(data.rid);
-            	//tid
+            	$(".popup_detail_table td.tid").text(data.tid);
             	$(".popup_detail_table td.dtitle").text(data.dtitle);
             	$(".popup_detail_table td.mid").text(data.mname);
             	$(".popup_detail_table td.dprice").text(data.dpricech);
             	$(".popup_detail_table td.rtotal").text(data.rtotal);
             	$(".popup_detail_table td.rallprice").text(data.rallpricech);
             	$(".popup_detail_table td.rdate").text(data.rdateda);
-            	$(".popup_detail_table td.rokdate").text(data.rokdatech);
-            	//결제번호
+            	$(".popup_detail_table td.rokdate").text(data.rokdate);
+            	$(".popup_detail_table td.pid").text(data.pid);
             	$(".popup_detail_table td.pdate").text(data.pdate);
             	$(".popup_detail_table td.pcoin ").text(data.pcoin);
             	$(".popup_detail_table td.tcheck ").text(data.tcheck);
@@ -665,7 +664,7 @@ $(document).ready(function(){
         });//ajax
     });//click
   
-  //펼치기//
+  
    $(".reservation_detail_admin").click(function(){
    		 var id_check = $(this).attr("id");
    		 alert($(this).attr('id'));
@@ -674,7 +673,7 @@ $(document).ready(function(){
    		
    });
   
-
+}); //ready
  
  
 	
@@ -682,7 +681,7 @@ $(document).ready(function(){
 	/*
 	** 검색기능
 	*/
-	
+$(document).ready(function(){	
 	function paging1(dbCount, rpage, pageSize){
     
 		//페이징 리스트 출력
@@ -815,6 +814,5 @@ $(document).ready(function(){
 	    }); //ajax
 
 	}//finction - admin_search_reserve
-	
- }
+ 
 }); //ready
