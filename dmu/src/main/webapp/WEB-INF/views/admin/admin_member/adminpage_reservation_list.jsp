@@ -135,7 +135,7 @@ $(document).ready(function(){
 							총 <strong class='total'>${dbCount}</strong>건
 						</div>
 						<div class="search-part">
-							<input type="text" name="search" placeholder="검색어를 입력하세요" class="search-bar-reserve">
+							<input type="text" name="search" placeholder="티켓번호/이벤트명/예약자명으로 검색 가능합니다" class="search-bar-reserve">
 							<button class="search-btn-reserve">검색</button>
 						</div>
 						</div>
@@ -175,7 +175,7 @@ $(document).ready(function(){
 															<td>취소완료</td>
 														</c:when>
 															<c:otherwise>
-																<td>  <button class="reservation_detail_admin" type="button" id="${vo.rid}"> 관리자 모드 </button> </td>
+																<td>  <button class="reservation_detail_admin member_detail" type="button" id="${vo.rid}"> 관리자 모드 </button> </td>
 														</c:otherwise>
 													</c:choose>
 											</tr>
