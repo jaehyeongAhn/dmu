@@ -130,7 +130,22 @@
 
 			});
 </script>
- 
+<script>	
+	$(document).ready(function() {
+	//popup
+	$(".icon").click(function(){
+		$(".background_exhibition").addClass("show");
+		$(".window_exhibition").addClass("show");
+		$(".popup_close").click(function(){
+			$(".background_exhibition").removeClass("show");
+			$(".window_exhibition").removeClass("show");
+		});
+	});
+	
+	 
+});
+	
+</script>
  
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
@@ -151,7 +166,7 @@
 		 <input type="hidden" name="rtotal" id="rtotal" value="">  
 		 <input type="hidden" name="dplace" id="dplace" value=${vo.dplace }> 
 		 <input type="hidden" name="rallprice" id="rallprice" value=""> 
- 		 <input type="hidden" name="mid" id="mid" value=${ sessionScope.member.mid }> 
+		 <input type="hidden" name="mid" id="mid" value=${ sessionScope.member.mid }> 
 		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
 		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
 		 

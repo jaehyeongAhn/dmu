@@ -82,11 +82,6 @@
 <div style="width:100%; height:17vh; color:transparent">헤더</div>
 	
   <div class="content">
- 	 
-		 
-		
-		 
-		 
 
 		 <input type="hidden" name="did" value="${vo.did }"> 
 		 <input type="hidden" name="dprice" id="dprice" value=${vo.rprice }> 
@@ -97,6 +92,7 @@
 		 <input type="hidden" name="mid" id="mid" value=${ vo.mid }>  
 		 <input type="hidden" name="pdate" id="pdate" value="s"> 
 		 <input type="hidden" name="pcoin" id="pcoin" value="카드">  
+
 			<main>
 				<div data-v-ec5a0c2c="" class="root-container">
 					<div data-v-ec5a0c2c="" class="content-wrapper">

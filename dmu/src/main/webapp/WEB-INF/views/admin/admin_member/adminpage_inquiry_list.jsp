@@ -48,9 +48,11 @@ $(document).ready(function(){
 											<li class="">
 												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
+											<c:if test="${sessionScope.member.mid == 'master'}">
 											<li class="">
 												<a class="" href="adminpage_admin_list.do">관리자승인</a>
 											</li>
+											</c:if>
 											<li class="">
 												<a class="" href="adminpage_reservation_list.do">예매관리</a>
 											</li>
