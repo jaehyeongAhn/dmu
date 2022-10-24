@@ -28,7 +28,7 @@
 	
 		
 	<main style="height:480px">
-		 <form name="ticketDeleteForm" action="admin_ticket_delete_check.do" method="post">
+		 <form name="ticketDeleteForm" action="adminticket_delete_check.do" method="post">
 		 	<input type="hidden" name="did" value="${did}">
 				<div data-v-ec5a0c2c="" class="root-container">
 					<div data-v-ec5a0c2c="" class="content-wrapper">

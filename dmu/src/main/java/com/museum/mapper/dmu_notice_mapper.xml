@@ -43,6 +43,34 @@
 		select count(*) from dmu_notice
 	</select>
 	
-
+	<select id="searchList" parameterType="map" resultType="com.museum.vo.DmuNoticeVO">
+		
+		select rno, nid, ncategory, ntitle, ndate
+		from(select rownum rno, nid, ncategory, ntitle, to_char(ndate, 'yy-mm-dd') ndate
+		from (select nid, ncategory, ntitle, ndate from dmu_notice 
+		<choose>
+		<when test = 'searchList == "title"'>
+		 	where ntitle like '%' || #{keyword} || '%' 
+		</when>
+		<when test = 'searchList == "content"'>
+			where ncontent like '%' || #{keyword} || '%'
+		</when>
+		</choose>
+		order by ndate desc))
+		where rno between #{start} and #{end}
+		
+	</select>
+	
+	<select id="totalCount_search" parameterType="java.lang.String" resultType="int">
+		select count(*) from dmu_notice
+		<choose>
+		<when test = 'searchList == "title"'>
+			where ntitle like '%' || #{keyword} || '%'
+		</when>
+		<when test = 'searchList == "content"'>
+			where ncontent like '%' || #{keyword} || '%'
+		</when>
+		</choose>
+	</select> 
 
 </mapper>

@@ -173,7 +173,7 @@
 								<h2 data-v-0d03d759="">${dtarget }</h2>
 								<nav data-v-0d03d759="">
 									<ul data-v-0d03d759="">
-										<li data-v-0d03d759="" style="cursor: pointer;">HOME</li>
+										<li data-v-0d03d759="" style="cursor: pointer;"><a href="index.do" style="opacity:0;">HOME</a></li>
 										<li data-v-0d03d759="">LEARN</li>
 										<li data-v-0d03d759="">${dtarget }</li>
 										<!---->
@@ -269,8 +269,7 @@
 																		class="info-list">
 																		<li data-v-e20ce500="" data-v-080a389a=""><strong
 																			data-v-e20ce500="" data-v-080a389a="">교육 진행</strong>
-																			<span data-v-e20ce500="" data-v-080a389a="">${vo.dstart }~
-																				${vo.dend }</span></li>
+																			<span data-v-e20ce500="" data-v-080a389a="">${vo.dstart }~${vo.dend }</span></li>
 																		<li data-v-e20ce500="" data-v-080a389a=""><strong
 																			data-v-e20ce500="" data-v-080a389a="">장소</strong> <span
 																			data-v-e20ce500="" data-v-080a389a="">${vo.dplace }</span>

@@ -54,6 +54,17 @@ $(document).ready(function(){
        });
 
 
+	  var Offset = $( '.main-menu-area' ).offset();
+  		$( window ).scroll( function() {
+		    if ( $( document ).scrollTop() > Offset.top ) {
+		      $( '.main-menu-area' ).addClass( 'sticky' );
+		    }
+		    else {
+		      $( '.main-menu-area' ).removeClass( 'sticky' );
+		    }
+		  });
+
+
 
     $("iframe.header").on('load', function(){
     

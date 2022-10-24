@@ -1,5 +1,5 @@
 
-/**** 펼치기 ****/
+/**** �렯移섍린 ****/
 .collapsible {
   background-color: #777;
   color: white;
@@ -23,6 +23,116 @@
   transition: max-height 0.2s ease-out;
   background-color: #f1f1f1;
 }
+
+.no-result[data-v-1b9c8af9] {
+    padding: 9.375rem 0;
+    border-top: 0.125rem solid #111;
+    border-bottom: 1px solid #ddd;
+}
+.no-result p[data-v-1b9c8af9] {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2.125rem;
+    letter-spacing: -0.0375rem;
+}
+/*********
+	검색
+**********/
+.search-part{
+	margin-bottom: 10px;
+}
+.search-result{
+	margin-top : 5px;
+}
+.search-bar{
+    border: 0;
+    border-bottom: 1px solid #666;
+    width: 180px;
+    height: 0.75rem;
+    padding: 5px 5px;
+    /* border: 1px solid #ddd; */
+    background: #fff;
+    color: #111;
+    /* line-height: 1.2rem; */
+    letter-spacing: -0.025rem;
+}
+
+.search-bar-admin{
+	border: 0;
+    border-bottom: 1px solid #666;
+    width: 180px;
+    height: 0.75rem;
+    padding: 5px 5px;
+    /* border: 1px solid #ddd; */
+    background: #fff;
+    color: #111;
+    /* line-height: 1.2rem; */
+    letter-spacing: -0.025rem;
+}
+
+.search-bar-reserve{
+	border: 0;
+    border-bottom: 1px solid #666;
+    width: 180px;
+    height: 0.75rem;
+    padding: 5px 5px;
+    /* border: 1px solid #ddd; */
+    background: #fff;
+    color: #111;
+    /* line-height: 1.2rem; */
+    letter-spacing: -0.025rem;
+}
+
+
+.search-btn{
+	width: 25px;
+    height: 40px;
+    font-size: 0;
+    background-image: url(http://localhost:9000/dmu/resources/images/search.svg);
+    /* position: absolute; */
+    top: 50%;
+    right: 0.625rem;
+    margin-top: -0.78125rem;
+    display: inline;
+    background-color: white;
+    margin-top: -2px;
+    border: none;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.search-btn-admin{
+	width: 25px;
+    height: 40px;
+    font-size: 0;
+    background-image: url(http://localhost:9000/dmu/resources/images/search.svg);
+    /* position: absolute; */
+    top: 50%;
+    right: 0.625rem;
+    margin-top: -0.78125rem;
+    display: inline;
+    background-color: white;
+    margin-top: -2px;
+    border: none;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.search-btn-reserve{
+	width: 25px;
+    height: 40px;
+    font-size: 0;
+    background-image: url(http://localhost:9000/dmu/resources/images/search.svg);
+    /* position: absolute; */
+    top: 50%;
+    right: 0.625rem;
+    margin-top: -0.78125rem;
+    display: inline;
+    background-color: white;
+    margin-top: -2px;
+    border: none;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
 /*******/
 table {
     display: table;
@@ -58,7 +168,7 @@ tbody {
     border-color: inherit;
 }
 div .info-list table tbody td:first-child {
-    border-left: 0;
+   /*  border-left: 0; */
 }
 div .info-list table tbody td {
     padding: 1.25rem 0.625rem;
@@ -137,7 +247,7 @@ button.accept a {
 }
 
 /***************
-	�˾�âㅇ
+	占싯억옙창�뀋
 ****************/
 
 
@@ -435,7 +545,7 @@ p#popup_ok {
 
 
 /***************
-	����¡ó��
+	占쏙옙占쏙옙징처占쏙옙
 ****************/
 
 

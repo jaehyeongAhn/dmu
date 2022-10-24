@@ -14,6 +14,7 @@
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/adminpage_inquiry.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src = "http://localhost:9000/dmu/resources/js/admin_member.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/admin_inquiry.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/main_header.js"></script>
@@ -48,9 +49,11 @@ $(document).ready(function(){
 											<li class="">
 												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
+											<c:if test="${sessionScope.member.mid == 'master'}">
 											<li class="">
 												<a class="" href="adminpage_admin_list.do">관리자승인</a>
 											</li>
+											</c:if>
 											<li class="">
 												<a class="" href="adminpage_reservation_list.do">예매관리</a>
 											</li>
