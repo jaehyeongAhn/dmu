@@ -90,6 +90,11 @@ div.popup_button button.popup_close {
     margin: 0 10px;
     cursor: pointer;
 }
+strong.title.title_popup {
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.17;
+}
 /***************
    팝업창-예매 관련 로그인/홈
 ****************/

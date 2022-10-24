@@ -218,7 +218,6 @@ public class NoticeController {
 				endCount = pageSize;
 			}
 			ArrayList<DmuNoticeVO> noticeList = noticeService.noticeSearch(startCount, endCount, keyword, searchList);
-			System.out.println(noticeList+"151");
 			
 			JsonObject job = new JsonObject();
 			JsonArray jarray = new JsonArray();

@@ -27,7 +27,7 @@ $(document).ready(function(){
 	function paging(dbCount, rpage, pageSize) {
 	var pager = jQuery('#ampaginationsm').pagination({
 	
-	    maxSize: 7,	    		// max page size
+	    maxSize: 5,	    		// max page size
 	    totals: dbCount,	// total rows	
 	    page: rpage,		// initial page		
 	    pageSize: pageSize,	// max number items per page
@@ -134,14 +134,14 @@ $(document).ready(function(){
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="search-result">
 							총 <strong class='total'>${dbCount}</strong>건
 						</div>
-						<div>
-							<input type="text" name="search" placeholder="검색어를 입력하세요." class="search-bar-reserve">
+						<div class="search-part">
+							<input type="text" name="search" placeholder="검색어를 입력하세요" class="search-bar-reserve">
 							<button class="search-btn-reserve">검색</button>
 						</div>
 						</div>
-								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
+								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">검색 결과가 없습니다.</p></div>
 								<div class="info-list">
-									<table id="report">
+									<!-- <table id="report"> -->
 									<table class="info-table">
 										<thead>
 											<tr>
@@ -175,7 +175,7 @@ $(document).ready(function(){
 															<td>취소완료</td>
 														</c:when>
 															<c:otherwise>
-																<td >  <button class="reservation_detail_admin" type="button" id="${vo.rid}"> 관리자 모드 </button> </td>
+																<td>  <button class="reservation_detail_admin" type="button" id="${vo.rid}"> 관리자 모드 </button> </td>
 														</c:otherwise>
 													</c:choose>
 											</tr>
@@ -196,7 +196,7 @@ $(document).ready(function(){
 								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
 									href="javascript:void(0);" role="button">3</a></li>
 							</ul>
-							<!-- <button data-v-650d6904="" type="button" class="btn-next">
+<!-- 							 <button data-v-650d6904="" type="button" class="btn-next">
 								next</button>
 							<button data-v-650d6904="" type="button" class="btn-last">
 								last</button> -->
@@ -226,7 +226,7 @@ $(document).ready(function(){
 											</tr>
 											<tr>
 												<th>티켓번호</th>
-												<td class="tid">tid 랜덤생성</td>
+												<td class="tid">${vo.rid}</td>
 											</tr>
 											<tr>
 												<th>전시/이벤트 명</th>

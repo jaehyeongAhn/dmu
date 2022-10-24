@@ -8,14 +8,14 @@
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
-<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/mypage.css">
-<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
-<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/adminpage.css">
-<script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/mypage.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/adminpage.css">
+<script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/admin_member.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/main_header.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/admin_member.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 $(document).ready(function(){
 	
@@ -27,7 +27,7 @@ $(document).ready(function(){
 		//페이징 리스트 출력
 		var pager = jQuery('#ampaginationsm').pagination({
 		
-		    maxSize: 7,	    		// max page size
+		    maxSize: 5,	    		// max page size
 		    totals: dbCount,	// total rows	
 		    page: rpage,		// initial page		
 		    pageSize: pageSize,	// max number items per page
@@ -50,125 +50,7 @@ $(document).ready(function(){
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
            $(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);         
     });  
-	
-	
-/* 	//popup
-	function member_popup(){
-		$(".member_detail").click(function(){
-			$(".background_member").addClass("show");
-			$(".window_member").addClass("show");
-			$(".popup_close").click(function(){
-				$(".background_member").removeClass("show");
-				$(".window_member").removeClass("show");
-			});
-		});
-	}
-	
-	member_popup();
-	
-	//검색기능
-	
-	$(".search-btn").click(function(){
-		admin_search_public(1);
-	});
-	
-	
-	$(".search-bar").keyup(function(e){
-		if(e.keyCode == 13){
-			admin_search_public(1);
-		}
-	});
-	
-	
-	function admin_search_public(rpage){
-	    $(".search-bar").val($(".search-bar").val().trim());
-	    let keyword = $(".search-bar").val().trim();
-	    $.ajax({
-	        
-	        url : 'admin_search_public_json.do',
-	        type: 'get',
-	        cache : false,
-	        headers : {"cache-control":"no-cache", "pragma": "no-cache"},
-	        data : {"keyword" : keyword, "rpage": rpage},
-	        success : function(data){
-	            let dataset = JSON.parse(data);
-	            
-	           	var output ="<table class='info-table'><thead><tr>";
-	            output +="<th>아이디</th>";
-	            output +="<th>회원명</th>";
-	            output +="<th>전화번호</th>";
-	            output +="<th>이메일</th>";
-	            output +="<th>가입일자</th>";
-	            output +="<th>상태</th>";
-	            output +="<th>자세히보기</th>";
-	            output +="</tr></thead>";
-	            
-	            for(obj of dataset.list){
-	                output += "<tbody><tr>";
-	                output += "<td class='memberId'>" + obj.mid + "</td>";
-	                output += "<td>" + obj.mname + "</td>";
-	                output += "<td>" + obj.pnumber + "</td>";
-	                output += "<td>" + obj.email + "</td>";
-	                output += "<td>" + obj.ddate + "</td>";
-	                if(obj.unregister == 'n'){
-	                    output += "<td>탈퇴</td>"
-	                }else{
-	                    output +="<td>가입완료</td>"
-	                }
-	                output += "<td><button class='member_detail'><a href='#'>자세히보기</a></button></td>"
-	            }
-	                output += "</tr></tbody></table>";	
-	            
-	            var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm' style='text-align:center;''> "
-	            paging_list +="</div>"
-	            
-	            if(dataset.list.length !=0){
-	                
-	            $(".no-result").css("display","none");
-	            	            
-	            $(".info-table").remove();
-	            $("#ampaginationsm").remove();
-	            $(".info-list").append(output);
-	            $(".info-list").after(paging_list);
-	            $("div.search-result strong.total").text(dataset.dbCount);
-	            
-	            member_popup();
-	            paging(dataset.dbCount, dataset.rpage, dataset.pageSize);
-	            
-	            //페이징 번호 클릭 시 이벤트 처리
- 	            jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
-	                   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	                   //$(location).attr('href', "http://localhost:9000/dmu/adminpage_member_list.do?rpage="+e.page);
-	                   admin_search_public(e.page);
-	                
-	            });  
-	            
-	            }else{
-	                $("div.search-result strong.total").text(dataset.dbCount);
-	                $(".info-table").remove();
-	                $(".no-result").css("display","block");
-	                
-	            }
-	        
-	        },
-	        error : function(data){
-	            alert('error');
-	        }
-	        
-	        
-	    }); //ajax
-	    
-
-	}//function - admin_search_public
-	 */
-	
-	
-	
-
 });//ready
-
-
-
 </script>
 <style>
 </style>
@@ -237,13 +119,13 @@ $(document).ready(function(){
 						<div data-v-1b9c8af9="" data-v-080a389a="" class="search-result">
 							총 <strong class='total'>${dbCount}</strong>건
 						</div>
-						<div>
-							<input type="text" name="search" placeholder="검색어를 입력하세요." class="search-bar">
+						<div class="search-part">
+							<input type="text" name="search" placeholder="검색어를 입력하세요" class="search-bar">
 							<button class="search-btn">검색</button>
 						</div>
 						</div>
 					<div class="top-search-area">
-								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
+								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">검색 결과가 없습니다.</p></div>
 								<div class="info-list">
 									<table class="info-table">
 										<thead>
@@ -280,8 +162,9 @@ $(document).ready(function(){
 										</tbody>
 									</table>
 								</div>
-				 <div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm" style="text-align:center;"> 
-  							<button data-v-650d6904="" type="button" disabled="disabled"
+							<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm"
+								style="text-align: center;">
+ 						<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-first">first</button>
 							<button data-v-650d6904="" type="button" disabled="disabled"
 								class="btn-prev">prev</button>
@@ -292,12 +175,12 @@ $(document).ready(function(){
 									href="javascript:void(0);" role="button">2</a></li>
 								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
 									href="javascript:void(0);" role="button">3</a></li>
-							</ul>
-						<!-- <button data-v-650d6904="" type="button" class="btn-next">
+							</ul> 
+<!-- 							<button data-v-650d6904="" type="button" class="btn-next">
 								next</button>
 							<button data-v-650d6904="" type="button" class="btn-last">
 								last</button>  -->
-						</div>
+							</div>
 						</div>
 					</div>
 				</div>

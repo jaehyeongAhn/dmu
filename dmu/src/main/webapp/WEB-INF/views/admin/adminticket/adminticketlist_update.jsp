@@ -33,6 +33,12 @@
 			}
 		});
 	});
+	
+	function maxLengthCheck(object){
+	    if (object.value.length > object.maxLength){
+	      object.value = object.value.slice(0, object.maxLength);
+	    }    
+	  }
 </script>
 
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
@@ -48,7 +54,7 @@
 <div data-v-25f87e60="" data-v-ec5a0c2c="">
 <div data-v-25f87e60="" class="sub-contents-area">
 
-	<form name="ticketUpdateForm" action="admin_ticket_update_check.do" method="post"
+	<form name="ticketUpdateForm" action="adminticket_update_check.do" method="post"
 			enctype="multipart/form-data">
 			<input type="hidden" name="did" value="${vo.did}">
 			<input type="hidden" name="dfile" value="${vo.dfile}">
@@ -126,12 +132,12 @@
 			</li>
 			
 			<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title must-do">이용요금</strong>
-				<p data-v-8ed31374="" class="price"><input type="text" name="dprice" id="dprice" value="${vo.dprice }"></p>
+				<p data-v-8ed31374="" class="price"><input type="number" name="dprice" id="dprice" maxlength="10" value="${vo.dprice }"></p>
 			</li>
 			
 			<li data-v-8ed31374="" class="">
 				<strong data-v-8ed31374="" class="title must-do">정원</strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dpersonnel" id="dpersonnel" value="${ vo.dpersonnel }"></span>
+				<span data-v-8ed31374="" class="text"><input type="number" name="dpersonnel" id="dpersonnel" maxlength="10" value="${ vo.dpersonnel }" oninput="maxLengthCheck(this)"></span>
 			</li>
 			
 			<li data-v-8ed31374="" class="">
@@ -141,7 +147,7 @@
 			
 			<li data-v-8ed31374="" class="">
 				<strong data-v-8ed31374="" class="title">이용횟수</strong>
-				<span data-v-8ed31374="" class="text"><input type="text" name="dnum" id="dnum" value="${ vo.dnum }"></span>
+				<span data-v-8ed31374="" class="text"><input type="number" name="dnum" id="dnum" maxlength="10" value="${ vo.dnum }" oninput="maxLengthCheck(this)"></span>
 			</li>
 		</ul>
 	</div>

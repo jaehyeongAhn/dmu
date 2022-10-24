@@ -172,7 +172,7 @@ public class DmuNoticeDAO extends DBConn{
 	public ArrayList<DmuNoticeVO> noticeSearch(int startCount, int endCount, String keyword, String searchList){
 		Map<String, String> param = new HashMap<String, String>();
 		param.put("start", String.valueOf(startCount));
-		param.put("start", String.valueOf(endCount));
+		param.put("end", String.valueOf(endCount));
 		param.put("keyword",  keyword );
 		param.put("searchList", searchList);
 	

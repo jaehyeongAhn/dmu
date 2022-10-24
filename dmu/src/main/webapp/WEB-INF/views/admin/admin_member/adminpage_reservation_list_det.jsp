@@ -55,10 +55,10 @@
 												<a class="" href="adminpage_admin_list.do">관리자승인</a>
 											</li>
 											<li class="">
-												<a class="" href="adminpage_reservation_list.do">예매관리</a>
+												<a class="" href="adminpage_reservation_list.do" style="color:black; font-weight:700;">예매관리</a>
 											</li>
 											<li class="">
-												<a class="" href="#">1대1 문의</a>
+												<a class="" href="adminpage_inquiry_list.do">1대1 문의</a>
 											</li>
 										</ul>
 									</div>

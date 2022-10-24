@@ -100,13 +100,13 @@ public class NoticeServiceImpl implements NoticeService{
 	 */
 	public ArrayList<DmuNoticeVO> noticeSearch(int startCount, int endCount, String keyword, String searchList){
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		ArrayList<DmuNoticeVO> slist = dao.noticeSearch(startCount, endCount, keyword, searchList);
+		ArrayList<DmuNoticeVO> slist = noticeDAO.noticeSearch(startCount, endCount, keyword, searchList);
 		return slist;
 	}
 	
 	public int getTotalCount_search(String keyword, String searchList) {
 		DmuNoticeDAO dao = new DmuNoticeDAO();
-		int result = dao.totalCount_search(keyword, searchList);
+		int result = noticeDAO.totalCount_search(keyword, searchList);
 		return result;
 	}
 	

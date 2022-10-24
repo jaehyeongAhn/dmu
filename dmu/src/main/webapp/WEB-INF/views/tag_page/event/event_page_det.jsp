@@ -50,7 +50,7 @@
 										<h2 data-v-0d03d759="">이벤트</h2>
 										<nav data-v-0d03d759="">
 											<ul data-v-0d03d759="">
-												<li data-v-0d03d759="" style="cursor: pointer;">HOME</li>
+												<li data-v-0d03d759="" style="cursor: pointer;"><a href="index.do" style="opacity:0;">HOME</a></li>
 												<li data-v-0d03d759="">EVENT</li>
 												<li data-v-0d03d759="">이벤트</li>
 												<!---->

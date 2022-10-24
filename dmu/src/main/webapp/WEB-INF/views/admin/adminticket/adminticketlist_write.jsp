@@ -21,6 +21,13 @@
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
+<script>
+function maxLengthCheck(object){
+    if (object.value.length > object.maxLength){
+      object.value = object.value.slice(0, object.maxLength);
+    }  
+  }
+</script>
 </head>
 <body>
 	<!-- Header Include -->
@@ -114,16 +121,12 @@
          
          
          <li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title must-do">이용요금</strong>
-            <p data-v-8ed31374="" class="price"><input type="text" name="dprice" id="dprice" ></p>
+            <p data-v-8ed31374="" class="price"><input type="number" name="dprice" id="dprice" maxlength="10" oninput="maxLengthCheck(this)" onkeydown="javascript: return event.keyCode == 69 ? false : true"></p>
          </li>
-
-
-
-         
          
          <li data-v-8ed31374="" class="">
             <strong data-v-8ed31374="" class="title must-do">정원</strong>
-            <span data-v-8ed31374="" class="text"><input type="text" name="dpersonnel" id="dpersonnel"></span>
+            <span data-v-8ed31374="" class="text"><input type="number" name="dpersonnel" id="dpersonnel" maxlength="10" oninput="maxLengthCheck(this)" onkeydown="javascript: return event.keyCode == 69 ? false : true"></span>
          </li>
          
          <li data-v-8ed31374="" class="">
@@ -142,7 +145,7 @@
          
          <li data-v-8ed31374="" class="">
             <strong data-v-8ed31374="" class="title must-do">교육횟수</strong>
-            <span data-v-8ed31374="" class="text"><input type="text" name="dnum" id="dnum" ></span>
+            <span data-v-8ed31374="" class="text"><input type="number" name="dnum" id="dnum" maxlength="1" oninput="maxLengthCheck(this)" onkeydown="javascript: return event.keyCode == 69 ? false : true"></span>
          </li>
          <li data-v-8ed31374="">
             <strong data-v-8ed31374="" class="title">운영시간/교육시간</strong>
