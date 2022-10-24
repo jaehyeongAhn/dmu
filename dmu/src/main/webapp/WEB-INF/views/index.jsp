@@ -722,7 +722,7 @@
                                                         href="#">
                                                         <!---->
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area">
-                                                            <a href="http://localhost:9000/dmu/learn_page.do"><button data-v-26e42198="" id="btn55" type="button"
+                                                            <a href="http://localhost:9000/dmu/learn_page.do?dtarget=유아"><button data-v-26e42198="" id="btn55" type="button"
                                                                 class="secondary"> 자세히 보기 </button></a></div>
                                                     </a><a data-v-04a3ebf5=""
                                                         href="#">

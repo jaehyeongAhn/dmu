@@ -19,7 +19,7 @@ public class FileServiceImpl {
 		if (vo.getDsfile() != null) {
 			String path = request.getSession().getServletContext().getRealPath(File.separator);
 			path += File.separator + "resources" + File.separator + "upload" + File.separator;
-
+			System.out.println(path);
 			File old_file = new File(path + vo.getDsfile());
 			if (old_file.exists()) {
 				old_file.delete();

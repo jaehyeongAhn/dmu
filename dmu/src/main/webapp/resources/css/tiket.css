@@ -7,17 +7,7 @@
 main {
     min-height: calc(100vh - 43.375rem);
 }
- .clicked {
-        color: gold;
-      }
 
-/* .js-load:nth-child(n+2) {
-    display: none;
-}
-.js-load.active {
-    display: block;
-}
- */
 
 .no-result p[data-v-e20ce500] {
     font-size: 2.25rem;

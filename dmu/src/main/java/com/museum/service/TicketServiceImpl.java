@@ -24,15 +24,16 @@ public class TicketServiceImpl implements TicketService {
 		return ticketDAO.ticketlearnCount(dtarget);
 	}
 	@Override
-	public ArrayList<DmuTicketVO> getLists( String dcode,String dtarget) {
-		ArrayList<DmuTicketVO> list = ticketDAO.listdtarget(dcode,dtarget);
+	public ArrayList<DmuTicketVO> getLists( int startCount , int endCount ,String dcode,String dtarget,String day) {
+		ArrayList<DmuTicketVO> list = ticketDAO.listdtarget(startCount,endCount,dcode,dtarget,day);
 		return list;
 	}
 	@Override
-	public ArrayList<DmuTicketVO> getList( String dcode) {
-		ArrayList<DmuTicketVO> list = ticketDAO.listdcode( dcode);
+	public ArrayList<DmuTicketVO> getList(int startCount,int endCount, String dcode ,String day) {
+		ArrayList<DmuTicketVO> list = ticketDAO.listdcode( startCount,endCount,dcode,day);
 		return list;
 	}
+	
 	@Override
 	public int getUpdate(DmuTicketVO vo) {
 		return ticketDAO.update(vo);

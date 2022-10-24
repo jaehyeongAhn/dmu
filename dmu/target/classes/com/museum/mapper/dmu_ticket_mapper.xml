@@ -14,24 +14,53 @@
 	</update>
 	<!-- ticket select dtarget totalcount -->
 	 <select id="dtargetCount" parameterType="java.lang.String" resultType="int">
-	 	select count(*) from dmu_ticket where dend &gt; sysdate and dcode='learn' and dtarget= #{dtarget} 
+	 	select count(*) from dmu_ticket where dend &gt; sysdate and dcode='learn' and dtarget= #{dtarget}
 	 </select>
 	 
 	<!-- ticket select dcode totalcount -->
 	 <select id="dcodeCount" parameterType="java.lang.String" resultType="int">
-	 	select count(*) from dmu_ticket where dend &gt; sysdate and dcode= #{dcode} 
+	 	select count(*) from dmu_ticket where dend &gt; sysdate and dcode= #{dcode}         
 	 </select>
  
 	<!-- select list dtarget dmu_ticket -->
 	<select id="listdtarget" parameterType="map" resultType="com.museum.vo.DmuTicketVO">
-		select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum ,dtitle2,dentertime 
-		from dmu_ticket where dcode = #{dcode} and dtarget= #{dtarget} and dend &gt; sysdate order by dstart desc
+		
+		select rno,did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime 
+        from(select rownum rno,did,dplace,dtitle,dstart ,
+        dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime 
+        from (select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum ,dtitle2,dentertime from dmu_ticket where dcode = #{dcode} and dtarget= #{dtarget} and dend &gt; sysdate
+        <choose>
+        	
+        	<when test='day==1'>
+        	order by dstart asc
+        	</when>
+        	<otherwise>
+        	order by dstart desc
+        	</otherwise>
+        </choose>
+         ))
+        where rno between #{start} and #{end}
+        
 	</select>
+	
 	<!-- select list dcode dmu_ticket -->
 	<select id="listdcode" parameterType="map" resultType="com.museum.vo.DmuTicketVO">
    
-    select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum ,dtitle2,dentertime 
-    from dmu_ticket where dcode = #{dcode} and dend &gt; sysdate order by dstart desc
+    select rno, did, dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime  
+        from(select rownum rno,did,dplace,dtitle,   dstart ,
+        dend ,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum,dtitle2,dentertime 
+        from (select did,dplace,dtitle,dstart,dend,dfile,dsfile,dcode,dtime,dprice,dtarget,dnum ,dtitle2,dentertime from dmu_ticket where dcode = #{dcode} and dend &gt; sysdate
+        <choose>
+        	
+        	<when test='day==1'>
+        	order by dstart asc
+        	</when>
+        	<otherwise>
+        		order by dstart desc
+        	</otherwise>
+        </choose>
+         ))
+        where rno between #{start} and #{end} 
         
 	</select>
 	<!-- insert dmu_ticket -->
