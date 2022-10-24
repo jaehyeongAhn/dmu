@@ -233,8 +233,7 @@ public class NoticeController {
 				
 				jarray.add(jo);
 			}
-			
-			System.out.println(jarray+"11");
+
 			job.add("list", jarray);
 			job.addProperty("dbCount", dbCount);
 			job.addProperty("rpage", rpage);
