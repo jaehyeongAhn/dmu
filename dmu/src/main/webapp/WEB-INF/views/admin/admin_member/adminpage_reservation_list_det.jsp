@@ -17,6 +17,12 @@
 <script src = "http://localhost:9000/dmu/resources/js/admin_member.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/main_header.js"></script>
+<script>
+	$(document).ready(function(){
+		let height = $(".popup_refund").height() - $(".refund_title").outerHeight() - $(".refund_btn_list").outerHeight();
+		$(".refund_content").css("height", height);
+	});
+</script>
 <style>
 	div.flag_content ul {
 		list-style : "-";
@@ -115,6 +121,14 @@
 														<td>${vo.dplace}</td>
 														<th>상태</th>
 														<td>${vo.rcheck}</td>
+														<c:choose>
+															<c:when test = "${ vo.rheck == 'n' }">
+																<h2>예약취소</h2>
+															</c:when>
+															<c:otherwise>
+																<h2>예매완료</h2>
+															</c:otherwise>
+														</c:choose>
 													</tr>
 												</table>
 											</div>
@@ -131,7 +145,14 @@
 							<div class="payment_content">
 								<div class="payment_result_list">
 									<div class="payment-result-list-title">
-										<h2>결제정보</h2>
+										<c:choose>
+										<c:when test = "${ vo.rcheck == 'n' }">
+											<h2>환불정보</h2>
+										</c:when>
+										<c:otherwise>
+											<h2>결제정보</h2>
+										</c:otherwise>
+									</c:choose>
 									</div>
 									<div class="payment-result-list-content">
 										<div>
