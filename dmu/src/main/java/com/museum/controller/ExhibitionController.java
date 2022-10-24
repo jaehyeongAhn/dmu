@@ -36,8 +36,9 @@ public class ExhibitionController {
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
-		vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
-		vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
+		if(vo.getDtime() != null) {
+			vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
+		}
 		if(vo.getDinformation() != null) {
 			vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		}
@@ -52,8 +53,9 @@ public class ExhibitionController {
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
-		vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
-		vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
+		if(vo.getDtime() != null) {
+			vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
+		}
 		if(vo.getDinformation() != null) {
 			vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		}
@@ -71,8 +73,9 @@ public class ExhibitionController {
 		ModelAndView mv = new ModelAndView();
 		 
 		DmuTicketVO vo =  ticketService.getContent(did);
-		vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
-		vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
+		if(vo.getDtime() != null) {
+			vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
+		}
 		if(vo.getDinformation() != null) {
 			vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 		}
