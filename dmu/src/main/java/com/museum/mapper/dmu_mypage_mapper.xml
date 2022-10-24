@@ -44,28 +44,28 @@
 		        FROM (SELECT DT.DID, DT.DTITLE, DT.DSFILE, DT.DCODE, DR.RID, DR.RDATE, DR.ROKDATE, DR.RTOTAL, DR.RCHECK
 		                FROM DMU_TICKET DT, DMU_RESERVATION DR
 		                WHERE DT.DID = DR.DID AND DR.MID = #{mid}
+						<if test = 'dcode != null'>
+							<if test = '!dcode.equals("all")'>
+								AND DCODE = #{dcode}
+							</if>
+						</if>
+						<choose>
+							<when test = 'startdate != null and enddate != null'>
+								<choose>
+									<when test = 'startdate != "" and enddate != ""'>
+										AND ROKDATE BETWEEN #{startdate} AND TO_DATE(#{enddate}, 'YYYY-MM-DD')+1
+									</when>
+									<otherwise>
+										AND ROKDATE BETWEEN (SYSDATE-7) AND SYSDATE
+									</otherwise>
+								</choose>
+							</when>
+							<otherwise>
+								AND ROKDATE BETWEEN (SYSDATE-7) AND SYSDATE
+							</otherwise>
+						</choose>
 		                ORDER BY ROKDATE DESC))
 		WHERE RNO BETWEEN #{start} AND #{end}
-		<if test = 'dcode != null'>
-			<if test = '!dcode.equals("all")'>
-				AND DCODE = #{dcode}
-			</if>
-		</if>
-		<choose>
-			<when test = 'startdate != null and enddate != null'>
-				<choose>
-					<when test = 'startdate != "" and enddate != ""'>
-						AND ROKDATE BETWEEN #{startdate} AND TO_DATE(#{enddate}, 'YYYY-MM-DD')+1
-					</when>
-					<otherwise>
-						AND ROKDATE BETWEEN (SYSDATE-7) AND SYSDATE
-					</otherwise>
-				</choose>
-			</when>
-			<otherwise>
-				AND ROKDATE BETWEEN (SYSDATE-7) AND SYSDATE
-			</otherwise>
-		</choose>
 	</select>
 	
 	<!-- MYPAGE RESERVATION LIST TOTALCOUNT -->
