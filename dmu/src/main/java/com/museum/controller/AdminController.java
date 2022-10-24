@@ -1,6 +1,7 @@
 package com.museum.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,6 +26,7 @@ import com.museum.service.NoticeServiceImpl;
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
+import com.museum.vo.DmuPurchaseVO;
 import com.museum.vo.DmuReJoinVO;
 import com.museum.vo.DmuTicketVO;
 @Controller
@@ -818,22 +821,64 @@ public class AdminController {
 	}
  
 	  
-	//adminpage_reservation_list_det.do
-			
-	  @RequestMapping(value = "/adminpage_reservation_list_det.do", method = RequestMethod.GET)
-	  
-	  public ModelAndView adminpage_reservation_list_det(String rid) { 
-		  ModelAndView mv = new ModelAndView();
-	 
-	  DmuReJoinVO vo = adminService.reservationDet1(rid);
-	  ArrayList<DmuReJoinVO> list = adminService.reservationDet(rid);
-	  
-	  mv.addObject("vo", vo);
-	  mv.addObject("list", list);
-	  mv.setViewName("/admin/admin_member/adminpage_reservation_list_det");
-	  
-	  return mv; }
+	/*
+	 * //adminpage_reservation_list_det.do
+	 * 
+	 * @RequestMapping(value = "/adminpage_reservation_list_det.do", method =
+	 * RequestMethod.GET)
+	 * 
+	 * public ModelAndView adminpage_reservation_list_det(String rid) { ModelAndView
+	 * mv = new ModelAndView();
+	 * 
+	 * DmuReJoinVO vo = adminService.reservationDet1(rid); ArrayList<DmuReJoinVO>
+	 * list = adminService.reservationDet(rid);
+	 * 
+	 * mv.addObject("vo", vo); mv.addObject("list", list);
+	 * mv.setViewName("/admin/admin_member/adminpage_reservation_list_det");
+	 * 
+	 * return mv; }
+	 */
 			 
-	 
+	//mypage_ticket_content.do : 마이페이지 티켓 예매 상세보기
+		@RequestMapping(value = "/adminpage_reservation_list_det.do", method = RequestMethod.GET)
+		public ModelAndView mypage_ticket_content(String rid) {
+			ModelAndView mv = new ModelAndView();
+			
+			ArrayList<DmuPurchaseVO> list = (ArrayList<DmuPurchaseVO>)adminService.getPurchaseContent(rid);
+			mv.addObject("list", list);
+			mv.setViewName("/mypage/mypage_ticket_content");
+			
+			return mv;
+		}
+		
+		//mypage_ticket_cancel.do : 마이페이지 티켓 삭제하기
+		@ResponseBody
+		@RequestMapping(value = "/adminpage_ticket_cancel.do", method = RequestMethod.POST)
+		public String mypage_ticket_cancel(@RequestParam(value = "ticketList[]") List<String> ticketList, int rtotal, String rid) {
+			String total_result = "";
+			
+			//선택한 티켓 정보(환불) 업데이트
+			int result = adminService.getPurchaseCancel(ticketList);
+
+			//티켓을 모두 취소했는지 확인
+			if(result == ticketList.size()) {
+				int totalCount = adminService.getPurchaseCancelTotalCount(rid);
+				if(rtotal == totalCount) {
+					//총 티켓 매수와 취소된 티켓 매수가 동일하면 수행
+					int update_result = adminService.getReservationCancel(rid);
+					if(update_result == 1) {
+						//예매까지 취소된 경우
+						total_result = "update_success";
+					}else {
+						//티켓을 전부 취소하지 않아 예매는 취소되지 않은 경우
+						total_result = "success";
+					}
+				}
+			}else {
+				total_result = "fail";
+			}
+			
+			return String.valueOf(total_result);
+		}
 		
 }

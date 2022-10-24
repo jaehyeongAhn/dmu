@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
+import com.museum.vo.DmuPurchaseVO;
 import com.museum.vo.DmuReJoinVO;
 import com.museum.vo.DmuTicketVO;
 
@@ -142,6 +143,33 @@ public class DmuAdminDAO extends DBConn {
 
 	public DmuReJoinVO  reservationDet1(String rid) {
 		return sqlSession.selectOne("mapper.admin.reservationDet1", rid);
+	}
+	
+	//예매 정보 상세 보기
+	public List<DmuPurchaseVO> purchaseContent(String rid) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("rid", rid);
+		
+		return sqlSession.selectList("mapper.admin.purchaseList", rid);
+	}
+	
+	//예매 취소 신청
+	public int purchaseCancel(List<String> ticketList) {
+		int result = 0;
+		for(String tid : ticketList) {
+			result += sqlSession.update("mapper.admin.ticket_update", tid);
+		}
+		return result;
+	}
+	
+	//예매 취소 티켓 카운팅
+	public int purchaseCancelTotalCount(String rid) {
+		return sqlSession.selectOne("mapper.admin.ticket_cancle_totalCount", rid);
+	}
+	
+	//예매 정보 업데이트
+	public int reservationCancel(String rid) {
+		return sqlSession.update("mapper.admin.ticket_reservation_update", rid);
 	}
 
  
