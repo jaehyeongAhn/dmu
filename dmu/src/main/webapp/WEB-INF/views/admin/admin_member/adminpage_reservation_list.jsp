@@ -160,22 +160,22 @@ $(document).ready(function(){
 										</thead>
 										<tbody>
 										<c:forEach var="vo" items="${list}">
-											<tr class = "name" id="${vo.rid}">												 
+											<tr>												 
 												<td >${vo.dcode}</td>											 
-												<td  class="reservation_detail reservationId"><a href="#">${vo.rid}</a></td> <!-- 티켓번호 -->
+												<td  class=" reservation_detail reservationId" id="${vo.rid}"><a href="#"> ${vo.rid}</a> </td> <!-- 티켓번호 -->
 												<td>${vo.dtitle }</td>   <!-- 전시/이벤트 명 --> 
-												<td>${vo.mname }</td>   <!-- 예약자 명 -->
+												<td> ${vo.mname } </td>   <!-- 예약자 명 -->
 												<td>${vo.dpricech }</td>   <!-- 티켓금액 -->
 												<td>${vo.rtotal }</td>   <!-- 티켓매수 -->
 												<td>${vo.rallpricech }</td>   <!-- 총 금액 -->
 												<td>${vo.rdateda }</td>   <!-- 관람일 -->
 												<td>${vo.rokdatech }</td>   <!-- 예약일 -->
-													<c:choose>
+										<c:choose>
 														<c:when test="${vo.rid == 'n'}">  <!-- 예약취소 진행 -->  
 															<td>취소완료</td>
 														</c:when>
 															<c:otherwise>
-																<td >  <button class="reservation_detail_admin" type="button" id="${vo.rid}"> 관리자 모드 </button> </td>
+																<td >   <button class="reservation_detail_admin" type="button" id="${vo.rid}" > 관리자 모드 </button></a>  </td>
 														</c:otherwise>
 													</c:choose>
 											</tr>

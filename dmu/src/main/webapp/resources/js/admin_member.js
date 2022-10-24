@@ -13,8 +13,6 @@ $(document).ready(function(){
 	    	let index = $(this).parent().parent().index();
 	    	let mid = $("tr").filter(":eq("+(index+1)+")").children(".memberId").text();
 	 
-	    //alert(mid);
-	 
 	 		popup_public_detail(mid);
 	 	
 	    });//member click
@@ -622,13 +620,18 @@ $(document).ready(function(){
 $(document).ready(function(){
 
     $(".reservation_detail").click(function(){
-    //$(this).css("background", "black");
-    let index = $(this).parent().index();
     
-    let rid = $("tr").filter(":eq("+(index+1)+")").children("td.reservationId").text();
-     
+   		let index = $(this).parent().index();
+    	let rid = $(this).attr("id");
+    	 
+    	
+    	popup_reservation_detail(rid);
+	  });
+    	 
+	 function popup_reservation_detail(rid){
         $.ajax({
             type : "post",
+            contect : this,
             data : {
                 rid : rid
             },
@@ -660,14 +663,12 @@ $(document).ready(function(){
             
             	
             }
-
-        });//ajax
+ 
     });//click
-  
+  }
   
    $(".reservation_detail_admin").click(function(){
    		 var id_check = $(this).attr("id");
-   		 alert($(this).attr('id'));
    
    		$(location).attr('href', "http://localhost:9000/dmu/adminpage_reservation_list_det.do?rid="+ id_check);  
    		
