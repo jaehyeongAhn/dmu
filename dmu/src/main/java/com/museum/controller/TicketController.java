@@ -36,11 +36,11 @@ public class TicketController {
 	@Autowired
 	private FileServiceImpl  fileService;
 	
-		@RequestMapping(value="/ticketlist_write.do", method=RequestMethod.GET)
+		@RequestMapping(value="/adminticketlist_write.do", method=RequestMethod.GET)
 		public String board_write() {
-			return "admin/adminticket/ticketlist_write";
+			return "admin/adminticket/adminticketlist_write";
 		}
-		@RequestMapping(value="/ticketlist_write_check.do", method=RequestMethod.POST)
+		@RequestMapping(value="/adminticketlist_write_check.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
 			ModelAndView mv = new ModelAndView();
 			
@@ -175,19 +175,19 @@ public class TicketController {
 			mv.setViewName("/admin/adminticket/adminevent_list");
 			return mv;
 		}
-		@RequestMapping(value="/ticketlist_content.do", method=RequestMethod.GET)
+		@RequestMapping(value="/adminticketlist_content.do", method=RequestMethod.GET)
 		public ModelAndView ticketlist_content(String did) {
 			ModelAndView mv = new ModelAndView();
 			
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("/admin/adminticket/ticketlist_content");
+			mv.setViewName("/admin/adminticket/adminticketlist_content");
 			
 			return mv;
 		}
-		@RequestMapping(value="/admin_ticket_update_check.do", method=RequestMethod.POST)
-		public ModelAndView admin_ticket_update_check(DmuTicketVO vo,HttpServletRequest request)
+		@RequestMapping(value="/adminticket_update_check.do", method=RequestMethod.POST)
+		public ModelAndView adminticket_update_check(DmuTicketVO vo,HttpServletRequest request)
 																	throws Exception {
 			ModelAndView mv = new ModelAndView();
 
@@ -208,26 +208,26 @@ public class TicketController {
 			
 			return mv;
 		}
-		@RequestMapping(value="/admin_ticket_update.do", method=RequestMethod.GET)
-		public ModelAndView admin_ticket_update(String did) {
+		@RequestMapping(value="/adminticket_update.do", method=RequestMethod.GET)
+		public ModelAndView adminticket_update(String did) {
 			ModelAndView mv = new ModelAndView();
 			
 			DmuTicketVO vo = ticketService.getContent(did);
 			
 			mv.addObject("vo", vo);
-			mv.setViewName("/admin/adminticket/ticketlist_update");
+			mv.setViewName("/admin/adminticket/adminticketlist_update");
 			
 			return mv;
 		}
-		@RequestMapping(value="/admin_ticket_delete.do", method=RequestMethod.GET)
+		@RequestMapping(value="/adminticket_delete.do", method=RequestMethod.GET)
 		public ModelAndView admin_ticket_delete(String did) {
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("did", did);
-			mv.setViewName("/admin/adminticket/ticketlist_delete");
+			mv.setViewName("/admin/adminticket/adminticketlist_delete");
 			
 			return mv;
 		}
-		@RequestMapping(value="/admin_ticket_delete_check.do", method=RequestMethod.POST)
+		@RequestMapping(value="/adminticket_delete_check.do", method=RequestMethod.POST)
 		public ModelAndView admin_ticket_delete_check(String did, HttpServletRequest request)
 																throws Exception {
 			ModelAndView mv = new ModelAndView();

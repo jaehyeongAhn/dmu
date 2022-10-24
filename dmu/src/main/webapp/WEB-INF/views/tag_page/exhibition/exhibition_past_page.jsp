@@ -185,9 +185,9 @@
 								</ul>
 								</c:if>
 								<c:if test="${empty list }">
-										<div data-v-97ddc3ec="" class="item-previous">
+										<div data-v-97ddc3ec="" class="item-previous previous-list">
 											<div data-v-e20ce500="" data-v-080a389a=""
-														class="item-previous">
+														class="item-previous no-result">
 														<p data-v-e20ce500="" data-v-080a389a="">지금은 전시를 준비 중입니다.
 														</p>
 											</div>
