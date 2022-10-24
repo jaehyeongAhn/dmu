@@ -83,7 +83,7 @@
 	 
 	 <!-- insert rservationdate -->
 	 <insert id="reservationdate" parameterType="com.museum.vo.DmuReJoinVO">
-	 	insert into dmu_reservation values('R_'||sequ_dmu_reservation.nextval,#{did},#{rprice},#{rtime},#{rdate},#{rtotal},#{rallprice},sysdate,'','',#{mid})
+	 	insert into dmu_reservation values('R_'||sequ_dmu_reservation.nextval,#{did},#{rprice},#{rtime},#{rdate},#{rtotal},#{rallprice},sysdate,'y','',#{mid})
 	 </insert>
 	 
 	 <select id = "ridnew" resultType = "java.lang.String">

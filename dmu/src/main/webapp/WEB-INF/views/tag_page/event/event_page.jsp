@@ -51,7 +51,7 @@
 						</ul>
 						<nav data-v-4052871d="">
 							<ul data-v-4052871d="">
-								<li data-v-4052871d="" style="cursor: pointer;">HOME</li>
+								<li data-v-0d03d759="" style="cursor: pointer;"><a href="index.do" style="opacity:0;">HOME</a></li>
 								<li data-v-4052871d="">EVENT</li>
 								<li data-v-4052871d="">이벤트</li>
 								<!---->

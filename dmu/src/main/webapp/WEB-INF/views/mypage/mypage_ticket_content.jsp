@@ -130,7 +130,14 @@
 							<div class="payment_content">
 								<div class="payment_result_list">
 									<div class="payment-result-list-title">
-										<h2>결제정보</h2>
+									<c:choose>
+										<c:when test = "${ list.rcheck == 'n' }">
+											<h2>환불정보</h2>
+										</c:when>
+										<c:otherwise>
+											<h2>결제정보</h2>
+										</c:otherwise>
+									</c:choose>
 									</div>
 									<div class="payment-result-list-content">
 										<div>
@@ -139,10 +146,29 @@
 													<td class = "ticket_purchase">티켓금액
 														<strong><fmt:formatNumber value="${ list.rprice }" pattern = "#,###"/>원</strong>
 													</td>
-													<td>티켓<strong>${ list.rtotal }매</strong></td>
-													<td>최종 결제금액<strong style="font-size:20px;">
-														<fmt:formatNumber value="${ list.pallprice }" pattern = "#,###"/>원
+													<c:set var = "refund_rtotal" value = "0"/>
+													<c:forEach var = "refund_check" items = "${ list.ticketList }">
+														<c:if test = "${ refund_check.tcheck == 'n' }">
+															<c:set var = "refund_rtotal" value = "${ refund_rtotal+1 }"/>
+														</c:if>
+													</c:forEach>
+													<td>티켓<strong>${ list.rtotal }매
+													<c:if test = "${ refund_rtotal != 0 }">
+														<span style = "font-weight : 400; color : #898989;">(-${ refund_rtotal }매)</span>
+													</c:if>
 													</strong></td>
+													<c:choose>
+														<c:when test = "${ list.rcheck == 'y' || list.rcheck == 'ex' }">
+															<td>최종 결제금액<strong style="font-size:20px;">
+																<fmt:formatNumber value="${ list.rallprice - (refund_rtotal * list.rprice) }" pattern = "#,###"/>원
+															</strong></td>
+														</c:when>
+														<c:otherwise>
+															<td>최종 환불금액<strong style="font-size:20px;">
+																<fmt:formatNumber value="${ list.rallprice }" pattern = "#,###"/>원
+															</strong></td>
+														</c:otherwise>
+													</c:choose>
 												</tr>
 												<tr class="card_result">
 													<fmt:parseDate var = "pdate" value = "${ list.pdate }" type = "date" pattern = "yyyy-MM-dd"/>

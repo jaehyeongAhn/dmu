@@ -24,7 +24,7 @@ public interface AdminService {
 	int updateStatus(String mid);
 	
 	ArrayList<DmuMemberVO> reservationList(int startCount, int endCount);
-	DmuReJoinVO reservationContent(String mid);
+	DmuReJoinVO reservationContent(String rid);
 	
  
 	 ArrayList<DmuReJoinVO> reservationDet(String rid); 

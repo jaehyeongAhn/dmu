@@ -9,10 +9,10 @@
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/mypage.css">
+<link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/adminpage.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
-<!-- 이미지 경로 수정하기 -->
-
+<script src="http://localhost:9000/dmu/resources/js/admin_member.js"></script>
 </head>
 <body>
 <iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
@@ -71,7 +71,7 @@
 				<div class="sub-contents">
 					<div class="gray-box">
 						<div class = "greeting-area">
-							<p><strong>관리자</strong>님 안녕하세요.</p>						
+							<p><strong>${ sessionScope.member.mname }</strong>님 안녕하세요.</p>						
 						</div>
 					</div>
 					<div class="records-group">
@@ -82,25 +82,35 @@
 									<a href="http://localhost:9000/dmu/adminpage_reservation_list.do" class="booking_detail"><p>더보기</p></a>
 								</div>
 							</div>
-							<div class="purchase-result">
-								<div class = "purchase-result-box">
-									<%-- <p>최근 예매 내역이 없습니다.<br>빠른 시일 내에 다시 만나요.</p> --%>	
-									<div class = "purchase-result-title">
-										<p>예매번호 : 220828007829</p>
-										<strong>예매완료</strong>
-									</div>			
-									<div class = "purchase-result-content">
-										<a href = "#"><img src = "http://localhost:9000/dmu/resources/images/ticket.svg"></a>
-										<div class = "purchase-result-content-text">
-											<a href = "#"><strong>어쨌든, 사랑</strong></a>
-											<div>
-												<span class = "date">2022.08.28 12:47</span>
-												<span>1매</span>
-											</div>
-										</div>
-									</div>			
+							<div class="info-list" style="margin-top: 20px;">
+									<!-- <table id="report"> -->
+									<table class="info-table">
+										<thead>
+											<tr>
+												<th>티켓번호</th>
+												<th>이벤트명</th>
+												<th>예약자명</th>
+												<th>티켓금액</th>
+												<th>티켓매수</th>
+												<th>총 금액</th>
+												<th>관람일</th>
+												 
+											</tr>
+										</thead>
+										<tbody>
+										<c:forEach var="vo" items="${list}">
+											<tr class = "name" id="${vo.rid}">												 										 
+												<td  class="reservation_detail reservationId"><a href="#">${vo.rid}</a></td> <!-- 티켓번호 -->
+												<td>${vo.dtitle }</td>   <!-- 전시/이벤트 명 --> 
+												<td>${vo.mname }</td>   <!-- 예약자 명 -->
+												<td>${vo.dpricech }</td>   <!-- 티켓금액 -->
+												<td>${vo.rtotal }</td>   <!-- 티켓매수 -->
+												<td>${vo.rallpricech }</td>   <!-- 총 금액 -->
+												<td>${vo.rdateda }</td>   <!-- 관람일 -->
+										</c:forEach>
+										</tbody>
+									</table>
 								</div>
-							</div>
 						</div>
 					</div>
 				</div>

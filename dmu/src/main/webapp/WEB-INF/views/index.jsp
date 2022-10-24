@@ -33,54 +33,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
     <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
     <script src="http://localhost:9000/dmu/resources/js/main.js"></script>
-    <link href="/js/group-calender.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-event.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-exhibition.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-faq.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-guide.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-learn.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-login-find.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-login-join.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-login.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-museum.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-mypage.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-notice.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-reservation.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-search.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-shop.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-shop~group-ticket.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-ticket.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/group-visit.85a954b2b4f1348cc700.js" rel="prefetch">
-    <link href="/js/chunk-vendors.85a954b2b4f1348cc700.js" rel="preload" as="script">
-    <link href="/js/index.85a954b2b4f1348cc700.js" rel="preload" as="script">
     <link href="https://www.googletagmanager.com" rel="preconnect">
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-48000917-2&amp;l=dataLayer"></script>
-    <link data-vue-meta="1" rel="canonical" href="https://www.daelimmuseum.org">
-    <meta data-vue-meta="1" name="description" content="#description" data-vmid="description">
-    <meta data-vue-meta="1" name="keywords" content="#keywords">
-    <meta data-vue-meta="1" name="author" content="#author">
-    <meta data-vue-meta="1" property="og:title" content="#title | DMU" data-vmid="og:title">
-    <meta data-vue-meta="1" property="og:title" content="#og:title">
-    <meta data-vue-meta="1" property="og:site_name" content="#og:site_name">
-    <meta data-vue-meta="1" property="og:type" content="website">
-    <meta data-vue-meta="1" property="og:url" content="https://www.daelimmuseum.org">
-    <meta data-vue-meta="1" property="og:image"
-    content="https://ldb-phinf.pstatic.net/20210520_228/1621504706342H1qBQ_JPEG/HuEbURnB-n8TkKFQaruNqg_W.jpg">
-    <meta data-vue-meta="1" property="og:description" content="#description">
-    <meta data-vue-meta="1" name="twitter:card" content="summary">
-    <meta data-vue-meta="1" name="twitter:site" content="https://www.daelimmuseum.org">
-    <meta data-vue-meta="1" name="twitter:title" content="#title">
-    <meta data-vue-meta="1" name="twitter:description" content="#description">
-    <meta data-vue-meta="1" name="twitter:creator" content="#creator">
-    <meta data-vue-meta="1" name="twitter:image:src"
-    content="https://ldb-phinf.pstatic.net/20210520_228/1621504706342H1qBQ_JPEG/HuEbURnB-n8TkKFQaruNqg_W.jpg">
-    <meta data-vue-meta="1" itemprop="name" content="#title">
-    <meta data-vue-meta="1" itemprop="description" content="#description">
-    <meta data-vue-meta="1" itemprop="image"
-    content="https://ldb-phinf.pstatic.net/20210520_228/1621504706342H1qBQ_JPEG/HuEbURnB-n8TkKFQaruNqg_W.jpg">
-    <script charset="utf-8" src="/js/4.85a954b2b4f1348cc700.js"></script>
-    <script charset="utf-8" src="/js/29.85a954b2b4f1348cc700.js"></script>
-    <script charset="utf-8" src="/js/38.85a954b2b4f1348cc700.js"></script>
+
+
 
 <!--
 * Swiper 5.4.5
@@ -348,8 +304,24 @@
     	})
     	
     	
-
-        	
+	 	 var Offset = $( '.main-menu-area' ).offset();
+  			$( window ).scroll( function() {
+		    if ( $( document ).scrollTop() > Offset.top ) {
+		      $( '.main-menu-area' ).addClass( 'sticky' );
+		      $('.main-menu').removeClass('live');
+	  		  $(".side-links>ul").removeClass("live");
+		    }
+		    else {
+		      $( '.main-menu-area' ).removeClass( 'sticky' );
+		    }
+		  });
+        
+  			
+  		$(".all-menu").click(function(){
+  			$(".main-menu").addClass("live");
+  			$(".side-links>ul").addClass("live");
+  			
+  		});
 
         	$("body").on("mousewheel", function(e){
         		let wheel = e.originalEvent.wheelDelta;
@@ -594,80 +566,6 @@
                         </div>
                     </div>
                 </div>
-<!--                 <div class="header-mobile">
-                    <div class="header-logo-area">
-                        <strong class="mo-subject">
-                           
-                        </strong>
-                        <h1>
-                            <a href="/" aria-current="page" class="router-link-exact-active router-link-active"> 대림문화재단
-                            </a>
-                        </h1>
-                        <button type="button" class="btn-search"> 검색 </button>
-                        <button type="button" class="btn-all-menu"> 전체메뉴 </button>
-                    </div>
-                    <div class="main-menu-area">
-                        <div class="menu-header">
-                            <strong class="logo">
-                                <a href="/" aria-current="page" class="router-link-exact-active router-link-active">
-                                    대림문화재단 </a>
-                            </strong>
-                        </div>
-                        <div class="main-menu">
-                            <ul class="menu-list">
-                                <li>
-                                    <a> VISIT </a>
-                                </li>
-                                <li>
-                                    <a> EXHIBITION </a>
-                                </li>
-                                <li>
-                                    <a> LEARN </a>
-                                </li>
-                                <li>
-                                    <a> EVENT </a>
-                                </li>
-                                <li>
-                                    <a> TICKET </a>
-                                </li>
-                            </ul>
-                            <ul class="util-menu">
-                                <li>
-                                    <a href="/join/info" class=""> BECOME A MEMBER </a>
-                                </li>
-                                <li>
-                                    <a href="/login/" class=""> LOGIN </a>
-                                </li>
-                               
-                               
-                            </ul>
-                        </div>
-                        <div class="footer-area">
-                            <ul>
-                                <li class="search">
-                                    <a> SEARCH </a>
-                                </li>
-                                <li class="help">
-                                    <a> HELP </a>
-                                </li>
-                            </ul>
-                           
-                            <div class="lang-area">
-                                <a href="https://daelimculturalfoundation.org" target="_blank">
-                                    <strong>대림문화재단</strong>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0);"> KOR </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                       
-                        <button type="button" class="btn-close"> 닫기 </button>
-                    </div>
-                   
-                </div> -->
             </header>
            </div>
           </div>
@@ -722,7 +620,8 @@
                                                         href="#">
                                                         <!---->
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area">
-                                                            <a href="http://localhost:9000/dmu/learn_page.do?dtarget=유아"><button data-v-26e42198="" id="btn55" type="button"
+
+                                                            <a href="learn_page.do?dtarget=유아"><button data-v-26e42198="" id="btn55" type="button"
                                                                 class="secondary"> 자세히 보기 </button></a></div>
                                                     </a><a data-v-04a3ebf5=""
                                                         href="#">
@@ -971,7 +870,7 @@
                                                 class="period">2022.04.01 ~ 2022.10.30</span><span data-v-77eacbc9=""
                                                 class="place"> 디뮤지엄 </span>
                                             <div data-v-77eacbc9="" class="btn-group">
-                                                <div data-v-26e42198="" data-v-77eacbc9="" class="btn-area"><a href="http://localhost:9000/dmu/learn_page_det.do">
+                                                <div data-v-26e42198="" data-v-77eacbc9="" class="btn-area"><a href="http://localhost:9000/dmu/tag_page/learn/learn_page_det.do">
                                                 <button
                                                         data-v-26e42198="" id="btn41" type="button" class="primary"> 더보기
                                                     </button></a>

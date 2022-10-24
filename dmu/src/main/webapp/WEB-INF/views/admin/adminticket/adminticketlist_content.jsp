@@ -125,8 +125,8 @@
 												</div>
 												<div data-v-8ed31374="" class="use-info-ticket">
 													<div data-v-26e42198="" data-v-8ed31374="" class="btn-area">
-														<a href="admin_ticket_update.do?did=${vo.did}"><button data-v-26e42198=""  type="button"  class="secondary small">수정</button></a>
-														<a href="admin_ticket_delete.do?did=${vo.did}"><button data-v-26e42198=""  type="button" class="secondary small">삭제</button></a>
+														<a href="adminticket_update.do?did=${vo.did}"><button data-v-26e42198=""  type="button"  class="secondary small">수정</button></a>
+														<a href="adminticket_delete.do?did=${vo.did}"><button data-v-26e42198=""  type="button" class="secondary small">삭제</button></a>
 														<a href="adminexhibition_list.do"><button data-v-26e42198=""  type="button" class="secondary small">리스트</button></a>
 													</div>
 												</div>

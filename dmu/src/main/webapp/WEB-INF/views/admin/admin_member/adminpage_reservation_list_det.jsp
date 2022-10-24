@@ -51,14 +51,16 @@
 											<li class="">
 												<a class="" href="adminpage_member_list.do">회원관리</a>
 											</li>
+											<c:if test="${sessionScope.member.mid == 'master'}">
 											<li class="">
 												<a class="" href="adminpage_admin_list.do">관리자승인</a>
 											</li>
+											</c:if>
 											<li class="">
-												<a class="" href="adminpage_reservation_list.do">예매관리</a>
+												<a class="" href="adminpage_reservation_list.do" style="color:black; font-weight:700;">예매관리</a>
 											</li>
 											<li class="">
-												<a class="" href="#">1대1 문의</a>
+												<a class="" href="adminpage_inquiry_list.do">1대1 문의</a>
 											</li>
 										</ul>
 									</div>
@@ -90,21 +92,21 @@
 							<div class="result_purchase" style = "margin : 0; border-top : none;">
 								<div class="purchase_result_list">
 									<div class="purchase-result-list-title">
-										<p>예매번호 <strong> ${list.vo.rid}</strong></p>
+										<p>예매번호 <strong> ${ vo.rid}</strong></p>
 									</div>
 									<div class="purchase-result-list-content" style = "width : 100%;">
 										<div style="border-bottom: 0.5px solid #ddd;">
 											<div class="purchase-result-content-title" style = "width : 100%;">
 												<a href="#">
-													<img src="http://localhost:9000/dmu/resources/upload/${list.vo.dsfile }" style = "width : 250px;">
+													<img src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }" style = "width : 250px;">
 												</a>
 												<table>
 													<tr>
-														<td colspan = "4" class = "content_table_title">${list.vo.dtitle}</td>
+														<td colspan = "4" class = "content_table_title">${vo.dtitle}</td>
 													</tr>
 													<tr>
 														<th>예매 일시</th>
-														<td>${vo.rokdatech}</td>
+														<td>${vo.rokdate}</td>
 														<th>예약 매수</th>
 														<td>${vo.rtotal}매</td>
 													</tr>
@@ -194,5 +196,7 @@
 			</div>
 		</div>
 	</div>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
+	
 </body>
 </html>

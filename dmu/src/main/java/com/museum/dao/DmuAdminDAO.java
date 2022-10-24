@@ -121,8 +121,8 @@ public class DmuAdminDAO extends DBConn {
 	 * adminpage_reservation_content : 어드민 페이지 예약 상세내용
 	 */
 
-	public DmuReJoinVO reservationContent(String mid) {
-		return sqlSession.selectOne("mapper.admin.reservationContent", mid);
+	public DmuReJoinVO reservationContent(String rid) {
+		return sqlSession.selectOne("mapper.admin.reservationContent", rid);
 	}
 
  
@@ -131,18 +131,17 @@ public class DmuAdminDAO extends DBConn {
 	  
 	  
 	  public ArrayList<DmuReJoinVO> reservationDet(String rid) {
-		  List<DmuReJoinVO> list = sqlSession.selectList("mapper.admin.reservationContent", rid);
+		  List<DmuReJoinVO> list = sqlSession.selectList("mapper.admin.reservationDet", rid);
 		  return (ArrayList<DmuReJoinVO>)list;
 		  
 	  }
-	 
 
 	/*
-	 * adminpage_reservation_det : 어드민 페이지 예약취소 진행
+	 * adminpage_reservation_det : 어드민 페이지 예약취소 진행_리스트
 	 */
 
 	public DmuReJoinVO  reservationDet1(String rid) {
-		return sqlSession.selectOne("mapper.admin.reservationContent1", rid);
+		return sqlSession.selectOne("mapper.admin.reservationDet1", rid);
 	}
 
  
@@ -154,10 +153,10 @@ public class DmuAdminDAO extends DBConn {
 		ArrayList<DmuMemberVO> publicSearch = new ArrayList<DmuMemberVO>();
 		
 		String sql = "select rno, mid, mname, pnumber, email, ddate, unregister "
-				+ " from(select rownum rno, mid, mname, pnumber, email, to_char(ddate, 'yy-mm-dd') ddate, unregister "
+				+ " from(select rownum rno, mid, mname, pnumber, email, to_char(ddate, 'yyyy-mm-dd') ddate, unregister "
 				+ " from(select mid, mname, pnumber, email, ddate, unregister "
 				+ " from(select mid, mname, pnumber, email, ddate, unregister, status from dmu_member "
-				+ " where mid like ? or mname like ? or pnumber like ? or email like ? or ddate like ? or unregister like ?) "
+				+ " where mid like ? or mname like ? or pnumber like ?) "
 				+ " where status = 'public')) "
 				+ " where rno between ? and ?";
 		
@@ -167,11 +166,8 @@ public class DmuAdminDAO extends DBConn {
 			pstmt.setString(1, "%" + keyword + "%");
 			pstmt.setString(2, "%" + keyword + "%");
 			pstmt.setString(3, "%" + keyword + "%");
-			pstmt.setString(4, "%" + keyword + "%");
-			pstmt.setString(5, "%" + keyword + "%");
-			pstmt.setString(6, "%" + keyword + "%");
-			pstmt.setInt(7, startCount);
-			pstmt.setInt(8, endCount);
+			pstmt.setInt(4, startCount);
+			pstmt.setInt(5, endCount);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				DmuMemberVO vo = new DmuMemberVO();
@@ -203,7 +199,7 @@ public class DmuAdminDAO extends DBConn {
 		int result = 0;
 		String sql = "select count(*) "
 				+ " from (select mid, mname, pnumber, email, ddate, unregister, status from dmu_member "
-				+ " where mid like ? or mname like ? or pnumber like ? or email like ? or ddate like ? or unregister like ?) "
+				+ " where mid like ? or mname like ? or pnumber like ?) "
 				+ " where status ='public' ";
 		
 		try {
@@ -211,9 +207,6 @@ public class DmuAdminDAO extends DBConn {
 			pstmt.setString(1, "%" + keyword + "%");
 			pstmt.setString(2, "%" + keyword + "%");
 			pstmt.setString(3, "%" + keyword + "%");
-			pstmt.setString(4, "%" + keyword + "%");
-			pstmt.setString(5, "%" + keyword + "%");
-			pstmt.setString(6, "%" + keyword + "%");
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				result = rs.getInt(1);
@@ -234,10 +227,10 @@ public class DmuAdminDAO extends DBConn {
 		ArrayList<DmuMemberVO> adminSearch = new ArrayList<DmuMemberVO>();
 		
 		String sql = "select rno, mid, mname, pnumber, email, ddate, unregister, status "
-				+ " from(select rownum rno, mid, mname, pnumber, email, to_char(ddate, 'yy-mm-dd') ddate, unregister, status "
+				+ " from(select rownum rno, mid, mname, pnumber, email, to_char(ddate, 'yyyy-mm-dd') ddate, unregister, status "
 				+ " from(select mid, mname, pnumber, email, ddate, unregister, status "
 				+ " from(select mid, mname, pnumber, email, ddate, unregister, status from dmu_member "
-				+ " where mid like ? or mname like ? or pnumber like ? or email like ? or ddate like ? or unregister like ? or status like ?) "
+				+ " where mid like ? or mname like ? or pnumber like ?) "
 				+ " where status not in('public'))) "
 				+ " where rno between ? and ?";
 		
@@ -247,12 +240,8 @@ public class DmuAdminDAO extends DBConn {
 			pstmt.setString(1, "%" + keyword + "%");
 			pstmt.setString(2, "%" + keyword + "%");
 			pstmt.setString(3, "%" + keyword + "%");
-			pstmt.setString(4, "%" + keyword + "%");
-			pstmt.setString(5, "%" + keyword + "%");
-			pstmt.setString(6, "%" + keyword + "%");
-			pstmt.setString(7, "%" + keyword + "%");
-			pstmt.setInt(8, startCount);
-			pstmt.setInt(9, endCount);
+			pstmt.setInt(4, startCount);
+			pstmt.setInt(5, endCount);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				DmuMemberVO vo = new DmuMemberVO();
@@ -286,7 +275,7 @@ public class DmuAdminDAO extends DBConn {
 		int result = 0;
 		String sql = "select count(*) "
 				+ " from (select mid, mname, pnumber, email, ddate, unregister, status from dmu_member "
-				+ " where mid like ? or mname like ? or pnumber like ? or email like ? or ddate like ? or unregister like ? or status like ?) "
+				+ " where mid like ? or mname like ? or pnumber like ?) "
 				+ " where status not in('public') ";
 		
 		try {
@@ -294,10 +283,6 @@ public class DmuAdminDAO extends DBConn {
 			pstmt.setString(1, "%" + keyword + "%");
 			pstmt.setString(2, "%" + keyword + "%");
 			pstmt.setString(3, "%" + keyword + "%");
-			pstmt.setString(4, "%" + keyword + "%");
-			pstmt.setString(5, "%" + keyword + "%");
-			pstmt.setString(6, "%" + keyword + "%");
-			pstmt.setString(7, "%" + keyword + "%");
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				result = rs.getInt(1);
