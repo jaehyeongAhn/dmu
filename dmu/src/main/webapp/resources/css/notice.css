@@ -143,6 +143,7 @@ input, textarea {
 .snb-area[data-v-080a389a] {
     border-bottom: 1px solid #ddd;
 }
+
 .search-result[data-v-1b9c8af9] {
     margin-bottom: 0.75rem;
     color: #999;
@@ -206,7 +207,18 @@ body a, body a:hover, body a:visited {
 	font-weight: 500;
 	color: #111;
 }
-
+.sub-top-area nav ul li + li[data-v-0d03d759]:before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    /* left: 0; */
+    width: 0.0625rem;
+    height: 0.625rem;
+    margin-top: -0.3125rem;
+    background: #ccc;
+    content: '';
+    right: 64px;
+}
 .sub-top-area h2[data-v-0d03d759] {
 	position: relative;
 	font-weight: 300;

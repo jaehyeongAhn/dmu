@@ -7,21 +7,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="google-site-verification" content="IE2hToDnQFmj0qovhKUWmqnaQyMPi7QndNEDR6uoVpI">
-    <!-- <meta name="twitter:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">
-    <meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg"> -->
     <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 	<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
-        <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 	    <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
     <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/index.css">
@@ -30,7 +24,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
     <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 </head>
 <body>
@@ -46,7 +39,9 @@
 							<h2 data-v-0d03d759="">개인정보 처리방침</h2>
 							<nav data-v-0d03d759="">
 								<ul data-v-0d03d759="">
-									<li data-v-0d03d759="" style="cursor: pointer;">HOME</li>
+								<li data-v-0d03d759="" style="width:15px;background-position: center !important;">
+                            	<a href="index.do" style="opacity:0; display: flex; width: 15px; height: 15px;">HOME</a>
+                            </li>
 									<!---->
 									<li data-v-0d03d759="">개인정보 처리방침</li>
 									<!---->

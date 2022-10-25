@@ -67,10 +67,10 @@ $(document).ready(function(){
 									<div class="sub-menu-list">
 										<ul>
 											<li class="">
-												<a class="" href="adminexhibition_list.do">상품 리스트 작성</a>
+												<a class="" href="adminexhibition_list.do" target="_blank">상품 리스트 작성</a>
 											</li>
 											<li class="">
-												<a class="" href="admin_notice_list.do">공지사항 작성</a>
+												<a class="" href="admin_notice_list.do" target="_blank">공지사항 작성</a>
 											</li>
 										</ul>
 									</div>
