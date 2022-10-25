@@ -100,7 +100,7 @@
 										<tbody>
 										<c:forEach var="vo" items="${list}">
 											<tr class = "name" id="${vo.rid}">												 										 
-												<td  class="reservation_detail reservationId"><a href="#">${vo.rid}</a></td> <!-- 티켓번호 -->
+												<td  class="reservation_detail reservationId">${vo.rid}</td> <!-- 티켓번호 -->
 												<td>${vo.dtitle }</td>   <!-- 전시/이벤트 명 --> 
 												<td>${vo.mname }</td>   <!-- 예약자 명 -->
 												<td>${vo.dpricech }</td>   <!-- 티켓금액 -->

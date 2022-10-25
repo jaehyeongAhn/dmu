@@ -673,8 +673,8 @@ $(document).ready(function(){
                
             }
  
-    });//click
-  }
+    	});//click
+  	}
   
  
   }
@@ -689,16 +689,7 @@ $(document).ready(function(){
          
    });
   
-}); //ready
- 
- 
- 
-	
-	 
-	/*
-	** 검색기능
-	*/
-$(document).ready(function(){	
+
 	 
     
    /*
@@ -763,13 +754,13 @@ $(document).ready(function(){
                output +="<th>총 금액</th>";
                output +="<th>관람일</th>";
                output +="<th>예약일</th>";
-               output +="<th>예약취소  진행</th>";
+               output +="<th>관리자모드</th>";
                output +="</tr></thead>";
                
                for(obj of dataset.list){
                    output += "<tbody><tr class='name'>";
                    output += "<td>" + obj.dcode + "</td>";
-                   output += "<td  class='reservation_detail reservationId'><a href='#'>" + obj.rid + "</a></td>";
+                   output += "<td  class='reservation_detail reservationId'>" + obj.rid + "</td>";
                    output += "<td>" + obj.dtitle + "</td>";
                    output += "<td>" + obj.mname + "</td>";
                    output += "<td>" + obj.dpricech + "</td>";
@@ -780,7 +771,7 @@ $(document).ready(function(){
                    if(obj.rid == 'n'){
                        output += "<td>취소완료</td>"
                    }else{
-                       output +="<td><button class='member_detail'>관리자모드</button></td>"
+                       output +="<td><button class='reservation_detail_admin member_detail' type='button' id="+ obj.rid +" > 자세히보기 </button></a></td>"
                    }
                }
                    output += "</tr></tbody></table>";   
@@ -798,6 +789,12 @@ $(document).ready(function(){
 	            $(".info-list").append(output);
 	            $(".info-list").after(paging_list);
 	            $("div.search-result strong.total").text(dataset.dbCount);
+               
+               
+                $(".reservation_detail_admin").click(function(){
+			   		 var id_check = $(this).attr("id");
+			         $(location).attr('href', "http://localhost:9000/dmu/adminpage_reservation_list_det.do?rid="+ id_check);  
+			   });
                
                popup_reserve_detail();
                
