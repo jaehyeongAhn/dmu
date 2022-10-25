@@ -28,7 +28,7 @@ public class ExhibitionController {
 	
 	
 	/*
-	 *  exhibition.do ������ ȣ��
+	 *  exhibition.do 
 	 */
 	@RequestMapping(value="/exhibition.do", method=RequestMethod.GET)
 	public ModelAndView exhibition(String did) {

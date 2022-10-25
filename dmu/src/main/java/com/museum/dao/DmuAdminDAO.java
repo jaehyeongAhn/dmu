@@ -121,8 +121,8 @@ public class DmuAdminDAO extends DBConn {
 	 * adminpage_reservation_content : 어드민 페이지 예약 상세내용
 	 */
 
-	public DmuReJoinVO reservationContent(String mid) {
-		return sqlSession.selectOne("mapper.admin.reservationContent", mid);
+	public DmuReJoinVO reservationContent(String rid) {
+		return sqlSession.selectOne("mapper.admin.reservationContent", rid);
 	}
 
  
@@ -131,18 +131,17 @@ public class DmuAdminDAO extends DBConn {
 	  
 	  
 	  public ArrayList<DmuReJoinVO> reservationDet(String rid) {
-		  List<DmuReJoinVO> list = sqlSession.selectList("mapper.admin.reservationContent", rid);
+		  List<DmuReJoinVO> list = sqlSession.selectList("mapper.admin.reservationDet", rid);
 		  return (ArrayList<DmuReJoinVO>)list;
 		  
 	  }
-	 
 
 	/*
-	 * adminpage_reservation_det : 어드민 페이지 예약취소 진행
+	 * adminpage_reservation_det : 어드민 페이지 예약취소 진행_리스트
 	 */
 
 	public DmuReJoinVO  reservationDet1(String rid) {
-		return sqlSession.selectOne("mapper.admin.reservationContent1", rid);
+		return sqlSession.selectOne("mapper.admin.reservationDet1", rid);
 	}
 
  

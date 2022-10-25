@@ -9,6 +9,7 @@ $(document).ready(function(){
 
 
     $(".member_detail").click(function(){
+ 
        //$(this).css("background", "black");
           let index = $(this).parent().parent().index();
           let mid = $("tr").filter(":eq("+(index+1)+")").children(".memberId").text();
@@ -626,34 +627,41 @@ $(document).ready(function(){
 	function popup_reserve_detail(){
 
     $(".reservation_detail").click(function(){
-    //$(this).css("background", "black");
-    let index = $(this).parent().index();
     
-    let rid = $("tr").filter(":eq("+(index+1)+")").children("td.reservationId").text();
-     
+   		let index = $(this).parent().index();
+    	let rid = $(this).attr("id");
+    	 
+    	
+    	popup_reservation_detail(rid);
+	  });
+    	 
+	 function popup_reservation_detail(rid){
         $.ajax({
             type : "post",
+            contect : this,
             data : {
                 rid : rid
             },
             url : "adminpage_reservation_list_detail.do",
             success : function(result){
-               let data = JSON.parse(result);
-               
-               $(".popup_detail_table td.dcode").text(data.dcode);
-               $(".popup_detail_table td.rid").text(data.rid);
-               $(".popup_detail_table td.tid").text(data.tid);
-               $(".popup_detail_table td.dtitle").text(data.dtitle);
-               $(".popup_detail_table td.mid").text(data.mname);
-               $(".popup_detail_table td.dprice").text(data.dpricech);
-               $(".popup_detail_table td.rtotal").text(data.rtotal);
-               $(".popup_detail_table td.rallprice").text(data.rallpricech);
-               $(".popup_detail_table td.rdate").text(data.rdateda);
-               $(".popup_detail_table td.rokdate").text(data.rokdate);
-               $(".popup_detail_table td.pid").text(data.pid);
-               $(".popup_detail_table td.pdate").text(data.pdate);
-               $(".popup_detail_table td.pcoin ").text(data.pcoin);
-               $(".popup_detail_table td.tcheck ").text(data.tcheck);
+
+            	let data = JSON.parse(result);
+            	
+            	$(".popup_detail_table td.dcode").text(data.dcode);
+            	$(".popup_detail_table td.rid").text(data.rid);
+            	$(".popup_detail_table td.tid").text(data.tid);
+            	$(".popup_detail_table td.dtitle").text(data.dtitle);
+            	$(".popup_detail_table td.mid").text(data.mname);
+            	$(".popup_detail_table td.dprice").text(data.dpricech);
+            	$(".popup_detail_table td.rtotal").text(data.rtotal);
+            	$(".popup_detail_table td.rallprice").text(data.rallpricech);
+            	$(".popup_detail_table td.rdate").text(data.rdateda);
+            	$(".popup_detail_table td.rokdate").text(data.rokdate);
+            	$(".popup_detail_table td.pid").text(data.pid);
+            	$(".popup_detail_table td.pdate").text(data.pdate);
+            	$(".popup_detail_table td.pcoin ").text(data.pcoin);
+            	$(".popup_detail_table td.tcheck ").text(data.tcheck);
+ 
              
              
             /*   if(data.unregister == 'n'){
@@ -664,23 +672,34 @@ $(document).ready(function(){
             
                
             }
-
-        });//ajax
+ 
     });//click
-  
   }
   
+ 
+  }
+  
+ 
    $(".reservation_detail_admin").click(function(){
-          var id_check = $(this).attr("id");
-          alert($(this).attr('id'));
+ 
+   		 var id_check = $(this).attr("id");
+ 
    
          $(location).attr('href', "http://localhost:9000/dmu/adminpage_reservation_list_det.do?rid="+ id_check);  
          
    });
   
-
+}); //ready
  
-   
+ 
+ 
+	
+	 
+	/*
+	** 검색기능
+	*/
+$(document).ready(function(){	
+	 
     
    /*
    ** 검색기능
@@ -809,6 +828,7 @@ $(document).ready(function(){
            
        }); //ajax
 
-   }//finction - admin_search_reserve
+	}//finction - admin_search_reserve
  
 }); //ready
+ 

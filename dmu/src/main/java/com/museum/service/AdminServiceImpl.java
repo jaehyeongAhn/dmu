@@ -94,16 +94,15 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public DmuReJoinVO reservationContent(String mid) {
+	public DmuReJoinVO reservationContent(String rid) {
 	 
-		return adminDAO.reservationContent(mid);
+		return adminDAO.reservationContent(rid);
 	}
 	
 	  @Override public ArrayList<DmuReJoinVO> reservationDet(String rid) {
-	  ArrayList<DmuReJoinVO> list = adminDAO.reservationDet(rid);
-	  return list; }
-	 
-	
+		  ArrayList<DmuReJoinVO> list = adminDAO.reservationDet(rid);
+		  return list; 
+	  }
 	
 	  @Override public DmuReJoinVO reservationDet1(String rid) { 
 		  return  adminDAO.reservationDet1(rid); 
