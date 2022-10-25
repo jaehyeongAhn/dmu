@@ -135,13 +135,12 @@ $(document).ready(function(){
 							총 <strong class='total'>${dbCount}</strong>건
 						</div>
 						<div class="search-part">
-							<input type="text" name="search" placeholder="검색어를 입력하세요" class="search-bar-reserve">
+							<input type="text" name="search" placeholder="티켓번호/이벤트명/예약자명으로만 검색 가능합니다" class="search-bar-reserve">
 							<button class="search-btn-reserve">검색</button>
 						</div>
 						</div>
 								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">검색 결과가 없습니다.</p></div>
 								<div class="info-list">
-									<!-- <table id="report"> -->
 									<table class="info-table">
 										<thead>
 											<tr>
@@ -154,15 +153,15 @@ $(document).ready(function(){
 												<th>총 금액</th>
 												<th>관람일</th>
 												<th>예약일</th>
-												<th>예약취소  진행</th>
+												<th>관리자모드</th>
 												 
 											</tr>
 										</thead>
 										<tbody>
 										<c:forEach var="vo" items="${list}">
 											<tr class = "name" id="${vo.rid}">												 
-												<td >${vo.dcode}</td>											 
-												<td  class="reservation_detail reservationId"><a href="#">${vo.rid}</a></td> <!-- 티켓번호 -->
+												<td >${vo.dcode}</td>		
+												<td  class=" reservation_detail reservationId" id="${vo.rid}">${vo.rid}</td> <!-- 티켓번호 -->
 												<td>${vo.dtitle }</td>   <!-- 전시/이벤트 명 --> 
 												<td>${vo.mname }</td>   <!-- 예약자 명 -->
 												<td>${vo.dpricech }</td>   <!-- 티켓금액 -->
@@ -175,7 +174,7 @@ $(document).ready(function(){
 															<td>취소완료</td>
 														</c:when>
 															<c:otherwise>
-																<td>  <button class="reservation_detail_admin" type="button" id="${vo.rid}"> 관리자 모드 </button> </td>
+																<td><button class="reservation_detail_admin member_detail" type="button" id="${vo.rid}" > 자세히보기 </button></a>  </td>
 														</c:otherwise>
 													</c:choose>
 											</tr>
@@ -208,8 +207,8 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
-	
-	<div class = "background_reservation">
+
+<%-- <div class = "background_reservation">
 		<div class = "window_reservation">
 			<div class = "popup_reservation">
 				<p class = "popup_title">티켓 정보</p>
@@ -281,6 +280,8 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --%>
+
+
 </body>
 </html>
