@@ -182,6 +182,7 @@
 				<div class = "popup_button">
 					<button type = "button" id = "popup_joinNo">취소</button>
 					<button type = "button" id = "popup_joinOk">확인</button>
+					<button type = "button" id = "unregister_member" style = "display : none;">확인</button>
 				</div>
 			</div>
 		</div>

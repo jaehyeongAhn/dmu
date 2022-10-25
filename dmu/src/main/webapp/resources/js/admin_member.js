@@ -361,7 +361,7 @@ $(document).ready(function(){
                             $.ajax({
                         url : "acceptUpdate.do?mid="+$(".accept_input").val(),
                         success: function(result){
-                           alert(result);
+                           //alert(result);
                      
                            if(result == 1){
                            
