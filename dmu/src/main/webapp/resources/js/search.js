@@ -68,7 +68,7 @@
 					output += "</div>";
 					output += "<div class='btn-group'>";
 					output += "<div class='btn-area'>";
-					output += "<button id='btn95' type='button' class='secondary small'>자세히 보기</button>";
+					output += "<a href = '#' class = 'link_other'><button id='btn95' type='button' class='secondary small'>다른 전시회 살펴보기</button></a>";
 					output += "</div>";
 					output += "<div class='btn-area search-hidden-btn'>";
 					output += "<a href='#' class='link_ticket'><button id='btn96' type='button' class='primary small'>예매하기</button></a>";
@@ -128,12 +128,14 @@
 						$("." + str + " dd.search" + index + " div.info-area li:last-child span").text(dataset.dstart + " ~ " + dataset.dend);
 						$("." + str + " dd.search" + index + " div.btn-group input.id_result").val(dataset.did);
 						$("." + str + " dd.search" + index + " div.btn-group a.link_ticket").attr("href", "http://localhost:9000/dmu/"+str+".do?did="+dataset.did);
+						$("." + str + " dd.search" + index + " div.btn-group a.link_other").attr("href", "http://localhost:9000/dmu/"+str+"_list.do");
 	
 						//.on 삭제
 						$("dd").removeClass("on");
 						
 						++index; 
 					}
+					
 					
 				}
 			});//ajax
