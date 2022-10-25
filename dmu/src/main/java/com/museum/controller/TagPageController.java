@@ -49,7 +49,6 @@ public class TagPageController {
 		public ModelAndView event_page(String dplace ) {
 			ModelAndView mv = new ModelAndView();
 			
-			
 			ArrayList<DmuTicketVO> list = tagpageService.getEventContent("event");
 			
 			mv.addObject("list", list);
@@ -58,7 +57,29 @@ public class TagPageController {
  
 		}
 		
-	 
+		// event_page_ajax.do
+				@ResponseBody
+				@RequestMapping(value="/event_page_ajax.do", method =RequestMethod.GET,produces="text/plain;charset=UTF-8")
+				public String event_page_ajax(String dplace, String itemlist){
+					
+					ArrayList<DmuTicketVO> list=tagpageService.eventlist("event", itemlist );
+					
+					JsonObject jobject = new JsonObject(); //DmuTicketVO
+					JsonArray jarray = new JsonArray();  //ArrayList
+					Gson gson = new Gson();
+					for(DmuTicketVO vo : list){
+						JsonObject jo = new JsonObject();
+						jo.addProperty("did", vo.getDid());
+						jo.addProperty("dtitle", vo.getDtitle());
+						jo.addProperty("dplace", vo.getDplace());
+						jo.addProperty("dsfile", vo.getDsfile());
+						jo.addProperty("dcode", vo.getDcode());
+						jarray.add(jo);
+					}
+					jobject.add("list", jarray); 
+					
+					return gson.toJson(jobject);
+				} 
  
 		
 	// event_page_det.do

@@ -100,7 +100,7 @@
 					<div data-v-080a389a="" data-v-e3917d8a="">
 						<div data-v-080a389a="" class="snb-area">
 							<ul data-v-080a389a="" class="snb ">
-								<li data-v-080a389a="" class="on"><a data-v-080a389a="" href="event_page.do?dplace=${dplace }"
+								<li data-v-080a389a="" class="on"><a data-v-080a389a=""  
 									role="button" style="cursor: pointer;" data-tab="tab_1" class="tabbox" id="전체">전체</a></li>
 								<li data-v-080a389a="" class=""><a data-v-080a389a=""  
 									role="button" style="cursor: pointer;" data-tab="tab_2" class="tabbox" id="디뮤지엄">디뮤지엄</a></li>

@@ -75,7 +75,11 @@ public class TagPageServiceImpl implements TagPageService {
 		ArrayList<DmuTicketVO> list = tagpageDao.getEventContent(dplace);
 		return list;
 	}
- 
+	@Override
+	public ArrayList<DmuTicketVO> eventlist(String dplace, String itemlist) {
+		ArrayList<DmuTicketVO> list = tagpageDao.eventlist( dplace,itemlist );
+		return list;
+	}
 	
 	@Override
 	public ArrayList<DmuTicketVO> getDayList(String dcode, String day) {

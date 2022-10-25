@@ -27,6 +27,18 @@ public class DmuTagPageDAO {
 			return (ArrayList<DmuTicketVO>)list;
 		     
 		   }
+	   
+	   /**
+	    * tag_page list
+	    */
+	   public ArrayList<DmuTicketVO> eventlist(String dplace,String itemlist ){
+		   Map<String,String> param = new HashMap<String,String>();
+		   param.put("dplace",dplace);
+		   param.put("itemlist",itemlist);
+		   
+		   List<DmuTicketVO> list = sqlSession.selectList("mapper.tagpage.EventContentList",param);
+		   return (ArrayList<DmuTicketVO>)list;
+	   }
 	
 	   
 	   

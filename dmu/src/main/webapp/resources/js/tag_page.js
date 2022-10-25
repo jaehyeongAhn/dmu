@@ -73,9 +73,9 @@ $( document ).ready( function() {
 			
 			var itemlist = $(this).attr("id");
 			var dplace ="${dplace}"; 
-			 
+		 
 			$.ajax({
-				url : 'event_page_ajaxlist.do?itemlist='+itemlist+'&dplace='+dplace,
+				url : 'event_page_ajaxlist.do',
 				type : "get" , 
 				cache : false,
 				headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
