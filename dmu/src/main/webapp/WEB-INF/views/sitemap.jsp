@@ -46,7 +46,9 @@
                     <h2 data-v-0d03d759=""> SITEMAP </h2>
                     <nav data-v-0d03d759="">
                         <ul data-v-0d03d759="">
-                            <li data-v-0d03d759="" style="cursor: pointer;"><a href="index.do" style="opacity:0;">HOME</a></li>
+                            <li data-v-0d03d759="" style="width:15px;background-position: center !important;">
+                            	<a href="index.do" style="opacity:0; display: flex; width: 15px; height: 15px;">HOME</a>
+                            </li>
                             <!---->
                             <li data-v-0d03d759=""> SITEMAP </li>
                             <!---->
@@ -79,20 +81,20 @@
                                 </li>
                                 <li data-v-36112f05=""><span data-v-36112f05="" class="category"> LEARN </span>
                                     <ul data-v-36112f05="">
-                                        <li data-v-36112f05=""><a data-v-36112f05="" href="/learn/education/snb/infant"
+                                        <li data-v-36112f05=""><a data-v-36112f05="" href="learn_page.do?dtarget=유아"
                                                 class=""> 유아 </a></li>
-                                        <li data-v-36112f05=""><a data-v-36112f05="" href="/learn/education/snb/child"
+                                        <li data-v-36112f05=""><a data-v-36112f05="" href="learn_page.do?dtarget=어린이"
                                                 class=""> 어린이 </a></li>
                                         <li data-v-36112f05=""><a data-v-36112f05=""
-                                                href="/learn/education/snb/teenager" class=""> 청소년 </a></li>
+                                                href="learn_page.do?dtarget=청소년" class=""> 청소년 </a></li>
                                         <li data-v-36112f05=""><a data-v-36112f05=""
-                                                href="/learn/education/snb/colleger" class=""> 대학생 </a></li>
-                                        <li data-v-36112f05=""><a data-v-36112f05="" href="/learn/education/snb/adult"
+                                                href="learn_page.do?dtarget=대학생" class=""> 대학생 </a></li>
+                                        <li data-v-36112f05=""><a data-v-36112f05="" href="learn_page.do?dtarget=성인"
                                                 class=""> 성인 </a></li>
-                                        <li data-v-36112f05=""><a data-v-36112f05="" href="/learn/education/snb/teacher"
+                                        <li data-v-36112f05=""><a data-v-36112f05="" href="learn_page.do?dtarget=교사"
                                                 class=""> 교사 </a></li>
                                         <li data-v-36112f05=""><a data-v-36112f05=""
-                                                href="/learn/education/snb/commentary" class=""> 전시해설 </a></li>
+                                                href="learn_page.do?dtarget=전시해설" class=""> 전시해설 </a></li>
                                     </ul>
                                 </li>
                                 <li data-v-36112f05=""><a data-v-36112f05="" href="http://localhost:9000/dmu/event_page.do"
@@ -113,7 +115,7 @@
                                     <!---->
                                 </li>
                                 <li data-v-36112f05="" class="arrow">
-                                    <!----><a data-v-36112f05="" href="login.do" class="" target=""> MY PAGE </a>
+                                    <!----><a data-v-36112f05="" href="mypage_main.do" class="" target=""> MY PAGE </a>
                                     <!---->
                                 </li>
                                 <li data-v-36112f05="" class="arrow">

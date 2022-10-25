@@ -63,6 +63,9 @@ $( document ).ready( function() {
 	    element.scrollIntoView({ behavior: 'smooth' });
 	  } 
 	 
-  
+  $(".program-view-contents div.snb-area ul.snb li").click(function(){
+  		$(".program-view-contents div.snb-area ul.snb li").removeClass("on");
+  		$(this).addClass("on");
+  });
 });
  
