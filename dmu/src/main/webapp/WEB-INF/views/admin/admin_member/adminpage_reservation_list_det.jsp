@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,18 @@
 		$(".refund_content").css("height", height);
 	});
 </script>
+<style>
+	div.flag_content ul {
+		list-style : "-";
+		list-style-position :inside;
+		margin-top : 30px;
+	}
+	div.flag_content ul li {
+		line-height: 30px;
+	    color: #4c4c4c;
+	    letter-spacing: -0.08rem;
+	}
+</style>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
@@ -64,10 +77,10 @@
 									<div class="sub-menu-list">
 										<ul>
 											<li class="">
-												<a class="" href="adminexhibition_list.do" target="_blank">상품 리스트 작성</a>
+												<a class="" href="adminexhibition_list.do">상품 리스트 작성</a>
 											</li>
 											<li class="">
-												<a class="" href="admin_notice_list.do" target="_blank">공지사항 작성</a>
+												<a class="" href="admin_notice_list.do">공지사항 작성</a>
 											</li>
 										</ul>
 									</div>
@@ -95,10 +108,8 @@
 									<div class="purchase-result-list-content" style = "width : 100%;">
 										<div style="border-bottom: 0.5px solid #ddd;">
 											<div class="purchase-result-content-title" style = "width : 100%;">
-												<a href="${ list.ticketVo.dcode }.do?did=${ list.ticketVo.did }">
 													<img src="http://localhost:9000/dmu/resources/upload/${ list.ticketVo.dsfile }"
 														style = "width : 250px;">
-												</a>
 												<table>
 													<tr>
 														<td colspan = "4" class = "content_table_title">${ list.ticketVo.dtitle }</td>
@@ -192,7 +203,7 @@
 							</div>
 						</div>
 					</div>
-					
+					 
 					<%-- 티켓 정보 --%>
 					<div class = "ticket">
 						<div class = "ticket_information">
@@ -232,7 +243,7 @@
 														<label for="check${ index }"></label>
 													</td>
 													<td class = "purchase_tid">${ ticket_list.tid }</td>
-													<td class = "purchase_dtitle">${ list.ticketVo.dtime }</td>
+													<td class = "purchase_dtitle">${ list.ticketVo.dentertime }</td>
 													
 													<fmt:parseDate var = "rdate" value = "${ list.rdate }" type = "date" pattern = "yyyy-MM-dd"/>
 													<td class ="purchase_rdate"><fmt:formatDate pattern="yyyy-MM-dd" value="${rdate}"/></td>
@@ -253,15 +264,6 @@
 												</tr>
 													<c:set var = "index" value = "${ index+1 }"/>
 												</c:forEach>
-												<!-- <tr>
-													<td><input type="checkbox"  id="check2" class="ticket_list">
-														<label for="check2"></label>
-													</td>
-													<td>22082800783812132132</td>
-													<td>성인</td>
-													<td>2022.10.31</td>
-													<td><strong>사용가능</strong></td>
-												</tr> -->
 											</table>
 										</div>
 									</div>
@@ -269,32 +271,12 @@
 							</div>
 						</div>
 					</div>
+	
 					</c:forEach>
-					<style>
-					</style>
-					<%-- 유의 사항 --%>
-					<div class = "flag" style = "margin:75px 0 20px 0;">
-						<div class = "flag_content">
-							<div clas = "flag_content_title">
-								<h2>유의사항</h2>
-							</div>
-							<div>
-								<ul>
-									<li>예매하신 티켓의 변경, 취소, 환불은 관람 전 일 오후 5시까지만 가능합니다. 이후에는 취소와 환불이 불가하오니 유의해 주세요.</li>
-									<li>전시 관람 또는 프로그램 참여 당일 예매하신 티켓은 취소, 변경, 환불이 불가합니다. 꼭 기억해 주세요.</li>
-									<li>관람 및 참여 여부와 관계없이 예약시간에 사용하지 않은 티켓은 기간만료 처리되어 취소,  환불이 불가능합니다.</li>
-									<li>경로 및 장애인 우대할인 티켓을 구매하신 경우, 미술관 방문 당일 현장에서 확인 가능한 신분증 또는 증명서를 반드시 지참해 주시기 바랍니다.</li>
-									<li>연령, 할인 기준에 맞지 않는 티켓을 예매하신 경우 현장에서의 차액 지불은 불가하며, 미술관 입장이 어려울 수 있습니다.</li>
-									<li>예매취소 시점과 결제 시 사용하신 신용카드사의 따라 취소 방법과 환급일은 다소 차이가 있을 수 있습니다.</li>
-									<li>신용카드 할부결제로 구매하신 티켓 수량의 일부를 취소하실 경우, 신용카드사의 사정에 따라 혜택(무이자 할부 등)의 적용 여부가 달라질 수 있습니다.</li>
-								</ul>
-							</div>
-						</div>
 					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
+	 <iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
 	
 	<div class = "background_join">
 		<div class = "window_join">
@@ -315,7 +297,6 @@
 				</div>
 				<div class = "refund_content">
 					<div class = "refund_ticket">
-						<h3 class="refund_img">환불목록</h3>
 						<div class="refund_ticket_list">
 							<form name = "refundForm" action = "adminpage_ticket_cancel.do" method = "post">
 								<table>
@@ -325,12 +306,6 @@
 										<th>상태</th>
 										<th>가격</th>
 									</tr>
-									<!-- <tr>
-										<td>22082800783812132132</td>
-										<td>2022.10.31</td>
-										<td><strong>취소가능</strong></td>
-										<td>12,000원</td>
-									</tr> -->
 									<tr>
 										<td colspan="4">환불 예상금액: <strong class = "total_count">24,000원</strong></td>
 									</tr>
@@ -340,26 +315,10 @@
 					</div>
 					<div class = "refund_terms_div">
 						<div>
-							<h3 class="ticket_img">환불정책</h3>
-							<div class="refund_terms_comment">
-								<div style="text-align : center;">
-									<h3 style="display : block; font-size:21px;">티켓 환불 정책</h3>
-								</div>
-								<ul class = "refund_terms">
-									<li>신용카드 할부 결제로 구매하신 티켓 수량의 일부를 취소하실 경우, 신용카드사의 사정에 따라 혜택(무이자 할부 등)의 적용 여부가 달라질 수 있습니다.</li>
-									<li>티켓 환불 시점과 해당 카드사의 환불 처리 기준에 따라 취소 금액의 환급일은 다소 차이가 있을 수 있습니다. 사용한 카드의 환불에 관한 사항은 시용카드사에 직접 문의해주시기 바랍니다.</li>
-									<li>천재지변, 전시장 입장이 불가능한 상태에 이르는 시설 고장, 전시장 내 총기 또는 가스 등의 사고로 인한 인력 사고, 
-										감염병 예방 등으로 인한 정부의 임시 폐관 조치와 같은 미술 관 측 사유로 전시 관람, 참여가 어려울 경우 취소 기한에 관계없이 구매하신 티켓에 대한 전액 환불을 진행합니다.</li>
-									<li>전시 관람 또는 프로그램 참여 당일 예매하신 티켓은 취소, 변경, 환불이 불가합니다.</li>
-									<li>예매하신 티켓의 변경, 취소, 환불은 관람 전 일 오후 5시까지만 가능합니다.</li>
-									<li>환불은 결제한 수단으로만 진행됩니다.</li>
-									<li>티켓의 환불 신청은 대림문화재단 홈페이지와 어플리케이션을 통해서만 가능합니다. 
-										구체적인 내용은 각 해당 페이지에 명시된 취소 및 환불 규정을 따릅니다.</li>
-								</ul>
-							</div>
+						 
 							<div class = "refund_checkbox">
 								<input type = "checkbox" id = "refund_ticket_check_box">
-								<label for = "refund_ticket_check_box">예매취소에 대한 환불정책을 확인했습니다.</label>
+								<label for = "refund_ticket_check_box">관리자 권한으로 삭제 하겠습니다.</label>
 								<p></p>
 							</div>
 						</div>
@@ -382,5 +341,7 @@
 			</div>
 		</div>
 	</div>
+	
+ 	
 </body>
 </html>

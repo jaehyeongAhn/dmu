@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
  
@@ -25,9 +26,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.museum.dao.DmuNoticeDAO;
 import com.museum.service.PageServiceImpl;
 import com.museum.service.TagPageServiceImpl;
 import com.museum.service.TicketServiceImpl;
+import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuTicketVO;
 
  
@@ -43,17 +46,19 @@ public class TagPageController {
 		 
 		@RequestMapping(value="/event_page.do", method=RequestMethod.GET)
  
-		public ModelAndView event_page( ) {
+		public ModelAndView event_page(String dplace ) {
 			ModelAndView mv = new ModelAndView();
+			
 			
 			ArrayList<DmuTicketVO> list = tagpageService.getEventContent("event");
 			
-		 
 			mv.addObject("list", list);
 			mv.setViewName("/tag_page/event/event_page");
 			return mv;
  
 		}
+		
+	 
  
 		
 	// event_page_det.do

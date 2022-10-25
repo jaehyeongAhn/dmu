@@ -927,7 +927,7 @@ $(document).ready(function(){
 							$(".background_ticket_refund_result").addClass("show");
 							$(".window_ticket_refund_result").addClass("show");
 							$("#ticket_refund_result_btn").click(function(){
-								$(location).attr("href", "http://localhost:9000/dmu/mypage_ticket.do");
+								$(location).attr("href", "http://localhost:9000/dmu/adminpage_reservation_list.do");
 							});
 						}//success
 						

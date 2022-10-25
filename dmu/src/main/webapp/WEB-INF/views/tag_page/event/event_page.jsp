@@ -99,15 +99,15 @@
 					</div>
 					<div data-v-080a389a="" data-v-e3917d8a="">
 						<div data-v-080a389a="" class="snb-area">
-							<ul data-v-080a389a="" class="snb">
-								<li data-v-080a389a="" class="on"><a data-v-080a389a=""
-									role="button" style="cursor: pointer;">전체</a></li>
-								<li data-v-080a389a="" class=""><a data-v-080a389a=""
-									role="button" style="cursor: pointer;">디뮤지엄</a></li>
-								<li data-v-080a389a="" class=""><a data-v-080a389a=""
-									role="button" style="cursor: pointer;">대림미술관</a></li>
-								<li data-v-080a389a="" class=""><a data-v-080a389a=""
-									role="button" style="cursor: pointer;">구슬모아당구장</a></li>
+							<ul data-v-080a389a="" class="snb ">
+								<li data-v-080a389a="" class="on"><a data-v-080a389a="" href="event_page.do?dplace=${dplace }"
+									role="button" style="cursor: pointer;" data-tab="tab_1" class="tabbox" id="전체">전체</a></li>
+								<li data-v-080a389a="" class=""><a data-v-080a389a=""  
+									role="button" style="cursor: pointer;" data-tab="tab_2" class="tabbox" id="디뮤지엄">디뮤지엄</a></li>
+								<li data-v-080a389a="" class=""><a data-v-080a389a=""  
+									role="button" style="cursor: pointer;" data-tab="tab_3" class="tabbox" id="대림미술관">대림미술관</a></li>
+								<li data-v-080a389a="" class=""><a data-v-080a389a=""  
+									role="button" style="cursor: pointer;" data-tab="tab_4" class="tabbox" id="구슬모아당구장">구슬모아당구장</a></li>
 							</ul>
 						</div>
 						<div data-v-080a389a="" class="sub-contents-area"></div>
@@ -126,18 +126,30 @@
 						<div data-v-e3917d8a="" class="container" id="js-load" class="main">
 							<ul data-v-e3917d8a="" class="program-list">
 								
+							<c:if test="${not empty list}">
 								<c:forEach var="vo" items="${list}">
-									<li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
-										href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
-												<img data-v-2fed1a9a="" data-v-e3917d8a=""
-													src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"
-													alt="${vo.dtitle }" style="">
+									<li data-v-e3917d8a="" class="lists__item js-load">
+										<a data-v-e3917d8a="" href="javascript:void(0);" style="cursor: auto;">
+											<div data-v-e3917d8a="" class="thumb">
+												<img data-v-2fed1a9a="" data-v-e3917d8a="" 
+													src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }" alt="${vo.dtitle }" style="">
 											</div>
 											<div data-v-e3917d8a="" class="info">
-												<span data-v-e3917d8a="" class="place">${vo.dplace }</span><strong
-													data-v-e3917d8a="" class="title"> ${vo.dtitle }</strong>
-											</div></a></li>
+												<span data-v-e3917d8a="" class="place">${vo.dplace }</span>
+												<strong data-v-e3917d8a="" class="title"> ${vo.dtitle }</strong>
+											</div>
+										</a>
+									</li>
 								</c:forEach>
+							</c:if>	
+							<c:if test="${empty list }">
+								<div data-v-97ddc3ec="" class="no-data">
+									<div data-v-e20ce500="" data-v-080a389a=""
+										class="no-result">
+										<p data-v-e20ce500="" data-v-080a389a="">지난 프로그램이 없습니다.</p>
+									</div>
+								</div>
+							</c:if>
 								 
 							</ul>
 							<div data-v-e3917d8a="" class="btn-program-more" >
@@ -156,7 +168,7 @@
  
 
 		<button class="goto-top">상단으로 이동</button>
-	</div>	 
+	 
 	<!-- built files will be auto injected -->
 	<footer>
 		<!-- 0510 네이버 공통 js 추가 -->

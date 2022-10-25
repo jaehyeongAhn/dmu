@@ -821,6 +821,7 @@ public class AdminController {
 	}
  
 	  
+	
 	/*
 	 * //adminpage_reservation_list_det.do
 	 * 
@@ -838,6 +839,7 @@ public class AdminController {
 	 * 
 	 * return mv; }
 	 */
+	 
 			 
 	//mypage_ticket_content.do : 마이페이지 티켓 예매 상세보기
 		@RequestMapping(value = "/adminpage_reservation_list_det.do", method = RequestMethod.GET)
@@ -846,7 +848,7 @@ public class AdminController {
 			
 			ArrayList<DmuPurchaseVO> list = (ArrayList<DmuPurchaseVO>)adminService.getPurchaseContent(rid);
 			mv.addObject("list", list);
-			mv.setViewName("/mypage/mypage_ticket_content");
+			mv.setViewName("/admin/admin_member/adminpage_reservation_list_det");
 			
 			return mv;
 		}
@@ -854,7 +856,7 @@ public class AdminController {
 		//mypage_ticket_cancel.do : 마이페이지 티켓 삭제하기
 		@ResponseBody
 		@RequestMapping(value = "/adminpage_ticket_cancel.do", method = RequestMethod.POST)
-		public String mypage_ticket_cancel(@RequestParam(value = "ticketList[]") List<String> ticketList, int rtotal, String rid) {
+		public String adminpage_ticket_cancel(@RequestParam(value = "ticketList[]") List<String> ticketList, int rtotal, String rid) {
 			String total_result = "";
 			
 			//선택한 티켓 정보(환불) 업데이트

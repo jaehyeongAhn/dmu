@@ -62,7 +62,51 @@ $( document ).ready( function() {
 	     const element = document.getElementById("info");
 	    element.scrollIntoView({ behavior: 'smooth' });
 	  } 
-	 
+	
+
+
+   
+		$(".tabbox").click(function(){
+			var test = $(this).attr("id"); 
+			$(".tabbox").css("color","#9999").css("font-weight","400");
+			$("#"+test).css("font-weight","bold").css("color","black");
+			
+			var itemlist = $(this).attr("id");
+			var dplace ="${dplace}"; 
+			 
+			$.ajax({
+				url : 'event_page_ajaxlist.do?itemlist='+itemlist+'&dplace='+dplace,
+				type : "get" , 
+				cache : false,
+				headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
+				success : function(data){
+					let dataset = JSON.parse(data);
+					var output =  "<ul data-v-e3917d8a='' class='program-list'>"
+						for(aj of dataset.list){
+						output += "<li data-v-e3917d8a='' class='lists__item js-load'>"
+						output += "<a data-v-e3917d8a='' href='javascript:void(0);' style='cursor: auto;'>"
+						output += "<div data-v-e3917d8a='' class='thumb'>"
+						output += "<img data-v-2fed1a9a='' data-v-e3917d8a=''  src='http://localhost:9000/dmu/resources/upload/" + aj.dsfile +"' alt='"+aj.dtitle +"' style=''>"
+						output += "</div>"
+						output += "<div data-v-e3917d8a='' class='info'>"
+						output += "<span data-v-e3917d8a='' class='place'>" + aj.dplace +" </span>"
+						output += "<strong data-v-e3917d8a='' class='title'> " + aj.dtitle +" </strong>"
+						output += "</div></a></li>"
+					 
+						}
+						output += "</ul>"
+
+					//3. 출력 
+					$("#program-list").remove();
+					$("#program-list").after(output);
+					
+				},
+			 	error : function(data){
+			 		alert('error');
+			 	}//error 출력 
+			})//ajax
+		});//click	
+	
   
 });
  

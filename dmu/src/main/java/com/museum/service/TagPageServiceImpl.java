@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.museum.dao.DmuNoticeDAO;
 import com.museum.dao.DmuTagPageDAO;
+import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuTicketVO;
 
 public class TagPageServiceImpl implements TagPageService {
@@ -69,14 +71,18 @@ public class TagPageServiceImpl implements TagPageService {
 	 * tag_page
 	 */
 	@Override
-	public ArrayList<DmuTicketVO> getEventContent(String dcode ) {
-		 
-		return tagpageDao.getEventContent(dcode);
+	public ArrayList<DmuTicketVO> getEventContent(String dplace ) {
+		ArrayList<DmuTicketVO> list = tagpageDao.getEventContent(dplace);
+		return list;
 	}
+ 
+	
 	@Override
 	public ArrayList<DmuTicketVO> getDayList(String dcode, String day) {
 		ArrayList<DmuTicketVO> list = tagpageDao.selectday(dcode,day);
 		return list;
 	}
+
+	 
 	 
 }

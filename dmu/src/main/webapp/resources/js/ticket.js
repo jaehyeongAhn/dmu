@@ -187,11 +187,13 @@ $(document).ready(function(){
 	 관람인원 변경시 체크박스 해제
 	**********************/
 	$("#countpeople").click(function(){		 
-		$("input:checkbox[id='check30']").prop("checked", false );				 
+		$("input:checkbox[id='check30']").prop("checked", false );	
+		 $("#btn32").prop("disabled", !this.checked); 			 
 	}); 
 	
 	$("#increaseQuantity").click(function(){		 
-		$("input:checkbox[id='check30']").prop("checked", false );				 
+		$("input:checkbox[id='check30']").prop("checked", false );	
+		 $("#btn32").prop("disabled", !this.checked); 			 
 	}); 
 		
 		
