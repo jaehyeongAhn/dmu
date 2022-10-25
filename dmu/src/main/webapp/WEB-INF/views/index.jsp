@@ -50,6 +50,7 @@
 * Released on: June 16, 2020
 */
 -->
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script type="text/javascript" charset="UTF-8"
         src="https://maps.googleapis.com/maps-api-v3/api/js/50/2/common.js"></script>
     <script type="text/javascript" charset="UTF-8"
@@ -192,37 +193,111 @@
     		let main_index = 1;
 			let window_size = $(document).width();
    			$(".main-visual-area .swiper-container .swiper-wrapper").css({
-   				"transform" : "translate3d(" + -window_size + "px, 0, 0)",
-   				"transition" : "transform 0.5s"
+   				"transform" : "translate3d(" + -window_size + "px, 0, 0)"
    			});
 			$("div.slide-pagination-area button.btn-mains-prev").addClass("swiper-button-disabled");
 			$("div.slide-pagination-area button.btn-mains-prev").attr("disabled", true);
 			$("div.slide-pagination-area button.btn-mains-prev").css("cursor", "default");
    			//setInterval(nextSlide, 4000); //4초(4000)마다 다음 슬라이드로 넘어감
    			
-    		$("div.slide-pagination-area button.btn-mains-prev").click(function(){
-    			let window_size = $(document).width();
-    			main_index -= 1;
+   			
+   			let start_x = 0;
+   			let end_x = 0;
+   			let press_check = true;
+   			
+   			$(".main-visual-area .swiper-container .swiper-wrapper").mouseup(function(e){
+   				start_x = e.screenX;
+   				press_check = true;
+   			});
+   			
+   			$(".main-visual-area .swiper-container .swiper-wrapper").mousedown(function(e){
+   				end_x = e.screenX;
+   				press_check = false;
+   			});
 
-    			if(main_index < 1){
-    				main_index = 1;
-    				return false;
+   			let slider_index = 0;
+   			$(".main-visual-area .swiper-container .swiper-wrapper").draggable({
+   				axis: "x", 
+   				delay : 0,
+   				stop : function(evnet, ui){
+   					slider();
+   				}//stop
+   			});
+   			
+   			function slider(){
+					
+				if(Math.abs(start_x - end_x) > (window_size/2)){
+   					if((start_x - end_x) > 0) {
+   						//왼쪽 -> 오른쪽
+   	   					++slider_index;
+	   						
+   						$(".main-visual-area .swiper-container .swiper-wrapper").css({
+   		    				"left" : window_size*slider_index,
+   		    				"transition" : "left 0.3s"
+   		    			});
+	   						
+   						if(slider_index == 1){
+   							slider_index = 0;
+   						}
+
+   						let main_slider = $(".main-visual-area .swiper-container .swiper-wrapper .swiper-slide").filter(":nth-child(1)");
+   						let paging = parseInt(main_slider.attr("data-swiper-slide-index"));
+
+   		    			$("div.main-page-list .swiper-pagination-current").text("0" + (paging+1));
+   		    			
+   	   					setTimeout(function(){last_slider();},300);
+   	   					
+   					}else{
+   						//오른쪽 -> 왼쪽
+	   					--slider_index;
+   						
+	   					$(".main-visual-area .swiper-container .swiper-wrapper").css({
+   		    				"left" : window_size*slider_index,
+   		    				"transition" : "left 0.3s"
+   		    			});
+	   					
+						if(slider_index == -1){
+	   		    			slider_index = 0;
+	   					}
+
+
+   						let main_slider = $(".main-visual-area .swiper-container .swiper-wrapper .swiper-slide").filter(":nth-child(3)");
+   						let paging = parseInt(main_slider.attr("data-swiper-slide-index"));
+
+   		    			$("div.main-page-list .swiper-pagination-current").text("0" + (paging+1));
+   	   					setTimeout(function(){last_slider();},300);
+   					}
+				}else{
+					$(".main-visual-area .swiper-container .swiper-wrapper").css({
+	    				"left" : 0,
+	    				"transition" : "left 0.3s"
+	    			});
+				}
+   			}//slider()
+
+			function last_slider(){
+    			if(press_check){
+   	   				let last_item = $(".main-visual-area .swiper-container .swiper-wrapper .swiper-slide").filter(":last-child");
+					let first_item = $(".main-visual-area .swiper-container .swiper-wrapper .swiper-slide").filter(":first-child");
+
+   					if((start_x - end_x) > 0) {
+						$(".main-visual-area .swiper-container .swiper-wrapper").prepend(last_item);
+						$(".main-visual-area .swiper-container .swiper-wrapper").css({
+			    				"left" : 0,
+			    				"transition" : "none"
+			    			});
+   					}else{
+						$(".main-visual-area .swiper-container .swiper-wrapper").append(first_item);
+						$(".main-visual-area .swiper-container .swiper-wrapper").css({
+			    				"left" : 0,
+			    				"transition" : "none"
+			    			});
+   					}
     			}
-
-    			$(".main-visual-area .swiper-container .swiper-wrapper").css({
-    				"transform" : "translate3d(" + -window_size + "px, 0, 0)",
-    				"transition" : "transform 0.5s"
-    			});
-    			$("div.main-page-list .swiper-pagination-current").text("0" + main_index);
-    			
-				$("div.slide-pagination-area button.btn-mains-next").removeClass("swiper-button-disabled");
-    			$("div.slide-pagination-area button.btn-mains-next").attr("disabled", false);
-    			$("div.slide-pagination-area button.btn-mains-next").css("cursor", "pointer");
-				$(this).addClass("swiper-button-disabled");
-    			$(this).attr("disabled", true);
-    			$(this).css("cursor", "default");
-    		});
-    		
+			}//last_silder()
+			
+   			
+   			
     		$("div.slide-pagination-area button.btn-mains-next").click(function(){
     			let window_size = $(document).width();
     			main_index += 1;
@@ -836,11 +911,11 @@
                             </div>
                         </div>
                         <div data-v-ea82c312="" data-v-796e266c="" class="slide-pagination-area"><button
-                                data-v-ea82c312="" type="button" class="btn-prev btn-mains-prev" style = "display : inline-block;"> prev </button>
+                                data-v-ea82c312="" type="button" class="btn-prev btn-mains-prev" style = "display : none;"> prev </button>
                             <div data-v-ea82c312="" class="main-page-list swiper-pagination-fraction"><span
                                     style="color: #fff" class="swiper-pagination-current">01</span> / <span
                                     style="color: rgba(255,255,255,.3);" class="swiper-pagination-total">02</span></div>
-                            <button data-v-ea82c312="" type="button" class="btn-next btn-mains-next" style = "display : inline-block;"> next </button>
+                            <button data-v-ea82c312="" type="button" class="btn-next btn-mains-next" style = "display : none;"> next </button>
                         </div><span data-v-796e266c="" class="scroll-down">SCROLL DOWN</span>
                         <div data-v-796e266c="" class="today-info">
                             <div data-v-796e266c=""><strong data-v-796e266c="">오늘 운영시간</strong>

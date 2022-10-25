@@ -139,7 +139,7 @@ $(document).ready(function(){
 							<button class="search-btn-reserve">검색</button>
 						</div>
 						</div>
-								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
+								<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">검색 결과가 없습니다.</p></div>
 								<div class="info-list">
 									<table class="info-table">
 										<thead>
@@ -159,22 +159,22 @@ $(document).ready(function(){
 										</thead>
 										<tbody>
 										<c:forEach var="vo" items="${list}">
-											<tr>												 
-												<td >${vo.dcode}</td>											 
+											<tr class = "name" id="${vo.rid}">												 
+												<td >${vo.dcode}</td>		
 												<td  class=" reservation_detail reservationId" id="${vo.rid}">${vo.rid}</td> <!-- 티켓번호 -->
 												<td>${vo.dtitle }</td>   <!-- 전시/이벤트 명 --> 
-												<td> ${vo.mname } </td>   <!-- 예약자 명 -->
+												<td>${vo.mname }</td>   <!-- 예약자 명 -->
 												<td>${vo.dpricech }</td>   <!-- 티켓금액 -->
 												<td>${vo.rtotal }</td>   <!-- 티켓매수 -->
 												<td>${vo.rallpricech }</td>   <!-- 총 금액 -->
 												<td>${vo.rdateda }</td>   <!-- 관람일 -->
 												<td>${vo.rokdatech }</td>   <!-- 예약일 -->
-										<c:choose>
+													<c:choose>
 														<c:when test="${vo.rid == 'n'}">  <!-- 예약취소 진행 -->  
 															<td>취소완료</td>
 														</c:when>
 															<c:otherwise>
-																<td >   <button class="reservation_detail_admin member_detail" type="button" id="${vo.rid}" > 자세히보기 </button></a>  </td>
+																<td><button class="reservation_detail_admin member_detail" type="button" id="${vo.rid}" > 자세히보기 </button></a>  </td>
 														</c:otherwise>
 													</c:choose>
 											</tr>
@@ -182,7 +182,23 @@ $(document).ready(function(){
 										</tbody>
 									</table>
 								</div>
-				<div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm" style="text-align:center;">
+				 <div data-v-650d6904="" data-v-1b9c8af9="" class="pagination-area" data-v-080a389a="" id="ampaginationsm" style="text-align:center;"> 
+							<button data-v-650d6904="" type="button" disabled="disabled"
+								class="btn-first">first</button>
+							<button data-v-650d6904="" type="button" disabled="disabled"
+								class="btn-prev">prev</button>
+							<ul data-v-650d6904="">
+								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
+									href="javascript:void(0);" role="button">1</a></li>
+								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
+									href="javascript:void(0);" role="button">2</a></li>
+								<li data-v-650d6904="" class="on"><a data-v-650d6904=""
+									href="javascript:void(0);" role="button">3</a></li>
+							</ul>
+<!-- 							 <button data-v-650d6904="" type="button" class="btn-next">
+								next</button>
+							<button data-v-650d6904="" type="button" class="btn-last">
+								last</button> -->
 						</div>
 						</div>
 					</div>
