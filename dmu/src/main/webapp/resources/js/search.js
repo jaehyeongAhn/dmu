@@ -130,6 +130,10 @@
 						$("." + str + " dd.search" + index + " div.btn-group a.link_ticket").attr("href", "http://localhost:9000/dmu/"+str+".do?did="+dataset.did);
 						$("." + str + " dd.search" + index + " div.btn-group a.link_other").attr("href", "http://localhost:9000/dmu/"+str+"_list.do");
 	
+						if(dataset.dentertime == "END"){							
+							$("." + str + " dd.search" + index + " div.btn-group div.search-hidden-btn").css("margin", "0");
+							$("." + str + " dd.search" + index + " div.btn-group a.link_ticket button#btn96").css("display", "none");
+						}
 						//.on 삭제
 						$("dd").removeClass("on");
 						
