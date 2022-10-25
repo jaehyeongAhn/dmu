@@ -54,6 +54,7 @@ public class SearchController {
 			jo.addProperty("dprice", vo.getDprice());
 			jo.addProperty("dtarget", vo.getDtarget());
 			jo.addProperty("dnum", vo.getDnum());
+			jo.addProperty("dtitle2", vo.getDtitle2());
 			jo.addProperty("dentertime", vo.getDentertime());
 			
 			jarray.add(jo);

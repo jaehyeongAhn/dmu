@@ -59,7 +59,10 @@
 					output += "</div>";
 					output += "<div class='info-area'>";
 					output += "<p class='tag'></p>";
+					output += "<div style='box-sizing:border-box; padding:15px 30px 15px 0px;'>";
 					output += "<p class='title'></p>";
+					output += "<p class='subtitle'></p>";
+					output += "</div>";
 					output += "<ul>";
 					output += "<li><em>장소: </em><span></span></li>";
 					output += "<li><em>일시: </em><span></span></li>";
@@ -124,6 +127,7 @@
 						$("." + str + " dd.search" + index + " div.img-area img").attr("src", "http://localhost:9000/dmu/resources/upload/"+dataset.dsfile);
 						$("." + str + " dd.search" + index + " div.info-area p.tag").text(dataset.dtarget);
 						$("." + str + " dd.search" + index + " div.info-area p.title").text(dataset.dtitle);
+						$("." + str + " dd.search" + index + " div.info-area p.subtitle").text(dataset.dtitle2);
 						$("." + str + " dd.search" + index + " div.info-area li:first-child span").text(dataset.dplace);
 						$("." + str + " dd.search" + index + " div.info-area li:last-child span").text(dataset.dstart + " ~ " + dataset.dend);
 						$("." + str + " dd.search" + index + " div.btn-group input.id_result").val(dataset.did);
