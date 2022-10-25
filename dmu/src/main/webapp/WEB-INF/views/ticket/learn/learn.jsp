@@ -402,8 +402,8 @@
 								<table class="popup_detail_table">
 										<div data-v-9a980cc6="" class="layer-body">
 				<div data-v-9dea2aa6="" data-v-9a980cc6="">
-					<div data-v-9dea2aa6="" data-v-9a980cc6="" class="title-area">
-						<strong data-v-9dea2aa6="" data-v-9a980cc6="" class="title">관람
+					<div data-v-9dea2aa6="" data-v-9a980cc6="" class="title-area" style="margin-bottom: 20px;">
+						<strong data-v-9dea2aa6="" data-v-9a980cc6="" class="title title_popup">관람
 							시 유의사항 동의</strong>
 					</div>
 					<div data-v-9dea2aa6="" data-v-9a980cc6="" class="contents-area">
