@@ -159,7 +159,7 @@
 											<div data-v-26e42198="" data-v-7f52b83a="" class="btn-area">
  
 												<button data-v-26e42198="" id="btn23" type="button"
-													class="primary" onclick="location.href='http://localhost:9000/dmu/mypage/mypage_main.do?mid='+${sessionScope.member.mid}';">예매내역 확인</button>
+													class="primary" onclick="location.href='http://localhost:9000/dmu/mypage/mypage_main.do?mid='+${ sessionScope.member.mid }">예매내역 확인</button>
 											</div>
 											 
 											<div data-v-26e42198="" data-v-7f52b83a="" class="btn-area">
