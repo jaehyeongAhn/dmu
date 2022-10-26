@@ -175,7 +175,7 @@ $(document).ready(function(){
 															<td>취소완료</td>
 														</c:when>
 															<c:otherwise>
-																<td><button class="reservation_detail_admin member_detail" type="button" id="${vo.rid}" > 자세히보기 </button></a>  </td>
+																<td><button class="reservation_detail_admin reservation_detail" type="button" id="${vo.rid}" > 자세히보기 </button></a>  </td>
 														</c:otherwise>
 													</c:choose>
 											</tr>
