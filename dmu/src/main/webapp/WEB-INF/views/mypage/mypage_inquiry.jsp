@@ -200,7 +200,6 @@
 									<option value = "전시">전시</option>
 									<option value = "교육 · 문화 프로그램">교육 · 문화 프로그램</option>
 									<option value = "이벤트 프로그램">이벤트 프로그램</option>
-									<option value = "뮤지엄샵">뮤지엄샵</option>
 									<option value = "사전답사 · 방문">사전답사 · 방문</option>
 									<option value = "기타">기타</option>
 								</select>

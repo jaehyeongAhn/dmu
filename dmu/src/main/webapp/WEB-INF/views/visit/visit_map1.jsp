@@ -28,12 +28,9 @@
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/main_css.css">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/visit.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/visit.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
@@ -71,7 +68,7 @@
 	
 </script>
 <style>
-	.sub-contents-area.tab-content {
+ 	.sub-contents-area.tab-content {
 		display : none;
 	}
 	.sub-contents-area.tab-content.on {
@@ -82,7 +79,7 @@
 	}
 	.visual.wide.visitingInfo.on {
 		display : block;
-	}
+	} 
 </style>
 </head>
 <body>

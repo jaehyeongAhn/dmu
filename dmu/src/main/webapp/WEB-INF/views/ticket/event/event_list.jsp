@@ -8,12 +8,9 @@
 <title>dmu</title>
 <link rel="stylesheet" as="style" crossorigin
 	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/font.css">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/tiket.css">
-<link rel="stylesheet"
-	href="http://localhost:9000/mycgv/resources/css/am-pagination.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/tiket.css">
+<link rel="stylesheet" href="http://localhost:9000/mycgv/resources/css/am-pagination.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
@@ -42,11 +39,11 @@ $(document).ready(function(){
 						output +=	"<a data-v-1e8092ec='' href='http://localhost:9000/dmu/adminticketlist_content.do?did="+aj.did+"' class='title'>"+aj.dtitle+"</a>" 
 						output +=	"<ul data-v-1e8092ec='' class='info'>"
 						output +=	"<li data-v-1e8092ec=''><span data-v-1e8092ec=''class='tit'>기간</span>"
-						output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dstart+"~"+aj.dend+"</p></li>"
+						output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dstart+" ~ "+aj.dend+"</p></li>"
 						output +=	"<li data-v-1e8092ec=''><span data-v-1e8092ec=''class='tit'>장소</span>"
 						output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dplace+"</p></li>"
 						output +=	"<li data-v-1e8092ec=''><span data-v-1e8092ec=''class='tit'>참가비</span>"
-						output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dprice+"</p></li>"
+						output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dprice+ "원" +"</p></li>"
 						output +=	"<li data-v-1e8092ec=''><span data-v-1e8092ec=''class='tit'>대상</span>"
 						output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dtarget+"</p></li>"
 						output +=	"</ul></li>"
@@ -56,7 +53,7 @@ $(document).ready(function(){
 				}else{
 				var output ="<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='ticket_list_event'>"
 					output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";	
-			 		output +="<p data-v-e20ce500='' data-v-080a389a=''>프로그램이 준비중입니다.</p></div></div>"
+			 		output +="<p data-v-e20ce500='' data-v-080a389a=''>프로그램 준비중입니다.</p></div></div>"
 				}//else
 					
 					$("#ticket_list_event").remove();
@@ -80,6 +77,19 @@ $(document).ready(function(){
 		} 
 	});  				    
 </script>
+<style>
+.no-result {
+    padding: 9.375rem 0;
+}
+.no-result p[data-v-41f56098] {
+    font-size: 1.5rem;
+    line-height: 2.125rem;
+    color: #999;
+    text-align: center;
+    letter-spacing: -0.0375rem;
+    font-weight: 200;
+}
+</style>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no"
@@ -153,20 +163,16 @@ $(document).ready(function(){
 																	href="http://localhost:9000/dmu/event.do?did=${ vo.getDid()}"
 																	class="title"> ${vo.dtitle } </a>
 																	<ul data-v-1e8092ec="" class="info">
-																		<li data-v-1e8092ec=""><span data-v-1e8092ec=""
-																			class="tit">기간</span>
-																			<p data-v-1e8092ec="" class="date">${vo.dstart }
-																				~ ${vo.dend }</p></li>
-																		<li data-v-1e8092ec=""><span data-v-1e8092ec=""
-																			class="tit">장소</span><span data-v-1e8092ec=""
-																			class="txt">${vo.dplace }</span></li>
-																		<li data-v-1e8092ec=""><span data-v-1e8092ec=""
-																			class="tit">참가비</span><span data-v-1e8092ec=""
-																			class="txt">${vo.dprice } 원</span></li>
-																		<li data-v-1e8092ec=""><span data-v-1e8092ec=""
-																			class="tit">대상</span><span data-v-1e8092ec=""
-																			class="txt">${vo.dtarget }</span></li>
-																	</ul></li>
+																		<li data-v-1e8092ec=""><span data-v-1e8092ec="" class="tit">기간</span>
+																		<p data-v-1e8092ec="" class="date">${vo.dstart } ~ ${vo.dend }</p></li>
+																		<li data-v-1e8092ec=""><span data-v-1e8092ec="" class="tit">장소</span>
+																		<p data-v-1e8092ec="" class="date">${vo.dplace }</p></li>
+																		<li data-v-1e8092ec=""><span data-v-1e8092ec="" class="tit">참가비</span>
+																		<p data-v-1e8092ec="" class="date">${vo.dprice }원</p></li>
+																		<li data-v-1e8092ec=""><span data-v-1e8092ec="" class="tit">대상</span>
+																		<p data-v-1e8092ec="" class="date">${vo.dtarget }</p></li>
+																	</ul>
+																	</li>
 
 
 															</ul>
