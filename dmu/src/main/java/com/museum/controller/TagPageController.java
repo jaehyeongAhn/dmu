@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
  
@@ -25,9 +26,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.museum.dao.DmuNoticeDAO;
 import com.museum.service.PageServiceImpl;
 import com.museum.service.TagPageServiceImpl;
 import com.museum.service.TicketServiceImpl;
+import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuTicketVO;
 
  
@@ -43,16 +46,52 @@ public class TagPageController {
 		 
 		@RequestMapping(value="/event_page.do", method=RequestMethod.GET)
  
-		public ModelAndView event_page( ) {
+		public ModelAndView event_page(String dcode) {
 			ModelAndView mv = new ModelAndView();
 			
 			ArrayList<DmuTicketVO> list = tagpageService.getEventContent("event");
 			
-		 
 			mv.addObject("list", list);
 			mv.setViewName("/tag_page/event/event_page");
 			return mv;
  
+		}
+		
+				
+		@ResponseBody
+		@RequestMapping(value = "/event_page_json.do", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+		public String event_page_json( String dplace, HttpServletRequest request, HttpServletResponse response) 
+										throws Exception{
+
+			ArrayList<DmuTicketVO> clist = new ArrayList<DmuTicketVO>();
+			if(dplace.equals("all")) {
+				clist = tagpageService.getEventContent(dplace);
+			}else {
+				clist = tagpageService.eventlist(dplace);
+			}
+			
+			
+			JsonObject job = new JsonObject();
+			JsonArray jarray = new JsonArray();
+			Gson gson = new Gson();
+			
+			for(DmuTicketVO vo : clist) {
+				JsonObject jo = new JsonObject();
+				jo.addProperty("did", vo.getDid());
+				jo.addProperty("dtitle", vo.getDtitle());
+				jo.addProperty("dplace", vo.getDplace());
+				jo.addProperty("dsfile", vo.getDsfile());
+				jo.addProperty("dcode", vo.getDcode());
+				jarray.add(jo);
+
+				jarray.add(jo);
+			}
+			
+			
+			job.add("list", jarray);
+			
+			return gson.toJson(job);
+
 		}
  
 		

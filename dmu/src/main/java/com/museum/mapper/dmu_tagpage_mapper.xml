@@ -7,9 +7,16 @@
  <mapper namespace = "mapper.tagpage">
 	
 	  <!-- exhibition_past_pag -->
-	 <select id="EventContent"  parameterType="java.lang.String" resultType="com.museum.vo.DmuTicketVO">
-		 select did, dtitle, dplace, dfile,dsfile, dcode,dstart, dend ,dtitle2 from dmu_ticket where dend &lt; sysdate and dcode = #{dcode} order by dstart desc
+	 <select id="EventContent"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
+		 select did, dtitle, dplace, dfile,dsfile, dcode,dstart, dend ,dtitle2 from dmu_ticket where dend &lt; sysdate order by dstart desc
 	 </select>
+	 
+	  <select id="EventContentList"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
+		select did, dtitle, dplace,dsfile,dstart   from
+		(select did, dtitle, dplace,dsfile,dstart from dmu_ticket where dend &lt; sysdate )
+		where dplace= #{dplace}  order by dstart
+	 </select>
+	
 	  <!-- exhibition_past_page years -->
 	 <select id="dayContent"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
 		 select did, dtitle, dplace, dfile,dsfile, dcode,dstart, dend ,dtitle2 from dmu_ticket where 

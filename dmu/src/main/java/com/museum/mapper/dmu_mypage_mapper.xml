@@ -133,11 +133,12 @@
 		<result property = "dtarget" column = "DTARGET"/>
 		<result property = "dtitle2" column = "DTITLE2"/>
 		<result property = "dpersonnel" column = "DPERSONNEL"/>
+		<result property = "dentertime" column = "DENTERTIME"/>
 	</resultMap>
 	
 	<select id = "purchaseList" parameterType = "map" resultMap = "purchaseInfo">
 		SELECT DT.DID, DR.RID, DT.DTITLE, DT.DTIME, DT.DPLACE, DT.DSFILE, TO_CHAR(DR.ROKDATE, 'YYYY-MM-DD HH24:MI:SS') ROKDATE, 
-		       DR.RTOTAL, DR.RPRICE, DR.RCHECK, DR.RDATE, DP.PDATE, DR.RALLPRICE, DP.PCOIN, DT.DCODE
+		       DR.RTOTAL, DR.RPRICE, DR.RCHECK, DR.RDATE, DP.PDATE, DR.RALLPRICE, DP.PCOIN, DT.DCODE, DT.DENTERTIME
 		FROM DMU_TICKET DT, DMU_RESERVATION DR, DMU_PAYINFO DP
 		WHERE DT.DID = DR.DID AND DR.RID = DP.RID AND DR.RID = #{rid}
 	</select>

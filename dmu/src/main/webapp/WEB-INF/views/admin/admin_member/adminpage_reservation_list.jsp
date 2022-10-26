@@ -159,9 +159,10 @@ $(document).ready(function(){
 										</thead>
 										<tbody>
 										<c:forEach var="vo" items="${list}">
-											<tr class = "name" id="${vo.rid}">												 
-												<td >${vo.dcode}</td>		
-												<td  class=" reservation_detail reservationId" id="${vo.rid}">${vo.rid}</td> <!-- 티켓번호 -->
+											<tr>												 
+												<td >${vo.dcode}</td>											 
+												<td  id="${vo.rid}">  ${vo.rid} </td> <!-- 티켓번호 -->
+ 
 												<td>${vo.dtitle }</td>   <!-- 전시/이벤트 명 --> 
 												<td>${vo.mname }</td>   <!-- 예약자 명 -->
 												<td>${vo.dpricech }</td>   <!-- 티켓금액 -->
@@ -280,6 +281,10 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
+	</div>
+</body> 
+=======
 	</div> --%>
 
 
