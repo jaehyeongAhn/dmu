@@ -621,8 +621,8 @@
                                                         <!---->
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area">
 
-                                                            <a href="learn_page.do?dtarget=유아"><button data-v-26e42198="" id="btn55" type="button"
-                                                                class="secondary"> 자세히 보기 </button></a></div>
+                                                           <button data-v-26e42198="" id="btn55" type="button"
+                                                            class="secondary"><a href="http://localhost:9000/dmu/learn_page.do?dtarget=유아"> 자세히 보기 </a></button></div>
                                                     </a><a data-v-04a3ebf5=""
                                                         href="#">
                                                         <!---->
@@ -746,7 +746,7 @@
                                                         <!---->
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area">
                                                             <button data-v-26e42198="" id="btn55" type="button"
-                                                                class="secondary"> 자세히 보기 </button></div>
+                                                                class="secondary"><a href="http://localhost:9000/dmu/learn_page.do?dtarget=유아"> 자세히 보기 </a></button></div>
                                                     </a><a data-v-04a3ebf5=""
                                                         href="https://www.daelimmuseum.org/ticket/list/education">
                                                         <!---->

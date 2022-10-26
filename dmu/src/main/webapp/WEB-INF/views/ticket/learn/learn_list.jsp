@@ -26,7 +26,7 @@
 			var dtarget = $(this).attr("id");
 			   
 			$.ajax({
-				url : 'adminlearn_ajaxlist.do?dtarget='+dtarget, // 이주소로 보낼건데 
+				url : 'learn_ajaxlist.do?dtarget='+dtarget, // 이주소로 보낼건데 
 				type : "get" , //어떤 방식으로 보낼거야?
 				cache : false,
 				headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
@@ -87,9 +87,6 @@
 						output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";	
 				 		output +="<p data-v-e20ce500='' data-v-080a389a=''>해당 연도의 지난 프로그램이 없습니다.</p></div></div>"
 					}//else
-						output +="</div>" 
-						output +="</div>" 
-						output +="</div>" 
 						
 						$("#ticket_list_learn").remove();
 						$("#btn_learn").remove();
@@ -106,7 +103,6 @@
 			$(".orderby").removeClass("on");
 			$(this).addClass("on");
 			var dtarget =$(".on .learn_target").attr("id");
-			alert(dtarget);
 			$.ajax({
 				url : 'orderby_ajaxlist.do?day='+day+"&dtarget="+dtarget, 
 				type : "get" ,
@@ -149,7 +145,7 @@
 						output +="</li>"
 						
 						output +="<li data-v-41f56098=''>"
-						output +="<span data-v-41f56098='' class='tit'> 교육시 </span>"
+						output +="<span data-v-41f56098='' class='tit'> 교육시간 </span>"
 						output +="<span data-v-41f56098='' class='txt'>"+ aj.dtime +"</span>"
 						output +="</li>"
 						
@@ -166,11 +162,8 @@
 					}else{
 					var output =	"<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='ticket_list_learn'>"
 						output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";	
-				 		output +="<p data-v-e20ce500='' data-v-080a389a=''>해당 연도의 지난 프로그램이 없습니다.</p></div></div>"
+				 		output +="<p data-v-e20ce500='' data-v-080a389a=''> 프로그램이 준비중입니다.</p></div></div>"
 					}//else
-						output +="</div>" 
-						output +="</div>" 
-						output +="</div>" 
 						
 						$("#ticket_list_learn").remove();
 						$("#btn_learn").remove();
@@ -179,9 +172,9 @@
 				},
 			 		error : function(data){
 			 		alert('error');
-			 		}//error 출력 
-				})//ajax
-		});//click
+			 		}
+				})
+		});
 		$('#more_button').click(function(){
 			
 			$(location).attr('href', "http://localhost:9000/dmu/learn_list.do?rpage="+${rpage+1});

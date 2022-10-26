@@ -24,29 +24,26 @@
 			var dtarget = $(this).attr("id");
 			   
 			$.ajax({
-				url : 'adminlearn_ajaxlist.do?dtarget='+dtarget, // 이주소로 보낼건데 
+				url : 'learn_ajaxlist.do?dtarget='+dtarget, // 이주소로 보낼건데 
 				type : "get" , //어떤 방식으로 보낼거야?
 				cache : false,
 				headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
 				success : function(data){
 					let dataset = JSON.parse(data);
 					$(".total strong").text(dataset.dbCount);
-					
-					if(dataset.list.length !=0){	
+						
+						if(dataset.list.length !=0){	
 						var	output = "<div class='ticket-list learn' id='ticket_list_learn'>";
 						for(aj of dataset.list){
 					   	output += "<ul data-v-41f56098=''>";
 						output +="<li data-v-41f56098=''>";
-
 						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/adminticketlist_content.do?did= "+ aj.did+" '  class='thumb'>"
 						output +="<img data-v-2fed1a9a='' data-v-1e8092ec=''src='http://localhost:9000/dmu/resources/upload/"+aj.dsfile+" '>"
 						output +="</a>"
 						output +="<ul data-v-41f56098='' class='flag'>"
 						output +="<li data-v-41f56098=''>"+ aj.dnum + "회성 교육</li>"
 						output +="<li data-v-41f56098=''>"+ aj.dplace + "</li>"
-
-						output +="</ul>"
-						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/adminticketlist_content.do?did="+aj.did+"' class='title'>" +aj.dtitle +"</a>"
+						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/adminticketlist_content.do?did= "+aj.did+" ' class='title'>" +aj.dtitle +"</a>"
 						
 						output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
 						output +="</ul>"
@@ -102,81 +99,76 @@
 			 		}//error 출력 
 				})//ajax
 		});//click
-		$(".orderby").click(function(){
-			var day = $(this).attr("id");
-			$(".orderby").removeClass("on");
-			$(this).addClass("on");
-			var dtarget =$(".on .learn_target").attr("id");
-			$.ajax({
-				url : 'orderby_ajaxlist.do?day='+day+"&dtarget="+dtarget, 
-				type : "get" ,
-				cache : false,
-				headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
-				success : function(data){
-					let dataset = JSON.parse(data);
-				  
-						if(dataset.list.length !=0){	
-						var	output = "<div class='ticket-list learn' id='ticket_list_learn'>";
-						for(aj of dataset.list){
-					   	output += "<ul data-v-41f56098=''>";
-						output +="<li data-v-41f56098=''>";
-						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/learn.do?did= "+ aj.did+" '  class='thumb'>"
-						output +="<img data-v-2fed1a9a='' data-v-1e8092ec=''src='http://localhost:9000/dmu/resources/upload/"+aj.dsfile+" '>"
-						output +="</a>"
-						output +="<ul data-v-41f56098='' class='flag'>"
-						output +="<li data-v-41f56098=''>"+ aj.dnum + "회성 교육</li>"
-						output +="<li data-v-41f56098=''>"+ aj.dplace + "</li>"
-						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/learn.do?did= "+aj.did+" ' class='title'>" +aj.dtitle +"</a>"
-						
-						output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
-						output +="</ul>"
-						
-						output +="<ul data-v-41f56098='' class='info'>"
-						
-						output +="<li data-v-41f56098=''>"
-						output +="<span data-v-41f56098='' class='tit'> 교육진행 </span>"
-						output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ "~" +aj.dend+"</span>"
-						output +="</li>"
-						
-						output +="<li data-v-41f56098=''>"
-						output +="<span data-v-41f56098='' class='tit'> 장소  </span>"
-						output +="<span data-v-41f56098='' class='txt'>"+ aj.dplace +"</span>"
-						output +="</li>"
-						
-						output +="<li data-v-41f56098=''>"
-						output +="<span data-v-41f56098='' class='tit'> 대상 </span>"
-						output +="<span data-v-41f56098='' class='txt'>"+ aj.dtarget +"</span>"
-						output +="</li>"
-						
-						output +="<li data-v-41f56098=''>"
-						output +="<span data-v-41f56098='' class='tit'> 교육시 </span>"
-						output +="<span data-v-41f56098='' class='txt'>"+ aj.dtime +"</span>"
-						output +="</li>"
-						
-						output +="<li data-v-41f56098=''>"
-						output +="<span data-v-41f56098='' class='tit'> 참가비 </span>"
-						output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice +"</span>"
-						output +="</li>"
-						output +="</ul>"
-						output +="</li>"
-						output +="</ul>" 
-					}//for
+		$.ajax({
+			url : 'orderby_ajaxlist.do?day='+day+"&dtarget="+dtarget, 
+			type : "get" ,
+			cache : false,
+			headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
+			success : function(data){
+				let dataset = JSON.parse(data);
+			  
+					if(dataset.list.length !=0){	
+					var	output = "<div class='ticket-list learn' id='ticket_list_learn'>";
+					for(aj of dataset.list){
+				   	output += "<ul data-v-41f56098=''>";
+					output +="<li data-v-41f56098=''>";
+					output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/adminticketlist_content.do?did= "+ aj.did+" '  class='thumb'>"
+					output +="<img data-v-2fed1a9a='' data-v-1e8092ec=''src='http://localhost:9000/dmu/resources/upload/"+aj.dsfile+" '>"
+					output +="</a>"
+					output +="<ul data-v-41f56098='' class='flag'>"
+					output +="<li data-v-41f56098=''>"+ aj.dnum + "회성 교육</li>"
+					output +="<li data-v-41f56098=''>"+ aj.dplace + "</li>"
+					output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/adminticketlist_content.do?did= "+aj.did+" ' class='title'>" +aj.dtitle +"</a>"
 					
-						output +=	"</ul></div>"		
-					}else{
-					var output =	"<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='ticket_list_learn'>"
-						output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";	
-				 		output +="<p data-v-e20ce500='' data-v-080a389a=''>해당 연도의 지난 프로그램이 없습니다.</p></div></div>"
-					}//else
-						output +="</div>" 
-						output +="</div>" 
-						output +="</div>" 
-						
-						$("#ticket_list_learn").remove();
-						$("#btn_learn").remove();
-						$(".list-top-area").after(output);
+					output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
+					output +="</ul>"
 					
-				},
+					output +="<ul data-v-41f56098='' class='info'>"
+					
+					output +="<li data-v-41f56098=''>"
+					output +="<span data-v-41f56098='' class='tit'> 교육진행 </span>"
+					output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ "~" +aj.dend+"</span>"
+					output +="</li>"
+					
+					output +="<li data-v-41f56098=''>"
+					output +="<span data-v-41f56098='' class='tit'> 장소  </span>"
+					output +="<span data-v-41f56098='' class='txt'>"+ aj.dplace +"</span>"
+					output +="</li>"
+					
+					output +="<li data-v-41f56098=''>"
+					output +="<span data-v-41f56098='' class='tit'> 대상 </span>"
+					output +="<span data-v-41f56098='' class='txt'>"+ aj.dtarget +"</span>"
+					output +="</li>"
+					
+					output +="<li data-v-41f56098=''>"
+					output +="<span data-v-41f56098='' class='tit'> 교육시간 </span>"
+					output +="<span data-v-41f56098='' class='txt'>"+ aj.dtime +"</span>"
+					output +="</li>"
+					
+					output +="<li data-v-41f56098=''>"
+					output +="<span data-v-41f56098='' class='tit'> 참가비 </span>"
+					output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice +"</span>"
+					output +="</li>"
+					output +="</ul>"
+					output +="</li>"
+					output +="</ul>" 
+				}//for
+				
+					output +=	"</ul></div>"		
+				}else{
+				var output =	"<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='ticket_list_learn'>"
+					output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";	
+			 		output +="<p data-v-e20ce500='' data-v-080a389a=''>해당 연도의 지난 프로그램이 없습니다.</p></div></div>"
+				}//else
+					output +="</div>" 
+					output +="</div>" 
+					output +="</div>" 
+					
+					$("#ticket_list_learn").remove();
+					$("#btn_learn").remove();
+					$(".list-top-area").after(output);
+				
+			},
 			 		error : function(data){
 			 		alert('error');
 			 		}//error 출력 
@@ -245,10 +237,8 @@
 											<div data-v-41f56098="" data-v-7b1f57c8="" class="container">
 												<div data-v-41f56098="" class="division-list">
 													<ul data-v-41f56098="">
-														<li data-v-41f56098="" class=""><a data-v-41f56098=""
-															class="learn_targetall"
-															href="http://localhost:9000/dmu/adminlearn_list.do">전체</a>
-														</li>
+														<li data-v-41f56098="" class="on"><a
+															data-v-41f56098="" class="learn_target" id="all">전체</a></li>
 
 														<li data-v-41f56098="" class=""><a data-v-41f56098=""
 															class="learn_target" id="유아">유아</a></li>
@@ -279,6 +269,11 @@
 													<span data-v-41f56098="" class="total">총 <strong>${dbCount}</strong>건
 													</span>
 													<ul data-v-41f56098="" class="order">
+														<li data-v-3c1f59cb="" class="">
+															<a data-v-3c1f59cb="" href="adminticketlist_write.do">
+															<button type="button" class="btn_style">글쓰기</button>
+															</a>			
+														</li>
 														<li data-v-41f56098="" class="orderby" id="0"><a
 															data-v-41f56098="">시작일 순</a></li>
 

@@ -42,7 +42,7 @@ public class TicketController {
 		@RequestMapping(value="/adminticketlist_write_check.do", method=RequestMethod.POST)
 		public ModelAndView ticketlist_write_check(DmuTicketVO vo, HttpServletRequest request) throws Exception {
 			ModelAndView mv = new ModelAndView();
-			
+			System.out.println(vo.getDcode());
 			vo = fileService.update_fileCheck(vo);
 			int result = ticketService.getWriteResult(vo);
 
@@ -129,7 +129,7 @@ public class TicketController {
 			return mv;
 		}
 		@ResponseBody
-		@RequestMapping(value="/adminlearn_ajaxlist.do", method =RequestMethod.GET,produces="text/plain;charset=UTF-8")
+		@RequestMapping(value="/learn_ajaxlist.do", method =RequestMethod.GET,produces="text/plain;charset=UTF-8")
 		public String adminLearnAjaxList(String dtarget,String rpage,String day){
 			ArrayList<DmuTicketVO> list;
 			Map<String,Integer> param ;
@@ -194,6 +194,88 @@ public class TicketController {
 				
 				list = ticketService.getList( param.get("startCount") ,param.get("endCount"),"learn",day);
 			}
+			JsonObject jobject = new JsonObject(); //DmuTicketVO
+			JsonArray jarray = new JsonArray();  //ArrayList
+			Gson gson = new Gson();
+			
+			for(DmuTicketVO vo : list){
+				JsonObject jo = new JsonObject();
+				jo.addProperty("rno", vo.getRno());
+				jo.addProperty("did", vo.getDid());
+				jo.addProperty("dplace", vo.getDplace());
+				jo.addProperty("dtitle", vo.getDtitle());
+				jo.addProperty("dstart", vo.getDstart());
+				jo.addProperty("dend", vo.getDend());
+				jo.addProperty("dfile", vo.getDfile());
+				jo.addProperty("dsfile", vo.getDsfile());
+				jo.addProperty("dcode", vo.getDcode());
+				jo.addProperty("dtime", vo.getDtime());
+				jo.addProperty("dprice", vo.getDprice());
+				jo.addProperty("dtarget", vo.getDtarget());
+				jo.addProperty("dnum", vo.getDnum());
+				jo.addProperty("dtitle2", vo.getDtitle2());
+				
+				jarray.add(jo);
+			}
+			jobject.add("list", jarray); 
+			jobject.addProperty("dbCount", param.get("dbCount"));
+			jobject.addProperty("pageSize", param.get("pageSize"));
+			jobject.addProperty("rpage", param.get("rpage"));
+			jobject.addProperty("pageCount", param.get("pageCount"));
+			
+			
+			
+			
+			return gson.toJson(jobject);
+		}
+		@ResponseBody
+		@RequestMapping(value="/orderby_exhibition_ajaxlist.do", method =RequestMethod.GET,produces="text/plain;charset=UTF-8")
+		public String orderbyexhibition(String day,String rpage){
+			
+			Map<String,Integer>	param = pageService.getPageResult(rpage, "exhibition", ticketService);
+			ArrayList<DmuTicketVO> list = ticketService.getList( param.get("startCount") ,param.get("endCount"),"exhibition",day);
+			
+			JsonObject jobject = new JsonObject(); //DmuTicketVO
+			JsonArray jarray = new JsonArray();  //ArrayList
+			Gson gson = new Gson();
+			
+			for(DmuTicketVO vo : list){
+				JsonObject jo = new JsonObject();
+				jo.addProperty("rno", vo.getRno());
+				jo.addProperty("did", vo.getDid());
+				jo.addProperty("dplace", vo.getDplace());
+				jo.addProperty("dtitle", vo.getDtitle());
+				jo.addProperty("dstart", vo.getDstart());
+				jo.addProperty("dend", vo.getDend());
+				jo.addProperty("dfile", vo.getDfile());
+				jo.addProperty("dsfile", vo.getDsfile());
+				jo.addProperty("dcode", vo.getDcode());
+				jo.addProperty("dtime", vo.getDtime());
+				jo.addProperty("dprice", vo.getDprice());
+				jo.addProperty("dtarget", vo.getDtarget());
+				jo.addProperty("dnum", vo.getDnum());
+				jo.addProperty("dtitle2", vo.getDtitle2());
+				
+				jarray.add(jo);
+			}
+			jobject.add("list", jarray); 
+			jobject.addProperty("dbCount", param.get("dbCount"));
+			jobject.addProperty("pageSize", param.get("pageSize"));
+			jobject.addProperty("rpage", param.get("rpage"));
+			jobject.addProperty("pageCount", param.get("pageCount"));
+			
+			
+			
+			
+			return gson.toJson(jobject);
+		}
+		@ResponseBody
+		@RequestMapping(value="/orderby_event_ajaxlist.do", method =RequestMethod.GET,produces="text/plain;charset=UTF-8")
+		public String orderbyevent(String day,String rpage){
+			
+			Map<String,Integer>	param = pageService.getPageResult(rpage, "event", ticketService);
+			ArrayList<DmuTicketVO> list = ticketService.getList( param.get("startCount") ,param.get("endCount"),"event",day);
+			
 			JsonObject jobject = new JsonObject(); //DmuTicketVO
 			JsonArray jarray = new JsonArray();  //ArrayList
 			Gson gson = new Gson();
