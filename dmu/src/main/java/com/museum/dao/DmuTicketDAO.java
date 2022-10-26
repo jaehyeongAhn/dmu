@@ -39,23 +39,31 @@ public class DmuTicketDAO  {
    /**
     * select : dcode로 티켓 리스트 출력 
     */
-   public ArrayList<DmuTicketVO> listdcode( String dcode){
-	   	Map<String,String> param = new HashMap<String,String>();
+   public ArrayList<DmuTicketVO> listdcode( int startCount,int endCount ,String dcode,String day){
+	   Map<String,String> param = new HashMap<String,String>();
 	   	param.put("dcode",dcode);
+		param.put("start",Integer.toString(startCount));
+		param.put("end",Integer.toString(endCount));
+		param.put("day",day);
 		List<DmuTicketVO> list = sqlSession.selectList("mapper.ticket.listdcode",param);
 		return (ArrayList<DmuTicketVO>)list;
-   }
+  }
+   
    /**
     * select : dtarget으로 티켓 리스트 출력 
     */
-   public ArrayList<DmuTicketVO> listdtarget( String dcode,String dtarget){
+   public ArrayList<DmuTicketVO> listdtarget(int startCount,int endCount, String dcode,String dtarget,String day){
 	   Map<String,String> param = new HashMap<String,String>();
 	   param.put("dcode",dcode);
 	   param.put("dtarget",dtarget);
-		
+	param.put("start",Integer.toString(startCount));
+	param.put("end",Integer.toString(endCount));
+	param.put("day",day);
+
 		List<DmuTicketVO> list = sqlSession.selectList("mapper.ticket.listdtarget",param);
 		return (ArrayList<DmuTicketVO>)list;
    }
+   
    /**
     *  dcode totalcount
     */

@@ -12,8 +12,8 @@
 	 </select>
 	 
 	  <select id="EventContentList"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
-		select did, dtitle, dplace,dsfile,dstart   from
-		(select did, dtitle, dplace,dsfile,dstart from dmu_ticket where dend &lt; sysdate )
+		select did, dtitle, dplace,dsfile,dstart ,dend  from
+		(select did, dtitle, dplace,dsfile,dstart,dend from dmu_ticket where dend &lt; sysdate )
 		where dplace= #{dplace}  order by dstart
 	 </select>
 	
