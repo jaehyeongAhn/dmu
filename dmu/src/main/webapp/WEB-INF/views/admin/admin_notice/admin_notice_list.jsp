@@ -8,38 +8,17 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- <link rel="icon" href="/favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@latest/nanumbarungothicsubset.css">
-
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/analytics.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script> -->
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/notice.css">
-<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/am-pagination_dmu.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/admin.js"></script>
-<script src="http://localhost:9000/dmu/resources/js/main.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
-<script src="http://localhost:9000/dmu/resources/js/notice.js"></script>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
@@ -52,7 +31,9 @@
 					<h2 data-v-0d03d759="">공지사항</h2>
 					<nav data-v-0d03d759="">
 						<ul data-v-0d03d759="">
-							<li data-v-0d03d759="" style="cursor: pointer;">HOME</li>
+							<li data-v-0d03d759="" style="width:15px;background-position: center !important;">
+                            	<a href="index.do" style="opacity:0; display: flex; width: 15px; height: 15px;">HOME</a>
+                            </li>
 							<!---->
 							<li data-v-0d03d759="">공지사항</li>
 							<!---->
