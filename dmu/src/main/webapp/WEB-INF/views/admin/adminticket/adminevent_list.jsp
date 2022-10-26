@@ -40,11 +40,11 @@ $(document).ready(function(){
 							output +=	"<a data-v-1e8092ec='' href='http://localhost:9000/dmu/adminticketlist_content.do?did="+aj.did+"' class='title'>"+aj.dtitle+"</a>" 
 							output +=	"<ul data-v-1e8092ec='' class='info'>"
 							output +=	"<li data-v-1e8092ec=''><span data-v-1e8092ec=''class='tit'>기간</span>"
-							output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dstart+"~"+aj.dend+"</p></li>"
+							output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dstart+" ~ "+aj.dend+"</p></li>"
 							output +=	"<li data-v-1e8092ec=''><span data-v-1e8092ec=''class='tit'>장소</span>"
 							output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dplace+"</p></li>"
 							output +=	"<li data-v-1e8092ec=''><span data-v-1e8092ec=''class='tit'>참가비</span>"
-							output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dprice+"</p></li>"
+							output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dprice+ "원" +"</p></li>"
 							output +=	"<li data-v-1e8092ec=''><span data-v-1e8092ec=''class='tit'>대상</span>"
 							output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dtarget+"</p></li>"
 							output +=	"</ul></li>"
@@ -155,19 +155,14 @@ $(document).ready(function(){
 																	href="http://localhost:9000/dmu/adminticketlist_content.do?did=${vo.did}"
 																	class="title"> ${vo.dtitle } </a>
 																	<ul data-v-1e8092ec="" class="info">
-																		<li data-v-1e8092ec=""><span data-v-1e8092ec=""
-																			class="tit">기간</span>
-																			<p data-v-1e8092ec="" class="date">${vo.dstart }
-																				~ ${vo.dend }</p></li>
-																		<li data-v-1e8092ec=""><span data-v-1e8092ec=""
-																			class="tit">장소</span><span data-v-1e8092ec=""
-																			class="txt">${vo.dplace }</span></li>
-																		<li data-v-1e8092ec=""><span data-v-1e8092ec=""
-																			class="tit">참가비</span><span data-v-1e8092ec=""
-																			class="txt">${vo.dprice } 원</span></li>
-																		<li data-v-1e8092ec=""><span data-v-1e8092ec=""
-																			class="tit">대상</span><span data-v-1e8092ec=""
-																			class="txt">${vo.dtarget }</span></li>
+																		<li data-v-1e8092ec=""><span data-v-1e8092ec="" class="tit">기간</span>
+																		<p data-v-1e8092ec="" class="date">${vo.dstart } ~ ${vo.dend }</p></li>
+																		<li data-v-1e8092ec=""><span data-v-1e8092ec="" class="tit">장소</span>
+																		<p data-v-1e8092ec="" class="date">${vo.dplace }</p></li>
+																		<li data-v-1e8092ec=""><span data-v-1e8092ec="" class="tit">참가비</span>
+																		<p data-v-1e8092ec="" class="date">${vo.dprice }원</p></li>
+																		<li data-v-1e8092ec=""><span data-v-1e8092ec="" class="tit">대상</span>
+																		<p data-v-1e8092ec="" class="date">${vo.dtarget }</p></li>
 																	</ul></li>
 
 

@@ -135,7 +135,7 @@ $(document).ready(function(){
 				//페이징 번호 클릭 시 이벤트 처리
 				jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 					   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-			           //$(location).attr('href', "http://localhost:9000/dmu/notice_list.do?rpage="+e.page);
+			           //$(location).attr('href', "http://localhost:9000/dmu/admin_notice_list.do?rpage="+e.page);
 			           notice_search(kind, e.page);
 			    });
 				
@@ -241,7 +241,7 @@ $(document).ready(function(){
 				//페이징 번호 클릭 시 이벤트 처리
 				jQuery('#ampaginationsm').on('am.pagination.change',function(e){		
 					   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-			           //$(location).attr('href', "http://localhost:9000/dmu/notice_list.do?rpage="+e.page);
+			           //$(location).attr('href', "http://localhost:9000/dmu/admin_notice_list.do?rpage="+e.page);
 			           notice_search_list(e.page);
 					
 			    }); 

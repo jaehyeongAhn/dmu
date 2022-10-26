@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	
+
+
 	//페이징 리스트 출력
 	function paging(dbcount, rpage, pageSize){
 		
@@ -53,7 +54,8 @@ $(document).ready(function(){
 				//console.log(data);
 				let dataset = JSON.parse(data);
 		
-				var output = "<div data-v-1b9c8af9='' data-v-080a389a='' class='notice-list'>";
+
+                var output = "<div data-v-1b9c8af9='' data-v-080a389a='' class='notice-list'>";
 				output += "<ul data-v-1b9c8af9='' data-v-080a389a=''>";
 				for(obj of dataset.list){
 					output += "<li data-v-1b9c8af9='' data-v-080a389a=''>";
@@ -160,8 +162,11 @@ $(document).ready(function(){
 			success : function(data){
 				let dataset = JSON.parse(data);
 				
-				var output ="<div data-v-1b9c8af9='' data-v-080a389a='' class='notice-list'>";
-				output +="<ul data-v-1b9c8af9='' data-v-080a389a=''>";
+                var output = "<div data-v-26e42198='' class='btn-area'>";
+                output += "<a href='admin_notice_write.do'>";
+                output += "<button data-v-26e42198='' id='btn50_1' type='button' class='secondary' style='margin-top:30px'>글쓰기</button></a></div>";
+				output += "<div data-v-1b9c8af9='' data-v-080a389a='' class='notice-list'>";
+				output += "<ul data-v-1b9c8af9='' data-v-080a389a=''>";
 				for(obj of dataset.list){
 	                output += "<li data-v-1b9c8af9='' data-v-080a389a=''>";
 	                output += "<a href='notice_content.do?nid="+obj.nid+"' data-v-1b9c8af9='' data-v-080a389a='' href='javascript:void(0)'>";
@@ -214,5 +219,7 @@ $(document).ready(function(){
 		
 	
 	}//function - notice_search_list
+
+
 	
 });//ready
