@@ -340,23 +340,20 @@ div.editor-contents-area textarea#dtime {
 div.organ-ticket strong.title {
 	width : 110px;
 }
-.ticket_dcode{
-	width : 122px;
-}
 select {
 	border: 0.5px solid #b1b1b1 !important;
-    width: 13.6vw !important;
+    width: 263px !important;
     height: 30px !important;
     padding: 0 10px !important;
 }
 input:not(input[type="file"]) {
 	border: 0.5px solid #b1b1b1;
 	height: 30px;
-	width : 13.6vw;
+	width : 263px;
 	padding: 0 10px;
 }
 input[type="date"]{
-	width : 6.43vw !important;
+	width : 123px !important;
 }
 ul.ticketwriteul li[data-v-8ed31374]:nth-child(odd){
 	padding-right : 17px;
@@ -366,7 +363,7 @@ ul.ticketwriteul li[data-v-8ed31374]:nth-child(even){
 }
 strong[data-v-8ed31374].title#info:not(div.organ-ticket strong.title) {
     font-size: 20px;
-				font-weight: 600;
+	font-weight: 600;
 }
 button#btn_exhibition_Write1:hover,
 button.secondary.small:hover {

@@ -94,6 +94,8 @@
 		height : 40px;
 		text-align : center;
 		/*padding : 20px 0;*/
+		font-family: "Pretendard Std", Pretendard, Roboto, "Segoe UI", 
+			"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
 	}
 	div.snb-area li a {
 		color : #a9a9a9;

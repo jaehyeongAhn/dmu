@@ -793,6 +793,12 @@ body {
     color: #fff;
     background: #111;
 }
+.step-process-area ul li.complete[data-v-6d324aa0] {
+    border-color: #111;
+    color: #fff;
+    background: #111;
+	border-right: 1px solid #fff;
+}
 .step-process-area ul li[data-v-6d324aa0] {
     width: 25.5rem;
     border: 1px solid #ddd;

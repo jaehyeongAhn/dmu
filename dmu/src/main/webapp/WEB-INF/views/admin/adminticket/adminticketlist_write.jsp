@@ -68,6 +68,58 @@
 				<div data-v-25f87e60="" data-v-ec5a0c2c="">
 					<div data-v-25f87e60="" class="sub-contents-area">
 
+						<style>
+							div.step-process-area {
+								margin : 56px 0 40px 0;
+							}
+							div.step-process-area ul[data-v-6d324aa0]{
+								display: flex;
+							    justify-content: center;
+							    align-items: center;
+							}
+							div.step-process-area ul[data-v-6d324aa0] li{
+							    width: 25.5rem;
+							    height: 52px;
+							    display: flex;
+							    justify-content: center;
+							    align-items: center;
+							    font-weight: 500;
+							    font-size: 0.9375rem;
+							    line-height: 1.2;
+							}
+							div.step-process-area ul[data-v-6d324aa0] li:nth-child(2) {
+							    border-color: #111;
+							    border-right: 1px solid #fff;
+							    color: #fff;
+							    background: #111;
+							    width: 29.125rem;
+							}
+							div.step-process-area ul[data-v-6d324aa0] li{
+							    border-color: #111;
+							    color: #fff;
+							    background: #111;
+							}
+							div.step-process-area ul li[data-v-6d324aa0]:first-child {
+							    border-color: #111;
+							    border-right: 1px solid #fff;
+							    color: #fff;
+							    background: #111;
+							}
+						</style>
+						<div data-v-6d324aa0="" data-v-7b1f57c8=""
+							class="step-process-area">
+							<ul data-v-6d324aa0="">
+								<li data-v-6d324aa0="" class="on"><span data-v-6d324aa0=""
+									class="no">01</span><span data-v-6d324aa0="" class="txt"> 
+										&nbsp;ticket</span></li>
+								<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
+									class="no">02</span><span data-v-6d324aa0="" class="txt"> 
+										&nbsp;ticket content</span></li>
+								<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
+									class="no">03</span><span data-v-6d324aa0="" class="txt"> 
+										&nbsp;수정/삭제</span></li>
+							</ul>
+						</div>
 						<!---------------------------------------------->
 						<!--------------- Content ----------------------->
 						<!---------------------------------------------->
