@@ -31,16 +31,11 @@
 $(document).ready(function() {
 	$(".tabbox").click(function(){
 	
-	//	alert($(this).attr("id"));
 	$(".snb-area .snb li").removeClass("on");
 	$(this).parent().addClass("on");
 	var kind = $(this).attr("id");
 	
 	notice_search(kind, 1);
-	});
-	
-	notice_search("all", 1);
-	
 	function notice_search(kind){
 	
 		$.ajax({ 
@@ -95,8 +90,9 @@ $(document).ready(function() {
 		}
 	});
 	
-	}//function - notice_search
-});//ready
+		}//function - notice_search
+	});//ready
+});
 </script>
  
  
@@ -216,7 +212,7 @@ $(document).ready(function() {
 							
 							<div data-v-e3917d8a="" class="btn-program-more" >
 								<div data-v-26e42198="" data-v-e3917d8a="" class="btn-area" id="js-btn-wrap" class="btn-wrap">
-									<button data-v-26e42198="" id="btn50" name="btn50" type="button" class="secondary more"  >더보기</button>
+									<button data-v-26e42198="" id="btn50" name="btn50" type="button" class="secondary more" >더보기</button>
 								</div>
 							</div>
 						</div>
