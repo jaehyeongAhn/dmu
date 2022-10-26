@@ -143,8 +143,7 @@ public class TagPageController {
 				@ResponseBody
 				@RequestMapping(value="/exhibition_past_ajaxlist.do", method =RequestMethod.GET,produces="text/plain;charset=UTF-8")
 				public String exhibitionPastAjax(String day){
-					
-					
+				
 					
 					ArrayList<DmuTicketVO> list = tagpageService.getDayList("exhibition", day);
 					
