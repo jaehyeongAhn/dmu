@@ -222,7 +222,7 @@
 														<label for="check${ index }"></label>
 													</td>
 													<td class = "purchase_tid">${ ticket_list.tid }</td>
-													<td class = "purchase_dtitle">${ list.ticketVo.dtime }</td>
+													<td class = "purchase_dtitle">${ list.ticketVo.dentertime }</td>
 													
 													<fmt:parseDate var = "rdate" value = "${ list.rdate }" type = "date" pattern = "yyyy-MM-dd"/>
 													<td class ="purchase_rdate"><fmt:formatDate pattern="yyyy-MM-dd" value="${rdate}"/></td>

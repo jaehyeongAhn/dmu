@@ -826,6 +826,131 @@ $(document).ready(function(){
        }); //ajax
 
 	}//finction - admin_search_reserve
+
+
+
+/********************************** adminpage_reservation_list ************************************/
+	
+	$(".ticket_cancle").click(function(){
+			if($(".ticket_list:checked").length == 0){
+				$(".background_join").addClass("show_join");
+				$(".window_join").addClass("show_join");
+				$("#popup_joinOk").click(function(){
+					$(".background_join").removeClass("show_join");
+					$(".window_join").removeClass("show_join");
+				});
+			}else {
+				$(".refund_content").scrollTop(0);
+				$("body").css("overflow", "hidden");
+				$("#refund_ticket_check_box").prop("checked", false);
+				$(".refund_ticket_btn").prop("disabled", true);
+				$(".background_refund").addClass("show_refund");
+				$(".window_refund").addClass("show_refund");
+				$(".refund_popup_close").click(function(){
+					$("body").css("overflow", "auto");
+					$(".background_refund").removeClass("show_refund");
+					$(".window_refund").removeClass("show_refund");
+				});
+				
+
+				/* 선택한 티켓 정보 받기*/
+				function style_table(index_result){
+					let output = "<tr class='ticket_info purchase_result" + index_result + "'>";
+					output += "<input type = 'hidden' name = 'ticket_list' id = 'ticket_id'>";
+					output += "<td class='ticket_num'></td>";
+					output += "<td class='ticket_date'></td>";
+					output += "<td class='ticket_status'><strong></strong></td>";
+					output += "<td class='ticket_price'></td>";
+					output += "</tr>";
+					
+					return output;
+				}
+				
+				let total = 0;
+				let ticket_list = [];
+				$(".ticket_info").remove();
+				
+				$(".ticket-result-list-content table input.ticket_list:checked").each(function(index, el){
+					let index_tr = $(el).parent().parent().index();
+					let table = $(".ticket-result-list-content table tr:nth-child(" +  (index_tr + 1) + ")");
+					let standard = $(".refund_ticket_list table tr:last-child");
+
+					standard.before(style_table(index_tr));
+
+					let tid = table.children(".purchase_tid").text();
+					let dtitle = table.children(".purchase_dtitle").text();
+					let rdate = table.children(".purchase_rdate").text();
+					let status = table.children(".ticket_list_status strong").text();
+					let price = $(".ticket_purchase strong").text();
+					
+					$("tr.purchase_result" + index_tr + " td.ticket_num").text(tid);
+					$("tr.purchase_result" + index_tr + " td.ticket_date").text(rdate);
+					$("tr.purchase_result" + index_tr + " td.ticket_status").text("취소가능");
+					$("tr.purchase_result" + index_tr + " td.ticket_price").text(price);
+
+					total += intChange(price);
+					$(".total_count").text(numberFormat(total) + "원");
+					
+					
+					//티켓 번호 전송
+					ticket_list.push(tid);
+					$("tr.purchase_result" + index_tr + " input#ticket_id").val(tid);
+				});//each
+				
+
+				//티켓 정보 전송
+				$(".refund_ticket_btn").click(function(){
+					//refundForm.submit();
+					
+					$.ajax({
+						type : "post",
+						data : {
+							"ticketList" : ticket_list,
+							"rtotal" : $("#reservation_ticket_total").val(),
+							"rid" : $("#reservation_ticket_rid").val()
+						},
+						url : "mypage_ticket_cancel.do",
+						success : function(result){
+
+							if(result == "update_success"){
+								$("div.popup_ticket_refund_result p").text("예매 취소가 완료되었습니다.");
+							}else if(result == "fail") {
+								$("div.popup_ticket_refund_result p").text("환불에 실패했습니다.");
+							}else{
+								$("div.popup_ticket_refund_result p").text("선택하신 티켓의 취소가 완료되었습니다.");
+							}
+							$(".background_refund").removeClass("show_refund");
+							$(".window_refund").removeClass("show_refund");
+							$(".background_ticket_refund_result").addClass("show");
+							$(".window_ticket_refund_result").addClass("show");
+							$("#ticket_refund_result_btn").click(function(){
+								$(location).attr("href", "http://localhost:9000/dmu/adminpage_reservation_list.do");
+							});
+						}//success
+						
+					});//ajax
+				});//click-function
+				
+			}//else
+		});//click-function
+		
+		function intChange(price) {
+			return parseInt(price.replace(",", "").replace("원", ""));
+		}
+		
+		function numberFormat(num) {
+			return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+		
+		/*** content size ****/
+		$("#refund_ticket_check_box").change(function(){
+			if($(this).is(":checked")){
+				$(".refund_ticket_btn").prop("disabled", false);
+			}else{
+				$(".refund_ticket_btn").prop("disabled", true);
+			}
+		});
+		
  
 }); //ready
  

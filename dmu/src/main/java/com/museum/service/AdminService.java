@@ -6,6 +6,7 @@ import java.util.List;
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuNoticeVO;
+import com.museum.vo.DmuPurchaseVO;
 import com.museum.vo.DmuReJoinVO;
 import com.museum.vo.DmuTicketVO;
 
@@ -30,6 +31,16 @@ public interface AdminService {
 	 ArrayList<DmuReJoinVO> reservationDet(String rid); 
 	 DmuReJoinVO reservationDet1(String rid);
  
+	//예매 정보 상세 보기
+	public List<DmuPurchaseVO> getPurchaseContent(String rid);
+	//예매 취소 신청
+	public int getPurchaseCancel(List<String> ticketList);
+	//예매 취소 티켓 카운팅
+	public int getPurchaseCancelTotalCount(String rid);
+	
+	//예매 정보 업데이트
+	public int getReservationCancel(String rid);
+	
 	/******* 1대1 문의 ***********/
 	public List<DmuInquiryVO> getIquiryList(String answerType, int startCount, int endCount);
 	public int getInquiryTotalCount(String answerType);

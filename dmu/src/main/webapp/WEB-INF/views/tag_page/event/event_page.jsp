@@ -27,7 +27,77 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/tag_page.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
-
+<script>
+$(document).ready(function() {
+	$(".tabbox").click(function(){
+	
+	//	alert($(this).attr("id"));
+	$(".snb-area .snb li").removeClass("on");
+	$(this).parent().addClass("on");
+	var kind = $(this).attr("id");
+	
+	notice_search(kind, 1);
+	});
+	
+	notice_search("all", 1);
+	
+	function notice_search(kind){
+	
+		$.ajax({ 
+			url : 'event_page_json.do',
+			type : "post" , 
+			cache : false,
+			headers : {"cache-control":"no-cache", "pragma": "no-cache"},
+			data : {"dplace" : kind},
+			success : function(data){
+				//console.log(data);
+				 
+			let dataset = JSON.parse(data);
+			
+			var output =  "<div data-v-e3917d8a='' class='container' id='js-load' class='main'>"
+			output += "<ul data-v-e3917d8a='' class='program-list'>";
+			for(aj of dataset.list){
+				output += "<li data-v-e3917d8a='' class='lists__item js-load'>"
+				output += "<a data-v-e3917d8a='' href='javascript:void(0);' style='cursor: auto;'>"
+				output += "<div data-v-e3917d8a='' class='thumb'>"
+				output += "<img data-v-2fed1a9a='' data-v-e3917d8a=''  src='http://localhost:9000/dmu/resources/upload/" + aj.dsfile +"' alt='"+aj.dtitle +"' style=''>"
+				output += "</div>"
+				output += "<div data-v-e3917d8a='' class='info'>"
+				output += "<span data-v-e3917d8a='' class='place'>" + aj.dplace +" </span>"
+				output += "<strong data-v-e3917d8a='' class='title'> " + aj.dtitle +" </strong>"
+				output += "</div></a></li>"
+				}
+				
+		var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm'>"
+			paging_list +="</div>"
+			
+			output += "</ul></div> ";
+			
+			if(dataset.list.length !=0){
+			
+				$(".no-result").css("display","none");
+					
+				$(".container").remove();
+				$("#contents").append(output);
+				$(".container").append(paging_list);
+				
+				paging(dataset.dbCount);
+				
+			
+			}else{
+				$(".container").remove();
+				$(".no-result").css("display","block");
+			}
+			
+		},
+		error : function(data){
+			alert('error');
+		}
+	});
+	
+	}//function - notice_search
+});//ready
+</script>
  
  
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
@@ -99,15 +169,15 @@
 					</div>
 					<div data-v-080a389a="" data-v-e3917d8a="">
 						<div data-v-080a389a="" class="snb-area">
-							<ul data-v-080a389a="" class="snb">
-								<li data-v-080a389a="" class="on"><a data-v-080a389a=""
-									role="button" style="cursor: pointer;">전체</a></li>
-								<li data-v-080a389a="" class=""><a data-v-080a389a=""
-									role="button" style="cursor: pointer;">디뮤지엄</a></li>
-								<li data-v-080a389a="" class=""><a data-v-080a389a=""
-									role="button" style="cursor: pointer;">대림미술관</a></li>
-								<li data-v-080a389a="" class=""><a data-v-080a389a=""
-									role="button" style="cursor: pointer;">구슬모아당구장</a></li>
+							<ul data-v-080a389a="" class="snb ">
+								<li data-v-080a389a="" class="on"><a data-v-080a389a=""  
+									role="button" style="cursor: pointer;" data-tab="tab_1" class="tabbox" id="all">전체</a></li>
+								<li data-v-080a389a="" class=""><a data-v-080a389a=""  
+									role="button" style="cursor: pointer;" data-tab="tab_2" class="tabbox" id="디뮤지엄">디뮤지엄</a></li>
+								<li data-v-080a389a="" class=""><a data-v-080a389a=""  
+									role="button" style="cursor: pointer;" data-tab="tab_3" class="tabbox" id="대림미술관">대림미술관</a></li>
+								<li data-v-080a389a="" class=""><a data-v-080a389a=""  
+									role="button" style="cursor: pointer;" data-tab="tab_4" class="tabbox" id="구슬모아당구장">구슬모아당구장</a></li>
 							</ul>
 						</div>
 						<div data-v-080a389a="" class="sub-contents-area"></div>
@@ -125,21 +195,25 @@
 					<div data-v-e3917d8a="" class="sub-contents-area" id="contents" >
 						<div data-v-e3917d8a="" class="container" id="js-load" class="main">
 							<ul data-v-e3917d8a="" class="program-list">
-								
 								<c:forEach var="vo" items="${list}">
-									<li data-v-e3917d8a="" class="lists__item js-load"><a data-v-e3917d8a=""
-										href="javascript:void(0);" style="cursor: auto;"><div data-v-e3917d8a="" class="thumb">
-												<img data-v-2fed1a9a="" data-v-e3917d8a=""
-													src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }"
-													alt="${vo.dtitle }" style="">
+									<li data-v-e3917d8a="" class="lists__item js-load">
+										<a data-v-e3917d8a="" href="javascript:void(0);" style="cursor: auto;">
+											<div data-v-e3917d8a="" class="thumb">
+												<img data-v-2fed1a9a="" data-v-e3917d8a="" 
+													src="http://localhost:9000/dmu/resources/upload/${vo.dsfile }" alt="${vo.dtitle }" style="">
 											</div>
 											<div data-v-e3917d8a="" class="info">
-												<span data-v-e3917d8a="" class="place">${vo.dplace }</span><strong
-													data-v-e3917d8a="" class="title"> ${vo.dtitle }</strong>
-											</div></a></li>
+												<span data-v-e3917d8a="" class="place">${vo.dplace }</span>
+												<strong data-v-e3917d8a="" class="title"> ${vo.dtitle }</strong>
+											</div>
+										</a>
+									</li>
 								</c:forEach>
-								 
 							</ul>
+						</div>
+					</div>
+				<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
+							
 							<div data-v-e3917d8a="" class="btn-program-more" >
 								<div data-v-26e42198="" data-v-e3917d8a="" class="btn-area" id="js-btn-wrap" class="btn-wrap">
 									<button data-v-26e42198="" id="btn50" name="btn50" type="button" class="secondary more"  >더보기</button>
@@ -156,7 +230,7 @@
  
 
 		<button class="goto-top">상단으로 이동</button>
-	</div>	 
+	 
 	<!-- built files will be auto injected -->
 	<footer>
 		<!-- 0510 네이버 공통 js 추가 -->
