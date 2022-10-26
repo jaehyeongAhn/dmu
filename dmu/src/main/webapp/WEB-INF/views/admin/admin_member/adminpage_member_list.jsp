@@ -120,7 +120,7 @@ $(document).ready(function(){
 							총 <strong class='total'>${dbCount}</strong>건
 						</div>
 						<div class="search-part">
-							<input type="text" name="search" placeholder="검색어를 입력하세요" class="search-bar">
+							<input type="text" name="search" placeholder="아이디/회원명/전화번호만 검색 가능합니다" class="search-bar">
 							<button class="search-btn">검색</button>
 						</div>
 						</div>

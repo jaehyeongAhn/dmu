@@ -119,6 +119,7 @@ $( document ).ready( function() {
 					$(".container").append(paging_list);
 					
 					paging(dataset.dbCount);
+					
 				
 				}else{
 					$(".container").remove();
@@ -132,5 +133,9 @@ $( document ).ready( function() {
 		});
 		
 	}//function - notice_search
-});
- 
+	 
+  $(".program-view-contents div.snb-area ul.snb li").click(function(){
+  		$(".program-view-contents div.snb-area ul.snb li").removeClass("on");
+  		$(this).addClass("on");
+	});
+ });

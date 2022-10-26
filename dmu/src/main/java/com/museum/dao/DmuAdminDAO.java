@@ -331,29 +331,25 @@ public class DmuAdminDAO extends DBConn {
 	public ArrayList<DmuReJoinVO> member_search_reserve(int startCount, int endCount, String keyword){
 		ArrayList<DmuReJoinVO> reserveSearch = new ArrayList<DmuReJoinVO>();
 		
-		String sql = "select  dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal, "
+		String sql = "select dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech "
+				+ " from (select rownum rno, dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech "
+				+ " from (select dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal, "
 				+ " to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rdate, 'YYYY-MM-DD') rdateda, to_char(dr.rokdate,'YYYY-MM-DD') rokdatech "
 				+ " from dmu_ticket DT, dmu_reservation DR, dmu_member DM "
-				+ " where  dm.mid = dr.mid and dt.did = dr.did and dr.rid in "
-				+ " (select rid from (select rownum rno, rid, rokdate from (select rid, rokdate from dmu_reservation order by rokdate desc)) "
-				+ " where rno between ? and ?) "
-				+ " and (dt.dcode like ? or dr.rid like ? or dt.dtitle like ? or dm.mname like ? or dt.dprice like ? or dr.rtotal like ? or dr.rallprice like ? or dr.rdate like ? or dr.rokdate like ?) "
-				+ " order by rokdate desc";
+				+ " where  dm.mid = dr.mid and dt.did = dr.did and dr.rid in (select rid from (select rid from dmu_reservation order by rokdate desc)) "
+				+ " order by rokdatech desc) "
+				+ " WHERE (dcode like ? or rid like ? or dtitle like ? or mname like ? )) "
+				+ " WHERE RNO BETWEEN ? AND ?";
 		
 	
 		try {
 			getPreparedStatement(sql);
-			pstmt.setInt(1, startCount);
-			pstmt.setInt(2, endCount);
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setString(2, "%" + keyword + "%");
 			pstmt.setString(3, "%" + keyword + "%");
 			pstmt.setString(4, "%" + keyword + "%");
-			pstmt.setString(5, "%" + keyword + "%");
-			pstmt.setString(6, "%" + keyword + "%");
-			pstmt.setString(7, "%" + keyword + "%");
-			pstmt.setString(8, "%" + keyword + "%");
-			pstmt.setString(9, "%" + keyword + "%");
-			pstmt.setString(10, "%" + keyword + "%");
-			pstmt.setString(11, "%" + keyword + "%");
+			pstmt.setInt(5, startCount);
+			pstmt.setInt(6, endCount);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				DmuReJoinVO vo = new DmuReJoinVO();
@@ -382,14 +378,14 @@ public class DmuAdminDAO extends DBConn {
 	public int totalCount_reserve(String keyword) {
 		int result = 0;
 		
-		String sql = "select count(*) from "
-				+ " (select  dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal, "
-				+ " to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rdate, 'YYYY-MM-DD') rdateda,  to_char(dr.rokdate,'YYYY-MM-DD') rokdatech "
+		String sql = "select count(*) from(select rno, dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech "
+				+ " from (select rownum rno, dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech "
+				+ " from (select dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal, "
+				+ " to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rdate, 'YYYY-MM-DD') rdateda, to_char(dr.rokdate,'YYYY-MM-DD') rokdatech "
 				+ " from dmu_ticket DT, dmu_reservation DR, dmu_member DM "
-				+ " where  dm.mid = dr.mid and dt.did = dr.did and dr.rid in "
-				+ " (select rid from (select rownum rno, rid, rokdate from (select rid, rokdate from dmu_reservation order by rokdate desc))) "
-				+ " and (dt.dcode like ? or dr.rid like ? or dt.dtitle like ? or dm.mname like ? or dt.dprice like ? or dr.rtotal like ? or dr.rallprice like ? or dr.rdate like ? or dr.rokdate like ?) "
-				+ " order by rokdate desc) ";
+				+ " where dm.mid = dr.mid and dt.did = dr.did and dr.rid in (select rid from (select rid from dmu_reservation order by rokdate desc)) "
+				+ " order by rokdatech desc) "
+				+ " WHERE (dcode like ? or rid like ? or dtitle like ? or mname like ?))) ";
 		
 		try {
 			getPreparedStatement(sql);
@@ -397,11 +393,6 @@ public class DmuAdminDAO extends DBConn {
 			pstmt.setString(2, "%" + keyword + "%");
 			pstmt.setString(3, "%" + keyword + "%");
 			pstmt.setString(4, "%" + keyword + "%");
-			pstmt.setString(5, "%" + keyword + "%");
-			pstmt.setString(6, "%" + keyword + "%");
-			pstmt.setString(7, "%" + keyword + "%");
-			pstmt.setString(8, "%" + keyword + "%");
-			pstmt.setString(9, "%" + keyword + "%");
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				result = rs.getInt(1);

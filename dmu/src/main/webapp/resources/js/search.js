@@ -59,7 +59,10 @@
 					output += "</div>";
 					output += "<div class='info-area'>";
 					output += "<p class='tag'></p>";
+					output += "<div style='box-sizing:border-box; padding:15px 30px 15px 0px;'>";
 					output += "<p class='title'></p>";
+					output += "<p class='subtitle'></p>";
+					output += "</div>";
 					output += "<ul>";
 					output += "<li><em>장소: </em><span></span></li>";
 					output += "<li><em>일시: </em><span></span></li>";
@@ -68,7 +71,7 @@
 					output += "</div>";
 					output += "<div class='btn-group'>";
 					output += "<div class='btn-area'>";
-					output += "<button id='btn95' type='button' class='secondary small'>자세히 보기</button>";
+					output += "<a href = '#' class = 'link_other'><button id='btn95' type='button' class='secondary small'>다른 전시회 살펴보기</button></a>";
 					output += "</div>";
 					output += "<div class='btn-area search-hidden-btn'>";
 					output += "<a href='#' class='link_ticket'><button id='btn96' type='button' class='primary small'>예매하기</button></a>";
@@ -124,16 +127,23 @@
 						$("." + str + " dd.search" + index + " div.img-area img").attr("src", "http://localhost:9000/dmu/resources/upload/"+dataset.dsfile);
 						$("." + str + " dd.search" + index + " div.info-area p.tag").text(dataset.dtarget);
 						$("." + str + " dd.search" + index + " div.info-area p.title").text(dataset.dtitle);
+						$("." + str + " dd.search" + index + " div.info-area p.subtitle").text(dataset.dtitle2);
 						$("." + str + " dd.search" + index + " div.info-area li:first-child span").text(dataset.dplace);
 						$("." + str + " dd.search" + index + " div.info-area li:last-child span").text(dataset.dstart + " ~ " + dataset.dend);
 						$("." + str + " dd.search" + index + " div.btn-group input.id_result").val(dataset.did);
 						$("." + str + " dd.search" + index + " div.btn-group a.link_ticket").attr("href", "http://localhost:9000/dmu/"+str+".do?did="+dataset.did);
+						$("." + str + " dd.search" + index + " div.btn-group a.link_other").attr("href", "http://localhost:9000/dmu/"+str+"_list.do");
 	
+						if(dataset.dentertime == "END"){							
+							$("." + str + " dd.search" + index + " div.btn-group div.search-hidden-btn").css("margin", "0");
+							$("." + str + " dd.search" + index + " div.btn-group a.link_ticket button#btn96").css("display", "none");
+						}
 						//.on 삭제
 						$("dd").removeClass("on");
 						
 						++index; 
 					}
+					
 					
 				}
 			});//ajax

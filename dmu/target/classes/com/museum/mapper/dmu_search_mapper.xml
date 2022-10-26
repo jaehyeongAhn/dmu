@@ -10,7 +10,8 @@
 	<!-- search list -->
 	<select id = "search" parameterType = "map" resultType = "com.museum.vo.DmuTicketVO">
 		SELECT DID, DPLACE, DTITLE,  TO_CHAR(TO_DATE(DSTART), 'YYYY-MM-DD') DSTART, TO_CHAR(TO_DATE(DEND), 'YYYY-MM-DD') DEND, 
-		DFILE, DSFILE, DCODE, DTIME, DPRICE, DTARGET, DNUM ,DTITLE2
+		DFILE, DSFILE, DCODE, DTIME, DPRICE, DTARGET, DNUM ,DTITLE2, 
+		(CASE WHEN DEND &lt; (SYSDATE+1) THEN 'END' ELSE 'OK' END) AS DENTERTIME
 		FROM DMU_TICKET
 		<choose>
 			<when test = "keyword != ''">
