@@ -24,6 +24,7 @@
 }
 .snb-area[data-v-7b1f57c8] {
     border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
 }
 body * {
     padding: 0;
@@ -230,6 +231,7 @@ div.left[data-v-8ed31374] {
 .reservation-area .title-ticket[data-v-8ed31374] {
     margin-bottom: 1.25rem;
     display: flex;
+    justify-content : space-between;
 }
 .reservation-area .title-ticket .title[data-v-8ed31374] {
     display: inline-block;
@@ -246,16 +248,19 @@ input#dtitle {
     width: 85%;
     height: 40px;
     margin-top: 0.5rem;
+    border: 0.5px solid #b1b1b1;
 }
 input#dtitle1 {
     width: 85%;
     height: 40px;
     margin-top: 0.5rem;
+    border: 0.5px solid #b1b1b1;
 }
 input#dtitle2 {
     width: 85%;
     height: 40px;
     margin-top: 0.5rem;
+    border: 0.5px solid #b1b1b1;
 }
 .reservation-area .title-ticket .explan[data-v-8ed31374] {
     font-weight: 500;
@@ -263,19 +268,24 @@ input#dtitle2 {
     line-height: 1.42;
     color: #666;
     letter-spacing: -0.02813rem;
+    width : 0px;
 }
 ul.ticketwriteul[data-v-8ed31374] {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 ul.ticketwriteul li[data-v-8ed31374] {
     position: relative;
     width: 50%;
     margin: 0.625rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 ul.ticketwriteul .title[data-v-8ed31374] {
     display: inline-block;
-    width: 7.25rem;
+    width: 7.45rem;
     font-weight: 500;
     font-size: 1rem;
     line-height: 1.63;
@@ -299,6 +309,8 @@ ul.ticketwriteul .text[data-v-8ed31374] {
     display: flex;
     padding: 1.625rem 0 2rem 0;
     border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 .reservation-area .organ-ticket .comment[data-v-8ed31374] {
     font-size: 1rem;
@@ -312,12 +324,55 @@ div.editor-contents-area textarea {
     padding: 16px;
     overflow: auto;
     line-height: 20px;
+    border: 0.5px solid #b1b1b1;
 }
 div.editor-contents-area textarea#dtime {
     resize: none;
-    width: 800px;
+    width: 680px;
     height: 100px;
     padding: 16px;
     overflow: auto;
     line-height: 20px;
+    border: 0.5px solid #b1b1b1;
+}
+
+/***************** 추가 수정 *****************/
+div.organ-ticket strong.title {
+	width : 110px;
+}
+.ticket_dcode{
+	width : 122px;
+}
+select {
+	border: 0.5px solid #b1b1b1 !important;
+    width: 13.6vw !important;
+    height: 30px !important;
+    padding: 0 10px !important;
+}
+input:not(input[type="file"]) {
+	border: 0.5px solid #b1b1b1;
+	height: 30px;
+	width : 13.6vw;
+	padding: 0 10px;
+}
+input[type="date"]{
+	width : 6.43vw !important;
+}
+ul.ticketwriteul li[data-v-8ed31374]:nth-child(odd){
+	padding-right : 17px;
+}
+ul.ticketwriteul li[data-v-8ed31374]:nth-child(even){
+	padding-left: 17px;
+}
+strong[data-v-8ed31374].title#info:not(div.organ-ticket strong.title) {
+    font-size: 20px;
+				font-weight: 600;
+}
+button#btn_exhibition_Write1:hover,
+button.secondary.small:hover {
+    color: white;
+    background: #5e5e5e;
+}
+.footer {
+    margin-top: 150px;
 }
