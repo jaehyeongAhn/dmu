@@ -1041,6 +1041,7 @@
                 </div>
             </main>
 	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0></iframe>
+	<button class="goto-top show" onclick="window.scrollTo(0,0);">상단으로 이동</button>
     <!-- built files will be auto injected -->
     <footer>
         <!-- 0510 네이버 공통 js 추가 -->

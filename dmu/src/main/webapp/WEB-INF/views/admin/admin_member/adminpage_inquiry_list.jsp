@@ -83,7 +83,7 @@ $(document).ready(function(){
 				<%-- 마이페이지 content --%>
 				<div class="sub-contents">
 					<div class="page-title admin-inquiry-title" style = "margin-bottom : 0;">
-						<h2>회원관리</h2>
+						<h2>1대1문의</h2>
 					</div>
 					<div class = "admin-inquiry-search">
 						<div class = "admin-inquiry-answer-no inquiry_on" data-type = "stand-by">답변 대기 중</div>
