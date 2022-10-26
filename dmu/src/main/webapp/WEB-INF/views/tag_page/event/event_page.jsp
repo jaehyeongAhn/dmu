@@ -101,7 +101,7 @@
 						<div data-v-080a389a="" class="snb-area">
 							<ul data-v-080a389a="" class="snb ">
 								<li data-v-080a389a="" class="on"><a data-v-080a389a=""  
-									role="button" style="cursor: pointer;" data-tab="tab_1" class="tabbox" id="전체">전체</a></li>
+									role="button" style="cursor: pointer;" data-tab="tab_1" class="tabbox" id="all">전체</a></li>
 								<li data-v-080a389a="" class=""><a data-v-080a389a=""  
 									role="button" style="cursor: pointer;" data-tab="tab_2" class="tabbox" id="디뮤지엄">디뮤지엄</a></li>
 								<li data-v-080a389a="" class=""><a data-v-080a389a=""  
@@ -125,8 +125,6 @@
 					<div data-v-e3917d8a="" class="sub-contents-area" id="contents" >
 						<div data-v-e3917d8a="" class="container" id="js-load" class="main">
 							<ul data-v-e3917d8a="" class="program-list">
-								
-							<c:if test="${not empty list}">
 								<c:forEach var="vo" items="${list}">
 									<li data-v-e3917d8a="" class="lists__item js-load">
 										<a data-v-e3917d8a="" href="javascript:void(0);" style="cursor: auto;">
@@ -141,17 +139,11 @@
 										</a>
 									</li>
 								</c:forEach>
-							</c:if>	
-							<c:if test="${empty list }">
-								<div data-v-97ddc3ec="" class="no-data">
-									<div data-v-e20ce500="" data-v-080a389a=""
-										class="no-result">
-										<p data-v-e20ce500="" data-v-080a389a="">지난 프로그램이 없습니다.</p>
-									</div>
-								</div>
-							</c:if>
-								 
 							</ul>
+						</div>
+					</div>
+				<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
+							
 							<div data-v-e3917d8a="" class="btn-program-more" >
 								<div data-v-26e42198="" data-v-e3917d8a="" class="btn-area" id="js-btn-wrap" class="btn-wrap">
 									<button data-v-26e42198="" id="btn50" name="btn50" type="button" class="secondary more"  >더보기</button>

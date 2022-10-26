@@ -71,13 +71,13 @@ public class TagPageServiceImpl implements TagPageService {
 	 * tag_page
 	 */
 	@Override
-	public ArrayList<DmuTicketVO> getEventContent(String dplace ) {
-		ArrayList<DmuTicketVO> list = tagpageDao.getEventContent(dplace);
+	public ArrayList<DmuTicketVO> getEventContent(String dcode ) {
+		ArrayList<DmuTicketVO> list = tagpageDao.getEventContent(dcode);
 		return list;
 	}
 	@Override
-	public ArrayList<DmuTicketVO> eventlist(String dplace, String itemlist) {
-		ArrayList<DmuTicketVO> list = tagpageDao.eventlist( dplace,itemlist );
+	public ArrayList<DmuTicketVO> eventlist(String dplace ) {
+		ArrayList<DmuTicketVO> list = tagpageDao.eventlist( dplace );
 		return list;
 	}
 	

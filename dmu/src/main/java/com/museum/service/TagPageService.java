@@ -14,8 +14,8 @@ public interface TagPageService {
 	ArrayList<DmuTicketVO> getDayList2(String dcode ,String day);  
 	ArrayList<DmuTicketVO> learnday(String dcode ,String day,String dtarget);  
 	ArrayList<DmuTicketVO> learndayAll(String dcode ,String dtarget);  
-	ArrayList<DmuTicketVO> getEventContent(String dplace );
-	ArrayList<DmuTicketVO> eventlist(String dplace ,String itemlist );  
+	ArrayList<DmuTicketVO> getEventContent(String dcode);
+	ArrayList<DmuTicketVO> eventlist(String dplace);  
 	ArrayList<DmuTicketVO> getLists(String dcode , String dtarget); 
 	ArrayList<DmuTicketVO> getLists2(String dcode , String dtarget); 
 	int getLearnCount(String dtarget); 

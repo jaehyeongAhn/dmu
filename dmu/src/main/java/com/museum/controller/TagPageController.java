@@ -46,7 +46,7 @@ public class TagPageController {
 		 
 		@RequestMapping(value="/event_page.do", method=RequestMethod.GET)
  
-		public ModelAndView event_page(String dplace ) {
+		public ModelAndView event_page(String dcode) {
 			ModelAndView mv = new ModelAndView();
 			
 			ArrayList<DmuTicketVO> list = tagpageService.getEventContent("event");
@@ -57,29 +57,42 @@ public class TagPageController {
  
 		}
 		
-		// event_page_ajax.do
-				@ResponseBody
-				@RequestMapping(value="/event_page_ajax.do", method =RequestMethod.GET,produces="text/plain;charset=UTF-8")
-				public String event_page_ajax(String dplace, String itemlist){
-					
-					ArrayList<DmuTicketVO> list=tagpageService.eventlist("event", itemlist );
-					
-					JsonObject jobject = new JsonObject(); //DmuTicketVO
-					JsonArray jarray = new JsonArray();  //ArrayList
-					Gson gson = new Gson();
-					for(DmuTicketVO vo : list){
-						JsonObject jo = new JsonObject();
-						jo.addProperty("did", vo.getDid());
-						jo.addProperty("dtitle", vo.getDtitle());
-						jo.addProperty("dplace", vo.getDplace());
-						jo.addProperty("dsfile", vo.getDsfile());
-						jo.addProperty("dcode", vo.getDcode());
-						jarray.add(jo);
-					}
-					jobject.add("list", jarray); 
-					
-					return gson.toJson(jobject);
-				} 
+				
+		@ResponseBody
+		@RequestMapping(value = "/event_page_json.do", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+		public String event_page_json( String dplace, HttpServletRequest request, HttpServletResponse response) 
+										throws Exception{
+
+			ArrayList<DmuTicketVO> clist = new ArrayList<DmuTicketVO>();
+			if(dplace.equals("all")) {
+				clist = tagpageService.getEventContent(dplace);
+			}else {
+				clist = tagpageService.eventlist(dplace);
+			}
+			
+			
+			JsonObject job = new JsonObject();
+			JsonArray jarray = new JsonArray();
+			Gson gson = new Gson();
+			
+			for(DmuTicketVO vo : clist) {
+				JsonObject jo = new JsonObject();
+				jo.addProperty("did", vo.getDid());
+				jo.addProperty("dtitle", vo.getDtitle());
+				jo.addProperty("dplace", vo.getDplace());
+				jo.addProperty("dsfile", vo.getDsfile());
+				jo.addProperty("dcode", vo.getDcode());
+				jarray.add(jo);
+
+				jarray.add(jo);
+			}
+			
+			
+			job.add("list", jarray);
+			
+			return gson.toJson(job);
+
+		}
  
 		
 	// event_page_det.do
