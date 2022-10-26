@@ -121,6 +121,10 @@
 				
 					//디자인 함수
 					function data_search(str){
+						if(dataset.dtarget == "default"){
+							dataset.dtarget = "전체";
+						}
+					
 						$("." + str).append(output);	
 						//$("." + str + " dd").filter(":nth-child(" + index + ")").addClass("search" + index);
 						$("." + str + " dd.on").addClass("search" + index);
@@ -138,6 +142,11 @@
 							$("." + str + " dd.search" + index + " div.btn-group div.search-hidden-btn").css("margin", "0");
 							$("." + str + " dd.search" + index + " div.btn-group a.link_ticket button#btn96").css("display", "none");
 						}
+						
+						if(str == "event"){
+							$("." + str + " dd.search" + index + " div.info-area p.tag").css("width", "110px");
+						}
+						
 						//.on 삭제
 						$("dd").removeClass("on");
 						

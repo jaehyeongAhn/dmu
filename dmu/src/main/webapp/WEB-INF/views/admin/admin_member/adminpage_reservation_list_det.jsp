@@ -14,7 +14,6 @@
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/adminpage.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/admin_member.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/main_header.js"></script>
@@ -77,7 +76,7 @@
 									<div class="sub-menu-list">
 										<ul>
 											<li class="">
-												<a class="" href="adminexhibition_list.do">상품 리스트 작성</a>
+												<a class="" href="adminexhibition_list.do">전시회 리스트 작성</a>
 											</li>
 											<li class="">
 												<a class="" href="admin_notice_list.do">공지사항 작성</a>
@@ -282,7 +281,7 @@
 		<div class = "window_join">
 			<div class = "popup_join">
 				<p id = "popup_joinGuide">티켓을 선택해 주세요.</p>
-				<div class = "popup_button">
+				<div class = "popup_button" style="border:none;">
 					<button type = "button" id = "popup_joinOk">확인</button>
 				</div>
 			</div>

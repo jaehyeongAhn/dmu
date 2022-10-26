@@ -212,7 +212,7 @@ $(document).ready(function() {
 							</ul>
 						</div>
 					</div>
-				<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">작성된 공지사항이 없습니다.</p></div>
+				<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">지난 이벤트가 없습니다.</p></div>
 							
 							<div data-v-e3917d8a="" class="btn-program-more" >
 								<div data-v-26e42198="" data-v-e3917d8a="" class="btn-area" id="js-btn-wrap" class="btn-wrap">
