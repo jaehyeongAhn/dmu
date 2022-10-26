@@ -945,7 +945,7 @@
                                                 class="period">2022.04.01 ~ 2022.10.30</span><span data-v-77eacbc9=""
                                                 class="place"> 디뮤지엄 </span>
                                             <div data-v-77eacbc9="" class="btn-group">
-                                                <div data-v-26e42198="" data-v-77eacbc9="" class="btn-area"><a href="http://localhost:9000/dmu/tag_page/learn/learn_page_det.do">
+                                                <div data-v-26e42198="" data-v-77eacbc9="" class="btn-area"><a href="http://localhost:9000/dmu/learn.do?did=d_129">
                                                 <button
                                                         data-v-26e42198="" id="btn41" type="button" class="primary"> 더보기
                                                     </button></a>
@@ -961,8 +961,8 @@
 	                                        <span data-v-77eacbc9="" class="">2022.04.22 ~ 2022.10.31</span>
 	                                        <span data-v-77eacbc9="" class=""> 디뮤지엄 </span>
 	                                        <div data-v-77eacbc9="" class="">
-		                                        <div data-v-26e42198="" data-v-77eacbc9="" class="">
-		                                        	<button data-v-26e42198="" id="" type="button" class=""> 더보기 </button>
+		                                        <div data-v-26e42198="" data-v-77eacbc9="" class=""><a href="http://localhost:9000/dmu/learn.do?did=d_130">
+		                                        	<button data-v-26e42198="" id="" type="button" class="primary"> 더보기 </button></a>
 	                                        	</div>
                                         		<!---->
                                         	</div>
@@ -975,8 +975,8 @@
 	                                        <span data-v-77eacbc9="" class="">2022.03.16 ~ 2022.10.30</span
 	                                        ><span data-v-77eacbc9="" class=""> 디뮤지엄 </span>
 	                                        <div data-v-77eacbc9="" class="">
-		                                        <div data-v-26e42198="" data-v-77eacbc9="" class="">
-		                                        	<button data-v-26e42198="" id="btn70" type="button" class=""> 더보기 </button>
+		                                        <div data-v-26e42198="" data-v-77eacbc9="" class=""><a href="http://localhost:9000/dmu/learn.do?did=d_131">
+		                                        	<button data-v-26e42198="" id="btn70" type="button" class="primary"> 더보기 </button></a>
 		                                        </div>
 	                                        	<!---->
 	                                        </div>
@@ -989,8 +989,8 @@
 	                                        <span data-v-77eacbc9="" class="">2022.03.16 ~ 2022.10.30</span>
 	                                        <span data-v-77eacbc9="" class=""> 디뮤지엄 </span>
 	                                        <div data-v-77eacbc9="" class="">
-		                                        <div data-v-26e42198="" data-v-77eacbc9="" class="">
-		                                        	<button data-v-26e42198="" id="btn71" type="button" class=""> 더보기 </button>
+		                                        <div data-v-26e42198="" data-v-77eacbc9="" class=""><a href="http://localhost:9000/dmu/learn.do?did=d_124">
+		                                        	<button data-v-26e42198="" id="btn71" type="button" class="primary"> 더보기 </button></a>
 		                                        </div>
 	                                        <!---->
 	                                        </div>
