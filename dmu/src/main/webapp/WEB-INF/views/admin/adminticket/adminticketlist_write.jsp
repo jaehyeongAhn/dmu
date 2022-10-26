@@ -111,8 +111,7 @@
 
 												<div data-v-8ed31374="" class="title-ticket">
 													<h2 data-v-8ed31374="" class="title">제목</h2>
-													<input type="text" name="dtitle" id="dtitle"> <span
-														data-v-8ed31374="" class="explan"> </span>
+													<input type="text" name="dtitle" id="dtitle">
 												</div>
 
 												<div dtata-v-8ed31374="" class="info-ticket">
@@ -148,9 +147,8 @@
 														</span></li>
 												</ul>
 												</div>
-													<strong data-v-8ed31374="" class="title" id="info">운영시간
-													</strong>
 												<div data-v-8ed31374="" class="organ-ticket">
+													<strong data-v-8ed31374="" class="title" id="info">운영 시간</strong>
 													<p data-v-8ed31374="" class="comment">
 													<div data-v-8ed31374="" class="contents">
 														<div class="editor-contents-area">
@@ -161,8 +159,7 @@
 														</div>
 													</div>
 												</div>
-												<strong data-v-8ed31374="" class="title" id="info">이용
-													정보</strong>
+												<strong data-v-8ed31374="" class="title" id="info">이용 정보</strong>
 												<div data-v-8ed31374="" class="organ-ticket">
 													<p data-v-8ed31374="" class="comment">
 													<div data-v-8ed31374="" class="contents">
@@ -216,8 +213,7 @@
 
 												<div data-v-8ed31374="" class="title-ticket">
 													<h2 data-v-8ed31374="" class="title">제목</h2>
-													<input type="text" name="dtitle" id="dtitle1"> <span
-														data-v-8ed31374="" class="explan"> </span>
+													<input type="text" name="dtitle" id="dtitle1">
 												</div>
 												
 												<div dtata-v-8ed31374="" class="info-ticket">
@@ -281,10 +277,8 @@
 													</li>
 												</ul>
 												</div>
-													
-												<strong data-v-8ed31374="" class="title" id="info">교육시간
-													</strong>
 												<div data-v-8ed31374="" class="organ-ticket">
+													<strong data-v-8ed31374="" class="title" id="info">교육시간</strong>
 													<p data-v-8ed31374="" class="comment">
 													<div data-v-8ed31374="" class="contents">
 														<div class="editor-contents-area">
@@ -354,8 +348,7 @@
 
 												<div data-v-8ed31374="" class="title-ticket">
 													<h2 data-v-8ed31374="" class="title">제목</h2>
-													<input type="text" name="dtitle" id="dtitle2"> <span
-														data-v-8ed31374="" class="explan"> </span>
+													<input type="text" name="dtitle" id="dtitle2">
 												</div>
 												<div dtata-v-8ed31374="" class="info-ticket">
 												<ul class="ticketwriteul" data-v-8ed31374="">
@@ -402,7 +395,8 @@
 													</select></li>
 												</ul>
 												</div>
-												<strong data-v-8ed31374="" class="title" id="info">이용
+												<strong data-v-8ed31374="" class="title" id="info" style ="
+													    padding-top: 30px;display:block;">이용
 													정보</strong>
 												<div data-v-8ed31374="" class="organ-ticket">
 													<p data-v-8ed31374="" class="comment">
