@@ -1,23 +1,11 @@
-
 #contents > header, #contents > main, #contents > footer {
     min-width: 80rem;
 }
 
-
 main {
     min-height: calc(100vh - 43.375rem);
 }
- .clicked {
-        color: gold;
-      }
 
-/* .js-load:nth-child(n+2) {
-    display: none;
-}
-.js-load.active {
-    display: block;
-}
- */
 
 .no-result p[data-v-e20ce500] {
     font-size: 2.25rem;
@@ -273,6 +261,7 @@ body img {
 }
 .ticket-list.exhibition > ul > li .title[data-v-3c1f59cb] {
     font-size: 2.25rem;
+    text-decoration : none;
 }
 .ticket-list > ul .title[data-v-3c1f59cb] {
     display: block;
@@ -458,6 +447,7 @@ body img {
     line-height: 1.33;
     color: #111;
     letter-spacing: -0.05625rem;
+    text-decoration : none;
 }
 .ticket-list > ul .explan[data-v-41f56098] {
     margin-top: 0.75rem;
@@ -703,6 +693,7 @@ body ol, body ul, body li {
     line-height: 1.33;
     color: #111;
     letter-spacing: -0.05625rem;
+    text-decoration : none;
 }
 .ticket-list > ul .info[data-v-1e8092ec] {
     margin-top: 2.5rem;

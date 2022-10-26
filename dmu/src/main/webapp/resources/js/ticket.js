@@ -1,28 +1,18 @@
-$(window).on('load', function () {
-    load('#js-load', '3');
-    $("#btn50").on("click", function () {
-  
-        load('#js-load', '3', '#js-btn-wrap');
-    })
-});
- 
-function load(id, cnt, btn) {
-    var girls_list = id + " .js-load:not(.active)";
-    var girls_length = $(girls_list).length;
-    var girls_total_cnt;
-    if (cnt < girls_length) {
-        girls_total_cnt = cnt;
-    } else {
-        girls_total_cnt = girls_length;
-        $("#btn50").hide()
-    }
-    $(girls_list + ":lt(" + girls_total_cnt + ")").addClass("active");
-}
-
-
 
 $(document).ready(function(){
  
+		
+	/********* popup setup *********/
+	function popup_setup(guideLine) {
+		$(".background_exhibition").addClass("show");
+		$(".window_exhibition").addClass("show");
+		$("#popup_title").text(guideLine);
+		$("#popup_close").click(function() {
+			$(".background_exhibition").removeClass("show");
+			$(".window_exhibition").removeClass("show");
+		});
+	}
+	
 	/*********************
       전시 등록폼 유효성 체크
       **********************/
@@ -32,54 +22,162 @@ $(document).ready(function(){
       
       
          if($("#dtitle").val() == ""){
-            alert("제목을 입력해주세요");
+        	 popup_setup("제목을 입력해주세요");
             $("#dtitle").focus();
             return false;
-         }else if($("#dcode").val() =="default"){
-            alert("코드를 선택해주세요")
-            $("#dcode").focus();
-            return false;
          }else if($("#dplace").val() =="default"){
-            alert("장소를 선택해주세요")
+        	 popup_setup("장소를 선택해주세요")
             $("#dplace").focus();
             return false;
-         }else if($("#dcode").val() =="learn"&& $("#dtarget").val() =="default"){
-            alert("대상을 선택해주세요")
-            $("#dtarget").focus();
-            return false;
-         }else if($("#dcode").val() !="learn"&& $("#dtarget").val() !="default"){
-            alert("learn일때만 대상을 선택할수 있습니다.")
-            $("#dtarget").focus();
-            return false;
-         }else if($("#dprice").val() == ""){
-            alert("가격을 입력해주세요.");
-            $("#dprice").focus();
-            return false;
-         }else if($("#dpersonnel").val() == ""){
-            alert("정원을 입력해주세요.");
-            $("#dpersonnel").focus();
-            return false;
-         }else if($("#dnum").val() == ""){
-            alert("교육횟수를 입력해주세요.");
-            $("#dnum").focus();
-            return false;
-         }else if($("#file_list").val() == ""){
-            alert("파일을 선택해주세요.");
-            return false;
+         }else if($("#dentertime").val() ==""){
+        	 popup_setup("회차를 선택해주세요")
+             $("#dentertime").focus();
+             return false;
          }else if(start > end){
-         	alert("유효하지 않은 날짜입니다.")
+        	 popup_setup("유효하지 않은 날짜입니다.")
          	$("#dstart").focus();
          	return false;
          }else if(start == "" || end == ""){
-         	alert("날짜를 선택해주세요");
+        	 popup_setup("날짜를 선택해주세요");
          	$("#dstart").focus();
          	return false;
-         	
+         }else if($("#dprice").val() == ""){
+        	 popup_setup("가격을 입력해주세요.");
+            $("#dprice").focus();
+            return false;
+         }
+         else if($("#file_list").val() == ""){
+        	 popup_setup("파일을 선택해주세요.");
+            return false;
+         }else if($("#dtime").val() == ""){
+        	 popup_setup("운영시간을 입력해주세요.");
+          return false;
+         
+         }else if($("#dinformation").val() == ""){
+        	 popup_setup("이용정보를 입력해주세요.");
+             return false;
          }else{
                //서버전송
-               ticketlistform.submit();
+        	 exhibitionlistform.submit();
          
          } 
+      });
+      $("#btn_exhibition_Write1").click(function(){
+    	  var start = $("#dstart1").val().split("-");
+    	  var end = $("#dend1").val().split("-");
+    	  
+    	  
+    	  if($("#dtitle1").val() == ""){
+    		  popup_setup("제목을 입력해주세요");
+    		  $("#dtitle1").focus();
+    		  return false;
+    	  }else if($("#dtitle21").val() ==""){
+    		  popup_setup("부제목을  입력해주세요")
+    		  $("#dtitle21").focus();
+    		  return false;
+    	  }else if($("#dplace1").val() =="default"){
+    		  popup_setup("장소를 선택해주세요")
+    		  $("#dplace1").focus();
+    		  return false;
+    	  }else if($("#dentertime1").val() == ""){
+    		  popup_setup("수업시간을 입력해주세요.");
+    		  $("#dentertime1").focus();
+    		  return false;
+    	  }else if($("#dprice1").val() == ""){
+    		  popup_setup("가격을 입력해주세요.");
+    		  $("#dprice1").focus();
+    		  return false;
+    	  }else if($("#dpersonnel1").val() == ""){
+    		  popup_setup("정원을 입력해주세요.");
+              $("#dpersonnel1").focus();
+              return false;
+           }else if($("#dtarget1").val() == "default"){
+        	   popup_setup("대상 선택해주세요.");
+               $("#dtarget1").focus();
+               return false;
+           }else if($("#dnum1").val() == ""){
+        	   popup_setup("교육횟수를 입력해주세요.");
+              $("#dnum1").focus();
+              return false;
+            }else if($("#dtime1").val() == ""){
+            	popup_setup("교육시간을 입력해주세요.");
+                $("#dtime1").focus();
+                return false;
+              }else if($("#dinformation1").val() == ""){
+            	  popup_setup("이용정보를 입력해주세요.");
+                  $("#dinformation1").focus();
+                  return false;
+                }
+    	  else if($("#file_list1").val() == ""){
+    		  popup_setup("파일을 선택해주세요.");
+    		  return false;
+    	  }else if(start > end){
+    		  popup_setup("유효하지 않은 날짜입니다.")
+    		  $("#dstart1").focus();
+    		  return false;
+    	  }else if(start == "" || end == ""){
+    		  popup_setup("날짜를 선택해주세요");
+    		  $("#dstart1").focus();
+    		  return false;
+    		  
+    	  }else{
+    		  //서버전송
+    		  learnlistform.submit();
+    		  
+    	  } 
+      });
+      $("#btn_exhibition_Write2").click(function(){
+    	  var start = $("#dstart2").val().split("-");
+    	  var end = $("#dend2").val().split("-");
+    	  
+    	  
+    	  if($("#dtitle2").val() == ""){
+    		  popup_setup("제목을 입력해주세요");
+    		  $("#dtitle2").focus();
+    		  return false;
+    	  }else if($("#dtitle22").val() ==""){
+    		  popup_setup("부제목을 입력해주세요.")
+    		  $("#dtitle22").focus();
+    		  return false;
+    	  }else if($("#dplace2").val() =="default"){
+    		  popup_setup("장소를 선택해주세요")
+    		  $("#dplace2").focus();
+    		  return false;
+    	  }else if($("#dprice2").val() == ""){
+    		  popup_setup("참가비를 입력해주세요.");
+    		  $("#dprice2").focus();
+    		  return false;
+    	  }else if($("#dtarget2").val() =="default"){
+    		  popup_setup("장소를 선택해주세요")
+    		  $("#dtarget2").focus();
+    		  return false;
+    	  }else if($("#dentertime2").val() == ""){
+    		  popup_setup("회차를 입력해주세요.");
+    		  $("#dentertime2").focus();
+    		  return false;
+    	  }
+      		else if($("#dinformation2").val() == ""){
+      			popup_setup("이용정보를 입력해주세요.");
+    	  $("#dinformation2").focus();
+    	  return false;
+      		}
+    	  else if($("#file_list2").val() == ""){
+    		  popup_setup("파일을 선택해주세요.");
+    		  return false;
+    	  }else if(start > end){
+    		  popup_setup("유효하지 않은 날짜입니다.")
+    		  $("#dstart2").focus();
+    		  return false;
+    	  }else if(start == "" || end == ""){
+    		  popup_setup("날짜를 선택해주세요");
+    		  $("#dstart2").focus();
+    		  return false;
+    		  
+    	  }else{
+    		  //서버전송
+    		  eventlistform.submit();
+    		  
+    	  } 
       });
       
   /*********************

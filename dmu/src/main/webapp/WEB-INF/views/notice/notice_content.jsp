@@ -44,7 +44,9 @@
 					<h2 data-v-0d03d759="">공지사항</h2>
 					<nav data-v-0d03d759="">
 						<ul data-v-0d03d759="">
-							<li data-v-0d03d759="" style="cursor: pointer;"><a href="index.do" style="opacity:0;">HOME</a></li>
+							<li data-v-0d03d759="" style="width:15px;background-position: center !important;">
+                            	<a href="index.do" style="opacity:0; display: flex; width: 15px; height: 15px;">HOME</a>
+                            </li>
 							<!---->
 							<li data-v-0d03d759="">공지사항</li>
 							<!---->

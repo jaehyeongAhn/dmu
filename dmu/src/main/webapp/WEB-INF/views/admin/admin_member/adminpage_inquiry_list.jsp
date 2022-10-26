@@ -67,10 +67,10 @@ $(document).ready(function(){
 									<div class="sub-menu-list">
 										<ul>
 											<li class="">
-												<a class="" href="adminexhibition_list.do">상품 리스트 작성</a>
+												<a class="" href="adminexhibition_list.do" target="_blank">상품 리스트 작성</a>
 											</li>
 											<li class="">
-												<a class="" href="admin_notice_list.do">공지사항 작성</a>
+												<a class="" href="admin_notice_list.do" target="_blank">공지사항 작성</a>
 											</li>
 										</ul>
 									</div>
@@ -83,7 +83,7 @@ $(document).ready(function(){
 				<%-- 마이페이지 content --%>
 				<div class="sub-contents">
 					<div class="page-title admin-inquiry-title" style = "margin-bottom : 0;">
-						<h2>회원관리</h2>
+						<h2>1대1문의</h2>
 					</div>
 					<div class = "admin-inquiry-search">
 						<div class = "admin-inquiry-answer-no inquiry_on" data-type = "stand-by">답변 대기 중</div>

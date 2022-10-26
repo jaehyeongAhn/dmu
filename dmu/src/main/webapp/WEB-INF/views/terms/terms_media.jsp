@@ -44,7 +44,9 @@
 							<h2 data-v-0d03d759="">영상정보처리기기 운영·관리방침</h2>
 							<nav data-v-0d03d759="">
 								<ul data-v-0d03d759="">
-									<li data-v-0d03d759="" style="cursor: pointer;">HOME</li>
+								<li data-v-0d03d759="" style="width:15px;background-position: center !important;">
+                            	<a href="index.do" style="opacity:0; display: flex; width: 15px; height: 15px;">HOME</a>
+                            </li>
 									<!---->
 									<li data-v-0d03d759="">영상정보처리기기 운영·관리방침</li>
 									<!---->
@@ -282,7 +284,7 @@
 				</section>
 			</main>
 			<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
-			<button class="goto-top">상단으로 이동</button>
+			<button class="goto-top show" onclick="window.scrollTo(0,0);">상단으로 이동</button>
 		</div>
 	</div>
 	<!-- built files will be auto injected -->

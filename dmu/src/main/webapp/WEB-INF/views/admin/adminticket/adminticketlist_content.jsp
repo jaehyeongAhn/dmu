@@ -25,6 +25,7 @@
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
+
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
@@ -111,11 +112,7 @@
 													<p data-v-8ed31374="" class="comment">
 													<div data-v-8ed31374="" class="contents">
 														<div class="editor-contents-area">
-															
-															
 																${ vo.dinformation }
-															
-															
 															<p>
 																<br>
 															</p>

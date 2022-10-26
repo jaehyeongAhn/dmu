@@ -361,6 +361,7 @@
 			</main>
 	
 	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
+	<button class="goto-top show" onclick="window.scrollTo(0,0);">상단으로 이동</button>
 	<script type="text/javascript"
 		src="/js/chunk-vendors.65f4f95d8b53aa7e7c6f.js"></script>
 	<script type="text/javascript" src="/js/index.65f4f95d8b53aa7e7c6f.js"></script>

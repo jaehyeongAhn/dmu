@@ -19,9 +19,9 @@ public interface TicketService {
 	int getTicketinfo(DmuReJoinVO vo);
 	DmuReJoinVO getcompletecontent(String mid);  
 	int getTicketLearnCount(String dtarget); 
-	ArrayList<DmuTicketVO> getLists(String dcode , String dtarget); 
-	ArrayList<DmuTicketVO> getList(String dcode ); 
-
+	ArrayList<DmuTicketVO> getLists(int startCount,int endCoiunt,String dcode , String dtarget,String day); 
+	ArrayList<DmuTicketVO> getList(int startCount,int endCoiunt,String dcode,String day ); 
+	
 	int getTicketCount(String dcode);  
  
 

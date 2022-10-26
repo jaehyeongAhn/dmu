@@ -403,7 +403,7 @@
 			</main>
 			</main>
 			<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class = "footer" style="margin-bottom:-5px" ></iframe>
-			<button class="goto-top">상단으로 이동</button>
+			<button class="goto-top show" onclick="window.scrollTo(0,0);">상단으로 이동</button>
 		</div>
 	</div>
 	<!-- built files will be auto injected -->

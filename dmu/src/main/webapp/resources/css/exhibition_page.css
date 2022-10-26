@@ -143,9 +143,7 @@ ul {
 }
 .sub-top-area nav ul li[data-v-0d03d759] {
     position: relative;
-    padding: 0 1.25rem
-rem
-;
+    padding: 0 1.25rem;
     font-weight: 300;
     font-size: 0.875rem;
     line-height: 1.125rem;
@@ -255,13 +253,13 @@ element.style {
     padding-left: 0px;
     position: relative;
 }
-.current-list[data-v-97ddc3ec] {
+/* .current-list[data-v-97ddc3ec] {
     padding: 6.25rem 3.75rem 12.5rem 3.75rem;
     padding-top: 6.25rem;
     padding-right: 3.75rem;
     padding-bottom: 12.5rem;
     padding-left: 3.75rem;
-}
+} */
 .current-list ul li[data-v-97ddc3ec]:last-child {
     margin-bottom: 0;
 }.current-list ul li[data-v-97ddc3ec]:nth-child(odd) {
