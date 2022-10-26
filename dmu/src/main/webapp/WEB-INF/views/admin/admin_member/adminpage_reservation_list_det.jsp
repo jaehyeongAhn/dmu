@@ -14,7 +14,6 @@
 <link rel="stylesheet" href = "http://localhost:9000/dmu/resources/css/adminpage.css">
 <script src = "http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src = "http://localhost:9000/dmu/resources/js/mypage.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/admin_member.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/am-pagination.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/main_header.js"></script>
