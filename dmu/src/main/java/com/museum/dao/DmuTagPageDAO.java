@@ -1,6 +1,7 @@
 package com.museum.dao;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,6 +71,7 @@ public class DmuTagPageDAO {
 	    * select : exhibition_past_page year
 	    */
 	   public ArrayList<DmuTicketVO> selectday(String dcode,String day){
+		   
 		   Map<String,String> param = new HashMap<String,String>();
 		   param.put("dcode",dcode);
 		   param.put("day",day);

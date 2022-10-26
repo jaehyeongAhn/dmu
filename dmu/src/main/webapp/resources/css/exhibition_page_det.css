@@ -1,3 +1,23 @@
+.Fixed {
+    position: fixed;
+    top: 0px;
+}
+.snb-area[data-v-080a389a] {
+    border-bottom: 1px solid #ddd;
+    justify-content: center;
+    background: white;
+    display: flex;
+    width: 100%;
+    background: #fff;
+    top: 0rem;
+    left: 0;
+    z-index: 10;
+}
+.snb-area .snb li.on a[data-v-080a389a] {
+    position: relative;
+    font-weight: 500;
+    color: #000;
+}
 .layer-dimmed[data-v-9a980cc6] {
 	position: fixed;
 	width: 100%;
