@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 eclipse.preferences.version=1
 encoding//src/main/java/com/museum/controller/TicketController.java=UTF-8
 encoding//src/main/java/com/museum/dao/DmuTicketDAO.java=UTF-8
@@ -6,3 +7,13 @@ encoding//src/main/java/com/museum/service/PageServiceImpl.java=UTF-8
 encoding//src/main/java/com/museum/service/TagPageServiceImpl.java=UTF-8
 encoding//src/main/java/com/museum/service/TicketService.java=UTF-8
 encoding//src/main/java/com/museum/service/TicketServiceImpl.java=UTF-8
+=======
+eclipse.preferences.version=1
+encoding//src/main/java/com/museum/controller/TicketController.java=UTF-8
+encoding//src/main/java/com/museum/dao/DmuTicketDAO.java=UTF-8
+encoding//src/main/java/com/museum/service/FileServiceImpl.java=UTF-8
+encoding//src/main/java/com/museum/service/PageServiceImpl.java=UTF-8
+encoding//src/main/java/com/museum/service/TicketService.java=UTF-8
+encoding//src/main/java/com/museum/service/TicketServiceImpl.java=UTF-8
+encoding//src/main/webapp/resources/css/adminpage.css=UTF-8
+>>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
