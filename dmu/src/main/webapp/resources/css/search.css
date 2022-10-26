@@ -150,7 +150,12 @@
 	div.container.search dl.ex-list dd div.introduce-menu div.info-area p.title {
 		font-size: 25px;
 		letter-spacing: -0.08rem;
-	    margin-bottom: 35px;
+	    margin-bottom: 20px;
+	}
+	div.container.search dl.ex-list dd div.introduce-menu div.info-area p.subtitle {
+		font-weight: 300;
+	    letter-spacing: -0.05rem;
+	    color: #4e4b4b;
 	}
 	div.container.search dl.ex-list dd div.introduce-menu div.info-area ul {
 	    list-style: none;

@@ -283,6 +283,8 @@ $(document).ready(function(){
 			$("#popup_joinGuide").html(guideLine);
 			$("#popup_joinGuide").css({"line-height" : "1.5rem"});
 			$("#popup_joinNo").click(function() {
+				$("#popup_joinOk").css("display", "inline-block");
+				$("#unregister_member").css("display", "none");
 				$(".background_join").removeClass("show_join");
 				$(".window_join").removeClass("show_join");
 			});
@@ -368,8 +370,15 @@ $(document).ready(function(){
 		
 		//변경 내용 저장
 		function member_info_udpate(type){
+			$("form").attr({
+				"name" : "updateMemberForm",
+				"action" : "update_info.do"
+			});
+			
 			popup_login("변경사항을 저장하시겠습니까?");
+			
 			$("#popup_joinOk").click(function(){
+				
 				$(".background_join").removeClass("show_join");
 				$(".window_join").removeClass("show_join");
 				
@@ -378,6 +387,7 @@ $(document).ready(function(){
 				$.ajax({
 					type : "post",
 					data : formData,
+					cache : false,
 					url : "update_info.do",
 					success : function(result){
 						let data = JSON.parse(result);
@@ -386,6 +396,7 @@ $(document).ready(function(){
 							$(".pass").focus();
 							return false;
 						}else if(data.update_result == "success"){
+							warningCheck(false, $(".new-pass"), "");
 							popup_login("변경이 완료되었습니다.");
 							$("#popup_joinOk").css("display", "none");
 							$("#popup_joinNo").text("확인");
@@ -456,7 +467,9 @@ $(document).ready(function(){
 		//탈퇴 버튼
 		$(".status_none").click(function(){
 			popup_login("탈퇴하시겠습니까?");
-			$("#popup_joinOk").click(function(){
+			$("#popup_joinOk").css("display", "none");
+			$("#unregister_member").css("display", "inline-block");
+			$("#unregister_member").click(function(){
 				$("form").attr({
 					"name" : "deleteMemberForm",
 					"action" : "delete_member.do"

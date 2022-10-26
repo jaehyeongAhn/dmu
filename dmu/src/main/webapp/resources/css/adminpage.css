@@ -47,7 +47,7 @@
 .search-bar{
     border: 0;
     border-bottom: 1px solid #666;
-    width: 180px;
+    width: 220px;
     height: 0.75rem;
     padding: 5px 5px;
     /* border: 1px solid #ddd; */
@@ -60,7 +60,7 @@
 .search-bar-admin{
 	border: 0;
     border-bottom: 1px solid #666;
-    width: 180px;
+    width: 220px;
     height: 0.75rem;
     padding: 5px 5px;
     /* border: 1px solid #ddd; */
@@ -73,7 +73,7 @@
 .search-bar-reserve{
 	border: 0;
     border-bottom: 1px solid #666;
-    width: 180px;
+    width: 260px;
     height: 0.75rem;
     padding: 5px 5px;
     /* border: 1px solid #ddd; */

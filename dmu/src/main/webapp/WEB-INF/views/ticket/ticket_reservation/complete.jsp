@@ -141,8 +141,7 @@
 														<li data-v-08a066f5=""><p data-v-08a066f5="">전시
 																관람 또는 프로그램 참여 당일 예매하신 티켓은 취소, 변경, 환불이 불가합니다. 꼭 기억해 주세요.</p></li>
 														<li data-v-08a066f5=""><p data-v-08a066f5="">
-																예매 취소와 환불 절차는 <a href="/mypage/tickets/list">[MY
-																	PAGE &gt; MY TICKETS &gt; 티켓예매 목록]</a>을 통해 확인 하실 수 있습니다.
+																예매 취소와 환불 절차는 [MYPAGE &gt; MY TICKETS &gt; 티켓예매 목록]을 통해 확인 하실 수 있습니다.
 															</p></li>
 														<li data-v-08a066f5=""><p data-v-08a066f5="">환불은
 																결제와 동일한 수단으로 진행됩니다.</p></li>
@@ -158,9 +157,9 @@
 										</div>
 										<div data-v-7f52b83a="" class="btn-area-wrap">
 											<div data-v-26e42198="" data-v-7f52b83a="" class="btn-area">
-											<<!-- a href="http://http://localhost:9000/dmu/mypage_main.do" target="_parent" > -->
+											<%-- <a href="http://localhost:9000/dmu/adminmypage_main.do?mid="+${vo.mid} target="_parent" > --%>
 												<button data-v-26e42198="" id="btn23" type="button"
-													class="primary">예매내역 확인</button></a>
+													class="primary" onclick="location.href='http://localhost:9000/dmu/mypage/mypage_main.do?mid='+${sessionScope.member.mid}';">예매내역 확인</button>
 											</div>
 											 
 											<div data-v-26e42198="" data-v-7f52b83a="" class="btn-area">
