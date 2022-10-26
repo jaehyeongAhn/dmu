@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.museum.dao.DmuAdminDAO;
 import com.museum.vo.DmuInquiryVO;
 import com.museum.vo.DmuMemberVO;
+import com.museum.vo.DmuPurchaseVO;
 import com.museum.vo.DmuReJoinVO;
 import com.museum.vo.DmuTicketVO;
 
@@ -109,7 +110,29 @@ public class AdminServiceImpl implements AdminService{
 		  
 	  }
 	 
-	
+	  //예매 정보 상세 보기
+		@Override
+		public List<DmuPurchaseVO> getPurchaseContent(String rid) {
+			return adminDAO.purchaseContent(rid);
+		}
+		
+		//예매 취소 신청
+		@Override
+		public int getPurchaseCancel(List<String> ticketList) {
+			return adminDAO.purchaseCancel(ticketList);
+		}
+
+		//예매 취소 티켓 카운팅
+		@Override
+		public int getPurchaseCancelTotalCount(String rid) {
+			return adminDAO.purchaseCancelTotalCount(rid);	
+		}
+		
+		//예매 정보 업데이트
+		@Override
+		public int getReservationCancel(String rid) {
+			return adminDAO.reservationCancel(rid);
+		}
 	
 	/**
 	 * 1대1 문의 사항

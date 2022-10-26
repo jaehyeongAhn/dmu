@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuTicketVO;
 
 @Repository
@@ -26,6 +27,18 @@ public class DmuTagPageDAO {
 			return (ArrayList<DmuTicketVO>)list;
 		     
 		   }
+	   
+	   /**
+	    * tag_page list
+	    */
+	   public ArrayList<DmuTicketVO> eventlist(String dplace ){
+		   
+		   List<DmuTicketVO> list = sqlSession.selectList("mapper.tagpage.EventContentList",dplace);
+		   return (ArrayList<DmuTicketVO>)list;
+	   }
+	
+	   
+	   
 	   /*
 	    * tag_page exhibition past
 	    */
@@ -110,7 +123,7 @@ public class DmuTagPageDAO {
 		   return (ArrayList<DmuTicketVO>)list;
 	   }
 	   /**
-	    * select : dtarget으로 티켓 리스트 출력 
+	    * select : dtarget 
 	    */
 	   public ArrayList<DmuTicketVO> selects( String dcode,String dtarget){
 		   Map<String,String> param = new HashMap<String,String>();
