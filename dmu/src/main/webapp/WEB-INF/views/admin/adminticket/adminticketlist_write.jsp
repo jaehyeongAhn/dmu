@@ -74,7 +74,7 @@
 						<!---------------------------------------------->
 						<div data-v-7b1f57c8="" class="snb-area">
 							<ul data-v-7b1f57c8="" class="snb">
-								<li data-v-7b1f57c8="" class="ticket_dcode" id="exhibition">
+								<li data-v-7b1f57c8="" class="ticket_dcode on" id="exhibition">
 									<a data-v-7b1f57c8="">EXHIBITION </a>
 								</li>
 

@@ -20,7 +20,7 @@
 	  <!-- exhibition_past_page years -->
 	 <select id="dayContent"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
 		 select did, dtitle, dplace, dfile,dsfile, dcode,dstart, dend ,dtitle2 from dmu_ticket where 
-		 dend &lt; sysdate and dcode = #{dcode} and  dstart &gt; #{day} order by dstart
+		 dend &lt; sysdate and dcode = #{dcode} and  dstart &gt; #{day} and dstart &lt; #{nextyear} order by dstart
 		 
 	 </select>
 	  <!-- exhibition_past_page1 -->
@@ -32,7 +32,7 @@
 	  <!-- exhibition_past_page1 year -->
 	 <select id="exhibitionPastYear"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
 		 select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtitle2 from
-		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtitle2 from dmu_ticket where dend &lt; sysdate and dcode = #{dcode} and  dstart &gt; #{day})
+		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtitle2 from dmu_ticket where dend &lt; sysdate and dcode = #{dcode} and  dstart &gt; #{day} and dstart &lt; #{nextyear})
 		where dplace='디뮤지엄' or dplace='대림미술관'  order by dstart
 	 </select>
 	  <!-- exhibition_past_page2 -->
@@ -44,13 +44,13 @@
 	  <!-- exhibition_past_page2 year-->
 	 <select id="exhibitionPast1Year"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
 		 select did, dtitle, dplace, dfile,dsfile, dcode, dend , dstart,dtitle2 from
-		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtitle2 from dmu_ticket where dend &lt; sysdate and dcode = #{dcode}  and  dstart &gt; #{day})
+		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtitle2 from dmu_ticket where dend &lt; sysdate and dcode = #{dcode}  and  dstart &gt; #{day} and dstart &lt; #{nextyear})
 		where dplace='구슬모아당구장'  order by dstart
 	 </select>
 	  <!-- learn_past_page year-->
 	 <select id="learnPastYear"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
 		 select did, dtitle, dplace, dfile,dsfile, dcode, dend , dstart,dtarget,dinformation,dtitle2 from
-		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtarget ,dinformation,dtitle2 from dmu_ticket where dend &lt; sysdate and  dcode = #{dcode}  and  dstart &gt; #{day})
+		(select did, dtitle, dplace, dfile,dsfile, dcode, dend ,dstart,dtarget ,dinformation,dtitle2 from dmu_ticket where dend &lt; sysdate and  dcode = #{dcode}  and  dstart &gt; #{day} and dstart &lt; #{nextyear})
 		where dtarget=#{dtarget}  order by dstart
 	 </select>
 	  <!-- learn_past_page year-->

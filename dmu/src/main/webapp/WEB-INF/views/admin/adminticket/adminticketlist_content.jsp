@@ -68,15 +68,18 @@
 													<h2 data-v-8ed31374="" class="title">${ vo.dtitle }</h2>
 													<span data-v-8ed31374="" class="explan"> </span>
 												</div>
+												
+												
+												
+												<!-- 		 		-->
+												<!-- 	exhibition	 -->
+												<!-- 		 		-->
+												<c:if test="${vo.dcode eq 'exhibition' }">
 												<div data-v-8ed31374="" class="info-ticket">
 													<ul data-v-8ed31374="">
 														<li data-v-8ed31374="">
 															<strong data-v-8ed31374="" class="title">장소</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dplace }</span>
-														</li>
-														<li data-v-8ed31374="">
-															<strong data-v-8ed31374="" class="title">부제목 </strong>
-															<span data-v-8ed31374="" class="text">${ vo.dtitle2 }</span>
 														</li>
 														<li data-v-8ed31374="">
 															<strong data-v-8ed31374="" class="title">회차/수업시간  </strong>
@@ -91,7 +94,40 @@
 															<span data-v-8ed31374="" class="text">${ vo.dtime }</span>
 														</li>
 														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
-															<p data-v-8ed31374="" class="price">${ vo.dprice } </p>
+															<p data-v-8ed31374="" class="price">${ vo.dprice }원 </p>
+														</li>
+													</ul>
+												</div>
+												</c:if>
+												<!-- 		 		-->	
+												<!-- 	learn		 -->
+												<!-- 		 		-->
+												<c:if test="${vo.dcode eq 'learn' }">
+												<div data-v-8ed31374="" class="info-ticket">
+													<ul data-v-8ed31374="">
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">장소</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dplace }</span>
+														</li>
+														
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">부제목 </strong>
+															<span data-v-8ed31374="" class="text">${ vo.dtitle2 }</span>
+														</li>
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">수업시간 </strong>
+															<span data-v-8ed31374="" class="text">${ vo.dentertime }</span>
+														</li>
+														<li data-v-8ed31374="" class="">
+															<strong data-v-8ed31374="" class="title">교육기간</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span>
+														</li>
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">교육시간</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dtime }</span>
+														</li>
+														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
+															<p data-v-8ed31374="" class="price">${ vo.dprice }원 </p>
 														</li>
 														<li data-v-8ed31374="" class="">
 															<strong data-v-8ed31374="" class="title">정원</strong>
@@ -107,6 +143,43 @@
 														</li>
 													</ul>
 												</div>
+												</c:if>
+												<!-- 		 	-->
+												<!-- 	evnet	 -->
+												<!-- 		 	-->
+												<c:if test="${vo.dcode eq 'event' }">
+												<div data-v-8ed31374="" class="info-ticket">
+													<ul data-v-8ed31374="">
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">장소</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dplace }</span>
+														</li>
+														
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">부제목 </strong>
+															<span data-v-8ed31374="" class="text">${ vo.dtitle2 }</span>
+														</li>
+														<li data-v-8ed31374="">
+															<strong data-v-8ed31374="" class="title">회차</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dentertime }</span>
+														</li>
+														<li data-v-8ed31374="" class="">
+															<strong data-v-8ed31374="" class="title">이벤트 기간</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span>
+														</li>
+														
+														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">참가비</strong>
+															<p data-v-8ed31374="" class="price">${ vo.dprice } </p>
+														</li>
+														<li data-v-8ed31374="" class="">
+															<strong data-v-8ed31374="" class="title">대상</strong>
+															<span data-v-8ed31374="" class="text">${ vo.dtarget}</span>
+														</li>
+													</ul>
+												</div>
+												</c:if>
+												
+												
 													<strong data-v-8ed31374="" class="title" id="info">이용 정보</strong>
 												<div data-v-8ed31374="" class="organ-ticket">
 													<p data-v-8ed31374="" class="comment">

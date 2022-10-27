@@ -1,6 +1,7 @@
 package com.museum.dao;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.museum.vo.DmuNoticeVO;
 import com.museum.vo.DmuTicketVO;
 
 @Repository
@@ -70,9 +70,13 @@ public class DmuTagPageDAO {
 	    * select : exhibition_past_page year
 	    */
 	   public ArrayList<DmuTicketVO> selectday(String dcode,String day){
+		   	String []nextday = day.split("-");
+			int year = (Integer.parseInt(nextday[0])+1);
+			String nextyear =String.valueOf(year)+"-"+nextday[1]+"-"+nextday[2];
 		   Map<String,String> param = new HashMap<String,String>();
 		   param.put("dcode",dcode);
 		   param.put("day",day);
+		   param.put("nextyear",nextyear);
 			
 			List<DmuTicketVO> list = sqlSession.selectList("mapper.tagpage.dayContent",param);
 			return (ArrayList<DmuTicketVO>)list;
@@ -81,9 +85,13 @@ public class DmuTagPageDAO {
 	    * select : exhibition_past_page1 year
 	    */
 	   public ArrayList<DmuTicketVO> selectday1(String dcode,String day){
+		   String []nextday = day.split("-");
+			int year = (Integer.parseInt(nextday[0])+1);
+			String nextyear =String.valueOf(year)+"-"+nextday[1]+"-"+nextday[2];
 		   Map<String,String> param = new HashMap<String,String>();
 		   param.put("dcode",dcode);
 		   param.put("day",day);
+		   param.put("nextyear",nextyear);
 		   
 		   List<DmuTicketVO> list = sqlSession.selectList("mapper.tagpage.exhibitionPastYear",param);
 		   return (ArrayList<DmuTicketVO>)list;
@@ -92,9 +100,13 @@ public class DmuTagPageDAO {
 	    * select : exhibition_past_page2 year
 	    */
 	   public ArrayList<DmuTicketVO> selectday2(String dcode,String day){
+		   String []nextday = day.split("-");
+			int year = (Integer.parseInt(nextday[0])+1);
+			String nextyear =String.valueOf(year)+"-"+nextday[1]+"-"+nextday[2];
 		   Map<String,String> param = new HashMap<String,String>();
 		   param.put("dcode",dcode);
 		   param.put("day",day);
+		   param.put("nextyear",nextyear);
 		   
 		   List<DmuTicketVO> list = sqlSession.selectList("mapper.tagpage.exhibitionPast1Year",param);
 		   return (ArrayList<DmuTicketVO>)list;
@@ -103,9 +115,13 @@ public class DmuTagPageDAO {
 	    * select : learnPastYear year
 	    */
 	   public ArrayList<DmuTicketVO> learnday(String dcode,String day,String dtarget){
+		   String []nextday = day.split("-");
+			int year = (Integer.parseInt(nextday[0])+1);
+			String nextyear =String.valueOf(year)+"-"+nextday[1]+"-"+nextday[2];
 		   Map<String,String> param = new HashMap<String,String>();
 		   param.put("dcode",dcode);
 		   param.put("day",day);
+		   param.put("nextyear",nextyear);
 		   param.put("dtarget",dtarget);
 		   
 		   List<DmuTicketVO> list = sqlSession.selectList("mapper.tagpage.learnPastYear",param);
