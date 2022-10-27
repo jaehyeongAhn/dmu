@@ -27,8 +27,7 @@
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script src = "http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
-
-<title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<title>ADMIN | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <script>
 $(document).ready(function(){
 		let min_start = 0;
@@ -68,7 +67,6 @@ $(document).ready(function(){
 				$("#date").val(date);
 				$("#rdate").val(date);
 				$(".round-selection").attr("disabled", false)
-
 				//alert(date);
 			}
 		});
@@ -183,10 +181,6 @@ $(document).ready(function(){
 															<strong data-v-8ed31374="" class="title">교육기간</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span>
 														</li>
-														<li data-v-8ed31374="">
-															<strong data-v-8ed31374="" class="title">교육시간</strong>
-															<span data-v-8ed31374="" class="text">${ vo.dtime }</span>
-														</li>
 														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
 															<p data-v-8ed31374="" class="price">${ vo.dprice }원 </p>
 														</li>
@@ -201,6 +195,10 @@ $(document).ready(function(){
 														<li data-v-8ed31374="" class="">
 															<strong data-v-8ed31374="" class="title">교육횟수</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dnum}</span>
+														</li>
+														<li data-v-8ed31374="" style = "display : flex; box-sizing: border-box; padding-left: 4px;">
+															<strong data-v-8ed31374="" class="title">교육시간</strong>
+															<span data-v-8ed31374="" class="text" style = "width : 300px;">${ vo.dtime }</span>
 														</li>
 													</ul>
 												</div>

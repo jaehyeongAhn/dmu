@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>dmu</title>
+<title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" as="style" crossorigin
 	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet"
@@ -48,14 +48,13 @@
 						output +="</ul>"
 						
 						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/learn.do?did="+aj.did+"' class='title'>" +aj.dtitle +"</a>"
-						
 						output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
 						
 						output +="<ul data-v-41f56098='' class='info'>"
 						
 						output +="<li data-v-41f56098=''>"
 						output +="<span data-v-41f56098='' class='tit'> 교육진행 </span>"
-						output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ "~" +aj.dend+"</span>"
+						output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ " ~ " +aj.dend+"</span>"
 						output +="</li>"
 						
 						output +="<li data-v-41f56098=''>"
@@ -75,7 +74,7 @@
 						
 						output +="<li data-v-41f56098=''>"
 						output +="<span data-v-41f56098='' class='tit'> 참가비 </span>"
-						output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice +"</span>"
+						output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice + "원" +"</span>"
 						output +="</li>"
 						output +="</ul>"
 						output +="</li>"

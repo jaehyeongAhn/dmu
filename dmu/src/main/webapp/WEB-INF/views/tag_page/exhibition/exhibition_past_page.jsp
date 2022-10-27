@@ -58,7 +58,7 @@
 							output +="<span data-v-0157d8cb='' class='title'>"+aj.dtitle+"</span>"
 							output +="<span data-v-0157d8cb='' class='subtitle'>"+aj.dtitle2+"</span>"
 							output +="</div>"
-							output +="<span data-v-0157d8cb='' class='term'>"+  aj.dstart+ "~"+aj.dend+ "</span>"
+							output +="<span data-v-0157d8cb='' class='term'>"+  aj.dstart+ " ~ "+aj.dend+ "</span>"
 							output +="</div>"
 							output +="</div>"
 							}
@@ -89,7 +89,7 @@
 			});  
 });  
 </script>
-<title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
 <body class="">

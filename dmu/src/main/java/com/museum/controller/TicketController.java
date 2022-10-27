@@ -351,6 +351,9 @@ public class TicketController {
 			
 			DmuTicketVO vo = ticketService.getContent(did);
 			
+			if(vo.getDtime() != null) {
+				vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
+			}
 			mv.addObject("vo", vo);
 			mv.setViewName("/admin/adminticket/adminticketlist_content");
 			

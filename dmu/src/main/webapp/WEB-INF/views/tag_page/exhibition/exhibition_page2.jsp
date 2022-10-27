@@ -13,21 +13,16 @@
 	content="IE2hToDnQFmj0qovhKUWmqnaQyMPi7QndNEDR6uoVpI">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="/favicon.ico">
-<link
-	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" as="style" crossorigin
-	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/font.css">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/exhibition_page.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/exhibition_page.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/exhibition_past_page.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/tag_page.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 
-<title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
 <body class="">

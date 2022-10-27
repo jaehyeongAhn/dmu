@@ -5,6 +5,7 @@
 <html lang="">
 <head>
 <meta charset="utf-8">
+<title>ADMIN | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -275,7 +276,7 @@
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">부제목</strong> <span data-v-8ed31374=""
 														class="text"><input type="text" name="dtitle2"
-															id="dtitle21"></span></li>
+															id="dtitle21" maxlength="100"></span></li>
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">장소</strong> <select data-v-8ed31374=""
 														name="dplace" id="dplace1">
@@ -298,14 +299,14 @@
 
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">이용요금</strong> <span data-v-8ed31374=""
-														class="text"><input type="number" name="dprice"
-															id="dprice1"maxlength="10" oninput="maxLengthCheck(this)"
+														class="text"><input type="text" name="dprice"
+															id="dprice1" maxlength="10" oninput="maxLengthCheck(this)"
 															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span></li>
 
 													<li data-v-8ed31374="" class=""><strong
 														data-v-8ed31374="" class="title">정원 수</strong> <span
 														data-v-8ed31374="" class="text"><input
-															type="number" name="dpersonnel" id="dpersonnel1" value=""
+															type="text" name="dpersonnel" id="dpersonnel1" value=""
 															maxlength="10" oninput="maxLengthCheck(this)"
 															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span>
 													</li>
@@ -326,7 +327,8 @@
 													<li data-v-8ed31374="" class=""><strong
 														data-v-8ed31374="" class="title must-do">교육횟수</strong> <span
 														data-v-8ed31374="" class="text"><input
-															type="text" name="dnum" id="dnum1"></span>
+															type="text" name="dnum" id="dnum1" maxlength="1" oninput="maxLengthCheck(this)"
+															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span>
 													</li>
 												</ul>
 												</div>
@@ -410,7 +412,7 @@
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">부제목</strong> <span data-v-8ed31374=""
 														class="text"><input type="text" name="dtitle2"
-															id="dtitle22"></span></li>
+															id="dtitle22" maxlength="100"></span></li>
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">장소</strong> <select data-v-8ed31374=""
 														name="dplace" id="dplace2">
@@ -488,8 +490,7 @@
 		</div>
 	</div>
 	<!-- footer Include -->
-	<iframe src="footer.do" width="100%" height="490px" scrolling="no"
-		frameborder=0 class="footer" style="margin-bottom: -5px"></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class="footer" style="margin-bottom: -5px"></iframe>
 <div class = "background_exhibition ">
 		<div class = "window_exhibition ">
 			<div class = "popup_exhibition">

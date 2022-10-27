@@ -45,8 +45,26 @@
 	}
 </script>
 
-<title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
-
+<title>ADMIN | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<style>
+	textarea[name="dtime"]{
+		width: 650px;
+	    resize: none;
+	    height: 90px;
+	    padding: 10px;
+	    line-height: 20px;
+	    border: 0.5px solid #b1b1b1;
+	}
+	input:not(input[type="file"]) {
+	    border: 0.5px solid #b1b1b1;
+	    padding: 5px;
+	    box-sizing: border-box;
+	    width: 250px;
+	}
+	input#dstart, input#dend {
+	    width: 118px !important;
+	}
+</style>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no"
@@ -103,18 +121,18 @@
 												</ul>
 											</div>
 
-											<div data-v-8ed31374="" class="title-ticket">
+											<div data-v-8ed31374="" class="title-ticket" style = "flex-direction: inherit !important;">
 												<h2 data-v-8ed31374="" class="title">제목</h2>
 												<input type="text" name="dtitle" id="dtitle"
-													value="${vo.dtitle }"> <span data-v-8ed31374=""
-													class="explan"> </span>
+													value="${vo.dtitle }"> <!-- <span data-v-8ed31374=""
+													class="explan"> </span> -->
 											</div>
 											<!-- 		 	-->
 											<!-- 	exhibition	 -->
 											<!-- 		 	-->
 											<c:if test="${vo.dcode eq 'exhibition'}">
 												<div data-v-8ed31374="" class="info-ticket">
-													<input type="hidden" name="dtitle2" value="${vo.dtitle2}">
+													<input type="hidden" name="dtitle2" value="${vo.dtitle2}" maxlength = "15">
 													<input type="hidden" name="dpersonnel" value="${vo.dpersonnel}">
 													<input type="hidden" name="dtarget" value="${vo.dtarget}">
 													<input type="hidden" name="dnum" value="${vo.dnum}">
@@ -130,10 +148,6 @@
 																~ <input type="date" name="dend" id="dend"
 																value="${vo.dend }"></span></li>
 														<li data-v-8ed31374=""><strong data-v-8ed31374=""
-															class="title">운영시간</strong> <span data-v-8ed31374=""
-															class="text"><input type="text" name="dtime"
-																id="dtime" value="${vo.dtime }"></span></li>
-														<li data-v-8ed31374=""><strong data-v-8ed31374=""
 															class="title">회차</strong> <span data-v-8ed31374=""
 															class="text"><input type="text" name="dentertime"
 																id="dentertime" value="${vo.dentertime }"></span></li>
@@ -143,6 +157,10 @@
 																<input type="number" name="dprice" id="dprice"
 																	maxlength="10" value="${vo.dprice }">
 															</p></li>
+														<li data-v-8ed31374="" style = "display: flex; width: 100%;"><strong data-v-8ed31374=""
+															class="title dtime">운영시간</strong> <span data-v-8ed31374=""
+															class="text"><textarea type="text" name="dtime"
+																id="dtime">${vo.dtime }</textarea></span></li>
 													</ul>
 												</div>
 											</c:if>
@@ -168,11 +186,6 @@
 																name="dstart" id="dstart" value="${vo.dstart }">
 																~ <input type="date" name="dend" id="dend"
 																value="${vo.dend }"></span></li>
-
-														<li data-v-8ed31374=""><strong data-v-8ed31374=""
-															class="title">운영시간</strong> <span data-v-8ed31374=""
-															class="text"><input type="text" name="dtime"
-																id="dtime" value="${vo.dtime }"></span></li>
 														<li data-v-8ed31374=""><strong data-v-8ed31374=""
 															class="title">수업시간 </strong> <span data-v-8ed31374=""
 															class="text"><input type="text" name="dentertime"
@@ -204,6 +217,10 @@
 																type="number" name="dnum" id="dnum" maxlength="10"
 																value="${ vo.dnum }" oninput="maxLengthCheck(this)"></span>
 														</li>
+
+														<li data-v-8ed31374="" style = "display: flex; width: 100%;"><strong data-v-8ed31374=""
+															class="title">운영시간</strong> <span data-v-8ed31374=""
+															class="text"><textarea name="dtime" id="dtime">${vo.dtime}</textarea></span></li>
 													</ul>
 												</div>
 											</c:if>
@@ -250,7 +267,7 @@
 													</ul>
 												</div>
 											</c:if>
-											<strong data-v-8ed31374="" class="title">이용 정보</strong>
+											<strong data-v-8ed31374="" class="title" style = "margin-top: 25px; display: inline-block; font-size: 25px;">이용 정보</strong>
 											<div data-v-8ed31374="" class="organ-ticket">
 												<p data-v-8ed31374="" class="comment">
 												<div data-v-8ed31374="" class="contents">

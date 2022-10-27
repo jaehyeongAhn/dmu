@@ -20,7 +20,7 @@
 <script src="http://localhost:9000/dmu/resources/js/tag_page.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
  
-<title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
 <body class="">
