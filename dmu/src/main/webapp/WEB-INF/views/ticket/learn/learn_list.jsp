@@ -39,16 +39,17 @@
 						for(aj of dataset.list){
 					   	output += "<ul data-v-41f56098=''>";
 						output +="<li data-v-41f56098=''>";
-						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/learn.do?did= "+aj.did+"'  class='thumb'>"
+						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/learn.do?did="+aj.did+"'  class='thumb'>"
 						output +="<img data-v-2fed1a9a='' data-v-1e8092ec=''src='http://localhost:9000/dmu/resources/upload/"+aj.dsfile+" '>"
 						output +="</a>"
 						output +="<ul data-v-41f56098='' class='flag'>"
 						output +="<li data-v-41f56098=''>"+ aj.dnum + "회성 교육</li>"
 						output +="<li data-v-41f56098=''>"+ aj.dplace + "</li>"
-						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/learn.do?did= "+aj.did+"' class='title'>" +aj.dtitle +"</a>"
+						output +="</ul>"
+						
+						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/learn.do?did="+aj.did+"' class='title'>" +aj.dtitle +"</a>"
 						
 						output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
-						output +="</ul>"
 						
 						output +="<ul data-v-41f56098='' class='info'>"
 						
@@ -324,9 +325,18 @@
 																		<li data-v-41f56098=""><span data-v-41f56098=""
 																			class="tit">대상</span> <span data-v-41f56098=""
 																			class="txt">${vo.dtarget}</span></li>
-																		<li data-v-41f56098=""><span data-v-41f56098=""
-																			class="tit">교육시간</span> <span data-v-41f56098=""
-																			class="txt">${vo.dtime}</span></li>
+																		<c:choose>
+																			<c:when test = "${ vo.dtime == null }">
+																				<li data-v-41f56098=""><span data-v-41f56098=""
+																					class="tit">교육시간</span> <span data-v-41f56098=""
+																					class="txt">undefined</span></li>
+																			</c:when>
+																			<c:otherwise>
+																				<li data-v-41f56098=""><span data-v-41f56098=""
+																					class="tit">참가비</span> <span data-v-41f56098=""
+																					class="txt">${vo.dtime}</span></li>
+																			</c:otherwise>
+																		</c:choose>
 																		<li data-v-41f56098=""><span data-v-41f56098=""
 																			class="tit">참가비</span> <span data-v-41f56098=""
 																			class="txt">${vo.dprice}원</span></li>
