@@ -101,9 +101,9 @@ $(document).ready(function(){
 								<div data-v-25f87e60="" class="sub-contents-area">
 									<div data-v-6d324aa0="" data-v-7b1f57c8="" class="step-process-area">
 										<ul data-v-6d324aa0="">
-											<li data-v-6d324aa0="" class="complete">
+											<li data-v-6d324aa0="" class="on">
 													<span data-v-6d324aa0="" class="no">01</span>
-													<span data-v-6d324aa0="" class="txt">ticket</span>
+													<span data-v-6d324aa0="" class="txt">ticket list</span>
 											</li>
 											<li data-v-6d324aa0="" class="on">
 												<span data-v-6d324aa0="" class="no">02</span>
@@ -111,7 +111,7 @@ $(document).ready(function(){
 											</li>
 											<li data-v-6d324aa0="" class="">
 												<span data-v-6d324aa0="" class="no">03</span>
-												<span data-v-6d324aa0="" class="txt">수정/삭제</span>
+												<span data-v-6d324aa0="" class="txt">update/delete</span>
 											</li>
 										</ul>
 									</div>
