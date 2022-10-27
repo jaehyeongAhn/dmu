@@ -8,12 +8,12 @@
 	
 	  <!-- exhibition_past_pag -->
 	 <select id="EventContent"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
-		 select did, dtitle, dplace, dfile,dsfile, dcode,dstart, dend ,dtitle2 from dmu_ticket where dend &lt; sysdate order by dstart desc
+		 select did, dtitle, dplace, dfile,dsfile, dcode,dstart, dend ,dtitle2 from dmu_ticket where dcode=#{dcode} and dend &lt; sysdate order by dstart desc
 	 </select>
 	 
 	  <select id="EventContentList"  parameterType="map" resultType="com.museum.vo.DmuTicketVO">
 		select did, dtitle, dplace,dsfile,dstart ,dend  from
-		(select did, dtitle, dplace,dsfile,dstart,dend from dmu_ticket where dend &lt; sysdate )
+		(select did, dtitle, dplace,dsfile,dstart,dend from dmu_ticket where dcode = #{dcode} and dend &lt; sysdate )
 		where dplace= #{dplace}  order by dstart
 	 </select>
 	

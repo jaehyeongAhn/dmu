@@ -205,7 +205,7 @@
 											<div data-v-8ed31374="" class="left">
 												<ul>
 													<li id="fileinput"><label style="margin-right: 20px;">파일첨부</label> <input
-														type="file" name="file1" id="file_list"></li>
+														type="file" name="file1" id="file_list1"></li>
 												</ul>
 											</div>
 
