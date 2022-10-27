@@ -1,5 +1,5 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard-std.css");
-/*@font-face {
+@font-face {
 	font-family : "Geogrotesque";
 	src : url("http://localhost:9000/dmu/resources/font/GeogrotesqueCyr-Thin.woff") format("woff"),
 		url("../font/GeogrotesqueCyr-Thin.woff2") format("woff2");
@@ -33,7 +33,7 @@
 		url("../font/GeogrotesqueCyr-SemiBold.woff2") format("woff2");
 	font-style : normal;
 	font-weight : bold;
-}*/
+}
 * {
 	font-family: 'Geogrotesque', "Pretendard Std", Pretendard, Roboto, "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
 }
