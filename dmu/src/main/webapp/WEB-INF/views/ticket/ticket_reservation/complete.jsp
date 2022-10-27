@@ -74,7 +74,7 @@
 										<div data-v-7f52b83a="" class="container">
 											<div data-v-7f52b83a="" class="title-complete">
 												<h2 data-v-7f52b83a="">예매완료</h2>
-												<p data-v-7f52b83a="">${  vo.mname }님, 예매가 성공적으로 완료되었습니다.</p>
+												<p data-v-7f52b83a="">[${  vo.mname }]님 예매가 성공적으로 완료되었습니다.</p>
 											</div>
 											<div data-v-7f52b83a="" class="complete-base-info">
 												<div data-v-7f52b83a="" class="thumb">
@@ -169,18 +169,22 @@
 											<div data-v-7f52b83a="" class="btn-area-wrap">
 												<div data-v-26e42198="" data-v-7f52b83a="" class="btn-area">
 													<c:choose>
-														<c:when test = "${sessionScope.member.status == 'admin'}">
-													<a href="http://localhost:9000/dmu/adminpage_reservation_list.do" target="_parent">
-														<button data-v-26e42198="" id="btn23" type="button"
-															class="primary">예매내역 확인</button>
-													</a>
-													</c:when>
-													<c:otherwise>
-													<a href="http://localhost:9000/dmu/mypage_main.do?mid=${sessionScope.member.mid}" target="_parent">
-														<button data-v-26e42198="" id="btn23" type="button"
-															class="primary">예매내역 확인</button>
-													</a>
-													</c:otherwise>
+														<c:when test="${sessionScope.member.status == 'admin'}">
+															<a
+																href="http://localhost:9000/dmu/adminpage_reservation_list.do"
+																target="_parent">
+																<button data-v-26e42198="" id="btn23" type="button"
+																	class="primary">예매내역 확인</button>
+															</a>
+														</c:when>
+														<c:otherwise>
+															<a
+																href="http://localhost:9000/dmu/mypage_main.do?mid=${sessionScope.member.mid}"
+																target="_parent">
+																<button data-v-26e42198="" id="btn23" type="button"
+																	class="primary">예매내역 확인</button>
+															</a>
+														</c:otherwise>
 													</c:choose>
 												</div>
 
