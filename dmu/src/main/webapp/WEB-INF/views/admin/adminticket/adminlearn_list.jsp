@@ -308,7 +308,6 @@
 
                                                    <p data-v-41f56098="" class="explan">${vo.dtitle2 }</p>
 
-<<<<<<< HEAD
 																	<ul data-v-41f56098="" class="info">
 																		<li data-v-41f56098=""><span data-v-41f56098=""
 																			class="tit">교육진행</span> <span data-v-41f56098=""
@@ -327,27 +326,6 @@
 																			class="txt">${vo.dprice}원</span></li>
 																	</ul></li>
 															</ul>
-=======
-                                                   <ul data-v-41f56098="" class="info">
-                                                      <li data-v-41f56098=""><span data-v-41f56098=""
-                                                         class="tit">교육진행</span> <span data-v-41f56098=""
-                                                         class="txt">${vo.dstart}~${vo.dend}</span></li>
-                                                      <li data-v-41f56098=""><span data-v-41f56098=""
-                                                         class="tit">장소</span> <span data-v-41f56098=""
-                                                         class="txt">${vo.dplace}</span></li>
-                                                      <li data-v-41f56098=""><span data-v-41f56098=""
-                                                         class="tit">대상</span> <span data-v-41f56098=""
-                                                         class="txt">${vo.dtarget}</span></li>
-                                                      <li data-v-41f56098=""><span data-v-41f56098=""
-                                                         class="tit">교육시간</span> <span data-v-41f56098=""
-                                                         class="txt">${vo.dtime}</span></li>
-                                                      <li data-v-41f56098=""><span data-v-41f56098=""
-                                                         class="tit">참가비</span> <span data-v-41f56098=""
-                                                         class="txt">${vo.dprice} 원</span></li>
-                                                   </ul></li>
-                                             </ul>
->>>>>>> branch 'main' of https://github.com/jaehyeongAhn/dmu.git
-
                                           </c:forEach>
                                        </c:if>
                                        <c:if test="${empty list }">

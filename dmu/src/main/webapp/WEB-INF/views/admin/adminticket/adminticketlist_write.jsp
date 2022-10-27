@@ -206,7 +206,7 @@
 											<div data-v-8ed31374="" class="left">
 												<ul>
 													<li id="fileinput"><label style="margin-right: 20px;">파일첨부</label> <input
-														type="file" name="file1" id="file_list"></li>
+														type="file" name="file1" id="file_list1"></li>
 												</ul>
 											</div>
 
@@ -247,14 +247,14 @@
 
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">이용요금</strong> <span data-v-8ed31374=""
-														class="text"><input type="number" name="dprice"
+														class="text"><input type="text" name="dprice"
 															id="dprice1" maxlength="10" oninput="maxLengthCheck(this)"
 															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span></li>
 
 													<li data-v-8ed31374="" class=""><strong
 														data-v-8ed31374="" class="title">정원 수</strong> <span
 														data-v-8ed31374="" class="text"><input
-															type="number" name="dpersonnel" id="dpersonnel1" value=""
+															type="text" name="dpersonnel" id="dpersonnel1" value=""
 															maxlength="10" oninput="maxLengthCheck(this)"
 															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span>
 													</li>
@@ -275,7 +275,7 @@
 													<li data-v-8ed31374="" class=""><strong
 														data-v-8ed31374="" class="title must-do">교육횟수</strong> <span
 														data-v-8ed31374="" class="text"><input
-															type="number" name="dnum" id="dnum1" maxlength="1" oninput="maxLengthCheck(this)"
+															type="text" name="dnum" id="dnum1" maxlength="1" oninput="maxLengthCheck(this)"
 															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span>
 													</li>
 												</ul>
