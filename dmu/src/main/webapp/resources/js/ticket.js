@@ -92,7 +92,7 @@ $(document).ready(function(){
               $("#dpersonnel1").focus();
               return false;
            }else if($("#dtarget1").val() == "default"){
-        	   popup_setup("대상 선택해주세요.");
+        	   popup_setup("대상을 선택해주세요.");
                $("#dtarget1").focus();
                return false;
            }else if($("#dnum1").val() == ""){
