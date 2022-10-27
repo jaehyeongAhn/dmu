@@ -61,9 +61,9 @@ public class TagPageController {
 
 			ArrayList<DmuTicketVO> clist = new ArrayList<DmuTicketVO>();
 			if(dplace.equals("all")) {
-				clist = tagpageService.getEventContent(dplace);
+				clist = tagpageService.getEventContent("event");
 			}else {
-				clist = tagpageService.eventlist(dplace);
+				clist = tagpageService.eventlist(dplace,"event");
 			}
 			
 			

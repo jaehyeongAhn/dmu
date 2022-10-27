@@ -22816,7 +22816,7 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 /* mobile */
 .sub-contents-area .container[data-v-25f87e60] {
 	padding-top: 4.5rem;
-	width:1350px;
+	width:1280px;
 }
 
 .error-msg[data-v-25f87e60] {
@@ -24741,6 +24741,9 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 .vdp-datepicker__calendar .cell.day {
 	padding: 0.9375rem 0.75rem;
 	border: 0.5px solid #ddd;
+}
+.editor-contents-area {
+    line-height: 25px;
 }
 
 .vdp-datepicker__calendar .cell.day:hover {

@@ -3,8 +3,12 @@ $(document).ready(function() {
 		
 		//전체 동의
 		$("#all_check").click(function(){
-			$( '.terms' ).prop( 'checked', this.checked );
-			$("#nextJoinPage").prop("disabled", !this.checked);
+			let check_box = $(this).is(":checked");
+			$( '.terms' ).prop( 'checked', check_box );
+			$("#nextJoinPage").prop("disabled", !check_box);
+			
+			/*$( '.terms' ).prop( 'checked', this.checked );
+			$("#nextJoinPage").prop("disabled", !this.checked);*/
 		});
 
 		$(".terms").change(function(){

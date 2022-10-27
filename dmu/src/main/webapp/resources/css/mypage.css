@@ -572,6 +572,8 @@
 		text-decoration : none;
 		color : #999;
 		font-weight : 300;
+		font-family: "Pretendard Std", Pretendard, Roboto, "Segoe UI", 
+			"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
 	}
 	div.snb-area li.show_ticket {
 		border : 0.5px solid black;
@@ -857,9 +859,13 @@
 		width : 60px;
 		height : 40px;
 		color : transparent;
+		font-family: "Pretendard Std", Pretendard, Roboto, "Segoe UI", 
+			"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
 	}
 	button.review_write_btn div{
 		position : absolute;
+		font-family: "Pretendard Std", Pretendard, Roboto, "Segoe UI", 
+			"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
 	}
 	button.review_write_btn:hover span.comment{
 		width : 80px;
@@ -1756,7 +1762,7 @@
 	    padding: 16px;
 	    border: 0.5px solid #bdbdbd;
 	    margin-bottom: 10px;
-	    letter-spacing: -0.08rem;
+	    /* letter-spacing: -0.08rem; */
 	}
 	div.popup_inquire_write_form div.write_inquire_form textarea {
 	    height: 300px;

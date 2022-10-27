@@ -771,7 +771,7 @@ $(document).ready(function(){
                    if(obj.rid == 'n'){
                        output += "<td>취소완료</td>"
                    }else{
-                       output +="<td><button class='reservation_detail_admin member_detail' type='button' id="+ obj.rid +" > 자세히보기 </button></a></td>"
+                       output +="<td><button class='reservation_detail_admin' type='button' id="+ obj.rid +" > 자세히보기 </button></a></td>"
                    }
                }
                    output += "</tr></tbody></table>";   

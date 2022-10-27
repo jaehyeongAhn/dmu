@@ -5,6 +5,7 @@
 <html lang="">
 <head>
 <meta charset="utf-8">
+<title>ADMIN | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -68,6 +69,58 @@
 				<div data-v-25f87e60="" data-v-ec5a0c2c="">
 					<div data-v-25f87e60="" class="sub-contents-area">
 
+						<style>
+							div.step-process-area {
+								margin : 56px 0 40px 0;
+							}
+							div.step-process-area ul[data-v-6d324aa0]{
+								display: flex;
+							    justify-content: center;
+							    align-items: center;
+							}
+							div.step-process-area ul[data-v-6d324aa0] li{
+							    width: 25.5rem;
+							    height: 52px;
+							    display: flex;
+							    justify-content: center;
+							    align-items: center;
+							    font-weight: 500;
+							    font-size: 0.9375rem;
+							    line-height: 1.2;
+							}
+							div.step-process-area ul[data-v-6d324aa0] li:nth-child(2) {
+							    border-color: #111;
+							    border-right: 1px solid #fff;
+							    color: #fff;
+							    background: #111;
+							    width: 29.125rem;
+							}
+							div.step-process-area ul[data-v-6d324aa0] li{
+							    border-color: #111;
+							    color: #fff;
+							    background: #111;
+							}
+							div.step-process-area ul li[data-v-6d324aa0]:first-child {
+							    border-color: #111;
+							    border-right: 1px solid #fff;
+							    color: #fff;
+							    background: #111;
+							}
+						</style>
+						<div data-v-6d324aa0="" data-v-7b1f57c8=""
+							class="step-process-area">
+							<ul data-v-6d324aa0="">
+								<li data-v-6d324aa0="" class="on"><span data-v-6d324aa0=""
+									class="no">01</span><span data-v-6d324aa0="" class="txt"> 
+										&nbsp;ticket</span></li>
+								<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
+									class="no">02</span><span data-v-6d324aa0="" class="txt"> 
+										&nbsp;ticket content</span></li>
+								<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
+									class="no">03</span><span data-v-6d324aa0="" class="txt"> 
+										&nbsp;수정/삭제</span></li>
+							</ul>
+						</div>
 						<!---------------------------------------------->
 						<!--------------- Content ----------------------->
 						<!---------------------------------------------->
@@ -205,7 +258,7 @@
 											<div data-v-8ed31374="" class="left">
 												<ul>
 													<li id="fileinput"><label style="margin-right: 20px;">파일첨부</label> <input
-														type="file" name="file1" id="file_list"></li>
+														type="file" name="file1" id="file_list1"></li>
 												</ul>
 											</div>
 
@@ -223,7 +276,7 @@
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">부제목</strong> <span data-v-8ed31374=""
 														class="text"><input type="text" name="dtitle2"
-															id="dtitle21"></span></li>
+															id="dtitle21" maxlength="100"></span></li>
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">장소</strong> <select data-v-8ed31374=""
 														name="dplace" id="dplace1">
@@ -246,14 +299,14 @@
 
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">이용요금</strong> <span data-v-8ed31374=""
-														class="text"><input type="number" name="dprice"
-															id="dprice1"maxlength="10" oninput="maxLengthCheck(this)"
+														class="text"><input type="text" name="dprice"
+															id="dprice1" maxlength="10" oninput="maxLengthCheck(this)"
 															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span></li>
 
 													<li data-v-8ed31374="" class=""><strong
 														data-v-8ed31374="" class="title">정원 수</strong> <span
 														data-v-8ed31374="" class="text"><input
-															type="number" name="dpersonnel" id="dpersonnel1" value=""
+															type="text" name="dpersonnel" id="dpersonnel1" value=""
 															maxlength="10" oninput="maxLengthCheck(this)"
 															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span>
 													</li>
@@ -274,7 +327,8 @@
 													<li data-v-8ed31374="" class=""><strong
 														data-v-8ed31374="" class="title must-do">교육횟수</strong> <span
 														data-v-8ed31374="" class="text"><input
-															type="text" name="dnum" id="dnum1"></span>
+															type="text" name="dnum" id="dnum1" maxlength="1" oninput="maxLengthCheck(this)"
+															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span>
 													</li>
 												</ul>
 												</div>
@@ -358,7 +412,7 @@
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">부제목</strong> <span data-v-8ed31374=""
 														class="text"><input type="text" name="dtitle2"
-															id="dtitle22"></span></li>
+															id="dtitle22" maxlength="100"></span></li>
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">장소</strong> <select data-v-8ed31374=""
 														name="dplace" id="dplace2">
@@ -436,8 +490,7 @@
 		</div>
 	</div>
 	<!-- footer Include -->
-	<iframe src="footer.do" width="100%" height="490px" scrolling="no"
-		frameborder=0 class="footer" style="margin-bottom: -5px"></iframe>
+	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class="footer" style="margin-bottom: -5px"></iframe>
 <div class = "background_exhibition ">
 		<div class = "window_exhibition ">
 			<div class = "popup_exhibition">

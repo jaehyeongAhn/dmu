@@ -43,16 +43,16 @@
                   output +="<ul data-v-41f56098='' class='flag'>"
                   output +="<li data-v-41f56098=''>"+ aj.dnum + "회성 교육</li>"
                   output +="<li data-v-41f56098=''>"+ aj.dplace + "</li>"
+                  output +="</ul>"
                   output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/adminticketlist_content.do?did="+aj.did+"' class='title'>" +aj.dtitle +"</a>"
                   
                   output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
-                  output +="</ul>"
                   
                   output +="<ul data-v-41f56098='' class='info'>"
                   
                   output +="<li data-v-41f56098=''>"
                   output +="<span data-v-41f56098='' class='tit'> 교육진행 </span>"
-                  output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ "~" +aj.dend+"</span>"
+                  output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ " ~ " +aj.dend+"</span>"
                   output +="</li>"
                   
                   output +="<li data-v-41f56098=''>"
@@ -72,7 +72,7 @@
                   
                   output +="<li data-v-41f56098=''>"
                   output +="<span data-v-41f56098='' class='tit'> 참가비 </span>"
-                  output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice +"</span>"
+                  output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice +"원</span>"
                   output +="</li>"
                   output +="</ul>"
                   output +="</li>"
@@ -81,9 +81,9 @@
                
                   output +=   "</ul></div>"      
                }else{
-               var output =   "<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='ticket_list_learn'>"
+               var output =   "<div data-v-e20ce500='' data-v-080a389a='' class='previous-list no-data' id='ticket_list_learn'>"
                   output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";   
-                   output +="<p data-v-e20ce500='' data-v-080a389a=''>해당 연도의 지난 프로그램이 없습니다.</p></div></div>"
+                   output +="<p data-v-e20ce500='' data-v-080a389a=''>프로그램 준비중입니다.</p></div></div>"
                }//else
                   output +="</div>" 
                   output +="</div>" 
@@ -123,16 +123,16 @@
                output +="<ul data-v-41f56098='' class='flag'>"
                output +="<li data-v-41f56098=''>"+ aj.dnum + "회성 교육</li>"
                output +="<li data-v-41f56098=''>"+ aj.dplace + "</li>"
+               output +="</ul>"
                output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/adminticketlist_content.do?did="+aj.did+"' class='title'>" +aj.dtitle +"</a>"
                
                output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
-               output +="</ul>"
                
                output +="<ul data-v-41f56098='' class='info'>"
                
                output +="<li data-v-41f56098=''>"
                output +="<span data-v-41f56098='' class='tit'> 교육진행 </span>"
-               output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ "~" +aj.dend+"</span>"
+               output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ " ~ " +aj.dend+"</span>"
                output +="</li>"
                
                output +="<li data-v-41f56098=''>"
@@ -152,7 +152,7 @@
                
                output +="<li data-v-41f56098=''>"
                output +="<span data-v-41f56098='' class='tit'> 참가비 </span>"
-               output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice +"</span>"
+               output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice +"원</span>"
                output +="</li>"
                output +="</ul>"
                output +="</li>"
@@ -161,9 +161,9 @@
             
                output +=   "</ul></div>"      
             }else{
-            var output =   "<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='ticket_list_learn'>"
+            var output =   "<div data-v-e20ce500='' data-v-080a389a='' class='previous-list no-data' id='ticket_list_learn'>"
                output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";   
-                output +="<p data-v-e20ce500='' data-v-080a389a=''>해당 연도의 지난 프로그램이 없습니다.</p></div></div>"
+                output +="<p data-v-e20ce500='' data-v-080a389a=''>프로그램 준비중입니다.</p></div></div>"
             }//else
                output +="</div>" 
                output +="</div>" 
@@ -208,14 +208,14 @@
                      <div data-v-6d324aa0="" data-v-7b1f57c8=""
                         class="step-process-area">
                         <ul data-v-6d324aa0="">
-                           <li data-v-6d324aa0="" class="complete"><span
+                           <li data-v-6d324aa0="" class="on"><span
                               data-v-6d324aa0="" class="no">01</span> <span
-                              data-v-6d324aa0="" class="txt">ticket</span></li>
-                           <li data-v-6d324aa0="" class="on"><span data-v-6d324aa0=""
+                              data-v-6d324aa0="" class="txt">learn list</span></li>
+                           <li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
                               class="no">02</span> <span data-v-6d324aa0="" class="txt">ticket
                                  content</span></li>
                            <li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
-                              class="no">03</span> <span data-v-6d324aa0="" class="txt">수정/삭제</span>
+                              class="no">03</span> <span data-v-6d324aa0="" class="txt">update/delete</span>
                            </li>
                         </ul>
                      </div>
@@ -338,8 +338,7 @@
                                           <div data-v-97ddc3ec="" class="no-data">
                                              <div data-v-e20ce500="" data-v-080a389a=""
                                                 class="no-result" id="ticket_list_learn">
-                                                <p data-v-e20ce500="" data-v-080a389a="">지금은 프로그램을
-                                                   준비중입니다.</p>
+                                                <p data-v-e20ce500="" data-v-080a389a="">프로그램 준비중입니다.</p>
                                              </div>
                                           </div>
                                        </c:if>

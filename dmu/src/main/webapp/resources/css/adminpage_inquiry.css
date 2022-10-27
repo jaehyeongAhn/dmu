@@ -65,7 +65,7 @@
 	div.admin-inquiry-author span.author::after {
 	    content: "|";
 	    color: #767676;
-	    margin: 0 5px;
+	    margin: 0 3px;
 	    font-weight : 400;
 	}
 	div.admin-inquiry-info-list {    

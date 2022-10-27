@@ -1,6 +1,6 @@
 .no-result {
     display: block;
-    padding: 11.25rem 0px 9rem;
+    padding: 11.25rem 0px 11.25rem;
     font-weight: 300;
     font-size: 1.5rem;
     color: rgb(102, 102, 102);
@@ -9499,7 +9499,7 @@ css
 .sub-top-area nav ul li[data-v-4052871d] {
 	position: relative;
 	padding: 0 1.25rem;
-	font-weight: 300;
+	font-weight: 500;
 	font-size: 0.875rem;
 	line-height: 1.125rem;
 	color: #999;

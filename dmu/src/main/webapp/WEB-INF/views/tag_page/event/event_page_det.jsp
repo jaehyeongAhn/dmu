@@ -31,7 +31,7 @@
  
  
  
-<title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 
 </head>
 <body>
