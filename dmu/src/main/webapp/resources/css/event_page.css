@@ -1,10 +1,11 @@
 .no-result {
     display: block;
-    padding: 11.25rem 0px 3.125rem;
+    padding: 11.25rem 0px 9rem;
     font-weight: 300;
     font-size: 1.5rem;
     color: rgb(102, 102, 102);
     text-align: center;
+    margin-bottom: 100px;
 }
  .js-load:nth-child(n+6) {
     display: none;
