@@ -1010,7 +1010,7 @@
 									<h3 data-v-6e774a1a="" data-v-080a389a="" class="tit-underline">
 										전시연계 프로그램</h3>
 									<div data-v-ea82c312="" data-v-6e774a1a=""
-										class="slide-pagination-area" data-v-080a389a="">
+										class="slide-pagination-area" data-v-080a389a="" style = "display : none;">
 										<button data-v-ea82c312="" type="button"
 											class="btn-prev btn-program-prev swiper-button-disabled"
 											tabindex="-1" role="button" aria-label="Previous slide"

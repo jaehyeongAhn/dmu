@@ -6,5 +6,6 @@ encoding//src/main/java/com/museum/service/PageServiceImpl.java=UTF-8
 encoding//src/main/java/com/museum/service/TicketService.java=UTF-8
 encoding//src/main/java/com/museum/service/TicketServiceImpl.java=UTF-8
 encoding//src/main/webapp/resources/css/adminpage.css=UTF-8
+encoding//src/main/webapp/resources/css/exhibition_past_page.css=UTF-8
+encoding//src/main/webapp/resources/css/learn_page.css=UTF-8
 encoding//src/main/webapp/resources/css/ticket.css=UTF-8
-

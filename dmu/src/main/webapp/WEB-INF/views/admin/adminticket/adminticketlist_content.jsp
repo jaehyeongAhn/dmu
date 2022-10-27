@@ -22,12 +22,71 @@
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/jquery-ui.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
-
+<script src = "http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
 <title>ADMIN | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
-
+<script>
+$(document).ready(function(){
+		let min_start = 0;
+		let enddate = "${vo.enddate}";
+		let startdate = "${vo.startdate}";
+		
+		if(startdate < 0) {
+			min_start = 0;
+		}else {
+			min_start = startdate;
+		}
+		
+		// Getter
+		var dayNamesShort = $("#calendar").datepicker("option", "dayNamesShort");
+	
+		$("#calendar").datepicker({
+			//datepicker 초기 설정
+			dayNames : [ "Sun", "Mon", "Tue", "Wed", "Thu",
+					"Fri", "Sat" ],
+			dayNamesMin : [ "Sun", "Mon", "Tue", "Wed", "Thu",
+					"Fri", "Sat" ],
+			monthNames : [ "01", "02", "03", "04", "05", "06",
+					"07", "08", "09", "10", "11", "12" ],
+			minDate : parseInt(min_start),
+			maxDate : parseInt(enddate),
+			showMonthAfterYear : true,
+			//datepicker의 DOM이 업데이트 될 때 호출 (오늘 날짜 자동으로 받아 저장)
+			onUpdateDatepicker : function() {
+				var date = $.datepicker.formatDate("yy-mm-dd",
+						$("#calendar").datepicker("getDate"));
+				$("#date").val(date);
+			},
+			//datepicker의 날짜가 변경될 때마다 이벤트 발생 (선택 날짜 받아 저장)
+			onSelect : function() {
+				var date = $.datepicker.formatDate("yy-mm-dd",
+						$("#calendar").datepicker("getDate"));
+				$("#date").val(date);
+				$("#rdate").val(date);
+				$(".round-selection").attr("disabled", false)
+				//alert(date);
+			}
+		});
+	
+		// Setter
+		$("#calendar").datepicker("option", "dayNamesShort",
+				[ "Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam" ]);
+	
+});
+</script>
+										
+<style>
+	div#calendar {
+		width: 25.5rem;
+	    margin-left: auto;
+	    border: 0.5px solid #ddd;
+	    height: 390px;
+	    box-sizing: border-box;
+	}
+</style>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
@@ -122,10 +181,6 @@
 															<strong data-v-8ed31374="" class="title">교육기간</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span>
 														</li>
-														<li data-v-8ed31374="">
-															<strong data-v-8ed31374="" class="title">교육시간</strong>
-															<span data-v-8ed31374="" class="text">${ vo.dtime }</span>
-														</li>
 														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
 															<p data-v-8ed31374="" class="price">${ vo.dprice }원 </p>
 														</li>
@@ -140,6 +195,10 @@
 														<li data-v-8ed31374="" class="">
 															<strong data-v-8ed31374="" class="title">교육횟수</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dnum}</span>
+														</li>
+														<li data-v-8ed31374="" style = "display : flex; box-sizing: border-box; padding-left: 4px;">
+															<strong data-v-8ed31374="" class="title">교육시간</strong>
+															<span data-v-8ed31374="" class="text" style = "width : 300px;">${ vo.dtime }</span>
 														</li>
 													</ul>
 												</div>
@@ -193,6 +252,7 @@
 													</div>
 													
 												</div>
+												
 												<div data-v-8ed31374="" class="use-info-ticket">
 													<div data-v-26e42198="" data-v-8ed31374="" class="btn-area">
 														<a href="adminticket_update.do?did=${vo.did}"><button data-v-26e42198=""  type="button"  class="secondary small">수정</button></a>
@@ -201,8 +261,8 @@
 													</div>
 												</div>
 											</div>
-											
-										
+												<!-- 달력 코딩 -->
+												<div id="calendar" class="ticketing-list-area"></div>
 											</div>
 											<!---->
 										</div>

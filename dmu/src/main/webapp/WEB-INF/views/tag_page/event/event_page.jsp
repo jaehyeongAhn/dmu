@@ -123,7 +123,16 @@ $(document).ready(function() {
  
  
 <title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
-
+<style>
+	.evnet_title li:first-child{
+		background-image: url(http://localhost:9000/dmu/resources/images/home.svg);
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    background-position: center;
+	    height: 15px;
+	    margin-right: 10px;
+	}
+</style>
 </head>
 <body>
 	<iframe src="header.do" width="100%" height="200px" scrolling="no" frameborder=0 class="header" style="position:absolute; overflow:hidden;"></iframe>
@@ -143,7 +152,7 @@ $(document).ready(function() {
                         href="javascript:void(0);">이벤트</a></li>
                   		</ul>
 						<nav data-v-4052871d="">
-							<ul data-v-4052871d="">
+							<ul data-v-4052871d="" class = "evnet_title">
 								<li data-v-0d03d759="" style="cursor: pointer;"><a href="index.do" style="opacity:0;">HOME</a></li>
 								<li data-v-4052871d="">EVENT</li>
 								<li data-v-4052871d="">이벤트</li>
