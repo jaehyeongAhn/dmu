@@ -30,12 +30,13 @@
 <script>
 $(document).ready(function() {
 	$(".tabbox").click(function(){
-	
+		 
 	$(".snb-area .snb li").removeClass("on");
 	$(this).parent().addClass("on");
 	var kind = $(this).attr("id");
-	
+	 
 	notice_search(kind, 1);
+	
 	function notice_search(kind){
 	
 		$.ajax({ 
@@ -61,7 +62,13 @@ $(document).ready(function() {
 				output += "<span data-v-e3917d8a='' class='place'>" + aj.dplace +" </span>"
 				output += "<strong data-v-e3917d8a='' class='title'> " + aj.dtitle +" </strong>"
 				output += "</div></a></li>"
+				
 				}
+				
+			var	output1 = "<div data-v-e3917d8a='' class='btn-program-more' >"
+				output1 += "<div data-v-26e42198='' data-v-e3917d8a='' class='btn-area' id='js-btn-wrap' class='btn-wrap'>"
+				output1 += "<button data-v-26e42198='' id='btn50' name='btn50' type='button' class='secondary more' >더보기</button>"
+				output1 += "</div></div>"
 				
 		var paging_list = "<div data-v-650d6904='' data-v-1b9c8af9='' class='pagination-area' data-v-080a389a='' id='ampaginationsm'>"
 			paging_list +="</div>"
@@ -71,16 +78,22 @@ $(document).ready(function() {
 			if(dataset.list.length !=0){
 			
 				$(".no-result").css("display","none");
-					
-				$(".container").remove();
+				$(".btn-program-more").remove();	
+				$("#js-load").remove();
 				$("#contents").append(output);
 				$(".container").append(paging_list);
+				$("#contents").after(output1);
+				load('#js-load', '6', '#js-btn-wrap');
 				
-				paging(dataset.dbCount);
+				$("#btn50").click(function(){
+					 load('#js-load', '6', '#js-btn-wrap');
+					
+				});
 				
 			
 			}else{
-				$(".container").remove();
+				$(".btn-program-more").remove();
+				$("#js-load").remove();
 				$(".no-result").css("display","block");
 			}
 			
@@ -91,8 +104,21 @@ $(document).ready(function() {
 	});
 	
 		}//function - notice_search
-	});//ready
-});
+	});//click
+	
+	function load(id, cnt, btn) {
+	    var girls_list = id + " .js-load:not(.active)";
+	    var girls_length = $(girls_list).length;
+	    var girls_total_cnt;
+	    if (cnt < girls_length) {
+	        girls_total_cnt = cnt;
+	    } else {
+	        girls_total_cnt = girls_length;
+	        $("#btn50").hide()
+	    }
+	    $(girls_list + ":lt(" + girls_total_cnt + ")").addClass("active");
+	}
+});//ready
 </script>
  
  
