@@ -34,7 +34,7 @@
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvnLt4QUXB59ZsNU2mzaeLmPhniiV0QnE&amp;language=en"></script>
-<title>D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet"
 	href="http://localhost:9000/dmu/resources/css/main_css.css">
 <link rel="stylesheet"

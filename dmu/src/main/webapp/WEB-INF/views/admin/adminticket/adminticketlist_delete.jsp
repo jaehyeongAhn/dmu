@@ -15,7 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
-<title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
+<title>ADMIN | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <style>
 	img{
 		tesxt-aline:center;

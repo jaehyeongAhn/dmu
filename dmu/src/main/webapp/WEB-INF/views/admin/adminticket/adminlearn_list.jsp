@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>dmu</title>
+<title>ADMIN | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 <link rel="stylesheet" as="style" crossorigin
 	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet"
@@ -43,16 +43,16 @@
 						output +="<ul data-v-41f56098='' class='flag'>"
 						output +="<li data-v-41f56098=''>"+ aj.dnum + "회성 교육</li>"
 						output +="<li data-v-41f56098=''>"+ aj.dplace + "</li>"
+						output +="</ul>"
 						output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/adminticketlist_content.do?did= "+aj.did+" ' class='title'>" +aj.dtitle +"</a>"
 						
 						output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
-						output +="</ul>"
 						
 						output +="<ul data-v-41f56098='' class='info'>"
 						
 						output +="<li data-v-41f56098=''>"
 						output +="<span data-v-41f56098='' class='tit'> 교육진행 </span>"
-						output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ "~" +aj.dend+"</span>"
+						output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ " ~ " +aj.dend+"</span>"
 						output +="</li>"
 						
 						output +="<li data-v-41f56098=''>"
@@ -72,7 +72,7 @@
 						
 						output +="<li data-v-41f56098=''>"
 						output +="<span data-v-41f56098='' class='tit'> 참가비 </span>"
-						output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice +"</span>"
+						output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice + "원" +"</span>"
 						output +="</li>"
 						output +="</ul>"
 						output +="</li>"
@@ -83,7 +83,7 @@
 					}else{
 					var output =	"<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='ticket_list_learn'>"
 						output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";	
-				 		output +="<p data-v-e20ce500='' data-v-080a389a=''>해당 연도의 지난 프로그램이 없습니다.</p></div></div>"
+				 		output +="<p data-v-e20ce500='' data-v-080a389a=''>프로그램 준비중입니다.</p></div></div>"
 					}//else
 						output +="</div>" 
 						output +="</div>" 
@@ -118,16 +118,16 @@
 					output +="<ul data-v-41f56098='' class='flag'>"
 					output +="<li data-v-41f56098=''>"+ aj.dnum + "회성 교육</li>"
 					output +="<li data-v-41f56098=''>"+ aj.dplace + "</li>"
+					output +="</ul>"
 					output +="<a data-v-41f56098='' href='http://localhost:9000/dmu/adminticketlist_content.do?did= "+aj.did+" ' class='title'>" +aj.dtitle +"</a>"
 					
 					output +="<p data-v-41f56098='' class='explan'>" + aj.dtitle2 +"</p>"
-					output +="</ul>"
 					
 					output +="<ul data-v-41f56098='' class='info'>"
 					
 					output +="<li data-v-41f56098=''>"
 					output +="<span data-v-41f56098='' class='tit'> 교육진행 </span>"
-					output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ "~" +aj.dend+"</span>"
+					output +="<span data-v-41f56098='' class='txt'>"+aj.dstart+ " ~ " +aj.dend+"</span>"
 					output +="</li>"
 					
 					output +="<li data-v-41f56098=''>"
@@ -147,7 +147,7 @@
 					
 					output +="<li data-v-41f56098=''>"
 					output +="<span data-v-41f56098='' class='tit'> 참가비 </span>"
-					output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice +"</span>"
+					output +="<span data-v-41f56098='' class='txt'>"+ aj.dprice + "원" +"</span>"
 					output +="</li>"
 					output +="</ul>"
 					output +="</li>"
@@ -158,7 +158,7 @@
 				}else{
 				var output =	"<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='ticket_list_learn'>"
 					output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";	
-			 		output +="<p data-v-e20ce500='' data-v-080a389a=''>해당 연도의 지난 프로그램이 없습니다.</p></div></div>"
+			 		output +="<p data-v-e20ce500='' data-v-080a389a=''>프로그램 준비중입니다.</p></div></div>"
 				}//else
 					output +="</div>" 
 					output +="</div>" 
@@ -311,7 +311,7 @@
 																	<ul data-v-41f56098="" class="info">
 																		<li data-v-41f56098=""><span data-v-41f56098=""
 																			class="tit">교육진행</span> <span data-v-41f56098=""
-																			class="txt">${vo.dstart}~${vo.dend}</span></li>
+																			class="txt">${vo.dstart} ~ ${vo.dend}</span></li>
 																		<li data-v-41f56098=""><span data-v-41f56098=""
 																			class="tit">장소</span> <span data-v-41f56098=""
 																			class="txt">${vo.dplace}</span></li>
@@ -323,7 +323,7 @@
 																			class="txt">${vo.dtime}</span></li>
 																		<li data-v-41f56098=""><span data-v-41f56098=""
 																			class="tit">참가비</span> <span data-v-41f56098=""
-																			class="txt">${vo.dprice} 원</span></li>
+																			class="txt">${vo.dprice}원</span></li>
 																	</ul></li>
 															</ul>
 
