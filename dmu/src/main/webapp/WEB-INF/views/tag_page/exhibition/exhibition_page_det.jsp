@@ -78,23 +78,28 @@
 						</ul>
 					</div>
 				</div>
+				<div data-v-47166101="" class="program-view-contents">
 				<div data-v-080a389a="" data-v-6e774a1a="">
-					<div data-v-080a389a="" class="snb-area">
-						<ul data-v-080a389a="" class="snb">
-							<li data-v-080a389a="" class="on"><a data-v-080a389a=""
-								role="button" style="cursor: pointer;">전시소개</a></li>
-							<li data-v-080a389a="" class=""><a data-v-080a389a=""
-								role="button" style="cursor: pointer;">작가소개</a></li>
-							<li data-v-080a389a="" class=""><a data-v-080a389a=""
-								role="button" style="cursor: pointer;">전시연계 프로그램</a></li>
-						</ul>
-					</div>
+					<div data-v-080a389a="" class="snb-area" id="snb">
+											
+											<ul data-v-080a389a="" class="snb"  >
+												<li data-v-080a389a="" class="on">
+													<a data-v-080a389a="" role="button"   onclick="myFunction1()"  style="cursor: pointer;  ">전시소개</a>
+												</li>
+												<li data-v-080a389a="" class="">
+													<a data-v-080a389a="" role="button"  onclick="myFunction2()"  style="cursor: pointer;">작가소개</a>
+												</li>
+												<li data-v-080a389a="" class="">
+													<a data-v-080a389a="" role="button"   onclick="myFunction3()"  style="cursor: pointer;">전시연계프로그램</a>
+												</li>
+											</ul>
+										</div>
 					<div data-v-080a389a="" id="introduction" class="sub-contents-area">
 						<div data-v-6e774a1a="" data-v-080a389a=""
 							class="introduction-area">
 							<div data-v-6e774a1a="" data-v-080a389a="" class="container">
 								<div data-v-6e774a1a="" data-v-080a389a=""
-									class="sub-title-area">
+									class="sub-title-area" id="program">
 									<h3 data-v-6e774a1a="" data-v-080a389a="" class="tit-underline">
 										전시소개</h3>
 								</div>
@@ -117,7 +122,7 @@
 							</div>
 						</div>
 					</div>
-					<div data-v-080a389a="" id="author" class="sub-contents-area">
+					<div data-v-080a389a="" id="brand" class="sub-contents-area">
 						<div data-v-6e774a1a="" data-v-080a389a=""
 							class="author-about-area">
 							<div data-v-6e774a1a="" data-v-080a389a="" class="container">
@@ -173,11 +178,11 @@
 																	<ul data-v-0516949c=""></ul>
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">천계영</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -211,11 +216,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">지미
 																	마블</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -247,11 +252,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">루카스
 																	와이어보스키</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -285,11 +290,11 @@
 																	<ul data-v-0516949c=""></ul>
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">이은혜</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -320,11 +325,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">트리스탄
 																	홀링스워스</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -357,11 +362,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">마가렛
 																	더로우</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -390,11 +395,11 @@
 																	<ul data-v-0516949c=""></ul>
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">아이엠파인</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -428,11 +433,11 @@
 																	<ul data-v-0516949c=""></ul>
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">이빈</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -466,11 +471,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">테오
 																	고슬린</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -504,11 +509,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">모드
 																	샬라드</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -541,11 +546,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">막달레나
 																	워싱카</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -579,11 +584,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">채드
 																	무어</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -615,11 +620,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">사라
 																	맥스웰</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -652,11 +657,11 @@
 																	<ul data-v-0516949c=""></ul>
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">이미라</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -685,11 +690,11 @@
 																	<ul data-v-0516949c=""></ul>
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">양지윤</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -723,11 +728,11 @@
 																	<ul data-v-0516949c=""></ul>
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">원수연</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -762,11 +767,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">니나
 																	콜치츠카이아</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -798,11 +803,11 @@
 																	<ul data-v-0516949c=""></ul>
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">박은아</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -836,11 +841,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">헨리
 																	오 헤드</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -871,11 +876,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">니코
 																	비 영</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -908,11 +913,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">파올로
 																	라엘리</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -944,11 +949,11 @@
 																	<ul data-v-0516949c=""></ul>
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">신일숙</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -981,11 +986,11 @@
 																</div>
 																<strong data-v-0516949c="" class="instructor-name">델피
 																	카르모나</strong>
-																<div data-v-26e42198="" data-v-0516949c=""
+																<!-- <div data-v-26e42198="" data-v-0516949c=""
 																	class="btn-area">
 																	<a data-v-26e42198="" href="javascript:;" class="">
 																		자세히 보기 </a>
-																</div>
+																</div> -->
 															</div>
 														</div>
 													</div></li>
@@ -1001,7 +1006,7 @@
 							class="affiliate-program-area">
 							<div data-v-6e774a1a="" data-v-080a389a="" class="container">
 								<div data-v-6e774a1a="" data-v-080a389a=""
-									class="sub-title-area">
+									class="sub-title-area" id="info">
 									<h3 data-v-6e774a1a="" data-v-080a389a="" class="tit-underline">
 										전시연계 프로그램</h3>
 									<div data-v-ea82c312="" data-v-6e774a1a=""
@@ -1226,6 +1231,7 @@
 							</div>
 						</div>
 					</div>
+				</div>
 				</div>
 			</section>
 			<!---->
