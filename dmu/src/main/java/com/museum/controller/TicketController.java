@@ -172,7 +172,7 @@ public class TicketController {
 			jobject.addProperty("pageSize", param.get("pageSize"));
 			jobject.addProperty("rpage", param.get("rpage"));
 			jobject.addProperty("pageCount", param.get("pageCount"));
-			
+			jobject.addProperty("endCount", param.get("endCount"));
 			
 			
 			
@@ -222,6 +222,7 @@ public class TicketController {
 			jobject.addProperty("pageSize", param.get("pageSize"));
 			jobject.addProperty("rpage", param.get("rpage"));
 			jobject.addProperty("pageCount", param.get("pageCount"));
+			jobject.addProperty("endCount", param.get("endCount"));
 			
 			
 			
@@ -353,6 +354,9 @@ public class TicketController {
 			
 			if(vo.getDtime() != null) {
 				vo.setDtime(vo.getDtime().replace("\r\n", "<br/>"));
+			}
+			if(vo.getDinformation() != null) {
+				vo.setDinformation(vo.getDinformation().replace("\r\n", "<br/>"));
 			}
 			mv.addObject("vo", vo);
 			mv.setViewName("/admin/adminticket/adminticketlist_content");

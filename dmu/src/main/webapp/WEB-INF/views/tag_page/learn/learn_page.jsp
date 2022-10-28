@@ -56,7 +56,7 @@
 						output += "</div>"
 						output += "<div data-v-e20ce500='' data-v-080a389a='' class='info-area'>"
 						output += "<ul data-v-e20ce500='' data-v-080a389a='' class='flag-list'>"
-						output += "<li data-v-e20ce500='' data-v-080a389a='' class='skyblue'>"+aj.dnum +"'</li>"
+						output += "<li data-v-e20ce500='' data-v-080a389a='' class='skyblue'>"+aj.dnum +"</li>"
 						output += "	<li data-v-e20ce500='' data-v-080a389a='' class='orange'>"+aj.dplace+"</li>"
 						output += "</ul>"
 						output += "<strong data-v-e20ce500='' data-v-080a389a='' class='sub-title'>"+aj.dtitle+"</strong>"

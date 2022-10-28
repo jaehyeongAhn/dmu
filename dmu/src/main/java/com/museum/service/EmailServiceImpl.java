@@ -70,7 +70,7 @@ public class EmailServiceImpl implements EmailService {
 	public String emailForm_inquiry(String email, String inquiry_response, DmuInquiryVO vo) {
 		String fromMail = hostEmail;
 		String toMail = email;
-		String title = "[D'MUSEME] 문의 사항 답변";
+		String title = "[D'MUSEUM] 문의 사항 답변";
 		String content = "[From] : " + email + "<br>"
 				+ "[Sent] : " + vo.getIqdate() + "<br>"
 				+ "[To] : " + fromMail + "<br>"

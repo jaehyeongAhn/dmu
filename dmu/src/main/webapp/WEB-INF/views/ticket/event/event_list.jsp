@@ -33,10 +33,10 @@ $(document).ready(function(){
 					for(aj of dataset.list){
 						output +=	"<ul data-v-1e8092ec='' class='list_move'>"
 						output +=	"<li data-v-1e8092ec=''>"
-						output +=	"<a data-v-1e8092ec='' href='http://localhost:9000/dmu/adminticketlist_content.do?did'"+aj.did+"' class='thumb'>"
+						output +=	"<a data-v-1e8092ec='' href='http://localhost:9000/dmu/event.do?did="+aj.did+"' class='thumb'>"
 						output +=	"<img data-v-2fed1a9a='' data-v-1e8092ec='' src='http://localhost:9000/dmu/resources/upload/"+aj.dsfile+"'>"
 						output +=	"</a>"
-						output +=	"<a data-v-1e8092ec='' href='http://localhost:9000/dmu/adminticketlist_content.do?did="+aj.did+"' class='title'>"+aj.dtitle+"</a>" 
+						output +=	"<a data-v-1e8092ec='' href='http://localhost:9000/dmu/event.do?did="+aj.did+"' class='title'>"+aj.dtitle+"</a>" 
 						output +=	"<ul data-v-1e8092ec='' class='info'>"
 						output +=	"<li data-v-1e8092ec=''><span data-v-1e8092ec=''class='tit'>기간</span>"
 						output +=	"<p data-v-1e8092ec='' class='date'>"+aj.dstart+" ~ "+aj.dend+"</p></li>"

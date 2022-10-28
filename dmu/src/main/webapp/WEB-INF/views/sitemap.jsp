@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,10 +115,20 @@
                                     </a>
                                     <!---->
                                 </li>
-                                <li data-v-36112f05="" class="arrow">
-                                    <!----><a data-v-36112f05="" href="mypage_main.do" class="" target=""> MY PAGE </a>
-                                    <!---->
-                                </li>
+                                <c:choose>
+                                   <c:when test = "${ sessionScope.member.status == 'admin' }">
+                                      <li data-v-36112f05="" class="arrow">
+                                          <!----><a data-v-36112f05="" href="adminpage_main.do" class="" target=""> ADMIN </a>
+                                          <!---->
+                                      </li>
+                                   </c:when>
+                                   <c:otherwise>
+                                      <li data-v-36112f05="" class="arrow">
+                                          <!----><a data-v-36112f05="" href="mypage_main.do" class="" target=""> MY PAGE </a>
+                                          <!---->
+                                      </li>
+                                   </c:otherwise>
+                                </c:choose>
                                 <li data-v-36112f05="" class="arrow">
                                     <!----><a data-v-36112f05="" href="notice_list.do" class="" target=""> NOTICE </a>
                                     <!---->

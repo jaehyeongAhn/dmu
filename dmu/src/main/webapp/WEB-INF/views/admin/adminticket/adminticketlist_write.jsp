@@ -118,7 +118,7 @@
 										&nbsp;ticket content</span></li>
 								<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
 									class="no">03</span><span data-v-6d324aa0="" class="txt"> 
-										&nbsp;수정/삭제</span></li>
+										&nbsp;write</span></li>
 							</ul>
 						</div>
 						<!---------------------------------------------->
@@ -143,7 +143,7 @@
 						<form name="exhibitionlistform"
 							action="adminticketlist_write_check.do" method="post"
 							enctype="multipart/form-data">
-							<input type="hidden" name="dcode" class="dcode123" value="">
+							<input type="hidden" name="dcode" class="dcode123" value="exhibition">
 							<input type="hidden" name="dpersonnel" id="dpersonnel" value="0">
 							<input type="hidden" name="dtarget" id="dtarget" value="0">
 							<input type="hidden" name="dnum" id="dnum" value="0">
@@ -195,7 +195,7 @@
 														data-v-8ed31374="" class="title">이용요금</strong>
 														<span data-v-8ed31374=""
 														class="text">
-															<input type="number" name="dprice" id="dprice"
+															<input type="text" name="dprice" id="dprice"
 																maxlength="10" oninput="maxLengthCheck(this)"
 																onkeydown="javascript: return event.keyCode == 69 ? false : true">
 														</span></li>
@@ -304,7 +304,7 @@
 															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span></li>
 
 													<li data-v-8ed31374="" class=""><strong
-														data-v-8ed31374="" class="title">정원 수</strong> <span
+														data-v-8ed31374="" class="title">정원</strong> <span
 														data-v-8ed31374="" class="text"><input
 															type="text" name="dpersonnel" id="dpersonnel1" value=""
 															maxlength="10" oninput="maxLengthCheck(this)"
@@ -327,8 +327,7 @@
 													<li data-v-8ed31374="" class=""><strong
 														data-v-8ed31374="" class="title must-do">교육횟수</strong> <span
 														data-v-8ed31374="" class="text"><input
-															type="text" name="dnum" id="dnum1" maxlength="1" oninput="maxLengthCheck(this)"
-															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span>
+															type="text" name="dnum" id="dnum1" maxlength="15"></span>
 													</li>
 												</ul>
 												</div>
@@ -403,12 +402,10 @@
 
 												<div data-v-8ed31374="" class="title-ticket">
 													<h2 data-v-8ed31374="" class="title">제목</h2>
-													<input type="text" name="dtitle" id="dtitle2">
+													<input type="text" name="dtitle" id="dtitle_event">
 												</div>
 												<div dtata-v-8ed31374="" class="info-ticket">
 												<ul class="ticketwriteul" data-v-8ed31374="">
-
-
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
 														class="title">부제목</strong> <span data-v-8ed31374=""
 														class="text"><input type="text" name="dtitle2"
@@ -434,9 +431,9 @@
 
 
 													<li data-v-8ed31374=""><strong data-v-8ed31374=""
-														class="title">참가</strong> <span data-v-8ed31374=""
+														class="title">이용요금</strong> <span data-v-8ed31374=""
 														class="text"><input type="number" name="dprice"
-															id="dprice2"maxlength="10" oninput="maxLengthCheck(this)"
+															id="dprice2" maxlength="10" oninput="maxLengthCheck(this)"
 															onkeydown="javascript: return event.keyCode == 69 ? false : true"></span></li>
 
 
@@ -450,9 +447,9 @@
 													</select></li>
 												</ul>
 												</div>
+												<hr style="margin-top: 40px; border: none; height: 0.5px; background: #d9d9d9;">
 												<strong data-v-8ed31374="" class="title" id="info" style ="
-													    padding-top: 30px;display:block;">이용
-													정보</strong>
+													    padding-top: 30px;display:block;">이용 정보</strong>
 												<div data-v-8ed31374="" class="organ-ticket">
 													<p data-v-8ed31374="" class="comment">
 													<div data-v-8ed31374="" class="contents">
@@ -491,10 +488,10 @@
 	</div>
 	<!-- footer Include -->
 	<iframe src="footer.do" width="100%" height="490px" scrolling="no" frameborder=0 class="footer" style="margin-bottom: -5px"></iframe>
-<div class = "background_exhibition ">
-		<div class = "window_exhibition ">
+	<div class = "background_exhibition">
+		<div class = "window_exhibition">
 			<div class = "popup_exhibition">
-				<p id = "popup_title">gdgd</p>
+				<p id = "popup_title"></p>
 				<div class="popup_button">
 					<button type = "button" id = "popup_close" style = "cursor:pointer;">확인</button>
 				</div>
