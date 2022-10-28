@@ -188,7 +188,7 @@ public class LoginController {
 					}
 					
 					mv.addObject("login_result", member.getLoginresult());
-					mv.setViewName("index");
+					mv.setViewName("redirect:/index.do");
 				}
 			}
 		}else {

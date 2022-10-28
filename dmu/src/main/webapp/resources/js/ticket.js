@@ -131,9 +131,9 @@ $(document).ready(function(){
     	  var end = $("#dend2").val().split("-");
     	  
     	  
-    	  if($("#dtitle2").val() == ""){
+    	  if($("#dtitle_event").val() == ""){
     		  popup_setup("제목을 입력해주세요");
-    		  $("#dtitle2").focus();
+    		  $("#dtitle_event").focus();
     		  return false;
     	  }else if($("#dtitle22").val() ==""){
     		  popup_setup("부제목을 입력해주세요.")
@@ -183,50 +183,108 @@ $(document).ready(function(){
   /*********************
 	티켓리스트 수정폼 유효성 체크
 	**********************/
-	$("#btnTicketUpdate").click(function(){
-		
-		if($("#dtitle").val() == ""){
-			alert("제목을 입력해주세요");
-			$("#dtitle").focus();
-			return false;
-		}else{
-			//서버전송
-		ticketUpdateForm.submit();
-			}
-	});
+      
+        $("#btnTicketUpdate").click(function(){
+    	  var start = $("#dstart").val().split("-");
+    	  var end = $("#dend").val().split("-");
+    	  
+    	  
+    	  if($("#dtitle").val() == ""){
+    		  popup_setup("제목을 입력해주세요");
+    		  $("#dtitle").focus();
+    		  return false;
+    	  }else if($("#dtitle23").val() ==""){
+    		  popup_setup("부제목을  입력해주세요")
+    		  $("#dtitle2").focus();
+    		  return false;
+    	  }else if($("#dplace").val() =="default"){
+    		  popup_setup("장소를 입력해주세요")
+    		  $("#dplace").focus();
+    		  return false;
+    	  }else if($("#dentertime").val() == ""){
+    		  popup_setup("회차/수업시간을 입력해주세요.");
+    		  $("#dentertime1").focus();
+    		  return false;
+    	  }else if($("#dprice").val() == ""){
+    		  popup_setup("가격을 입력해주세요.");
+    		  $("#dprice1").focus();
+    		  return false;
+    	  }else if($("#dpersonnel").val() == ""){
+    		  popup_setup("정원을 입력해주세요.");
+              $("#dpersonnel").focus();
+              return false;
+           }else if($("#dtarget").val() == "default"){
+        	   popup_setup("대상 입력해주세요.");
+               $("#dtarget").focus();
+               return false;
+           }else if($("#dnum").val() == ""){
+        	   popup_setup("교육횟수를 입력해주세요.");
+              $("#dnum").focus();
+              return false;
+            }else if($("#dtime").val() == ""){
+            	popup_setup("교육시간을 입력해주세요.");
+                $("#dtime").focus();
+                return false;
+              }else if($("#dinformation").val() == ""){
+            	  popup_setup("이용정보를 입력해주세요.");
+                  $("#dinformation").focus();
+                  return false;
+                }
+    	  else if($("#file_list").val() == ""){
+    		  popup_setup("파일을 선택해주세요.");
+    		  return false;
+    	  }else if(start > end){
+    		  popup_setup("유효하지 않은 날짜입니다.")
+    		  $("#dstart").focus();
+    		  return false;
+    	  }else if(start == "" || end == ""){
+    		  popup_setup("날짜를 선택해주세요");
+    		  $("#dstart").focus();
+    		  return false;
+    		  
+    		  
+    	  }else{
+    		  //서버전송
+    		  ticketUpdateForm.submit();
+    		  
+    	  } 
+      });
+      
+
 	
 	
 /***********02.관람일/인원선택 페이지***********/
-	/*********************
-	관람일및 회차,관람인원 및 권종 버튼 토글
-	**********************/
-		$("#data-v-8ed31374_btn").click(function() {												 
-			$("#calendar").toggle();  							 
-  		});
+   /*********************
+   관람일및 회차,관람인원 및 권종 버튼 토글
+   **********************/
+      $("#data-v-8ed31374_btn").click(function() {                                     
+         $("#calendar").toggle();                        
+        });
 
-		$("#btn_toggle1").click(function() {									 	 
-   			$("#content1").toggle(); 			
-  		});
-  		
-		 
-	/*********************
-	 달력 일자 클릭시 회차 버튼 활성화
-	**********************/
-		$("#entertime").click(function(){
+      $("#btn_toggle1").click(function() {                                
+            $("#content1").toggle();          
+        });
+        
+       
+   /*********************
+    달력 일자 클릭시 회차 버튼 활성화
+   **********************/
+      $("#entertime").click(function(){
  
-			$( '.entertime' ).prop( 'selection', this.selection );
-			$("#entertime").prop("disabled", !this.checked);
-						
-			$("#rtime").val($("#content").text());
-						
-		});	
-		
-	/*********************
-	회차 클릭시 관람인원 버튼 활성화
-	**********************/
-	$("#content").click(function(){
-		$("#content_hide").show();				
-	});	
+         $( '.entertime' ).prop( 'selection', this.selection );
+         $("#entertime").prop("disabled", !this.checked);
+                  
+         $("#rtime").val($("#content").text());
+                  
+         $("#check30").prop("checked", false);
+      });   
+      
+   /*********************
+   회차 클릭시 관람인원 버튼 활성화
+   **********************/
+   $("#entertime").click(function(){
+      $("#content_hide").show();            
+   });   
 		
 	 
 	/*********************

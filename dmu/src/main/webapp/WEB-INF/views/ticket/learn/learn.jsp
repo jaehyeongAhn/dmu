@@ -105,12 +105,13 @@
 									"07", "08", "09", "10", "11", "12" ],
 							minDate : parseInt(min_start),
 							maxDate : parseInt(enddate),
-							showMonthAfterYear : true,
+							showMonthAfterYear : false,
 							//datepicker의 DOM이 업데이트 될 때 호출 (오늘 날짜 자동으로 받아 저장)
 							onUpdateDatepicker : function() {
 								var date = $.datepicker.formatDate("yy-mm-dd",
 										$("#calendar").datepicker("getDate"));
 								$("#date").val(date);
+								$("#rdate").val(date);
 							},
 							//datepicker의 날짜가 변경될 때마다 이벤트 발생 (선택 날짜 받아 저장)
 							onSelect : function() {

@@ -57,7 +57,6 @@
 							output += "<span data-v-0157d8cb='' class='place'>"+aj.dplace+"</span>"
 							output += "<div data-v-0157d8cb='' style='cursor: pointer;'>"
 							output +="<span data-v-0157d8cb='' class='title'>"+aj.dtitle+"</span>"
-							output +="<span data-v-0157d8cb='' class='subtitle'>"+aj.dtitle2+"</span>"
 							output +="</div>"
 							output +="<span data-v-0157d8cb='' class='term'>"+  aj.dstart+ " ~ "+aj.dend+ "</span>"
 							output +="</div>"
@@ -180,8 +179,7 @@
 									<div data-v-0157d8cb="" class="info">
 										<span data-v-0157d8cb="" class="place">${vo.dplace }</span>
 										<div data-v-0157d8cb="" style="cursor: pointer;">
-											<span data-v-0157d8cb="" class="title">${vo.dtitle }</span><span
-												data-v-0157d8cb="" class="subtitle">${vo.dtitle2 }</span>
+											<span data-v-0157d8cb="" class="title">${vo.dtitle }</span>
 										</div>
 										<span data-v-0157d8cb="" class="term"> ${vo.dstart } ~
 											${vo.dend } </span>

@@ -39,7 +39,7 @@ $(document).ready(function(){
 							output +=	"</a> <span data-v-3c1f59cb='' class='place'>"+aj.dplace+"</span>"
 							output +=	"<a data-v-3c1f59cb='' href='http://localhost:9000/dmu/adminticketlist_content.do?did="+aj.did+"' target='_parent' class='title'>"+aj.dtitle+"</a>"  
 							output +=	"<p data-v-3c1f59cb='' class='explan'></p>" 
-							output +=	"<span	data-v-3c1f59cb='' class='term'>" +aj.dstart+"~"+aj.dend+"</span></li>"
+							output +=	"<span	data-v-3c1f59cb='' class='term'>" +aj.dstart+" ~ "+aj.dend+"</span></li>"
 							output +=	"</ul>"
 					}//for
 						
@@ -93,7 +93,7 @@ $(document).ready(function(){
 										class="no">02</span> <span data-v-6d324aa0="" class="txt">ticket
 											content</span></li>
 									<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
-										class="no">03</span> <span data-v-6d324aa0="" class="txt">update/delete</span>
+										class="no">03</span> <span data-v-6d324aa0="" class="txt">write/update/delete</span>
 									</li>
 								</ul>
 							</div>
@@ -155,8 +155,7 @@ $(document).ready(function(){
 																	target="_parent" class="title"> ${vo.dtitle } </a>
 
 																	<p data-v-3c1f59cb="" class="explan"></p> <span
-																	data-v-3c1f59cb="" class="term"> ${vo.dstart }~
-																		${vo.dend } </span></li>
+																	data-v-3c1f59cb="" class="term"> ${vo.dstart } ~ ${vo.dend } </span></li>
 
 															</ul>
 														</c:forEach>

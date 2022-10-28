@@ -78,7 +78,6 @@ public class TagPageController {
 				jo.addProperty("dplace", vo.getDplace());
 				jo.addProperty("dsfile", vo.getDsfile());
 				jo.addProperty("dcode", vo.getDcode());
-				jarray.add(jo);
 
 				jarray.add(jo);
 			}

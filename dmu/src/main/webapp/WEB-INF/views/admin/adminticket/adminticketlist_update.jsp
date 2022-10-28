@@ -22,14 +22,18 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap"
 	rel="stylesheet">
-<link rel="stylesheet"
-	href="http://localhost:9000/dmu/resources/css/ticket.css">
+<link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 	$(document).ready(function() {
 		//새로운 파일선택하는 이벤트 
+	let dtarget = "${ vo.dtarget }";
+      $("#dtarget").val(dtarget);
+      
+    let dplace = "${vo.dplace}";
+    	$("#dplace").val(dplace);
 		$("input[type=file]").change(function() {
 			if (window.FileReader) {
 				let fname = $(this)[0].files[0].name;
@@ -138,9 +142,13 @@
 													<input type="hidden" name="dnum" value="${vo.dnum}">
 													<ul data-v-8ed31374="">
 														<li data-v-8ed31374=""><strong data-v-8ed31374=""
-															class="title">장소</strong> <span data-v-8ed31374=""
-															class="text"><input type="text" name="dplace"
-																id="dplace" value="${vo.dplace }"></span></li>
+															class="title">장소</strong> <span data-v-8ed31374="" class="text">
+															<select type="text" name="dplace" id="dplace" value="${vo.dplace }">
+																<option value="default">선택하세요</option>
+																<option value="디뮤지엄">디뮤지엄</option>
+																<option value="대림미술관">대림미술관</option>
+																<option value="구슬모아당구장">구슬모아당구장</option>
+															</select></span></li>
 														<li data-v-8ed31374="" class=""><strong
 															data-v-8ed31374="" class="title">전시기간</strong> <span
 															data-v-8ed31374="" class="text"><input type="date"
@@ -152,10 +160,11 @@
 															class="text"><input type="text" name="dentertime"
 																id="dentertime" value="${vo.dentertime }"></span></li>
 														<li data-v-8ed31374="" class=""><strong
-															data-v-8ed31374="" class="title must-do">이용요금</strong>
+															data-v-8ed31374="" class="title">이용요금</strong>
 															<p data-v-8ed31374="" class="price">
-																<input type="number" name="dprice" id="dprice"
-																	maxlength="10" value="${vo.dprice }">
+																<input type="text" name="dprice" id="dprice"
+																	maxlength="10" oninput="maxLengthCheck(this)"
+															onkeydown="javascript: return event.keyCode == 69 ? false : true" value="${vo.dprice }">
 															</p></li>
 														<li data-v-8ed31374="" style = "display: flex; width: 100%;"><strong data-v-8ed31374=""
 															class="title dtime">운영시간</strong> <span data-v-8ed31374=""
@@ -174,11 +183,17 @@
 														<li data-v-8ed31374=""><strong data-v-8ed31374=""
 															class="title">부제목</strong> <span data-v-8ed31374=""
 															class="text"><input type="text" name="dtitle2"
-																id="dtitle2" value="${vo.dtitle2 }"></span></li>
+																id="dtitle23" value="${vo.dtitle2 }" maxlength = "15"></span></li>
 														<li data-v-8ed31374=""><strong data-v-8ed31374=""
 															class="title">장소</strong> <span data-v-8ed31374=""
-															class="text"><input type="text" name="dplace"
-																id="dplace" value="${vo.dplace }"></span></li>
+															class="text"><select type="text" name="dplace"
+																id="dplace" value="${vo.dplace }">
+																<option value="default">선택하세요</option>
+																<option value="디뮤지엄">디뮤지엄</option>
+																<option value="대림미술관">대림미술관</option>
+																<option value="구슬모아당구장">구슬모아당구장</option>
+																
+																</select></span></li>
 
 														<li data-v-8ed31374="" class=""><strong
 															data-v-8ed31374="" class="title">교육기간</strong> <span
@@ -187,44 +202,55 @@
 																~ <input type="date" name="dend" id="dend"
 																value="${vo.dend }"></span></li>
 														<li data-v-8ed31374=""><strong data-v-8ed31374=""
-															class="title">수업시간 </strong> <span data-v-8ed31374=""
+															class="title">수업시간</strong> <span data-v-8ed31374=""
 															class="text"><input type="text" name="dentertime"
 																id="dentertime" value="${vo.dentertime }"></span></li>
 
 														<li data-v-8ed31374="" class=""><strong
-															data-v-8ed31374="" class="title must-do">이용요금</strong>
+															data-v-8ed31374="" class="title">이용요금</strong>
 															<p data-v-8ed31374="" class="price">
 																<input type="number" name="dprice" id="dprice"
-																	maxlength="10" value="${vo.dprice }">
+																	maxlength="10" oninput="maxLengthCheck(this)"
+															onkeydown="javascript: return event.keyCode == 69 ? false : true" value="${vo.dprice }">
 															</p></li>
 
 														<li data-v-8ed31374="" class=""><strong
-															data-v-8ed31374="" class="title must-do">정원</strong> <span
+															data-v-8ed31374="" class="title">정원</strong> <span
 															data-v-8ed31374="" class="text"><input
 																type="number" name="dpersonnel" id="dpersonnel"
-																maxlength="10" value="${ vo.dpersonnel }"
-																oninput="maxLengthCheck(this)"></span></li>
+																value="${ vo.dpersonnel }"
+																maxlength="10" oninput="maxLengthCheck(this)"
+																onkeydown="javascript: return event.keyCode == 69 ? false : true"></span></li>
 
 														<li data-v-8ed31374="" class=""><strong
 															data-v-8ed31374="" class="title">대상</strong> <span
-															data-v-8ed31374="" class="text"><input type="text"
-																name="dtarget" id="dtarget" value="${ vo.dtarget }"></span>
+															data-v-8ed31374="" class="text"><select type="text"
+																name="dtarget" id="dtarget" value="${ vo.dtarget }">
+																<option value="default">선택하세요</option>
+																<option value="유아">유아</option>
+																<option value="어린이">어린이</option>
+																<option value="청소년">청소년</option>
+																<option value="대학생">대학생</option>
+																<option value="성인">성인</option>
+																<option value="교사">교사</option>
+																<option value="전시해설">전시해설</option>
+																</select></span>
 														</li>
 
 														<li data-v-8ed31374="" class=""><strong
-															data-v-8ed31374="" class="title">이용횟수</strong> <span
+															data-v-8ed31374="" class="title">교육횟수</strong> <span
 															data-v-8ed31374="" class="text"><input
-																type="number" name="dnum" id="dnum" maxlength="10"
-																value="${ vo.dnum }" oninput="maxLengthCheck(this)"></span>
+																type="text" name="dnum" id="dnum"
+																value="${ vo.dnum }" maxlength="15"></span>
 														</li>
 
 														<li data-v-8ed31374="" style = "display: flex; width: 100%;"><strong data-v-8ed31374=""
-															class="title">운영시간</strong> <span data-v-8ed31374=""
+															class="title">교육시간</strong> <span data-v-8ed31374=""
 															class="text"><textarea name="dtime" id="dtime">${vo.dtime}</textarea></span></li>
 													</ul>
 												</div>
 											</c:if>
-											<!-- 	evnet	 -->
+											<!-- 	event	 -->
 											<!-- 		 	-->
 											<c:if test="${vo.dcode eq 'event'}">
 												<div data-v-8ed31374="" class="info-ticket">
@@ -235,14 +261,19 @@
 														<li data-v-8ed31374=""><strong data-v-8ed31374=""
 															class="title">부제목</strong> <span data-v-8ed31374=""
 															class="text"><input type="text" name="dtitle2"
-																id="dtitle2" value="${vo.dtitle2 }"></span></li>
+																id="dtitle2" value="${vo.dtitle2 }" maxlength = "15"></span></li>
 														<li data-v-8ed31374=""><strong data-v-8ed31374=""
 															class="title">장소</strong> <span data-v-8ed31374=""
-															class="text"><input type="text" name="dplace"
-																id="dplace" value="${vo.dplace }"></span></li>
+															class="text"><select type="text" name="dplace"
+																id="dplace" value="${vo.dplace }">
+																<option value="default">선택하세요</option>
+																<option value="디뮤지엄">디뮤지엄</option>
+																<option value="대림미술관">대림미술관</option>
+																<option value="구슬모아당구장">구슬모아당구장</option>
+																</select></span></li>
 
 														<li data-v-8ed31374="" class=""><strong
-															data-v-8ed31374="" class="title">전시기간</strong> <span
+															data-v-8ed31374="" class="title">기간</strong> <span
 															data-v-8ed31374="" class="text"><input type="date"
 																name="dstart" id="dstart" value="${vo.dstart }">
 																~ <input type="date" name="dend" id="dend"
@@ -252,16 +283,22 @@
 															class="text"><input type="text" name="dentertime"
 																id="dentertime" value="${vo.dentertime }"></span></li>
 														<li data-v-8ed31374="" class=""><strong
-															data-v-8ed31374="" class="title must-do">이용요금</strong>
+															data-v-8ed31374="" class="title">이용요금</strong>
 															<p data-v-8ed31374="" class="price">
 																<input type="number" name="dprice" id="dprice"
-																	maxlength="10" value="${vo.dprice }">
+																	maxlength="10" oninput="maxLengthCheck(this)"
+																	onkeydown="javascript: return event.keyCode == 69 ? false : true" 
+																	value="${vo.dprice }">
 															</p></li>
 
 														<li data-v-8ed31374="" class=""><strong
 															data-v-8ed31374="" class="title">대상</strong> <span
-															data-v-8ed31374="" class="text"><input type="text"
-																name="dtarget" id="dtarget" value="${ vo.dtarget }"></span>
+															data-v-8ed31374="" class="text"><select type="text" name="dtarget" id="dtarget" value="${ vo.dtarget }">
+																<option value="default">선택하세요</option>
+																<option value="전체연령 관람가능">전체연령 관람가능</option>
+																<option value="15세이상 관람 가능">15세이상 관람 가능</option>
+																<option value="19세이상 관람 가능">19세이상 관람 가능</option>
+															</select></span>
 														</li>
 														
 													</ul>
@@ -318,6 +355,15 @@
 	<script type="text/javascript" src="/js/index.85a954b2b4f1348cc700.js"></script> -->
 	<iframe src="footer.do" width="100%" height="490px" scrolling="no"
 		frameborder=0 class="footer" style="margin-bottom: -5px"></iframe>
-
+	<div class = "background_exhibition update">
+			<div class = "window_exhibition update">
+				<div class = "popup_exhibition update">
+					<p class="update" id = "popup_title"></p>
+					<div class="popup_button update" style="border:none;">
+						<button type = "button" id = "popup_close" style = "cursor:pointer;">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
 </body>
 </html>
