@@ -121,7 +121,7 @@
 				
 					//디자인 함수
 					function data_search(str){
-						if(dataset.dtarget == "default"){
+						if(dataset.dtarget == "0"){
 							dataset.dtarget = "전체";
 						}
 					

@@ -872,7 +872,7 @@
                                                     </strong><span data-v-04a3ebf5=""
                                                         style="color: rgb(255, 255, 255);"> 어쨌든, 사랑 </span></div>
                                                 <div data-v-04a3ebf5="" class="btn-group" style=""><a data-v-04a3ebf5=""
-                                                        href="https://www.daelimmuseum.org/exhibition/current/PRG202202230001">
+                                                        href="http://localhost:9000/dmu/exhibition_page_det.do">
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
                                                             style=""><button data-v-26e42198="" id="btn22" type="button"
                                                                 class="primary"> 자세히보기 </button></div>
@@ -880,7 +880,7 @@
                                                             style="display: none;"><button data-v-26e42198="" id="btn23"
                                                                 type="button" class="secondary"> 자세히보기 </button></div>
                                                     </a><a data-v-04a3ebf5=""
-                                                        href="https://www.daelimmuseum.org/ticket/reservation/PRG202202230001">
+                                                        href="http://localhost:9000/dmu/exhibition.do?did=d_51">
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
                                                             style="display: none;"><button data-v-26e42198="" id="btn24"
                                                                 type="button" class="primary"> 예매하기 </button></div>

@@ -141,19 +141,19 @@ $(document).ready(function(){
 															<span data-v-8ed31374="" class="text">${ vo.dplace }</span>
 														</li>
 														<li data-v-8ed31374="">
-															<strong data-v-8ed31374="" class="title">회차/수업시간  </strong>
+															<strong data-v-8ed31374="" class="title">회차</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dentertime }</span>
 														</li>
 														<li data-v-8ed31374="" class="">
 															<strong data-v-8ed31374="" class="title">전시기간</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span>
 														</li>
-														<li data-v-8ed31374="">
-															<strong data-v-8ed31374="" class="title">운영시간</strong>
-															<span data-v-8ed31374="" class="text">${ vo.dtime }</span>
-														</li>
 														<li data-v-8ed31374="" class=""><strong data-v-8ed31374="" class="title">이용요금</strong>
 															<p data-v-8ed31374="" class="price">${ vo.dprice }원 </p>
+														</li>
+														<li data-v-8ed31374="" style = "display : flex; box-sizing: border-box; padding-left: 4px;">
+															<strong data-v-8ed31374="" class="title" >운영시간</strong>
+															<span data-v-8ed31374="" class="text" style="width: 300px;">${ vo.dtime }</span>
 														</li>
 													</ul>
 												</div>
@@ -196,9 +196,9 @@ $(document).ready(function(){
 															<strong data-v-8ed31374="" class="title">교육횟수</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dnum}</span>
 														</li>
-														<li data-v-8ed31374="" style = "display : flex; box-sizing: border-box; padding-left: 4px;">
+														<li data-v-8ed31374="" style = "display : flex; box-sizing: border-box;">
 															<strong data-v-8ed31374="" class="title">교육시간</strong>
-															<span data-v-8ed31374="" class="text" style = "width : 300px;">${ vo.dtime }</span>
+															<span data-v-8ed31374="" class="text" style = "width : 300px; padding-left: 4px;">${ vo.dtime }</span>
 														</li>
 													</ul>
 												</div>
@@ -223,7 +223,7 @@ $(document).ready(function(){
 															<span data-v-8ed31374="" class="text">${ vo.dentertime }</span>
 														</li>
 														<li data-v-8ed31374="" class="">
-															<strong data-v-8ed31374="" class="title">이벤트 기간</strong>
+															<strong data-v-8ed31374="" class="title">기간</strong>
 															<span data-v-8ed31374="" class="text">${ vo.dstart } ~ ${ vo.dend }</span>
 														</li>
 														

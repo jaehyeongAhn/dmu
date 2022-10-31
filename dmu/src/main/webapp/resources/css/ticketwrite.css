@@ -36,6 +36,10 @@ body * {
     font-weight: inherit;
     font-size: inherit;
 }
+body {
+	padding: 0;
+    margin: 0;
+}
 div {
     display: block;
 }
@@ -255,7 +259,7 @@ input#dtitle1 {
     margin-top: 0.5rem;
     border: 0.5px solid #b1b1b1;
 }
-input#dtitle2 {
+input#dtitle_event {
     width: 85%;
     height: 40px;
     margin-top: 0.5rem;

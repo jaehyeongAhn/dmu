@@ -34,7 +34,7 @@ $(document).ready(function(){
 						for(aj of dataset.list){
 							output +=	"<ul data-v-1e8092ec='' class='list_move'>"
 							output +=	"<li data-v-1e8092ec=''>"
-							output +=	"<a data-v-1e8092ec='' href='http://localhost:9000/dmu/adminticketlist_content.do?did'"+aj.did+"' class='thumb'>"
+							output +=	"<a data-v-1e8092ec='' href='http://localhost:9000/dmu/adminticketlist_content.do?did="+aj.did+"' class='thumb'>"
 							output +=	"<img data-v-2fed1a9a='' data-v-1e8092ec='' src='http://localhost:9000/dmu/resources/upload/"+aj.dsfile+"'>"
 							output +=	"</a>"
 							output +=	"<a data-v-1e8092ec='' href='http://localhost:9000/dmu/adminticketlist_content.do?did="+aj.did+"' class='title'>"+aj.dtitle+"</a>" 
@@ -100,7 +100,7 @@ $(document).ready(function(){
 										class="no">02</span> <span data-v-6d324aa0="" class="txt">ticket
 											content</span></li>
 									<li data-v-6d324aa0="" class=""><span data-v-6d324aa0=""
-										class="no">03</span> <span data-v-6d324aa0="" class="txt">update/delete</span>
+										class="no">03</span> <span data-v-6d324aa0="" class="txt">write/update/delete</span>
 									</li>
 								</ul>
 							</div>
