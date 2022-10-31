@@ -13,140 +13,22 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="google-site-verification"
 	content="IE2hToDnQFmj0qovhKUWmqnaQyMPi7QndNEDR6uoVpI">
-<!-- <meta name="twitter:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">
-    <meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg"> -->
+<meta property="og:image" content="https://ddcfsharestroage.blob.core.windows.net/share/Store/Homepage/Main/Pc/202201/20220124135922977001.jpg">  
 <link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/font.css">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/ticket.css">
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/comment.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/ticket.js"></script>
+<script src="http://localhost:9000/dmu/resources/js/ticket_sub.js"></script>
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
-<%--  jQuery UI CSS파일  --%>
-<%-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> --%>
 <link rel="stylesheet" href="http://localhost:9000/dmu/resources/css/jquery-ui.css">
-
-<%-- jQuery 기본 js파일 --%>
 <script src="http://localhost:9000/dmu/resources/js/jquery-3.6.0.min.js"></script>
-
-<%-- jQuery UI 라이브러리 js파일 --%>
-<%-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> --%>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script>
-	function onlyNumber() {
-		var str = 0;
-		var Mynum = document.getElementById("inptext").value;
-		Mynum = Mynum.replace(/[^0-9]/g, '');
-		document.getElementById("inptext").value = Mynum;
-		var plus = document.getElementById("inptext").value = Mynum;
-		if (plus < str) {
-			document.getElementById("inptext").value = 0;
-		} else if (plus > 4) {
-			document.getElementById("inptext").value = 4;
-		}
-	}
-	$(document).ready(function() {
-		var inp = $("#inptext").val();
-		$(".btn-plus").on("click", function() {
-			setTimeout(function() {
-				if (inp == 4) {
-					inp;
-				} else {
-					inp++;
-				}
-				$("#inptext").val(inp);
-				$("#rtotal").val(inp);
-			}, 500);
-		});
-		$(".btn-minus").on("click", function() {
-			setTimeout(function() {
-				if (inp == 0) {
-					inp;
-				} else if (inp <= 4) {
-					inp--;
-				}
-				$("#inptext").val(inp);
-				$("#rtotal").val(inp);
-			}, 4);
-		});
-	});
-</script>
- 
 <script src="http://localhost:9000/dmu/resources/js/jquery-ui.js"></script>
-
-<script>
-	$(document).ready(
-			function() {
-				let min_start = 0;
-				let enddate = "${vo.enddate}";
-				let startdate = "${vo.startdate}";
-				
-				if(startdate < 0) {
-					min_start = 0;
-				}else {
-					min_start = startdate;
-				}
-				
-				// Getter
-				var dayNamesShort = $("#calendar").datepicker("option",
-						"dayNamesShort");
-
-				$("#calendar").datepicker(
-						{
-							//datepicker 초기 설정
-							dayNames : [ "Sun", "Mon", "Tue", "Wed", "Thu",
-									"Fri", "Sat" ],
-							dayNamesMin : [ "Sun", "Mon", "Tue", "Wed", "Thu",
-									"Fri", "Sat" ],
-							monthNames : [ "01", "02", "03", "04", "05", "06",
-									"07", "08", "09", "10", "11", "12" ],
-							minDate : parseInt(min_start),
-							maxDate : parseInt(enddate),
-							showMonthAfterYear : false,
-							//datepicker의 DOM이 업데이트 될 때 호출 (오늘 날짜 자동으로 받아 저장)
-							onUpdateDatepicker : function() {
-								var date = $.datepicker.formatDate("yy-mm-dd",
-										$("#calendar").datepicker("getDate"));
-								$("#date").val(date);
-								$("#rdate").val(date);
-							},
-							//datepicker의 날짜가 변경될 때마다 이벤트 발생 (선택 날짜 받아 저장)
-							onSelect : function() {
-								var date = $.datepicker.formatDate("yy-mm-dd",
-										$("#calendar").datepicker("getDate"));
-								$("#date").val(date);
-								$("#rdate").val(date);
-								$(".round-selection").attr("disabled", false)
-
-								//alert(date);
-							}
-						});
-
-				// Setter
-				$("#calendar").datepicker("option", "dayNamesShort",
-						[ "Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam" ]);
-
-			});
-</script>
-<script>	
-	$(document).ready(function() {
-	//popup
-	$(".icon").click(function(){
-		$(".background_exhibition").addClass("show");
-		$(".window_exhibition").addClass("show");
-		$(".popup_close").click(function(){
-			$(".background_exhibition").removeClass("show");
-			$(".window_exhibition").removeClass("show");
-		});
-	});
-	
-	 
-});
-	
-</script>
  
 <title>TICKET | D MUSEUM | DAELIM MUSEUM | 구슬모아당구장</title>
 

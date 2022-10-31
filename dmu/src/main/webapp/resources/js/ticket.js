@@ -331,7 +331,7 @@ $(document).ready(function(){
             return false;
          }else if($("#rtime").val() == ""){	             	            
             return false;
-        }else if($("#rtotal").val() == ""){	            
+        }else if($("#rtotal").val() == "0"){	            
             return false;
     	}else if($("#rtotal").val() != ""){		 	
     	    $("#btn32").prop("disabled", !this.checked); 

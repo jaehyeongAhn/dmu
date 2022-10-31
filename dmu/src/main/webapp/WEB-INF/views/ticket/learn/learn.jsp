@@ -59,7 +59,7 @@
 				}
 				$("#inptext").val(inp);
 				$("#rtotal").val(inp);
-			}, 500);
+			}, 4);
 		});
 		$(".btn-minus").on("click", function() {
 			setTimeout(function() {
