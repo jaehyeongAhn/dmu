@@ -77,6 +77,7 @@ public class AdminServiceImpl implements AdminService{
 	 * admin 상태값 변경
 	 */
 	
+	@Override
 	public int updateStatus(String mid) {
 		return adminDAO.updateStatus(mid);
 	}
@@ -166,4 +167,40 @@ public class AdminServiceImpl implements AdminService{
 	public int getInquiryUpdate(String iqid) {
 		return adminDAO.inquiryUpdate(iqid);
 	}
+	
+	
+	
+	
+	/*********  검색기능  **********/
+	
+	@Override
+	public ArrayList<DmuMemberVO> member_search_public(int startCount, int endCount, String keyword){
+		return adminDAO.member_search_public(startCount, endCount, keyword);
+	}
+	@Override
+	public ArrayList<DmuMemberVO> member_search_admin(int startCount, int endCount, String keyword){
+		return adminDAO.member_search_admin(startCount, endCount, keyword);
+	}
+	@Override
+	public ArrayList<DmuReJoinVO> member_search_reserve(int startCount, int endCount, String keyword){
+		return adminDAO.member_search_reserve(startCount, endCount, keyword);
+	}
+	
+	@Override
+	public int totalCount_publicSearch(String keyword) {
+		return adminDAO.totalCount_publicSearch(keyword);
+	}
+	@Override
+	public int totalCount_adminSearch(String keyword) {
+		return adminDAO.totalCount_adminSearch(keyword);
+	}
+	@Override
+	public int totalCount_reserveSearch(String keyword) {		
+		return adminDAO.totalCount_reserveSearch(keyword);
+	}
+	
+	
+	
+	
+	
 }

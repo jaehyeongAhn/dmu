@@ -16,6 +16,7 @@ public interface AdminService {
 	int getTotalCount_public();
 	int getTotalCount_admin();
 	int getTotalCount_reservation();
+	
 	ArrayList<DmuMemberVO> memberList(int startCount, int endCount);
 	ArrayList<DmuMemberVO> publicList(int startCount, int endCount);
 	ArrayList<DmuMemberVO> adminList(int startCount, int endCount);
@@ -27,9 +28,8 @@ public interface AdminService {
 	ArrayList<DmuMemberVO> reservationList(int startCount, int endCount);
 	DmuReJoinVO reservationContent(String rid);
 	
- 
-	 ArrayList<DmuReJoinVO> reservationDet(String rid); 
-	 DmuReJoinVO reservationDet1(String rid);
+	ArrayList<DmuReJoinVO> reservationDet(String rid); 
+	DmuReJoinVO reservationDet1(String rid);
  
 	//예매 정보 상세 보기
 	public List<DmuPurchaseVO> getPurchaseContent(String rid);
@@ -48,4 +48,17 @@ public interface AdminService {
 	public String getInquiryEmail(String mid);
 	public int getInquiryUpdate(String iqid);
  
+	/********** 검색기능 **********/
+	ArrayList<DmuMemberVO> member_search_public(int startCount, int endCount, String keyword);
+	ArrayList<DmuMemberVO> member_search_admin(int startCount, int endCount, String keyword);
+	ArrayList<DmuReJoinVO> member_search_reserve(int startCount, int endCount, String keyword);
+	
+	int totalCount_publicSearch(String keyword);
+	int totalCount_adminSearch(String keyword);
+	int totalCount_reserveSearch(String keyword);
+	
+	
+	
+	
+	
 }

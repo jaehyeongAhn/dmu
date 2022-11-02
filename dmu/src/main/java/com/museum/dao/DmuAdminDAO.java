@@ -173,49 +173,22 @@ public class DmuAdminDAO extends DBConn {
 	}
 
  
+	
+	/************************  검색기능  ***********************/
+	
+	
 	/*
 	 * 검색기능 (member)
 	 */
 	
 	public ArrayList<DmuMemberVO> member_search_public(int startCount, int endCount, String keyword){
-		ArrayList<DmuMemberVO> publicSearch = new ArrayList<DmuMemberVO>();
-		
-		String sql = "select rno, mid, mname, pnumber, email, ddate, unregister "
-				+ " from(select rownum rno, mid, mname, pnumber, email, to_char(ddate, 'yyyy-mm-dd') ddate, unregister "
-				+ " from(select mid, mname, pnumber, email, ddate, unregister "
-				+ " from(select mid, mname, pnumber, email, ddate, unregister, status from dmu_member "
-				+ " where mid like ? or mname like ? or pnumber like ?) "
-				+ " where status = 'public')) "
-				+ " where rno between ? and ?";
-		
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("start", String.valueOf(startCount));
+		param.put("end", String.valueOf(endCount));
+		param.put("keyword", keyword);
 	
-		try {
-			getPreparedStatement(sql);
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setString(2, "%" + keyword + "%");
-			pstmt.setString(3, "%" + keyword + "%");
-			pstmt.setInt(4, startCount);
-			pstmt.setInt(5, endCount);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				DmuMemberVO vo = new DmuMemberVO();
-				vo.setRno(rs.getInt(1));
-				vo.setMid(rs.getString(2));
-				vo.setMname(rs.getString(3));
-				vo.setPnumber(rs.getString(4));
-				vo.setEmail(rs.getString(5));	
-				vo.setDdate(rs.getString(6));	
-				vo.setUnregister(rs.getString(7));
-				
-				publicSearch.add(vo);
-				
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	
-		return publicSearch;
+		List<DmuMemberVO> searchList_public = sqlSession.selectList("mapper.admin.admin_publicsearch", param);
+		return (ArrayList<DmuMemberVO>)searchList_public;
 		
 	}
 	
@@ -224,26 +197,8 @@ public class DmuAdminDAO extends DBConn {
 	 */
 	
 	public int totalCount_publicSearch(String keyword) {
-		int result = 0;
-		String sql = "select count(*) "
-				+ " from (select mid, mname, pnumber, email, ddate, unregister, status from dmu_member "
-				+ " where mid like ? or mname like ? or pnumber like ?) "
-				+ " where status ='public' ";
-		
-		try {
-			getPreparedStatement(sql);
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setString(2, "%" + keyword + "%");
-			pstmt.setString(3, "%" + keyword + "%");
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				result = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
+
+		return sqlSession.selectOne("mapper.admin.totalCount_publicSearch", keyword);
 	}
 	
 	
@@ -252,45 +207,14 @@ public class DmuAdminDAO extends DBConn {
 	 */
 	
 	public ArrayList<DmuMemberVO> member_search_admin(int startCount, int endCount, String keyword){
-		ArrayList<DmuMemberVO> adminSearch = new ArrayList<DmuMemberVO>();
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("start", String.valueOf(startCount));
+		param.put("end", String.valueOf(endCount));
+		param.put("keyword", keyword);
 		
-		String sql = "select rno, mid, mname, pnumber, email, ddate, unregister, status "
-				+ " from(select rownum rno, mid, mname, pnumber, email, to_char(ddate, 'yyyy-mm-dd') ddate, unregister, status "
-				+ " from(select mid, mname, pnumber, email, ddate, unregister, status "
-				+ " from(select mid, mname, pnumber, email, ddate, unregister, status from dmu_member "
-				+ " where mid like ? or mname like ? or pnumber like ?) "
-				+ " where status not in('public'))) "
-				+ " where rno between ? and ?";
-		
+		List<DmuMemberVO> searchList_admin = sqlSession.selectList("mapper.admin.admin_adminsearch", param);
 	
-		try {
-			getPreparedStatement(sql);
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setString(2, "%" + keyword + "%");
-			pstmt.setString(3, "%" + keyword + "%");
-			pstmt.setInt(4, startCount);
-			pstmt.setInt(5, endCount);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				DmuMemberVO vo = new DmuMemberVO();
-				vo.setRno(rs.getInt(1));
-				vo.setMid(rs.getString(2));
-				vo.setMname(rs.getString(3));
-				vo.setPnumber(rs.getString(4));
-				vo.setEmail(rs.getString(5));	
-				vo.setDdate(rs.getString(6));	
-				vo.setUnregister(rs.getString(7));
-				vo.setStatus(rs.getString(8));
-				
-				adminSearch.add(vo);
-				
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	
-		return adminSearch;
+		return (ArrayList<DmuMemberVO>)searchList_admin;
 		
 	}
 	
@@ -300,26 +224,8 @@ public class DmuAdminDAO extends DBConn {
 	 */
 	
 	public int totalCount_adminSearch(String keyword) {
-		int result = 0;
-		String sql = "select count(*) "
-				+ " from (select mid, mname, pnumber, email, ddate, unregister, status from dmu_member "
-				+ " where mid like ? or mname like ? or pnumber like ?) "
-				+ " where status not in('public') ";
 		
-		try {
-			getPreparedStatement(sql);
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setString(2, "%" + keyword + "%");
-			pstmt.setString(3, "%" + keyword + "%");
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				result = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
+		return sqlSession.selectOne("mapper.admin.totalCount_adminSearch", keyword);
 	}
 	
 	
@@ -329,80 +235,21 @@ public class DmuAdminDAO extends DBConn {
 	
 	
 	public ArrayList<DmuReJoinVO> member_search_reserve(int startCount, int endCount, String keyword){
-		ArrayList<DmuReJoinVO> reserveSearch = new ArrayList<DmuReJoinVO>();
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("start", String.valueOf(startCount));
+		param.put("end", String.valueOf(endCount));
+		param.put("keyword", keyword);
 		
-		String sql = "select dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech "
-				+ " from (select rownum rno, dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech "
-				+ " from (select dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal, "
-				+ " to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rdate, 'YYYY-MM-DD') rdateda, to_char(dr.rokdate,'YYYY-MM-DD') rokdatech "
-				+ " from dmu_ticket DT, dmu_reservation DR, dmu_member DM "
-				+ " where  dm.mid = dr.mid and dt.did = dr.did and dr.rid in (select rid from (select rid from dmu_reservation order by rokdate desc)) "
-				+ " order by rokdatech desc) "
-				+ " WHERE (dcode like ? or rid like ? or dtitle like ? or mname like ? )) "
-				+ " WHERE RNO BETWEEN ? AND ?";
 		
-	
-		try {
-			getPreparedStatement(sql);
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setString(2, "%" + keyword + "%");
-			pstmt.setString(3, "%" + keyword + "%");
-			pstmt.setString(4, "%" + keyword + "%");
-			pstmt.setInt(5, startCount);
-			pstmt.setInt(6, endCount);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				DmuReJoinVO vo = new DmuReJoinVO();
-				vo.setDcode(rs.getString(1));
-				vo.setRid(rs.getString(2));
-				vo.setDtitle(rs.getString(3));
-				vo.setMname(rs.getString(4));	
-				vo.setDpricech(rs.getString(5));	
-				vo.setRtotal(rs.getInt(6));
-				vo.setRallpricech(rs.getString(7));
-				vo.setRdateda(rs.getString(8));
-				vo.setRokdatech(rs.getString(9));
-				
-				reserveSearch.add(vo);
-				
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	
-		return reserveSearch;
+		List<DmuReJoinVO> searchList_reservation = sqlSession.selectList("mapper.admin.admin_reservationSearch", param);
+		
+		return (ArrayList<DmuReJoinVO>)searchList_reservation;
 		
 	}
 
-	public int totalCount_reserve(String keyword) {
-		int result = 0;
+	public int totalCount_reserveSearch(String keyword) {
 		
-		String sql = "select count(*) from(select rno, dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech "
-				+ " from (select rownum rno, dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech "
-				+ " from (select dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal, "
-				+ " to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rdate, 'YYYY-MM-DD') rdateda, to_char(dr.rokdate,'YYYY-MM-DD') rokdatech "
-				+ " from dmu_ticket DT, dmu_reservation DR, dmu_member DM "
-				+ " where dm.mid = dr.mid and dt.did = dr.did and dr.rid in (select rid from (select rid from dmu_reservation order by rokdate desc)) "
-				+ " order by rokdatech desc) "
-				+ " WHERE (dcode like ? or rid like ? or dtitle like ? or mname like ?))) ";
-		
-		try {
-			getPreparedStatement(sql);
-			pstmt.setString(1, "%" + keyword + "%");
-			pstmt.setString(2, "%" + keyword + "%");
-			pstmt.setString(3, "%" + keyword + "%");
-			pstmt.setString(4, "%" + keyword + "%");
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
-				result = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		return result;
+		return sqlSession.selectOne("mapper.admin.totalCount_reservationSearch", keyword);
 		
 		
 	}
