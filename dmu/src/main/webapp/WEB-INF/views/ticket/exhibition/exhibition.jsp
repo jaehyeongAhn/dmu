@@ -60,13 +60,13 @@
 				$("#inptext").val(inp);
 				$("#rtotal").val(inp);
 				
-				if(inp == 4){
+			/*	if(inp == 4){
 					$(".btn-plus").prop("disabled", true);
 					$(".btn-minus").prop("disabled", false);
 				}else{
 					$(".btn-plus").prop("disabled", false);
 					$(".btn-minus").prop("disabled", false);
-				}
+				}*/
 				
 			}, 4);
 		});
@@ -80,13 +80,13 @@
 				$("#inptext").val(inp);
 				$("#rtotal").val(inp);
 				
-				if(inp == 0){
+				/*if(inp == 0){
 					$(".btn-minus").prop("disabled", true);
 					$(".btn-plus").prop("disabled", false);
 				}else{
 					$(".btn-plus").prop("disabled", false);
 					$(".btn-minus").prop("disabled", false);
-				}
+				}*/
 				
 			}, 4);
 		});
