@@ -1,4 +1,3 @@
- 
 	function onlyNumber() {
 		var str = 0;
 		var Mynum = document.getElementById("inptext").value;
@@ -11,8 +10,7 @@
 			document.getElementById("inptext").value = 4;
 		}
 	}
-	
-	$(document).ready(function() { 
+	$(document).ready(function() {
 		var inp = $("#inptext").val();
 		$(".btn-plus").on("click", function() {
 			setTimeout(function() {
@@ -36,9 +34,8 @@
 				$("#rtotal").val(inp);
 			}, 4);
 		});
-	 
  
- 
+
 				let min_start = 0;
 				let enddate = "${vo.enddate}";
 				let startdate = "${vo.startdate}";
@@ -88,8 +85,7 @@
 				$("#calendar").datepicker("option", "dayNamesShort",
 						[ "Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam" ]);
 
-		 
-	 
+
 	//popup
 	$(".icon").click(function(){
 		$(".background_exhibition").addClass("show");
@@ -100,5 +96,6 @@
 		});
 	});
 	
- });
+	 
+});
 	

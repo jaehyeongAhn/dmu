@@ -1,6 +1,4 @@
-
 $(document).ready(function(){
- 
 		
 	/********* popup setup *********/
 	function popup_setup(guideLine) {
@@ -333,6 +331,8 @@ $(document).ready(function(){
             return false;
         }else if($("#rtotal").val() == "0"){	            
             return false;
+        }else if($("#inptext").val() == "0"){	            
+        return false;
     	}else if($("#rtotal").val() != ""){		 	
     	    $("#btn32").prop("disabled", !this.checked); 
     	    $("#rallprice").val($("#rprice").val()*$("#rtotal").val());      	    	    
@@ -342,14 +342,36 @@ $(document).ready(function(){
 	/*********************
 	 관람인원 변경시 체크박스 해제
 	**********************/
-	$("#countpeople").click(function(){		 
-		$("input:checkbox[id='check30']").prop("checked", false );	
-		 $("#btn32").prop("disabled", !this.checked); 			 
+	$("#countpeople").click(function(){		
+		 if($("#inptext").val() == "5"){	
+		    $("#increaseQuantity").removeAttr("disabled");
+		 }else if($("#inptext").val() == "1"){	
+		    $("#countpeople").prop("disabled", !this.checked); 
+		    $("input:checkbox[id='check30']").prop("checked", false );	
+		 }else if($("#inptext").val() == "4"){	
+		    $("#increaseQuantity").removeAttr("disabled");
+		    $("input:checkbox[id='check30']").prop("checked", false );	
+    	 }else if($("#inptext").val() == "3"){	
+		    $("#increaseQuantity").removeAttr("disabled");
+		    $("input:checkbox[id='check30']").prop("checked", false );	
+		 }else{     
+			$("input:checkbox[id='check30']").prop("checked", false );	
+			$("#btn32").prop("disabled", !this.checked);
+		 } 					 
 	}); 
 	
 	$("#increaseQuantity").click(function(){		 
-		$("input:checkbox[id='check30']").prop("checked", false );	
-		 $("#btn32").prop("disabled", !this.checked); 			 
+		 if($("#inptext").val() == "0"){	
+		    $("#countpeople").removeAttr("disabled");
+		 }else if($("#inptext").val() == "3"){	
+		    $("#increaseQuantity").prop("disabled", !this.checked); 
+		    $("input:checkbox[id='check30']").prop("checked", false );	
+		 
+		 }else{     
+		 	 $("#increaseQuantity").removeAttr("disabled");
+			$("input:checkbox[id='check30']").prop("checked", false );	
+			$("#btn32").prop("disabled", !this.checked);
+		 } 			 
 	}); 
 		
 		
