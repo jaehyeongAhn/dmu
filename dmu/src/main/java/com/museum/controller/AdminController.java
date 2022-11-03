@@ -500,6 +500,11 @@ public class AdminController {
 			return gson.toJson(jo);
 		}
 
+		
+		
+	/***************  검색기능  ****************/
+		
+		
 		/*
 		 * 검색기능 (member)	
 		 */
@@ -519,7 +524,7 @@ public class AdminController {
 					int pageSize = 5;	//한페이지당 게시물 수
 					int reqPage = 1;	//요청페이지	
 					int pageCount = 1;	//전체 페이지 수
-					int dbCount = dao.totalCount_publicSearch(keyword);	//DB에서 가져온 전체 행수
+					int dbCount = adminService.totalCount_publicSearch(keyword);	//DB에서 가져온 전체 행수
 					
 
 					//총 페이지 수 계산
@@ -540,7 +545,7 @@ public class AdminController {
 					}
 					
 
-					ArrayList<DmuMemberVO> publicSearchList = dao.member_search_public(startCount, endCount, keyword);
+					ArrayList<DmuMemberVO> publicSearchList = adminService.member_search_public(startCount, endCount, keyword);
 
 					
 					JsonObject job = new JsonObject();
@@ -589,7 +594,7 @@ public class AdminController {
 					int pageSize = 5;	//한페이지당 게시물 수
 					int reqPage = 1;	//요청페이지	
 					int pageCount = 1;	//전체 페이지 수
-					int dbCount = dao.totalCount_adminSearch(keyword);	//DB에서 가져온 전체 행수
+					int dbCount = adminService.totalCount_adminSearch(keyword);	//DB에서 가져온 전체 행수
 					
 
 					//총 페이지 수 계산
@@ -610,7 +615,7 @@ public class AdminController {
 					}
 					
 
-					ArrayList<DmuMemberVO> adminSearchList = dao.member_search_admin(startCount, endCount, keyword);
+					ArrayList<DmuMemberVO> adminSearchList = adminService.member_search_admin(startCount, endCount, keyword);
 
 					
 					JsonObject job = new JsonObject();
@@ -661,7 +666,7 @@ public class AdminController {
 			int pageSize = 5;	//한페이지당 게시물 수
 			int reqPage = 1;	//요청페이지	
 			int pageCount = 1;	//전체 페이지 수
-			int dbCount = dao.totalCount_reserve(keyword);	//DB에서 가져온 전체 행수
+			int dbCount = adminService.totalCount_reserveSearch(keyword);	//DB에서 가져온 전체 행수
 			
 
 			//총 페이지 수 계산
@@ -682,7 +687,7 @@ public class AdminController {
 			}
 			
 
-			ArrayList<DmuReJoinVO> reserveSearchList = dao.member_search_reserve(startCount, endCount, keyword);
+			ArrayList<DmuReJoinVO> reserveSearchList = adminService.member_search_reserve(startCount, endCount, keyword);
 
 			
 			JsonObject job = new JsonObject();

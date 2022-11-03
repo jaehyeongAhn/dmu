@@ -30,11 +30,16 @@
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script> 
 	$(document).ready(function(){
-	     
+
+		 //on Class
+	      let target = "${dtarget}";
+	      $("#"+target).addClass("on");
+		
+		
 		$(".daydesc").click(function(){
 			var test = $(this).attr("id"); 
-			$(".daydesc").css("color","#9999").css("font-weight","400");
-			$("#"+test).css("font-weight","bold").css("color","black");
+			$(".daydesc a").css("color","#9999").css("font-weight","400");
+			$("#"+test +" a").css("font-weight","400").css("color","black");
 			
 			//.css("font-weight","bold");
 			var day = $(this).attr("id");
@@ -47,6 +52,7 @@
 				headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
 				success : function(data){
 					let dataset = JSON.parse(data);
+					if(dataset.list.length !=0){
 					var output =  "<ul data-v-e20ce500='' data-v-080a389a='' class='img-list education-list ink' id='learnpast'>"
 						for(aj of dataset.list){
 						output += "<li data-v-e20ce500='' data-v-080a389a='' class='learn-previous'>"
@@ -88,6 +94,7 @@
 					$("#learnpast").remove();
 					//$(".learn-previous").remove();
 					$("#learnarea").after(output);
+					}
 					
 				},
 			 	error : function(data){
@@ -96,10 +103,12 @@
 			})//ajax
 		});//click
 		
+
+		
 		$(".laern_target1").click(function(){
 			var test = $(this).attr("id"); 
-			$(".laern_target1").css("color","#9999").css("font-weight","400");
-			$("#"+test).css("font-weight","bold").css("color","black");
+			$(".laern_target1 a").css("color","#9999").css({"font-weight":"400", "cursor" : "pointer"});
+			$("#"+test + " a").css("font-weight","400").css("color","black");
 			
 				
 			
@@ -131,17 +140,11 @@
 						}
 						output +=	"</ul></div>"		
 					}else{
-						var output =	"<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='learn_list1'>"
+						var output ="<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='learn_list1'>"
 						 output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";
 						 output +="<p data-v-e20ce500='' data-v-080a389a=''>해당 연도의 지난 프로그램이 없습니다.</p></div></div>"
 					}
 					 
-					
-					
-					
-					
-					
-					
 					$("#learn_list1").remove();
 					$("#learn_list").after(output);
 				},
@@ -184,25 +187,25 @@
 						<div data-v-080a389a="" data-v-e20ce500="">
 							<div data-v-080a389a="" class="snb-area">
 								<ul data-v-080a389a="" class="snb">
-									<li data-v-080a389a="" class=""><a data-v-080a389a=""
+									<li data-v-080a389a="" class="" id="유아"><a data-v-080a389a=""
 										role="button" style="cursor: pointer;"
 										href="learn_page.do?dtarget=유아">유아</a></li>
-									<li data-v-080a389a="" class=""><a data-v-080a389a=""
+									<li data-v-080a389a="" class="" id="어린이"><a data-v-080a389a=""
 										role="button" style="cursor: pointer;"
 										href="learn_page.do?dtarget=어린이">어린이</a></li>
-									<li data-v-080a389a="" class=""><a data-v-080a389a=""
+									<li data-v-080a389a="" class="" id="청소년"><a data-v-080a389a=""
 										role="button" style="cursor: pointer;"
 										href="learn_page.do?dtarget=청소년">청소년</a></li>
-									<li data-v-080a389a="" class=""><a data-v-080a389a=""
+									<li data-v-080a389a="" class="" id="대학생"><a data-v-080a389a=""
 										role="button" style="cursor: pointer;"
 										href="learn_page.do?dtarget=대학생">대학생</a></li>
-									<li data-v-080a389a="" class=""><a data-v-080a389a=""
+									<li data-v-080a389a="" class="" id="성인"><a data-v-080a389a=""
 										role="button" style="cursor: pointer;"
 										href="learn_page.do?dtarget=성인">성인</a></li>
-									<li data-v-080a389a="" class=""><a data-v-080a389a=""
+									<li data-v-080a389a="" class="" id="교사"><a data-v-080a389a=""
 										role="button" style="cursor: pointer;"
 										href="learn_page.do?dtarget=교사">교사</a></li>
-									<li data-v-080a389a="" class=""><a data-v-080a389a=""
+									<li data-v-080a389a="" class="" id="전시해설"><a data-v-080a389a=""
 										role="button" style="cursor: pointer;"
 										href="learn_page.do?dtarget=전시해설">전시해설</a></li>
 								</ul>
@@ -360,8 +363,7 @@
 											</c:if>
 											<c:if test="${empty list2 }">
 												 <div data-v-e20ce500="" data-v-080a389a="" class="no-result">
-											<p data-v-e20ce500="" data-v-080a389a="">해당 연도의 지난 프로그램이
-												없습니다.</p>
+											<p data-v-e20ce500="" data-v-080a389a="">해당 연도의 지난 프로그램이 없습니다.</p>
 											</div> 
 											</c:if>
 											<div data-v-e3917d8a="" class="btn-program-more" >

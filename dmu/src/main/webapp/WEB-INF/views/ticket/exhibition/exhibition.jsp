@@ -59,7 +59,16 @@
 				}
 				$("#inptext").val(inp);
 				$("#rtotal").val(inp);
-			}, 500);
+				
+			/*	if(inp == 4){
+					$(".btn-plus").prop("disabled", true);
+					$(".btn-minus").prop("disabled", false);
+				}else{
+					$(".btn-plus").prop("disabled", false);
+					$(".btn-minus").prop("disabled", false);
+				}*/
+				
+			}, 4);
 		});
 		$(".btn-minus").on("click", function() {
 			setTimeout(function() {
@@ -70,6 +79,15 @@
 				}
 				$("#inptext").val(inp);
 				$("#rtotal").val(inp);
+				
+				/*if(inp == 0){
+					$(".btn-minus").prop("disabled", true);
+					$(".btn-plus").prop("disabled", false);
+				}else{
+					$(".btn-plus").prop("disabled", false);
+					$(".btn-minus").prop("disabled", false);
+				}*/
+				
 			}, 4);
 		});
 	});
@@ -299,7 +317,7 @@
 																		<span data-v-8ed31374="" class="person">인원</span>
 																		<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control" name="data-v-1dc6379c">
 
-																			<button id="countpeople" name="countpeople" data-v-1dc6379c="" type="button" class="btn-minus" id="decreaseQuantity"></button>
+																			<button id="countpeople" name="countpeople" data-v-1dc6379c="" type="button" class="btn-minus" id="decreaseQuantity" disabled></button>
 
 																			<div data-v-67ca82d2="" data-v-1dc6379c="" 	class="input-area">
 																			

@@ -29,15 +29,21 @@
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script>
 $(document).ready(function() {
+	let list_check = "${list}";
+	if(!$.isEmptyObject(list_check)){
+		$(".no-result").css("display", "block");
+	}
+	
+	
 	$(".tabbox").click(function(){
 		 
 	$(".snb-area .snb li").removeClass("on");
 	$(this).parent().addClass("on");
 	var kind = $(this).attr("id");
 	 
-	notice_search(kind, 1);
+	event_past_list(kind);
 	
-	function notice_search(kind){
+	function event_past_list(kind){
 	
 		$.ajax({ 
 			url : 'event_page_json.do',
@@ -224,7 +230,7 @@ $(document).ready(function() {
 							<!---->
 						</div>
 					</div>
-					
+					<c:if test="${ not empty list }">
 					<div data-v-e3917d8a="" class="sub-contents-area" id="contents" >
 						<div data-v-e3917d8a="" class="container" id="js-load" class="main">
 							<ul data-v-e3917d8a="" class="program-list">
@@ -245,8 +251,9 @@ $(document).ready(function() {
 							</ul>
 						</div>
 					</div>
+					</c:if>
 				<div data-v-1b9c8af9="" data-v-080a389a="" class="no-result" style="display:none;"><p data-v-1b9c8af9="" data-v-080a389a="">지난 이벤트가 없습니다.</p></div>
-							
+		
 							<div data-v-e3917d8a="" class="btn-program-more" >
 								<div data-v-26e42198="" data-v-e3917d8a="" class="btn-area" id="js-btn-wrap" class="btn-wrap">
 									<button data-v-26e42198="" id="btn50" name="btn50" type="button" class="secondary more" >더보기</button>

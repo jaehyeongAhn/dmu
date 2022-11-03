@@ -30,6 +30,7 @@ $(document).ready(function(){
        
        ajax_target_list(dtarget, 1);
     });//click
+       ajax_target_list("all", 1);
     
     function ajax_target_list(dtarget, rpage){
        $.ajax({
