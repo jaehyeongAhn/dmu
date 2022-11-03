@@ -401,6 +401,8 @@ $(document).ready(function(){
 						let data = JSON.parse(result);
 						if(data.ticket == "no"){
 							learn_popup_setup("잔여 티켓이 부족합니다.<br> [잔여 티켓 : " + data.ticket_count + "]");
+								$("input:checkbox[id='check30']").prop("checked", false );	
+							$("#btn32").prop("disabled", true);
 						}else if(data.ticket == "not_personnel"){
 							learn_popup_setup("정원보다 많은 인원을<br>선택하였습니다");
 							$("input:checkbox[id='check30']").prop("checked", false );	
