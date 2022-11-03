@@ -316,6 +316,7 @@ body img {
 .division-list ul li[data-v-41f56098] {
     float: left;
     position: relative;
+    cursor : pointer;
 }
 .division-list ul li.on a[data-v-41f56098] {
     font-weight: 500;
@@ -929,6 +930,7 @@ body strong {
     font-size: 0.9375rem;
     color: #999;
     letter-spacing: -0.02187rem;
+    cursor : pointer;
 }
 body a, body a:hover, body a:visited {
     text-decoration: none;
@@ -1102,6 +1104,7 @@ body strong {
     color: #999;
     letter-spacing: -0.02187rem;
     text-decoration: none;
+    cursor : pointer;
 }
 .list-top-area .order li + li[data-v-41f56098] {
     padding-left: 1.875rem;

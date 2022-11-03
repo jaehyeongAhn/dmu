@@ -223,4 +223,70 @@
 		UPDATE DMU_INQUIRY SET IQANSWER = 'y' WHERE IQID = #{iqid}
 	</update>
 	
+	
+	
+	
+	<!-- search -->
+	
+	<!-- public -->
+	<select id="admin_publicSearch" parameterType="map" resultType="com.museum.vo.DmuMemberVO">
+		select rno, mid, mname, pnumber, email, ddate, unregister
+			from(select rownum rno, mid, mname, pnumber, email, to_char(ddate, 'yyyy-mm-dd') ddate, unregister
+			from(select mid, mname, pnumber, email, ddate, unregister
+			from(select mid, mname, pnumber, email, ddate, unregister, status from dmu_member
+			where mid like '%'|| #{keyword} ||'%' or mname like '%'|| #{keyword} ||'%' or pnumber like '%'|| #{keyword} ||'%')
+			where status = 'public'))
+			where rno between #{start} and #{end}
+	</select>
+	
+	<select id="totalCount_publicSearch" parameterType="java.lang.String" resultType="int">
+		select count(*)
+				from (select mid, mname, pnumber, email, ddate, unregister, status from dmu_member
+				where mid like '%'|| #{keyword} ||'%' or mname like '%'|| #{keyword} ||'%' or pnumber like '%'|| #{keyword} ||'%')
+				where status ='public' 
+	</select>
+	
+	
+	<!-- admin  -->
+	<select id="admin_adminSearch" parameterType="map" resultType="com.museum.vo.DmuMemberVO">
+		select rno, mid, mname, pnumber, email, ddate, unregister, status
+			from(select rownum rno, mid, mname, pnumber, email, to_char(ddate, 'yyyy-mm-dd') ddate, unregister, status
+			from(select mid, mname, pnumber, email, ddate, unregister, status
+			from(select mid, mname, pnumber, email, ddate, unregister, status from dmu_member
+			where mid like '%'|| #{keyword} ||'%' or mname like '%'|| #{keyword} ||'%' or pnumber like '%'|| #{keyword} ||'%')
+			where status not in('public')))
+			where rno between #{start} and #{end}
+	</select>
+	
+	<select id="totalCount_adminSearch" parameterType="java.lang.String" resultType="int">
+		select count(*)
+			from (select mid, mname, pnumber, email, ddate, unregister, status from dmu_member
+			where mid like '%'|| #{keyword} ||'%' or mname like '%'|| #{keyword} ||'%' or pnumber like '%'|| #{keyword} ||'%')
+			where status not in('public') 
+	</select>
+	
+	<!-- reservation -->
+	<select id="admin_reservationSearch" parameterType="map" resultType="com.museum.vo.DmuReJoinVO">
+		select dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech
+			from (select rownum rno, dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech
+			from (select dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,
+			to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rdate, 'YYYY-MM-DD') rdateda, to_char(dr.rokdate,'YYYY-MM-DD') rokdatech
+			from dmu_ticket DT, dmu_reservation DR, dmu_member DM
+			where  dm.mid = dr.mid and dt.did = dr.did and dr.rid in (select rid from (select rid from dmu_reservation order by rokdate desc))
+			order by rokdatech desc)
+			WHERE (dcode like '%'||#{keyword}||'%' or rid like '%'||#{keyword}||'%' or dtitle like '%'||#{keyword}||'%' or mname like '%'||#{keyword}||'%'))
+			WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="totalCount_reservationSearch" parameterType="java.lang.String" resultType="int">
+	select count(*) from(select rno, dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech
+		from (select rownum rno, dcode, rid, dtitle, mname, dpricech, rtotal, rallpricech, rdateda, rokdatech
+		from (select dt.dcode, dr.rid, dt.dtitle, dm.mname, to_char(dt.dprice,'999,999') dpricech, dr.rtotal,
+		to_char(dr.rallprice,'999,999') rallpricech, to_char(dr.rdate, 'YYYY-MM-DD') rdateda, to_char(dr.rokdate,'YYYY-MM-DD') rokdatech
+		from dmu_ticket DT, dmu_reservation DR, dmu_member DM
+		where dm.mid = dr.mid and dt.did = dr.did and dr.rid in (select rid from (select rid from dmu_reservation order by rokdate desc))
+		order by rokdatech desc)
+		WHERE (dcode like '%'||#{keyword}||'%' or rid like '%'||#{keyword}||'%' or dtitle like '%'||#{keyword}||'%' or mname like '%'||#{keyword}||'%')))
+	</select>
+	
 </mapper>

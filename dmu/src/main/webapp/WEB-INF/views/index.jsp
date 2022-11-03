@@ -757,7 +757,7 @@
                                                             style="display: none;"><button data-v-26e42198="" id="btn24"
                                                                 type="button" class="primary"> 예매하기 </button></div>
                                                         <div data-v-26e42198="" data-v-04a3ebf5="" class="btn-area"
-                                                            style=""><a href="http://localhost:9000/dmu/exhibition.do?did=${vo.did }"><button data-v-26e42198="" id="btn25" type="button"
+                                                            style=""><a href="http://localhost:9000/dmu/exhibition.do?did=d_61"><button data-v-26e42198="" id="btn25" type="button"
                                                                 class="secondary"> 예매하기 </button></a></div>
                                                     </a></div>
                                                 <div data-v-04a3ebf5="" class="btn-group" style="display: none;"><a

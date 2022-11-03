@@ -147,7 +147,7 @@
 							<input type="hidden" name="dpersonnel" id="dpersonnel" value="0">
 							<input type="hidden" name="dtarget" id="dtarget" value="0">
 							<input type="hidden" name="dnum" id="dnum" value="0">
-							<input type="hidden" name="dtitle2" id="dtitle2" value="0">
+							<input type="hidden" name="dtitle2" id="dtitle2" value="">
 							<div data-v-8ed31374="" class="ticketwrite_exhibition on"
 								id="ticketwrite_exhibition">
 								<div class="content">
