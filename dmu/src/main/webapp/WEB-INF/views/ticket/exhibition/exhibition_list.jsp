@@ -17,12 +17,18 @@
 <script src="http://localhost:9000/dmu/resources/js/main_header.js"></script>
 <script> 
 $(document).ready(function(){
-		 $('.orderby').click(function(){
-		var day = $(this).attr("id");
-		$(".orderby").removeClass("on");
-		$(this).addClass("on");
+	
+		$('.orderby').click(function(){
+			$(".orderby").removeClass("on");
+			$(this).addClass("on");
+			var day = $(".orderby.on").attr("id");
+			ajax_orderby_list(day,1);
+		});
+			ajax_orderby_list(0,1);
+
+		function ajax_orderby_list(day,rpage){
 		$.ajax({
-			url : 'orderby_exhibition_ajaxlist.do?day='+day, 
+			url : 'orderby_exhibition_ajaxlist.do?day='+day+"&rpage="+rpage, 
 			type : "get" ,
 			cache : false,
 			headers : {"cache-control" : "no-cache" , "pragma" : "no-cache"},
@@ -44,6 +50,11 @@ $(document).ready(function(){
 				}//for
 					
 					output +="</div>" 
+					
+					var more_list = "<div data-v-41f56098='' class='btn-more-area' id='btn_learn'>";
+                    more_list += "<div data-v-26e42198='' data-v-41f56098='' class='btn-area'>"
+                    more_list += "<button data-v-26e42198='' id='more_button'class='secondary more'>더보기</button>";
+                    more_list += "</div></div>";
 				}else{
 				var output ="<div data-v-e20ce500='' data-v-080a389a='' class='previous-list' id='ticket_list_exhibition'>"
 					output +="<div data-v-e20ce500='' data-v-080a389a='' class='no-result'>";	
@@ -51,14 +62,22 @@ $(document).ready(function(){
 				}//else
 					
 					$("#ticket_list_exhibition").remove();
+					$("#btn_learn").remove();
 					$(".list-top-area").after(output);
+					
+					if(dataset.dbCount > dataset.endCount){
+						$("#ticket_list_exhibition").after(more_list);
+						$("#btn_learn").off("click").click(function(){
+							 ajax_orderby_list(day, rpage+1);
+						});
+					}
 				
 			},
 		 		error : function(data){
 		 		alert('error');
 		 		}
 			})
-	});
+	}
 	$('#more_button').click(function(){
 		
 		$(location).attr('href', "http://localhost:9000/dmu/exhibition_list.do?rpage="+${rpage+1});

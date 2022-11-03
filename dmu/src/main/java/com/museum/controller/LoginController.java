@@ -187,8 +187,12 @@ public class LoginController {
 						}
 					}
 					
-					mv.addObject("login_result", member.getLoginresult());
-					mv.setViewName("redirect:/index.do");
+					if(member.getStatus().equals("public")) {
+						mv.addObject("login_result", member.getLoginresult());
+						mv.setViewName("redirect:/index.do");
+					}else {
+						mv.setViewName("redirect:/adminpage_main.do");
+					}
 				}
 			}
 		}else {
