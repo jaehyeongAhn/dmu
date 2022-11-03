@@ -25047,3 +25047,62 @@ table.col3 tr td[data-v-1dc6379c]:nth-child(2) {
 		height: 0.125rem !important;
 	}
 }
+
+
+
+/**************** learn.jsp popup_setup *******************/
+div.background_learn {
+	position : fixed;
+	width : 100%;
+	height : 100vh;
+	background-color : rgba(0, 0, 0, 0.7);
+	top : 0;
+	left : 0;
+	opacity : 0;
+	z-index : -1;
+}
+div.window_learn {
+	position : relative;
+	width : 100%;
+	height : 100vh;
+	top : 0;
+	left : 0;
+}
+div.popup_learn {
+	position : absolute;
+	width : 350px;
+	height : 250px;
+	top : 50%;
+	left : 50%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	transform : translate(-50%, -30%);
+	z-index : -1;
+	background : white;
+}
+div.background_learn.show {
+	opacity : 1;
+	z-index : 10;
+	transition : all 0.5s;
+}
+div.background_learn.show div.popup_learn{
+	transform : translate(-50%, -50%);
+	z-index : 10;
+	transition : all 0.5s;
+}
+
+div.popup_learn > p {
+	font-size: 25px;
+    margin: 25px;
+    text-align: center;
+    line-height: 30px;
+}
+button#learn_ticket_check {
+    width: 170px;
+    height: 50px;
+    background: black;
+    color: white;
+    font-size: 17px;
+}

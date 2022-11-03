@@ -385,11 +385,47 @@ $(document).ready(function(){
           
            $(location).attr("href","http://localhost:9000/dmu/login.do");
             return false;   
-      }else {             
-         ticket_exhibitionFrom.submit();
-       }          
-   });      
+		}else {		
+			if($("input[name='check_code']").val() == "learn"){
+				let did = $("input[name='did']").val();
+				$.ajax({
+					type : "post",
+					url : "http://localhost:9000/dmu/ticketSellout_check.do",
+					data : {
+						did : did,
+						rdate : $("#rdate").val(),
+						rtotal : $("#rtotal").val(),
+						dpersonnel : $("#dpersonnel").val()
+					},
+					success : function(result){
+						let data = JSON.parse(result);
+						if(data.ticket == "no"){
+							learn_popup_setup("잔여 티켓이 부족합니다.<br> [잔여 티켓 : " + data.ticket_count + "]");
+						}else if(data.ticket == "not_personnel"){
+							learn_popup_setup("정원보다 많은 인원을<br>선택하였습니다");
+							$("input:checkbox[id='check30']").prop("checked", false );	
+							$("#btn32").prop("disabled", true);
+						}else{
+							ticket_exhibitionFrom.submit();
+						}
+					}//success
+				});//ajax
+			}else{
+				ticket_exhibitionFrom.submit();
+			}
+		 }			 
+	});		
 
+	/*** learn.do popup_setup ***/
+	function learn_popup_setup(comment){
+		$(".background_learn").addClass("show");
+		$(".window_learn").addClass("show");
+		$("div.popup_learn > p").html(comment);
+		$("#learn_ticket_check").off("click").click(function(){
+			$(".background_learn").removeClass("show");
+			$(".window_learn").removeClass("show");
+		});
+	}
 
    /*********************
     결제 팝업ㅡ 결제시 결제정보 넘기기
