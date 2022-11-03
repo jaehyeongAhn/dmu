@@ -83,8 +83,12 @@ public class TicketServiceImpl implements TicketService {
 	}
 	
  
- 
-}
- 
+
+   //티켓 매진
+	@Override
+   public String ticketSellout(String did, String rdate) {
+	   return ticketDAO.ticketSellout(did, rdate);
+   }
+} 
 	
  

@@ -117,5 +117,14 @@ public class DmuTicketDAO  {
  
    
   
+   //티켓 매진
+   public String ticketSellout(String did, String rdate) {
+	   Map<String, String> param = new HashMap<String, String>();
+	   param.put("did", did);
+	   param.put("rdate", rdate);
+	   System.out.println(did);
+	   System.out.println(rdate);
+	   return sqlSession.selectOne("mapper.ticket.ticketSellout", param);
+   }
   
 }

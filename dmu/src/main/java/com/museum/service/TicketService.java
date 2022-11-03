@@ -23,7 +23,8 @@ public interface TicketService {
 	ArrayList<DmuTicketVO> getList(int startCount,int endCoiunt,String dcode,String day ); 
 	
 	int getTicketCount(String dcode);  
- 
+
+   public String ticketSellout(String did, String rdate);
 
 
 }

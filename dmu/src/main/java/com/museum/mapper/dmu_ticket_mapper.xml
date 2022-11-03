@@ -83,15 +83,15 @@
 	 
 	 <!-- insert rservationdate -->
 	 <insert id="reservationdate" parameterType="com.museum.vo.DmuReJoinVO">
-	 	insert into dmu_reservation values('R_'||sequ_dmu_reservation.nextval,#{did},#{rprice},#{rtime},#{rdate},#{rtotal},#{rallprice},sysdate,'y','',#{mid})
+	 	insert into dmu_reservation values(#{rid}||sequ_dmu_reservation.nextval,#{did},#{rprice},#{rtime},#{rdate},#{rtotal},#{rallprice},sysdate,'y','',#{mid})
 	 </insert>
 	 
 	 <select id = "ridnew" resultType = "java.lang.String">
-	 	select 'R_' || sequ_dmu_reservation.currval rid from dual
+	 	select sequ_dmu_reservation.currval rid from dual
 	 </select>
 	 
 	  <insert id="reservationdatePay" parameterType="com.museum.vo.DmuReJoinVO">
-	 	insert into dmu_payinfo values('P_'||sequ_DMU_PAYINFO.nextval,#{did},#{mid},#{rid}, sysdate,#{pcoin})
+	 	insert into dmu_payinfo values(#{pid},#{did},#{mid},#{rid}, sysdate,#{pcoin})
 	 </insert>
 	 
 	 <select id = "pidnew" resultType = "java.lang.String">
@@ -99,7 +99,7 @@
 	 </select>
 	 
 	 <insert id = "insert_ticket" parameterType="com.museum.vo.DmuReJoinVO">
-	 	insert into dmu_ticketinfo values('T_' || sequ_DMU_TICKETINFO.nextval, #{did}, #{rid}, 'y', #{pid}, #{mid})
+	 	insert into dmu_ticketinfo values(#{tid}, #{did}, #{rid}, 'y', #{pid}, #{mid})
 	 </insert>
 
 	 <!-- ticket reservationContent  -->
@@ -118,6 +118,15 @@
 	 
   
 	 
+	 <!-- ticket Sellout -->
+	 <select id = "ticketSellout" parameterType = "map" resultType = "java.lang.String">
+	 	select (dpersonnel - total) total
+	 	from (select count(tid) total, dpersonnel
+			from (select DISTINCT tid, dpersonnel from dmu_ticketinfo dti, dmu_reservation dr, dmu_ticket dt 
+			        where dti.did = dt.did and dr.rid = dti.rid 
+			        	and dt.did = #{did} and TO_DATE(dr.rdate) = TO_DATE(#{rdate}) and dti.tcheck = 'y')
+	        group by dpersonnel)
+	 </select>
 </mapper>
 
   

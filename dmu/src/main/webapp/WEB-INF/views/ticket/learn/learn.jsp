@@ -49,8 +49,8 @@
 		}
 	}
 	$(document).ready(function() {
-		var inp = $("#inptext").val();
 		$(".btn-plus").on("click", function() {
+			var inp = $("#inptext").val();
 			setTimeout(function() {
 				if (inp == 4) {
 					inp;
@@ -59,9 +59,10 @@
 				}
 				$("#inptext").val(inp);
 				$("#rtotal").val(inp);
-			}, 500);
+			}, 4);
 		});
 		$(".btn-minus").on("click", function() {
+			var inp = $("#inptext").val();
 			setTimeout(function() {
 				if (inp == 0) {
 					inp;
@@ -112,6 +113,8 @@
 										$("#calendar").datepicker("getDate"));
 								$("#date").val(date);
 								$("#rdate").val(date);
+								
+								ticketSellout();
 							},
 							//datepicker의 날짜가 변경될 때마다 이벤트 발생 (선택 날짜 받아 저장)
 							onSelect : function() {
@@ -120,7 +123,9 @@
 								$("#date").val(date);
 								$("#rdate").val(date);
 								$(".round-selection").attr("disabled", false)
-
+								
+								$("#inptext").val("0");
+								ticketSellout();
 								//alert(date);
 							}
 						});
@@ -129,6 +134,27 @@
 				$("#calendar").datepicker("option", "dayNamesShort",
 						[ "Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam" ]);
 
+				function ticketSellout(){
+					let did = "${vo.did}";
+					$.ajax({
+						type : "post",
+						url : "http://localhost:9000/dmu/ticketSellout.do",
+						data : {
+							did : did,
+							rdate : $("#rdate").val()
+						},
+						success : function(result){
+							if(result == 0){
+								$("#sellout").text("매진");
+								$(".btn-plus").prop("disabled", true);
+								$(".btn-minus").prop("disabled", true);
+							}else{
+								$("#sellout").text("");
+								$(".btn-plus").prop("disabled", false);
+							}
+						}//success
+					});//ajax
+				}//function
 			});
 </script>
 <script>	
@@ -157,7 +183,7 @@
 
 
 	<div class="content">
-
+		<input type = "hidden" name = "check_code" value = "learn">
 		<form name="ticket_exhibitionFrom" action="ticket_reservation.do" method="post">
 		
 		 <input type="hidden" name="did" value="${vo.did }"> 
@@ -171,6 +197,7 @@
 		 <input type="hidden" name="mid" id="mid" value=${ sessionScope.member.mid }> 
 		 <input type="hidden" name="dsfile" id="dsfile" value=${vo.dsfile }> 
 		 <input type="hidden" name="dfile" id="dfile" value=${vo.dfile }> 
+		 <input type="hidden" name="dpersonnel" id = "dpersonnel" value = "${vo.dpersonnel}">
 		
 	 
 			<main>
@@ -273,7 +300,7 @@
 																<li data-v-8ed31374="" class="">
 																	<button data-v-8ed31374="" type="button"  class="round-selection" id="entertime"  onclick="myFunction()">
 																		<span data-v-8ed31374="" name="rtime" id="content" class="ContentEnter" value="${vo.dentertime }"> ${vo.dentertime }</span>
-																	 	
+																	 	<span id = "sellout"></span>
 																		 
 																		<!---->
 																	</button>
@@ -500,5 +527,13 @@
 		src="/js/chunk-vendors.85a954b2b4f1348cc700.js"></script>
 	<script type="text/javascript" src="/js/index.85a954b2b4f1348cc700.js"></script>
 
+	<div class = "background_learn">
+		<div class = "window_learn">
+			<div class = "popup_learn">
+				<p>와와</p>
+				<button type = "button" id = "learn_ticket_check">확인</button>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

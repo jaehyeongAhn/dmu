@@ -2,16 +2,13 @@ package com.museum.controller;
 
  
  
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.museum.dao.DmuTicketDAO;
-import com.museum.service.TicketService;
 import com.museum.service.TicketServiceImpl;
 import com.museum.vo.DmuTicketVO;
  
@@ -25,6 +22,14 @@ public class ExhibitionController {
 	@Autowired
 	private TicketServiceImpl ticketService;
 	
+	//ticketSellout.do
+	@ResponseBody
+	@RequestMapping(value = "/ticketSellout.do", method = RequestMethod.POST)
+	public String ticketSellout(String did, String rdate) {
+		String total = ticketService.ticketSellout(did, rdate);
+		
+		return String.valueOf(total);
+	}
 	
 	
 	/*
