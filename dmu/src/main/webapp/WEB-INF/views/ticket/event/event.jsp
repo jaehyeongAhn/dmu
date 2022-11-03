@@ -299,7 +299,7 @@
 																		<span data-v-8ed31374="" class="person">인원</span>
 																		<div data-v-1dc6379c="" data-v-8ed31374="" class="control count-control" name="data-v-1dc6379c">
 
-																			<button id="countpeople" name="countpeople" data-v-1dc6379c="" type="button" class="btn-minus" id="decreaseQuantity"></button>
+																			<button id="countpeople" name="countpeople" data-v-1dc6379c="" type="button" class="btn-minus" id="decreaseQuantity" disabled></button>
 
 																			<div data-v-67ca82d2="" data-v-1dc6379c="" 	class="input-area">
 																			
