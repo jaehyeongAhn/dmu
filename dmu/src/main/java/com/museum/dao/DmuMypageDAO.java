@@ -1,5 +1,6 @@
 package com.museum.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -125,6 +126,20 @@ public class DmuMypageDAO {
 	
 	//회원 탈퇴 신청
 	public int memberUnregister(String mid) {
-		return sqlSession.update(namespace + ".member_unregister", mid);
+		int result = sqlSession.update(namespace + ".member_unregister", mid);
+		result += sqlSession.insert(namespace + ".member_unregister_withdraw", mid);
+		return result;
+	}
+	
+	//회원 탈퇴 신청 후 일주일 경과 시 회원 데이터 삭제
+	public int memberWithdraw() {
+		int result = 0;
+		List<DmuMemberVO> list = sqlSession.selectList(namespace + ".member_unregister_check");
+		if(!list.isEmpty()) {
+			result += sqlSession.delete(namespace + ".member_withdraw", list);	
+			result += sqlSession.delete(namespace + ".member_withdraw_drop", list);
+		}
+		
+		return result;
 	}
 }

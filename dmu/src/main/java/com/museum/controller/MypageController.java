@@ -298,7 +298,7 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView();
 		
 		int result = mypageService.memberUnregister(mid);
-		if(result == 1) {
+		if(result == 2) {
 			HttpSession session = request.getSession();
 			session.invalidate();
 			

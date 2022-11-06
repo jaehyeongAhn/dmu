@@ -61,4 +61,7 @@ public interface MypageService {
 	
 	//회원 탈퇴 신청
 	public int memberUnregister(String mid);
+	
+	//회원 탈퇴 신청 - 일주일 이상 경과 회원
+	public int memberWithdraw();
 }

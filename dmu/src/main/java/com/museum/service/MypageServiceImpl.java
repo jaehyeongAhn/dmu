@@ -116,4 +116,10 @@ public class MypageServiceImpl implements MypageService {
 	public int memberUnregister(String mid) {
 		return mypageDao.memberUnregister(mid);
 	}
+	
+	//회원 탈퇴 신청 - 일주일 이상 경과 회원
+	@Override
+	public int memberWithdraw() {
+		return mypageDao.memberWithdraw();
+	};
 }

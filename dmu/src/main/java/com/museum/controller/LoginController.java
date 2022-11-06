@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.museum.service.EmailServiceImpl;
 import com.museum.service.LoginServiceImpl;
+import com.museum.service.MypageServiceImpl;
 import com.museum.vo.DmuMemberVO;
 import com.museum.vo.DmuSessionVO;
 
@@ -25,6 +26,9 @@ public class LoginController {
 	
 	@Autowired
 	private LoginServiceImpl loginService;
+	
+	@Autowired
+	private MypageServiceImpl mypageService;
 	
 	/***************************** 아이디 찾기 ***********************************/
 	//emailCode.do : 이메일 인증번호 발송
@@ -140,6 +144,9 @@ public class LoginController {
 	//login.do : 로그인 페이지 호출
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login(String login_result) {
+		
+		mypageService.memberWithdraw();
+		
 		return "/login/login";
 	}
 	

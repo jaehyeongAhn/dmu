@@ -228,4 +228,32 @@
 	<update id = "member_unregister" parameterType = "java.lang.String">
 		UPDATE DMU_MEMBER SET UNREGISTER = 'n' WHERE MID = #{mid}
 	</update>
+	
+	<insert id = "member_unregister_withdraw" parameterType = "java.lang.String">
+		INSERT INTO DMU_MEMBER_WITHDRAW VALUES(#{mid}, SYSDATE)
+	</insert>
+	
+	<!-- member unregister check -->
+	<select id = "member_unregister_check" resultType = "com.museum.vo.DmuMemberVO">
+		SELECT MID FROM DMU_MEMBER_WITHDRAW WHERE WDATE &lt; (SYSDATE - 7) + 1
+	</select>
+	
+	<!-- member withdraw -->
+	<delete id = "member_withdraw" parameterType = "java.util.List">
+		<if test = "!list.isEmpty()">
+			DELETE FROM DMU_MEMBER  WHERE MID IN
+			<foreach collection = "list" item = "item" open = "(" close = ")" separator = ",">		
+				#{item.mid}	
+			</foreach>
+		</if>
+	</delete>
+	
+	<delete id = "member_withdraw_drop" parameterType = "java.util.List">
+		<if test = "!list.isEmpty()">
+			DELETE FROM DMU_MEMBER_WITHDRAW  WHERE MID IN
+			<foreach collection = "list" item = "item" open = "(" close = ")" separator = ",">
+				#{item.mid}		
+			</foreach>
+		</if>
+	</delete>
 </mapper>
