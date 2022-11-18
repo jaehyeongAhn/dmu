@@ -15,9 +15,19 @@
 * 데이터 CRUD와 다양한 이벤트 처리
 
 ### 개발 정보
-* **개발도구**
-  * Spring Legacy
-  * Oracle DB
+* **Language**
+  * HTML/CSS
+  * Java Script(JQuery, JSON, AJAX)
+  * JAVA
+  * JSP/JSTL
+  * SQL
+
+* **Collaboration & Tools**
+  * Spring Framework
+  * Oracle Database 11g
+  * SQL Developer
+  * JQuery UI
+  * Git/GitHub
 
 
 ## 📌 ERD
