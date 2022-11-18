@@ -14,6 +14,11 @@
 * 예약 서비스 응용
 * 데이터 CRUD와 다양한 이벤트 처리
 
+### 개발 정보
+* **개발도구**
+  * Spring Legacy
+  * Oracle DB
+
 ## 📌 ERD
 
 <img src = "./img/DMU_ERD.png">
