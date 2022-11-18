@@ -16,4 +16,4 @@
 
 ## 📌 ERD
 
-<img src = "./img/DMU_ERD.jpg">
+<img src = "./img/DMU_ERD.png">
