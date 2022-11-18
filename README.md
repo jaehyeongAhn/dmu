@@ -16,18 +16,18 @@
 
 ### 개발 정보
 * **Language**
- * HTML/CSS
- * Java Script(JQuery, JSON, AJAX)
- * JAVA
- * JSP/JSTL
- * SQL
+   * HTML/CSS
+   * Java Script(JQuery, JSON, AJAX)
+   * JAVA
+   * JSP/JSTL
+   * SQL
 
 * **Collaboration & Tools**
- * Spring Framework
- * Oracle Database 11g
- * SQL Developer
- * JQuery UI
- * Git/GitHub
+   * Spring Framework
+   * Oracle Database 11g
+   * SQL Developer
+   * JQuery UI
+   * Git/GitHub
 
 
 ## 📌 ERD
