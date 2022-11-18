@@ -14,4 +14,6 @@
 * 예약 서비스 응용
 * 데이터 CRUD와 다양한 이벤트 처리
 
+## 📌 ERD
 
+<img src = "./img/DMU_ERD.jpg">
