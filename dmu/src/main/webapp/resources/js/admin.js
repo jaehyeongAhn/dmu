@@ -21,7 +21,7 @@ $(document).ready(function(){
 		 	popup_set("제목을 입력해주세요");
 	     	return false;
 	    }else{
-	    	popup_set("등록완료되었습니다");
+	    	popup_set("등록 완료되었습니다");
 	    	$("#popup_close").click(function(){
 	    		noticeWriteForm.submit();
 	    	});
@@ -36,12 +36,22 @@ $(document).ready(function(){
 		 	popup_set("제목을 입력해주세요");
 	     	return false;
 	    }else{
-	    	popup_set("수정완료되었습니다");
+	    	popup_set("수정 완료되었습니다");
 	    	$("#popup_close").click(function(){
 	    		noticeUpdateForm.submit();
 	    	});
 	    }
 	});
+
+	$(".deleteOk").click(function(){
+		popup_set("삭제 완료되었습니다");
+		$("#popup_close").click(function(){
+			noticeDeleteForm.submit();
+		});
+		
+	});
+	
+
 
 });
 

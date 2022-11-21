@@ -51,7 +51,7 @@
 					<div class="notice-view-area">
 						<div class="base-info-area">
 							<div class="title-area">
-								<strong class="title">공지사항 작성</strong>
+								<strong class="title">공지사항 수정</strong>
 							</div>
 						</div>
 						<div class="notice-content-write">
@@ -68,7 +68,6 @@
 											<option value="디뮤지엄">디뮤지엄</option>
 											<option value="대림미술관">대림미술관</option>
 											<option value="구슬모아당구장">구슬모아당구장</option>
-											<option value="뮤지엄샵">뮤지엄샵</option>
 									</select></li>
 									<li>
 										<label>제목</label> 
